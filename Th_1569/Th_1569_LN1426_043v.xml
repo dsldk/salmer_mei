@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     meiversion="3.0.0"
+     xml:id="Th_1569_LN1426_043v_m-1">
+   <meiHead xml:id="Th_1569_LN1426_043v_m-2">
+      <fileDesc xml:id="Th_1569_LN1426_043v_m-3">
+        <titleStmt xml:id="Th_1569_LN1426_043v_m-4">
+            <title xml:id="Th_1569_LN1426_043v_m-10"/>
+            
+        </titleStmt>
+        <pubStmt xml:id="Th_1569_LN1426_043v_m-13">
+            <availability xml:id="Th_1569_LN1426_043v_m-14">
+                <useRestrict xml:id="Th_1569_LN1426_043v_m-15"/>
+            </availability>
+        </pubStmt>
+      </fileDesc>
+      <encodingDesc xml:id="Th_1569_LN1426_043v_m-16">
+        <appInfo xml:id="Th_1569_LN1426_043v_m-17">
+            <application xml:id="Th_1569_LN1426_043v_sibelius" isodate="2018-8-28T18:32:11Z"
+                         version="6200">
+                <name xml:id="Th_1569_LN1426_043v_m-19">Sibelius</name>
+            </application>
+            <application xml:id="Th_1569_LN1426_043v_sibmei" type="plugin" version="2.1.0">
+                <name xml:id="Th_1569_LN1426_043v_m-21">Sibelius 6.2 to MEI Exporter (2.1.0)</name>
+            </application>
+        </appInfo>
+      </encodingDesc>
+      <workDesc xml:id="Th_1569_LN1426_043v_m-5">
+        <work xml:id="Th_1569_LN1426_043v_m-6">
+            <titleStmt xml:id="Th_1569_LN1426_043v_m-7">
+                <title xml:id="Th_1569_LN1426_043v_m-8"/>
+                <respStmt xml:id="Th_1569_LN1426_043v_m-9"/>
+            </titleStmt>
+        </work>
+      </workDesc>
+   </meiHead>
+   <music xml:id="Th_1569_LN1426_043v_m-22">
+      <body xml:id="Th_1569_LN1426_043v_m-23">
+        <mdiv xml:id="Th_1569_LN1426_043v_m-24">
+            <score xml:id="Th_1569_LN1426_043v_m-25">
+                <scoreDef xml:id="Th_1569_LN1426_043v_m-26">
+                    <staffGrp xml:id="Th_1569_LN1426_043v_m-27">
+                        <staffDef xml:id="Th_1569_LN1426_043v_m-28" clef.line="4" clef.shape="C" key.sig="0"
+                               lines="5"
+                               n="1">
+                            
+                            
+                        </staffDef>
+                    </staffGrp>
+                </scoreDef>
+                <section xml:id="Th_1569_LN1426_043v_m-31">
+                    
+                    <measure xml:id="Th_1569_LN1426_043v_m-32" right="invis">
+                        <staff xml:id="Th_1569_LN1426_043v_m-34" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-35" n="1">
+                                <note xml:id="Th_1569_LN1426_043v_m-36" dur="breve" dur.ges="2048p" oct="3" pname="e"
+                                 pnum="52">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-45" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-46" con="d" wordpos="i">Vel</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-37" dur="1" dur.ges="1024p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-47" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-48" con="d" wordpos="m">sig</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-38" dur="1" dur.ges="1024p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-49" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-50" wordpos="t">net</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-39" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-51" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-52" con="d" wordpos="i">væ</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-40" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-53" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-54" wordpos="t">re</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-41" dur="2" dur.ges="512p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-55" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-56" con="d" wordpos="i">Je</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-42" dur="2" dur.ges="512p" oct="3" pname="a"
+                                 pnum="57"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-43" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-57" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-58" wordpos="t">su</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-44" dur="breve" dur.ges="2048p" oct="3" pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-59" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-60" wordpos="i">naffn/</syl>
+                                    </verse>
+                                </note>
+                            </layer>
+                        </staff>
+                    </measure>
+                    <sb xml:id="Th_1569_LN1426_043v_m-62" label="editorial"/>
+                    <measure xml:id="Th_1569_LN1426_043v_m-61" right="rptend">
+                        <staff xml:id="Th_1569_LN1426_043v_m-63" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-64" n="1">
+                                <rest xml:id="Th_1569_LN1426_043v_m-65" dur="1" dur.ges="1024p"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-66" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-77" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-78" wordpos="i">oc</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-67" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-79" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-80" wordpos="i">priss</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-69" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-81" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-82" con="d" wordpos="i">for</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-70" dur="2" dur.ges="512p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-83" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-84" con="d" wordpos="m">u</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-71" dur="2" dur.ges="512p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-85" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-86" wordpos="t">den</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-72" dur="2" dur.ges="512p" oct="3" pname="e"
+                                 pnum="52">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-87" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-88" wordpos="i">all</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-73" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-74" dur="2" dur.ges="512p" oct="3" pname="g"
+                                 pnum="55"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-75" dur="1" dur.ges="1024p" oct="3" pname="f"
+                                 pnum="53">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-89" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-90" con="d" wordpos="i">en</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-76" dur="breve" dur.ges="2048p" oct="3" pname="e"
+                                 pnum="52">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-91" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-92" wordpos="t">de/</syl>
+                                    </verse>
+                                </note>
+                            </layer>
+                        </staff>
+                        <dir type="sb" tstamp="11" place="above" label="Linjeskift"
+                          xml:id="Th_1569_LN1426_043v_m-68">|</dir>
+                    </measure>
+                    <sb xml:id="Th_1569_LN1426_043v_m-94" label="editorial"/>
+                    <measure xml:id="Th_1569_LN1426_043v_m-93" right="invis">
+                        <staff xml:id="Th_1569_LN1426_043v_m-95" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-96" n="1">
+                                <rest xml:id="Th_1569_LN1426_043v_m-97" dur="1" dur.ges="1024p"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-98" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-108" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-109" wordpos="i">hand</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-99" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-110" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-111" wordpos="i">oss</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-100" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-112" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-113" wordpos="i">det</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-101" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-114" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-115" con="d" wordpos="i">selff</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-102" dur="1" dur.ges="1024p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-116" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-117" wordpos="t">uer</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-104" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57">
+                                        <verse xml:id="Th_1569_LN1426_043v_m-118" n="1">
+                                            <syl xml:id="Th_1569_LN1426_043v_m-119" con="d" wordpos="i">kien</syl>
+                                        </verse>
+                                    </note>
+                           <note xml:id="Th_1569_LN1426_043v_m-106" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-107" dur="breve" dur.ges="2048p" oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-120" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-121" wordpos="t">de/</syl>
+                                    </verse>
+                                </note>
+                            <bracketSpan xml:id="Th_1569_LN1426_043v_m-105" func="ligature"
+                                        startid="#Th_1569_LN1426_043v_m-104"
+                                        endid="#Th_1569_LN1426_043v_m-106"/>
+                        </layer>
+                        </staff>
+                        <dir type="sb" tstamp="23" place="above" label="Linjeskift"
+                          xml:id="Th_1569_LN1426_043v_m-103">|</dir>
+                    </measure>
+                    <sb xml:id="Th_1569_LN1426_043v_m-123" label="editorial"/>
+                    <measure xml:id="Th_1569_LN1426_043v_m-122" right="invis">
+                        <staff xml:id="Th_1569_LN1426_043v_m-124" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-125" n="1">
+                                <rest xml:id="Th_1569_LN1426_043v_m-126" dur="1" dur.ges="1024p"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-127" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-137" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-138" wordpos="i">oc</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-128" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-139" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-140" con="d" wordpos="i">gior</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-129" dur="1" dur.ges="1024p" oct="4" pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-141" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-142" wordpos="t">de</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-130" dots="1" dur="1" dur.ges="1536p" oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-143" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-144" wordpos="i">oss</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-131" dur="2" dur.ges="512p" oct="4" pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-145" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-146" wordpos="i">Guds</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-132" dur="2" dur.ges="512p" oct="4" pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-147" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-148" wordpos="i">børn</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-133" dur="2" dur.ges="512p" oct="4" pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-134" dur="1" dur.ges="1024p" oct="4" pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-149" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-150" wordpos="i">met</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-135" dur="breve" dur.ges="2048p" oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-151" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-152" wordpos="i">sig/</syl>
+                                    </verse>
+                                </note>
+                            </layer>
+                        </staff>
+                        <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
+                          xml:id="Th_1569_LN1426_043v_m-136">|</dir>
+                    </measure>
+                    <sb xml:id="Th_1569_LN1426_043v_m-154" label="editorial"/>
+                    
+                    <measure xml:id="Th_1569_LN1426_043v_m-153" right="invis">
+                        <staff xml:id="Th_1569_LN1426_043v_m-155" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-156" n="1">
+                                <note xml:id="Th_1569_LN1426_043v_m-157" dur="1" dur.ges="1024p" oct="4" pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-167" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-168" wordpos="i">som</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-158" dots="1" dur="1" dur.ges="1536p" oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-169" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-170" wordpos="i">paa</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-159" dur="2" dur.ges="512p" oct="4" pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-171" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-172" wordpos="i">hans</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-160" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-173" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-174" wordpos="i">Naffn</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-161" dur="1" dur.ges="1024p" oct="4" pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-175" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-176" wordpos="i">tro</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-162" dur="2" dur.ges="512p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-177" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-178" con="d" wordpos="i">sta</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-163" dur="2" dur.ges="512p" oct="3" pname="b"
+                                 pnum="59"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-164" dur="2" dur.ges="512p" oct="4" pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-165" dur="2" dur.ges="512p" oct="3" pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-179" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-180" con="d" wordpos="m">de</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-166" dur="breve" dur.ges="2048p" oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-181" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-182" wordpos="t">lig/</syl>
+                                    </verse>
+                                </note>
+                            </layer>
+                        </staff>
+                    </measure>
+                    <sb xml:id="Th_1569_LN1426_043v_m-185" label="editorial"/>
+                    
+                    <measure xml:id="Th_1569_LN1426_043v_m-184" right="end">
+                        <staff xml:id="Th_1569_LN1426_043v_m-186" n="1">
+                            <layer xml:id="Th_1569_LN1426_043v_m-187" n="1">
+                                <rest xml:id="Th_1569_LN1426_043v_m-188" dur="1" dur.ges="1024p"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-189" dur="1" dur.ges="1024p" oct="4" pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-199" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-200" wordpos="i">sin</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-191" dur="1" dur.ges="1024p" oct="3" pname="b"
+                                 pnum="59">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-201" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-202" wordpos="i">Aand</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-192" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-203" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-204" wordpos="i">hand</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-193" dur="1" dur.ges="1024p" oct="3" pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-205" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-206" wordpos="i">oss</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-194" dur="2" dur.ges="512p" oct="3" pname="e"
+                                 pnum="52">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-207" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-208" con="d" wordpos="i">till</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-195" dur="1" dur.ges="1024p" oct="3" pname="a"
+                                 pnum="57"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-196" dur="2" dur.ges="512p" oct="3" pname="g"
+                                 pnum="55"/>
+                                <note xml:id="Th_1569_LN1426_043v_m-197" dur="1" dur.ges="1024p" oct="3" pname="f"
+                                 pnum="53">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-209" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-210" con="d" wordpos="m">sen</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Th_1569_LN1426_043v_m-198" dur="long" dur.ges="4096p" oct="3" pname="e"
+                                 pnum="52">
+                                    <verse xml:id="Th_1569_LN1426_043v_m-211" n="1">
+                                        <syl xml:id="Th_1569_LN1426_043v_m-212" wordpos="t">de.</syl>
+                                    </verse>
+                                </note>
+                            </layer>
+                        </staff>
+                        <dir type="sb" tstamp="7" place="above" label="Linjeskift"
+                          xml:id="Th_1569_LN1426_043v_m-190">|</dir>
+                    </measure>
+                  <pb/>
+               </section>
+            </score>
+        </mdiv>
+      </body>
+   </music>
+</mei>

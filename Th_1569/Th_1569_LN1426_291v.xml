@@ -1,0 +1,832 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.music-encoding.org/schema/3.0.0/mei-Neumes.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://www.music-encoding.org/schema/3.0.0/mei-Neumes.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<mei xmlns="http://www.music-encoding.org/ns/mei"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     meiversion="3.0.0"
+     xml:id="Th_1569_LN1426_291v_m-1">
+   <meiHead xml:id="Th_1569_LN1426_291v_m-2">
+      <fileDesc xml:id="Th_1569_LN1426_291v_m-3">
+        <titleStmt xml:id="Th_1569_LN1426_291v_m-4">
+            <title xml:id="Th_1569_LN1426_291v_m-10"/>
+            
+        </titleStmt>
+        <pubStmt xml:id="Th_1569_LN1426_291v_m-13">
+            <availability xml:id="Th_1569_LN1426_291v_m-14">
+                <useRestrict xml:id="Th_1569_LN1426_291v_m-15"/>
+            </availability>
+        </pubStmt>
+      </fileDesc>
+      <encodingDesc xml:id="Th_1569_LN1426_291v_m-16">
+        <appInfo xml:id="Th_1569_LN1426_291v_m-17">
+            <application xml:id="Th_1569_LN1426_291v_sibelius" isodate="2018-8-28T18:34:47Z"
+                         version="6200">
+                <name xml:id="Th_1569_LN1426_291v_m-19">Sibelius</name>
+            </application>
+            <application xml:id="Th_1569_LN1426_291v_sibmei" type="plugin" version="2.1.0">
+                <name xml:id="Th_1569_LN1426_291v_m-21">Sibelius 6.2 to MEI Exporter (2.1.0)</name>
+            </application>
+        </appInfo>
+      </encodingDesc>
+      <workDesc xml:id="Th_1569_LN1426_291v_m-5">
+        <work xml:id="Th_1569_LN1426_291v_m-6">
+            <titleStmt xml:id="Th_1569_LN1426_291v_m-7">
+                <title xml:id="Th_1569_LN1426_291v_m-8"/>
+                <respStmt xml:id="Th_1569_LN1426_291v_m-9"/>
+            </titleStmt>
+        </work>
+      </workDesc>
+   </meiHead>
+   <music xml:id="Th_1569_LN1426_291v_m-22">
+      <body xml:id="Th_1569_LN1426_291v_m-23">
+        <mdiv xml:id="Th_1569_LN1426_291v_m-24">
+            <score xml:id="Th_1569_LN1426_291v_m-25">
+                <scoreDef xml:id="Th_1569_LN1426_291v_m-26">
+                    <staffGrp xml:id="Th_1569_LN1426_291v_m-27">
+                        <staffDef xml:id="Th_1569_LN1426_291v_m-28" clef.line="3" clef.shape="F" key.sig="0"
+                               lines="5"
+                               n="1">
+                            
+                            
+                        </staffDef>
+                    </staffGrp>
+                </scoreDef>
+                <section xml:id="Th_1569_LN1426_291v_m-31">
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-34" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-51">
+                           <verse xml:id="Th_1569_LN1426_291v_m-51" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-52" con="d" wordpos="i">Ha</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e87">
+                              <note xml:id="Th_1569_LN1426_291v_m-37" oct="3" pname="c" pnum="48" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-38" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-53">
+                           <verse xml:id="Th_1569_LN1426_291v_m-53" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-54" con="d" wordpos="m">le</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e98">
+                              <note xml:id="Th_1569_LN1426_291v_m-40" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-41" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-42" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-43" oct="3" pname="a" pnum="57" label="dur4"/>
+                           </uneume>
+                           <uneume xml:id="uneume_d3e114">
+                              <note xml:id="Th_1569_LN1426_291v_m-45" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-46" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-55">
+                           <verse xml:id="Th_1569_LN1426_291v_m-55" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-56" con="d" wordpos="m">lu</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e118">
+                              <note xml:id="Th_1569_LN1426_291v_m-48" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-49" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-57">
+                           <verse xml:id="Th_1569_LN1426_291v_m-57" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-58" wordpos="t">ia.</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e129">
+                              <note xml:id="Th_1569_LN1426_291v_m-50" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-60" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-77">
+                           <verse xml:id="Th_1569_LN1426_291v_m-77" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-78" wordpos="i">Gud</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e155">
+                              <note xml:id="Th_1569_LN1426_291v_m-62" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-79">
+                           <verse xml:id="Th_1569_LN1426_291v_m-79" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-80" con="d" wordpos="i">væ</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e164">
+                              <note xml:id="Th_1569_LN1426_291v_m-63" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-81">
+                           <verse xml:id="Th_1569_LN1426_291v_m-81" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-82" wordpos="t">re</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e173">
+                              <note xml:id="Th_1569_LN1426_291v_m-65" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-66" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-67" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-83">
+                           <verse xml:id="Th_1569_LN1426_291v_m-83" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-84" wordpos="i">loff</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e187">
+                              <note xml:id="Th_1569_LN1426_291v_m-68" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-85">
+                           <verse xml:id="Th_1569_LN1426_291v_m-85" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-86" wordpos="i">oc</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e196">
+                              <note xml:id="Th_1569_LN1426_291v_m-70" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-71" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-87">
+                           <verse xml:id="Th_1569_LN1426_291v_m-87" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-88" con="d" wordpos="i">æ</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e207">
+                              <note xml:id="Th_1569_LN1426_291v_m-73" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-74" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-89">
+                           <verse xml:id="Th_1569_LN1426_291v_m-89" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-90" wordpos="t">re/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e218">
+                              <note xml:id="Th_1569_LN1426_291v_m-75" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="sb" tstamp="11.75" place="above" label="Linjeskift"
+                             xml:id="Th_1569_LN1426_291v_m-76">|</dir>
+                     </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-92" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-93" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-115">
+                           <verse xml:id="Th_1569_LN1426_291v_m-115" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-116" wordpos="i">oc</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e249">
+                              <note xml:id="Th_1569_LN1426_291v_m-95" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-117">
+                           <verse xml:id="Th_1569_LN1426_291v_m-117" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-118" wordpos="i">hans</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e258">
+                              <note xml:id="Th_1569_LN1426_291v_m-96" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-119">
+                           <verse xml:id="Th_1569_LN1426_291v_m-119" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-120" con="d" wordpos="i">e</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e267">
+                              <note xml:id="Th_1569_LN1426_291v_m-98" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-99" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-100" oct="4" pname="c" pnum="60" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-101" oct="3" pname="b" pnum="59" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-121">
+                           <verse xml:id="Th_1569_LN1426_291v_m-121" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-122" con="d" wordpos="m">ni</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e283">
+                              <note xml:id="Th_1569_LN1426_291v_m-103" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-104" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-123">
+                           <verse xml:id="Th_1569_LN1426_291v_m-123" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-124" wordpos="t">ste</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e294">
+                              <note xml:id="Th_1569_LN1426_291v_m-106" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-107" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-125">
+                           <verse xml:id="Th_1569_LN1426_291v_m-125" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-126" wordpos="i">Søn/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e305">
+                              <note xml:id="Th_1569_LN1426_291v_m-108" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-127">
+                           <verse xml:id="Th_1569_LN1426_291v_m-127" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-128" wordpos="i">oc</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e315">
+                              <note xml:id="Th_1569_LN1426_291v_m-109" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-129">
+                           <verse xml:id="Th_1569_LN1426_291v_m-129" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-130" wordpos="i">den</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e324">
+                              <note xml:id="Th_1569_LN1426_291v_m-110" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-131">
+                           <verse xml:id="Th_1569_LN1426_291v_m-131" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-132" con="d" wordpos="i">ver</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e333">
+                              <note xml:id="Th_1569_LN1426_291v_m-111" oct="3" pname="a" pnum="57" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-133">
+                           <verse xml:id="Th_1569_LN1426_291v_m-133" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-134" con="d" wordpos="m">di</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e342">
+                              <note xml:id="Th_1569_LN1426_291v_m-112" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-135">
+                           <verse xml:id="Th_1569_LN1426_291v_m-135" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-136" wordpos="t">ge</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e351">
+                              <note xml:id="Th_1569_LN1426_291v_m-113" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="sb" tstamp="16.75" place="above" label="Linjeskift"
+                             xml:id="Th_1569_LN1426_291v_m-114">|</dir>
+                     </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-139" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-140" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-149">
+                           <verse xml:id="Th_1569_LN1426_291v_m-149" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-150" con="d" wordpos="i">hel</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e381">
+                              <note xml:id="Th_1569_LN1426_291v_m-143" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-144" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-151">
+                           <verse xml:id="Th_1569_LN1426_291v_m-151" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-152" wordpos="t">lig</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e392">
+                              <note xml:id="Th_1569_LN1426_291v_m-146" oct="3" pname="d" pnum="50" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-147" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-153">
+                           <verse xml:id="Th_1569_LN1426_291v_m-153" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-154" wordpos="i">Aand/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e403">
+                              <note xml:id="Th_1569_LN1426_291v_m-148" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            </layer>
+                        </staff>
+                        
+                        
+                    
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-157" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-175">
+                           <verse xml:id="Th_1569_LN1426_291v_m-175" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-176" wordpos="i">som</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e427">
+                              <note xml:id="Th_1569_LN1426_291v_m-160" oct="3" pname="c" pnum="48" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-161" oct="3" pname="d" pnum="50" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-162" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-177">
+                           <verse xml:id="Th_1569_LN1426_291v_m-177" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-178" wordpos="i">nu</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e440">
+                              <note xml:id="Th_1569_LN1426_291v_m-164" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-165" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-179">
+                           <verse xml:id="Th_1569_LN1426_291v_m-179" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-180" con="d" wordpos="i">reg</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e452">
+                              <note xml:id="Th_1569_LN1426_291v_m-166" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-181">
+                           <verse xml:id="Th_1569_LN1426_291v_m-181" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-182" con="d" wordpos="m">ne</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e461">
+                              <note xml:id="Th_1569_LN1426_291v_m-168" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-169" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-170" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-183">
+                           <verse xml:id="Th_1569_LN1426_291v_m-183" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-184" wordpos="t">rer/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e474">
+                              <note xml:id="Th_1569_LN1426_291v_m-171" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-185">
+                           <verse xml:id="Th_1569_LN1426_291v_m-185" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-186" wordpos="i">i</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e483">
+                              <note xml:id="Th_1569_LN1426_291v_m-172" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-203">
+                           <verse xml:id="Th_1569_LN1426_291v_m-203" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-204" con="d" wordpos="i">Him</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e493">
+                              <note xml:id="Th_1569_LN1426_291v_m-173" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="sb" tstamp="12.75" place="above" label="Linjeskift"
+                             xml:id="Th_1569_LN1426_291v_m-174">|</dir>
+                     </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-189" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-190" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-205">
+                           <verse xml:id="Th_1569_LN1426_291v_m-205" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-206" con="d" wordpos="m">me</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e524">
+                              <note xml:id="Th_1569_LN1426_291v_m-192" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-207">
+                           <verse xml:id="Th_1569_LN1426_291v_m-207" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-208" con="d" wordpos="m">ri</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e533">
+                              <note xml:id="Th_1569_LN1426_291v_m-193" oct="3" pname="a" pnum="57" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-209">
+                           <verse xml:id="Th_1569_LN1426_291v_m-209" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-210" wordpos="t">gis</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e542">
+                              <note xml:id="Th_1569_LN1426_291v_m-194" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-211">
+                           <verse xml:id="Th_1569_LN1426_291v_m-211" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-212" con="d" wordpos="i">Ri</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e551">
+                              <note xml:id="Th_1569_LN1426_291v_m-196" oct="4" pname="c" pnum="60" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-197" oct="3" pname="b" pnum="59" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-198" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-199" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-200" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-201" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-213">
+                           <verse xml:id="Th_1569_LN1426_291v_m-213" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-214" wordpos="t">ge/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e571">
+                              <note xml:id="Th_1569_LN1426_291v_m-202" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            </layer>
+                        </staff>
+                        
+                    
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-217" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-226">
+                           <verse xml:id="Th_1569_LN1426_291v_m-226" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-227" wordpos="i">aff</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e593">
+                              <note xml:id="Th_1569_LN1426_291v_m-219" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-228">
+                           <verse xml:id="Th_1569_LN1426_291v_m-228" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-229" con="d" wordpos="i">e</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e602">
+                              <note xml:id="Th_1569_LN1426_291v_m-220" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-230">
+                           <verse xml:id="Th_1569_LN1426_291v_m-230" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-231" wordpos="t">uig</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e611">
+                              <note xml:id="Th_1569_LN1426_291v_m-221" oct="3" pname="a" pnum="57" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-232">
+                           <verse xml:id="Th_1569_LN1426_291v_m-232" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-233" wordpos="i">tid</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e620">
+                              <note xml:id="Th_1569_LN1426_291v_m-222" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-234">
+                           <verse xml:id="Th_1569_LN1426_291v_m-234" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-235" wordpos="i">hand</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e629">
+                              <note xml:id="Th_1569_LN1426_291v_m-223" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-269">
+                           <verse xml:id="Th_1569_LN1426_291v_m-269" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-270" con="d" wordpos="i">haff</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e639">
+                              <note xml:id="Th_1569_LN1426_291v_m-224" oct="3" pname="f" pnum="53" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="sb" tstamp="6.75" place="above" label="Linjeskift"
+                             xml:id="Th_1569_LN1426_291v_m-225">|</dir>
+                     </layer>
+                        </staff>
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-238" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-239" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-271">
+                           <verse xml:id="Th_1569_LN1426_291v_m-271" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-272" wordpos="t">uer</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e664">
+                              <note xml:id="Th_1569_LN1426_291v_m-241" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-273">
+                           <verse xml:id="Th_1569_LN1426_291v_m-273" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-274" con="d" wordpos="i">væ</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e673">
+                              <note xml:id="Th_1569_LN1426_291v_m-243" oct="3" pname="d" pnum="50" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-244" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-275">
+                           <verse xml:id="Th_1569_LN1426_291v_m-275" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-276" wordpos="t">rit/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e684">
+                              <note xml:id="Th_1569_LN1426_291v_m-245" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-277">
+                           <verse xml:id="Th_1569_LN1426_291v_m-277" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-278" wordpos="i">oc</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e693">
+                              <note xml:id="Th_1569_LN1426_291v_m-247" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-248" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-249" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-279">
+                           <verse xml:id="Th_1569_LN1426_291v_m-279" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-280" con="d" wordpos="i">bliff</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e707">
+                              <note xml:id="Th_1569_LN1426_291v_m-251" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-252" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-253" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-281">
+                           <verse xml:id="Th_1569_LN1426_291v_m-281" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-282" wordpos="t">uer</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e720">
+                              <note xml:id="Th_1569_LN1426_291v_m-254" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-283">
+                           <verse xml:id="Th_1569_LN1426_291v_m-283" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-284" con="d" wordpos="i">for</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e730">
+                              <note xml:id="Th_1569_LN1426_291v_m-255" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-285">
+                           <verse xml:id="Th_1569_LN1426_291v_m-285" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-286" con="d" wordpos="m">u</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e739">
+                              <note xml:id="Th_1569_LN1426_291v_m-256" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-287">
+                           <verse xml:id="Th_1569_LN1426_291v_m-287" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-288" wordpos="t">den</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e748">
+                              <note xml:id="Th_1569_LN1426_291v_m-257" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-289">
+                           <verse xml:id="Th_1569_LN1426_291v_m-289" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-290" con="d" wordpos="i">en</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e757">
+                              <note xml:id="Th_1569_LN1426_291v_m-259" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-260" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-261" oct="4" pname="c" pnum="60" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-262" oct="3" pname="b" pnum="59" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-263" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-264" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-265" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-266" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-291">
+                           <verse xml:id="Th_1569_LN1426_291v_m-291" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-292" wordpos="t">de/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e781">
+                              <note xml:id="Th_1569_LN1426_291v_m-267" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="pb" tstamp="23.75" place="above" label="Sideskift"
+                             xml:id="Th_1569_LN1426_291v_m-268">||</dir>
+                     </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-295" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-296" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-318">
+                           <verse xml:id="Th_1569_LN1426_291v_m-318" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-319" wordpos="i">som</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e814">
+                              <note xml:id="Th_1569_LN1426_291v_m-298" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-320">
+                           <verse xml:id="Th_1569_LN1426_291v_m-320" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-321" con="d" wordpos="i">be</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e823">
+                              <note xml:id="Th_1569_LN1426_291v_m-299" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-322">
+                           <verse xml:id="Th_1569_LN1426_291v_m-322" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-323" con="d" wordpos="m">screff</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e832">
+                              <note xml:id="Th_1569_LN1426_291v_m-301" oct="3" pname="a" pnum="57" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-302" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-303" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-304" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-305" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-324">
+                           <verse xml:id="Th_1569_LN1426_291v_m-324" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-325" wordpos="t">uit</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e850">
+                              <note xml:id="Th_1569_LN1426_291v_m-307" oct="3" pname="d" pnum="50" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-308" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-326">
+                           <verse xml:id="Th_1569_LN1426_291v_m-326" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-327" wordpos="i">er/</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e861">
+                              <note xml:id="Th_1569_LN1426_291v_m-309" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-328">
+                           <verse xml:id="Th_1569_LN1426_291v_m-328" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-329" wordpos="i">hand</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e870">
+                              <note xml:id="Th_1569_LN1426_291v_m-311" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-312" oct="3" pname="f" pnum="53" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-330">
+                           <verse xml:id="Th_1569_LN1426_291v_m-330" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-331" wordpos="i">ey</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e882">
+                              <note xml:id="Th_1569_LN1426_291v_m-313" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-332">
+                           <verse xml:id="Th_1569_LN1426_291v_m-332" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-333" wordpos="i">fra</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e891">
+                              <note xml:id="Th_1569_LN1426_291v_m-314" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-334">
+                           <verse xml:id="Th_1569_LN1426_291v_m-334" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-335" wordpos="i">oss</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e900">
+                              <note xml:id="Th_1569_LN1426_291v_m-315" oct="3" pname="e" pnum="52" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-336">
+                           <verse xml:id="Th_1569_LN1426_291v_m-336" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-337" wordpos="i">sin</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e909">
+                              <note xml:id="Th_1569_LN1426_291v_m-316" oct="3" pname="f" pnum="53" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                            <dir type="sb" tstamp="16.75" place="above" label="Linjeskift"
+                             xml:id="Th_1569_LN1426_291v_m-317">|</dir>
+                     </layer>
+                        </staff>
+                        
+                        
+                        
+                        
+                    
+                    <sb xml:id="Th_1569_LN1426_291v_m-340" label="editorial"/>
+                    
+                    
+                        <staff xml:id="Th_1569_LN1426_291v_m-341" n="1">
+                            <layer>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-357">
+                           <verse xml:id="Th_1569_LN1426_291v_m-357" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-358" con="d" wordpos="i">naa</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e940">
+                              <note xml:id="Th_1569_LN1426_291v_m-344" oct="3" pname="g" pnum="55" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-345" oct="3" pname="a" pnum="57" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-359">
+                           <verse xml:id="Th_1569_LN1426_291v_m-359" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-360" wordpos="t">de</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e951">
+                              <note xml:id="Th_1569_LN1426_291v_m-346" oct="3" pname="g" pnum="55" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                <syllable xml:id="Th_1569_LN1426_291v_m-361">
+                           <verse xml:id="Th_1569_LN1426_291v_m-361" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-362" con="d" wordpos="i">ven</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e960">
+                              <note xml:id="Th_1569_LN1426_291v_m-348" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-349" oct="3" pname="c" pnum="48" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-350" oct="3" pname="f" pnum="53" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-351" oct="3" pname="e" pnum="52" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-352" oct="3" pname="d" pnum="50" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                                
+                                
+                                <syllable xml:id="Th_1569_LN1426_291v_m-363">
+                           <verse xml:id="Th_1569_LN1426_291v_m-363" n="1">
+                                        <syl xml:id="Th_1569_LN1426_291v_m-364" wordpos="t">de.</syl>
+                                    </verse>
+                           <uneume xml:id="uneume_d3e978">
+                              <note xml:id="Th_1569_LN1426_291v_m-354" oct="3" pname="d" pnum="50" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-355" oct="3" pname="c" pnum="48" label="dur4"/>
+                              <note xml:id="Th_1569_LN1426_291v_m-356" oct="3" pname="c" pnum="48" label="dur4"/>
+                           </uneume>
+                        </syllable>
+                                
+                                
+                            </layer>
+                        </staff>
+                        
+                        
+                        
+                    
+                  <pb/>
+               </section>
+            </score>
+        </mdiv>
+      </body>
+   </music>
+</mei>
