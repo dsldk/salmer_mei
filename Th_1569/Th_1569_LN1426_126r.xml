@@ -105,13 +105,16 @@
                                 <rest xml:id="Th_1569_LN1426_126r_m-49" dur="1" dur.ges="1024p"/>
                             <bracketSpan xml:id="Th_1569_LN1426_126r_m-37" func="ligature"
                                         startid="#Th_1569_LN1426_126r_m-36"
-                                        endid="#Th_1569_LN1426_126r_m-38"/>
+                                        endid="#Th_1569_LN1426_126r_m-38"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_126r_m-40" func="ligature"
                                         startid="#Th_1569_LN1426_126r_m-39"
-                                        endid="#Th_1569_LN1426_126r_m-41"/>
+                                        endid="#Th_1569_LN1426_126r_m-41"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_126r_m-46" func="ligature"
                                         startid="#Th_1569_LN1426_126r_m-45"
-                                        endid="#Th_1569_LN1426_126r_m-47"/>
+                                        endid="#Th_1569_LN1426_126r_m-47"
+                                        place="above"/>
                         </layer>
                         </staff>
                     </measure>
@@ -425,7 +428,8 @@
                                  pnum="55"/>
                             <bracketSpan xml:id="Th_1569_LN1426_126r_m-208" func="ligature"
                                         startid="#Th_1569_LN1426_126r_m-207"
-                                        endid="#Th_1569_LN1426_126r_m-209"/>
+                                        endid="#Th_1569_LN1426_126r_m-209"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="11" place="above" label="Linjeskift"

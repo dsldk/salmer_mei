@@ -122,10 +122,12 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_003r_m-38" func="ligature"
                                         startid="#Th_1569_LN1426_003r_m-37"
-                                        endid="#Th_1569_LN1426_003r_m-39"/>
+                                        endid="#Th_1569_LN1426_003r_m-39"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_003r_m-41" func="ligature"
                                         startid="#Th_1569_LN1426_003r_m-40"
-                                        endid="#Th_1569_LN1426_003r_m-43"/>
+                                        endid="#Th_1569_LN1426_003r_m-43"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <fermata xml:id="Th_1569_LN1426_003r_m-44" form="norm" layer="1" shape="curved"
@@ -478,7 +480,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_003r_m-227" func="ligature"
                                         startid="#Th_1569_LN1426_003r_m-226"
-                                        endid="#Th_1569_LN1426_003r_m-228"/>
+                                        endid="#Th_1569_LN1426_003r_m-228"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="19" place="above" label="Linjeskift"

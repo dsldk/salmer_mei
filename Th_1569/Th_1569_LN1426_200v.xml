@@ -109,10 +109,12 @@
                                 <rest xml:id="Th_1569_LN1426_200v_m-48" dur="1" dur.ges="1024p"/>
                             <bracketSpan xml:id="Th_1569_LN1426_200v_m-40" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-39"
-                                        endid="#Th_1569_LN1426_200v_m-41"/>
+                                        endid="#Th_1569_LN1426_200v_m-41"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-44" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-43"
-                                        endid="#Th_1569_LN1426_200v_m-45"/>
+                                        endid="#Th_1569_LN1426_200v_m-45"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="48.75" place="above" label="Linjeskift"
@@ -156,13 +158,16 @@
                                 <rest xml:id="Th_1569_LN1426_200v_m-80" dur="1" dur.ges="1024p"/>
                             <bracketSpan xml:id="Th_1569_LN1426_200v_m-72" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-71"
-                                        endid="#Th_1569_LN1426_200v_m-73"/>
+                                        endid="#Th_1569_LN1426_200v_m-73"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-75" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-74"
-                                        endid="#Th_1569_LN1426_200v_m-76"/>
+                                        endid="#Th_1569_LN1426_200v_m-76"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-78" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-77"
-                                        endid="#Th_1569_LN1426_200v_m-79"/>
+                                        endid="#Th_1569_LN1426_200v_m-79"
+                                        place="above"/>
                         </layer>
                         </staff>
                     </measure>
@@ -228,13 +233,16 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_200v_m-98" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-97"
-                                        endid="#Th_1569_LN1426_200v_m-99"/>
+                                        endid="#Th_1569_LN1426_200v_m-99"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-102" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-101"
-                                        endid="#Th_1569_LN1426_200v_m-103"/>
+                                        endid="#Th_1569_LN1426_200v_m-103"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-105" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-104"
-                                        endid="#Th_1569_LN1426_200v_m-106"/>
+                                        endid="#Th_1569_LN1426_200v_m-106"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="39" place="above" label="Linjeskift"
@@ -289,13 +297,16 @@
                                  pnum="59"/>
                             <bracketSpan xml:id="Th_1569_LN1426_200v_m-134" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-133"
-                                        endid="#Th_1569_LN1426_200v_m-135"/>
+                                        endid="#Th_1569_LN1426_200v_m-135"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-137" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-136"
-                                        endid="#Th_1569_LN1426_200v_m-138"/>
+                                        endid="#Th_1569_LN1426_200v_m-138"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-140" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-139"
-                                        endid="#Th_1569_LN1426_200v_m-141"/>
+                                        endid="#Th_1569_LN1426_200v_m-141"
+                                        place="above"/>
                         </layer>
                         </staff>
                     </measure>
@@ -399,10 +410,12 @@
                                  pnum="55"/>
                             <bracketSpan xml:id="Th_1569_LN1426_200v_m-165" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-164"
-                                        endid="#Th_1569_LN1426_200v_m-166"/>
+                                        endid="#Th_1569_LN1426_200v_m-166"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_200v_m-170" func="ligature"
                                         startid="#Th_1569_LN1426_200v_m-169"
-                                        endid="#Th_1569_LN1426_200v_m-171"/>
+                                        endid="#Th_1569_LN1426_200v_m-171"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <tie xml:id="Th_1569_LN1426_200v_m-178" endid="#Th_1569_LN1426_200v_m-179"

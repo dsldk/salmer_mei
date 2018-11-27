@@ -156,13 +156,16 @@
                                 <rest xml:id="Th_1569_LN1426_308v_m-61" dur="1" dur.ges="1024p"/>
                             <bracketSpan xml:id="Th_1569_LN1426_308v_m-39" func="ligature"
                                         startid="#Th_1569_LN1426_308v_m-38"
-                                        endid="#Th_1569_LN1426_308v_m-40"/>
+                                        endid="#Th_1569_LN1426_308v_m-40"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_308v_m-42" func="ligature"
                                         startid="#Th_1569_LN1426_308v_m-41"
-                                        endid="#Th_1569_LN1426_308v_m-43"/>
+                                        endid="#Th_1569_LN1426_308v_m-43"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_308v_m-50" func="ligature"
                                         startid="#Th_1569_LN1426_308v_m-49"
-                                        endid="#Th_1569_LN1426_308v_m-51"/>
+                                        endid="#Th_1569_LN1426_308v_m-51"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="64" place="above" label="Linjeskift"

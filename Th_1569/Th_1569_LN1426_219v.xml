@@ -1346,10 +1346,12 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-653" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-652"
-                                        endid="#Th_1569_LN1426_219v_m-654"/>
+                                        endid="#Th_1569_LN1426_219v_m-654"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-657" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-656"
-                                        endid="#Th_1569_LN1426_219v_m-658"/>
+                                        endid="#Th_1569_LN1426_219v_m-658"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="27" place="above" label="Linjeskift"
@@ -1460,7 +1462,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-719" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-717"
-                                        endid="#Th_1569_LN1426_219v_m-720"/>
+                                        endid="#Th_1569_LN1426_219v_m-720"
+                                        place="above"/>
                         </layer>
                         </staff>
                     </measure>
@@ -1555,7 +1558,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-769" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-767"
-                                        endid="#Th_1569_LN1426_219v_m-770"/>
+                                        endid="#Th_1569_LN1426_219v_m-770"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="32.75" place="above" label="Linjeskift"
@@ -2222,7 +2226,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1101" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1100"
-                                        endid="#Th_1569_LN1426_219v_m-1102"/>
+                                        endid="#Th_1569_LN1426_219v_m-1102"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
@@ -2357,7 +2362,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1157" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1156"
-                                        endid="#Th_1569_LN1426_219v_m-1158"/>
+                                        endid="#Th_1569_LN1426_219v_m-1158"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="pb" tstamp="7" place="above" label="Sideskift"
@@ -2806,7 +2812,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1392" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1390"
-                                        endid="#Th_1569_LN1426_219v_m-1393"/>
+                                        endid="#Th_1569_LN1426_219v_m-1393"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="pb" tstamp="32.75" place="above" label="Sideskift"
@@ -2997,7 +3004,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1486" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1484"
-                                        endid="#Th_1569_LN1426_219v_m-1487"/>
+                                        endid="#Th_1569_LN1426_219v_m-1487"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="15" place="above" label="Linjeskift"
@@ -3086,7 +3094,8 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1521" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1519"
-                                        endid="#Th_1569_LN1426_219v_m-1522"/>
+                                        endid="#Th_1569_LN1426_219v_m-1522"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="sb" tstamp="47" place="above" label="Linjeskift"
@@ -3337,13 +3346,16 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1632" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1630"
-                                        endid="#Th_1569_LN1426_219v_m-1633"/>
+                                        endid="#Th_1569_LN1426_219v_m-1633"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-1641" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1640"
-                                        endid="#Th_1569_LN1426_219v_m-1642"/>
+                                        endid="#Th_1569_LN1426_219v_m-1642"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-1644" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1643"
-                                        endid="#Th_1569_LN1426_219v_m-1645"/>
+                                        endid="#Th_1569_LN1426_219v_m-1645"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <dir type="pb" tstamp="55" place="above" label="Sideskift"
@@ -3389,16 +3401,20 @@
                                 </note>
                             <bracketSpan xml:id="Th_1569_LN1426_219v_m-1684" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1683"
-                                        endid="#Th_1569_LN1426_219v_m-1685"/>
+                                        endid="#Th_1569_LN1426_219v_m-1685"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-1687" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1686"
-                                        endid="#Th_1569_LN1426_219v_m-1688"/>
+                                        endid="#Th_1569_LN1426_219v_m-1688"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-1690" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1689"
-                                        endid="#Th_1569_LN1426_219v_m-1691"/>
+                                        endid="#Th_1569_LN1426_219v_m-1691"
+                                        place="above"/>
                            <bracketSpan xml:id="Th_1569_LN1426_219v_m-1693" func="ligature"
                                         startid="#Th_1569_LN1426_219v_m-1692"
-                                        endid="#Th_1569_LN1426_219v_m-1694"/>
+                                        endid="#Th_1569_LN1426_219v_m-1694"
+                                        place="above"/>
                         </layer>
                         </staff>
                         <fermata xml:id="Th_1569_LN1426_219v_m-1696" form="norm" layer="1" shape="curved"
