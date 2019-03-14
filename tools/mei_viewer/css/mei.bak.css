@@ -1,0 +1,101 @@
+/* CSS for SVG */
+
+.mei svg tspan.text {
+    font-family: 'Noto Serif', serif;
+}
+
+/* Highlight comment markers */
+.mei svg .dir {
+    fill: #6a9112;
+    stroke: #6a9112;
+    cursor: help;
+}
+
+.mei svg .comment:hover {
+    cursor: pointer;
+}
+
+/* Prevent note heads etc. from being partly hidden */
+.mei svg:not(:root) {
+    overflow: visible;
+}
+
+/* CSS for non-SVG contents */
+
+/* Place and format option menus. */
+.mei_options {
+    float: right;
+    clear: both;
+    width: auto;
+    padding: 10px;
+    margin:0 0 10px 20px;
+    display: none;
+    border: 1px solid #bbb;
+    background-color: #003b5c;
+    color: #fff;
+}
+
+.mei_options form {
+    margin: 0;
+    padding: 0;
+}
+
+.mei_options hr {
+    margin: 5px 0;
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #fff;
+}
+
+/* kun hvis der IKKE bruges jQuery UI-dialoger: */
+.mei_overlay {
+    padding: 15px;
+    background-color: #ccc;
+    border: 1px solid #000;
+    width: auto;
+    display: none;   
+    position: absolute;
+}
+
+/* til lokal viewer med uploadfunktion */
+.mei_upload {
+    padding: 20px 20px 10px 20px;
+    margin: 0 -20px 20px -20px;
+    background-color: #003b5c;
+    color: #fff;
+}
+
+.mei_upload input {
+    display: none;
+}
+
+.custom_input {
+    border: 1px solid #057abc;
+    background-color: #005a8c;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+select.custom_input {
+    padding: 0;
+}
+
+/* fonte */
+
+.musical_symbols {
+    font-family: 'Bravura Text';
+    font-size: 18px;
+    position:relative;
+    top: -5px;
+}
+
+@font-face {
+	font-family: 'Bravura Text';
+	src: url('fonts/BravuraText.eot');
+	src: local('Bravura Text'), 
+	       url('fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
+	       url('fonts/BravuraText.woff') format('woff'), 
+	       url('fonts/BravuraText.svg#BravuraText') format('svg');
+} 

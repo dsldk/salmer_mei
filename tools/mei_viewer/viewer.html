@@ -1,0 +1,94 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <!-- DSL CSS -->
+        <link rel="stylesheet" href="https://static.ordnet.dk/app/go_smn_app.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/fix_go_collisions.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/elements.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/layout.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/styles.css" type="text/css"/>
+        <link rel="stylesheet" href="https://tekstnet.dk/static/print.css" media="print" type="text/css" />
+        
+        <!-- External libs -->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+        <!-- Note highlighting only works with jQuery 3+ -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"><!-- jquery --></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"> </script>
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"> </script>-->
+        <script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"> </script>
+        <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"> </script>
+        
+        <!-- Local page settings -->
+        <script type="text/javascript">
+            <!--
+            // Enable MIDI?
+            var enableMidi = true;
+            
+            // Enable searching for selected phrase?
+            var enableSearch = true;
+            
+            // Enable menu?
+            var enableMenu = true;
+            
+            // Enable editorial comments?
+            var enableComments = true;
+            -->            
+        </script>
+        
+        <!-- DSL MEI js library -->
+        <script type="text/javascript" src="js/MeiLib.js"> </script>
+        
+        <!-- MIDI -->        
+        <script type="text/javascript" src="js/wildwebmidi.js"><!-- MIDI library --></script>
+        <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
+        <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
+        
+        <!-- SVG CSS styling -->
+        <link rel="stylesheet" type="text/css" href="css/mei.css" />
+        
+        <title>DSL MEI Viewer</title>
+        
+    </head>
+
+    <body style="margin: 0 20px;">
+        
+        <div id="upload_menu" class="mei_upload">
+                        
+            <!-- Hente lokal fil vha. upload -->
+            <form id="fileForm" action="">
+                <div>
+                    <label for="upload" class="custom_input">Vælg fil</label>&#160;
+                    <input type="file" value="Vælg fil" id="upload" multiple="false" onchange="resetOptions('MEI'); uploadFile('MEI');"/>
+                    <span id="meiFileName"><!--file name goes here--></span>
+                    &#160;&#160;&#160; 
+                    <label for="renderMeiFile" id="renderMeiFileLabel" style="visibility: hidden;" class="custom_input">Genindlæs</label>
+                    <input type="button" name="renderMeiFile" onclick="uploadFile('MEI');" value="Genindlæs" id="renderMeiFile"/>
+                    <!-- Med to-trinsproces 1) upload og 2) vis:
+                    <input type="file" value="Vælg fil" id="upload" multiple="false" onchange="resetOptions('MEI')"/><br/>
+                    <input type="button" name="renderFile" onclick="uploadFile('MEI');" value="Vis"/>-->
+                </div>
+            </form>
+        </div>            
+
+        <div id="MEI_options" class="mei_options" style="visibility: hidden;">
+            <!-- Menu genereres her -->            
+        </div>
+
+        <script id="MEI_data" type="text/xml">
+            <mei xmlns="http://www.music-encoding.org/ns/mei" meiversion="4.0.0"/>
+        </script>
+        
+        <div id="content">
+            <div id="MEI" class="mei"><!-- SVG indsættes her --></div>
+        </div>
+
+        <div id="debug">
+            <!-- placeholder for debugging stuff -->
+            <!--<textarea id="debug_text" cols="80" rows="20"></textarea>-->
+        </div>
+        
+    </body>
+
+</html>

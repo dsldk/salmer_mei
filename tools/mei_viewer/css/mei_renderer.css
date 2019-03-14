@@ -1,0 +1,45 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+
+input {
+       font-family: 'Helvetica', Arial, sans-serif; 
+}
+
+
+svg {
+    border: 1px solid #ccc;
+}
+
+svg:not(:root) {
+    overflow: auto;
+}
+
+#content {
+    padding: 20px;
+}
+
+#options {
+    float: right;
+    background-color: #f5f5f5;
+    width: auto;
+    min-width: 250px;
+    padding: 15px;
+    height: 100%;
+}
+
+
+.musical_symbols {
+    font-family: 'Bravura Text';
+    font-size: 24px;
+}
+
+@font-face {
+	font-family: 'Bravura Text';
+	src: url('fonts/BravuraText.eot');
+	src: local('Bravura Text'), 
+	       url('fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
+	       url('fonts/BravuraText.woff') format('woff'), 
+	       url('fonts/BravuraText.svg#BravuraText') format('svg');
+} 
