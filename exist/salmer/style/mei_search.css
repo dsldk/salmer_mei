@@ -1,0 +1,223 @@
+.paging_div {
+    font-weight: bold;
+}
+
+.paging_div .paging {
+    display: inline-block;
+    padding: 1px 5px;
+    margin: 2px 0;
+}
+
+a.paging, a.paging:visited, a.paging:active {
+/*    color: #428bca; */
+    color: white;
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgb(88, 135, 38) 0%, rgb(51, 98, 1) 100%) repeat scroll 0 0;
+}
+
+.paging_div a:hover, .paging_div a:active {
+    text-decoration: none;
+}
+
+.paging_div .selected {
+    background-color: #ccc;
+    color: #888;
+}
+
+.search {
+    padding-bottom: 10px;
+}
+
+.search .form .input-label {
+    cursor: pointer;
+}
+
+.search_block {
+    display: table-cell;
+    width: 700px;
+}
+
+.search_block_narrow {
+    width: 375px;
+}
+
+.search_block_narrow hr {
+    border-color: #dcd2ab;
+    margin: 0 40px 4px 0;
+}
+
+.search_options {
+    margin: auto;
+    color: #fff;
+    padding: 5px 0;
+    display: table;
+}
+
+.search .form .checkbox-list .input-label {
+    font-size: 14px;
+    display: inline-block;
+    width: 330px;
+    margin: 0 0 5px 10px;
+    vertical-align: top;
+}
+
+.checkbox-list {
+    margin-top: 20px;
+}
+
+.search-button {
+    height: 30px;
+}
+
+.result_list {
+    width: 720px;
+    min-width: 720px;
+    margin: 20px auto;
+}
+
+.result_list .item {
+    border-top: 2px solid #000;
+    margin-top: 5px;
+    padding-top: 10px;
+}
+
+.mei svg .dir.pb, .mei svg .dir.sb {
+    transform: translate(0px,-50px);
+    -ms-transform: translate(0px,-50px); /* IE 9 */
+    -webkit-transform: translate(0px,-50px); /* Safari and Chrome */
+    -o-transform: translate(0px,-50px); /* Opera */
+}
+
+.mei svg .highlight {
+    fill: #080;
+    stroke: #080;
+}
+
+.mei svg .dir.fragment {
+    fill: #000;
+    stroke: #000;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.mei svg .dir.fragment.above {
+    transform: translate(-750px,-300px);
+    -ms-transform: translate(-750px,-300px); /* IE 9 */
+    -webkit-transform: translate(-750px,-300px); /* Safari and Chrome */
+    -o-transform: translate(-750px,-300px); /* Opera */
+}
+
+.mei svg .dir.fragment.below {
+    transform: translate(-750px,600px);
+    -ms-transform: translate(-750px,600px); /* IE 9 */
+    -webkit-transform: translate(-750px,600px); /* Safari and Chrome */
+    -o-transform: translate(-750px,600px); /* Opera */
+}
+
+#pnames, #contour {
+    width: 130px;
+    text-align: left;
+}
+
+#pitch_form label, #contour_form label {
+    width: 100px;
+    display: inline-block;
+}
+
+#piano_wrapper {
+    display: table-row;
+}
+
+#piano_cell, #piano_search_cell {
+    display: table-cell;
+    vertical-align: top;
+    text-align: left;
+}
+
+#pQueryOut {
+    background-color: #f4f4fa;
+    width: 392px;
+    height: 80px;
+    margin: 5px auto;
+    padding: 0 8px;
+    border: 2px solid #000
+}
+
+#pQueryOut svg {
+    margin-top: -12px;
+}
+
+#pQueryOut svg .rest {
+    /* hide default rest in empty query */
+    visibility: hidden;
+}
+
+#pSearch input {
+    margin-left: 20px;
+}
+
+#piano {
+    padding: 1px;
+    width: 392px;
+    margin: 0 auto 10px auto;
+    z-index: 2;
+    text-align: center;
+}
+
+/** keys */
+
+#piano .keys {
+    width: 392px;
+    padding: 2px 0 0 2px;
+    overflow: hidden;
+    background: #000;
+    border-radius: 0 0 4px 4px;
+}
+
+.key {
+    float: left;
+    position: relative;
+    width: 24px;
+    height: 90px;
+    margin: 0 2px 2px 0;
+    background: #fff;
+    border-radius: 0 0 4px 4px;
+}
+.key.pressed,
+.key:active {
+    background: #f9f9f9;
+    box-shadow: inset 2px 1px 2px #aaa, inset -2px 1px 2px #aaa;
+}
+.key.black {
+    width: 0;
+    margin: 0;
+    z-index: 2;
+}
+.key.black:after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -8px;
+    display: block;
+    width: 16px;
+    height: 59px;
+    background: #000;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 1px 1px 0px #999, 2px 2px 0px #999;
+}
+.key.black1:after {
+    left: -10px;
+}
+.key.black3:after {
+    left: -8px;
+}
+.key.black.pressed:after,
+.key.black:active:after {
+    background-color: #333;
+    box-shadow: 1px 1px 0px #999, 1px 1px 0px #999;
+/*    box-shadow: inset 2px 1px 2px #999, inset -2px 1px 2px #999; */
+}
+
+.debug {
+    color: #888;
+    font-size: .8em;
+}

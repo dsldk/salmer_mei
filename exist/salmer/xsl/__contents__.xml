@@ -1,0 +1,33 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/salmer/xsl" version="1" owner="admin" group="dba" mode="755" created="2019-02-20T15:22:25.99Z">
+    <acl entries="0" version="1"/>
+    <resource type="XMLResource" name="duration.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.832Z" modified="2019-02-20T15:25:09.832Z" filename="duration.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="highlight.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.885Z" modified="2019-02-20T16:01:53.725Z" filename="highlight.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="highlight_old.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.993Z" modified="2019-02-20T15:25:09.993Z" filename="highlight_old.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="index_for_searching.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:10.045Z" modified="2019-02-20T15:25:10.045Z" filename="index_for_searching.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="regularize.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:10.103Z" modified="2019-02-20T15:25:10.103Z" filename="regularize.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="show.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:10.153Z" modified="2019-02-20T15:25:10.153Z" filename="show.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="show_old.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.579Z" modified="2019-02-20T15:25:09.579Z" filename="show_old.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="transpose.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.651Z" modified="2019-02-20T15:25:09.651Z" filename="transpose.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="beam.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.722Z" modified="2019-02-20T15:25:09.722Z" filename="beam.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="XMLResource" name="clef.xsl" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:25:09.776Z" modified="2019-02-20T15:25:09.776Z" filename="clef.xsl" mimetype="application/xslt+xml">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>

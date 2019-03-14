@@ -1,0 +1,18 @@
+<collection xmlns="http://exist.sourceforge.net/NS/exist" name="/db/salmer/js" version="1" owner="admin" group="dba" mode="755" created="2019-02-20T15:22:13.156Z">
+    <acl entries="0" version="1"/>
+    <resource type="BinaryResource" name="miditest.js" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:23:32.453Z" modified="2019-02-20T15:23:32.453Z" filename="miditest.js" mimetype="application/javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="midiplayer.js" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:23:32.369Z" modified="2019-02-20T15:23:32.369Z" filename="midiplayer.js" mimetype="application/javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="mei_search.js" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:23:32.654Z" modified="2019-02-20T15:33:04.972Z" filename="mei_search.js" mimetype="application/javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="wildwebmidi.js" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:23:32.53Z" modified="2019-02-20T15:23:32.53Z" filename="wildwebmidi.js" mimetype="application/javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+    <resource type="BinaryResource" name="midiLib.js" skip="no" owner="admin" group="dba" mode="644" created="2019-02-20T15:23:32.711Z" modified="2019-02-20T15:23:32.711Z" filename="midiLib.js" mimetype="application/javascript">
+        <acl entries="0" version="1"/>
+    </resource>
+</collection>
