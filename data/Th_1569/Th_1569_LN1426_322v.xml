@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_322v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_322v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_322v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_322v_m-36" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_322v_m-46" n="1">
@@ -198,7 +199,9 @@
                                  <syl xml:id="Th_1569_LN1426_322v_m-124" wordpos="i">aff</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_322v_m-111" dots="1" dur="2" dur.ppq="768" oct="3"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_322v_annot1"><rend rend="italic">Fade-ren</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_322v_m-111" dots="1" dur="2" dur.ppq="768" oct="3"
                                  pname="b"
                                  pnum="58"
                                  accid.ges="f">
@@ -212,6 +215,7 @@
                                  <syl xml:id="Th_1569_LN1426_322v_m-128" wordpos="t">ren</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_322v_m-114" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_322v_m-129" n="1">
@@ -259,7 +263,9 @@
                                  <syl xml:id="Th_1569_LN1426_322v_m-158" wordpos="t">sens</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_322v_m-144" dur="1" dur.ppq="1024" oct="3" pname="b"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_322v_annot2"><rend rend="italic">Pre-di-cker</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_322v_m-144" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f">
                               <verse xml:id="Th_1569_LN1426_322v_m-159" n="1">
@@ -279,7 +285,7 @@
                               <verse xml:id="Th_1569_LN1426_322v_m-163" n="1">
                                  <syl xml:id="Th_1569_LN1426_322v_m-164" wordpos="t">cker/</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="12" place="above" label="Linjeskift"

@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_117r_m-32">
                      <staff xml:id="Th_1569_LN1426_117r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_117r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="2"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_117r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_117r_m-52" n="1">
@@ -601,7 +605,9 @@
                                  <syl xml:id="Th_1569_LN1426_117r_m-326" wordpos="i">oc</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_117r_m-307" dur="1" dur.ppq="1024" oct="3" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_117r_annot1"><rend rend="italic">vel stor mact</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_117r_m-307" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_117r_m-327" n="1">
                                  <syl xml:id="Th_1569_LN1426_117r_m-328" wordpos="i">vel</syl>
@@ -633,6 +639,7 @@
                                  pnum="55"/>
                            <note xml:id="Th_1569_LN1426_117r_m-316" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53"/>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="23" place="above" label="Linjeskift"

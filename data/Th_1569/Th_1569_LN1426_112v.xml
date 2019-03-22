@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_112v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_112v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_112v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <rest xml:id="Th_1569_LN1426_112v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_112v_m-37" dur="2" dur.ppq="512"/>
                            <note xml:id="Th_1569_LN1426_112v_m-38" dur="2" dur.ppq="512" oct="3" pname="g"
@@ -73,7 +74,9 @@
                                  <syl xml:id="Th_1569_LN1426_112v_m-56" wordpos="i">aff</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_112v_m-43" dur="2" dur.ppq="512" oct="3" pname="g"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_112v_annot1"><rend rend="italic">Sky-en</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_112v_m-43" dur="2" dur.ppq="512" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_112v_m-57" n="1">
                                  <syl xml:id="Th_1569_LN1426_112v_m-58" con="d" wordpos="i">Sky</syl>
@@ -87,6 +90,7 @@
                                  <syl xml:id="Th_1569_LN1426_112v_m-60" wordpos="t">en</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_112v_m-46" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_112v_m-61" n="1">
@@ -260,13 +264,16 @@
                                  <syl xml:id="Th_1569_LN1426_112v_m-152" wordpos="t">de</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_112v_m-136" dur="breve" dur.ppq="2048" oct="3" pname="b"
+                           <supplied>
+                              <annot xml:id="Th_1569_LN1426_112v_annot2">♭ tilføjet</annot>
+                              <note xml:id="Th_1569_LN1426_112v_m-136" dur="breve" dur.ppq="2048" oct="3" pname="b"
                                  pnum="58"
                                  accid="f">
                               <verse xml:id="Th_1569_LN1426_112v_m-153" n="1">
                                  <syl xml:id="Th_1569_LN1426_112v_m-154" wordpos="i">hand.</syl>
                               </verse>
                            </note>
+                           </supplied>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_158v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_158v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_158v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_158v_m-36" dur="1" dur.ppq="1024" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_158v_m-47" n="1">
@@ -59,7 +60,10 @@
                                  <syl xml:id="Th_1569_LN1426_158v_m-54" wordpos="i">spiller</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_158v_m-38" dur="2" dur.ppq="512" oct="4" pname="e"
+<unclear>                           
+   <annot xml:id="Th_1569_LN1426_158v_annot1"><rend rend="italic">for-giff-ti-ge</rend>: tekstfordeling usikker</annot>
+   <annot xml:id="Th_1569_LN1426_158v_annot2"><rend rend="italic">fast met din</rend>: tekstfordeling usikker</annot>
+   <note xml:id="Th_1569_LN1426_158v_m-38" dur="2" dur.ppq="512" oct="4" pname="e"
                                  pnum="64">
                               <verse xml:id="Th_1569_LN1426_158v_m-55" n="2">
                                  <syl xml:id="Th_1569_LN1426_158v_m-56" wordpos="i">fast</syl>
@@ -98,6 +102,7 @@
                                  <syl xml:id="Th_1569_LN1426_158v_m-68" wordpos="t">ge</syl>
                               </verse>
                            </note>
+</unclear>
                            <note xml:id="Th_1569_LN1426_158v_m-45" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_158v_m-69" n="1">

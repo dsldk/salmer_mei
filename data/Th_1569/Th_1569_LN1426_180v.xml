@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_180v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_180v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_180v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_180v_m-36" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_180v_m-45" n="2">
@@ -143,7 +144,9 @@
                                  <syl xml:id="Th_1569_LN1426_180v_m-98" wordpos="i">hand</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_180v_m-82" dur="4" dur.ppq="256" oct="3" pname="g"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_180v_annot1"><rend rend="italic">Kon-ning</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_180v_m-82" dur="4" dur.ppq="256" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_180v_m-99" n="2">
                                  <syl xml:id="Th_1569_LN1426_180v_m-100" wordpos="i">vaar</syl>
@@ -159,7 +162,7 @@
                               <verse xml:id="Th_1569_LN1426_180v_m-103" n="1">
                                  <syl xml:id="Th_1569_LN1426_180v_m-104" wordpos="t">ning</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_180v_m-85" dur="4" dur.ppq="256" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_180v_m-105" n="2">

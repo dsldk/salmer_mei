@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_355v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_355v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_355v_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_355v_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_355v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_355v_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_355v_m-38" dur="2" dur.ppq="512" oct="3" pname="g"
@@ -98,6 +102,7 @@
                                   endid="#Th_1569_LN1426_355v_m-44"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_355v_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_355v_m-63" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_355v_m-62" right="invis">
@@ -162,7 +167,9 @@
                   <sb xml:id="Th_1569_LN1426_355v_m-91" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_355v_m-90" right="invis">
                      <staff xml:id="Th_1569_LN1426_355v_m-92" n="1">
-                        <layer xml:id="Th_1569_LN1426_355v_m-93" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_355v_annot1">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_355v_m-93" n="1">
                            <rest xml:id="Th_1569_LN1426_355v_m-94" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_355v_m-95" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_355v_m-96" dur="2" dur.ppq="512" oct="3" pname="g"
@@ -210,6 +217,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <bracketSpan xml:id="Th_1569_LN1426_355v_m-101_coloration" func="coloration"
                                   startid="#Th_1569_LN1426_355v_m-101"
@@ -220,7 +228,9 @@
                   <sb xml:id="Th_1569_LN1426_355v_m-120" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_355v_m-119" right="invis">
                      <staff xml:id="Th_1569_LN1426_355v_m-121" n="1">
-                        <layer xml:id="Th_1569_LN1426_355v_m-122" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_355v_annot2">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_355v_m-122" n="1">
                            <note xml:id="Th_1569_LN1426_355v_m-123" dur="2" dur.ppq="512" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_355v_m-132" n="1">
@@ -263,6 +273,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <dir type="sb" tstamp="4" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_355v_m-125">ǀ</dir>

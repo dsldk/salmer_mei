@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_026r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_026r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_026r_m-35" n="1">
+                           <meterSig sym="cut"/> 
                            <note xml:id="Th_1569_LN1426_026r_m-36" dur="breve" dur.ppq="2048" oct="4" pname="g"
                                  pnum="67">
                               <verse xml:id="Th_1569_LN1426_026r_m-53" n="1">
@@ -113,7 +114,10 @@
                                  <syl xml:id="Th_1569_LN1426_026r_m-84" wordpos="t">it</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_026r_m-45" dots="1" dur="2" dur.ppq="768" oct="4"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_026r_annot1"><rend rend="italic">al-le</rend>: tekstfordeling usikker</annot>
+                              <annot xml:id="Th_1569_LN1426_026r_annot2"><rend rend="italic">v-den</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_026r_m-45" dots="1" dur="2" dur.ppq="768" oct="4"
                                  pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_026r_m-85" n="1">
@@ -133,7 +137,7 @@
                               <verse xml:id="Th_1569_LN1426_026r_m-91" n="2">
                                  <syl xml:id="Th_1569_LN1426_026r_m-92" wordpos="t">den</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_026r_m-48" dur="4" dur.ppq="256" oct="4" pname="c"
                                  pnum="60"/>
                            <note xml:id="Th_1569_LN1426_026r_m-49" dur="4" dur.ppq="256" oct="3" pname="b"
@@ -766,13 +770,16 @@
                                  <syl xml:id="Th_1569_LN1426_026r_m-436" wordpos="i">skenckt</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_026r_m-422" dur="2" dur.ppq="512" oct="4" pname="e"
+                           <supplied>
+                              <annot xml:id="Th_1569_LN1426_276v_annot2">♭ tilføjet</annot>
+                              <note xml:id="Th_1569_LN1426_026r_m-422" dur="2" dur.ppq="512" oct="4" pname="e"
                                  pnum="63"
                                  accid="f">
                               <verse xml:id="Th_1569_LN1426_026r_m-437" n="1">
                                  <syl xml:id="Th_1569_LN1426_026r_m-438" wordpos="i">oss</syl>
                               </verse>
                            </note>
+                           </supplied>
                            <note xml:id="Th_1569_LN1426_026r_m-424" dur="2" dur.ppq="512" oct="4" pname="d"
                                  pnum="62"/>
                            <note xml:id="Th_1569_LN1426_026r_m-425" dur="2" dur.ppq="512" oct="4" pname="c"

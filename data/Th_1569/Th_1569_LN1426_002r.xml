@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_002r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_002r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_002r_m-35" n="1">
+                           <meterSig sym="cut"/> 
                            <note xml:id="Th_1569_LN1426_002r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_002r_m-47" n="1">
@@ -98,7 +99,7 @@
                            <note xml:id="Th_1569_LN1426_002r_m-46" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_002r_m-65" n="1">
-                                 <syl xml:id="Th_1569_LN1426_002r_m-66" wordpos="i">huus/</syl>
+                                 <syl xml:id="Th_1569_LN1426_002r_m-66" wordpos="i">huss/</syl>
                               </verse>
                            </note>
                         </layer>
@@ -145,13 +146,13 @@
                            <note xml:id="Th_1569_LN1426_002r_m-78" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_002r_m-91" n="1">
-                                 <syl xml:id="Th_1569_LN1426_002r_m-92" con="d" wordpos="i">eui</syl>
+                                 <syl xml:id="Th_1569_LN1426_002r_m-92" con="d" wordpos="i">e</syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_002r_m-79" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_002r_m-93" n="1">
-                                 <syl xml:id="Th_1569_LN1426_002r_m-94" wordpos="t">ge</syl>
+                                 <syl xml:id="Th_1569_LN1426_002r_m-94" wordpos="t">uige</syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_002r_m-80" dur="breve" dur.ppq="2048" oct="3" pname="a"

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_129r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_129r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_129r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_129r_m-36" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_129r_m-48" n="1">
@@ -50,7 +51,9 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-51" wordpos="i">met</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_129r_m-37" dur="2" dur.ppq="512" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_129r_annot1"><rend rend="italic">sit Le-gem</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_129r_m-37" dur="2" dur.ppq="512" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_129r_m-52" n="2">
                                  <syl xml:id="Th_1569_LN1426_129r_m-53" wordpos="i">sit</syl>
@@ -83,6 +86,7 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-65" wordpos="t">gem</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_129r_m-41" dur="2" dur.ppq="512" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_129r_m-66" n="2">
@@ -108,7 +112,9 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-75" wordpos="i">oc</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_129r_m-44" dur="2" dur.ppq="512" oct="4" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_129r_annot2"><rend rend="italic">sit Blod</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_129r_m-44" dur="2" dur.ppq="512" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_129r_m-76" n="2">
                                  <syl xml:id="Th_1569_LN1426_129r_m-77" wordpos="i">sit</syl>
@@ -132,6 +138,7 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-85" con="d" wordpos="m">di</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_129r_m-47" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_129r_m-86" n="1">
@@ -276,6 +283,7 @@
                      </staff>
                      <dir type="pb" tstamp="24.75" place="above" label="Sideskift"
                           xml:id="Th_1569_LN1426_129r_m-150">ǁ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_129r_m-149"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_129r_m-163" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_129r_m-162" right="invis">
@@ -380,7 +388,9 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-223" wordpos="t">der</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_129r_m-206" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_129r_annot3"><rend rend="italic">Ma-ri-a</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_129r_m-206" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_129r_m-224" n="1">
                                  <syl xml:id="Th_1569_LN1426_129r_m-225" con="d" wordpos="i">Ma</syl>
@@ -399,6 +409,7 @@
                                  <syl xml:id="Th_1569_LN1426_129r_m-229" wordpos="t">a</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_129r_m-209" dur="4" dur.ppq="256" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f"/>

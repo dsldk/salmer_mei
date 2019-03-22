@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_060v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_060v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_060v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_060v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_060v_m-46" n="1">
@@ -216,6 +217,9 @@
                <section>
                   <measure xml:id="Th_1569_LN1426_060v_m-118" left="rptstart" right="invis">
                      <staff xml:id="Th_1569_LN1426_060v_m-121" n="1">
+                        <supplied>
+                           <annot xml:id="Th_1569_LN1426_060v_annot1">gentagelsestegn tilføjet</annot>
+                        </supplied>
                         <layer xml:id="Th_1569_LN1426_060v_m-122" n="1">
                            <note xml:id="Th_1569_LN1426_060v_m-123" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
@@ -407,6 +411,7 @@
                           xml:id="Th_1569_LN1426_060v_m-192">ǁ</dir>
                      <dir type="sb" tstamp="56.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_060v_m-199">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_060v_m-198"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_060v_m-222" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_060v_m-221" right="invis">
@@ -448,7 +453,9 @@
                                  <syl xml:id="Th_1569_LN1426_060v_m-253" wordpos="t">ge</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_060v_m-228" dur="2" dur.ppq="512" oct="3" pname="a"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_060v_annot2"><rend rend="italic">dig Herre</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_060v_m-228" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_060v_m-254" n="3">
                                  <syl xml:id="Th_1569_LN1426_060v_m-255" wordpos="i">dig</syl>
@@ -477,7 +484,7 @@
                               <verse xml:id="Th_1569_LN1426_060v_m-266" n="1">
                                  <syl xml:id="Th_1569_LN1426_060v_m-267" con="d" wordpos="m">di</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_060v_m-231" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_060v_m-268" n="1">
@@ -547,7 +554,9 @@
                                  <syl xml:id="Th_1569_LN1426_060v_m-314" wordpos="i">priss</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_060v_m-298" dur="1" dur.ppq="1024" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_060v_annot3"><rend rend="italic">A-sen fole</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_060v_m-298" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_060v_m-315" n="1">
                                  <syl xml:id="Th_1569_LN1426_060v_m-316" wordpos="i">frelst</syl>
@@ -588,7 +597,7 @@
                               <verse xml:id="Th_1569_LN1426_060v_m-333" n="3">
                                  <syl xml:id="Th_1569_LN1426_060v_m-334" wordpos="i">tack</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_060v_m-302" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_060v_m-335" n="1">
@@ -805,7 +814,9 @@
                                  <syl xml:id="Th_1569_LN1426_060v_m-461" wordpos="i">det</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_060v_m-442" dur="1" dur.ppq="1024" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_060v_annot4"><rend rend="italic">naade baa-de</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_060v_m-442" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_060v_m-462" n="1">
                                  <syl xml:id="Th_1569_LN1426_060v_m-463" wordpos="i">met</syl>
@@ -840,7 +851,7 @@
                               <verse xml:id="Th_1569_LN1426_060v_m-478" n="1">
                                  <syl xml:id="Th_1569_LN1426_060v_m-479" con="d" wordpos="m">dom</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_060v_m-445" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_060v_m-480" n="1">
@@ -894,6 +905,9 @@
                      <fermata xml:id="Th_1569_LN1426_060v_m-449" form="norm" layer="1" shape="curved"
                               staff="1"
                               startid="#Th_1569_LN1426_060v_m-448"/>
+                     <supplied>
+                        <annot xml:id="Th_1569_LN1426_060v_annot5">gentagelsestegn tilføjet</annot>
+                     </supplied>
                   </measure>
                   <pb/>
                </section>

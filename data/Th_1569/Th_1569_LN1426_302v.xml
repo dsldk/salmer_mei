@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_302v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_302v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_302v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_302v_m-36" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_302v_m-46" n="1">
@@ -197,6 +198,7 @@
                                   staff="1"
                                   lwidth="medium"
                                   lform="solid"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_302v_m-80"/>
                   </measure>
                   <pb/>
                </section>
@@ -213,6 +215,7 @@
                   <measure xml:id="Th_1569_LN1426_302v_m-109" right="invis">
                      <staff xml:id="Th_1569_LN1426_302v_m-112" n="1">
                         <layer xml:id="Th_1569_LN1426_302v_m-113" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_302v_m-114" dur="breve" dur.ppq="2048" oct="3" pname="c"
                                  pnum="48">
                               <verse xml:id="Th_1569_LN1426_302v_m-120" n="1">
@@ -379,6 +382,7 @@
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_302v_m-186">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_302v_m-185"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_302v_m-205" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_302v_m-204" right="dbl">
@@ -430,6 +434,7 @@
                                   staff="1"
                                   lwidth="medium"
                                   lform="solid"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_302v_m-218"/>
                   </measure>
                   <pb/>
                </section>
@@ -446,6 +451,7 @@
                   <measure xml:id="Th_1569_LN1426_302v_m-225" right="invis">
                      <staff xml:id="Th_1569_LN1426_302v_m-228" n="1">
                         <layer xml:id="Th_1569_LN1426_302v_m-229" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_302v_m-230" dur="breve" dur.ppq="2048" oct="3" pname="c"
                                  pnum="48">
                               <verse xml:id="Th_1569_LN1426_302v_m-243" n="1">
@@ -1139,6 +1145,7 @@
                                   staff="1"
                                   lwidth="medium"
                                   lform="solid"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_302v_m-551"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_302v_m-577" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_302v_m-576" right="end">

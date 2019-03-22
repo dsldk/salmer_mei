@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_061v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_061v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_061v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_061v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_061v_m-45" n="1">
@@ -123,7 +124,10 @@
                                  <syl xml:id="Th_1569_LN1426_061v_m-95" con="d" wordpos="i">Gud</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_061v_m-79" dur="1" dur.ppq="1024" oct="4" pname="c"
+                          <unclear>
+                             <annot xml:id="Th_1569_LN1426_061v_annot1"><rend rend="italic">ede-le ska-ber</rend>: tekstfordeling usikker</annot>
+                             <annot xml:id="Th_1569_LN1426_061v_annot2"><rend rend="italic">-dom-melig æ-re</rend>: tekstfordeling usikker</annot>
+                             <note xml:id="Th_1569_LN1426_061v_m-79" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_061v_m-90" n="1">
                                  <syl xml:id="Th_1569_LN1426_061v_m-91" con="d" wordpos="i">ede</syl>
@@ -163,7 +167,7 @@
                               <verse xml:id="Th_1569_LN1426_061v_m-106" n="2">
                                  <syl xml:id="Th_1569_LN1426_061v_m-107" wordpos="t">re</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_061v_m-87" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_061v_m-108" n="1">

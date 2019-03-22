@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_360v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_360v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_360v_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_360v_meterSig1"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_360v_m-36" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_360v_m-48" n="1">
@@ -106,6 +110,8 @@
                                   endid="#Th_1569_LN1426_360v_m-45"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_360v_meterSig1"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_360v_m-46"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_360v_m-65" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_360v_m-64" right="invis">
@@ -164,6 +170,7 @@
                      </staff>
                      <dir type="sb" tstamp="48.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_360v_m-76">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_360v_m-75"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_360v_m-95" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_360v_m-94" right="invis">
@@ -230,6 +237,7 @@
                                   endid="#Th_1569_LN1426_360v_m-107"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_360v_m-108"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_360v_m-126" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_360v_m-125" right="invis">
@@ -300,6 +308,7 @@
                                   endid="#Th_1569_LN1426_360v_m-138"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_360v_m-139"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_360v_m-158" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_360v_m-157" right="invis">

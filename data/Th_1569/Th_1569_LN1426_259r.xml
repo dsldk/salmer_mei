@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_259r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_259r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_259r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="2"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_259r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_259r_m-46" n="1">
@@ -170,7 +174,9 @@
                                  <syl xml:id="Th_1569_LN1426_259r_m-115" con="d" wordpos="i">vel</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_259r_m-88" dur="1" dur.ppq="1024" oct="3" pname="g"
+<unclear>                           
+   <annot xml:id="Th_1569_LN1426_259r_annot1"><rend rend="italic">oss skin-ne</rend>: tekstfordeling usikker</annot>
+   <note xml:id="Th_1569_LN1426_259r_m-88" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_259r_m-112" n="2">
                                  <syl xml:id="Th_1569_LN1426_259r_m-113" wordpos="i">oss</syl>
@@ -198,6 +204,7 @@
                                  <syl xml:id="Th_1569_LN1426_259r_m-123" wordpos="t">ne/</syl>
                               </verse>
                            </note>
+</unclear>
                         </layer>
                      </staff>
                      <dir type="pb" tstamp="11" place="above" label="Sideskift"

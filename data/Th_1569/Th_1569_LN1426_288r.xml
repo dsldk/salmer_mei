@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_288r_m-32">
                      <staff xml:id="Th_1569_LN1426_288r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_288r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_288r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_288r_m-58" n="1">
@@ -102,10 +103,14 @@
                      </staff>
                      <dir type="sb" tstamp="56.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_288r_m-57">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_288r_m-56"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_288r_m-67" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_288r_m-66" left="rptstart" right="invis">
                      <staff xml:id="Th_1569_LN1426_288r_m-68" n="1">
+                        <supplied>
+                           <annot xml:id="Th_1569_LN1426_288r_annot1">gentagelsestegn tilføjet</annot>
+                        </supplied>
                         <layer xml:id="Th_1569_LN1426_288r_m-69" n="1">
                            <note xml:id="Th_1569_LN1426_288r_m-70" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
@@ -215,6 +220,7 @@
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_288r_m-83">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_288r_m-82"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_288r_m-130" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_288r_m-129" right="rptend">
@@ -239,7 +245,9 @@
                                  <syl xml:id="Th_1569_LN1426_288r_m-156" con="d" wordpos="i">kier</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_288r_m-136" dur="1" dur.ppq="1024" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_288r_annot2"><rend rend="italic">hel-li-ge naa-de</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_288r_m-136" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_288r_m-157" n="1">
                                  <syl xml:id="Th_1569_LN1426_288r_m-158" con="d" wordpos="m">lig</syl>
@@ -287,6 +295,7 @@
                                  <syl xml:id="Th_1569_LN1426_288r_m-172" wordpos="t">de</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_288r_m-146" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_288r_m-173" n="2">
@@ -429,7 +438,9 @@
                                  <syl xml:id="Th_1569_LN1426_288r_m-250" wordpos="i">oc</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_288r_m-235" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_288r_annot3"><rend rend="italic">al-skens</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_288r_m-235" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_288r_m-251" n="1">
                                  <syl xml:id="Th_1569_LN1426_288r_m-252" con="d" wordpos="i">al</syl>
@@ -441,6 +452,7 @@
                                  <syl xml:id="Th_1569_LN1426_288r_m-254" wordpos="t">skens</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_288r_m-237" dur="2" dur.ppq="512" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f"/>

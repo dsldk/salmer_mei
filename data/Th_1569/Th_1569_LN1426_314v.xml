@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_314v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_314v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_314v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_314v_m-36" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_314v_m-51" n="1">
@@ -86,7 +87,9 @@
                                  <syl xml:id="Th_1569_LN1426_314v_m-70" wordpos="i">fra</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_314v_m-41" dur="2" dur.ppq="512" oct="3" pname="a"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_314v_annot1"><rend rend="italic">Synd-sens brø-ste</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_314v_m-41" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_314v_m-71" n="2">
                                  <syl xml:id="Th_1569_LN1426_314v_m-72" con="d" wordpos="i">synd</syl>
@@ -125,6 +128,7 @@
                                  <syl xml:id="Th_1569_LN1426_314v_m-82" wordpos="t">ste/</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="pb" tstamp="28.75" place="above" label="Sideskift"

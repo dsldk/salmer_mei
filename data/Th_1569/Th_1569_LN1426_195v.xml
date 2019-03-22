@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_195v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_195v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_195v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_195v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_195v_m-46" n="1">
@@ -195,7 +196,9 @@
                                  <syl xml:id="Th_1569_LN1426_195v_m-123" wordpos="i">aff</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_195v_m-107" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_195v_annot1"><rend rend="italic">hier-tens</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_195v_m-107" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_195v_m-124" n="1">
                                  <syl xml:id="Th_1569_LN1426_195v_m-125" con="d" wordpos="i">hier</syl>
@@ -212,7 +215,7 @@
                               <verse xml:id="Th_1569_LN1426_195v_m-126" n="1">
                                  <syl xml:id="Th_1569_LN1426_195v_m-127" wordpos="t">tens</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_195v_m-113" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_195v_m-128" n="1">
@@ -259,7 +262,9 @@
                                  <syl xml:id="Th_1569_LN1426_195v_m-157" wordpos="i">hans</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_195v_m-140" dur="2" dur.ppq="512" oct="4" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_195v_annot2"><rend rend="italic">gier-ning</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_195v_m-140" dur="2" dur.ppq="512" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_195v_m-158" n="1">
                                  <syl xml:id="Th_1569_LN1426_195v_m-159" con="d" wordpos="i">gier</syl>
@@ -270,7 +275,7 @@
                               <verse xml:id="Th_1569_LN1426_195v_m-160" n="1">
                                  <syl xml:id="Th_1569_LN1426_195v_m-161" wordpos="t">ning</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_195v_m-142" dur="4" dur.ppq="256" oct="4" pname="f"
                                  pnum="65"/>
                            <note xml:id="Th_1569_LN1426_195v_m-143" dur="4" dur.ppq="256" oct="4" pname="e"

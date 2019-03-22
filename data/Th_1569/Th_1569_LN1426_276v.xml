@@ -41,10 +41,11 @@
                   <measure xml:id="Th_1569_LN1426_276v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_276v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_276v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_276v_m-36" dur="1" dur.ppq="1024" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_276v_m-47" n="1">
-                                 <syl xml:id="Th_1569_LN1426_276v_m-48" wordpos="i">TIL</syl>
+                                 <syl xml:id="Th_1569_LN1426_276v_m-48" wordpos="i"><rend fontstyle="italic">TIL</rend></syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_276v_m-49" n="2">
                                  <syl xml:id="Th_1569_LN1426_276v_m-50" wordpos="i">Til</syl>
@@ -408,7 +409,9 @@
                                  <syl xml:id="Th_1569_LN1426_276v_m-242" wordpos="i">hans</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_276v_m-233" dots="1" dur="1" dur.ppq="1536" oct="3"
+                           <supplied>
+                              <annot xml:id="Th_1569_LN1426_276v_annot2">♭ tilføjet</annot>
+                              <note xml:id="Th_1569_LN1426_276v_m-233" dots="1" dur="1" dur.ppq="1536" oct="3"
                                  pname="b"
                                  pnum="58"
                                  accid="f">
@@ -416,6 +419,7 @@
                                  <syl xml:id="Th_1569_LN1426_276v_m-244" con="d" wordpos="i">Ri</syl>
                               </verse>
                            </note>
+                           </supplied>
                            <note xml:id="Th_1569_LN1426_276v_m-235" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_276v_m-245" n="1">

@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_146r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_146r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_146r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_146r_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_146r_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_146r_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_146r_m-38" dur="1" dur.ppq="1024" oct="3" pname="a"
@@ -109,6 +113,7 @@
                                   staff="1"
                                   lwidth="medium"
                                   lform="solid"/>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_146r_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_146r_m-67" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_146r_m-66" right="invis">
@@ -150,6 +155,7 @@
                                  <syl xml:id="Th_1569_LN1426_146r_m-90" wordpos="i">nu</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_146r_annot1"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_146r_m-77" dots="1" dur="breve" dur.ppq="3072" oct="4"
                                  pname="c"
                                  pnum="60">
@@ -283,6 +289,7 @@
                                  <syl xml:id="Th_1569_LN1426_146r_m-155" wordpos="t">ger</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_146r_annot2"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_146r_m-141" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="e"
                                  pnum="52">
@@ -418,6 +425,7 @@
                                  <syl xml:id="Th_1569_LN1426_146r_m-219" wordpos="i">oc</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_146r_annot3"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_146r_m-206" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">
@@ -556,6 +564,7 @@
                                  <syl xml:id="Th_1569_LN1426_146r_m-289" wordpos="i">saa</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_146r_annot4"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_146r_m-271" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">

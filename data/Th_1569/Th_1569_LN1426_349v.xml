@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_349v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_349v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_349v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_349v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_349v_m-50" n="1">
@@ -229,7 +230,9 @@
                                  <syl xml:id="Th_1569_LN1426_349v_m-131" wordpos="t">gem</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_349v_m-113" dur="2" dur.ppq="512" oct="3" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_349v_annot1"><rend rend="italic">op-løste</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_349v_m-113" dur="2" dur.ppq="512" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_349v_m-132" n="1">
                                  <syl xml:id="Th_1569_LN1426_349v_m-133" con="d" wordpos="i">op</syl>
@@ -242,7 +245,7 @@
                               <verse xml:id="Th_1569_LN1426_349v_m-134" n="1">
                                  <syl xml:id="Th_1569_LN1426_349v_m-135" wordpos="t">løste/</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_349v_m-117" dur="1" dur.ppq="1024" oct="3" pname="c"
                                  pnum="48"/>
                         </layer>

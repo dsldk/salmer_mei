@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_135v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_135v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_135v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_135v_m-36" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_135v_m-45" n="1">
@@ -175,7 +176,9 @@
                                  <syl xml:id="Th_1569_LN1426_135v_m-115" wordpos="i">oss</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_135v_m-92" dur="1" dur.ppq="1024" oct="4" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_135v_annot1"><rend rend="italic">til-kien-de</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_135v_m-92" dur="1" dur.ppq="1024" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_135v_m-116" n="1">
                                  <syl xml:id="Th_1569_LN1426_135v_m-117" con="d" wordpos="i">len</syl>
@@ -201,6 +204,7 @@
                                  <syl xml:id="Th_1569_LN1426_135v_m-125" wordpos="t">de/</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="7" place="above" label="Linjeskift"

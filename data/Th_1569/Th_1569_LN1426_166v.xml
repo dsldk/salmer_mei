@@ -39,8 +39,15 @@
                </scoreDef>
                <section xml:id="Th_1569_LN1426_166v_m-31">
                   <measure xml:id="Th_1569_LN1426_166v_m-32" right="invis">
+                     <corr>
+                        <annot xml:id="Th_1569_LN1426_166v_annot1">C-nøgle på fjerde linje flyttet til tredje linje</annot>
+                     </corr>
                      <staff xml:id="Th_1569_LN1426_166v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_166v_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="2"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_166v_m-36" dur="breve" dur.ppq="2048" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_166v_m-44" n="1">
@@ -622,6 +629,7 @@
                           xml:id="Th_1569_LN1426_166v_m-322">ǀ</dir>
                      <dir type="pb" tstamp="48.75" place="above" label="Sideskift"
                           xml:id="Th_1569_LN1426_166v_m-327">ǁ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_166v_m-326"/>
                   </measure>
                   <pb/>
                </section>
@@ -638,6 +646,10 @@
                   <measure xml:id="Th_1569_LN1426_166v_m-348" right="invis">
                      <staff xml:id="Th_1569_LN1426_166v_m-351" n="1">
                         <layer xml:id="Th_1569_LN1426_166v_m-352" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="2"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_166v_m-353" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_166v_m-361" n="2">

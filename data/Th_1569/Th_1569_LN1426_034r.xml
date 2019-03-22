@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_034r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_034r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_034r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_034r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_034r_m-54" n="1">
@@ -69,7 +70,9 @@
                                  <syl xml:id="Th_1569_LN1426_034r_m-65" wordpos="t">sus</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_034r_m-40" dur="2" dur.ppq="512" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_034r_annot1"><rend rend="italic">Christ til Ver-den kom-men</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_034r_m-40" dur="2" dur.ppq="512" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_034r_m-66" n="2">
                                  <syl xml:id="Th_1569_LN1426_034r_m-67" wordpos="i">Christ</syl>
@@ -131,6 +134,7 @@
                                  <syl xml:id="Th_1569_LN1426_034r_m-87" wordpos="t">men</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_034r_m-52" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_034r_m-88" n="1">

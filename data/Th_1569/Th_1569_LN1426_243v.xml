@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_243v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_243v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_243v_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_243v_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_243v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_243v_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_243v_m-38" dur="1" dur.ppq="1024" oct="3" pname="f"
@@ -107,6 +111,7 @@
                      </staff>
                      <dir type="sb" tstamp="47" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_243v_m-47">ǀ</dir>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_243v_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_243v_m-70" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_243v_m-69" right="invis">
@@ -155,6 +160,7 @@
                                  <syl xml:id="Th_1569_LN1426_243v_m-96" wordpos="i">at</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_243v_annot1"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_243v_m-81" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">
@@ -175,7 +181,9 @@
                   <sb xml:id="Th_1569_LN1426_243v_m-103" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_243v_m-102" right="invis">
                      <staff xml:id="Th_1569_LN1426_243v_m-104" n="1">
-                        <layer xml:id="Th_1569_LN1426_243v_m-105" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_243v_annot2">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_243v_m-105" n="1">
                            <rest xml:id="Th_1569_LN1426_243v_m-106" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_243v_m-107" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_243v_m-108" dur="1" dur.ppq="1024" oct="3" pname="f"
@@ -239,6 +247,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <dir type="sb" tstamp="47" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_243v_m-117">ǀ</dir>
@@ -246,7 +255,9 @@
                   <sb xml:id="Th_1569_LN1426_243v_m-141" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_243v_m-140" right="invis">
                      <staff xml:id="Th_1569_LN1426_243v_m-142" n="1">
-                        <layer xml:id="Th_1569_LN1426_243v_m-143" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_243v_annot3">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_243v_m-143" n="1">
                            <note xml:id="Th_1569_LN1426_243v_m-144" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_243v_m-154" n="1">
@@ -282,7 +293,8 @@
                                  <syl xml:id="Th_1569_LN1426_243v_m-163" con="d" wordpos="i">be</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_243v_m-152" dots="1" dur="breve" dur.ppq="3072" oct="3"
+                              <annot xml:id="Th_1569_LN1426_243v_annot4"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
+                              <note xml:id="Th_1569_LN1426_243v_m-152" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_243v_m-164" n="1">
@@ -296,6 +308,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_243v_m-170" label="editorial"/>
@@ -394,6 +407,7 @@
                                  <syl xml:id="Th_1569_LN1426_243v_m-224" con="d" wordpos="i">paa</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_243v_annot5"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_243v_m-213" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">
@@ -532,6 +546,7 @@
                                  <syl xml:id="Th_1569_LN1426_243v_m-296" wordpos="i">met</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_243v_annot6"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_243v_m-280" dots="1" dur="breve" dur.ppq="3072" oct="3"
                                  pname="g"
                                  pnum="55">

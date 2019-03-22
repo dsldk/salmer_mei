@@ -41,10 +41,11 @@
                   <measure xml:id="Th_1569_LN1426_277v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_277v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_277v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_277v_m-36" dur="1" dur.ppq="1024" oct="4" pname="f"
                                  pnum="65">
                               <verse xml:id="Th_1569_LN1426_277v_m-45" n="1">
-                                 <syl xml:id="Th_1569_LN1426_277v_m-46" wordpos="i">O</syl>
+                                 <syl xml:id="Th_1569_LN1426_277v_m-46" wordpos="i"><rend fontstyle="italic">O</rend></syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_277v_m-47" n="2">
                                  <syl xml:id="Th_1569_LN1426_277v_m-48" wordpos="i">O</syl>
@@ -53,7 +54,7 @@
                            <note xml:id="Th_1569_LN1426_277v_m-37" dur="2" dur.ppq="512" oct="4" pname="a"
                                  pnum="69">
                               <verse xml:id="Th_1569_LN1426_277v_m-49" n="1">
-                                 <syl xml:id="Th_1569_LN1426_277v_m-50" wordpos="i">GVD</syl>
+                                 <syl xml:id="Th_1569_LN1426_277v_m-50" wordpos="i"><rend fontstyle="italic">GVD</rend></syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_277v_m-53" n="2">
                                  <syl xml:id="Th_1569_LN1426_277v_m-54" con="d" wordpos="i">Her</syl>

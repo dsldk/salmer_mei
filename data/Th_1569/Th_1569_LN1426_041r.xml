@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_041r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_041r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_041r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_041r_m-36" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_041r_m-49" n="2">
@@ -138,7 +139,9 @@
                      <staff xml:id="Th_1569_LN1426_041r_m-87" n="1">
                         <layer xml:id="Th_1569_LN1426_041r_m-88" n="1">
                            <rest xml:id="Th_1569_LN1426_041r_m-89" dur="2" dur.ppq="512"/>
-                           <note xml:id="Th_1569_LN1426_041r_m-90" dur="2" dur.ppq="512" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_041r_annot1"><rend rend="italic">hannem skul-le</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_041r_m-90" dur="2" dur.ppq="512" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_041r_m-100" n="1">
                                  <syl xml:id="Th_1569_LN1426_041r_m-101" wordpos="i">som</syl>
@@ -168,6 +171,7 @@
                                  <syl xml:id="Th_1569_LN1426_041r_m-111" wordpos="t">le</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_041r_m-94" dur="2" dur.ppq="512" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_041r_m-112" n="2">

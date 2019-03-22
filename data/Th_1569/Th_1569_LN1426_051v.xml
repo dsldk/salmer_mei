@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_051v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_051v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_051v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <rest xml:id="Th_1569_LN1426_051v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_051v_m-37" dur="2" dur.ppq="512"/>
                            <note xml:id="Th_1569_LN1426_051v_m-38" dur="2" dur.ppq="512" oct="3" pname="f"
@@ -141,7 +142,9 @@
                                  <syl xml:id="Th_1569_LN1426_051v_m-102" wordpos="i">met</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_051v_m-89" dur="2" dur.ppq="512" oct="3" pname="g"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_051v_annot1"><rend rend="italic">lyst oc kierlig-</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_051v_m-89" dur="2" dur.ppq="512" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_051v_m-103" n="2">
                                  <syl xml:id="Th_1569_LN1426_051v_m-104" wordpos="i">lyst</syl>
@@ -174,7 +177,7 @@
                               <verse xml:id="Th_1569_LN1426_051v_m-117" n="2">
                                  <syl xml:id="Th_1569_LN1426_051v_m-118" con="d" wordpos="i">kierlig</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_051v_m-94" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_051v_m-115" n="1">

@@ -41,10 +41,11 @@
                   <measure xml:id="Th_1569_LN1426_241v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_241v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_241v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_241v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_241v_m-46" n="1">
-                                 <syl xml:id="Th_1569_LN1426_241v_m-47" wordpos="i">MAa</syl>
+                                 <syl xml:id="Th_1569_LN1426_241v_m-47" wordpos="i"><rend fontstyle="italic">MA</rend>a</syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_241v_m-48" n="2">
                                  <syl xml:id="Th_1569_LN1426_241v_m-49" wordpos="i">Dog</syl>

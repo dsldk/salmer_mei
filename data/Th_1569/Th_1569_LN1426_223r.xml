@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_223r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_223r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_223r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_223r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_223r_m-48" n="2">
@@ -78,7 +79,9 @@
                                  <syl xml:id="Th_1569_LN1426_223r_m-65" con="d" wordpos="i">ic</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_223r_m-41" dur="2" dur.ppq="512" oct="4" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_223r_annot1"><rend rend="italic">Mis-de-de-re</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_223r_m-41" dur="2" dur.ppq="512" oct="4" pname="e"
                                  pnum="64">
                               <verse xml:id="Th_1569_LN1426_223r_m-62" n="2">
                                  <syl xml:id="Th_1569_LN1426_223r_m-63" wordpos="i">Mis</syl>
@@ -118,6 +121,7 @@
                                  <syl xml:id="Th_1569_LN1426_223r_m-79" wordpos="t">re</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_223r_m-47" dur="breve" dur.ppq="2048" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_223r_m-80" n="1">
@@ -172,7 +176,9 @@
                                  <syl xml:id="Th_1569_LN1426_223r_m-115" con="d" wordpos="i">had</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_223r_m-94" dur="1" dur.ppq="1024" oct="4" pname="c"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_223r_annot2"><rend rend="italic">væ-re</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_223r_m-94" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_223r_m-116" n="2">
                                  <syl xml:id="Th_1569_LN1426_223r_m-117" wordpos="t">ske</syl>
@@ -181,6 +187,7 @@
                                  <syl xml:id="Th_1569_LN1426_223r_m-119" con="d" wordpos="i">væ</syl>
                               </verse>
                            </note>
+                              <annot xml:id="Th_1569_LN1426_223r_annot3"><rend rend="italic">oc</rend>: tekstfordeling usikker</annot>
                            <note xml:id="Th_1569_LN1426_223r_m-95" dur="2" dur.ppq="512" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f">
@@ -191,6 +198,7 @@
                                  <syl xml:id="Th_1569_LN1426_223r_m-123" wordpos="i">oc</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_223r_m-97" dur="2" dur.ppq="512" oct="3" pname="g"
                                  pnum="55"/>
                            <note xml:id="Th_1569_LN1426_223r_m-98" dur="1" dur.ppq="1024" oct="3" pname="a"

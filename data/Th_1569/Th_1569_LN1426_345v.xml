@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_345v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_345v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_345v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_345v_m-36" dots="1" dur="1" dur.ppq="1536" oct="3"
                                  pname="e"
                                  pnum="52">
@@ -96,7 +97,9 @@
                                  <syl xml:id="Th_1569_LN1426_345v_m-72" wordpos="i">Guds</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_345v_m-42" dur="1" dur.ppq="1024" oct="3" pname="b"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_345v_annot1"><rend rend="italic">sor-rig-fuld</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_345v_m-42" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_345v_m-73" n="1">
                                  <syl xml:id="Th_1569_LN1426_345v_m-74" con="d" wordpos="i">sor</syl>
@@ -123,7 +126,7 @@
                               <verse xml:id="Th_1569_LN1426_345v_m-81" n="2">
                                  <syl xml:id="Th_1569_LN1426_345v_m-82" wordpos="t">lie</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_345v_m-47" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_345v_m-83" n="1">

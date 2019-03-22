@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_085r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_085r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_085r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_085r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_085r_m-48" n="1">
@@ -234,6 +235,7 @@
                                  <syl xml:id="Th_1569_LN1426_085r_m-138" wordpos="i">død/</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_085r_annot1">anden node i ligatur har fejlagtigt hals til venstre i tryk</annot>
                            <note xml:id="Th_1569_LN1426_085r_m-118" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55"/>
                         </layer>
@@ -403,8 +405,11 @@
                                  <syl xml:id="Th_1569_LN1426_085r_m-226" wordpos="i">nød.</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_085r_m-206" dur="breve" dur.ppq="2048" oct="3" pname="g"
-                                 pnum="55"/>
+                           <reg>
+                              <annot xml:id="Th_1569_LN1426_085r_annot2">halsen på longa vender
+                                 forkert vej i tryk</annot>
+                              <note xml:id="Th_1569_LN1426_085r_m-206" dur="long" dur.ppq="2048" oct="3" pname="g"
+                                 pnum="55"/></reg>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="7" place="above" label="Linjeskift"

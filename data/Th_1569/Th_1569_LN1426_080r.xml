@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_080r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_080r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_080r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_080r_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_080r_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_080r_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_080r_m-38" dur="1" dur.ppq="1024" oct="3" pname="g"
@@ -111,6 +115,7 @@
                      </staff>
                      <dir type="sb" tstamp="35" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_080r_m-45">ǀ</dir>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_080r_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_080r_m-72" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_080r_m-71" right="invis">
@@ -191,6 +196,10 @@
                   <sb xml:id="Th_1569_LN1426_080r_m-112" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_080r_m-111" left="rptstart" right="rptend">
                      <staff xml:id="Th_1569_LN1426_080r_m-113" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_080r_annot1">? ændret til gentagelsestegn</annot>
+                        </reg>
+                        <annot xml:id="Th_1569_LN1426_080r_annot2">kun repetition i første strofe</annot>
                         <layer xml:id="Th_1569_LN1426_080r_m-114" n="1">
                            <note xml:id="Th_1569_LN1426_080r_m-115" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">

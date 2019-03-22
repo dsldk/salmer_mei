@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_183v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_183v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_183v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_183v_m-36" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_183v_m-45" n="2">
@@ -77,7 +78,9 @@
                                  <syl xml:id="Th_1569_LN1426_183v_m-60" wordpos="i">est</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_183v_m-40" dur="2" dur.ppq="512" oct="4" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_183v_annot1"><rend rend="italic">Herre Je-su</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_183v_m-40" dur="2" dur.ppq="512" oct="4" pname="e"
                                  pnum="64">
                               <verse xml:id="Th_1569_LN1426_183v_m-61" n="1">
                                  <syl xml:id="Th_1569_LN1426_183v_m-62" wordpos="i">Herre</syl>
@@ -105,7 +108,7 @@
                               <verse xml:id="Th_1569_LN1426_183v_m-71" n="2">
                                  <syl xml:id="Th_1569_LN1426_183v_m-72" wordpos="t">ster</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_183v_m-44" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_183v_m-73" n="1">

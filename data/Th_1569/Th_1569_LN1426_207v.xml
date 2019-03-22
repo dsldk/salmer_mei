@@ -41,13 +41,14 @@
                   <measure xml:id="Th_1569_LN1426_207v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_207v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_207v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_207v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_207v_m-45" n="2">
                                  <syl xml:id="Th_1569_LN1426_207v_m-46" wordpos="i">Stor</syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_207v_m-47" n="1">
-                                 <syl xml:id="Th_1569_LN1426_207v_m-48" con="d" wordpos="i">CA</syl>
+                                 <syl xml:id="Th_1569_LN1426_207v_m-48" con="d" wordpos="i"><rend fontstyle="italic">CA</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_207v_m-37" dur="1" dur.ppq="1024" oct="3" pname="g"
@@ -130,7 +131,9 @@
                      <staff xml:id="Th_1569_LN1426_207v_m-83" n="1">
                         <layer xml:id="Th_1569_LN1426_207v_m-84" n="1">
                            <rest xml:id="Th_1569_LN1426_207v_m-85" dur="1" dur.ppq="1024"/>
-                           <note xml:id="Th_1569_LN1426_207v_m-86" dur="1" dur.ppq="1024" oct="4" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_207v_annot1"><rend rend="italic">mi-skun-de</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_207v_m-86" dur="1" dur.ppq="1024" oct="4" pname="e"
                                  pnum="64">
                               <verse xml:id="Th_1569_LN1426_207v_m-95" n="1">
                                  <syl xml:id="Th_1569_LN1426_207v_m-96" con="d" wordpos="i">vd</syl>
@@ -155,6 +158,7 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-104" wordpos="t">de</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_207v_m-90" dur="4" dur.ppq="256" oct="3" pname="b"
                                  pnum="59"/>
                            <note xml:id="Th_1569_LN1426_207v_m-91" dur="2" dur.ppq="512" oct="3" pname="a"
@@ -222,7 +226,9 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-148" wordpos="i">mig</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_207v_m-129" dur="2" dur.ppq="512" oct="3" pname="b"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_207v_annot2"><rend rend="italic">re-gere dine</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_207v_m-129" dur="2" dur.ppq="512" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_207v_m-149" n="1">
                                  <syl xml:id="Th_1569_LN1426_207v_m-150" wordpos="i">ieg</syl>
@@ -249,6 +255,7 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-160" wordpos="i">dine</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_207v_m-133" dots="1" dur="2" dur.ppq="768" oct="4"
                                  pname="c"
                                  pnum="60">
@@ -336,7 +343,9 @@
                            </note>
                            <note xml:id="Th_1569_LN1426_207v_m-186" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57"/>
-                           <note xml:id="Th_1569_LN1426_207v_m-187" dur="2" dur.ppq="512" oct="3" pname="b"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_207v_annot3"><rend rend="italic">ret-te</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_207v_m-187" dur="2" dur.ppq="512" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_207v_m-203" n="1">
                                  <syl xml:id="Th_1569_LN1426_207v_m-204" con="d" wordpos="i">ret</syl>
@@ -350,6 +359,7 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-206" wordpos="t">te</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_207v_m-190" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_207v_m-207" n="1">
@@ -463,7 +473,9 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-271" wordpos="i">Ord</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_207v_m-256" dur="2" dur.ppq="512" oct="3" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_207v_annot4"><rend rend="italic">for-holt</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_207v_m-256" dur="2" dur.ppq="512" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_207v_m-272" n="1">
                                  <syl xml:id="Th_1569_LN1426_207v_m-273" con="d" wordpos="i">for</syl>
@@ -477,6 +489,7 @@
                                  <syl xml:id="Th_1569_LN1426_207v_m-275" wordpos="t">holt</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_207v_m-259" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57"/>
                            <note xml:id="Th_1569_LN1426_207v_m-260" dur="2" dur.ppq="512" oct="3" pname="g"

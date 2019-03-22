@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_362r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_362r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_362r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_362r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_362r_m-44" n="1">
@@ -265,6 +266,9 @@
                      <fermata xml:id="Th_1569_LN1426_362r_m-131" form="norm" layer="1" shape="curved"
                               staff="1"
                               startid="#Th_1569_LN1426_362r_m-130"/>
+                     <reg>
+                        <annot xml:id="Th_1569_LN1426_362r_annot1">enkeltstreg ændret til afsluttende dobbeltstreg</annot>
+                     </reg>
                   </measure>
                   <pb/>
                </section>

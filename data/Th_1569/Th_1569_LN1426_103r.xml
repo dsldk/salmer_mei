@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_103r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_103r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_103r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_103r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="c"
                                  pnum="48">
                               <verse xml:id="Th_1569_LN1426_103r_m-45" n="1">
@@ -1195,6 +1196,7 @@
                                   staff="1"
                                   lwidth="medium"
                                   lform="solid"/>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_103r_m-594"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_103r_m-614" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_103r_m-613" right="invis">
@@ -1408,12 +1410,14 @@
                                  <syl xml:id="Th_1569_LN1426_103r_m-730" con="d" wordpos="i">for</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_103r_m-715" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_103r_annot1">læsning af ligatur usikker, da den mangler hals på venstre side</annot>
+                              <note xml:id="Th_1569_LN1426_103r_m-715" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_103r_m-731" n="1">
                                  <syl xml:id="Th_1569_LN1426_103r_m-732" con="d" wordpos="m">hær</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_103r_m-717" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f"/>
@@ -1550,6 +1554,7 @@
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_103r_m-780">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_103r_m-779"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_103r_m-796" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_103r_m-795" right="invis">
@@ -1710,6 +1715,7 @@
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_103r_m-865">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_103r_m-864"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_103r_m-881" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_103r_m-880" right="invis">

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_337v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_337v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_337v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_337v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_337v_m-45" n="1">
@@ -86,7 +87,9 @@
                                  <syl xml:id="Th_1569_LN1426_337v_m-64" wordpos="i">din</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_337v_m-41" dur="1" dur.ppq="1024" oct="3" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_337v_annot1"><rend rend="italic">syndi-ge</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_337v_m-41" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_337v_m-65" n="1">
                                  <syl xml:id="Th_1569_LN1426_337v_m-66" wordpos="i">Herre</syl>
@@ -104,6 +107,7 @@
                                  <syl xml:id="Th_1569_LN1426_337v_m-72" wordpos="t">ge</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_337v_m-43" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_337v_m-73" n="1">

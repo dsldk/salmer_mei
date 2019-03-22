@@ -41,40 +41,41 @@
                   <measure xml:id="Th_1569_LN1426_083r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_083r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_083r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_083r_m-36" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-42" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-43" con="d" wordpos="i">Re</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-43" con="d" wordpos="i"><rend fontstyle="italic">Re</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-37" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-44" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-45" con="d" wordpos="m">sur</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-45" con="d" wordpos="m"><rend fontstyle="italic">sur</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-38" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_083r_m-46" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-47" con="d" wordpos="m">rex</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-47" con="d" wordpos="m"><rend fontstyle="italic">rex</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-39" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_083r_m-48" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-49" wordpos="t">it</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-49" wordpos="t"><rend fontstyle="italic">it</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-40" dur="breve" dur.ppq="2048" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_083r_m-50" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-51" con="d" wordpos="i">Chri</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-51" con="d" wordpos="i"><rend fontstyle="italic">Chri</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-41" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-52" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-53" wordpos="t">stus,</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-53" wordpos="t"><rend fontstyle="italic">stus,</rend></syl>
                               </verse>
                            </note>
                         </layer>
@@ -87,31 +88,31 @@
                            <note xml:id="Th_1569_LN1426_083r_m-58" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-67" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-68" wordpos="i">qui</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-68" wordpos="i"><rend fontstyle="italic">qui</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-59" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_083r_m-69" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-70" wordpos="i">pro</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-70" wordpos="i"><rend fontstyle="italic">pro</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-60" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-71" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-72" con="d" wordpos="i">no</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-72" con="d" wordpos="i"><rend fontstyle="italic">no</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-61" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_083r_m-73" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-74" wordpos="t">bis</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-74" wordpos="t"><rend fontstyle="italic">bis</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-63" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_083r_m-75" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-76" con="d" wordpos="i">pa</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-76" con="d" wordpos="i"><rend fontstyle="italic">pa</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-65" dur="1" dur.ppq="1024" oct="3" pname="f"
@@ -119,7 +120,7 @@
                            <note xml:id="Th_1569_LN1426_083r_m-66" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_083r_m-77" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-78" wordpos="t">ßus,</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-78" wordpos="t"><rend fontstyle="italic">ßus,</rend></syl>
                               </verse>
                            </note>
                         </layer>
@@ -141,37 +142,37 @@
                            <note xml:id="Th_1569_LN1426_083r_m-84" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_083r_m-93" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-94" wordpos="i">in</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-94" wordpos="i"><rend fontstyle="italic">in</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-85" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_083r_m-95" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-96" con="d" wordpos="i">pa</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-96" con="d" wordpos="i"><rend fontstyle="italic">pa</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-86" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_083r_m-97" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-98" con="d" wordpos="m">ßi</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-98" con="d" wordpos="m"><rend fontstyle="italic">ßi</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-87" dur="1" dur.ppq="1024" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_083r_m-99" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-100" con="d" wordpos="m">o</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-100" con="d" wordpos="m"><rend fontstyle="italic">o</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-88" dur="1" dur.ppq="1024" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_083r_m-101" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-102" wordpos="t">ne</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-102" wordpos="t"><rend fontstyle="italic">ne</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-89" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_083r_m-103" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-104" con="d" wordpos="i">cu</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-104" con="d" wordpos="i"><rend fontstyle="italic">cu</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-91" dur="1" dur.ppq="1024" oct="3" pname="b"
@@ -179,7 +180,7 @@
                            <note xml:id="Th_1569_LN1426_083r_m-92" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-105" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-106" wordpos="t">ius</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-106" wordpos="t"><rend fontstyle="italic">ius</rend></syl>
                               </verse>
                            </note>
                         </layer>
@@ -198,31 +199,31 @@
                            <note xml:id="Th_1569_LN1426_083r_m-112" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_083r_m-121" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-122" con="d" wordpos="i">li</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-122" con="d" wordpos="i"><rend fontstyle="italic">li</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-113" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-123" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-124" con="d" wordpos="m">be</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-124" con="d" wordpos="m"><rend fontstyle="italic">be</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-114" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_083r_m-125" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-126" con="d" wordpos="m">ra</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-126" con="d" wordpos="m"><rend fontstyle="italic">ra</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-115" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_083r_m-127" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-128" wordpos="t">ti</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-128" wordpos="t"><rend fontstyle="italic">ti</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-116" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_083r_m-129" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-130" con="d" wordpos="i">su</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-130" con="d" wordpos="i"><rend fontstyle="italic">su</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-118" dur="1" dur.ppq="1024" oct="3" pname="f"
@@ -230,7 +231,7 @@
                            <note xml:id="Th_1569_LN1426_083r_m-120" dur="breve" dur.ppq="2048" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_083r_m-131" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-132" wordpos="t">mus.</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-132" wordpos="t"><rend fontstyle="italic">mus.</rend></syl>
                               </verse>
                            </note>
                         </layer>
@@ -251,25 +252,25 @@
                            <note xml:id="Th_1569_LN1426_083r_m-138" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_083r_m-143" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-144" con="d" wordpos="i">Ky</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-144" con="d" wordpos="i"><rend fontstyle="italic">Ky</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-139" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_083r_m-145" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-146" con="d" wordpos="m">ri</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-146" con="d" wordpos="m"><rend fontstyle="italic">ri</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-140" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_083r_m-147" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-148" con="d" wordpos="m">e</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-148" con="d" wordpos="m"><rend fontstyle="italic">e</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_083r_m-141" dur="long" dur.ppq="4096" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_083r_m-149" n="1">
-                                 <syl xml:id="Th_1569_LN1426_083r_m-150" wordpos="t">leis.</syl>
+                                 <syl xml:id="Th_1569_LN1426_083r_m-150" wordpos="t"><rend fontstyle="italic">leis.</rend></syl>
                               </verse>
                            </note>
                         </layer>

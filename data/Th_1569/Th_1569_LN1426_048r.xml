@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_048r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_048r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_048r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <rest xml:id="Th_1569_LN1426_048r_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_048r_m-37" dur="2" dur.ppq="512"/>
                            <note xml:id="Th_1569_LN1426_048r_m-38" dur="2" dur.ppq="512" oct="4" pname="d"
@@ -70,7 +71,9 @@
                                  <syl xml:id="Th_1569_LN1426_048r_m-62" con="d" wordpos="i">ind</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_048r_m-41" dur="2" dur.ppq="512" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_048r_annot1"><rend rend="italic">dig du est bene-dide</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_048r_m-41" dur="2" dur.ppq="512" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_048r_m-59" n="2">
                                  <syl xml:id="Th_1569_LN1426_048r_m-60" wordpos="i">dig</syl>
@@ -127,6 +130,7 @@
                                  <syl xml:id="Th_1569_LN1426_048r_m-84" wordpos="t">dide/</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="pb" tstamp="31" place="above" label="Sideskift"
@@ -400,7 +404,9 @@
                                  <syl xml:id="Th_1569_LN1426_048r_m-235" wordpos="i">Den</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_048r_m-223" dur="1" dur.ppq="1024" oct="4" pname="g"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_048r_annot2"><rend rend="italic">Ma-rie</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_048r_m-223" dur="1" dur.ppq="1024" oct="4" pname="g"
                                  pnum="67">
                               <verse xml:id="Th_1569_LN1426_048r_m-236" n="1">
                                  <syl xml:id="Th_1569_LN1426_048r_m-237" con="d" wordpos="i">Ma</syl>
@@ -411,7 +417,7 @@
                               <verse xml:id="Th_1569_LN1426_048r_m-238" n="1">
                                  <syl xml:id="Th_1569_LN1426_048r_m-239" wordpos="t">rie</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_048r_m-225" dur="2" dur.ppq="512" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_048r_m-240" n="1">

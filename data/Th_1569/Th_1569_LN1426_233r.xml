@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_233r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_233r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_233r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_233r_m-36" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_233r_m-45" n="1">
@@ -50,7 +51,9 @@
                                  <syl xml:id="Th_1569_LN1426_233r_m-48" wordpos="i">Jeg</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_233r_m-37" dur="2" dur.ppq="512" oct="3" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_233r_annot1"><rend rend="italic">Men-niske</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_233r_m-37" dur="2" dur.ppq="512" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_233r_m-49" n="2">
                                  <syl xml:id="Th_1569_LN1426_233r_m-50" wordpos="i">vil</syl>
@@ -65,6 +68,7 @@
                                  <syl xml:id="Th_1569_LN1426_233r_m-54" wordpos="t">niske</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_233r_m-39" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_233r_m-55" n="2">
@@ -275,7 +279,9 @@
                                  <syl xml:id="Th_1569_LN1426_233r_m-168" wordpos="t">uer</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_233r_m-157" dur="1" dur.ppq="1024" oct="3" pname="a"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_233r_annot2"><rend rend="italic">al-ting at</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_233r_m-157" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_233r_m-169" n="1">
                                  <syl xml:id="Th_1569_LN1426_233r_m-170" con="d" wordpos="i">al</syl>
@@ -295,6 +301,7 @@
                                  <syl xml:id="Th_1569_LN1426_233r_m-174" wordpos="i">at</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_233r_m-161" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_233r_m-175" n="1">

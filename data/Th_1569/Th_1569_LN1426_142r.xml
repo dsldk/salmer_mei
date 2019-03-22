@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_142r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_142r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_142r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_142r_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_142r_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_142r_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_142r_m-38" dur="1" dur.ppq="1024" oct="3" pname="f"
@@ -99,6 +103,7 @@
                                   endid="#Th_1569_LN1426_142r_m-45"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_142r_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_142r_m-64" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_142r_m-63" right="invis">
@@ -166,10 +171,14 @@
                   <sb xml:id="Th_1569_LN1426_142r_m-97" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_142r_m-96" right="invis">
                      <staff xml:id="Th_1569_LN1426_142r_m-98" n="1">
-                        <layer xml:id="Th_1569_LN1426_142r_m-99" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_142r_annot1">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_142r_m-99" n="1">
                            <rest xml:id="Th_1569_LN1426_142r_m-100" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_142r_m-101" dur="1" dur.ppq="1024"/>
-                           <note xml:id="Th_1569_LN1426_142r_m-102" dur="1" dur.ppq="1024" oct="3" pname="f"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_142r_annot2"><rend rend="italic">Thi Guds ord i alle</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_142r_m-102" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_142r_m-111" n="1">
                                  <syl xml:id="Th_1569_LN1426_142r_m-112" wordpos="i">Thi</syl>
@@ -200,6 +209,7 @@
                                  <syl xml:id="Th_1569_LN1426_142r_m-120" wordpos="i">alle</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_142r_m-108" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_142r_m-121" n="1">
@@ -219,6 +229,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <bracketSpan xml:id="Th_1569_LN1426_142r_m-108_coloration" func="coloration"
                                   startid="#Th_1569_LN1426_142r_m-108"
@@ -229,8 +240,12 @@
                   <sb xml:id="Th_1569_LN1426_142r_m-129" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_142r_m-128" right="invis">
                      <staff xml:id="Th_1569_LN1426_142r_m-130" n="1">
-                        <layer xml:id="Th_1569_LN1426_142r_m-131" n="1">
-                           <note xml:id="Th_1569_LN1426_142r_m-132" dur="1" dur.ppq="1024" oct="3" pname="c"
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_142r_annot3">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_142r_m-131" n="1">
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_142r_annot4"><rend rend="italic">vd-robis/ at</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_142r_m-132" dur="1" dur.ppq="1024" oct="3" pname="c"
                                  pnum="48">
                               <verse xml:id="Th_1569_LN1426_142r_m-146" n="1">
                                  <syl xml:id="Th_1569_LN1426_142r_m-147" con="d" wordpos="i">vd</syl>
@@ -248,7 +263,10 @@
                                  <syl xml:id="Th_1569_LN1426_142r_m-151" wordpos="i">at</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_142r_m-136" dur="breve" dur.ppq="2048" oct="3" pname="a"
+                           </unclear>
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_142r_annot5"><rend rend="italic">det monne</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_142r_m-136" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_142r_m-152" n="1">
                                  <syl xml:id="Th_1569_LN1426_142r_m-153" wordpos="i">det</syl>
@@ -261,6 +279,7 @@
                                  <syl xml:id="Th_1569_LN1426_142r_m-155" wordpos="i">monne</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_142r_m-139" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_142r_m-156" n="1">
@@ -284,6 +303,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <dir type="sb" tstamp="15" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_142r_m-135">ǀ</dir>

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_326v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_326v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_326v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_326v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_326v_m-41" n="2">
@@ -59,7 +60,9 @@
                                  <syl xml:id="Th_1569_LN1426_326v_m-50" con="d" wordpos="m">sig</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_326v_m-38" dur="1" dur.ppq="1024" oct="3" pname="b"
+<unclear>                           
+   <annot xml:id="Th_1569_LN1426_326v_annot1"><rend rend="italic">er den</rend>: tekstfordeling usikker</annot>
+   <note xml:id="Th_1569_LN1426_326v_m-38" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="58"
                                  accid.ges="f">
                               <verse xml:id="Th_1569_LN1426_326v_m-45" n="2">
@@ -68,7 +71,7 @@
                               <verse xml:id="Th_1569_LN1426_326v_m-51" n="1">
                                  <syl xml:id="Th_1569_LN1426_326v_m-52" con="d" wordpos="m">ne</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_326v_m-40" dur="breve" dur.ppq="2048" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_326v_m-53" n="1">

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_216r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_216r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_216r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_216r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_216r_m-50" n="1">
@@ -92,7 +93,9 @@
                                  <syl xml:id="Th_1569_LN1426_216r_m-71" wordpos="i">som</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_216r_m-42" dur="2" dur.ppq="512" oct="3" pname="b"
+                           <supplied>
+                              <annot xml:id="Th_1569_LN1426_216r_annot1">♭ tilføjet</annot>
+                              <note xml:id="Th_1569_LN1426_216r_m-42" dur="2" dur.ppq="512" oct="3" pname="b"
                                  pnum="58"
                                  accid="f">
                               <verse xml:id="Th_1569_LN1426_216r_m-72" n="1">
@@ -101,7 +104,7 @@
                               <verse xml:id="Th_1569_LN1426_216r_m-74" n="2">
                                  <syl xml:id="Th_1569_LN1426_216r_m-75" wordpos="i">er</syl>
                               </verse>
-                           </note>
+                           </note></supplied>
                            <note xml:id="Th_1569_LN1426_216r_m-44" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57"/>
                            <note xml:id="Th_1569_LN1426_216r_m-45" dur="1" dur.ppq="1024" oct="3" pname="g"
@@ -286,13 +289,16 @@
                                  <syl xml:id="Th_1569_LN1426_216r_m-178" wordpos="i">Hui</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_216r_m-166" dur="1" dur.ppq="1024" oct="3" pname="b"
+                           <supplied>
+                              <annot xml:id="Th_1569_LN1426_216r_annot2">♭ tilføjet</annot>
+                              <note xml:id="Th_1569_LN1426_216r_m-166" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="58"
                                  accid="f">
                               <verse xml:id="Th_1569_LN1426_216r_m-179" n="1">
                                  <syl xml:id="Th_1569_LN1426_216r_m-180" con="d" wordpos="i">la</syl>
                               </verse>
                            </note>
+                           </supplied>
                            <note xml:id="Th_1569_LN1426_216r_m-168" dur="2" dur.ppq="512" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_216r_m-181" n="1">

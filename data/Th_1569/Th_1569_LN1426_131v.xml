@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_131v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_131v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_131v_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_131v_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_131v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_131v_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_131v_m-38" dur="2" dur.ppq="512" oct="3" pname="d"
@@ -97,6 +101,7 @@
                      </staff>
                      <dir type="pb" tstamp="47" place="above" label="Sideskift"
                           xml:id="Th_1569_LN1426_131v_m-46">ǁ</dir>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_131v_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_131v_m-65" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_131v_m-64" right="invis">
@@ -154,10 +159,14 @@
                   <sb xml:id="Th_1569_LN1426_131v_m-91" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_131v_m-90" right="invis">
                      <staff xml:id="Th_1569_LN1426_131v_m-92" n="1">
-                        <layer xml:id="Th_1569_LN1426_131v_m-93" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_131v_annot1">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_131v_m-93" n="1">
                            <rest xml:id="Th_1569_LN1426_131v_m-94" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_131v_m-95" dur="1" dur.ppq="1024"/>
-                           <note xml:id="Th_1569_LN1426_131v_m-96" dur="2" dur.ppq="512" oct="3" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_131v_annot2"><rend rend="italic">met Konning</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_131v_m-96" dur="2" dur.ppq="512" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_131v_m-106" n="1">
                                  <syl xml:id="Th_1569_LN1426_131v_m-107" wordpos="i">met</syl>
@@ -171,6 +180,7 @@
                                  <syl xml:id="Th_1569_LN1426_131v_m-109" wordpos="i">Konning</syl>
                               </verse>
                            </note>
+                           </unclear>
                            <note xml:id="Th_1569_LN1426_131v_m-99" dur="1" dur.ppq="1024" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_131v_m-110" n="1">
@@ -183,7 +193,9 @@
                                  <syl xml:id="Th_1569_LN1426_131v_m-113" wordpos="t">uid</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_131v_m-101" dur="1" dur.ppq="1024" oct="3" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_131v_annot3"><rend rend="italic">Psal-mi-</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_131v_m-101" dur="1" dur.ppq="1024" oct="3" pname="d"
                                  pnum="50">
                               <verse xml:id="Th_1569_LN1426_131v_m-114" n="1">
                                  <syl xml:id="Th_1569_LN1426_131v_m-115" con="d" wordpos="i">Psal</syl>
@@ -194,7 +206,7 @@
                               <verse xml:id="Th_1569_LN1426_131v_m-116" n="1">
                                  <syl xml:id="Th_1569_LN1426_131v_m-117" con="d" wordpos="m">mi</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_131v_m-103" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55"/>
                            <note xml:id="Th_1569_LN1426_131v_m-105" dur="breve" dur.ppq="2048" oct="3" pname="a"
@@ -204,6 +216,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <dir type="pb" tstamp="47" place="above" label="Sideskift"
                           xml:id="Th_1569_LN1426_131v_m-104">ǁ</dir>
@@ -211,7 +224,9 @@
                   <sb xml:id="Th_1569_LN1426_131v_m-122" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_131v_m-121" right="invis">
                      <staff xml:id="Th_1569_LN1426_131v_m-123" n="1">
-                        <layer xml:id="Th_1569_LN1426_131v_m-124" n="1">
+                        <reg>
+                           <annot xml:id="Th_1569_LN1426_131v_annot4">gentaget passage skrevet ud uden gentagelsestegn</annot>
+                           <layer xml:id="Th_1569_LN1426_131v_m-124" n="1">
                            <note xml:id="Th_1569_LN1426_131v_m-125" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_131v_m-134" n="1">
@@ -252,6 +267,7 @@
                               </verse>
                            </note>
                         </layer>
+                        </reg>
                      </staff>
                      <bracketSpan xml:id="Th_1569_LN1426_131v_m-130" func="ligature"
                                   startid="#Th_1569_LN1426_131v_m-129"

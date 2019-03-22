@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_006v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_006v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_006v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_006v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_006v_m-48" n="1">
@@ -255,7 +256,7 @@
                                   lform="solid"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_006v_m-142" label="editorial"/>
-                  <measure xml:id="Th_1569_LN1426_006v_m-141" right="invis">
+                  <measure xml:id="Th_1569_LN1426_006v_m-141" right="single">
                      <staff xml:id="Th_1569_LN1426_006v_m-143" n="1">
                         <layer xml:id="Th_1569_LN1426_006v_m-144" n="1">
                            <rest xml:id="Th_1569_LN1426_006v_m-145" dur="1" dur.ppq="1024"/>

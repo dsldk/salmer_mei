@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_257v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_257v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_257v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_257v_m-36" dur="breve" dur.ppq="2048" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_257v_m-51" n="1">
@@ -163,7 +164,9 @@
                            </note>
                            <note xml:id="Th_1569_LN1426_257v_m-82" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55"/>
-                           <note xml:id="Th_1569_LN1426_257v_m-83" dur="1" dur.ppq="1024" oct="3" pname="a"
+                           <reg>
+                              <annot xml:id="Th_1569_LN1426_257v_annot1">♭ før ligaturen flyttet til før h</annot>
+                              <note xml:id="Th_1569_LN1426_257v_m-83" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_257v_m-105" n="1">
                                  <syl xml:id="Th_1569_LN1426_257v_m-106" con="d" wordpos="i">off</syl>
@@ -172,6 +175,7 @@
                            <note xml:id="Th_1569_LN1426_257v_m-85" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="58"
                                  accid="f"/>
+                           </reg>
                            <note xml:id="Th_1569_LN1426_257v_m-87" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_257v_m-107" n="1">

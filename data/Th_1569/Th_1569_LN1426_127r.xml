@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_127r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_127r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_127r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_127r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_127r_m-47" n="1">
@@ -105,6 +106,7 @@
                      </staff>
                      <dir type="sb" tstamp="40.75" place="above" label="Linjeskift"
                           xml:id="Th_1569_LN1426_127r_m-46">ǀ</dir>
+                     <fermata form="norm" layer="1" shape="curved" staff="1" startid="#Th_1569_LN1426_127r_m-45"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_127r_m-68" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_127r_m-67" right="invis">

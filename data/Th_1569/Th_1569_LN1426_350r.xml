@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_350r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_350r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_350r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="common"/>
+                              <meterSig count="3" xml:id="Th_1569_LN1426_350r_meterSig1"/>
+                           </meterSigGrp>
                            <rest xml:id="Th_1569_LN1426_350r_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_350r_m-37" dur="1" dur.ppq="1024"/>
                            <note xml:id="Th_1569_LN1426_350r_m-38" dur="2" dur.ppq="512" oct="3" pname="f"
@@ -99,6 +103,7 @@
                                   endid="#Th_1569_LN1426_350r_m-44"
                                   staff="1"
                                   lwidth="medium"/>
+                     <fermata form="norm" shape="curved" staff="1" layer="1" startid="#Th_1569_LN1426_350r_meterSig1"/>
                   </measure>
                   <sb xml:id="Th_1569_LN1426_350r_m-64" label="editorial"/>
                   <measure xml:id="Th_1569_LN1426_350r_m-63" right="invis">
@@ -452,6 +457,7 @@
                                  <syl xml:id="Th_1569_LN1426_350r_m-240" con="d" wordpos="i">for</syl>
                               </verse>
                            </note>
+                           <annot xml:id="Th_1569_LN1426_350r_annot1"><ref target="https://tekstnet.dk/thomissoen_1569/metadata"><rend rend="italic">punctus divisionis</rend></ref> før noden i tryk</annot>
                            <note xml:id="Th_1569_LN1426_350r_m-226" dots="1" dur="breve" dur.ppq="3072" oct="4"
                                  pname="c"
                                  pnum="60">

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_027r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_027r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_027r_m-35" n="1">
+                           <meterSig sym="cut"/> 
                            <note xml:id="Th_1569_LN1426_027r_m-36" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_027r_m-54" n="1">
@@ -295,7 +296,9 @@
                                  <syl xml:id="Th_1569_LN1426_027r_m-150" wordpos="t">lig</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_027r_m-132" dur="1" dur.ppq="1024" oct="3" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_027r_annot1"><rend rend="italic">Kon-ge-rige</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_027r_m-132" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_027r_m-151" n="1">
                                  <syl xml:id="Th_1569_LN1426_027r_m-152" con="d" wordpos="i">Kon</syl>
@@ -314,7 +317,7 @@
                               <verse xml:id="Th_1569_LN1426_027r_m-155" n="1">
                                  <syl xml:id="Th_1569_LN1426_027r_m-156" wordpos="t">rige/</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="3" place="above" label="Linjeskift"

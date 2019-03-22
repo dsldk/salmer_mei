@@ -41,19 +41,20 @@
                   <measure xml:id="Th_1569_LN1426_274r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_274r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_274r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_274r_m-36" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_274r_m-45" n="2">
                                  <syl xml:id="Th_1569_LN1426_274r_m-46" wordpos="i">Wi</syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_274r_m-47" n="1">
-                                 <syl xml:id="Th_1569_LN1426_274r_m-48" con="d" wordpos="i">CHRI</syl>
+                                 <syl xml:id="Th_1569_LN1426_274r_m-48" con="d" wordpos="i"><rend fontstyle="italic">CHRI</rend></syl>
                               </verse>
                            </note>
                            <note xml:id="Th_1569_LN1426_274r_m-37" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_274r_m-49" n="1">
-                                 <syl xml:id="Th_1569_LN1426_274r_m-50" wordpos="t">Ste</syl>
+                                 <syl xml:id="Th_1569_LN1426_274r_m-50" wordpos="t"><rend fontstyle="italic">S</rend>te</syl>
                               </verse>
                               <verse xml:id="Th_1569_LN1426_274r_m-51" n="2">
                                  <syl xml:id="Th_1569_LN1426_274r_m-52" wordpos="i">som</syl>

@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_111v_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_111v_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_111v_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <rest xml:id="Th_1569_LN1426_111v_m-36" dur="1" dur.ppq="1024"/>
                            <rest xml:id="Th_1569_LN1426_111v_m-37" dur="2" dur.ppq="512"/>
                            <note xml:id="Th_1569_LN1426_111v_m-38" dur="2" dur.ppq="512" oct="3" pname="d"
@@ -74,7 +75,9 @@
                                  <syl xml:id="Th_1569_LN1426_111v_m-57" wordpos="t">i</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_111v_m-43" dots="1" dur="2" dur.ppq="768" oct="4"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_111v_annot1"><rend rend="italic">Him-me-rig</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_111v_m-43" dots="1" dur="2" dur.ppq="768" oct="4"
                                  pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_111v_m-58" n="1">
@@ -97,6 +100,7 @@
                                  <syl xml:id="Th_1569_LN1426_111v_m-63" wordpos="t">rig/</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                   </measure>
@@ -186,7 +190,9 @@
                                  <syl xml:id="Th_1569_LN1426_111v_m-116" wordpos="i">til</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_111v_m-102" dur="2" dur.ppq="512" oct="3" pname="g"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_111v_annot2"><rend rend="italic">Jor-de-rig</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_111v_m-102" dur="2" dur.ppq="512" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_111v_m-117" n="1">
                                  <syl xml:id="Th_1569_LN1426_111v_m-118" con="d" wordpos="i">Jor</syl>
@@ -208,6 +214,7 @@
                                  <syl xml:id="Th_1569_LN1426_111v_m-122" wordpos="t">rig/</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="19" place="above" label="Linjeskift"

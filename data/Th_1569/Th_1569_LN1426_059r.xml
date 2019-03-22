@@ -41,6 +41,7 @@
                   <measure xml:id="Th_1569_LN1426_059r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_059r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_059r_m-35" n="1">
+                           <meterSig sym="cut"/>
                            <note xml:id="Th_1569_LN1426_059r_m-36" dur="1" dur.ppq="1024" oct="4" pname="c"
                                  pnum="60">
                               <verse xml:id="Th_1569_LN1426_059r_m-45" n="2">
@@ -626,7 +627,9 @@
                                  <syl xml:id="Th_1569_LN1426_059r_m-343" con="d" wordpos="i">for</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_059r_m-324" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_059r_annot1"><rend rend="italic">-ta-bit</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_059r_m-324" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_059r_m-344" n="1">
                                  <syl xml:id="Th_1569_LN1426_059r_m-345" con="d" wordpos="m">ta</syl>
@@ -640,7 +643,7 @@
                               <verse xml:id="Th_1569_LN1426_059r_m-346" n="1">
                                  <syl xml:id="Th_1569_LN1426_059r_m-347" wordpos="t">bit</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                            <note xml:id="Th_1569_LN1426_059r_m-328" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_059r_m-348" n="1">

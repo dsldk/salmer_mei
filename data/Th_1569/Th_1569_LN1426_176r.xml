@@ -41,6 +41,10 @@
                   <measure xml:id="Th_1569_LN1426_176r_m-32" right="invis">
                      <staff xml:id="Th_1569_LN1426_176r_m-34" n="1">
                         <layer xml:id="Th_1569_LN1426_176r_m-35" n="1">
+                           <meterSigGrp func="mixed">
+                              <meterSig sym="cut"/>
+                              <meterSig count="2"/>
+                           </meterSigGrp>
                            <note xml:id="Th_1569_LN1426_176r_m-36" dur="breve" dur.ppq="2048" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_176r_m-44" n="1">
@@ -246,7 +250,9 @@
                                  <syl xml:id="Th_1569_LN1426_176r_m-154" con="d" wordpos="i">w</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_176r_m-132" dur="1" dur.ppq="1024" oct="3" pname="b"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_176r_annot1"><rend rend="italic">Syn-der</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_176r_m-132" dur="1" dur.ppq="1024" oct="3" pname="b"
                                  pnum="59">
                               <verse xml:id="Th_1569_LN1426_176r_m-155" n="1">
                                  <syl xml:id="Th_1569_LN1426_176r_m-156" con="d" wordpos="m">ly</syl>
@@ -269,7 +275,7 @@
                               <verse xml:id="Th_1569_LN1426_176r_m-163" n="2">
                                  <syl xml:id="Th_1569_LN1426_176r_m-164" wordpos="t">der/</syl>
                               </verse>
-                           </note>
+                           </note></unclear>
                         </layer>
                      </staff>
                      <dir type="pb" tstamp="19" place="above" label="Sideskift"
@@ -318,7 +324,9 @@
                                  <syl xml:id="Th_1569_LN1426_176r_m-195" wordpos="i">nu</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_176r_m-175" dur="1" dur.ppq="1024" oct="3" pname="e"
+                           <unclear>
+                              <annot xml:id="Th_1569_LN1426_176r_annot2"><rend rend="italic">be-fin-der</rend>: tekstfordeling usikker</annot>
+                              <note xml:id="Th_1569_LN1426_176r_m-175" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_176r_m-196" n="1">
                                  <syl xml:id="Th_1569_LN1426_176r_m-197" con="d" wordpos="i">Barm</syl>
@@ -351,6 +359,7 @@
                                  <syl xml:id="Th_1569_LN1426_176r_m-209" wordpos="t">der.</syl>
                               </verse>
                            </note>
+                           </unclear>
                         </layer>
                      </staff>
                      <dir type="sb" tstamp="27" place="above" label="Linjeskift"
