@@ -33,7 +33,7 @@
         </xsl:copy>
     </xsl:template>
 
-    <!-- Remove <measure> container elements -->
+    <!-- Remove <measure> container element -->
     <xsl:template match="m:measure" priority="1">
             <xsl:apply-templates/>
     </xsl:template>
@@ -45,50 +45,46 @@
     <xsl:template match="m:fermata"/>
     
     <!-- Add a <barLine> to <layer> if needed -->
-    <xsl:template match="m:staff">
+    <xsl:template match="m:layer">
         <xsl:copy>
-            <xsl:choose>
-                <xsl:when test="ancestor::m:measure[@right='invis']">
-                    <xsl:apply-templates select="@* | *"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <!-- Add a bar line -->
-                    <xsl:apply-templates select="@* | *[not(name()='layer')]"/>
-                    <xsl:variable name="layer_temp">
-                        <xsl:apply-templates select="m:layer"/>
-                    </xsl:variable>
-                    <xsl:variable name="layer" select="exsl:node-set($layer_temp)"/>
-                    <layer type="copy">
-                        <xsl:copy-of select="$layer/*/@* | $layer/*/node()"/>
-                        <xsl:variable name="form">
-                            <xsl:choose>
-                                <xsl:when test="ancestor::m:measure/@right">
-                                    <xsl:value-of select="ancestor::m:measure/@right"/>
-                                </xsl:when>
-                                <xsl:otherwise>single</xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:variable>
-                        <barLine>
-                            <xsl:attribute name="form"><xsl:value-of select="$form"/></xsl:attribute>
-                        </barLine>
-                    </layer>
-                </xsl:otherwise>
-            </xsl:choose>
-            <xsl:apply-templates select="ancestor::m:measure/m:fermata" mode="fermata"/>
-        </xsl:copy>
+            <xsl:apply-templates select="@* | *"/>
+            <xsl:if test="not(ancestor::m:measure[@right='invis'])">
+                <xsl:variable name="form">
+                    <xsl:choose>
+                        <xsl:when test="ancestor::m:measure/@right">
+                            <xsl:value-of select="ancestor::m:measure/@right"/>
+                        </xsl:when>
+                        <xsl:otherwise>single</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <barLine>
+                    <xsl:attribute name="form"><xsl:value-of select="$form"/></xsl:attribute>
+                </barLine>
+            </xsl:if>
+        </xsl:copy>        
     </xsl:template>
     
-    <!-- Turn note/verse/syl structures into syllable/uneume/note -->
-    <xsl:template match="m:note[m:verse/m:syl/text()]">
-        <syllable>
-            <xsl:attribute name="xml:id"><xsl:value-of select="m:verse[m:syl/text()][1]/@xml:id"/>_syl</xsl:attribute>
-            <!--<xsl:apply-templates select="m:verse/m:syl[text()]"/>-->
-            <xsl:apply-templates select="m:verse[m:syl/text()]"/>
-            <xsl:variable name="syllables_left" select="count(following-sibling::m:note[m:verse])"/>
-            <xsl:apply-templates select=". | following-sibling::m:note[not(m:verse) and count(following-sibling::m:note[m:verse])=$syllables_left]" mode="makeNeumes"/>          
-        </syllable>        
+    <!-- Turn note/verse/syl structures into syllable/neume/nc or neume/nc -->
+    <xsl:template match="m:note">
+        <xsl:choose>
+            <xsl:when test="m:verse/m:syl/text()">
+                <syllable>
+                    <xsl:attribute name="xml:id"><xsl:value-of select="m:verse[m:syl/text()][1]/@xml:id"/>_syl</xsl:attribute>
+                    <xsl:apply-templates select="m:verse[m:syl/text()]"/>
+                    <xsl:variable name="syllables_left" select="count(following-sibling::m:note[m:verse])"/>
+                    <xsl:apply-templates select=". | following-sibling::m:note[not(m:verse) and count(following-sibling::m:note[m:verse])=$syllables_left]" mode="makeNeumes"/>          
+                </syllable>        
+            </xsl:when>
+            <xsl:when test="not(ancestor::m:layer//m:verse/m:syl/text())">
+                <!-- A layer without vocal text; make each note a neume -->
+                <xsl:apply-templates select="." mode="makeNeumes"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- Skip; the note should be taken care of already under the <syllable> above -->
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
-
+    
     <xsl:template match="m:note" mode="makeNeumes">
         <!-- Group notes into neumes according to the 'ligature slurs' -->
         <xsl:variable name="id" select="@xml:id"/>
@@ -119,8 +115,6 @@
         </nc>
     </xsl:template>
     
-    <xsl:template match="m:note[not(m:verse/m:syl/text())]"/>
-        
     <xsl:template name="under_slur">
         <!-- Determine whether a note is placed at the start, middle, or end of a slur - or not under a slur at all -->
         <xsl:param name="id"/>
