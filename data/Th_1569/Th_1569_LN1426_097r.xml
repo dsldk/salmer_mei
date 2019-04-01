@@ -72,7 +72,9 @@
                                  <syl xml:id="Th_1569_LN1426_097r_m-61" con="d" wordpos="i">Høy</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_097r_m-41" dur="1" dur.ppq="1024" oct="3" pname="g"
+                           <damage>
+                              <annot xml:id="Th_1569_LN1426_097r_annot1"><rend rend="italic">-tid oc stor Aan-de-lig</rend>: lakune i orig. Indsat efter trykt faksimile</annot>
+                              <note xml:id="Th_1569_LN1426_097r_m-41" dur="1" dur.ppq="1024" oct="3" pname="g"
                                  pnum="55">
                               <verse xml:id="Th_1569_LN1426_097r_m-62" n="1">
                                  <syl xml:id="Th_1569_LN1426_097r_m-63" wordpos="t">tid</syl>
@@ -110,6 +112,7 @@
                                  <syl xml:id="Th_1569_LN1426_097r_m-73" wordpos="t">lig</syl>
                               </verse>
                            </note>
+                           </damage>
                            <note xml:id="Th_1569_LN1426_097r_m-50" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53">
                               <verse xml:id="Th_1569_LN1426_097r_m-74" n="1">
@@ -177,7 +180,9 @@
                            </note>
                            <note xml:id="Th_1569_LN1426_097r_m-95" dur="1" dur.ppq="1024" oct="3" pname="a"
                                  pnum="57"/>
-                           <note xml:id="Th_1569_LN1426_097r_m-96" dur="breve" dur.ppq="2048" oct="3" pname="a"
+                           <damage>
+                              <annot xml:id="Th_1569_LN1426_097r_annot2"><rend rend="italic">sind ly-stig</rend>: lakune i orig. Indsat efter trykt faksimile</annot>
+                              <note xml:id="Th_1569_LN1426_097r_m-96" dur="breve" dur.ppq="2048" oct="3" pname="a"
                                  pnum="57">
                               <verse xml:id="Th_1569_LN1426_097r_m-120" n="1">
                                  <syl xml:id="Th_1569_LN1426_097r_m-121" wordpos="i">sind</syl>
@@ -199,6 +204,7 @@
                            </note>
                            <note xml:id="Th_1569_LN1426_097r_m-102" dur="1" dur.ppq="1024" oct="3" pname="f"
                                  pnum="53"/>
+                           </damage>
                            <note xml:id="Th_1569_LN1426_097r_m-104" dur="1" dur.ppq="1024" oct="3" pname="e"
                                  pnum="52">
                               <verse xml:id="Th_1569_LN1426_097r_m-126" n="1">
@@ -301,7 +307,9 @@
                            </note>
                            <note xml:id="Th_1569_LN1426_097r_m-147" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62"/>
-                           <note xml:id="Th_1569_LN1426_097r_m-148" dur="1" dur.ppq="1024" oct="4" pname="d"
+                           <damage>
+                              <annot xml:id="Th_1569_LN1426_097r_annot3"><rend rend="italic">Siel oc</rend>: lakune i orig. Indsat efter trykt faksimile</annot>
+                              <note xml:id="Th_1569_LN1426_097r_m-148" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_097r_m-160" n="1">
                                  <syl xml:id="Th_1569_LN1426_097r_m-161" wordpos="i">Siel</syl>
@@ -313,6 +321,7 @@
                                  <syl xml:id="Th_1569_LN1426_097r_m-163" wordpos="i">oc</syl>
                               </verse>
                            </note>
+                           </damage>
                            <note xml:id="Th_1569_LN1426_097r_m-151" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62"/>
                            <note xml:id="Th_1569_LN1426_097r_m-153" dur="breve" dur.ppq="2048" oct="4" pname="d"

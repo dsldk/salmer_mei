@@ -297,7 +297,9 @@
                                  <syl xml:id="Th_1569_LN1426_186r_m-182" con="d" wordpos="i">for</syl>
                               </verse>
                            </note>
-                           <note xml:id="Th_1569_LN1426_186r_m-174" dur="2" dur.ppq="512" oct="4" pname="e"
+                           <damage>
+                              <annot xml:id="Th_1569_LN1426_186r_annot2"><rend rend="italic">-dærff-uit i</rend>: lakune i orig. Indsat efter trykt faksimile</annot>
+                              <note xml:id="Th_1569_LN1426_186r_m-174" dur="2" dur.ppq="512" oct="4" pname="e"
                                  pnum="64">
                               <verse xml:id="Th_1569_LN1426_186r_m-183" n="1">
                                  <syl xml:id="Th_1569_LN1426_186r_m-184" con="d" wordpos="m">dærff</syl>
@@ -314,7 +316,7 @@
                               <verse xml:id="Th_1569_LN1426_186r_m-187" n="1">
                                  <syl xml:id="Th_1569_LN1426_186r_m-188" wordpos="i">i</syl>
                               </verse>
-                           </note>
+                           </note></damage>
                            <note xml:id="Th_1569_LN1426_186r_m-177" dur="1" dur.ppq="1024" oct="4" pname="d"
                                  pnum="62">
                               <verse xml:id="Th_1569_LN1426_186r_m-189" n="1">
