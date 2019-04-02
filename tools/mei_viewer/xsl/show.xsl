@@ -16,7 +16,7 @@
     
     <xsl:param name="mdiv" select="''"/>
     
-    <xsl:variable name="editorials" select="'add corr damage del gap orig reg sic supplied unclear'"/>
+    <xsl:variable name="editorials" select="'add corr damage del gap orig reg sic supplied unclear annot'"/>
     
     <xsl:template match="m:body">
         <xsl:copy>
@@ -267,20 +267,13 @@
         </xsl:for-each>
     </xsl:template>
     
-    
     <xsl:function name="dsl:editorial_context">
         <!-- Return the name of the node containing the editorial markup -->
         <xsl:param name="node" as="node()"/>
         <xsl:value-of select="name($node/ancestor::*[not(contains('add corr damage del gap orig reg sic supplied unclear', name()))][1])"/>
     </xsl:function>
     
-    <xsl:function name="dsl:attachable_element">
-        <!-- Return the xml:id of the element if an annotation can be attached to it -->
-        <xsl:param name="node" as="node()?"/>
-        <xsl:variable name="name" select="name($node)"/>
-        <xsl:value-of select="$node/descendant-or-self::*[name()='note' or name()='rest' or name()='nc'][1]/@xml:id"/>
-    </xsl:function>
- 
+    
     <!-- HANDLING NEUMES -->
     <!-- Neumes are converted into CWN for rendering -->
     <xsl:template match="processing-instruction()" priority="2"/>
@@ -297,7 +290,7 @@
             </xsl:attribute>
             <!-- Copy most of the staff elements here -->
             <xsl:copy>
-                <xsl:apply-templates select="@* | node()[not(contains('sb pb fermata add corr damage del gap orig reg sic supplied unclear annot',name()))]"/>
+                <xsl:apply-templates select="@* | node()[name()!='annot']"/>
             </xsl:copy>
             <!-- Add slurs -->
             <xsl:apply-templates select="*//m:neume[count(m:nc)&gt;1]" mode="add_slur"/>
@@ -326,14 +319,9 @@
     <xsl:template match="m:fermata[not(ancestor::m:measure)] | m:dir[not(ancestor::m:measure)]"/>
     
     <!-- Render ligatures as slurs -->
-    <xsl:template match="m:uneume | m:neume" mode="add_slur">
+    <xsl:template match="m:neume" mode="add_slur">
         <slur xmlns="http://www.music-encoding.org/ns/mei" layer="1" staff="1">
             <xsl:choose>
-                <xsl:when test="m:note">
-                    <!-- MEI 3.0.0 -->
-                    <xsl:attribute name="startid">#<xsl:value-of select="m:note[1]/@xml:id"/></xsl:attribute>
-                    <xsl:attribute name="endid">#<xsl:value-of select="m:note[position()=last()]/@xml:id"/></xsl:attribute>
-                </xsl:when>
                 <xsl:when test="m:nc">
                     <!-- MEI 4.0.0 -->
                     <xsl:attribute name="startid">#<xsl:value-of select="m:nc[1]/@xml:id"/></xsl:attribute>
