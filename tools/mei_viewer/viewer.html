@@ -17,7 +17,9 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"><!-- jquery --></script>
         <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"> </script>
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"> </script>-->
-        <script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"> </script>
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"> </script>-->
+        <!-- Use local copy of the Verovio toolkit  -->
+        <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"> </script>
         <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"> </script>
         
         <!-- Local page settings -->
@@ -52,10 +54,12 @@
         
     </head>
 
-    <body style="margin: 0 20px;">
+    <body style="margin: 0 20px;" onload="document.getElementById('v').innerHTML=vrvToolkit.getVersion()">
+        
         
         <div id="upload_menu" class="mei_upload">
-                        
+            <div style="font-size:.8em;color:#84b4cf;float:right;">Verovio version <span id="v"/></div>
+            
             <!-- Hente lokal fil vha. upload -->
             <form id="fileForm" action="">
                 <div>
