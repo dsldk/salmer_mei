@@ -347,7 +347,7 @@
     
     <!-- MEI 3.0.0: <xsl:template match="m:uneume"> -->
     <!-- MEI 4.0.0: <xsl:template match="m:neume"> -->
-    <xsl:template match="m:uneume | m:neume">
+    <xsl:template match="m:neume">
         <xsl:apply-templates/>
     </xsl:template>
     

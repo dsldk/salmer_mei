@@ -53,7 +53,7 @@
     </xsl:variable>
 
     <!-- change note and rest durations if not in neume type notation -->
-    <xsl:template match="@dur[not(ancestor::m:staff//*[@stem.len=0])]">
+    <xsl:template match="@dur[not(ancestor::*[@stem.len=0])]">
         <xsl:attribute name="dur">
             <xsl:variable name="thisDur" select="."/>
             <xsl:choose>
