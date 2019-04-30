@@ -7,10 +7,12 @@ declare namespace dsl="http://dsl.dk";
 
 declare option exist:serialize "method=xhtml media-type=text/xml indent=yes";
 
+(: Generate a file for indexing MEI files in Solr :)
 
-(: It is assumed that the data to be indexed is in /db/dsl/data :)
 
-let $collection := '/db/dsl'
+(: It is assumed that the data to be indexed is in /db/salmer/data :)
+
+let $collection := '/db/salmer'
 
 
 let $index-doc := 
@@ -22,7 +24,7 @@ let $index-doc :=
             <parameters>
                 <param name="filename" value="{$doc-name}"/>
             </parameters>
-        return transform:transform($doc, doc('xsl/index_for_solr_string.xsl'), $params) 
+        return transform:transform($doc, doc('xsl/index_for_solr.xsl'), $params) 
     }
 </add>
 
