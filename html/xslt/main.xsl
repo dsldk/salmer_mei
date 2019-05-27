@@ -50,6 +50,7 @@
     <xsl:include href="listWit.xsl"/>
     <xsl:include href="msDesc.xsl"/>
     <xsl:include href="msIdentifier.xsl"/>
+    <xsl:include href="notatedMusic.xsl"/>
     <xsl:include href="note.xsl"/>
     <xsl:include href="objectDesc.xsl"/>
     <xsl:include href="orig.xsl"/>
@@ -120,6 +121,7 @@
                 <link>
                     <xsl:attribute name="src">../js/dropdown.js</xsl:attribute>
                 </link>
+                <xsl:call-template name="notatedMusic_head"/>
             </head>
             <body>
                 <div class="summary">
