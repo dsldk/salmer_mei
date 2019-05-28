@@ -61,9 +61,10 @@
                         <div id="{$id}" class="mei">
                             <xsl:comment>SVG will be inserted here</xsl:comment>
                         </div>
-                        <xsl:if test="not(normalize-space($mdiv))">
+                        <!-- put in data if this is the first instance referring to the file -->
+                        <xsl:if test="not(normalize-space($mdiv)) or not(preceding-sibling::tei:notatedMusic/tei:ptr[contains(@target,$file)])">
                             <!-- MEI data: -->
-                            <script id="{$id}_data" type="text/xml">
+                            <script id="{substring-before($file,'.xml')}_data" type="text/xml">
                                 <!-- output the root node as text to force an explicit namespace declaration -->
                                 <xsl:text>
                             &lt;mei xmlns="http://www.music-encoding.org/ns/mei"</xsl:text>
