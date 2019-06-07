@@ -358,10 +358,19 @@
     </xsl:template>
     
     <xsl:template match="@artic">
-        <xsl:if test="not(.='upbow' or .='dnbow')">
-            <!-- up- and downbow are treated as coloration markers elsewhere -->
-            <xsl:attribute name="artic"><xsl:value-of select="."/></xsl:attribute>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="not(contains(.,'upbow') or contains(.,'dnbow'))">
+                <xsl:attribute name="artic"><xsl:value-of select="."/></xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+                <!-- up- and downbow are treated as coloration markers elsewhere; delete here -->
+                <xsl:variable name="step1" select="replace(.,'upbow','')"/>
+                <xsl:variable name="step2" select="replace($step1,'dnbow','')"/>
+                <xsl:if test="normalize-space($step2)">
+                    <xsl:attribute name="artic"><xsl:value-of select="normalize-space($step2)"/></xsl:attribute>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
     <xsl:template match="m:measure">
@@ -387,7 +396,7 @@
                 </bracketSpan>
             </xsl:for-each>
             <!-- Coloration -->
-            <xsl:for-each select=".//*[@artic='upbow']">
+            <xsl:for-each select=".//*[contains(@artic,'upbow')]">
                 <bracketSpan>
                     <xsl:attribute name="xml:id">
                         <xsl:value-of select="concat(@xml:id,'_coloration')"/>
@@ -398,8 +407,8 @@
                     </xsl:attribute>
                     <xsl:attribute name="endid">
                         <xsl:choose>
-                            <xsl:when test="following-sibling::*[@artic='dnbow']">
-                                <xsl:value-of select="concat('#',following-sibling::*[@artic='dnbow'][1]/@xml:id)"/>
+                            <xsl:when test="following-sibling::*[contains(@artic,'dnbow')]">
+                                <xsl:value-of select="concat('#',following-sibling::*[contains(@artic,'dnbow')][1]/@xml:id)"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <!-- if no coloration end is marked within the same measure, it it assumed that only one note is colored -->
