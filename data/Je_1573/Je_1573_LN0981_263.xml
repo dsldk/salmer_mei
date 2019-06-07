@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="file:/P:/MEI/schema/MEI%204.0/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
-<?xml-model href="file:/P:/MEI/schema/MEI%204.0/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://music-encoding.org/schema/4.0.0/mei-all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://music-encoding.org/schema/4.0.0/mei-all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      meiversion="4.0.0"
@@ -19,7 +19,8 @@
       </fileDesc>
       <encodingDesc xml:id="Je_1573_LN0981_263_m-16">
         <appInfo xml:id="Je_1573_LN0981_263_m-17">
-            <application xml:id="Je_1573_LN0981_263_sibelius" isodate="2018-11-7T14:56:29Z"
+            <application xml:id="Je_1573_LN0981_263_sibelius"
+                         isodate="2019-6-7T11:50:52Z"
                          version="6200">
                 <name xml:id="Je_1573_LN0981_263_m-19">Sibelius</name>
             </application>
@@ -32,1259 +33,794 @@
    </meiHead>
    <music xml:id="Je_1573_LN0981_263_m-22">
       <body xml:id="Je_1573_LN0981_263_m-23">
-        <mdiv n="1" xml:id="mdiv-01">
+        <mdiv xml:id="Je_1573_LN0981_263_m-24">
             <score xml:id="Je_1573_LN0981_263_m-25">
-               <scoreDef xml:id="Je_1573_LN0981_263_m-26">
-                  <staffGrp xml:id="Je_1573_LN0981_263_m-27">
-                     <staffDef xml:id="Je_1573_LN0981_263_m-28" clef.line="3" clef.shape="C" key.sig="0"
+                <scoreDef xml:id="Je_1573_LN0981_263_m-26">
+                    <staffGrp xml:id="Je_1573_LN0981_263_m-27">
+                        <staffDef xml:id="Je_1573_LN0981_263_m-28"
+                               clef.line="3"
+                               clef.shape="C"
+                               key.sig="1f"
                                lines="5"
-                               n="1"/>
-                  </staffGrp>
-               </scoreDef>
-               <section xml:id="Je_1573_LN0981_263_m-31">
+                               n="1">
+                            
+                            
+                        </staffDef>
+                    </staffGrp>
+                </scoreDef>
+                <section xml:id="Je_1573_LN0981_263_m-31">
                     
-                    
+                    <measure xml:id="Je_1573_LN0981_263_m-32" right="invis">
                         <staff xml:id="Je_1573_LN0981_263_m-34" n="1">
-                     <layer type="copy" xml:id="Je_1573_LN0981_263_m-35" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-47_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-47" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-48" con="d" wordpos="i">AE</syl>
+                            <layer xml:id="Je_1573_LN0981_263_m-35" n="1">
+                                <note xml:id="Je_1573_LN0981_263_m-36"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-47" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-48" wordpos="i">KOm</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e87">
-                              <nc xml:id="Je_1573_LN0981_263_m-37" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-38" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-49_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-49" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-50" con="d" wordpos="m">ter</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-49" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-50" wordpos="i">Dine</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e98">
-                              <nc xml:id="Je_1573_LN0981_263_m-39" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-51_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-51" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-52" wordpos="t">ne</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-37"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-51" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-52" con="d" wordpos="i">hel</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e107">
-                              <nc xml:id="Je_1573_LN0981_263_m-41" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-42" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-53_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-53" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-54" con="d" wordpos="i">De</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-55" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-56" con="d" wordpos="i">Christ</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e119">
-                              <nc xml:id="Je_1573_LN0981_263_m-44" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-45" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-55_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-55" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-56" wordpos="t">us.</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-38"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-53" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-54" wordpos="t">lig</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e130">
-                              <nc xml:id="Je_1573_LN0981_263_m-46" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            <barLine form="single"/>
-                     </layer>
-                  </staff>
-                        
-                        
-                        
-                    
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-58" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-59" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-67_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-67" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-68" wordpos="i">Per</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-57" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-58" wordpos="t">nes</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e156">
-                              <nc xml:id="Je_1573_LN0981_263_m-60" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-69_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-69" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-70" con="d" wordpos="i">Chri</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-39"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-59" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-60" wordpos="i">Aand</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e165">
-                              <nc xml:id="Je_1573_LN0981_263_m-62" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-63" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-64" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-71_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-71" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-72" wordpos="t">stum</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-63" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-64" con="d" wordpos="i">hier</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e178">
-                              <nc xml:id="Je_1573_LN0981_263_m-65" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-40"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-61" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-62" wordpos="i">O</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-65" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-66" wordpos="t">te</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-41"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-67" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-68" wordpos="i">hu</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-69" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-70" con="d" wordpos="i">Her</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-42"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64"/>
+                                <note xml:id="Je_1573_LN0981_263_m-43"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65"/>
+                                <note xml:id="Je_1573_LN0981_263_m-44"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-71" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-72" wordpos="t">re</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-73" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-74" wordpos="i">oc</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-45"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-75" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-76" wordpos="i">Gud/</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-77" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-78" wordpos="i">sind/</syl>
+                                    </verse>
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="5.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-66">ǀ</dir>
-                  </staff>
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-75" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-76" n="1">
-                     <layer type="copy" xml:id="Je_1573_LN0981_263_m-77" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-90_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-90" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-91" con="d" wordpos="i">Do</syl>
+                        </staff>
+                        <dir type="sb"
+                          tstamp="40.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_263_m-46">ǀ</dir>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-80" label="editorial"/>
+                    <measure xml:id="Je_1573_LN0981_263_m-79" right="rptend">
+                        <staff xml:id="Je_1573_LN0981_263_m-81" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-82" n="1">
+                                <rest xml:id="Je_1573_LN0981_263_m-83" dur="1" dur.ppq="1024"/>
+                                <note xml:id="Je_1573_LN0981_263_m-84"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-93" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-94" wordpos="i">din</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e205">
-                              <nc xml:id="Je_1573_LN0981_263_m-79" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-80" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-92_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-92" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-93" con="d" wordpos="m">mi</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-95" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-96" con="d" wordpos="i">op</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e216">
-                              <nc xml:id="Je_1573_LN0981_263_m-82" oct="3" pname="g" pnum="55" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-83" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-94_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-94" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-95" wordpos="t">num</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-85"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-97" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-98" wordpos="t">fyld</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e227">
-                              <nc xml:id="Je_1573_LN0981_263_m-84" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-96_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-96" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-97" con="d" wordpos="i">no</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-101" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-102" con="d" wordpos="i">bren</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e237">
-                              <nc xml:id="Je_1573_LN0981_263_m-86" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-87" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-88" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-98_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-98" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-99" wordpos="t">strum.</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-86"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-99" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-100" wordpos="i">met</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e250">
-                              <nc xml:id="Je_1573_LN0981_263_m-89" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            <barLine form="single"/>
-                     </layer>
-                  </staff>
-                        
-                        
-                        
-                    
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-102" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-103" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-111_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-111" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-112" wordpos="i">Qui</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-103" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-104" wordpos="t">dendis</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e276">
-                              <nc xml:id="Je_1573_LN0981_263_m-104" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-113_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-113" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-114" con="d" wordpos="i">as</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-87"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-105" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-106" wordpos="i">din</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e285">
-                              <nc xml:id="Je_1573_LN0981_263_m-105" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-115_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-115" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-116" con="d" wordpos="m">cen</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-107" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-108" con="d" wordpos="i">kierlig</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e294">
-                              <nc xml:id="Je_1573_LN0981_263_m-106" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-117_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-117" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-118" wordpos="t">dens</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-88"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-109" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-110" wordpos="t">hed</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e303">
-                              <nc xml:id="Je_1573_LN0981_263_m-107" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-119_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-119" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-120" con="d" wordpos="i">su</syl>
+                                    <verse xml:id="Je_1573_LN0981_263_m-111" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-112" con="d" wordpos="i">Naa</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e312">
-                              <nc xml:id="Je_1573_LN0981_263_m-108" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-121_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-121" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-122" wordpos="t">per</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-89"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-113" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-114" wordpos="t">de</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e322">
-                              <nc xml:id="Je_1573_LN0981_263_m-109" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
+                                    <verse xml:id="Je_1573_LN0981_263_m-115" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-116" wordpos="i">i</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-90"
+                                 dots="1"
+                                 dur="1"
+                                 dur.ppq="1536"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-117" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-118" wordpos="i">oc</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-119" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-120" wordpos="i">dem</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-91"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-121" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-122" con="d" wordpos="i">mis</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-125" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-126" con="d" wordpos="i">op</syl>
+                                    </verse>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-92"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-123" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-124" wordpos="t">kund/</syl>
+                                    </verse>
+                                    <verse xml:id="Je_1573_LN0981_263_m-127" n="2">
+                                        <syl xml:id="Je_1573_LN0981_263_m-128" wordpos="t">tend/</syl>
+                                    </verse>
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="6.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-110">ǀ</dir>
-                  </staff>
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-125" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-126" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-127" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-149_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-149" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-150" con="d" wordpos="i">om</syl>
+                        </staff>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-130" label="editorial"/>
+                    <measure xml:id="Je_1573_LN0981_263_m-129" right="invis">
+                        <staff xml:id="Je_1573_LN0981_263_m-131" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-132" n="1">
+                                <rest xml:id="Je_1573_LN0981_263_m-133" dur="1" dur.ppq="1024"/>
+                                <note xml:id="Je_1573_LN0981_263_m-134"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-145" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-146" wordpos="i">O</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e347">
-                              <nc xml:id="Je_1573_LN0981_263_m-128" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-151_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-151" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-152" wordpos="t">nes</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-135"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-147" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-148" con="d" wordpos="i">Her</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e356">
-                              <nc xml:id="Je_1573_LN0981_263_m-130" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-131" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-153_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-153" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-154" con="d" wordpos="i">co</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-136"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-149" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-150" wordpos="t">re</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e367">
-                              <nc xml:id="Je_1573_LN0981_263_m-133" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-134" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-155_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-155" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-156" wordpos="t">los,</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-138"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-151" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-152" wordpos="i">met</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e379">
-                              <nc xml:id="Je_1573_LN0981_263_m-135" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-157_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-157" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-158" con="d" wordpos="i">se</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-139"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-153" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-154" wordpos="i">din</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e388">
-                              <nc xml:id="Je_1573_LN0981_263_m-136" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-159_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-159" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-160" con="d" wordpos="m">dens</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-140"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-155" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-156" con="d" wordpos="i">Naa</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e397">
-                              <nc xml:id="Je_1573_LN0981_263_m-137" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-161_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-161" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-162" wordpos="t">que</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-141"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Je_1573_LN0981_263_m-142"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="b"
+                                 pnum="58"
+                                 accid.ges="f">
+                                    
+                                    <verse xml:id="Je_1573_LN0981_263_m-157" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-158" wordpos="t">dis</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e406">
-                              <nc xml:id="Je_1573_LN0981_263_m-138" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-163_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-163" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-164" wordpos="i">ad</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-144"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="3"
+                                 pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Je_1573_LN0981_263_m-159" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-160" wordpos="i">liuss/</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e415">
-                              <nc xml:id="Je_1573_LN0981_263_m-139" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-165_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-165" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-166" con="d" wordpos="i">der</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e424">
-                              <nc xml:id="Je_1573_LN0981_263_m-140" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-167_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-167" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-168" con="d" wordpos="m">te</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e434">
-                              <nc xml:id="Je_1573_LN0981_263_m-141" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-169_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-169" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-170" wordpos="t">ram</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e443">
-                              <nc xml:id="Je_1573_LN0981_263_m-143" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-144" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-196_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-196" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-197" con="d" wordpos="i">tu</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e454">
-                              <nc xml:id="Je_1573_LN0981_263_m-146" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-147" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="16.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-148">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-173" label="editorial"/>
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-174" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-175" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-198_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-198" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-199" wordpos="t">am,</syl>
+                        </staff>
+                        <dir type="sb"
+                          tstamp="15"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_263_m-137">ǀ</dir>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-162" label="editorial"/>
+                    <measure xml:id="Je_1573_LN0981_263_m-161" right="invis">
+                        <staff xml:id="Je_1573_LN0981_263_m-163" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-164" n="1">
+                                <rest xml:id="Je_1573_LN0981_263_m-165" dur="1" dur.ppq="1024"/>
+                                <note xml:id="Je_1573_LN0981_263_m-166"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="b"
+                                 pnum="58"
+                                 accid.ges="f">
+                                    
+                                    <verse xml:id="Je_1573_LN0981_263_m-178" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-179" wordpos="i">der</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e487">
-                              <nc xml:id="Je_1573_LN0981_263_m-176" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-200_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-200" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-201" con="d" wordpos="i">pro</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-168"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-180" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-181" wordpos="i">met</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e496">
-                              <nc xml:id="Je_1573_LN0981_263_m-177" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-202_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-202" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-203" con="d" wordpos="m">mis</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-169"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-182" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-183" con="d" wordpos="i">be</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e505">
-                              <nc xml:id="Je_1573_LN0981_263_m-178" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-204_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-204" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-205" wordpos="t">sum</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-170"
+                                 dots="1"
+                                 dur="1"
+                                 dur.ppq="1536"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-184" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-185" wordpos="t">pryd</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e514">
-                              <nc xml:id="Je_1573_LN0981_263_m-179" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-206_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-206" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-207" con="d" wordpos="i">Sp</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-171"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-186" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-187" wordpos="i">vort</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e523">
-                              <nc xml:id="Je_1573_LN0981_263_m-181" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-182" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-183" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-208_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-208" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-209" con="d" wordpos="m">ri</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-172"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="3"
+                                 pname="b"
+                                 pnum="58"
+                                 accid.ges="f">
+                                    
+                                    <verse xml:id="Je_1573_LN0981_263_m-188" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-189" con="d" wordpos="i">hier</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e537">
-                              <nc xml:id="Je_1573_LN0981_263_m-184" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-210_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-210" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-211" wordpos="t">tum</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-174"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Je_1573_LN0981_263_m-175"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Je_1573_LN0981_263_m-190" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-191" wordpos="t">tis</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e546">
-                              <nc xml:id="Je_1573_LN0981_263_m-186" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-187" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-188" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-212_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-212" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-213" con="d" wordpos="i">sanc</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-177"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-192" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-193" wordpos="i">huss/</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e560">
-                              <nc xml:id="Je_1573_LN0981_263_m-190" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-191" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-214_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-214" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-215" wordpos="t">tum,</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e571">
-                              <nc xml:id="Je_1573_LN0981_263_m-192" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-239_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-239" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-240" con="d" wordpos="i">ho</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e580">
-                              <nc xml:id="Je_1573_LN0981_263_m-193" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-241_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-241" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-242" con="d" wordpos="m">di</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e589">
-                              <nc xml:id="Je_1573_LN0981_263_m-194" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
+                                </note>
                             </layer>
-                     <dir type="pb" tstamp="16.75" place="above" label="Sideskift"
-                          xml:id="Je_1573_LN0981_263_m-195">ǁ</dir>
-                  </staff>
-                        
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-217" label="editorial"/>
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-218" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-219" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-243_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-243" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-244" con="d" wordpos="m">er</syl>
+                        </staff>
+                        <dir type="sb"
+                          tstamp="31"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_263_m-176">ǀ</dir>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-195" label="editorial"/>
+                    <measure xml:id="Je_1573_LN0981_263_m-194" right="invis">
+                        <staff xml:id="Je_1573_LN0981_263_m-196" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-197" n="1">
+                                <note xml:id="Je_1573_LN0981_263_m-198"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-207" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-208" wordpos="i">hent</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e617">
-                              <nc xml:id="Je_1573_LN0981_263_m-220" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-245_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-245" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-246" wordpos="t">na</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-199"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-209" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-210" wordpos="i">dem</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e626">
-                              <nc xml:id="Je_1573_LN0981_263_m-221" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-247_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-247" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-248" con="d" wordpos="i">di</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-200"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-211" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-212" con="d" wordpos="i">til</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e635">
-                              <nc xml:id="Je_1573_LN0981_263_m-222" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-249_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-249" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-250" wordpos="t">e,</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-201"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-213" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-214" con="d" wordpos="m">sam</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e644">
-                              <nc xml:id="Je_1573_LN0981_263_m-223" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-251_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-251" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-252" wordpos="i">in</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-202"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-215" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-216" wordpos="t">men</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e653">
-                              <nc xml:id="Je_1573_LN0981_263_m-224" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-253_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-253" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-254" con="d" wordpos="i">fi</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-203"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-217" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-218" wordpos="i">i</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e663">
-                              <nc xml:id="Je_1573_LN0981_263_m-226" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-227" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-228" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-255_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-255" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-256" con="d" wordpos="m">li</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-204"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="g"
+                                 pnum="67">
+                                    <verse xml:id="Je_1573_LN0981_263_m-219" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-220" con="d" wordpos="i">Ver</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e676">
-                              <nc xml:id="Je_1573_LN0981_263_m-229" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-257_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-257" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-258" wordpos="t">os</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-205"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-221" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-222" wordpos="t">den</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e685">
-                              <nc xml:id="Je_1573_LN0981_263_m-230" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-259_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-259" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-260" wordpos="i">ad</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-206"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-223" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-224" wordpos="i">bo/</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e694">
-                              <nc xml:id="Je_1573_LN0981_263_m-231" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-274_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-274" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-275" con="d" wordpos="i">op</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e704">
-                              <nc xml:id="Je_1573_LN0981_263_m-232" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-276_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-276" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-277" con="d" wordpos="m">ti</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e713">
-                              <nc xml:id="Je_1573_LN0981_263_m-233" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-278_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-278" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-279" con="d" wordpos="m">o</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e722">
-                              <nc xml:id="Je_1573_LN0981_263_m-235" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-236" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-237" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="16.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-238">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-262" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-263" n="1">
-                     <layer type="copy" xml:id="Je_1573_LN0981_263_m-264" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-280_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-280" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-281" wordpos="t">nis</syl>
+                        </staff>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-226" label="editorial"/>
+                    <measure xml:id="Je_1573_LN0981_263_m-225" right="invis">
+                        <staff xml:id="Je_1573_LN0981_263_m-227" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-228" n="1">
+                                <rest xml:id="Je_1573_LN0981_263_m-229" dur="1" dur.ppq="1024"/>
+                                <note xml:id="Je_1573_LN0981_263_m-230"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="e"
+                                 pnum="64">
+                                    <verse xml:id="Je_1573_LN0981_263_m-242" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-243" wordpos="i">aff</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e755">
-                              <nc xml:id="Je_1573_LN0981_263_m-266" oct="3" pname="g" pnum="55" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-267" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-282_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-282" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-283" con="d" wordpos="i">ef</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-231"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="f"
+                                 pnum="65">
+                                    <verse xml:id="Je_1573_LN0981_263_m-244" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-245" wordpos="i">alle</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e766">
-                              <nc xml:id="Je_1573_LN0981_263_m-268" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-284_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-284" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-285" con="d" wordpos="m">fu</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-232"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-246" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-247" con="d" wordpos="i">tun</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e775">
-                              <nc xml:id="Je_1573_LN0981_263_m-270" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-271" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-272" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-286_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-286" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-287" wordpos="t">dit.</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-233"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-248" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-249" con="d" wordpos="m">ge</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e789">
-                              <nc xml:id="Je_1573_LN0981_263_m-273" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            <barLine form="single"/>
-                     </layer>
-                  </staff>
-                        
-                        
-                    
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-290" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-291" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-305_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-305" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-306" wordpos="i">Qua</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-235"
+                                 dots="1"
+                                 dur="1"
+                                 dur.ppq="1536"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-250" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-251" wordpos="t">maal</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e813">
-                              <nc xml:id="Je_1573_LN0981_263_m-292" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-307_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-307" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-308" con="d" wordpos="i">prop</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-236"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Je_1573_LN0981_263_m-237"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="3"
+                                 pname="b"
+                                 pnum="58"
+                                 accid.ges="f">
+                                    
+                                    <verse xml:id="Je_1573_LN0981_263_m-252" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-253" wordpos="i">til</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e822">
-                              <nc xml:id="Je_1573_LN0981_263_m-293" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-309_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-309" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-310" wordpos="t">ter</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-239"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Je_1573_LN0981_263_m-240"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Je_1573_LN0981_263_m-254" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-255" wordpos="i">en</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e831">
-                              <nc xml:id="Je_1573_LN0981_263_m-294" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-311_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-311" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-312" con="d" wordpos="i">pro</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-241"
+                                 dur="breve"
+                                 dur.ppq="2048"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-256" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-257" wordpos="i">tro.</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e840">
-                              <nc xml:id="Je_1573_LN0981_263_m-295" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-313_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-313" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-314" con="d" wordpos="m">fu</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e849">
-                              <nc xml:id="Je_1573_LN0981_263_m-296" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-315_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-315" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-316" wordpos="t">sis</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e859">
-                              <nc xml:id="Je_1573_LN0981_263_m-298" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-299" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-342_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-342" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-343" con="d" wordpos="i">gau</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e870">
-                              <nc xml:id="Je_1573_LN0981_263_m-301" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-302" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-344_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-344" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-345" con="d" wordpos="m">di</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e881">
-                              <nc xml:id="Je_1573_LN0981_263_m-303" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="10.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-304">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
+                        </staff>
+                        <dir type="pb"
+                          tstamp="16"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Je_1573_LN0981_263_m-234">ǁ</dir>
+                    </measure>
+                    <sb xml:id="Je_1573_LN0981_263_m-259" label="editorial"/>
                     
-                    <sb xml:id="Je_1573_LN0981_263_m-319" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-320" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-321" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-346_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-346" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-347" wordpos="t">js</syl>
+                    <measure xml:id="Je_1573_LN0981_263_m-258" right="end">
+                        <staff xml:id="Je_1573_LN0981_263_m-260" n="1">
+                            <layer xml:id="Je_1573_LN0981_263_m-261" n="1">
+                                <rest xml:id="Je_1573_LN0981_263_m-262" dur="1" dur.ppq="1024"/>
+                                <note xml:id="Je_1573_LN0981_263_m-263"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-274" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-275" con="d" wordpos="i">Ha</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e910">
-                              <nc xml:id="Je_1573_LN0981_263_m-322" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-348_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-348" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-349" con="d" wordpos="i">to</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-264"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-276" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-277" con="d" wordpos="m">le</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e919">
-                              <nc xml:id="Je_1573_LN0981_263_m-323" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-350_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-350" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-351" wordpos="t">tus</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-265"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-278" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-279" con="d" wordpos="m">lu</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e928">
-                              <nc xml:id="Je_1573_LN0981_263_m-324" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-352_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-352" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-353" wordpos="i">in</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-266"
+                                 dots="1"
+                                 dur="1"
+                                 dur.ppq="1536"
+                                 oct="4"
+                                 pname="d"
+                                 pnum="62">
+                                    <verse xml:id="Je_1573_LN0981_263_m-280" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-281" wordpos="t">ia/</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e937">
-                              <nc xml:id="Je_1573_LN0981_263_m-325" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-354_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-354" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-355" con="d" wordpos="i">or</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-267"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60"/>
+                                <note xml:id="Je_1573_LN0981_263_m-268"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="3"
+                                 pname="b"
+                                 pnum="58"
+                                 accid.ges="f">
+                                    
+                                    <verse xml:id="Je_1573_LN0981_263_m-282" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-283" con="d" wordpos="i">Loff</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e946">
-                              <nc xml:id="Je_1573_LN0981_263_m-327" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-328" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-329" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-356_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-356" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-357" wordpos="t">be</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-270"
+                                 dur="2"
+                                 dur.ppq="512"
+                                 oct="4"
+                                 pname="c"
+                                 pnum="60">
+                                    <verse xml:id="Je_1573_LN0981_263_m-284" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-285" wordpos="t">uer</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e960">
-                              <nc xml:id="Je_1573_LN0981_263_m-330" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-358_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-358" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-359" con="d" wordpos="i">te</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-271"
+                                 dur="1"
+                                 dur.ppq="1024"
+                                 oct="3"
+                                 pname="a"
+                                 pnum="57">
+                                    <verse xml:id="Je_1573_LN0981_263_m-286" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-287" con="d" wordpos="i">Her</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e969">
-                              <nc xml:id="Je_1573_LN0981_263_m-331" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-360_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-360" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-361" con="d" wordpos="m">rar</syl>
+                                </note>
+                                <note xml:id="Je_1573_LN0981_263_m-272"
+                                 dur="long"
+                                 dur.ppq="4096"
+                                 oct="3"
+                                 pname="g"
+                                 pnum="55">
+                                    <verse xml:id="Je_1573_LN0981_263_m-288" n="1">
+                                        <syl xml:id="Je_1573_LN0981_263_m-289" wordpos="t">ren.</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e978">
-                              <nc xml:id="Je_1573_LN0981_263_m-332" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-362_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-362" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-363" wordpos="t">rum</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e987">
-                              <nc xml:id="Je_1573_LN0981_263_m-333" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-364_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-364" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-365" con="d" wordpos="i">mun</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e997">
-                              <nc xml:id="Je_1573_LN0981_263_m-335" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-336" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-337" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-366_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-366" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-367" wordpos="t">dus</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1010">
-                              <nc xml:id="Je_1573_LN0981_263_m-339" oct="3" pname="g" pnum="55" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-340" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
+                                </note>
                             </layer>
-                     <dir type="sb" tstamp="16.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-341">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-370" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-371" n="1">
-                     <layer type="copy" xml:id="Je_1573_LN0981_263_m-372" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-379_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-379" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-380" con="d" wordpos="i">ex</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1042">
-                              <nc xml:id="Je_1573_LN0981_263_m-373" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-381_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-381" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-382" con="d" wordpos="m">ul</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1051">
-                              <nc xml:id="Je_1573_LN0981_263_m-375" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-376" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-377" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-383_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-383" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-384" wordpos="t">tat:</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1064">
-                              <nc xml:id="Je_1573_LN0981_263_m-378" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            <barLine form="single"/>
-                     </layer>
-                  </staff>
-                        
-                    
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-387" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-388" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-403_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-403" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-404" con="d" wordpos="i">Sed</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1086">
-                              <nc xml:id="Je_1573_LN0981_263_m-389" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-405_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-405" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-406" wordpos="t">et</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1095">
-                              <nc xml:id="Je_1573_LN0981_263_m-390" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-407_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-407" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-408" con="d" wordpos="i">su</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1104">
-                              <nc xml:id="Je_1573_LN0981_263_m-391" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-409_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-409" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-410" con="d" wordpos="m">per</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1113">
-                              <nc xml:id="Je_1573_LN0981_263_m-392" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-411_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-411" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-412" wordpos="t">næ</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1122">
-                              <nc xml:id="Je_1573_LN0981_263_m-393" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-413_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-413" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-414" con="d" wordpos="i">vir</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1132">
-                              <nc xml:id="Je_1573_LN0981_263_m-395" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-396" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-415_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-415" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-416" con="d" wordpos="m">tu</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1143">
-                              <nc xml:id="Je_1573_LN0981_263_m-398" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-399" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-417_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-417" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-418" wordpos="t">tes,</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1154">
-                              <nc xml:id="Je_1573_LN0981_263_m-400" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-447_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-447" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-448" con="d" wordpos="i">at</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1163">
-                              <nc xml:id="Je_1573_LN0981_263_m-401" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            </layer>
-                     <dir type="sb" tstamp="11.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-402">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-421" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-422" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-423" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-449_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-449" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-450" wordpos="t">que</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1192">
-                              <nc xml:id="Je_1573_LN0981_263_m-424" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-451_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-451" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-452" con="d" wordpos="i">an</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1201">
-                              <nc xml:id="Je_1573_LN0981_263_m-425" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-453_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-453" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-454" con="d" wordpos="m">ge</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1210">
-                              <nc xml:id="Je_1573_LN0981_263_m-427" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-428" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-429" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-455_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-455" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-456" con="d" wordpos="m">li</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1224">
-                              <nc xml:id="Je_1573_LN0981_263_m-430" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-457_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-457" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-458" wordpos="t">cæ</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1233">
-                              <nc xml:id="Je_1573_LN0981_263_m-431" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-459_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-459" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-460" con="d" wordpos="i">po</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1242">
-                              <nc xml:id="Je_1573_LN0981_263_m-432" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-461_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-461" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-462" con="d" wordpos="m">te</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1251">
-                              <nc xml:id="Je_1573_LN0981_263_m-434" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-435" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-463_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-463" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-464" con="d" wordpos="m">sta</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1262">
-                              <nc xml:id="Je_1573_LN0981_263_m-437" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-438" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-465_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-465" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-466" wordpos="t">tes,</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1274">
-                              <nc xml:id="Je_1573_LN0981_263_m-439" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-467_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-467" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-468" con="d" wordpos="i">hym</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1283">
-                              <nc xml:id="Je_1573_LN0981_263_m-441" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-442" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-443" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-444" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-469_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-469" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-470" wordpos="t">num</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1299">
-                              <nc xml:id="Je_1573_LN0981_263_m-445" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            </layer>
-                     <dir type="sb" tstamp="18.75" place="above" label="Linjeskift"
-                          xml:id="Je_1573_LN0981_263_m-446">ǀ</dir>
-                  </staff>
-                        
-                        
-                        
-                        
-                        
-                    
-                    <sb xml:id="Je_1573_LN0981_263_m-473" label="editorial"/>
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-474" n="1">
-                     <layer xml:id="Je_1573_LN0981_263_m-475" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-499_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-499" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-500" con="d" wordpos="i">glo</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1332">
-                              <nc xml:id="Je_1573_LN0981_263_m-476" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-501_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-501" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-502" con="d" wordpos="m">ri</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1341">
-                              <nc xml:id="Je_1573_LN0981_263_m-477" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-503_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-503" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-504" wordpos="t">æ</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1350">
-                              <nc xml:id="Je_1573_LN0981_263_m-478" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-505_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-505" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-506" con="d" wordpos="i">tu</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1359">
-                              <nc xml:id="Je_1573_LN0981_263_m-480" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-481" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-507_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-507" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-508" wordpos="t">æ</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1371">
-                              <nc xml:id="Je_1573_LN0981_263_m-483" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-484" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-509_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-509" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-510" con="d" wordpos="i">con</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1382">
-                              <nc xml:id="Je_1573_LN0981_263_m-486" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-487" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-511_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-511" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-512" con="d" wordpos="m">ci</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1393">
-                              <nc xml:id="Je_1573_LN0981_263_m-488" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-513_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-513" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-514" wordpos="t">nunt,</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1402">
-                              <nc xml:id="Je_1573_LN0981_263_m-489" oct="3" pname="b" pnum="59" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                <syllable xml:id="Je_1573_LN0981_263_m-515_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-515" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-516" con="d" wordpos="i">si</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1412">
-                              <nc xml:id="Je_1573_LN0981_263_m-491" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-492" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-493" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-494" oct="4" pname="d" pnum="62" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-517_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-517" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-518" wordpos="t">ne</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1427">
-                              <nc xml:id="Je_1573_LN0981_263_m-496" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-497" oct="4" pname="c" pnum="60" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                            </layer>
-                     <dir type="pb" tstamp="17.75" place="above" label="Sideskift"
-                          xml:id="Je_1573_LN0981_263_m-498">ǁ</dir>
-                  </staff>
-                        
-                        
-                        
-                        
-                        
-                        
-                    
-                    <pb/>
-               </section>
-            </score>
-         </mdiv>
-         <mdiv xml:id="mdiv-02" n="2">
-            <score>
-               <scoreDef>
-                  <staffGrp>
-                     <staffDef n="1" key.sig="0" clef.shape="C" clef.line="3" lines="5"/>
-                  </staffGrp>
-               </scoreDef>
-               <section>
-                    
-                    
-                    
-                        <staff xml:id="Je_1573_LN0981_263_m-523" n="1">
-                     <layer type="copy" xml:id="Je_1573_LN0981_263_m-524" n="1">
-                                <syllable xml:id="Je_1573_LN0981_263_m-543_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-543" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-544" con="d" wordpos="i">fi</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1467">
-                              <nc xml:id="Je_1573_LN0981_263_m-526" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-527" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-528" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-545_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-545" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-546" wordpos="t">ne</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1480">
-                              <nc xml:id="Je_1573_LN0981_263_m-530" oct="3" pname="g" pnum="55" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-531" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-547_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-547" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-548" con="d" wordpos="i">di</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1492">
-                              <nc xml:id="Je_1573_LN0981_263_m-533" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-534" oct="4" pname="c" pnum="60" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-535" oct="3" pname="b" pnum="59" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-536" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-549_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-549" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-550" con="d" wordpos="m">cen</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1507">
-                              <nc xml:id="Je_1573_LN0981_263_m-538" oct="3" pname="a" pnum="57" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-539" oct="3" pname="f" pnum="53" label="dur4"/>
-                              <nc xml:id="Je_1573_LN0981_263_m-540" oct="3" pname="g" pnum="55" label="dur4"/>
-                           </neume>
-                        </syllable>
-                                
-                                
-                                <syllable xml:id="Je_1573_LN0981_263_m-551_syl">
-                           <verse xml:id="Je_1573_LN0981_263_m-551" n="1">
-                                        <syl xml:id="Je_1573_LN0981_263_m-552" wordpos="t">tes.</syl>
-                                    </verse>
-                           <neume xml:id="neume_d3e1521">
-                              <nc xml:id="Je_1573_LN0981_263_m-541" oct="3" pname="a" pnum="57" label="dur4"/>
-                           </neume>
-                        </syllable>
-                            <barLine form="end"/>
-                     </layer>
-                     <fermata xml:id="Je_1573_LN0981_263_m-542" form="norm" layer="1" shape="curved"
+                        </staff>
+                        <fermata xml:id="Je_1573_LN0981_263_m-273"
+                              form="norm"
+                              layer="1"
+                              shape="curved"
                               staff="1"
-                              startid="#Je_1573_LN0981_263_m-541"/>
-                  </staff>
-                        
-                        
-                        
-                        
-                        
-                    
+                              startid="#Je_1573_LN0981_263_m-272"/>
+                    </measure>
                   <pb/>
                </section>
             </score>
-         </mdiv>
+        </mdiv>
       </body>
    </music>
 </mei>
