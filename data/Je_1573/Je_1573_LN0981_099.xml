@@ -126,6 +126,12 @@
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <fermata xml:id="Je_1573_LN0981_099_m-47"
+                                 form="norm"
+                                 layer="1"
+                                 shape="curved"
+                                 staff="1"
+                                 startid="#Je_1573_LN0981_099_m-46"/>
                         <barLine form="single"/>
                      </layer>
                         </staff>
@@ -182,7 +188,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="6.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_099_m-67">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -316,7 +327,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="22.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_099_m-99">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -436,7 +452,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="pb"
+                          tstamp="21.75"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Je_1573_LN0981_099_m-140">ǁ</dir>
+                  </staff>
                         
                         
                         
@@ -574,7 +595,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="20.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_099_m-177">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -737,7 +763,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="22.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_099_m-225">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -900,7 +931,12 @@
                         </syllable>
                         <barLine form="dbl"/>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="20.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_099_m-264">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -984,6 +1020,12 @@
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <fermata xml:id="Je_1573_LN0981_099_m-295"
+                                 form="norm"
+                                 layer="1"
+                                 shape="curved"
+                                 staff="1"
+                                 startid="#Je_1573_LN0981_099_m-294"/>
                         <barLine form="end"/>
                      </layer>
                         </staff>

@@ -334,7 +334,12 @@
                         </syllable>
                         <barLine form="rptend"/>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="2.5"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Mo_1528_LN0174_000a02v_m-88">ǀ</dir>
+                  </staff>
                         
                     
                     <sb xml:id="Mo_1528_LN0174_000a02v_m-128" label="editorial"/>
@@ -445,7 +450,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="pb"
+                          tstamp="6.5"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Mo_1528_LN0174_000a02v_m-137">ǁ</dir>
+                  </staff>
                         
                     
                     <sb xml:id="Mo_1528_LN0174_000a02v_m-158" label="editorial"/>
@@ -667,7 +677,12 @@
                         </syllable>
                         <barLine form="end"/>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="2.5"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Mo_1528_LN0174_000a02v_m-192">ǀ</dir>
+                  </staff>
                         
                     
                   <pb/>

@@ -175,7 +175,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="15.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-56">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -330,7 +335,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="pb"
+                          tstamp="17.75"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Je_1573_LN0981_360_m-93">ǁ</dir>
+                  </staff>
                         
                         
                         
@@ -495,7 +505,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="18.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-136">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -628,7 +643,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="17.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-187">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -789,7 +809,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="18.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-230">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -954,7 +979,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="19.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-275">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -1102,7 +1132,12 @@
                         </syllable>
                         <barLine form="dbl"/>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="17.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-318">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -1280,7 +1315,12 @@
                         </syllable>
                         <barLine form="single"/>
                      </layer>
-                        </staff>
+                        <dir type="pb"
+                          tstamp="15.75"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Je_1573_LN0981_360_m-358">ǁ</dir>
+                  </staff>
                         
                         
                         
@@ -1462,7 +1502,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="17.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-406">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -1526,6 +1571,12 @@
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <fermata xml:id="Je_1573_LN0981_360_m-440"
+                                 form="norm"
+                                 layer="1"
+                                 shape="curved"
+                                 staff="1"
+                                 startid="#Je_1573_LN0981_360_m-439"/>
                         <barLine form="dbl"/>
                      </layer>
                         </staff>
@@ -1650,7 +1701,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="10.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-466">ǀ</dir>
+                  </staff>
                         
                         
                     
@@ -1839,7 +1895,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="7.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-529">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -2007,7 +2068,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="16.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Je_1573_LN0981_360_m-566">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -2148,6 +2214,12 @@
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <fermata xml:id="Je_1573_LN0981_360_m-609"
+                                 form="norm"
+                                 layer="1"
+                                 shape="curved"
+                                 staff="1"
+                                 startid="#Je_1573_LN0981_360_m-608"/>
                         <barLine form="end"/>
                      </layer>
                         </staff>

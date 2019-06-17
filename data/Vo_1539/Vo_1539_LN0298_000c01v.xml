@@ -4,283 +4,302 @@
 <mei xmlns="http://www.music-encoding.org/ns/mei"
      xmlns:xlink="http://www.w3.org/1999/xlink"
      meiversion="4.0.0"
-     xml:id="Vo_1539_LN0298_000c01v_m-1">
-   <meiHead xml:id="Vo_1539_LN0298_000c01v_m-2">
-      <fileDesc xml:id="Vo_1539_LN0298_000c01v_m-3">
-        <titleStmt xml:id="Vo_1539_LN0298_000c01v_m-4">
-            <title xml:id="Vo_1539_LN0298_000c01v_m-10"/>
+     xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-1">
+   <meiHead xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-2"
+            meiversion="4.0.0">
+      <fileDesc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-3">
+        <titleStmt xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-4">
+            <title xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-10"/>
             
         </titleStmt>
-        <pubStmt xml:id="Vo_1539_LN0298_000c01v_m-13">
-            <availability xml:id="Vo_1539_LN0298_000c01v_m-14">
-                <useRestrict xml:id="Vo_1539_LN0298_000c01v_m-15"/>
+        <pubStmt xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-13">
+            <availability xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-14">
+                <useRestrict xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-15"/>
             </availability>
         </pubStmt>
       </fileDesc>
-      <encodingDesc xml:id="Vo_1539_LN0298_000c01v_m-16">
-        <appInfo xml:id="Vo_1539_LN0298_000c01v_m-17">
-            <application xml:id="Vo_1539_LN0298_000c01v_sibelius"
+      <encodingDesc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-16">
+        <appInfo xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-17">
+            <application xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_sibelius"
                          isodate="2019-6-7T11:46:36Z"
                          version="6200">
-                <name xml:id="Vo_1539_LN0298_000c01v_m-19">Sibelius</name>
+                <name xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-19">Sibelius</name>
             </application>
-            <application xml:id="Vo_1539_LN0298_000c01v_sibmei"
+            <application xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_sibmei"
                          type="plugin"
                          version="2.1.0">
-                <name xml:id="Vo_1539_LN0298_000c01v_m-21">Sibelius 6.2 to MEI Exporter (2.1.0)</name>
+                <name xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-21">Sibelius 6.2 to MEI Exporter (2.1.0)</name>
             </application>
         </appInfo>
       </encodingDesc>
     
    </meiHead>
-   <music xml:id="Vo_1539_LN0298_000c01v_m-22">
-      <body xml:id="Vo_1539_LN0298_000c01v_m-23">
-        <mdiv xml:id="Vo_1539_LN0298_000c01v_m-24">
-            <score xml:id="Vo_1539_LN0298_000c01v_m-25">
-                <scoreDef xml:id="Vo_1539_LN0298_000c01v_m-26">
-                    <staffGrp xml:id="Vo_1539_LN0298_000c01v_m-27">
-                        <staffDef xml:id="Vo_1539_LN0298_000c01v_m-28"
+   <music xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-22"
+          meiversion="4.0.0">
+      <body xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-23">
+        <mdiv n="1" xml:id="mdiv-01">
+            <score xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-25">
+               <scoreDef xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-26">
+                  <staffGrp xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-27">
+                     <staffDef xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-28"
                                clef.line="4"
                                clef.shape="C"
                                key.sig="1f"
                                lines="5"
-                               n="1">
-                            
-                            
-                        </staffDef>
-                    </staffGrp>
-                </scoreDef>
-                <section xml:id="Vo_1539_LN0298_000c01v_m-31">
+                               n="1"/>
+                  </staffGrp>
+               </scoreDef>
+               <section xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-31">
                     
                     
-                        <staff xml:id="Vo_1539_LN0298_000c01v_m-34" n="1">
-                            <layer xml:id="Vo_1539_LN0298_000c01v_m-35" n="1">
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-49_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-49" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-50" con="d" wordpos="i">Den</syl>
+                        <staff xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-34" n="1">
+                            <layer xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-35" n="1">
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-49_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-49" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-50"
+                                   con="d"
+                                   wordpos="i">Den</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e87">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-36"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e87">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-36"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-51_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-51" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-52" wordpos="t">ne</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-51_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-51" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-52" wordpos="t">ne</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e96">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-37"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e96">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-37"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-53_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-53" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-54" con="d" wordpos="i">E</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-53_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-53" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-54"
+                                   con="d"
+                                   wordpos="i">E</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e105">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-38"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e105">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-38"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-55_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-55" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-56" con="d" wordpos="m">pi</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-55_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-55" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-56"
+                                   con="d"
+                                   wordpos="m">pi</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e114">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-39"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e114">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-39"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-57_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-57" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-58" wordpos="t">stel</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-57_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-57" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-58" wordpos="t">stel</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e123">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-40"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e123">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-40"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-59_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-59" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-60" con="d" wordpos="i">be</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-59_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-59" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-60"
+                                   con="d"
+                                   wordpos="i">be</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e133">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-41"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e133">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-41"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-61_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-61" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-62" con="d" wordpos="m">scriff</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-61_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-61" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-62"
+                                   con="d"
+                                   wordpos="m">scriff</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e142">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-42"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e142">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-42"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-63_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-63" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-64" wordpos="t">uer</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-63_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-63" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-64" wordpos="t">uer</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e151">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-43"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e151">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-43"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-65_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-65" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-66" wordpos="i">oss</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-65_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-65" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-66" wordpos="i">oss</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e160">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-44"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e160">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-44"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-67_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-67" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-68" wordpos="i">til</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-67_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-67" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-68" wordpos="i">til</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e169">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-45"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e169">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-45"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-69_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-69" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-70" wordpos="i">de</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-69_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-69" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-70" wordpos="i">de</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e178">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-46"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e178">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-46"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-82_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-82" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-83" con="d" wordpos="i">Cor</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-82_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-82" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-83"
+                                   con="d"
+                                   wordpos="i">Cor</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e188">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-47"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e188">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-47"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <barLine form="single"/>
                      </layer>
                         </staff>
                         
                     
-                    <sb xml:id="Vo_1539_LN0298_000c01v_m-72" label="editorial"/>
+                    <sb xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-72"
+                      label="editorial"/>
                     
                     
-                        <staff xml:id="Vo_1539_LN0298_000c01v_m-73" n="1">
-                            <layer xml:id="Vo_1539_LN0298_000c01v_m-74" n="1">
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-84_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-84" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-85" con="d" wordpos="m">rin</syl>
+                        <staff xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-73" n="1">
+                            <layer xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-74" n="1">
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-84_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-84" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-85"
+                                   con="d"
+                                   wordpos="m">rin</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e212">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-75"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e212">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-75"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-86_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-86" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-87" wordpos="t">ter</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-86_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-86" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-87" wordpos="t">ter</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e221">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-76"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e221">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-76"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-88_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-88" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-89" con="d" wordpos="i">sanc</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-88_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-88" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-89"
+                                   con="d"
+                                   wordpos="i">sanc</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e230">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-77"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e230">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-77"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
-                           <neume xml:id="neume_d3e239">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-78"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e239">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-78"
                                   oct="4"
                                   pname="d"
                                   pnum="62"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-90_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-90" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-91" wordpos="t">tus</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-90_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-90" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-91" wordpos="t">tus</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e241">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-79"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e241">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-79"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-92_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-92" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-93" con="d" wordpos="i">Pau</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-92_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-92" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-93"
+                                   con="d"
+                                   wordpos="i">Pau</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e251">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-80"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e251">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-80"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
                                   label="dur4"/>
                            </neume>
                         </syllable>
-                        <syllable xml:id="Vo_1539_LN0298_000c01v_m-94_syl">
-                           <verse xml:id="Vo_1539_LN0298_000c01v_m-94" n="1">
-                                        <syl xml:id="Vo_1539_LN0298_000c01v_m-95" wordpos="t">lus.</syl>
+                        <syllable xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-94_syl">
+                           <verse xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-94" n="1">
+                                        <syl xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-95" wordpos="t">lus.</syl>
                                     </verse>
-                           <neume xml:id="neume_d3e260">
-                              <nc xml:id="Vo_1539_LN0298_000c01v_m-81"
+                           <neume xml:id="Vo_1539_LN0298_000c01v_neume_d3e260">
+                              <nc xml:id="Vo_1539_LN0298_000c01v_Vo_1539_LN0298_000c01v_m-81"
                                   oct="4"
                                   pname="c"
                                   pnum="60"
@@ -288,13 +307,26 @@
                            </neume>
                         </syllable>
                         <barLine form="end"/>
+                        <barLine form="single"/>
                      </layer>
                         </staff>
                     
                   <pb/>
                </section>
             </score>
-        </mdiv>
+         </mdiv>
+         <mdiv xml:id="mdiv-02" n="2">
+            <score>
+               <scoreDef>
+                  <staffGrp>
+                     <staffDef n="1" key.sig="1f" clef.shape="C" clef.line="4" lines="5"/>
+                  </staffGrp>
+               </scoreDef>
+               <section>
+                  <pb/>
+               </section>
+            </score>
+         </mdiv>
       </body>
    </music>
 </mei>

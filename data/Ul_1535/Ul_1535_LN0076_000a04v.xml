@@ -259,7 +259,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="8.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Ul_1535_LN0076_000a04v_m-77">ǀ</dir>
+                  </staff>
                         
                         
                     
@@ -466,7 +471,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="18.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Ul_1535_LN0076_000a04v_m-120">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -704,7 +714,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="21.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Ul_1535_LN0076_000a04v_m-180">ǀ</dir>
+                  </staff>
                         
                         
                         
@@ -942,7 +957,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="sb"
+                          tstamp="9.75"
+                          place="above"
+                          label="Linjeskift"
+                          xml:id="Ul_1535_LN0076_000a04v_m-265">ǀ</dir>
+                  </staff>
                         
                     
                     <sb xml:id="Ul_1535_LN0076_000a04v_m-286" label="editorial"/>
@@ -1218,7 +1238,12 @@
                            </neume>
                         </syllable>
                      </layer>
-                        </staff>
+                        <dir type="pb"
+                          tstamp="11.75"
+                          place="above"
+                          label="Sideskift"
+                          xml:id="Ul_1535_LN0076_000a04v_m-345">ǁ</dir>
+                  </staff>
                         
                         
                         
@@ -1333,6 +1358,12 @@
                                   label="dur4"/>
                            </neume>
                         </syllable>
+                        <fermata xml:id="Ul_1535_LN0076_000a04v_m-386"
+                                 form="norm"
+                                 layer="1"
+                                 shape="curved"
+                                 staff="1"
+                                 startid="#Ul_1535_LN0076_000a04v_m-385"/>
                         <barLine form="single"/>
                      </layer>
                         </staff>

@@ -323,6 +323,8 @@
         @text.name"/>
     <xsl:template match="@key.mode"/>
     <xsl:template match="m:measure/@label | m:measure/@metcon | m:measure/@n"/>
+    <!-- Remove piano braces and instrument labels -->
+    <xsl:template match="m:staffGrp/@symbol | m:staffDef/@label"></xsl:template>
 
     <!-- Delete instrument comments -->
     <xsl:template match="m:staffDef/comment()"/>

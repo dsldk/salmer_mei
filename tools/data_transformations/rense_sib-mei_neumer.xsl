@@ -44,10 +44,18 @@
     <!-- Move <fermata> into <staff> (includes fermatas becoming <dir> elements)-->
     <xsl:template match="m:fermata"/>
     
+    <xsl:template match="m:staff">
+        <xsl:copy>
+            <xsl:apply-templates select="@* | node()"/>
+            <xsl:apply-templates select="ancestor::m:measure/m:fermata[@shape!='curved']" mode="fermata"/>
+        </xsl:copy>
+    </xsl:template>
+    
     <!-- Add a <barLine> to <layer> if needed -->
     <xsl:template match="m:layer">
         <xsl:copy>
             <xsl:apply-templates select="@* | *"/>
+            <xsl:apply-templates select="ancestor::m:measure/m:fermata[@shape='curved' or not(@shape)]" mode="fermata"/>
             <xsl:if test="not(ancestor::m:measure[@right='invis'])">
                 <xsl:variable name="form">
                     <xsl:choose>
