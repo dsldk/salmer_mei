@@ -725,6 +725,20 @@
                     
                         <staff xml:id="Je_1573_LN0981_107_m-219" n="1">
                             <layer xml:id="Je_1573_LN0981_107_m-220" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e593">
+                              <nc xml:id="Je_1573_LN0981_107_m-222"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_107_m-223"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_107_m-230_syl">
                            <verse xml:id="Je_1573_LN0981_107_m-230" n="1">
                                         <syl xml:id="Je_1573_LN0981_107_m-231" wordpos="t">dæ.</syl>

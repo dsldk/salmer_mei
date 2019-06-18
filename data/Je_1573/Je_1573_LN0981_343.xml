@@ -877,6 +877,26 @@
                     
                         <staff xml:id="Je_1573_LN0981_343_m-259" n="1">
                             <layer xml:id="Je_1573_LN0981_343_m-260" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e701">
+                              <nc xml:id="Je_1573_LN0981_343_m-262"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_343_m-263"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="58"
+                                  accid="f"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_343_m-265"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_343_m-282_syl">
                            <verse xml:id="Je_1573_LN0981_343_m-282" n="1">
                                         <syl xml:id="Je_1573_LN0981_343_m-283" wordpos="t">bis</syl>

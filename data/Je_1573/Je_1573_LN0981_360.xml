@@ -523,6 +523,25 @@
                     
                         <staff xml:id="Je_1573_LN0981_360_m-162" n="1">
                             <layer xml:id="Je_1573_LN0981_360_m-163" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e436">
+                              <nc xml:id="Je_1573_LN0981_360_m-165"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_360_m-166"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_360_m-167"
+                                  oct="3"
+                                  pname="c"
+                                  pnum="48"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_360_m-188_syl">
                            <verse xml:id="Je_1573_LN0981_360_m-188" n="1">
                                         <syl xml:id="Je_1573_LN0981_360_m-189" con="d" wordpos="i">De</syl>

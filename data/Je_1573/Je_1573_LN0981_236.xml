@@ -514,6 +514,25 @@
                     
                         <staff xml:id="Je_1573_LN0981_236_m-153" n="1">
                             <layer xml:id="Je_1573_LN0981_236_m-154" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e405">
+                              <nc xml:id="Je_1573_LN0981_236_m-156"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_236_m-157"
+                                  oct="3"
+                                  pname="c"
+                                  pnum="48"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_236_m-158"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_236_m-184_syl">
                            <verse xml:id="Je_1573_LN0981_236_m-184" n="1">
                                         <syl xml:id="Je_1573_LN0981_236_m-185" wordpos="t">o,</syl>
@@ -653,6 +672,20 @@
                     
                         <staff xml:id="Je_1573_LN0981_236_m-191" n="1">
                             <layer xml:id="Je_1573_LN0981_236_m-192" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e504">
+                              <nc xml:id="Je_1573_LN0981_236_m-194"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_236_m-195"
+                                  oct="3"
+                                  pname="c"
+                                  pnum="48"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_236_m-222_syl">
                            <verse xml:id="Je_1573_LN0981_236_m-222" n="1">
                                         <syl xml:id="Je_1573_LN0981_236_m-223" wordpos="t">mit</syl>

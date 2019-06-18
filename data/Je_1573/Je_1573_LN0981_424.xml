@@ -678,23 +678,25 @@
                     
                         <staff xml:id="Je_1573_LN0981_424_m-199" n="1">
                             <layer xml:id="Je_1573_LN0981_424_m-200" n="1">
-                        <neume xml:id="neume_d3e519">
-                           <nc xml:id="Je_1573_LN0981_424_m-202"
-                               oct="3"
-                               pname="a"
-                               pnum="57"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_424_m-203"
-                               oct="3"
-                               pname="g"
-                               pnum="55"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_424_m-204"
-                               oct="3"
-                               pname="e"
-                               pnum="52"
-                               label="dur4"/>
-                        </neume>
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e519">
+                              <nc xml:id="Je_1573_LN0981_424_m-202"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_424_m-203"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_424_m-204"
+                                  oct="3"
+                                  pname="e"
+                                  pnum="52"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <fermata xml:id="Je_1573_LN0981_424_m-205"
                                  form="norm"
                                  layer="1"

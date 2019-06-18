@@ -324,6 +324,42 @@
                     
                         <staff xml:id="Je_1573_LN0981_066_m-102" n="1">
                             <layer xml:id="Je_1573_LN0981_066_m-103" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e259">
+                              <nc xml:id="Je_1573_LN0981_066_m-105"
+                                  oct="3"
+                                  pname="c"
+                                  pnum="48"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-106"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-107"
+                                  oct="3"
+                                  pname="e"
+                                  pnum="52"
+                                  label="dur4"/>
+                           </neume>
+                           <neume xml:id="neume_d3e265">
+                              <nc xml:id="Je_1573_LN0981_066_m-109"
+                                  oct="3"
+                                  pname="f"
+                                  pnum="53"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-110"
+                                  oct="3"
+                                  pname="e"
+                                  pnum="52"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-111"
+                                  oct="3"
+                                  pname="d"
+                                  pnum="50"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_066_m-116_syl">
                            <verse xml:id="Je_1573_LN0981_066_m-116" n="1">
                                         <syl xml:id="Je_1573_LN0981_066_m-117" wordpos="t">tus.</syl>
@@ -827,6 +863,35 @@
                     
                         <staff xml:id="Je_1573_LN0981_066_m-246" n="1">
                             <layer xml:id="Je_1573_LN0981_066_m-247" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e645">
+                              <nc xml:id="Je_1573_LN0981_066_m-249"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-250"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-251"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-252"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_066_m-253"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_066_m-266_syl">
                            <verse xml:id="Je_1573_LN0981_066_m-266" n="1">
                                         <syl xml:id="Je_1573_LN0981_066_m-267" con="d" wordpos="m">san</syl>

@@ -514,6 +514,42 @@
                     
                         <staff xml:id="Je_1573_LN0981_034_m-157" n="1">
                             <layer xml:id="Je_1573_LN0981_034_m-158" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e409">
+                              <nc xml:id="Je_1573_LN0981_034_m-160"
+                                  oct="4"
+                                  pname="d"
+                                  pnum="62"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_034_m-161"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                           </neume>
+                           <neume xml:id="neume_d3e413">
+                              <nc xml:id="Je_1573_LN0981_034_m-163"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_034_m-164"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_034_m-165"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_034_m-166"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_034_m-213_syl">
                            <verse xml:id="Je_1573_LN0981_034_m-213" n="1">
                                         <syl xml:id="Je_1573_LN0981_034_m-214" con="d" wordpos="i">fa</syl>

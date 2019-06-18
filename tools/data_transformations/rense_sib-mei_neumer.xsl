@@ -76,6 +76,16 @@
     <xsl:template match="m:note">
         <xsl:choose>
             <xsl:when test="m:verse/m:syl/text()">
+                <!-- a note with a syllable: start new neume -->
+                <syllable>
+                    <xsl:attribute name="xml:id"><xsl:value-of select="m:verse[m:syl/text()][1]/@xml:id"/>_syl</xsl:attribute>
+                    <xsl:apply-templates select="m:verse[m:syl/text()]"/>
+                    <xsl:variable name="syllables_left" select="count(following-sibling::m:note[m:verse])"/>
+                    <xsl:apply-templates select=". | following-sibling::m:note[not(m:verse) and count(following-sibling::m:note[m:verse])=$syllables_left]" mode="makeNeumes"/>          
+                </syllable>        
+            </xsl:when>
+            <xsl:when test="not(m:verse) and not(preceding-sibling::m:note) and following::m:note/m:verse/m:syl[1]/@wordpos[.='m' or .='t']">
+                <!-- New measure in the middle of a syllable  -->
                 <syllable>
                     <xsl:attribute name="xml:id"><xsl:value-of select="m:verse[m:syl/text()][1]/@xml:id"/>_syl</xsl:attribute>
                     <xsl:apply-templates select="m:verse[m:syl/text()]"/>

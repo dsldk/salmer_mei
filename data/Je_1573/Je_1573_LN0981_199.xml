@@ -698,10 +698,16 @@
                                         label="dur4"/>
                                 </neume>
                             </syllable>
+                            <fermata xml:id="Je_1573_LN0981_199_m-198"
+                                form="norm"
+                                layer="1"
+                                shape="curved"
+                                staff="1"
+                                startid="#Je_1573_LN0981_199_m-197"/>
                             <barLine form="end"/>
                         </layer>
                     </staff>
-                  <pb/>
+                    <pb/>
                </section>
             </score>
         </mdiv>

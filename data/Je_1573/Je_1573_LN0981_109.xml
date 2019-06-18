@@ -664,6 +664,25 @@
                     
                         <staff xml:id="Je_1573_LN0981_109_m-189" n="1">
                             <layer xml:id="Je_1573_LN0981_109_m-190" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e498">
+                              <nc xml:id="Je_1573_LN0981_109_m-192"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_109_m-193"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_109_m-194"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_109_m-204_syl">
                            <verse xml:id="Je_1573_LN0981_109_m-204" n="1">
                                         <syl xml:id="Je_1573_LN0981_109_m-205" wordpos="t">tæ.</syl>

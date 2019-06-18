@@ -178,18 +178,20 @@
                     
                         <staff xml:id="Je_1573_LN0981_392_m-66" n="1">
                             <layer xml:id="Je_1573_LN0981_392_m-67" n="1">
-                        <neume xml:id="neume_d3e170">
-                           <nc xml:id="Je_1573_LN0981_392_m-69"
-                               oct="3"
-                               pname="a"
-                               pnum="57"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-70"
-                               oct="3"
-                               pname="g"
-                               pnum="55"
-                               label="dur4"/>
-                        </neume>
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e170">
+                              <nc xml:id="Je_1573_LN0981_392_m-69"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-70"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <fermata xml:id="Je_1573_LN0981_392_m-71"
                                  form="norm"
                                  layer="1"
@@ -519,6 +521,40 @@
                     
                         <staff xml:id="Je_1573_LN0981_392_m-152" n="1">
                             <layer xml:id="Je_1573_LN0981_392_m-153" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e397">
+                              <nc xml:id="Je_1573_LN0981_392_m-155"
+                                  oct="4"
+                                  pname="d"
+                                  pnum="62"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-156"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-157"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-158"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-159"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-160"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_392_m-183_syl">
                            <verse xml:id="Je_1573_LN0981_392_m-183" n="1">
                                         <syl xml:id="Je_1573_LN0981_392_m-184" con="d" wordpos="m">mi</syl>
@@ -655,38 +691,40 @@
                     
                         <staff xml:id="Je_1573_LN0981_392_m-198" n="1">
                             <layer xml:id="Je_1573_LN0981_392_m-199" n="1">
-                        <neume xml:id="neume_d3e510">
-                           <nc xml:id="Je_1573_LN0981_392_m-201"
-                               oct="4"
-                               pname="d"
-                               pnum="62"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-202"
-                               oct="4"
-                               pname="c"
-                               pnum="60"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-203"
-                               oct="3"
-                               pname="b"
-                               pnum="59"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-204"
-                               oct="3"
-                               pname="a"
-                               pnum="57"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-205"
-                               oct="3"
-                               pname="a"
-                               pnum="57"
-                               label="dur4"/>
-                           <nc xml:id="Je_1573_LN0981_392_m-206"
-                               oct="3"
-                               pname="g"
-                               pnum="55"
-                               label="dur4"/>
-                        </neume>
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e510">
+                              <nc xml:id="Je_1573_LN0981_392_m-201"
+                                  oct="4"
+                                  pname="d"
+                                  pnum="62"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-202"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-203"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-204"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-205"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_392_m-206"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <fermata xml:id="Je_1573_LN0981_392_m-207"
                                  form="norm"
                                  layer="1"

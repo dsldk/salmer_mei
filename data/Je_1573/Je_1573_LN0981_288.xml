@@ -165,6 +165,20 @@
                     
                         <staff xml:id="Je_1573_LN0981_288_m-56" n="1">
                             <layer xml:id="Je_1573_LN0981_288_m-57" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e159">
+                              <nc xml:id="Je_1573_LN0981_288_m-59"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_288_m-60"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_288_m-69_syl">
                            <verse xml:id="Je_1573_LN0981_288_m-69" n="1">
                                         <syl xml:id="Je_1573_LN0981_288_m-70" wordpos="t">ia.</syl>
@@ -488,6 +502,20 @@
                     
                         <staff xml:id="Je_1573_LN0981_288_m-148" n="1">
                             <layer xml:id="Je_1573_LN0981_288_m-149" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e390">
+                              <nc xml:id="Je_1573_LN0981_288_m-151"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_288_m-152"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_288_m-180_syl">
                            <verse xml:id="Je_1573_LN0981_288_m-180" n="1">
                                         <syl xml:id="Je_1573_LN0981_288_m-181" wordpos="t">ui,</syl>
@@ -790,6 +818,25 @@
                     
                         <staff xml:id="Je_1573_LN0981_288_m-231" n="1">
                             <layer xml:id="Je_1573_LN0981_288_m-232" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e599">
+                              <nc xml:id="Je_1573_LN0981_288_m-234"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_288_m-235"
+                                  oct="3"
+                                  pname="f"
+                                  pnum="53"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_288_m-236"
+                                  oct="3"
+                                  pname="e"
+                                  pnum="52"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_288_m-263_syl">
                            <verse xml:id="Je_1573_LN0981_288_m-263" n="1">
                                         <syl xml:id="Je_1573_LN0981_288_m-264" con="d" wordpos="m">se</syl>

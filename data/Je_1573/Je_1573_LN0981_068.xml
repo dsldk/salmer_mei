@@ -2397,6 +2397,41 @@
                     
                         <staff xml:id="Je_1573_LN0981_068_m-645" n="1">
                             <layer xml:id="Je_1573_LN0981_068_m-646" n="1">
+                        <syllable xml:id="_syl">
+                           <neume xml:id="neume_d3e1793">
+                              <nc xml:id="Je_1573_LN0981_068_m-648"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                              <nc xml:id="Je_1573_LN0981_068_m-649"
+                                  oct="4"
+                                  pname="c"
+                                  pnum="60"
+                                  label="dur4"/>
+                           </neume>
+                           <neume xml:id="neume_d3e1797">
+                              <nc xml:id="Je_1573_LN0981_068_m-650"
+                                  oct="3"
+                                  pname="b"
+                                  pnum="59"
+                                  label="dur4"/>
+                           </neume>
+                           <neume xml:id="neume_d3e1799">
+                              <nc xml:id="Je_1573_LN0981_068_m-651"
+                                  oct="3"
+                                  pname="a"
+                                  pnum="57"
+                                  label="dur4"/>
+                           </neume>
+                           <neume xml:id="neume_d3e1801">
+                              <nc xml:id="Je_1573_LN0981_068_m-652"
+                                  oct="3"
+                                  pname="g"
+                                  pnum="55"
+                                  label="dur4"/>
+                           </neume>
+                        </syllable>
                         <syllable xml:id="Je_1573_LN0981_068_m-666_syl">
                            <verse xml:id="Je_1573_LN0981_068_m-666" n="1">
                                         <syl xml:id="Je_1573_LN0981_068_m-667" wordpos="t">na</syl>
