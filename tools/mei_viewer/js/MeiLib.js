@@ -133,8 +133,8 @@ var meiOptionsMenu = ' \
                     <option value="10">Lille septim</option> \
                     <option value="11">Stor septim</option> \
                 </select> \
-                <input type="radio" name="direction_{id}" value="up" id="direction_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> Op \
-                <input type="radio" name="direction_{id}" value="down" onchange="updateFromForm(\'{id}\')"/> Ned \
+                <input type="radio" name="direction" value="up" id="direction_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> Op \
+                <input type="radio" name="direction" value="down" onchange="updateFromForm(\'{id}\')"/> Ned \
             </div> \
             <hr/> \
             <div class="menu_block">\
