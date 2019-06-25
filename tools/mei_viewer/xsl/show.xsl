@@ -250,7 +250,7 @@
                         <xsl:attribute name="tstamp"><xsl:value-of select="dsl:measure_length(ancestor::m:staff)"/></xsl:attribute>
                     </xsl:when>
                     <!-- other section and measure comments are placed at timestamp=0 -->
-                    <xsl:when test="parent::m:section or parent::m:measure or parent::m:score or (parent::m:staff)">
+                    <xsl:when test="parent::m:section or parent::m:measure or parent::m:score or parent::m:staff or following-sibling::m:layer">
                             <xsl:attribute name="tstamp">0</xsl:attribute>
                     </xsl:when>
                     <!-- all others are attached to the first non-annotation following sibling element (or its descendants) having an xml:id -->
