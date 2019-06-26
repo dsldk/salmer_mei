@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="m exslt" version="3.0">
     
-    <!-- Highlight selected objects in Verovio -->
+    <!-- Highlight search matches in Verovio and omit some editorial features -->
     
     <!-- Det Danske Sprog- og Litteraturselskab, 2018-2019 -->
     <!-- http://www.dsl.dk -->
@@ -75,6 +75,11 @@
             </xsl:if>
         </xsl:copy>
     </xsl:template>
+    
+    <!-- Override default handling defined in show.xsl -->
+    <xsl:template match="m:annot" mode="add_comment" priority="1"/>
+
+    <xsl:template match="m:dir"/>
     
     
     <xsl:template match="@*|node()" mode="highlight">

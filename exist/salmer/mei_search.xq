@@ -13,9 +13,9 @@ declare variable $repeat        := request:get-parameter("r", "");    (: Allow r
 declare variable $page          := request:get-parameter("page", "1") cast as xs:integer;
 declare variable $search_in     := request:get-parameter("x", "");    (: List of publications to search in   :)
 declare variable $publications  := doc('index/publications.xml'); 
-declare variable $collection    := '/db/dsl';
-declare variable $solr_base     := 'http://localhost:8983/solr/dsl/'; (: Solr core :)
-declare variable $this_script   := 'mei_search_solr.xq';
+declare variable $collection    := '/db/salmer';
+declare variable $solr_base     := 'http://localhost:8983/solr/salmer/'; (: Solr core :)
+declare variable $this_script   := 'mei_search.xq';
 
 (: key string for substituting numbers by characters. :)
 (: pitches:   j = c4 (= MIDI pitch no. 60);           :)
@@ -43,21 +43,6 @@ declare function local:contour_to_chars($contour as xs:string) as xs:string {
 declare function local:chars_to_contour($chars as xs:string) as xs:string {
     let $contour := translate($chars, "udr", "/\-")
   return $contour
-};
-
-(: returns the matching positions - not in use anymore :)
-declare function local:index-of-string($arg as xs:string?, $substring as xs:string) as xs:integer* {
-  if (contains($arg, $substring))
-  then (string-length(substring-before($arg, $substring))+1,
-        for $other in local:index-of-string(substring-after($arg, $substring), $substring)
-        return $other + string-length(substring-before($arg, $substring)) + string-length($substring))
-  else ()
- } ;
-
-(: not in use anymore :)
-declare function local:string_matches($dataString as xs:string, $query as xs:string) as xs:integer* {
-    let $matches as xs:integer* := local:index-of-string($dataString, $query)
-    return $matches
 };
 
 declare function local:get_match_positions($highlights as xs:string?) as node()* {
@@ -138,21 +123,21 @@ declare function local:solr_query() {
 
 (: Functions for visualizing the results :)
  
-declare function local:verovio_match($file as xs:string, $highlight as xs:string*)  {
+(:  :declare function local:verovio_match($file as xs:string, $highlight as xs:string*)  {:)
+declare function local:verovio_match($doc as node(), $fileId as xs:string, $highlight as xs:string*)  {
     let $output1 :=
-        <div xmlns="http://www.w3.org/1999/xhtml" id="{substring-before($file,".")}" class="mei"><!-- SVG will be inserted here --></div>
-    let $mei := doc(concat($collection,"/data/",$file)) 
+        <div xmlns="http://www.w3.org/1999/xhtml" id="{$fileId}" class="mei"><!-- SVG will be inserted here --></div>
     let $xsl := if (count($highlight) > 0) then "/xsl/highlight.xsl" else "/xsl/show.xsl"  
     (: possibly some transforms here :)
     let $output2 :=    
-       <div style="display:none" xmlns="http://www.w3.org/1999/xhtml" id="{substring-before($file,".")}_data" type="text/data">
+       <div style="display:none" xmlns="http://www.w3.org/1999/xhtml" id="{$fileId}_data" type="text/data">
        {
             let $params := 
             <parameters>
                 <param name="mdiv" value=""/>
                 <param name="highlight" value="{$highlight}"/>
             </parameters>
-            return transform:transform($mei,doc(concat($collection,$xsl)),$params)  
+            return transform:transform($doc,doc(concat($collection,$xsl)),$params)  
        }
        </div>
     return ($output1, $output2)
@@ -419,9 +404,8 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
         	       <div>
         	           {
     	                for $res at $pos in $solrResult/*/*/*[name()="doc"]
-    	                let $file := doc(concat("data/",$res/*[@name="file"]/string()))
-    	                (:let $matches := local:get_match_positions($solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1], 
-    	                    tokenize($res/*[@name="ids"]/string(),",")):)
+    	                let $coll := concat($collection, substring-after($res/*[@name="collection"],$collection))
+    	                let $file := doc(concat($coll,"/",$res/*[@name="file"]/string()))
     	                let $matches := local:get_match_positions($solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1])
     	                let $highlight_ids := local:highlight_ids($res/*[@name="ids"]/string(), $matches)
     	                let $title := if($res/*[@name="title"]/string() != "") 
@@ -450,7 +434,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                         then " (uddrag vises)" else ""
                                         return $excerpts
                                     }
-                                    
+                                    &#160;
                                     <div class="midi_player">
                                         <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}">
                                             <a href="javascript:void(0);" title="Afspil" 
@@ -467,14 +451,22 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     <!--[Highlight IDs: {$highlight_ids}]<br/>-->
                                     <!--[Highlight:  {$solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1]}]-->
                                     <!--[{count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) } / {count($file//m:mdiv) } dele]-->
+                                    <!--{substring-after($res/*[@name="collection"],$collection)} -->
+                                    <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
                                     </div>
                                 </p>
-                                { local:verovio_match($res/*[@name="file"], $highlight_ids) }
+                                { 
+                                    let $vrv :=
+                                    if ($file) then
+                                        local:verovio_match($file, $res/*[@name="id"], $highlight_ids) 
+                                    else 
+                                        ""
+                                    return $vrv
+                                }
                             </div>
         	            }
         	            <div>{local:paging($numFound)}</div>
                         <div>{local:execution_time($start-time, util:system-time())}</div>
-
 
                    </div>
                    
@@ -484,7 +476,6 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	    }
                        <div class="debug">
                             {local:solr_query()}
-                            
                        </div>
             </div>
         return $output

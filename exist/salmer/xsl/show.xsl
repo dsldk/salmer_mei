@@ -1,8 +1,5 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:m="http://www.music-encoding.org/ns/mei"
-    xmlns:h="http://www.w3.org/1999/xhtml"
-    xmlns:dsl="http://www.dsl.dk"
-    version="2.0" exclude-result-prefixes="m h dsl xsl">
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dsl="http://www.dsl.dk" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h dsl xsl">
     
     
     <!-- Prepare MEI for viewing with Verovio -->
@@ -68,13 +65,19 @@
         <xsl:choose>
             <xsl:when test="@meter.sym">
                 <meterSig xmlns="http://www.music-encoding.org/ns/mei">
-                    <xsl:attribute name="sym"><xsl:value-of select="@meter.sym"/></xsl:attribute>
+                    <xsl:attribute name="sym">
+                        <xsl:value-of select="@meter.sym"/>
+                    </xsl:attribute>
                 </meterSig>
             </xsl:when>
             <xsl:when test="@meter.count and @meter.unit">
                 <meterSig xmlns="http://www.music-encoding.org/ns/mei">
-                    <xsl:attribute name="count"><xsl:value-of select="@meter.count"/></xsl:attribute>
-                    <xsl:attribute name="unit"><xsl:value-of select="@meter.unit"/></xsl:attribute>
+                    <xsl:attribute name="count">
+                        <xsl:value-of select="@meter.count"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="unit">
+                        <xsl:value-of select="@meter.unit"/>
+                    </xsl:attribute>
                 </meterSig>
             </xsl:when>
             <xsl:when test="@meter.count">
@@ -229,7 +232,9 @@
             <!-- Place a marker -->
             <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment">
                 <xsl:if test="descendant-or-self::m:annot/@xml:id">
-                    <xsl:attribute name="xml:id"><xsl:value-of select="concat(descendant-or-self::m:annot/@xml:id,'_dir')"/></xsl:attribute>
+                    <xsl:attribute name="xml:id">
+                        <xsl:value-of select="concat(descendant-or-self::m:annot/@xml:id,'_dir')"/>
+                    </xsl:attribute>
                 </xsl:if>
                 <xsl:choose>
                     <!-- comments at the end of the measure -->
@@ -247,7 +252,9 @@
                     </xsl:when>
                     <!-- comments at the end of a layer are also placed at the end of the measure (for neume notation) -->
                     <xsl:when test="parent::m:layer and not(following-sibling::*[name()!='annot'])">
-                        <xsl:attribute name="tstamp"><xsl:value-of select="dsl:measure_length(ancestor::m:staff)"/></xsl:attribute>
+                        <xsl:attribute name="tstamp">
+                            <xsl:value-of select="dsl:measure_length(ancestor::m:staff)"/>
+                        </xsl:attribute>
                     </xsl:when>
                     <!-- other section and measure comments are placed at timestamp=0 -->
                     <xsl:when test="parent::m:section or parent::m:measure or parent::m:score or parent::m:staff or following-sibling::m:layer">
@@ -285,7 +292,9 @@
             <xsl:attribute name="right">
                 <xsl:choose>
                     <xsl:when test="not(m:layer/m:barLine)">invis</xsl:when>
-                    <xsl:otherwise><xsl:value-of select="m:layer/m:barLine/@form"/></xsl:otherwise>
+                    <xsl:otherwise>
+                        <xsl:value-of select="m:layer/m:barLine/@form"/>
+                    </xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
             <!-- Copy most of the staff elements here -->
@@ -295,7 +304,7 @@
             <!-- Add slurs -->
             <xsl:apply-templates select="*//m:neume[count(m:nc)&gt;1]" mode="add_slur"/>
             <!-- Move fermata and dir elements out of <staff> and <layer> and add them to the <measure> -->
-            <xsl:copy-of select=".//m:dir"/>
+            <xsl:apply-templates select=".//m:dir"/>
             <xsl:copy-of select=".//m:fermata"/>
             <!-- Editorial comments -->
             <xsl:for-each select=".//m:annot"><!-- comments inside <staff> -->
@@ -324,8 +333,10 @@
             <xsl:choose>
                 <xsl:when test="m:nc">
                     <!-- MEI 4.0.0 -->
-                    <xsl:attribute name="startid">#<xsl:value-of select="m:nc[1]/@xml:id"/></xsl:attribute>
-                    <xsl:attribute name="endid">#<xsl:value-of select="m:nc[position()=last()]/@xml:id"/></xsl:attribute>
+                    <xsl:attribute name="startid">#<xsl:value-of select="m:nc[1]/@xml:id"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="endid">#<xsl:value-of select="m:nc[position()=last()]/@xml:id"/>
+                    </xsl:attribute>
                 </xsl:when>
             </xsl:choose>
         </slur>
@@ -360,7 +371,9 @@
             <xsl:attribute name="dur">
                 <xsl:choose>
                     <xsl:when test="$dur = '8'">4</xsl:when>
-                    <xsl:otherwise><xsl:value-of select="$dur"/></xsl:otherwise>
+                    <xsl:otherwise>
+                        <xsl:value-of select="$dur"/>
+                    </xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
             <xsl:if test="$dur='4'">

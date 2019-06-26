@@ -18,11 +18,13 @@ let $collection := '/db/salmer'
 let $index-doc := 
 <add>
     {
-    for $doc in collection(concat($collection,'/data'))/m:mei
-        let $doc-name:=util:document-name($doc)
+    for $doc in collection(concat($collection,'/data//'))/m:mei
+        let $doc-name  := util:document-name($doc)
+        let $coll-name := util:collection-name($doc)
         let $params := 
             <parameters>
                 <param name="filename" value="{$doc-name}"/>
+                <param name="collection" value="{$coll-name}"/>
             </parameters>
         return transform:transform($doc, doc('xsl/index_for_solr.xsl'), $params) 
     }

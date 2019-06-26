@@ -1,18 +1,28 @@
 /* CSS for SVG */
-.mei {
-    margin-top: 5px;
-}
 
 .mei svg tspan.text {
-    font-family: 'Noto Serif', serif;
+/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
+    font-family: Georgia, 'times new roman', times, serif; 
 }
 
 .mei svg .dir.sb, .mei svg .dir.pb {
     font-style: normal;
-    transform: translate(0px,-50px);
-    -ms-transform: translate(0px,-50px); /* IE 9 */
-    -webkit-transform: translate(0px,-50px); /* Safari and Chrome */
-    -o-transform: translate(0px,-50px); /* Opera */
+}
+
+/* Editorial comments */
+
+.mei svg .dir.comment {
+    transform: translate(-150px,-75px)
+}
+
+.mei svg .dir.comment tspan.text {
+    font-style: normal;
+    font-size: 200pt;
+}
+
+.mei_comment {
+    height: auto;
+    min-height: auto;
 }
 
 /* Highlight comment markers */
@@ -26,9 +36,18 @@
     cursor: pointer;
 }
 
-/* Don't display "Engraved with Verovio" footer */
-svg .pgFoot {
-    display: none;
+.cursorHelp:hover {
+    cursor: help;
+}
+
+.mei svg .highlight, .mei svg .highlight:hover {
+    fill: #0a0;
+    stroke: #0a0;
+}
+
+.mei svg .warning, .mei svg .warning:hover {
+    fill: #c00;
+    stroke: #c00;
 }
 
 /* Selection */
@@ -49,16 +68,23 @@ svg .pgFoot {
     overflow: visible;
 }
 
+.mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
+/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
+    font-family: Georgia, 'times new roman', times, serif; 
+    font-size: 500;  
+    font-weight: bold;
+}
+
 /* CSS for non-SVG contents */
 
 /* MIDI player */
 #player {
-    visibility: hidden;
+    visibility: hidden;  
 }
 
 .midi_player {
     display: inline-block;
-    margin-left: 20px;
+    margin: 3px 0 10px 0;
 }
 
 
@@ -73,9 +99,11 @@ svg .pgFoot {
     line-height: 1em;
     }
     
-.midi_button a {
+.midi_button a, .midi_button a:hover, .midi_button a:visited {
     display: inline-block;
     position: relative;
+    color: #000;
+    text-decoration: none;
 }
 
 .midi_button.play a {
@@ -92,7 +120,6 @@ svg .pgFoot {
     border-left: 10px solid #c00;
 }
 
-
 .midi_button.stop {
     display: none;
 }
@@ -100,7 +127,7 @@ svg .pgFoot {
 .midi_button.stop a {
     width: 10px;
     height: 10px;
-    top: 2px;
+    top: 4px;
     background-color: #666;
     margin-left:4px;
 }
@@ -109,31 +136,50 @@ svg .pgFoot {
     background-color: #c00;
 }
 
-.stop.playing {
+.midi_button.stop.playing {
     display: inline-block; 
 }
 
-.play.playing {
+.midi_button.play.playing {
     display: none; 
+}
+
+.midi_button .label {
+    display: inline-block;
+    position: relative;
+}
+
+.midi_button.play .label {
+    top: -5px;
+    margin-left: 16px;
+}
+
+.midi_button.stop .label {
+    top: 0px;
+    margin-left: 30px;
 }
 
 .mei svg .playing {
     fill: #c00 !important;
     stroke: #c00 !important;
+    color: #c00;
 }
 
 
 /* Place and format option menus. */
 .mei_options {
-    float: right;
+    /*float: right;*/
+    position: absolute;
     clear: both;
-    width: auto;
+    width: 260px;
     padding: 10px;
-    margin:0 0 10px 20px;
+    margin:0 0 10px 680px;
     display: none;
-    border: 1px solid #bbb;
-    background-color: #003b5c;
-    color: #fff;
+    border: 1px solid #fafafa;
+/*    background-color: #003b5c; */
+    background-color: #eee;
+    color: #000;
+    font-size: 14px;
 }
 
 .mei_options form {
@@ -148,7 +194,7 @@ svg .pgFoot {
     border-bottom: 1px solid #fff;
 }
 
-/* kun hvis der IKKE bruges jQuery UI-dialoger: */
+/* only if jQuery UI-dialogs are NOT used: */
 .mei_overlay {
     padding: 15px;
     background-color: #ccc;
@@ -158,7 +204,16 @@ svg .pgFoot {
     position: absolute;
 }
 
-/* til lokal viewer med uploadfunktion */
+/* editorial comments */
+.mei_comment a {
+    text-decoration: underline;
+}
+
+.ui-dialog {
+    font-size: .8em;
+}
+
+/* for local viewer with upload */
 .mei_upload {
     padding: 20px 20px 10px 20px;
     margin: 0 -20px 20px -20px;
@@ -171,9 +226,9 @@ svg .pgFoot {
 }
 
 .custom_input {
-    border: 1px solid #057abc;
-    background-color: #005a8c;
-    color: #fff;
+/*    border: 1px solid #057abc;
+    background-color: #005a8c; */
+    border: 1px solid black;
     display: inline-block;
     padding: 4px 10px;
     cursor: pointer;
@@ -183,7 +238,7 @@ select.custom_input {
     padding: 0;
 }
 
-/* fonte */
+/* fonts */
 
 .musical_symbols {
     font-family: 'Bravura Text';
@@ -200,3 +255,24 @@ select.custom_input {
 	       url('fonts/BravuraText.woff') format('woff'), 
 	       url('fonts/BravuraText.svg#BravuraText') format('svg');
 } 
+
+/* print */
+@media print {
+    
+    .mei_menu, .custom_input {
+        display: none;
+    }
+    
+    .mei_upload {
+        color: #000;
+        background-color: #fff;
+    }
+
+    .mei_options {
+        color: #000;
+        background-color: #fff;
+        border: none;
+        padding: 0;
+    }
+
+}

@@ -8,7 +8,7 @@ var pae_pitches = ["C", "xC", "D", "bE", "E", "F", "xF", "G", "bA", "A", "bB", "
 var pae_changed = false;
 
 var verovio_options = {
-    inputFormat:        'mei',
+    format:        'mei',
     scale:              40,
     pageWidth:          1800,
     pageHeight:         20000,
@@ -29,7 +29,7 @@ var verovio_options = {
 };
 
 var verovio_options_search = {
-    inputFormat:        'pae',
+    format:        'pae',
     scale:              40,
     pageWidth:          980,
     pageHeight:         240,
