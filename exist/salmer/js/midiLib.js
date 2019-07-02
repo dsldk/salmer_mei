@@ -7,10 +7,10 @@ function reverse(s){
     return s.split("").reverse().join("");
 }    
     
-/////////////////////////////////////////////////////////
-/* A function that start playing data identified by ID */
-/////////////////////////////////////////////////////////
-function play_midi(id, options) {
+//////////////////////////////////////////////////////////
+/* A function that starts playing data identified by ID */
+//////////////////////////////////////////////////////////
+function play_midi(id) {
     console.log("Rendering for playing: " + id);
     var data = $mei[id].data;  
     // Add a rest at the beginning to make the first note play (bug in midi player?)
@@ -28,16 +28,6 @@ function play_midi(id, options) {
     }
     data = Saxon.serializeXML(transformedMei);
 // document.getElementById("debug_text").innerHTML = data; 
-    play_midi_data(data);
-    $("#play_" + id).addClass('playing');
-    $("#stop_" + id).addClass('playing');
-}
- 
- 
-////////////////////////////////////////////
-/* A function playing submitted data      */
-////////////////////////////////////////////
-function play_midi_data(data) {
     if (isPlaying === true) {pause();}
     var options = {
         inputFormat: 'mei'
@@ -47,11 +37,13 @@ function play_midi_data(data) {
     var svg_dummy = vrvToolkit.renderData( data + "\n", options );
     var base64midi = vrvToolkit.renderToMIDI();
     var song = 'data:audio/midi;base64,' + base64midi;
-// Using a hidden player
-// $("#player").show();
+    // Using a hidden player
+    // $("#player").show();
     $("#player").midiPlayer.play(song);
-    isPlaying = true;
+    isPlaying = true;    $("#play_" + id).addClass('playing');
+    $("#stop_" + id).addClass('playing');
 }
+
 //////////////////////////////////////////////////////
 /* Two callback functions passed to the MIDI player */
 //////////////////////////////////////////////////////

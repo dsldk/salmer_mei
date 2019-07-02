@@ -64,20 +64,26 @@
     </xsl:template>
     
     <!--<xsl:template match="m:measure[1][ancestor::m:mdiv/preceding-sibling::m:mdiv[1]//*[contains($highlight_ids,concat(' ',@xml:id,' '))]]" mode="highlight">-->
-    <xsl:template match="m:measure[count(preceding-sibling::m:measure)=0          and ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]         or count(following-sibling::m:measure)=0          and ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]]" mode="highlight">
+    <xsl:template match="m:measure[count(preceding-sibling::m:measure)=0  
+        and ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]
+        or count(following-sibling::m:measure)=0
+        and ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]]"
+        mode="highlight">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()" mode="highlight"/>
-            <xsl:if test="count(preceding-sibling::m:measure)=0 and                  ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="count(preceding-sibling::m:measure)=0 and
+                ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment above" tstamp="0" place="above">[...]</dir>
             </xsl:if>
-            <xsl:if test="count(following-sibling::m:measure)=0 and                  ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="count(following-sibling::m:measure)=0 and
+                ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment below" tstamp="0" place="below">[...]</dir>
             </xsl:if>
         </xsl:copy>
     </xsl:template>
     
     <!-- Override default handling defined in show.xsl -->
-    <xsl:template match="m:annot" mode="add_comment" priority="1"/>
+    <xsl:template match="m:music//m:annot" mode="add_comment" priority="1"/>
 
     <xsl:template match="m:dir"/>
     
