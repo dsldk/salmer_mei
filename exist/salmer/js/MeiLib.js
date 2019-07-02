@@ -1,7 +1,7 @@
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
 var $defaultVerovioOptions = {
-    format:               'mei',
+    inputFormat:               'mei',
     scale:                40,
     pageWidth:            1800,
     pageHeight:           20000,
@@ -211,40 +211,42 @@ function loadPage(id) {
     if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
  
     /* Bind a click event on all editorial comment markers */
-    $("#" + id + " .comment").each(function() {
-        var commentId = $(this).attr("id");
-        // Create a div for each comment 
-        var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
-        $("#" + id).append(div);
-        // Make the div a hidden jQuery dialog 
-        $("#" + commentId + "_div").dialog({
-              autoOpen: false,
-              closeOnEscape: true
+    if(comments) {
+        $("#" + id + " .comment").each(function() {
+            var commentId = $(this).attr("id");
+            // Create a div for each comment 
+            var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
+            $("#" + id).append(div);
+            // Make the div a hidden jQuery dialog 
+            $("#" + commentId + "_div").dialog({
+                  autoOpen: false,
+                  closeOnEscape: true
+            });
+            // Put the annotation in it
+            $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
+            /* Make the bounding box clickable (works on Opera only )*/
+            $(this).attr("pointer-events", "bounding-box");
+            $(this).click(function(event) {
+                /* Close all open dialogs? */
+                //$(".ui-dialog-content").dialog("close");
+                /* Reposition the dialog */
+                $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
+                $("#" + commentId + "_div").dialog( "option", "height", "auto" );
+                $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
+                $("#" + commentId + "_div").dialog( "option", "resizable", false );
+                $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
+                /* Show the dialog */
+                $("#" + commentId + "_div").dialog("open");
+                $("#" + commentId + "_div").find("a").blur();
+            });
+            // Add a hover title
+            var svgns = "http://www.w3.org/2000/svg";
+            var title = document.createElementNS(svgns, 'title');
+            title.setAttributeNS(null, 'class', 'labelAttr');
+            title.innerHTML = "Tekstkritisk note";
+            $(this).append(title);
         });
-        // Put the annotation in it
-        $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
-        /* Make the bounding box clickable (works on Opera only )*/
-        $(this).attr("pointer-events", "bounding-box");
-        $(this).click(function(event) {
-            /* Close all open dialogs? */
-            //$(".ui-dialog-content").dialog("close");
-            /* Reposition the dialog */
-            $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
-            $("#" + commentId + "_div").dialog( "option", "height", "auto" );
-            $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
-            $("#" + commentId + "_div").dialog( "option", "resizable", false );
-            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
-            /* Show the dialog */
-            $("#" + commentId + "_div").dialog("open");
-            $("#" + commentId + "_div").find("a").blur();
-        });
-        // Add a hover title
-        var svgns = "http://www.w3.org/2000/svg";
-        var title = document.createElementNS(svgns, 'title');
-        title.setAttributeNS(null, 'class', 'labelAttr');
-        title.innerHTML = "Tekstkritisk note";
-        $(this).append(title);
-    });
+    }
     
     /* Bind a click event handler on every note (MIDI jumping doesn't seem to work with rests) */
     $("#" + id + " .note").click(function() {

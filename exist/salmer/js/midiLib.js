@@ -12,23 +12,13 @@ function reverse(s){
 /////////////////////////////////////////////////////////
 function play_midi(id, options) {
     console.log("Rendering for playing: " + id);
-    var data = $mei[id].data;  
+    var data = $("#" + id + "_data").html();  
     // Add a rest at the beginning to make the first note play (bug in midi player?)
-    data = data.replace('<note ','<rest dur="16"/><note ');
-    // tried adding a rest at the end too to prevent the player from stopping too early; doesn't seem to have any effect, though...
-    //data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
-
- // apply relevant transformations
-    transformedMei = Saxon.parseXML(data);
-    for (var index in transformOrder) {
-        var key = transformOrder[index];
-        if ($mei[id].xsltOptions.hasOwnProperty(key)) {
-            transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
- }
-    }
-    data = Saxon.serializeXML(transformedMei);
-// document.getElementById("debug_text").innerHTML = data; 
-    play_midi_data(data);
+    data = data.replace('note','rest dur="16"/><note');
+    // try adding a rest at the end too to prevent the player from stopping too early... (doesn't seem to have any effect, though)
+    data = reverse(reverse(data).replace('eton',reverse('note><rest dur="8"/'))); 
+//document.getElementById("debug_text").value = id;    
+    play_midi_data(data, options);
     $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
 }
@@ -37,11 +27,8 @@ function play_midi(id, options) {
 ////////////////////////////////////////////
 /* A function playing submitted data      */
 ////////////////////////////////////////////
-function play_midi_data(data) {
+function play_midi_data(data, options) {
     if (isPlaying === true) {pause();}
-    var options = {
-        inputFormat: 'mei'
-    };
     console.log("Playing MIDI");
     // MIDI needs a dummy re-rendering to make sure the correct data are loaded
     var svg_dummy = vrvToolkit.renderData( data + "\n", options );
@@ -82,15 +69,7 @@ var midiStop = function() {
     isPlaying = false;
 }
  
-function jumpTo(id) {
-    var time = vrvToolkit.getTimeForElement(id);
-    $("#player").midiPlayer.seek(time);
-}
- 
 function initMidi() {
-    // insert a hidden MIDI player  
-    var $playerHTML = $("<div id='player' style='display: none'> <!-- hidden MIDI player --> </div>").appendTo('body'); 
-    
     $("#player").midiPlayer({
         color: "#c00",
         onUpdate: midiUpdate,
@@ -105,9 +84,8 @@ function initMidi() {
         var id = $(this).attr("id");
         var time = vrvToolkit.getTimeForElement(id);
         $("#player").midiPlayer.seek(time);
-//alert(id);
+//alert(time);
     });
-    
 }
 
 // END MIDI

@@ -206,14 +206,14 @@
         <xsl:apply-templates select="*[not(name()='annot')] | text()"/>
     </xsl:template>
     
-    <xsl:template match="m:annot">
+    <xsl:template match="m:music//m:annot">
         <!-- annotations are moved to <dir> markers -->
     </xsl:template>
     
-    <xsl:template match="m:annot" mode="add_comment">
+    <xsl:template match="m:music//m:annot" mode="add_comment">
         <xsl:variable name="annot" select="."/>
         <!-- Get the annotation's number -->
-        <xsl:variable name="annots" select="string-join(/*//m:annot/@xml:id,'¤')"/>
+        <xsl:variable name="annots" select="string-join(/*/m:music//m:annot/@xml:id,'¤')"/>
         <xsl:variable name="no" select="count(tokenize(substring-before($annots,concat('¤',@xml:id)),'¤')) + 1"/>
         <xsl:variable name="context" as="node()">
             <xsl:choose>
