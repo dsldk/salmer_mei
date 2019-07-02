@@ -14,9 +14,9 @@ function play_midi(id, options) {
     console.log("Rendering for playing: " + id);
     var data = $mei[id].data;  
     // Add a rest at the beginning to make the first note play (bug in midi player?)
-    data = data.replace('<note ','<rest dur="16"/><note ');
+    data = data.replace('<note ','<rest dur="4"/><note ');
     // tried adding a rest at the end too to prevent the player from stopping too early; doesn't seem to have any effect, though...
-    //data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
+    data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
 
     // apply relevant transformations
     transformedMei = Saxon.parseXML(data);

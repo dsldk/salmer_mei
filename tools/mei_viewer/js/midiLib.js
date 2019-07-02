@@ -7,16 +7,16 @@ function reverse(s){
     return s.split("").reverse().join("");
 }    
     
-/////////////////////////////////////////////////////////
-/* A function that start playing data identified by ID */
-/////////////////////////////////////////////////////////
-function play_midi(id, options) {
+//////////////////////////////////////////////////////////
+/* A function that starts playing data identified by ID */
+//////////////////////////////////////////////////////////
+function play_midi(id) {
     console.log("Rendering for playing: " + id);
     var data = $mei[id].data;  
     // Add a rest at the beginning to make the first note play (bug in midi player?)
-    data = data.replace('<note ','<rest dur="16"/><note ');
+    data = data.replace('<note ','<rest dur="4"/><note ');
     // tried adding a rest at the end too to prevent the player from stopping too early; doesn't seem to have any effect, though...
-    //data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
+    data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
 
     // apply relevant transformations
     transformedMei = Saxon.parseXML(data);
@@ -28,8 +28,19 @@ function play_midi(id, options) {
     }
     data = Saxon.serializeXML(transformedMei);
 // document.getElementById("debug_text").innerHTML = data; 
-    play_midi_data(data);
-    $("#play_" + id).addClass('playing');
+    if (isPlaying === true) {pause();}
+    var options = {
+        inputFormat: 'mei'
+    };
+    console.log("Playing MIDI");
+    // MIDI needs a dummy re-rendering to make sure the correct data are loaded
+    var svg_dummy = vrvToolkit.renderData( data + "\n", options );
+    var base64midi = vrvToolkit.renderToMIDI();
+    var song = 'data:audio/midi;base64,' + base64midi;
+    // Using a hidden player
+    // $("#player").show();
+    $("#player").midiPlayer.play(song);
+    isPlaying = true;    $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
 }
  
