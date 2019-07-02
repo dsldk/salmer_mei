@@ -50,8 +50,10 @@ let $result :=
         <link rel="stylesheet" type="text/css" href="style/mei.css"/>
         <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
         
-        <link rel="stylesheet" href="js/libs/jquery/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-        
+        <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+        <!-- User interaction settings -->
         <script type="text/javascript">
             var enableMidi = true;
             var enableSearch = true;
@@ -63,10 +65,11 @@ let $result :=
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js"><!-- jquery --></script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js"><!-- jquery ui --></script>     
         <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"><!-- Verovio --></script>
-        <!-- alternatively use CDNs: -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"></script>-->
+        <!-- alternatively use CDNs, like: -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
 
         <script src="js/MeiLib.js"><!-- MEI tools --></script>
 
