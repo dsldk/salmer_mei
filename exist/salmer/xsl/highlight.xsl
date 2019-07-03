@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="m exslt" version="3.0">
     
     <!-- Highlight search matches in Verovio and omit some editorial features -->
@@ -6,7 +5,7 @@
     <!-- Det Danske Sprog- og Litteraturselskab, 2018-2019 -->
     <!-- http://www.dsl.dk -->
 
-    <xsl:output indent="yes" xml:space="default" method="xml" encoding="UTF-8"/>
+    <xsl:output indent="no" xml:space="default" method="xml" encoding="UTF-8"/>
 
     <xsl:strip-space elements="*"/>
 
@@ -64,19 +63,13 @@
     </xsl:template>
     
     <!--<xsl:template match="m:measure[1][ancestor::m:mdiv/preceding-sibling::m:mdiv[1]//*[contains($highlight_ids,concat(' ',@xml:id,' '))]]" mode="highlight">-->
-    <xsl:template match="m:measure[count(preceding-sibling::m:measure)=0  
-        and ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]
-        or count(following-sibling::m:measure)=0
-        and ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]]"
-        mode="highlight">
+    <xsl:template match="m:measure[count(preceding-sibling::m:measure)=0          and ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]         or count(following-sibling::m:measure)=0          and ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]]" mode="highlight">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()" mode="highlight"/>
-            <xsl:if test="count(preceding-sibling::m:measure)=0 and
-                ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="count(preceding-sibling::m:measure)=0 and                  ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment above" tstamp="0" place="above">[...]</dir>
             </xsl:if>
-            <xsl:if test="count(following-sibling::m:measure)=0 and
-                ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="count(following-sibling::m:measure)=0 and                  ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment below" tstamp="0" place="below">[...]</dir>
             </xsl:if>
         </xsl:copy>
