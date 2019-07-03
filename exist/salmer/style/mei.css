@@ -264,6 +264,10 @@ select.custom_input {
     float: none;
 }
 
+p.loading {
+    color: #777;
+}
+
 .page_head_title {
     font-size: 15pt;
     color: #777;
