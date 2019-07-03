@@ -37,7 +37,7 @@ declare variable $books :=
         <book>
             <title>En Ny Psalmebog (Vingaard, 1553)</title>
             <tei>vingaard_1553.xml</tei>
-            <mei>Je_1553</mei>
+            <mei>Vi_1553</mei>
         </book>
         <book>
             <title>Den danske Psalmebog (Thomissøn, 1569)</title>
