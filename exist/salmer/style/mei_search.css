@@ -139,6 +139,8 @@ a.paging, a.paging:visited, a.paging:active {
     margin: 5px auto;
     border: 2px solid #000;  
 */
+    background-color: #111; 
+    margin: 0 -1px -1px 1px;
     width: 392px;
     height: 80px;
     padding: 0 8px;
