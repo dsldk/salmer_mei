@@ -43,26 +43,7 @@ function play_midi(id) {
     isPlaying = true;    $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
 }
- 
- 
-////////////////////////////////////////////
-/* A function playing submitted data      */
-////////////////////////////////////////////
-function play_midi_data(data) {
-    if (isPlaying === true) {pause();}
-    var options = {
-        inputFormat: 'mei'
-    };
-    console.log("Playing MIDI");
-    // MIDI needs a dummy re-rendering to make sure the correct data are loaded
-    var svg_dummy = vrvToolkit.renderData( data + "\n", options );
-    var base64midi = vrvToolkit.renderToMIDI();
-    var song = 'data:audio/midi;base64,' + base64midi;
-// Using a hidden player
-// $("#player").show();
-    $("#player").midiPlayer.play(song);
-    isPlaying = true;
-}
+
 //////////////////////////////////////////////////////
 /* Two callback functions passed to the MIDI player */
 //////////////////////////////////////////////////////

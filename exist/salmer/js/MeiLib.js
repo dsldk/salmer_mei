@@ -1,3 +1,18 @@
+// DEFAULT VALUES FOR PAGE OPTIONS 
+// To change page settings, override defaults on the hosting page. Example:
+//    <script type="text/javascript">
+//        var enableMidi = true;
+//        var enableSearch = false;
+//        var enableMenu = true;
+//        var enableComments = true;
+//    </script>   
+
+var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
+var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
+var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
+var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
+
+
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
 var $defaultVerovioOptions = {
@@ -21,12 +36,6 @@ var $defaultVerovioOptions = {
     noJustification:      1,
     breaks:               'encoded'
 };
-
-// Default values for options to be defined by hosting page
-var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true;
-var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true;
-var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;
-var comments = (typeof enableComments !== 'undefined') ? enableComments : true;
 
 // global variables - do not change
 var $mei = [];  // The array holding the MEI objects 
@@ -140,9 +149,9 @@ var meiOptionsMenu = ' \
             <div class="menu_block">\
                 <label for="factor_{id}">Nodeværdier: </label> \
                 <br/> \
-                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/>1:1 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/>1:2 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/>1:4 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/> 1:2 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/> 1:4 &#160;&#160;&#160;&#160; \
             </div>\
             <div id="mdiv-select_{id}"> \
                 <!--  mdiv-select indsættes automatisk her  --> \
@@ -152,12 +161,14 @@ var meiOptionsMenu = ' \
  
  
 function updateFromForm(id) {
+    $('.wait_overlay').addClass('visible');
     console.log(id + ": Options changed");
     var result = { };
     $.each($('#optionsForm_' + id).serializeArray(), function() {
         result[this.name] = this.value;
     });
     updateFromOptions(id, result);
+    $('.wait_overlay').removeClass('visible');
 }
  
  
@@ -245,6 +256,8 @@ function loadPage(id) {
             title.setAttributeNS(null, 'class', 'labelAttr');
             title.innerHTML = "Tekstkritisk note";
             $(this).append(title);
+            // Make the comment marker visible
+            $(this).addClass('visible');
         });
     }
     
@@ -586,5 +599,5 @@ var onSaxonLoad = function() {
     console.log("Loaded Saxon");
     saxonReady = true;
     if(midi) { initMidi() }
-    loadMeiFromDoc();
+    loadMeiFromDoc();    
 };

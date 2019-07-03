@@ -1,7 +1,12 @@
 /* CSS for SVG */
 
+.score {
+    margin: 30px 0 20px 0;
+}
+
 .mei svg tspan.text {
-    font-family: 'Noto Serif', serif;
+/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
+    font-family: Georgia, 'times new roman', times, serif; 
 }
 
 .mei svg .dir.sb, .mei svg .dir.pb {
@@ -11,12 +16,17 @@
 /* Editorial comments */
 
 .mei svg .dir.comment {
-    transform: translate(-150px,-75px)
+    transform: translate(-150px,-75px);
+    visibility: hidden; 
+}
+
+.mei svg .dir.comment.visible {
+    visibility: visible; 
 }
 
 .mei svg .dir.comment tspan.text {
     font-style: normal;
-    font-size: 200pt;
+    font-size: 250pt;
 }
 
 .mei_comment {
@@ -68,12 +78,14 @@
 }
 
 .mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
-    font-family: 'times new roman', times, serif; 
+/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
+    font-family: Georgia, 'times new roman', times, serif; 
     font-size: 500;  
     font-weight: bold;
 }
 
 /* CSS for non-SVG contents */
+
 
 /* MIDI player */
 #player {
@@ -100,7 +112,7 @@
 .midi_button a, .midi_button a:hover, .midi_button a:visited {
     display: inline-block;
     position: relative;
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 
@@ -166,15 +178,18 @@
 
 /* Place and format option menus. */
 .mei_options {
-    float: right;
+    /*float: right;*/
+    position: absolute;
     clear: both;
-    width: auto;
+    width: 260px;
     padding: 10px;
-    margin:0 0 10px 20px;
+    margin:0 0 10px 740px;
     display: none;
-    border: 1px solid #bbb;
-    background-color: #003b5c;
-    color: #fff;
+    border: 1px solid #fafafa;
+/*    background-color: #003b5c; */
+    background-color: #eee;
+    color: #000;
+    font-size: 14px;
 }
 
 .mei_options form {
@@ -204,6 +219,10 @@
     text-decoration: underline;
 }
 
+.ui-dialog {
+    font-size: .8em;
+}
+
 /* for local viewer with upload */
 .mei_upload {
     padding: 20px 20px 10px 20px;
@@ -217,9 +236,9 @@
 }
 
 .custom_input {
-    border: 1px solid #057abc;
-    background-color: #005a8c;
-    color: #fff;
+/*    border: 1px solid #057abc;
+    background-color: #005a8c; */
+    border: 1px solid black;
     display: inline-block;
     padding: 4px 10px;
     cursor: pointer;
@@ -228,6 +247,46 @@
 select.custom_input {
     padding: 0;
 }
+
+
+/* Metadata and general page style */
+
+.metadata h1 {
+    margin: 15px 0 0 0;
+}
+
+.metadata h2 {
+    margin: 0;
+}
+
+.wait_overlay {
+    cursor: wait;
+    background-color: rgba(0,0,50,0.08);
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    display: none; 
+}
+
+.wait_overlay.visible {
+    display: block;
+}
+
+.list_block {
+    display: table;
+}
+
+.relation_list {
+    display: table-row;
+}
+
+.relation_list_label, .relations {
+    display: table-cell;
+    padding: .5em .5em 0 0;
+    line-height: 1.6em;
+}
+
 
 /* fonts */
 

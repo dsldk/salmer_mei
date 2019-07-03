@@ -52,7 +52,7 @@ let $result :=
         
         <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-
+        
         <!-- User interaction settings -->
         <script type="text/javascript">
             var enableMidi = true;
@@ -70,7 +70,6 @@ let $result :=
         <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
-
         <script src="js/MeiLib.js"><!-- MEI tools --></script>
 
 	    <!-- MIDI -->        
@@ -81,7 +80,8 @@ let $result :=
         <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"><!-- Saxon CE --></script>
 
 	</head>
-	<body class="frontpage">
+	<body class="frontpage metadata">
+	   <div class="wait_overlay"><!-- overlay for progress/wait cursor --></div>
 	   {doc(concat($database,"/assets/page_head.html"))}
 	   <div class="searchWrapper box-gradient-blue search">
     	    <div class="search_options search-bg">{$head}</div>

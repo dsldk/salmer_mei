@@ -1,7 +1,22 @@
+// DEFAULT VALUES FOR PAGE OPTIONS 
+// To change page settings, override defaults on the hosting page. Example:
+//    <script type="text/javascript">
+//        var enableMidi = true;
+//        var enableSearch = false;
+//        var enableMenu = true;
+//        var enableComments = true;
+//    </script>   
+
+var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
+var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
+var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
+var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
+
+
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
 var $defaultVerovioOptions = {
-    inputFormat:          'mei',
+    inputFormat:               'mei',
     scale:                40,
     pageWidth:            1800,
     pageHeight:           20000,
@@ -21,12 +36,6 @@ var $defaultVerovioOptions = {
     noJustification:      1,
     breaks:               'encoded'
 };
-
-// Default values for options to be defined by hosting page
-var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true;
-var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true;
-var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;
-var comments = (typeof enableComments !== 'undefined') ? enableComments : true;
 
 // global variables - do not change
 var $mei = [];  // The array holding the MEI objects 
@@ -110,10 +119,10 @@ var meiOptionsMenu = ' \
             <div class="menu_block">\
                 <label for="clef_{id}">N&oslash;gle: </label> \
                 <br/> \
-                <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> Original &#160;&#160;&#160;&#160; \
-                <input type="radio" name="clef" value="G" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</span> &#160;&#160;&#160;&#160; \
-                <input type="radio" name="clef" value="G8" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</span> &#160;&#160;&#160;&#160; \
-                <input type="radio" name="clef" value="F" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</span> &#160;&#160;&#160;&#160; \
+                <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> Original &#160;&#160; \
+                <input type="radio" name="clef" value="G" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</span> &#160;&#160; \
+                <input type="radio" name="clef" value="G8" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</span> &#160;&#160; \
+                <input type="radio" name="clef" value="F" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</span> &#160;&#160; \
             </div> \
             <hr/> \
             <div class="menu_block">\
@@ -140,9 +149,9 @@ var meiOptionsMenu = ' \
             <div class="menu_block">\
                 <label for="factor_{id}">Nodeværdier: </label> \
                 <br/> \
-                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/>1:1 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/>1:2 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/>1:4 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/> 1:2 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/> 1:4 &#160;&#160;&#160;&#160; \
             </div>\
             <div id="mdiv-select_{id}"> \
                 <!--  mdiv-select indsættes automatisk her  --> \
@@ -152,12 +161,14 @@ var meiOptionsMenu = ' \
  
  
 function updateFromForm(id) {
+    $('.wait_overlay').addClass('visible');
     console.log(id + ": Options changed");
     var result = { };
     $.each($('#optionsForm_' + id).serializeArray(), function() {
         result[this.name] = this.value;
     });
     updateFromOptions(id, result);
+    $('.wait_overlay').removeClass('visible');
 }
  
  
@@ -211,40 +222,44 @@ function loadPage(id) {
     if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
  
     /* Bind a click event on all editorial comment markers */
-    $("#" + id + " .comment").each(function() {
-        var commentId = $(this).attr("id");
-        // Create a div for each comment 
-        var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
-        $("#" + id).append(div);
-        // Make the div a hidden jQuery dialog 
-        $("#" + commentId + "_div").dialog({
-              autoOpen: false,
-              closeOnEscape: true
+    if(comments) {
+        $("#" + id + " .comment").each(function() {
+            var commentId = $(this).attr("id");
+            // Create a div for each comment 
+            var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
+            $("#" + id).append(div);
+            // Make the div a hidden jQuery dialog 
+            $("#" + commentId + "_div").dialog({
+                  autoOpen: false,
+                  closeOnEscape: true
+            });
+            // Put the annotation in it
+            $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
+            /* Make the bounding box clickable (works on Opera only )*/
+            $(this).attr("pointer-events", "bounding-box");
+            $(this).click(function(event) {
+                /* Close all open dialogs? */
+                //$(".ui-dialog-content").dialog("close");
+                /* Reposition the dialog */
+                $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
+                $("#" + commentId + "_div").dialog( "option", "height", "auto" );
+                $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
+                $("#" + commentId + "_div").dialog( "option", "resizable", false );
+                $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
+                /* Show the dialog */
+                $("#" + commentId + "_div").dialog("open");
+                $("#" + commentId + "_div").find("a").blur();
+            });
+            // Add a hover title
+            var svgns = "http://www.w3.org/2000/svg";
+            var title = document.createElementNS(svgns, 'title');
+            title.setAttributeNS(null, 'class', 'labelAttr');
+            title.innerHTML = "Tekstkritisk note";
+            $(this).append(title);
+            // Make the comment marker visible
+            $(this).addClass('visible');
         });
-        // Put the annotation in it
-        $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
-        /* Make the bounding box clickable (works on Opera only )*/
-        $(this).attr("pointer-events", "bounding-box");
-        $(this).click(function(event) {
-            /* Close all open dialogs? */
-            //$(".ui-dialog-content").dialog("close");
-            /* Reposition the dialog */
-            $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
-            $("#" + commentId + "_div").dialog( "option", "height", "auto" );
-            $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
-            $("#" + commentId + "_div").dialog( "option", "resizable", false );
-            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
-            /* Show the dialog */
-            $("#" + commentId + "_div").dialog("open");
-            $("#" + commentId + "_div").find("a").blur();
-        });
-        // Add a hover title
-        var svgns = "http://www.w3.org/2000/svg";
-        var title = document.createElementNS(svgns, 'title');
-        title.setAttributeNS(null, 'class', 'labelAttr');
-        title.innerHTML = "Tekstkritisk note";
-        $(this).append(title);
-    });
+    }
     
     /* Bind a click event handler on every note (MIDI jumping doesn't seem to work with rests) */
     $("#" + id + " .note").click(function() {
@@ -371,10 +386,14 @@ function loadMeiFromDoc() {
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
 
 // Problem: på visse computere bliver alle @xml:id tomme, hvis der bruges mere end en transformation ??
- 
+
+//alert(xml.getElementsByTagName("mei")[0].namespaceURI);
+
         // See if the <script> element really contains an MEI document with a <body> element
         if (xml.getElementsByTagNameNS("http://www.music-encoding.org/ns/mei","body").length > 0) {
             // If so, render
+//alert(id); 
+
             loadMei(id);
             // Make a list of all <note> IDs 
             $mei[id].notes = [];
@@ -383,7 +402,7 @@ function loadMeiFromDoc() {
         if(showMenu) { createMenu(id); };
     });
 }
- 
+
 function dataId(id) {
     // Return the id of the <script> element that holds the relevant data (necessary for IDs also containing information about the <mdiv> section to extract).
     // If there is no data marked specifically for the desired <mdiv>, we assume that data is to be taken from the original data containing all the MDIVs  
@@ -514,8 +533,8 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-//                window.location.href = "http://localhost:8080/exist/rest/db/dsl/mei_search_solr.xq?a=" + qNotes.join("-");
-                window.location.href = "http://dcm-udv-01.kb.dk:8080/exist/rest/db/dsl/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "http://salmer.dsl.lan:8080/exist/rest/db/salmer/mei_search.xq?a=" + qNotes.join("-");
+//                window.location.href = "http://dcm-udv-01.kb.dk:8080/exist/rest/db/dsl/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }
@@ -580,5 +599,5 @@ var onSaxonLoad = function() {
     console.log("Loaded Saxon");
     saxonReady = true;
     if(midi) { initMidi() }
-    loadMeiFromDoc();
+    loadMeiFromDoc();    
 };
