@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dsl="http://www.dsl.dk" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h dsl xsl">
     
     
@@ -7,7 +6,7 @@
     <!-- Det Danske Sprog- og Litteraturselskab, 2018 -->
     <!-- http://www.dsl.dk -->
     
-    <xsl:output xml:space="default" method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
+    <xsl:output xml:space="default" method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="no"/>
     
     <xsl:strip-space elements="*"/>
     
@@ -154,20 +153,16 @@
     </xsl:template>
     
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
-    <xsl:template match="m:syl[text()]">
+    <xsl:template match="m:syl[//text()]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <!--<xsl:text> </xsl:text>-->
-            <xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])">
-                <!-- Extra space before last syllable -->
-                <xsl:text> </xsl:text>
-            </xsl:if>
+            <!-- Extra space before last syllable -->
+            <xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])"><xsl:text> </xsl:text></xsl:if>
             <xsl:apply-templates select="node()"/>
             <xsl:text> </xsl:text>
-            <xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1">
-                <!-- Extra space after penultimate syllable -->
-                <xsl:text> </xsl:text>
-            </xsl:if>
+            <!-- Extra space after penultimate syllable -->
+            <xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1"><xsl:text> </xsl:text></xsl:if>
         </xsl:copy>
     </xsl:template>
     
@@ -200,8 +195,7 @@
         </xsl:for-each>
         <xsl:apply-templates select="../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in measure -->
         <xsl:apply-templates select="../../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:measure)]/ancestor::m:score/
-            (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:measure)]/ancestor::m:score/             (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
     </xsl:template>
     
     <xsl:template match="m:add | m:corr | m:damage | m:del |  m:gap | m:orig | m:reg | m:sic | m:supplied | m:unclear">
@@ -216,7 +210,7 @@
     <xsl:template match="m:music//m:annot" mode="add_comment">
         <xsl:variable name="annot" select="."/>
         <!-- Get the annotation's number -->
-        <xsl:variable name="annots" select="string-join(/*/m:music//m:annot/@xml:id,'¤')"/>
+        <xsl:variable name="annots" select="string-join(//m:music//m:annot/@xml:id,'¤')"/>
         <xsl:variable name="no" select="count(tokenize(substring-before($annots,concat('¤',@xml:id)),'¤')) + 1"/>
         <xsl:variable name="context" as="node()">
             <xsl:choose>
@@ -263,8 +257,7 @@
                     <!-- all others are attached to the first non-annotation following sibling element (or its descendants) having an xml:id -->
                     <xsl:otherwise>
                         <xsl:attribute name="startid">
-                            <xsl:value-of select="concat('#', (following-sibling::*/descendant-or-self::*[not(name()='annot' or name()='syllable' 
-                                or name()='verse' or name()='syl' or name()='neume') and @xml:id])[1]/@xml:id)"/>
+                            <xsl:value-of select="concat('#', (following-sibling::*/descendant-or-self::*[not(name()='annot' or name()='syllable'                                  or name()='verse' or name()='syl' or name()='neume') and @xml:id])[1]/@xml:id)"/>
                         </xsl:attribute>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -409,6 +402,10 @@
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>
+    </xsl:template>
+    
+    <xsl:template match="text()">
+        <xsl:value-of select="normalize-space()" />
     </xsl:template>
     
 </xsl:stylesheet>
