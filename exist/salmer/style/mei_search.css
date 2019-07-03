@@ -114,7 +114,7 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 #pnames, #contour {
-    width: 130px;
+    width: 220px;
     text-align: left;
 }
 
@@ -134,16 +134,23 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 #pQueryOut {
-    background-color: #f4f4fa;
+/*   
+    background-color: #f4f4fa; 
+    margin: 5px auto;
+    border: 2px solid #000;  
+*/
     width: 392px;
     height: 80px;
-    margin: 5px auto;
     padding: 0 8px;
-    border: 2px solid #000
 }
 
 #pQueryOut svg {
     margin-top: -12px;
+}
+
+#pQueryOut svg path, #pQueryOut svg {
+    fill: #fff;
+    stroke: #fff;
 }
 
 #pQueryOut svg .rest {

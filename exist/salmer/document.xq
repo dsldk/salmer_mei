@@ -84,7 +84,7 @@ let $result :=
 	   <div class="wait_overlay"><!-- overlay for progress/wait cursor --></div>
 	   {doc(concat($database,"/assets/page_head.html"))}
 	   <div class="searchWrapper box-gradient-blue search subpage-search">
-    	    <div class="search_options search-bg container">
+    	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="pitch_form">
             	   <p><label class="input-label left-margin" for="pnames">Melodisøgning</label>
                    <input name="x" id="x1" type="hidden" value=""/>
@@ -96,9 +96,15 @@ Altererede toner skrives således:
 cis: V, es: W, fis: X, as: Y, b: Z"/>
                    <input type="submit" value="Søg" class="search-button box-gradient-green"
                    onclick="this.form['x'].value = updateAction();"/></p>
+                                       
+                    <div class="text-row">
+                       <a href="mei_search.xq" id="advanced-search-link">Avanceret søgning</a>
+                    </div>
+                                       
                </form>
     	    </div>
         </div>
+        
         <div class="documentFrame container">
               {  
             	for $doc in $list

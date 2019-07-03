@@ -352,6 +352,12 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                         <div id="pSearchDiv">
                             <form action="" id="pSearch" class="form">
                                 <div>
+                    	            <input name="a" id="absp" type="hidden" value="{$absp}"/>
+                    	            <input name="x" id="x3" type="hidden" value="{$search_in}"/>
+                                    <input type="submit" value="Søg" class="search-button box-gradient-green" 
+                                        onclick="this.form['x'].value = updateAction()"/><font size="5px"><br/></font>
+                                    <input type="button" value="Nulstil" onclick="reset_a();" class="search-button box-gradient-green"/>
+                                    <br/>&#160;
                                     <div class="checkbox-options">
                             	        {let $tr := if($transpose="1") then 
                             	           <input type="checkbox" name="t" id="transpositions" value="1" checked="checked"/> 
@@ -372,11 +378,6 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	        <label class="input-label" for="repetitions">&#160;&#160;Tillad tonegentagelser</label>
                     	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone (giver flere resultater, f.eks. ved afvigende antal stavelser)"/>
                         	        </div>
-                    	            <input name="a" id="absp" type="hidden" value="{$absp}"/>
-                    	            <input name="x" id="x3" type="hidden" value="{$search_in}"/>
-                                    <input type="submit" value="Søg" class="search-button box-gradient-green" 
-                                        onclick="this.form['x'].value = updateAction()"/><font size="5px"><br/></font>
-                                    <input type="button" value="Nulstil" onclick="reset_a();" class="search-button box-gradient-green"/>
                                 </div>
                             </form>
                         </div>
