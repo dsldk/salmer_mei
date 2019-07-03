@@ -137,7 +137,7 @@ declare function local:verovio_match($doc as node(), $fileId as xs:string, $high
                 <param name="mdiv" value=""/>
                 <param name="highlight" value="{$highlight}"/>
             </parameters>
-            return transform:transform($doc,doc(concat($collection,$xsl)),$params)  
+            return transform:transform($doc,doc(concat($collection,$xsl)),$params)
        }
        </div>
     return ($output1, $output2)
@@ -242,9 +242,27 @@ declare function local:execution_time( $start-time, $end-time )  {
 	<head>
 	    <title>DSL-melodisøgning</title>
         <meta charset="UTF-8"/> 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"><!-- jquery --></script>
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"> verovio </script>-->
-        <script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"><!-- verovio --></script>
+        
+        <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
+        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/fix_go_collisions.css" />
+        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/elements.css" />
+        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/layout.css" />
+    	<link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/styles.css" />
+        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="style/mei.css"/>
+        <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
+
+        <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+
+        <!-- Note highlighting only works with jQuery 3+ -->
+        <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js"><!-- jquery --></script>
+        <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"></script>
+        <!-- alternatively use CDNs: -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"></script>-->
         <script type="text/javascript">
 		    /* Create the Verovio toolkit instance */
 		    var vrvToolkit = new verovio.toolkit();
@@ -256,17 +274,9 @@ declare function local:execution_time( $start-time, $end-time )  {
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
 	    
         <script src="js/mei_search.js"><!-- search tools --></script>
-        <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/fix_go_collisions.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/elements.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/layout.css" />
-    	<link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/styles.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
-        <link rel="stylesheet" type="text/css" href="style/mei.css"/>
-        <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
 	</head>
-	<body>
+	<body class="metadata">
+	   {doc(concat($collection,"/assets/page_head.html"))}
 	   <div class="searchWrapper box-gradient-blue search">
     	   <div class="search_options search-bg">
                 <div class="search_block search_block_narrow">
@@ -416,7 +426,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	                return
     	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                 <p>
-                                    <a href="javascript:void(0);" class="sprite arrow-white-circle">
+                                    <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" class="sprite arrow-white-circle">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:editor/string()}&#160;
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
@@ -474,9 +484,9 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	       return ($count, local:paging($numFound), $list)
 
     	    }
-                       <div class="debug">
+                       <!--<div class="debug">
                             {local:solr_query()}
-                       </div>
+                       </div>-->
             </div>
         return $output
 	    }

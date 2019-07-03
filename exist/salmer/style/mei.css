@@ -259,6 +259,17 @@ select.custom_input {
     margin: 0;
 }
 
+.metadata .top .left {
+    /*  overrides styles.css  */
+    float: none;
+}
+
+.page_head_title {
+    font-size: 15pt;
+    color: #777;
+    margin-left: 20px;
+}
+
 .wait_overlay {
     cursor: wait;
     background-color: rgba(0,0,50,0.08);
