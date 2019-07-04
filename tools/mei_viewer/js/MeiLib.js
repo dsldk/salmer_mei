@@ -106,11 +106,11 @@ var transformOrder = ['show', 'transpose', 'clef', 'noteValues', 'beams'];
 
 var midiMenu = '\
     <div class="midi_player">\
-        <div class="midi_button play" id="play_{id}">\
-            <a href="javascript:void(0);" title="Afspil" onclick="play_midi(\'{id}\');"><span class=\'label\'>Afspil</span></a>\
+        <div class="midi_button play" id="play_{id}" title="Afspil" onclick="play_midi(\'{id}\');">\
+            <span class="symbol"><span class=\'label\'>Afspil</span></span>\
         </div>\
-        <div class="midi_button stop" id="stop_{id}">\
-            <a href="javascript:void(0);" title="Stop afspilning" onclick="stop()"><span class=\'label\'>Stop</span></a>\
+        <div class="midi_button stop" id="stop_{id}" title="Stop afspilning" onclick="stop()">\
+            <span class="symbol"><span class=\'label\'>Stop</span></span>\
         </div>\
     </div>\
     <hr/>';

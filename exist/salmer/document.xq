@@ -108,7 +108,9 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                </form>
     	    </div>
         </div>
-        
+
+        <!--<textarea rows="10" cols="80" id="debug_text">debug...</textarea>-->
+
         <div class="documentFrame container">
             <!-- Metadata -->
             {  
@@ -162,9 +164,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                 return ($music, $text)  
             }
         </div>
-
-
-        <!--<textarea rows="10" cols="80" id="debug_text"></textarea>-->
+        
         <div style="height: 30px;">
             <!-- MIDI Player -->
             <div id="player" style="z-index: 20; position: absolute;"/>

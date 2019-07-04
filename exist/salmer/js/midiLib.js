@@ -16,10 +16,8 @@ function reverse(s){
 function play_midi(id) {
     console.log("Rendering for playing: " + id);
     var data = $mei[id].data;  
-    // Add a rest at the beginning to make the first note play (bug in midi player?)
-    data = data.replace('<note ','<rest dur="4"/><note ');
-    // tried adding a rest at the end too to prevent the player from stopping too early; doesn't seem to have any effect, though...
-    data = reverse(reverse(data).replace('eton',reverse('note><rest dur="4"/'))); 
+    $("#play_" + id).addClass('playing');
+    $("#stop_" + id).addClass('playing');
 
     if(clientSideXSLT) {
         // apply relevant transformations
@@ -32,7 +30,14 @@ function play_midi(id) {
         }
         data = Saxon.serializeXML(transformedMei);
     }
-// document.getElementById("debug_text").innerHTML = data; 
+    
+    // Add a rest at the beginning to make the first note play (bug in midi player?)
+    data = data.replace('<note ','<rest dur="4"/><note ');
+    // Add a rest at the end too to prevent the player from stopping too early
+    data = reverse(reverse(data).replace(reverse('</layer>'),reverse('<rest dur="4"/></layer>'))); 
+
+//$("#debug_text").html(data);
+
     if (isPlaying === true) {pause();}
     var options = {
         inputFormat: 'mei'
@@ -45,8 +50,7 @@ function play_midi(id) {
     // Using a hidden player
     // $("#player").show();
     $("#player").midiPlayer.play(song);
-    isPlaying = true;    $("#play_" + id).addClass('playing');
-    $("#stop_" + id).addClass('playing');
+    isPlaying = true;
 }
  
  
