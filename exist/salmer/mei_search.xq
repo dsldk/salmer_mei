@@ -5,6 +5,8 @@ declare namespace dsl = "http://dsl.dk";
 declare namespace transform = "http://exist-db.org/xquery/transform";
 declare namespace m = "http://www.music-encoding.org/ns/mei";
 
+declare option exist:serialize "method=xml media-type=text/html"; 
+
 declare variable $pname         := request:get-parameter("q", "");    (: Query by pitch name     :)
 declare variable $contour       := request:get-parameter("c", "");    (: Query by melody contour :)
 declare variable $absp          := request:get-parameter("a", "");    (: Query by pitch number   :)
@@ -126,11 +128,13 @@ declare function local:solr_query() {
 (:  :declare function local:verovio_match($file as xs:string, $highlight as xs:string*)  {:)
 declare function local:verovio_match($doc as node(), $fileId as xs:string, $highlight as xs:string*)  {
     let $output1 :=
-        <div xmlns="http://www.w3.org/1999/xhtml" id="{$fileId}" class="mei"><!-- SVG will be inserted here --></div>
+        <div id="{$fileId}" class="mei"><p class="loading">[Henter indhold ...]</p></div>
+    let $output2 :=
+        <div id="{$fileId}_options" class="mei_options"><!--MEI options menu will be inserted here--></div>
     let $xsl := if (count($highlight) > 0) then "/xsl/highlight.xsl" else "/xsl/show.xsl"  
     (: possibly some transforms here :)
-    let $output2 :=    
-       <div style="display:none" xmlns="http://www.w3.org/1999/xhtml" id="{$fileId}_data" type="text/data">
+    let $output3 :=    
+       <script id="{$fileId}_data" type="text/xml">
        {
             let $params := 
             <parameters>
@@ -139,8 +143,8 @@ declare function local:verovio_match($doc as node(), $fileId as xs:string, $high
             </parameters>
             return transform:transform($doc,doc(concat($collection,$xsl)),$params)
        }
-       </div>
-    return ($output1, $output2)
+       </script>
+    return ($output1, $output2, $output3)
 };
 
 declare function local:highlight_ids($idString as xs:string, $matches as node()*) as xs:string* {
@@ -237,7 +241,7 @@ declare function local:execution_time( $start-time, $end-time )  {
         <span class="debug">Søgningen tog {$seconds} s.</span>
 };
 
-
+let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 	    <title>DSL-melodisøgning</title>
@@ -252,28 +256,38 @@ declare function local:execution_time( $start-time, $end-time )  {
         <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="style/mei.css"/>
         <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
-
+        
         <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-
+        
+        <!-- User interaction settings -->
+        <script type="text/javascript">
+            var enableMidi = true;
+            var enableSearch = true;
+            var enableMenu = false;
+            var enableComments = false;
+            var enableClientSideXSLT = false;
+        </script>   
+        
         <!-- Note highlighting only works with jQuery 3+ -->
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js"><!-- jquery --></script>
-        <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"></script>
-        <!-- alternatively use CDNs: -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js"></script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js"></script>-->
-        <script type="text/javascript">
-		    /* Create the Verovio toolkit instance */
-		    var vrvToolkit = new verovio.toolkit();
-	    </script>
-	    
+        <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js"><!-- jquery ui --></script>     
+        <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"><!-- Verovio --></script>
+        <!-- alternatively use CDNs, like: -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
+        <script src="js/MeiLib.js"><!-- MEI tools --></script>
+        <script src="js/MeiSearch.js"><!-- MEI search tools --></script>
+
 	    <!-- MIDI -->        
         <script src="js/wildwebmidi.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
-	    
-        <script src="js/mei_search.js"><!-- search tools --></script>
+
+        <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"><!-- Saxon CE --></script>
+
 	</head>
 	<body class="metadata">
 	   {doc(concat($collection,"/assets/page_head.html"))}
@@ -316,34 +330,34 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
         	       
         	       <div id="piano_wrapper">
             	       <div id="piano_cell">
-                        <div id="pQueryOut"></div>
+                        <div id="pQueryOut"><!--  --></div>
                         <div id="piano">
                             <div class="keys">
-                                <div class="key" data-key="60"></div>
-                                <div class="key black black1" data-key="61"></div>
-                                <div class="key" data-key="62"></div>
-                                <div class="key black black3" data-key="63"></div>
-                                <div class="key" data-key="64"></div>
-                                <div class="key" data-key="65"></div>
-                                <div class="key black black1" data-key="66"></div>
-                                <div class="key" data-key="67"></div>
-                                <div class="key black black2" data-key="68"></div>
-                                <div class="key" data-key="69"></div>
-                                <div class="key black black3" data-key="70"></div>
-                                <div class="key" data-key="71"></div>
-                                <div class="key" data-key="72"></div>
-                                <div class="key black black1" data-key="73"></div>
-                                <div class="key" data-key="74"></div>
-                                <div class="key black black3" data-key="75"></div>
-                                <div class="key" data-key="76"></div>
-                                <div class="key" data-key="77"></div>
-                                <div class="key black black1" data-key="78"></div>
-                                <div class="key" data-key="79"></div>
-                                <div class="key black black2" data-key="80"></div>
-                                <div class="key" data-key="81"></div>
-                                <div class="key black black3" data-key="82"></div>
-                                <div class="key" data-key="83"></div>
-                                <div class="key" data-key="84"></div>
+                                <div class="key" data-key="60"><!--  --></div>
+                                <div class="key black black1" data-key="61"><!--  --></div>
+                                <div class="key" data-key="62"><!--  --></div>
+                                <div class="key black black3" data-key="63"><!--  --></div>
+                                <div class="key" data-key="64"><!--  --></div>
+                                <div class="key" data-key="65"><!--  --></div>
+                                <div class="key black black1" data-key="66"><!--  --></div>
+                                <div class="key" data-key="67"><!--  --></div>
+                                <div class="key black black2" data-key="68"><!--  --></div>
+                                <div class="key" data-key="69"><!--  --></div>
+                                <div class="key black black3" data-key="70"><!--  --></div>
+                                <div class="key" data-key="71"><!--  --></div>
+                                <div class="key" data-key="72"><!--  --></div>
+                                <div class="key black black1" data-key="73"><!--  --></div>
+                                <div class="key" data-key="74"><!--  --></div>
+                                <div class="key black black3" data-key="75"><!--  --></div>
+                                <div class="key" data-key="76"><!--  --></div>
+                                <div class="key" data-key="77"><!--  --></div>
+                                <div class="key black black1" data-key="78"><!--  --></div>
+                                <div class="key" data-key="79"><!--  --></div>
+                                <div class="key black black2" data-key="80"><!--  --></div>
+                                <div class="key" data-key="81"><!--  --></div>
+                                <div class="key black black3" data-key="82"><!--  --></div>
+                                <div class="key" data-key="83"><!--  --></div>
+                                <div class="key" data-key="84"><!--  --></div>
                                 <!--<div class="key black black1" data-key="85"></div>-->
                             </div>
                         </div>
@@ -355,7 +369,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                     	            <input name="a" id="absp" type="hidden" value="{$absp}"/>
                     	            <input name="x" id="x3" type="hidden" value="{$search_in}"/>
                                     <input type="submit" value="Søg" class="search-button box-gradient-green" 
-                                        onclick="this.form['x'].value = updateAction()"/><font size="5px"><br/></font>
+                                        onclick="this.form['x'].value = updateAction()"  style="margin-bottom:5px;"/><br/>
                                     <input type="button" value="Nulstil" onclick="reset_a();" class="search-button box-gradient-green"/>
                                     <br/>&#160;
                                     <div class="checkbox-options">
@@ -426,7 +440,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             else $res/*[@name="file"]/string()
     	                return
     	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
-                                <p>
+                                <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" class="sprite arrow-white-circle">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:editor/string()}&#160;
@@ -449,11 +463,15 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     <div class="midi_player">
                                         <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}">
                                             <a href="javascript:void(0);" title="Afspil" 
-                                            onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}', verovio_options); $(this).blur();"></a>
+                                            onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}'); $(this).blur();">
+                                                <span class="label">Afspil</span>
+                                            </a>
                                         </div>
                                         <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}">
                                             <a href="javascript:void(0);" title="Stop afspilning" 
-                                            onclick="stop(); $(this).blur();"></a>
+                                            onclick="stop(); $(this).blur();">
+                                                <span class="label">Stop</span>
+                                            </a>
                                         </div>
                                     </div> 
                                     <div class="debug">
@@ -465,7 +483,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     <!--{substring-after($res/*[@name="collection"],$collection)} -->
                                     <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
                                     </div>
-                                </p>
+                                </div>
                                 { 
                                     let $vrv :=
                                     if ($file) then
@@ -493,3 +511,5 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
 	    }
 	</body>
 </html>	
+
+return $result

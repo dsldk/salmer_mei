@@ -95,6 +95,7 @@
 .midi_player {
     display: inline-block;
     margin: 3px 0 10px 0;
+    vertical-align: middle;
 }
 
 

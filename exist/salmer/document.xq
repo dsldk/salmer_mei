@@ -58,6 +58,7 @@ let $result :=
             var enableSearch = true;
             var enableMenu = true;
             var enableComments = true;
+            var enableClientSideXSLT = true;
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
