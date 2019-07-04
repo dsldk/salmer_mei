@@ -95,6 +95,7 @@
 .midi_player {
     display: inline-block;
     margin: 3px 0 10px 0;
+    vertical-align: middle;
 }
 
 
@@ -262,6 +263,10 @@ select.custom_input {
 .metadata .top .left {
     /*  overrides styles.css  */
     float: none;
+}
+
+p.loading {
+    color: #777;
 }
 
 .page_head_title {

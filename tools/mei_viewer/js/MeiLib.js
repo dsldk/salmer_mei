@@ -5,12 +5,14 @@
 //        var enableSearch = false;
 //        var enableMenu = true;
 //        var enableComments = true;
+//        var enableClientSideXSLT = true;
 //    </script>   
 
 var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
 var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
 var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
+var clientSideXSLT = (typeof enableClientSideXSLT !== 'undefined') ? enableClientSideXSLT : true;  // enable client-side tranformations (necessary with custumization menu)
 
 
 // Verovio options
@@ -214,15 +216,15 @@ function loadPage(id) {
 
     /* Handle editorial comments */
  
-    /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
-    var xsl = Saxon.requestXML("xsl/comments.xsl");
-    var processor = Saxon.newXSLT20Processor(xsl);
-    // transform annotations to HTML
-    var annotations = processor.transformToDocument($mei[id].xml);
-    if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
- 
-    /* Bind a click event on all editorial comment markers */
     if(comments) {
+        /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
+        var xsl = Saxon.requestXML("xsl/comments.xsl");
+        var processor = Saxon.newXSLT20Processor(xsl);
+        // transform annotations to HTML
+        var annotations = processor.transformToDocument($mei[id].xml);
+        if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
+     
+        /* Bind a click event on all editorial comment markers */
         $("#" + id + " .comment").each(function() {
             var commentId = $(this).attr("id");
             // Create a div for each comment 
@@ -345,11 +347,13 @@ function transform(mei, options) {
 function loadMei(id) {
     //stop midi playback before making any changes
     if(isPlaying === true) { stop(); }    
-    var transformedMei = $mei[id].xml; 
-    for (var index in transformOrder) {
-        var key = transformOrder[index];
-        if ($mei[id].xsltOptions.hasOwnProperty(key)) {
-            transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
+    var transformedMei = $mei[id].xml;
+    if(clientSideXSLT) {
+        for (var index in transformOrder) {
+            var key = transformOrder[index];
+            if ($mei[id].xsltOptions.hasOwnProperty(key)) {
+                transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
+            }
         }
     }
     vrvToolkit.setOptions($mei[id].verovioOptions);
@@ -375,7 +379,7 @@ function loadMeiFromDoc() {
     $(".mei").each( function() {
         id = $(this).attr("id");
         console.log('Reading ' + id);
-        var data = $(dataId(id)).html();
+//        var data = $(dataId(id)).html();
         $mei[id] = new meiObj({});
         $mei[id].verovioOptions = $defaultVerovioOptions;
         $mei[id].xsltOptions['show'] = $.extend(true, {}, $show);
@@ -443,6 +447,7 @@ function createMenu(id){
         $("#" + id +"_options").css("display","block");
     }
 }
+
 
 // Functions for phrase selection
 

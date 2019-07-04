@@ -1,32 +1,31 @@
 xquery version "3.0" encoding "UTF-8";
 
-declare namespace h="http://www.w3.org/1999/xhtml";
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
-declare namespace fn="http://www.w3.org/2005/xpath-functions";
-declare namespace file="http://exist-db.org/xquery/file";
-declare namespace util="http://exist-db.org/xquery/util";
-declare namespace app="http://kb.dk/this/app";
-declare namespace ft="http://exist-db.org/xquery/lucene";
+declare namespace dsl = "http://dsl.dk";
 declare namespace m="http://www.music-encoding.org/ns/mei";
+declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 declare variable $document := request:get-parameter("doc", "");
 declare variable $host     := concat(request:get-header('HOST'),'/exist/rest'); (: "localhost";  :)
 declare variable $language := request:get-parameter("language", "");
+declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
-(: to be eliminated: :)
-declare variable $score    := request:get-parameter("score", "");
-
-
+declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
 declare variable $database := "/db/salmer";
 declare variable $datadir  := "data";
 declare variable $coll     := string-join(tokenize($document, '/')[position() lt last()], '/');
 declare variable $filename := tokenize($document, '/')[position() = last()];
-declare variable $xsl      := doc(concat($database,"/xsl/mei_to_html_public.xsl"));
-declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
+declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
+declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
+declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
+declare variable $index    := doc(concat($database,"/index/publications.xml"));
+declare variable $tei_doc  := doc(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll]/dsl:tei));
+
+let $text_data := $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
 
 let $list := 
     for $doc in collection(concat($database,'/',$datadir,'/',$coll))/m:mei
@@ -59,6 +58,7 @@ let $result :=
             var enableSearch = true;
             var enableMenu = true;
             var enableComments = true;
+            var enableClientSideXSLT = true;
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
@@ -82,7 +82,11 @@ let $result :=
 	</head>
 	<body class="frontpage metadata">
 	   <div class="wait_overlay"><!-- overlay for progress/wait cursor --></div>
+	
+	   <!-- Page head -->
 	   {doc(concat($database,"/assets/page_head.html"))}
+	   
+	   <!-- Search -->
 	   <div class="searchWrapper box-gradient-blue search subpage-search">
     	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="pitch_form">
@@ -106,25 +110,60 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
         </div>
         
         <div class="documentFrame container">
-              {  
+            <!-- Metadata -->
+            {  
             	for $doc in $list
-            	let $params := 
-            	<parameters>
-            	  <param name="hostname"    value="{$host}"/>
-            	  <param name="database"    value="{$database}"/>
-            	  <param name="datadir"     value="{$datadir}"/>
-            	  <param name="database"    value="{$database}"/>
-            	  <param name="coll"        value="{$coll}"/>
-            	  <param name="filename"    value="{$filename}"/>
-            	  <param name="doc"         value="{concat($database,'/',$datadir,'/',$document)}"/>
-            	  <param name="script_path" value="./document.xq"/>
-            	  <param name="language"    value="{$language}"/>
-            	  <param name="score"       value="{$score}"/>
-            	</parameters>
-            	return transform:transform($list[1],$xsl,$params)            	
-              }
+                	let $params := 
+                    	<parameters>
+                    	  <param name="hostname"    value="{$host}"/>
+                    	  <param name="database"    value="{$database}"/>
+                    	  <param name="datadir"     value="{$datadir}"/>
+                    	  <param name="database"    value="{$database}"/>
+                    	  <param name="coll"        value="{$coll}"/>
+                    	  <param name="filename"    value="{$filename}"/>
+                    	  <param name="doc"         value="{concat($database,'/',$datadir,'/',$document)}"/>
+                    	  <param name="script_path" value="./document.xq"/>
+                    	  <param name="language"    value="{$language}"/>
+                    	</parameters>
+            	return transform:transform($doc,$metaXsl,$params)            	
+            }
         </div>
+
         
+        <div class="documentFrame container">
+            <!-- Music and text -->
+            {  
+            	for $mdiv at $pos in $list[1]//m:mdiv
+                	let $include_data := 
+                	   if($pos=1) then true() else false()   
+                	let $params := 
+                    	<parameters>
+                    	  <param name="mdiv"         value="{$mdiv/@xml:id}"/>
+                    	  <param name="include_data" value="{$include_data}"/>
+                    	</parameters>
+                	let $music := transform:transform($list[1],$mdivXsl,$params)
+                	(: get only the TEI elements after the current <notatedMusic> and only until the following one  :)
+                    let $text_snippet1 :=
+                        <div>
+                            {$text_data//tei:notatedMusic[contains(tei:ptr/@target,concat('#',$mdiv/@xml:id)) or tei:ptr/@target=$filename]/following-sibling::*}
+                        </div>
+                    let $text_snippet2 :=  
+                        if($text_snippet1//tei:notatedMusic) then
+                            <div>
+                                {$text_snippet1/*[not(preceding::tei:notatedMusic)][not(name()='notatedMusic')]}
+                            </div>
+                        else                               
+                            <div>{$text_snippet1}</div> 
+                	let $params2 := 
+                    	<parameters>
+                    	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
+                    	</parameters>
+                    let $text :=  transform:transform($text_snippet2,$textXsl,$params2)
+                return ($music, $text)  
+            }
+        </div>
+
+
         <!--<textarea rows="10" cols="80" id="debug_text"></textarea>-->
         <div style="height: 30px;">
             <!-- MIDI Player -->
