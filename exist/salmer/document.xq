@@ -91,15 +91,14 @@ let $result :=
     	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="pitch_form">
             	   <p><label class="input-label left-margin" for="pnames">Melodisøgning</label>
-                   <input name="x" id="x1" type="hidden" value=""/>
+                   <!--<input name="x" id="x1" type="hidden" value=""/>-->
                    <input type="text" name="q" id="pnames" value="" class="search-text input"/> 
                    <img src="https://tekstnet.dk/static/info.png" 
                     title="Søg efter en bestemt tonefølge, f.eks. 'CDEF'.
 H skrives B.            	        
 Altererede toner skrives således: 
 cis: V, es: W, fis: X, as: Y, b: Z"/>
-                   <input type="submit" value="Søg" class="search-button box-gradient-green"
-                   onclick="this.form['x'].value = updateAction();"/></p>
+                   <input type="submit" value="Søg" class="search-button box-gradient-green"/></p>
                                        
                     <div class="text-row">
                        <a href="mei_search.xq" id="advanced-search-link">Avanceret søgning</a>

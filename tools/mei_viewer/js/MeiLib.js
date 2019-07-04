@@ -545,6 +545,20 @@ function saveSelection() {
         }
     });
 }
+
+// Validate search query
+function validateInput() {
+    $("#pnames").keyup(function (e) {
+        this.value = this.value.toLocaleUpperCase();
+        this.value = this.value.replace(/[^A-H|^V-Z]/gi,'');
+        this.value = this.value.replace(/[H]/gi,'B');
+    });
+    $("#contour").keyup(function (e) {
+        this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
+        this.value = this.value.replace(/[H]/gi,'B');
+    });
+}
+
  
 function FindByAttributeValue(doc, attribute, value, element_type)    {
     // rather slow solution; querySelector would be better but didn't seem to work with '[xml:\\id = "value"]'
@@ -605,4 +619,5 @@ var onSaxonLoad = function() {
     saxonReady = true;
     if(midi) { initMidi() }
     loadMeiFromDoc();    
+    validateInput();
 };

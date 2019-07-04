@@ -146,18 +146,6 @@ function initPiano() {
     render_query(pae + pae_data, "pQueryOut", verovio_options_search);
 }
 
-function validateInput() {
-    $("#pnames").keyup(function (e) {
-        this.value = this.value.toLocaleUpperCase();
-        this.value = this.value.replace(/[^A-H|^V-Z]/gi,'');
-        this.value = this.value.replace(/[H]/gi,'B');
-    });
-    $("#contour").keyup(function (e) {
-        this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
-        this.value = this.value.replace(/[H]/gi,'B');
-    });
-}
-
 function updateAction() {
     // generate a string containing the publications to be searched
     var q = "";
@@ -191,5 +179,4 @@ function publClicked() {
 $(document).ready(function() {
     $defaultVerovioOptions = local_verovio_options; // override default Verovio settings
     initPiano();
-    validateInput();
 });
