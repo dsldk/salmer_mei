@@ -55,7 +55,7 @@ function meiObj (data, xml, verovioOptions) {
     this.data = data;  // MEI data as string
     this.xml = xml;    // MEI data as an XML document
     this.verovioOptions = verovioOptions;
-    this.xsltOptions = [];
+    this.xsltOptions = {};
     this.notes = [];   // Array holding all note IDs (for phrase selection)
 }
  
