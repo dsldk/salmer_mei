@@ -398,7 +398,7 @@
         </xsl:choose>
     </xsl:function>
     
-    <xsl:template match="@*|node()">
+    <xsl:template match="@*|*">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
         </xsl:copy>

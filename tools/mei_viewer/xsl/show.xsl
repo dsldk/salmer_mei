@@ -400,7 +400,7 @@
     
     <xsl:template match="@*|node()">
         <xsl:copy>
-            <xsl:apply-templates select="@*|node()"/>
+            <xsl:apply-templates select="@*|*"/>
         </xsl:copy>
     </xsl:template>
     
