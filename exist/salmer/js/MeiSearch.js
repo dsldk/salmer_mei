@@ -132,10 +132,9 @@ function initPiano() {
                 pae_data += new_data;
                 render_query(pae + pae_data, "pQueryOut", verovio_options_search);
                 pae_changed = true;
-
-                // play the added note; start with a 64th rest – otherwise the MIDI player skips the first note;
+                // play the added note; start with a 64th rest – otherwise the MIDI player skips the (first) note;
                 // play halves instead of quarter notes to get a reasonable note length
-                play_midi_data(pae + "6-" + pnum_to_pae(pnum).replace("4","1"), verovio_options_search);
+                play_midi_data(pae + "6-" + pnum_to_pae(pnum).replace("4","2"), verovio_options_search);
                 
             }
         });

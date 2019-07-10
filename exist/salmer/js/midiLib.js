@@ -59,11 +59,8 @@ function play_midi(id) {
 ////////////////////////////////////////////
 /* A function playing submitted data      */
 ////////////////////////////////////////////
-function play_midi_data(data) {
+function play_midi_data(data, options) {
     if (isPlaying === true) {pause();}
-    var options = {
-        inputFormat: 'mei'
-    };
     console.log("Playing MIDI");
     // MIDI needs a dummy re-rendering to make sure the correct data are loaded
     var svg_dummy = vrvToolkit.renderData( data + "\n", options );
