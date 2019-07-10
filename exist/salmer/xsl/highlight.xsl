@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:exslt="http://exslt.org/common" exclude-result-prefixes="m exslt" version="3.0">
     
     <!-- Highlight search matches in Verovio and omit some editorial features -->
