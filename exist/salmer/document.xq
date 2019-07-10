@@ -3,6 +3,7 @@ xquery version "3.0" encoding "UTF-8";
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
+declare namespace util="http://exist-db.org/xquery/util";
 declare namespace dsl = "http://dsl.dk";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -58,7 +59,6 @@ let $result :=
             var enableSearch = true;
             var enableMenu = true;
             var enableComments = true;
-            var enableClientSideXSLT = true;
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->

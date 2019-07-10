@@ -5,14 +5,12 @@
 //        var enableSearch = false;
 //        var enableMenu = true;
 //        var enableComments = true;
-//        var enableClientSideXSLT = true;
 //    </script>   
 
 var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
 var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
 var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
-var clientSideXSLT = (typeof enableClientSideXSLT !== 'undefined') ? enableClientSideXSLT : true;  // enable client-side tranformations (necessary with custumization menu)
 
 
 // Verovio options
@@ -214,151 +212,73 @@ function updateFromOptions(id, options) {
         delete $mei[id].xsltOptions['noteValues'];
         delete $mei[id].xsltOptions['beams']
     };
-//    loadMei(id);
     // send a POST request to get the MEI data
-    $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ render_data(data); },'xml');
+    $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
 }
 
 function addComments(data) {
-    
-}
+    /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
+    //var xsl = Saxon.requestXML("xsl/comments.xsl");
+    //var processor = Saxon.newXSLT20Processor(xsl);
+    // transform annotations to HTML
+    //var annotations = processor.transformToDocument($mei[id].xml);
+    //if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
  
-function loadPage(id) {
-    // Verovio 1.1.6 needs: svg = vrvToolkit.renderPage(page, {});
-    svg = vrvToolkit.renderToSVG(page, {});
-    $("#" + id).html(svg);
+    var targetId = $(data.firstChild).attr('targetId')
+    // strip off the wrapping <response> element to get the MEI root element
+    var xml = data.firstChild;
+    // make a document fragment containing the MEI
+    var frag = document.createDocumentFragment();
+    while(xml.firstChild) {
+        frag.appendChild(xml.firstChild);
+    }
+    // too much serializing and re-parsing here, but the 'data' parameter does not seem to be an xml document;
+    // the following seems to get the data types right:
+    var xmlString = (new XMLSerializer()).serializeToString(frag);
+    var annotations = $.parseXML(xmlString);
 
-    /* Handle editorial comments */
  
-    if(comments) {
-        /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
-        var xsl = Saxon.requestXML("xsl/comments.xsl");
-        var processor = Saxon.newXSLT20Processor(xsl);
-        // transform annotations to HTML
-        var annotations = processor.transformToDocument($mei[id].xml);
-        if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
-     
-        /* Bind a click event on all editorial comment markers */
-        $("#" + id + " .comment").each(function() {
-            var commentId = $(this).attr("id");
-            // Create a div for each comment 
-            var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
-            $("#" + id).append(div);
-            // Make the div a hidden jQuery dialog 
-            $("#" + commentId + "_div").dialog({
-                  autoOpen: false,
-                  closeOnEscape: true
-            });
-            // Put the annotation in it
-            $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
-            /* Make the bounding box clickable (works on Opera only )*/
-            $(this).attr("pointer-events", "bounding-box");
-            $(this).click(function(event) {
-                /* Close all open dialogs? */
-                //$(".ui-dialog-content").dialog("close");
-                /* Reposition the dialog */
-                $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
-                $("#" + commentId + "_div").dialog( "option", "height", "auto" );
-                $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
-                $("#" + commentId + "_div").dialog( "option", "resizable", false );
-                $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
-                /* Show the dialog */
-                $("#" + commentId + "_div").dialog("open");
-                $("#" + commentId + "_div").find("a").blur();
-            });
-            // Add a hover title
-            var svgns = "http://www.w3.org/2000/svg";
-            var title = document.createElementNS(svgns, 'title');
-            title.setAttributeNS(null, 'class', 'labelAttr');
-            title.innerHTML = "Tekstkritisk note";
-            $(this).append(title);
-            // Make the comment marker visible
-            $(this).addClass('visible');
+    /* Bind a click event on all editorial comment markers */
+    $("#" + targetId + " .comment").each(function() {
+        var commentId = $(this).attr("id");
+        // Create a div for each comment 
+        var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
+        $("#" + targetId).append(div);
+        // Make the div a hidden jQuery dialog 
+        $("#" + commentId + "_div").dialog({
+              autoOpen: false,
+              closeOnEscape: true
         });
-    }
-    
-    /* Bind a click event handler on every note (MIDI jumping doesn't seem to work with rests) */
-    $("#" + id + " .note").click(function() {
-        var noteID = $(this).attr("id");
-        if(isPlaying) { jumpTo(noteID); }
-        // If not playing, start selection
-        if(searchForSelection === true && isPlaying !== true) {
-            if(selectionmode == "open" && noteID != selectionStart && id == selectionMEI) {
-                // Range selected
-                selectionmode = "closed";
-                selectionChangeClass(id, noteID, "add", "selected");
-                saveSelection();
-            } else 
-            if(selectionmode == "closed" || noteID == selectionStart || (selectionmode == "open" && id != selectionMEI) ){
-                // Deselect and reset
-                selectionmode = "";
-                selectionStart = "";
-                selectionMEI = "";
-                selection = [];
-                $(".selectionBox").remove();
-                $(".selected").removeClass('selected');
-                $(".hover").removeClass('hover');
-            } else {
-                // Start selection
-                selectionmode = "open";
-                selectionStart = noteID;
-                selectionMEI = id;
-                $(this).addClass('selected');
-            }
-        }
-    })
-    /* Bind a hover event handler on notes in selection mode */
-    .mouseover(function() {
-        if(midi || searchForSelection) {
-            var noteID = $(this).attr("id");
-            if(selectionmode == "open" && selectionMEI == id && $(this).attr("id") !== selectionStart) {
-                // One end of the selection is made; higlight all notes in between 
-                selectionChangeClass(id, noteID, "add", "hover");
-            } else if(selectionmode != "closed" && (selectionMEI == id || selectionMEI == "")) {
-                // Selection not started yet; highlight only the hovered note
-                $(this).addClass('hover'); 
-            } else {
-                // Selection complete; do nothing 
-            }
-        }
-    })
-    .mouseout(function() {
-        $(".hover").removeClass('hover');
-    });
-    
-    // Close selection mode when clicking outside selection
-    // Overrides note clicking, unfortunately...
-/*    $("#" + id).click(function() {
-        if(selectionmode) {
-            selectionmode = false;
-            $(".selected").each(function() {
-               $(this).removeClass('selected'); 
-            });
-        }
-    });
-*/        
-};
- 
-
-/* Apply the transformations and load the data */
-function loadMei(id) {
-    //stop midi playback before making any changes
-    if(isPlaying === true) { stop(); }    
-    var transformedMei = $mei[id].xml;
-    if(clientSideXSLT) {
-        for (var index in transformOrder) {
-            var key = transformOrder[index];
-            if ($mei[id].xsltOptions.hasOwnProperty(key)) {
-                transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
-            }
-        }
-    }
-    vrvToolkit.setOptions($mei[id].verovioOptions);
-    vrvToolkit.loadData(Saxon.serializeXML(transformedMei));
-    loadPage(id);
+        // Put the annotation in it
+        $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
+        /* Make the bounding box clickable (works on Opera only )*/
+        $(this).attr("pointer-events", "bounding-box");
+        $(this).click(function(event) {
+            /* Close all open dialogs? */
+            //$(".ui-dialog-content").dialog("close");
+            /* Reposition the dialog */
+            $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
+            $("#" + commentId + "_div").dialog( "option", "height", "auto" );
+            $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
+            $("#" + commentId + "_div").dialog( "option", "resizable", false );
+            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
+            /* Show the dialog */
+            $("#" + commentId + "_div").dialog("open");
+            $("#" + commentId + "_div").find("a").blur();
+        });
+        // Add a hover title
+        var svgns = "http://www.w3.org/2000/svg";
+        var title = document.createElementNS(svgns, 'title');
+        title.setAttributeNS(null, 'class', 'labelAttr');
+        title.innerHTML = "Tekstkritisk note";
+        $(this).append(title);
+        // Make the comment marker visible
+        $(this).addClass('visible');
+    });    
 }
   
-function render_data(data) { 
+function renderData(data) { 
+    if(isPlaying === true) { stop(); }    
     var targetId = $(data.firstChild).attr('targetId')
     // strip off the wrapping <response> element to get the MEI root element
     var mei = data.firstChild;
@@ -367,8 +287,8 @@ function render_data(data) {
     while(mei.firstChild) {
         frag.appendChild(mei.firstChild);
     }
-    // too much serializing and re-parsing here; but the data parameter does not seem to be an xml document;
-    // the following seems to get the data types right.
+    // too much serializing and re-parsing here, but the 'data' parameter does not seem to be an xml document;
+    // the following seems to get the data types right:
     var xmlString = (new XMLSerializer()).serializeToString(frag);
     // save the MEI xml for later;
     $mei[targetId].xml = $.parseXML(xmlString);
@@ -384,7 +304,73 @@ function render_data(data) {
     
     // create menu if not done already 
     if(showMenu && $("#" + targetId +"_options").css("display")=="none") { createMenu(targetId); };
+
+    /* Bind a click event handler on every note (MIDI jumping doesn't seem to work with rests) */
+    $("#" + targetId + " .note").click(function() {
+        var noteID = $(this).attr("id");
+        if(isPlaying) { jumpTo(noteID); }
+        // If not playing, start selection
+        if(searchForSelection === true && isPlaying !== true) {
+            if(selectionmode == "open" && noteID != selectionStart && targetId == selectionMEI) {
+                // Range selected
+                selectionmode = "closed";
+                selectionChangeClass(targetId, noteID, "add", "selected");
+                saveSelection();
+            } else 
+            if(selectionmode == "closed" || noteID == selectionStart || (selectionmode == "open" && targetId != selectionMEI) ){
+                // Deselect and reset
+                selectionmode = "";
+                selectionStart = "";
+                selectionMEI = "";
+                selection = [];
+                $(".selectionBox").remove();
+                $(".selected").removeClass('selected');
+                $(".hover").removeClass('hover');
+            } else {
+                // Start selection
+                selectionmode = "open";
+                selectionStart = noteID;
+                selectionMEI = targetId;
+                $(this).addClass('selected');
+            }
+        }
+    })
+    /* Bind a hover event handler on notes in selection mode */
+    .mouseover(function() {
+        if(midi || searchForSelection) {
+            var noteID = $(this).attr("id");
+            if(selectionmode == "open" && selectionMEI == targetId && $(this).attr("id") !== selectionStart) {
+                // One end of the selection is made; higlight all notes in between 
+                selectionChangeClass(targetId, noteID, "add", "hover");
+            } else if(selectionmode != "closed" && (selectionMEI == targetId || selectionMEI == "")) {
+                // Selection not started yet; highlight only the hovered note
+                $(this).addClass('hover'); 
+            } else {
+                // Selection complete; do nothing 
+            }
+        }
+    })
+    .mouseout(function() {
+        $(".hover").removeClass('hover');
+    });
     
+    // Close selection mode when clicking outside selection
+    // Overrides note clicking, unfortunately...
+/*    $("#" + targetId).click(function() {
+        if(selectionmode) {
+            selectionmode = false;
+            $(".selected").each(function() {
+               $(this).removeClass('selected'); 
+            });
+        }
+    });
+*/        
+    if(comments) {
+        // send a POST request to get the editorial comments formatted as HTML
+        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+        '',function(data){ addComments(data); },'xml');
+    }
+
 }
 
 
@@ -406,7 +392,7 @@ function loadMeiFromDoc() {
         $mei[id].xsltOptions['doc'] = filename_from_dataId(id) + '.xml';
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
         // send a POST request to get the MEI data
-        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ render_data(data); },'xml');
+        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
 }
 
@@ -518,8 +504,7 @@ function saveSelection() {
             document.getElementById('selectionBox_' + layer).appendChild(title);
 
             // Parse original XML from string in document
-            var xml = $mei[selectionMEI].data;
-            var xmlDoc = $.parseXML(xml);
+            var xmlDoc = $mei[selectionMEI].xml;
 
             // Bind a click event handler to the box
             $('#selectionBox_' + layer).click(function() {

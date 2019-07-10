@@ -19,7 +19,7 @@ function play_midi(id) {
     $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
 
-    if(clientSideXSLT) {
+    /*  if(clientSideXSLT) {
         // apply relevant transformations
         transformedMei = Saxon.parseXML(data);
         for (var index in transformOrder) {
@@ -29,7 +29,9 @@ function play_midi(id) {
             }
         }
         data = Saxon.serializeXML(transformedMei);
-    }
+    }*/
+    
+    data = (new XMLSerializer()).serializeToString($mei[id].xml);
     
     // Add a rest at the beginning to make the first note play (bug in midi player?)
     data = data.replace('<note ','<rest dur="4"/><note ');
