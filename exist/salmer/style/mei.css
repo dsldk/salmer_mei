@@ -45,6 +45,11 @@
     cursor: pointer;
 }
 
+
+.mei svg .bracketspan {
+    cursor: help;
+}
+
 .cursorHelp:hover {
     cursor: help;
 }

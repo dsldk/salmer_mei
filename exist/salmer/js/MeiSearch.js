@@ -1,5 +1,3 @@
-var data_dir = "data/";
-
 var pQuery = [];
 var pae         = "@clef:G-2\n @data:";
 var pae_data    = "4-";
@@ -7,8 +5,8 @@ var pae_octaves = [",,", ",", "'", "''", "'''"];
 var pae_pitches = ["C", "xC", "D", "bE", "E", "F", "xF", "G", "bA", "A", "bB", "B"];
 var pae_changed = false;
 
-// Verovio settings for rendering of search results 
-var local_verovio_options = {
+// Verovio settings for rendering of search results. Overrides default settings defined in MeiAjax.js 
+$defaultVerovioOptions = {
     inputFormat:        'mei',
     scale:              36,
     pageWidth:          2500,
@@ -26,7 +24,7 @@ var local_verovio_options = {
     font:               'Bravura',
     adjustPageHeight:   1,
     noJustification:    1,
-    breaks:             'encoded'
+    breaks:             'auto'
 };
 
 // Verovio settings for the piano input 
@@ -176,6 +174,5 @@ function publClicked() {
 
 
 $(document).ready(function() {
-    $defaultVerovioOptions = local_verovio_options; // override default Verovio settings
     initPiano();
 });

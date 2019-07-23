@@ -82,6 +82,14 @@ var $show = {
     }
 }
  
+var $highlight = {
+    xslt:       'highlight.xsl',
+    parameters: {
+        ids:   '',
+        excerpt: 'yes'
+    }
+}
+ 
 var $transpose = {
     xslt:       'transpose.xsl',
     parameters: {
@@ -109,7 +117,7 @@ var $setBeams = {
     parameters: {}
 }
  
-var transformOrder = ['show', 'transpose', 'clef', 'noteValues', 'beams'];
+var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'beams'];
 
 var midiMenu = '\
     <div class="midi_player">\
@@ -370,6 +378,11 @@ function renderData(data) {
         $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
         '',function(data){ addComments(data); },'xml');
     }
+    
+    // In search results, move the '[...]' omission markers all to the left
+    $(".fragment text").each(function() {
+        $(this).attr('x','750');
+    });
 
 }
 
@@ -377,12 +390,15 @@ function renderData(data) {
 function loadMeiFromDoc() {
     /* Read MEI data from <DIV> elements in the HTML document.
        @DSL: The @id of the target DIV is supposed to be the MEI file name without extension.
-       The actual MEI data are read from a script element with @id = the MEI file name (without extension) + '_data'.
        To display options for transposition etc., add another <DIV> for the menu as shown below.
        If an MDIV other than the first is wanted, the word "MDIV" and its id must be appended to the DIV ids (except for the data DIV as explained below).
        Example: 
-       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options"><!-- menu will be generated here; must not be empty --></div>
-       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02" class="mei"><!-- SVG will be put here; must not be empty --></div> */
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02" class="mei"><!-- SVG will be put here; must not be empty --></div> 
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options"><!-- menu will be generated here; must not be empty --></div> 
+       If content is to be highlighted on loading (like search matches), a whitespace-separated list of xml:ids should be put in an invisible <div> inside the 'options' <div>:
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options">
+           <div class="highlight_list" style="display:none">Ul_1535_LN0076_000a04v_m-42 Ul_1535_LN0076_000a04v_m-43</div>
+       </div> */
     $(".mei").each( function() {
         id = $(this).attr("id");
         console.log('Reading ' + id);
@@ -391,6 +407,11 @@ function loadMeiFromDoc() {
         $mei[id].xsltOptions['id'] = id;
         $mei[id].xsltOptions['doc'] = filename_from_dataId(id) + '.xml';
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
+        $("#"+id+"_options .highlight_list").each( function() {
+            console.log("Highlight:" + $(this).html());
+            $mei[id].xsltOptions['highlight'] = $.extend(true, {}, $highlight);
+            $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
+        });
         // send a POST request to get the MEI data
         $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });

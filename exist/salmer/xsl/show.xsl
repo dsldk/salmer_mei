@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dsl="http://www.dsl.dk" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h dsl xsl">
     
     
@@ -131,20 +130,6 @@
                 <xsl:otherwise>100</xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <!-- temporary eXist 2.2 solution: 
-            <xsl:variable name="mostFrequentValue">
-            <xsl:choose>
-            <xsl:when test="count(//m:note[not(@dur)]) > count(//m:note[@dur='1'])"
-            >120</xsl:when>
-            <xsl:when test="count(//m:note[@dur='1']) > count(//m:note[@dur='2'])"
-            >480</xsl:when>
-            <xsl:when test="count(//m:note[@dur='2']) > count(//m:note[@dur='4'])"
-            >240</xsl:when>
-            <xsl:otherwise>80</xsl:otherwise>
-            </xsl:choose>
-            </xsl:variable>
-            <xsl:variable name="tempo" select="$mostFrequentValue"/>
-            end temporary -->
         <xsl:copy>
             <xsl:attribute name="midi.bpm">
                 <xsl:value-of select="$tempo"/>
