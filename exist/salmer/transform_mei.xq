@@ -143,10 +143,10 @@ let $mei :=
         (: order of transformations is hard-coded here :)
         let $step1 := local:single_transformation($doc[1], $show-parameters)    
         let $step2 := if($post/post-parameters/highlight) then local:single_transformation($step1, $post/post-parameters/highlight) else $step1
-        let $step3 := if($post/post-parameters/transpose) then local:single_transformation($step1, $post/post-parameters/transpose) else $step2
-        let $step4 := if($post/post-parameters/clef) then local:single_transformation($step2, $post/post-parameters/clef) else $step3
-        let $step5 := if($post/post-parameters/noteValues) then local:single_transformation($step3, $post/post-parameters/noteValues) else $step4
-        let $step6 := if($post/post-parameters/beams) then local:single_transformation($step4, $post/post-parameters/beams) else $step5     
+        let $step3 := if($post/post-parameters/transpose) then local:single_transformation($step2, $post/post-parameters/transpose) else $step2
+        let $step4 := if($post/post-parameters/clef) then local:single_transformation($step3, $post/post-parameters/clef) else $step3
+        let $step5 := if($post/post-parameters/noteValues) then local:single_transformation($step4, $post/post-parameters/noteValues) else $step4
+        let $step6 := if($post/post-parameters/beams) then local:single_transformation($step5, $post/post-parameters/beams) else $step5     
     return 
         $step6
     else
