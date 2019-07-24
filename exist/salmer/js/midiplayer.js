@@ -309,7 +309,8 @@ function runConversion() {
     
     var sleep = 10;
     circularBuffer.reset();
-    setTimeout(startAudio, 100);
+    // set delay to (roughly) synchronize playback and highlighting
+    setTimeout(startAudio, 600);
 
     console.log(midiPlayer_convertionJob);
         
