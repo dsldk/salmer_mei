@@ -5,14 +5,12 @@
 //        var enableSearch = false;
 //        var enableMenu = true;
 //        var enableComments = true;
-//        var enableClientSideXSLT = true;
 //    </script>   
 
 var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
 var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
 var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
-var clientSideXSLT = (typeof enableClientSideXSLT !== 'undefined') ? enableClientSideXSLT : true;  // enable client-side tranformations (necessary with custumization menu)
 
 
 // Verovio options
@@ -55,7 +53,16 @@ function meiObj (data, xml, verovioOptions) {
     this.data = data;  // MEI data as string
     this.xml = xml;    // MEI data as an XML document
     this.verovioOptions = verovioOptions;
-    this.xsltOptions = {};
+    this.xsltOptions = {
+        id:   {},
+        doc:  {},
+        show: {
+            xslt:       'show.xsl',
+            parameters: {
+                mdiv:   ''
+            }
+        }
+    };
     this.notes = [];   // Array holding all note IDs (for phrase selection)
 }
  
@@ -72,6 +79,14 @@ var $show = {
     xslt:       'show.xsl',
     parameters: {
         mdiv:   ''
+    }
+}
+ 
+var $highlight = {
+    xslt:       'highlight.xsl',
+    parameters: {
+        ids:   '',
+        excerpt: 'yes'
     }
 }
  
@@ -102,7 +117,7 @@ var $setBeams = {
     parameters: {}
 }
  
-var transformOrder = ['show', 'transpose', 'clef', 'noteValues', 'beams'];
+var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'beams'];
 
 var midiMenu = '\
     <div class="midi_player">\
@@ -175,7 +190,7 @@ function updateFromForm(id) {
  
  
 function updateFromOptions(id, options) {
-    // Add the relevant transformations and remove those not needed
+    // Add the relevant transformations and remove those not needed    
     if(options.mdiv) {
         console.log("Set mdiv:" + options.mdiv);
         $mei[id].xsltOptions['show'].parameters['mdiv'] = options.mdiv;
@@ -205,77 +220,112 @@ function updateFromOptions(id, options) {
         delete $mei[id].xsltOptions['noteValues'];
         delete $mei[id].xsltOptions['beams']
     };
-    loadMei(id);
+    // send a POST request to get the MEI data
+    $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
 }
- 
- 
-function loadPage(id) {
-    // Verovio 1.1.6 needs: svg = vrvToolkit.renderPage(page, {});
-    svg = vrvToolkit.renderToSVG(page, {});
-    $("#" + id).html(svg);
 
-    /* Handle editorial comments */
+function addComments(data) {
+    /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
+    //var xsl = Saxon.requestXML("xsl/comments.xsl");
+    //var processor = Saxon.newXSLT20Processor(xsl);
+    // transform annotations to HTML
+    //var annotations = processor.transformToDocument($mei[id].xml);
+    //if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
  
-    if(comments) {
-        /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
-        var xsl = Saxon.requestXML("xsl/comments.xsl");
-        var processor = Saxon.newXSLT20Processor(xsl);
-        // transform annotations to HTML
-        var annotations = processor.transformToDocument($mei[id].xml);
-        if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
-     
-        /* Bind a click event on all editorial comment markers */
-        $("#" + id + " .comment").each(function() {
-            var commentId = $(this).attr("id");
-            // Create a div for each comment 
-            var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
-            $("#" + id).append(div);
-            // Make the div a hidden jQuery dialog 
-            $("#" + commentId + "_div").dialog({
-                  autoOpen: false,
-                  closeOnEscape: true
-            });
-            // Put the annotation in it
-            $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
-            /* Make the bounding box clickable (works on Opera only )*/
-            $(this).attr("pointer-events", "bounding-box");
-            $(this).click(function(event) {
-                /* Close all open dialogs? */
-                //$(".ui-dialog-content").dialog("close");
-                /* Reposition the dialog */
-                $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
-                $("#" + commentId + "_div").dialog( "option", "height", "auto" );
-                $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
-                $("#" + commentId + "_div").dialog( "option", "resizable", false );
-                $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
-                /* Show the dialog */
-                $("#" + commentId + "_div").dialog("open");
-                $("#" + commentId + "_div").find("a").blur();
-            });
-            // Add a hover title
-            var svgns = "http://www.w3.org/2000/svg";
-            var title = document.createElementNS(svgns, 'title');
-            title.setAttributeNS(null, 'class', 'labelAttr');
-            title.innerHTML = "Tekstkritisk note";
-            $(this).append(title);
-            // Make the comment marker visible
-            $(this).addClass('visible');
-        });
+    var targetId = $(data.firstChild).attr('targetId')
+    // strip off the wrapping <response> element to get the MEI root element
+    var xml = data.firstChild;
+    // make a document fragment containing the MEI
+    var frag = document.createDocumentFragment();
+    while(xml.firstChild) {
+        frag.appendChild(xml.firstChild);
     }
+    // too much serializing and re-parsing here, but the 'data' parameter does not seem to be an xml document;
+    // the following seems to get the data types right:
+    var xmlString = (new XMLSerializer()).serializeToString(frag);
+    var annotations = $.parseXML(xmlString);
+
+ 
+    /* Bind a click event on all editorial comment markers */
+    $("#" + targetId + " .comment").each(function() {
+        var commentId = $(this).attr("id");
+        // Create a div for each comment 
+        var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
+        $("#" + targetId).append(div);
+        // Make the div a hidden jQuery dialog 
+        $("#" + commentId + "_div").dialog({
+              autoOpen: false,
+              closeOnEscape: true
+        });
+        // Put the annotation in it
+        $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
+        /* Make the bounding box clickable (works on Opera only )*/
+        $(this).attr("pointer-events", "bounding-box");
+        $(this).click(function(event) {
+            /* Close all open dialogs? */
+            //$(".ui-dialog-content").dialog("close");
+            /* Reposition the dialog */
+            $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
+            $("#" + commentId + "_div").dialog( "option", "height", "auto" );
+            $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
+            $("#" + commentId + "_div").dialog( "option", "resizable", false );
+            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
+            /* Show the dialog */
+            $("#" + commentId + "_div").dialog("open");
+            $("#" + commentId + "_div").find("a").blur();
+        });
+        // Add a hover title
+        var svgns = "http://www.w3.org/2000/svg";
+        var title = document.createElementNS(svgns, 'title');
+        title.setAttributeNS(null, 'class', 'labelAttr');
+        title.innerHTML = "Tekstkritisk note";
+        $(this).append(title);
+        // Make the comment marker visible
+        $(this).addClass('visible');
+    });    
+}
+  
+function renderData(data) { 
+    if(isPlaying === true) { stop(); }    
+    var targetId = $(data.firstChild).attr('targetId')
+    // strip off the wrapping <response> element to get the MEI root element
+    var mei = data.firstChild;
+    // make a document fragment containing the MEI
+    var frag = document.createDocumentFragment();
+    while(mei.firstChild) {
+        frag.appendChild(mei.firstChild);
+    }
+    // too much serializing and re-parsing here, but the 'data' parameter does not seem to be an xml document;
+    // the following seems to get the data types right:
+    var xmlString = (new XMLSerializer()).serializeToString(frag);
+    // save the MEI xml for later;
+    $mei[targetId].xml = $.parseXML(xmlString);
+
+    vrvToolkit.setOptions($mei[id].verovioOptions);
+    vrvToolkit.loadData(xmlString);
+    svg = vrvToolkit.renderToSVG(page, {});
+    $("#" + targetId).html(svg);
+
+    // Make a list of all <note> IDs 
+    $mei[targetId].notes = [];
+    $("#" + targetId).find(".note").each(function(){ $mei[targetId].notes.push(this.id); });            
     
+    // create menu if not done already 
+    if(showMenu && $("#" + targetId +"_options").css("display")=="none") { createMenu(targetId); };
+
     /* Bind a click event handler on every note (MIDI jumping doesn't seem to work with rests) */
-    $("#" + id + " .note").click(function() {
+    $("#" + targetId + " .note").click(function() {
         var noteID = $(this).attr("id");
         if(isPlaying) { jumpTo(noteID); }
         // If not playing, start selection
         if(searchForSelection === true && isPlaying !== true) {
-            if(selectionmode == "open" && noteID != selectionStart && id == selectionMEI) {
+            if(selectionmode == "open" && noteID != selectionStart && targetId == selectionMEI) {
                 // Range selected
                 selectionmode = "closed";
-                selectionChangeClass(id, noteID, "add", "selected");
+                selectionChangeClass(targetId, noteID, "add", "selected");
                 saveSelection();
             } else 
-            if(selectionmode == "closed" || noteID == selectionStart || (selectionmode == "open" && id != selectionMEI) ){
+            if(selectionmode == "closed" || noteID == selectionStart || (selectionmode == "open" && targetId != selectionMEI) ){
                 // Deselect and reset
                 selectionmode = "";
                 selectionStart = "";
@@ -288,7 +338,7 @@ function loadPage(id) {
                 // Start selection
                 selectionmode = "open";
                 selectionStart = noteID;
-                selectionMEI = id;
+                selectionMEI = targetId;
                 $(this).addClass('selected');
             }
         }
@@ -297,10 +347,10 @@ function loadPage(id) {
     .mouseover(function() {
         if(midi || searchForSelection) {
             var noteID = $(this).attr("id");
-            if(selectionmode == "open" && selectionMEI == id && $(this).attr("id") !== selectionStart) {
+            if(selectionmode == "open" && selectionMEI == targetId && $(this).attr("id") !== selectionStart) {
                 // One end of the selection is made; higlight all notes in between 
-                selectionChangeClass(id, noteID, "add", "hover");
-            } else if(selectionmode != "closed" && (selectionMEI == id || selectionMEI == "")) {
+                selectionChangeClass(targetId, noteID, "add", "hover");
+            } else if(selectionmode != "closed" && (selectionMEI == targetId || selectionMEI == "")) {
                 // Selection not started yet; highlight only the hovered note
                 $(this).addClass('hover'); 
             } else {
@@ -314,7 +364,7 @@ function loadPage(id) {
     
     // Close selection mode when clicking outside selection
     // Overrides note clicking, unfortunately...
-/*    $("#" + id).click(function() {
+/*    $("#" + targetId).click(function() {
         if(selectionmode) {
             selectionmode = false;
             $(".selected").each(function() {
@@ -322,89 +372,55 @@ function loadPage(id) {
             });
         }
     });
-*/    
-
+*/        
+    if(comments) {
+        // send a POST request to get the editorial comments formatted as HTML
+        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+        '',function(data){ addComments(data); },'xml');
+    }
     
-};
- 
-function transform(mei, options) {
-    if(saxonReady) {
-        console.log("xslt: xsl/" + options.xslt);
-        var xsl = Saxon.requestXML("xsl/" + options.xslt);
-        var processor = Saxon.newXSLT20Processor(xsl);
-        for (var property in options.parameters) {
-            if (options.parameters.hasOwnProperty(property)) {
-                processor.setParameter(null, property , options.parameters[property]);
-                console.log("Parameter " + property + ": " + options.parameters[property]);                
-            }
-        }    
-        var transformedMei = processor.transformToDocument(mei);
-        return transformedMei;
-    }
+    // In search results, move the '[...]' omission markers all to the left
+    $(".fragment text").each(function() {
+        $(this).attr('x','750');
+    });
+
 }
- 
-/* Apply the transformations and load the data */
-function loadMei(id) {
-    //stop midi playback before making any changes
-    if(isPlaying === true) { stop(); }    
-    var transformedMei = $mei[id].xml;
-    if(clientSideXSLT) {
-        for (var index in transformOrder) {
-            var key = transformOrder[index];
-            if ($mei[id].xsltOptions.hasOwnProperty(key)) {
-                transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
-            }
-        }
-    }
-    vrvToolkit.setOptions($mei[id].verovioOptions);
-    vrvToolkit.loadData(Saxon.serializeXML(transformedMei));
-//Debug:   
-//alert(Saxon.serializeXML(transformedMei));    
-//$("#debug_text").html(Saxon.serializeXML(transformedMei));
-    loadPage(id);
-}
- 
- 
+
+
 function loadMeiFromDoc() {
     /* Read MEI data from <DIV> elements in the HTML document.
        @DSL: The @id of the target DIV is supposed to be the MEI file name without extension.
-       The actual MEI data are read from a script element with @id = the MEI file name (without extension) + '_data'.
        To display options for transposition etc., add another <DIV> for the menu as shown below.
        If an MDIV other than the first is wanted, the word "MDIV" and its id must be appended to the DIV ids (except for the data DIV as explained below).
        Example: 
-       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options"><!-- menu will be generated here; must not be empty --></div>
-       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02" class="mei"><!-- SVG will be put here; must not be empty --></div>
-       To avoid duplicate IDs, the data must only be included once in the document _without_ any MDIV indication: 
-       <script id="Ul_1535_LN0076_000a04v_data" type="text/xml">[MEI data here]</script> */
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02" class="mei"><!-- SVG will be put here; must not be empty --></div> 
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options"><!-- menu will be generated here; must not be empty --></div> 
+       If content is to be highlighted on loading (like search matches), a whitespace-separated list of xml:ids should be put in an invisible <div> inside the 'options' <div>:
+       <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options">
+           <div class="highlight_list" style="display:none">Ul_1535_LN0076_000a04v_m-42 Ul_1535_LN0076_000a04v_m-43</div>
+       </div> */
     $(".mei").each( function() {
         id = $(this).attr("id");
         console.log('Reading ' + id);
-//        var data = $(dataId(id)).html();
         $mei[id] = new meiObj({});
         $mei[id].verovioOptions = $defaultVerovioOptions;
-        $mei[id].xsltOptions['show'] = $.extend(true, {}, $show);
-        $mei[id].data = $(dataId(id)).html();
-        var xml = $.parseXML($mei[id].data);
-        $mei[id].xml = xml;
-        // See if a particular <MDIV> is requested (i.e., hard-coded in the <div>'s @id)
+        $mei[id].xsltOptions['id'] = id;
+        $mei[id].xsltOptions['doc'] = filename_from_dataId(id) + '.xml';
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
-
-// Problem: på visse computere bliver alle @xml:id tomme, hvis der bruges mere end en transformation ??
-
-//alert(xml.getElementsByTagName("mei")[0].namespaceURI);
-
-        // See if the <script> element really contains an MEI document with a <body> element
-        if (xml.getElementsByTagNameNS("http://www.music-encoding.org/ns/mei","body").length > 0) {
-            // If so, render
-//alert(id); 
-
-            loadMei(id);
-            // Make a list of all <note> IDs 
-            $mei[id].notes = [];
-            $("#" + id).find(".note").each(function(){ $mei[id].notes.push(this.id); });            
-        }
-        if(showMenu) { createMenu(id); };
+        $("#"+id+"_options .highlight_list").each( function() {
+            console.log("Highlight:" + $(this).html());
+            $mei[id].xsltOptions['highlight'] = $.extend(true, {}, $highlight);
+            $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
+        });
+        // send a POST request to get the MEI data
+        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
+}
+
+function filename_from_dataId(id) {
+    // Return the name of the file corresponding to a data ID.
+    var filename = id.indexOf('MDIV') > 0 ? id.substring(0, id.indexOf('MDIV')) : id;  
+    return filename;
 }
 
 function dataId(id) {
@@ -509,8 +525,7 @@ function saveSelection() {
             document.getElementById('selectionBox_' + layer).appendChild(title);
 
             // Parse original XML from string in document
-            var xml = $mei[selectionMEI].data;
-            var xmlDoc = $.parseXML(xml);
+            var xmlDoc = $mei[selectionMEI].xml;
 
             // Bind a click event handler to the box
             $('#selectionBox_' + layer).click(function() {
@@ -614,10 +629,9 @@ function resetOptions(id) {
 }
  
  
-var onSaxonLoad = function() {        
-    console.log("Loaded Saxon");
-    saxonReady = true;
+$(document).ready(function() {        
+    console.log("Document ready");
     if(midi) { initMidi() }
     loadMeiFromDoc();    
     validateInput();
-};
+});

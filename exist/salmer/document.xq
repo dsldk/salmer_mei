@@ -3,6 +3,7 @@ xquery version "3.0" encoding "UTF-8";
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
+declare namespace util="http://exist-db.org/xquery/util";
 declare namespace dsl = "http://dsl.dk";
 declare namespace m="http://www.music-encoding.org/ns/mei";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -58,7 +59,6 @@ let $result :=
             var enableSearch = true;
             var enableMenu = true;
             var enableComments = true;
-            var enableClientSideXSLT = true;
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
@@ -70,17 +70,21 @@ let $result :=
         <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
-        <script src="js/MeiLib.js"><!-- MEI tools --></script>
+        <script src="js/MeiAjax.js"><!-- MEI tools --></script>
 
 	    <!-- MIDI -->        
         <script src="js/wildwebmidi.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
 
-        <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"><!-- Saxon CE --></script>
-
 	</head>
 	<body class="frontpage metadata">
+	
+	
+<!--<div style="border: 1px solid black; width:80%; height: 200px; overflow:scroll;" id="debug">
+Debug here
+</div>-->
+
 	   <div class="wait_overlay"><!-- overlay for progress/wait cursor --></div>
 	
 	   <!-- Page head -->
@@ -91,14 +95,15 @@ let $result :=
     	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="pitch_form">
             	   <p><label class="input-label left-margin" for="pnames">Melodisøgning</label>
-                   <!--<input name="x" id="x1" type="hidden" value=""/>-->
+                   <input name="x" id="x1" type="hidden" value=""/>
                    <input type="text" name="q" id="pnames" value="" class="search-text input"/> 
                    <img src="https://tekstnet.dk/static/info.png" 
                     title="Søg efter en bestemt tonefølge, f.eks. 'CDEF'.
 H skrives B.            	        
 Altererede toner skrives således: 
 cis: V, es: W, fis: X, as: Y, b: Z"/>
-                   <input type="submit" value="Søg" class="search-button box-gradient-green"/></p>
+                   <input type="submit" value="Søg" class="search-button box-gradient-green"
+                   onclick="this.form['x'].value = updateAction();"/></p>
                                        
                     <div class="text-row">
                        <a href="mei_search.xq" id="advanced-search-link">Avanceret søgning</a>
@@ -137,29 +142,31 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
             	for $mdiv at $pos in $list[1]//m:mdiv
                 	let $include_data := 
                 	   if($pos=1) then true() else false()   
+                	(:   false()   :)
                 	let $params := 
                     	<parameters>
                     	  <param name="mdiv"         value="{$mdiv/@xml:id}"/>
-                    	  <param name="include_data" value="{$include_data}"/>
+                    	  <param name="doc"          value="{$filename}"/>
+                    	  <!--<param name="include_data" value="{$include_data}"/>-->
                     	</parameters>
                 	let $music := transform:transform($list[1],$mdivXsl,$params)
                 	(: get only the TEI elements after the current <notatedMusic> and only until the following one  :)
-                    let $text_snippet1 :=
+                    let $text_step1 :=
                         <div>
                             {$text_data//tei:notatedMusic[contains(tei:ptr/@target,concat('#',$mdiv/@xml:id)) or tei:ptr/@target=$filename]/following-sibling::*}
                         </div>
-                    let $text_snippet2 :=  
-                        if($text_snippet1//tei:notatedMusic) then
+                    let $text_step2 :=  
+                        if($text_step1//tei:notatedMusic) then
                             <div>
-                                {$text_snippet1/*[not(preceding::tei:notatedMusic)][not(name()='notatedMusic')]}
+                                {$text_step1/*[not(preceding::tei:notatedMusic)][not(name()='notatedMusic')]}
                             </div>
                         else                               
-                            <div>{$text_snippet1}</div> 
+                            <div>{$text_step1}</div> 
                 	let $params2 := 
                     	<parameters>
                     	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
                     	</parameters>
-                    let $text :=  transform:transform($text_snippet2,$textXsl,$params2)
+                    let $text :=  transform:transform($text_step2,$textXsl,$params2)
                 return ($music, $text)  
             }
         </div>

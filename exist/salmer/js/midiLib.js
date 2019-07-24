@@ -18,25 +18,12 @@ function play_midi(id) {
     var data = $mei[id].data;  
     $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
-
-    if(clientSideXSLT) {
-        // apply relevant transformations
-        transformedMei = Saxon.parseXML(data);
-        for (var index in transformOrder) {
-            var key = transformOrder[index];
-            if ($mei[id].xsltOptions.hasOwnProperty(key)) {
-                transformedMei = transform(transformedMei, $mei[id].xsltOptions[key]);
-            }
-        }
-        data = Saxon.serializeXML(transformedMei);
-    }
+    data = (new XMLSerializer()).serializeToString($mei[id].xml);
     
     // Add a rest at the beginning to make the first note play (bug in midi player?)
     data = data.replace('<note ','<rest dur="4"/><note ');
     // Add a rest at the end too to prevent the player from stopping too early
     data = reverse(reverse(data).replace(reverse('</layer>'),reverse('<rest dur="4"/></layer>'))); 
-
-//$("#debug_text").html(data);
 
     if (isPlaying === true) {pause();}
     var options = {
@@ -57,11 +44,8 @@ function play_midi(id) {
 ////////////////////////////////////////////
 /* A function playing submitted data      */
 ////////////////////////////////////////////
-function play_midi_data(data) {
+function play_midi_data(data, options) {
     if (isPlaying === true) {pause();}
-    var options = {
-        inputFormat: 'mei'
-    };
     console.log("Playing MIDI");
     // MIDI needs a dummy re-rendering to make sure the correct data are loaded
     var svg_dummy = vrvToolkit.renderData( data + "\n", options );

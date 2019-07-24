@@ -130,20 +130,6 @@
                 <xsl:otherwise>100</xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <!-- temporary eXist 2.2 solution: 
-            <xsl:variable name="mostFrequentValue">
-            <xsl:choose>
-            <xsl:when test="count(//m:note[not(@dur)]) > count(//m:note[@dur='1'])"
-            >120</xsl:when>
-            <xsl:when test="count(//m:note[@dur='1']) > count(//m:note[@dur='2'])"
-            >480</xsl:when>
-            <xsl:when test="count(//m:note[@dur='2']) > count(//m:note[@dur='4'])"
-            >240</xsl:when>
-            <xsl:otherwise>80</xsl:otherwise>
-            </xsl:choose>
-            </xsl:variable>
-            <xsl:variable name="tempo" select="$mostFrequentValue"/>
-            end temporary -->
         <xsl:copy>
             <xsl:attribute name="midi.bpm">
                 <xsl:value-of select="$tempo"/>
@@ -405,7 +391,7 @@
     </xsl:template>
     
     <xsl:template match="text()">
-        <xsl:value-of select="normalize-space()" />
+        <xsl:value-of select="normalize-space()"/>
     </xsl:template>
     
 </xsl:stylesheet>

@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:m="http://www.music-encoding.org/ns/mei"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    version="1.0" exclude-result-prefixes="m xsl">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" version="1.0" exclude-result-prefixes="m xsl">
     
     <!-- Transpose MEI score n semitones. -->
     <!-- Works with simple(!) scores. Assumptions made: key changes only between bars or sections; simple alterations only; no cautionary accidentals. -->

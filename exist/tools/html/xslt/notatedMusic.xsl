@@ -18,7 +18,7 @@
             <xd:copyright>2019, Society for Danish Language and Literature</xd:copyright>
         </xd:desc>
     </xd:doc>
-    
+ 
     <xsl:template match="tei:notatedMusic">
         <!-- Læse filer lokalt: -->
         <!--<xsl:variable name="mei_base" select="'http://salmer.dsl.lan:8080/exist/rest/db/salmer/data/'"/>-->
@@ -52,91 +52,35 @@
                 </xsl:if>
             </xsl:variable>
             <div>
-                <xsl:choose>
-                    <xsl:when test="doc-available(concat($mei_base,$mei_dir,$file))">
-                        <div id="{$id}_options" class="mei_options">
-                            <xsl:comment>MEI options menu will be inserted here</xsl:comment>
-                        </div>
-                        <div id="{$id}" class="mei">
-                            <xsl:comment>SVG will be inserted here</xsl:comment>
-                        </div>
-                        <!-- put in data if this is the first instance referring to the file -->
-                        <xsl:if test="not(normalize-space($mdiv)) or not(preceding-sibling::tei:notatedMusic/tei:ptr[contains(@target,$file)])">
-                            <!-- MEI data: -->
-                            <script id="{substring-before($file,'.xml')}_data" type="text/xml">
-                                <!-- output the root node as text to force an explicit namespace declaration -->
-                                <xsl:text>
-                            &lt;mei xmlns="http://www.music-encoding.org/ns/mei"</xsl:text>
-                                <xsl:for-each select="document(concat($mei_base,$mei_dir,$file))/*/@*">
-                                    <xsl:text> </xsl:text>
-                                    <xsl:value-of select="local-name(.)"/>
-                                    <xsl:text>="</xsl:text>
-                                    <xsl:value-of select="."/>
-                                    <xsl:text>"</xsl:text>
-                                </xsl:for-each>
-                                <xsl:text>&gt;
-                            </xsl:text>
-                                <xsl:comment>Data URI: <xsl:value-of select="concat($mei_base,$mei_dir,$file)"/>
-                                </xsl:comment>
-                                <xsl:apply-templates select="document(concat($mei_base,$mei_dir,$file))/*/*" mode="serializeXML"/>
-                                <xsl:text>&lt;/mei&gt;</xsl:text>
-                            </script>
-                        </xsl:if>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <div style="border: 1px solid black"> 
-                            <small>
+            <xsl:choose>
+                <xsl:when test="doc-available(concat($mei_base,$mei_dir,$file))">
+                    <div id="{$id}_options" class="mei_options">
+                        <xsl:comment>MEI options menu will be inserted here</xsl:comment>
+                    </div>
+                    <div id="{$id}" class="mei">
+                        <xsl:comment>SVG will be inserted here</xsl:comment>
+                    </div>
+                </xsl:when>
+                <xsl:otherwise>
+                    <div style="border: 1px solid black"> 
+                        <small>
                                 <xsl:value-of select="concat($mei_base,$mei_dir,$file)"/> not found</small>
-                        </div>
-                    </xsl:otherwise>
-                </xsl:choose>
+                    </div>
+                </xsl:otherwise>
+            </xsl:choose>
             </div>
         </xsl:if>
     </xsl:template>
-    
-    <!-- Serialize XML for output as text. -->
-    <xsl:template match="*" mode="serializeXML">
-        <xsl:text>&lt;</xsl:text>
-        <xsl:value-of select="name(.)"/>
-        <xsl:for-each select="@*">
-            <xsl:text> </xsl:text>
-            <xsl:value-of select="name(.)"/>
-            <xsl:text>="</xsl:text>
-            <xsl:value-of select="."/>
-            <xsl:text>"</xsl:text>
-        </xsl:for-each>
-        <xsl:text>&gt;</xsl:text>
-        <xsl:apply-templates mode="serializeXML" select="node()"/>
-        <xsl:text>&lt;/</xsl:text>
-        <xsl:value-of select="name(.)"/>
-        <xsl:text>&gt;</xsl:text>
-    </xsl:template>
-    
-    <xsl:template match="text()" mode="serializeXML">
-        <xsl:choose>
-            <xsl:when test="contains(.,'&amp;')">
-                <!-- to do: call template recursively to catch more than one ampersand -->
-                <xsl:value-of select="substring-before(.,'&amp;')"/>&amp;amp;<xsl:value-of select="substring-after(.,'&amp;')"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="."/>
-            </xsl:otherwise>
-        </xsl:choose>
-        
-        <!-- Problem: &amp, becomes & here -->
-        <!--<xsl:value-of select="."/>-->
-    </xsl:template>
-    
-    
+       
     <xsl:template name="notatedMusic_head">
         <!-- Include additional header elements if the TEI file contains notated music. -->
         <xsl:if test="//tei:notatedMusic">
-            
+
             <!-- TO DO: Change relative paths to whatever is the right place... -->
             <xsl:variable name="mei_js_base" select="'js/'"/>
             <xsl:variable name="mei_css_base" select="'style/'"/>
             <xsl:variable name="mei_xslt_base" select="'xsl/'"/>
-            
+
             <!-- External JS libraries -->
             <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
             <!-- Note highlighting only works with jQuery 3+ -->
@@ -145,8 +89,7 @@
             
             <!-- Local JS libraries -->
             <script type="text/javascript" src="{$mei_js_base}libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"> </script>
-            <script type="text/javascript" src="{$mei_js_base}libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"> </script>
-            <script type="text/javascript" src="{$mei_js_base}MeiLib.js"> </script>
+            <script type="text/javascript" src="{$mei_js_base}MeiAjax.js"> </script>
             <!-- MIDI -->        
             <script type="text/javascript" src="{$mei_js_base}wildwebmidi.js"><!-- MIDI library --></script>
             <script type="text/javascript" src="{$mei_js_base}midiplayer.js"><!-- MIDI player --></script>

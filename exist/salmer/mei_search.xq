@@ -126,13 +126,15 @@ declare function local:solr_query() {
 (: Functions for visualizing the results :)
  
 (:  :declare function local:verovio_match($file as xs:string, $highlight as xs:string*)  {:)
-declare function local:verovio_match($doc as node(), $fileId as xs:string, $highlight as xs:string*)  {
+declare function local:verovio_match($doc as node(), $fileId as xs:string, $highlight as xs:string*) as node()* {
     let $output1 :=
-        <div id="{$fileId}" class="mei"><p class="loading">[Henter indhold ...]</p></div>
+        <div id="{$fileId}" class="mei"><p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p></div>
     let $output2 :=
-        <div id="{$fileId}_options" class="mei_options"><!--MEI options menu will be inserted here--></div>
-    let $xsl := if (count($highlight) > 0) then "/xsl/highlight.xsl" else "/xsl/show.xsl"  
-    (: possibly some transforms here :)
+        <div id="{$fileId}_options" class="mei_options">
+            <!--MEI options menu will be inserted here-->
+            <div class="highlight_list" style="display:none">{$highlight}</div>
+        </div>
+(:     let $xsl := if (count($highlight) > 0) then "/xsl/highlight.xsl" else "/xsl/show.xsl"  
     let $output3 :=    
        <script id="{$fileId}_data" type="text/xml">
        {
@@ -143,8 +145,9 @@ declare function local:verovio_match($doc as node(), $fileId as xs:string, $high
             </parameters>
             return transform:transform($doc,doc(concat($collection,$xsl)),$params)
        }
-       </script>
-    return ($output1, $output2, $output3)
+       </script>  :)
+    return ($output1, $output2)
+(:     return ($output1, $output2, $output3)  :)
 };
 
 declare function local:highlight_ids($idString as xs:string, $matches as node()*) as xs:string* {
@@ -266,7 +269,6 @@ let $result :=
             var enableSearch = true;
             var enableMenu = false;
             var enableComments = false;
-            var enableClientSideXSLT = false;
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
@@ -278,15 +280,13 @@ let $result :=
         <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
-        <script src="js/MeiLib.js"><!-- MEI tools --></script>
+        <script src="js/MeiAjax.js"><!-- MEI tools --></script>
         <script src="js/MeiSearch.js"><!-- MEI search tools --></script>
 
 	    <!-- MIDI -->        
         <script src="js/wildwebmidi.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
-
-        <script type="text/javascript" src="js/libs/Saxon-CE_1.1/Saxonce/Saxonce.nocache.js"><!-- Saxon CE --></script>
 
 	</head>
 	<body class="metadata">
@@ -389,8 +389,8 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	           <input type="checkbox" name="r" id="repetitions" value="1"/> 
                             	         return $rep
                             	        }
-                            	        <label class="input-label" for="repetitions">&#160;&#160;Tillad tonegentagelser</label>
-                    	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone (giver flere resultater, f.eks. ved afvigende antal stavelser)"/>
+                            	        <label class="input-label" for="repetitions">&#160;&#160;Ignorer tonegentagelser</label>
+                    	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>
                         	        </div>
                                 </div>
                             </form>
@@ -455,7 +455,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     }
                                     {
                                         let $excerpts :=
-                                        if(count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) != count($file//m:mdiv) ) 
+                                        if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids]) != count($file//m:mdiv) ) 
                                         then " (uddrag vises)" else ""
                                         return $excerpts
                                     }

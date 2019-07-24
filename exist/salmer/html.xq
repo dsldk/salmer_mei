@@ -1,10 +1,8 @@
-xquery version "3.1" encoding "UTF-8";
+xquery version "3.1";
 
 declare namespace local = "http://dsl.dk/this/app";
-declare namespace request="http://exist-db.org/xquery/request";
-declare namespace response="http://exist-db.org/xquery/response";
-declare namespace transform = "http://exist-db.org/xquery/transform";
 declare namespace dsl = "http://dsl.dk";
+declare namespace transform = "http://exist-db.org/xquery/transform";
 
 declare option exist:serialize "method=html5 media-type=text/html"; 
 
