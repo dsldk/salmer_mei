@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:math="http://exslt.org/math" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:xlink="http://www.w3.org/1999/xlink" version="2.0" extension-element-prefixes="math" exclude-result-prefixes="m xlink">
     
     <!--
@@ -39,7 +38,14 @@
                 <xsl:value-of select="substring-before($filename,'.xml')"/>
             </field>
             <field name="title">
-                <xsl:value-of select="//m:workStmt/m:work/m:titleStmt/m:title[1]"/>
+                <xsl:choose>
+                    <xsl:when test="//m:fileDesc/m:titleStmt/m:title/text()">
+                        <xsl:value-of select="//m:fileDesc/m:titleStmt/m:title[1]"/>
+                    </xsl:when>
+                    <xsl:when test="//m:workList/m:work/m:title/text()">
+                        <xsl:value-of select="//m:workList/m:work/m:title[1]"/>
+                    </xsl:when>
+                </xsl:choose>
             </field>
             <field name="publ">
                 <xsl:value-of select="substring($filename,1,14)"/>
