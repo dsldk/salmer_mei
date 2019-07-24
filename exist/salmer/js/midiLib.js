@@ -61,7 +61,7 @@ function play_midi_data(data, options) {
 //////////////////////////////////////////////////////
 var midiUpdate = function(time) {
     // Verovio time needs adjustment to synchronize
-    var vrvTime = Math.max(0, time - 500);
+    var vrvTime = Math.max(0, time - 750);
     var elementsattime = vrvToolkit.getElementsAtTime(vrvTime);
     if ((elementsattime.notes.length > 0) && (ids != elementsattime.notes)) {
         ids.forEach(function(noteid) {
