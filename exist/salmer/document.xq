@@ -73,7 +73,8 @@ let $result :=
         <script src="js/MeiAjax.js"><!-- MEI tools --></script>
 
 	    <!-- MIDI -->        
-        <script src="js/wildwebmidi.js"><!-- MIDI library --></script>
+        <!--<script src="js/wildwebmidi.js"> MIDI library </script>-->
+        <script src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
 

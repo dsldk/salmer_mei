@@ -91,7 +91,8 @@
             <script type="text/javascript" src="{$mei_js_base}libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"> </script>
             <script type="text/javascript" src="{$mei_js_base}MeiAjax.js"> </script>
             <!-- MIDI -->        
-            <script type="text/javascript" src="{$mei_js_base}wildwebmidi.js"><!-- MIDI library --></script>
+            <!--<script type="text/javascript" src="{$mei_js_base}wildwebmidi.js"> standard MIDI library (piano sound) </script>-->
+            <script type="text/javascript" src="{$mei_js_base}libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
             <script type="text/javascript" src="{$mei_js_base}midiplayer.js"><!-- MIDI player --></script>
             <script type="text/javascript" src="{$mei_js_base}midiLib.js"><!-- Custom MIDI library --></script>
             
