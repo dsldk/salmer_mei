@@ -1,16 +1,20 @@
 // DEFAULT VALUES FOR PAGE OPTIONS 
 // To change page settings, override defaults on the hosting page. Example:
 //    <script type="text/javascript">
-//        var enableMidi = true;
-//        var enableSearch = false;
-//        var enableMenu = true;
-//        var enableComments = true;
+//        var enableMenu = true;     // show options menu 
+//        var enableLink = false;    // do not show link to melody database
+//        var enableMidi = true;     // enable MIDI playback
+//        var enableOptions = true;  // enable notation customization options
+//        var enableSearch = false;  // disable phrase selection for melodic search
+//        var enableComments = true; // do not show editorial comments in score
 //    </script>   
 
+var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  // options menu main switch
+var linkToExist = (typeof enableLink !== 'undefined') ? enableLink : true;  // show link to melody database
 var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
-var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable selection for searching
-var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  //  show menu for customization of the notation
-var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // enable editorial comments
+var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;  //  show menu for customization of the notation
+var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable phrase selection for melodic search
+var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // show editorial comments
 
 
 // Verovio options
@@ -40,7 +44,6 @@ var $defaultVerovioOptions = {
 // global variables - do not change
 var $mei = [];  // The array holding the MEI objects 
 var page = 1;
-var saxonReady = false;
 var selectionmode  = "";
 var selectionMEI    = "";
 var selectionStart = "";
@@ -127,8 +130,13 @@ var midiMenu = '\
         <div class="midi_button stop" id="stop_{id}" title="Stop afspilning" onclick="stop()">\
             <span class="symbol"><span class=\'label\'>Stop</span></span>\
         </div>\
-    </div>\
-    <hr/>';
+    </div>';
+
+var existMenu = '\
+    <div class="exist_link">\
+        <!--<button onclick="location.href=\'http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
+        <a href="http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+    </div>';
     
 var meiOptionsMenu = ' \
     <form id="optionsForm_{id}" action="" class="mei_menu"> \
@@ -226,11 +234,6 @@ function updateFromOptions(id, options) {
 
 function addComments(data) {
     /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
-    //var xsl = Saxon.requestXML("xsl/comments.xsl");
-    //var processor = Saxon.newXSLT20Processor(xsl);
-    // transform annotations to HTML
-    //var annotations = processor.transformToDocument($mei[id].xml);
-    //if($(annotations).find("span").length > 0) { console.log("Retrieving annotations"); }
  
     var targetId = $(data.firstChild).attr('targetId')
     // strip off the wrapping <response> element to get the MEI root element
@@ -244,7 +247,6 @@ function addComments(data) {
     // the following seems to get the data types right:
     var xmlString = (new XMLSerializer()).serializeToString(frag);
     var annotations = $.parseXML(xmlString);
-
  
     /* Bind a click event on all editorial comment markers */
     $("#" + targetId + " .comment").each(function() {
@@ -439,8 +441,12 @@ function mdivId(id) {
 function createMenu(id){
     // Create a menu for an MEI object in the document
     if(showMenu) {
-        var menu = meiOptionsMenu.replace(/{id}/g, id);
+        var menu = ''; 
+        if(showOptions) { menu = meiOptionsMenu.replace(/{id}/g, id)}
+        if(midi && showOptions) { menu = '<hr/>' + menu}
         if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
+        if(linkToExist && (midi || showOptions)) { menu = '<hr/>' + menu}
+        if(linkToExist) { menu = existMenu.replace(/{id}/g, id) + menu}
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;
         // Add an MDIV select box to the menu if applicable

@@ -70,10 +70,11 @@ let $result :=
         
         <!-- User interaction settings -->
         <script type="text/javascript">
-            var enableMidi = true;      // enable MIDI player
+            var enableMenu = true;      // show options menu
             var enableLink = false;     // do not show links to melody database (i.e., to this page)
+            var enableMidi = true;      // enable MIDI player
+            var enableOptions = true;   // show melody customizations options menu
             var enableSearch = true;    // enable phrase marking for melodic search 
-            var enableMenu = true;      // show melody options menu
             var enableComments = true;  // show editorial comments
         </script>   
         

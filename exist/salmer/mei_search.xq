@@ -265,10 +265,12 @@ let $result :=
         
         <!-- User interaction settings -->
         <script type="text/javascript">
-            var enableMidi = true;
-            var enableSearch = true;
-            var enableMenu = false;
-            var enableComments = false;
+            var enableMenu = false;     // do not show options menu
+            var enableLink = false;     // do not show links to melody database
+            var enableMidi = true;      // enable MIDI player
+            var enableOptions = false;  // do not show melody customization options
+            var enableSearch = true;    // enable phrase marking for melodic search 
+            var enableComments = false; // do not show editorial comments
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
