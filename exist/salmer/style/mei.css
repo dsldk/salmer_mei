@@ -41,16 +41,12 @@
     cursor: help;
 }
 
-.mei svg .comment:hover {
+.mei svg .comment {
     cursor: pointer;
 }
 
 
-.mei svg .bracketspan {
-    cursor: help;
-}
-
-.cursorHelp:hover {
+.mei svg .bracketspan, .mei svg .warning, .cursorHelp:hover {
     cursor: help;
 }
 
