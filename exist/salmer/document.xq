@@ -24,9 +24,24 @@ declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"))
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/index/publications.xml"));
-declare variable $tei_doc  := doc(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll]/dsl:tei));
 
-let $text_data := $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
+let $tei_doc  := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+    then 
+        doc(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei))
+    else 
+    (: TEI file or TEI file name not found; try to guess the collection name from the MEI file name. :)
+    (: Works only if the MEI file name contains the collection name (e.g., Th_1569_LN1426_001r.xml is in collection Th_1569) :)
+    if(doc-available(concat($tei_base,$index//dsl:pub[contains($filename,dsl:mei_coll)][1]/dsl:tei)))
+        then 
+            doc(concat($tei_base,$index//dsl:pub[contains($filename,dsl:mei_coll)][1]/dsl:tei))
+        else 
+            false()
+
+let $text_data := if($tei_doc) 
+    then
+        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
+    else
+        ()
 
 let $list := 
     for $doc in collection(concat($database,'/',$datadir,'/',$coll))/m:mei
@@ -55,10 +70,11 @@ let $result :=
         
         <!-- User interaction settings -->
         <script type="text/javascript">
-            var enableMidi = true;
-            var enableSearch = true;
-            var enableMenu = true;
-            var enableComments = true;
+            var enableMidi = true;      // enable MIDI player
+            var enableLink = false;     // do not show links to melody database (i.e., to this page)
+            var enableSearch = true;    // enable phrase marking for melodic search 
+            var enableMenu = true;      // show melody options menu
+            var enableComments = true;  // show editorial comments
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
@@ -113,8 +129,6 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                </form>
     	    </div>
         </div>
-
-        <!--<textarea rows="10" cols="80" id="debug_text">debug...</textarea>-->
 
         <div class="documentFrame container">
             <!-- Metadata -->
