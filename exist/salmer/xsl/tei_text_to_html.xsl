@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0" exclude-result-prefixes="tei xsl xs">
     
     <!-- 
@@ -30,10 +29,13 @@
     <xsl:template match="@type">
         <xsl:attribute name="class"><xsl:value-of select="."/></xsl:attribute>
     </xsl:template>
-    
-    <xsl:template match="tei:lb | tei:pb | tei:ptr">
+
+    <xsl:template match="tei:lb | tei:pb | tei:ptr | tei:ref">
         <xsl:text> </xsl:text>
     </xsl:template>
+
+    <!-- ignore line breaks and page breaks in the middle of words -->
+    <xsl:template match="tei:lb[@rend] | tei:pb[@rend]"/>
     
     <xsl:template match="text()[preceding-sibling::tei:hi]">
         <xsl:text> </xsl:text><xsl:value-of select="normalize-space()"/>
