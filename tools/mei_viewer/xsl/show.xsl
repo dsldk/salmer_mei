@@ -297,7 +297,7 @@
             <!-- Add slurs -->
             <xsl:apply-templates select="*//m:neume[count(m:nc)&gt;1]" mode="add_slur"/>
             <!-- Move fermata and dir elements out of <staff> and <layer> and add them to the <measure> -->
-            <xsl:apply-templates select=".//m:dir"/>
+            <xsl:copy-of select=".//m:dir"/>
             <xsl:copy-of select=".//m:fermata"/>
             <!-- Editorial comments -->
             <xsl:for-each select=".//m:annot"><!-- comments inside <staff> -->
