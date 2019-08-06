@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:local="urn:my-stuff" version="2.0" exclude-result-prefixes="m xsl xs local marc zs xl">
 
 
@@ -146,7 +145,7 @@
 
 		<!-- other identifiers -->
 		<xsl:apply-templates select="m:meiHead/m:workList/m:work[m:identifier/text()]" mode="work_identifiers"/>
-
+		
 		<!-- persons -->
 		<xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contributor[m:persName[text()]]"/>		
 		
@@ -361,9 +360,8 @@
 	<!-- work identifiers -->
 	<xsl:template match="m:meiHead/m:workList/m:work" mode="work_identifiers">
 		<p>
-			<xsl:for-each select="m:identifier[text()]">
-				<!--<xsl:variable name="type"><xsl:apply-templates select="@label"/></xsl:variable>
-	    <xsl:value-of select="concat($type,' ',.)"/>-->
+			<!-- hard-coded: omit private "RefSal" identifiers -->
+			<xsl:for-each select="m:identifier[text() and not(@label='RefSal')]">
 				<xsl:apply-templates select="@label"/>
 				<xsl:text> </xsl:text>
 				<xsl:value-of select="."/>
@@ -1010,8 +1008,8 @@
 		<xsl:if test="@sym!=''">
 			<span class="music_symbols time_signature">
 				<xsl:choose>
-					<xsl:when test="@sym='common'">턴</xsl:when>
-					<xsl:when test="@sym='cut'">턵</xsl:when>
+					<xsl:when test="@sym='common'">𝄴</xsl:when>
+					<xsl:when test="@sym='cut'">𝄵</xsl:when>
 					</xsl:choose>
 			</span>
 			</xsl:if>
