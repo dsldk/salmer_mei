@@ -12,3 +12,13 @@ function goto(anchor) {
         alert("Sidenummer " + anchor.replace("mei_","") + " ikke fundet");
     }
 }
+
+function toggle_highlight() {
+    $('.highlight').toggleClass(function() {
+      if ($(this).is('.highlight')) {
+        return 'normal';
+      } else {
+        return 'highlight';
+      }
+    });
+}

@@ -4,13 +4,18 @@ declare namespace local = "http://dsl.dk/this/app";
 declare namespace dsl = "http://dsl.dk";
 declare namespace transform = "http://exist-db.org/xquery/transform";
 declare namespace m = "http://www.music-encoding.org/ns/mei";
+declare namespace t = "http://www.tei-c.org/ns/1.0"; 
+declare namespace h = "http://www.w3.org/1999/xhtml";
 
 declare option exist:serialize "method=xml media-type=text/xml"; 
 
 declare variable $database := '/db/salmer/data';
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
-declare variable $mei_base := "https://raw.githubusercontent.com/dsldk/salmer_mei/master/data/";
+declare variable $m_source := request:get-parameter("m_source", "salmer");
 declare variable $tei := request:get-parameter("tei", "");
+declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
+declare variable $mei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/mei/";  
+declare variable $tei_doc := if ($tei != "") then doc(concat($tei_base, request:get-parameter("tei", ""))) else (); 
+
 declare variable $books := 
     <books xmlns="http://dsl.dk">
         <book>
@@ -45,12 +50,19 @@ declare variable $books :=
         </book>
     </books>;
 
+declare variable $mei_dir := $books/dsl:book[dsl:tei=$tei]/dsl:mei;
 
-declare function local:get_results($mei) {
-    for $doc in collection($database)
-    where substring(util:document-name($doc),1,string-length($mei)) = $mei
+
+declare function local:get_local_mei($filename) {
+    for $doc in collection(concat($database,'/',$mei_dir))
+    where substring(util:document-name($doc),1,string-length($filename)) = $filename
     order by util:document-name($doc)
     return $doc
+};
+
+declare function local:get_mei($filename) {
+    let $mei_doc := doc(concat($mei_base,$mei_dir,'/',$filename))
+    return $mei_doc 
 };
 
 declare function local:syl_with_hyphen($syl) {
@@ -59,15 +71,15 @@ declare function local:syl_with_hyphen($syl) {
     return concat($conn,normalize-space($syl))
 };
 
-declare function local:text_hyphenated($doc) {
+declare function local:text_hyphenated($doc as node()?, $mdiv as xs:string) {
     let $text := 
-        for $measure in $doc//m:staff
+        for $measure in $doc/m:mei/m:music/m:body/m:mdiv[@xml:id=$mdiv or $mdiv=""]//m:staff
             let $measure_text :=
                 for $line_no in (1 to count($measure//(m:note | m:syllable)[1]/m:verse))
                     let $line :=
                         for $syl in $measure//m:verse[@n=$line_no]/m:syl
                         return local:syl_with_hyphen($syl)
-                return <div xmlns="http://www.w3.org/1999/xhtml">{string-join($line,"")}</div>
+                return <div xmlns="http://www.w3.org/1999/xhtml">{normalize-space(string-join($line,""))}</div>
             return $measure_text            
     return $text
 };
@@ -77,15 +89,26 @@ declare function local:de-hyphen($text){
   return  <div xmlns="http://www.w3.org/1999/xhtml">{translate($e,"-","")}</div>
 };
 
-declare function local:transform_tei($doc, $filename){
-    let $params := 
-    <parameters>
-       <param name="hostname" value="{request:get-header('HOST')}"/>
-       <param name="file" value="{$filename}"/>
-    </parameters>
-    return transform:transform($doc,xs:anyURI(concat("http://",request:get-header('HOST'),"/exist/rest/db/tools/korrektur/meloditekstkorrektur.xsl")),$params)
+declare function local:tei_to_div($lg) {
+    let $lines :=
+        for $l in $lg
+        return <div xmlns="http://www.w3.org/1999/xhtml">{$l//normalize-space(.)}</div>
+    return $lines
 };
 
+declare function local:compare_texts($mei, $tei) {
+    let $higlighted :=
+        for $line at $lpos in $mei/*
+            let $marked_up := 
+                for $word at $wpos in tokenize($line,' ')
+                    let $tword := $tei/*[$lpos]/tokenize(./string(),' ')[$wpos]
+                    let $marked_up_word := if (compare($word, $tword) = 0) 
+                        then concat($word,' ')
+                        else (<span xmlns="http://www.w3.org/1999/xhtml" class="highlight">{$word}</span>,' ')
+                 return $marked_up_word  
+            return <div xmlns="http://www.w3.org/1999/xhtml">{$marked_up}</div>
+    return $higlighted
+};
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -98,77 +121,91 @@ declare function local:transform_tei($doc, $filename){
         <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/layout.css" />
     	<link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/styles.css" />
         <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
-        <script type="text/javascript" src="meloditekstkorrektur.js">
-            <!-- some javascript -->
-        </script>
+    	<link rel="stylesheet" type="text/css" href="meloditekstkorrektur.css" />
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"><!-- --></script>
+        <script type="text/javascript" src="meloditekstkorrektur.js"><!-- --></script>
+        
 	</head>
 	<body style="margin: 20px; background-image: none;" onload="document.getElementById('tei').value='{$tei}';">
-    	<form method="get" action="" style="background-color: #eee; margin: -20px -20px 3px -20px; padding: 5px 20px; position:fixed; width: 100%; height: 50px;">
-            <div>Vælg tekst: 
-                <select name="tei" id="tei" onchange="this.form.submit(); return false;" style="margin-bottom: 10px;">
-                    <option value=""/>
-                    {
-                        for $book in $books/dsl:book 
-                        return <option value="{$book/dsl:tei}">{$book/dsl:title}</option>
-                    }
-                </select>
-            </div>
-        </form>
-        <table style="border: 0px; width: 100%; position: absolute; top: 50px">
-            <tr>
-                <td style="width: 60%; border: 0px">
-        {   let $mei := $books/dsl:book[dsl:tei=$tei]/dsl:mei
-            let $output :=
-                if($mei != "") then
-                    let $results := local:get_results($mei)
-                    let $result_list :=
-                    <div style="overflow-y: scroll; overflow-x: hidden; height: 85vh" id="mei">
-                        <!--<p>{count($results)} resultat(er)</p>-->
-                        <table style="width: 95%;">
-                            <tr>
-                                <th>Tekst med delestreger</th>
-                                <th>Tekst uden delestreger</th>
-                            </tr>
+	
+                <div style="background-color: #eee; position: fixed; padding: 10px 20px; margin:-20px; width: 100%">
+                	<form method="get" action="">
+                        <div>Vælg tekst: 
+                            <select name="tei" id="tei" style="margin-bottom: 10px;">
+                                <option value=""/>
+                                {
+                                    for $book in $books/dsl:book 
+                                    return <option value="{$book/dsl:tei}">{$book/dsl:title}</option>
+                                }
+                            </select>
+                            &#160;&#160;
+                            Hent MEI-tekst fra: &#160;
                             {
-                                for $doc in $results
-                                    let $text    := local:text_hyphenated($doc)
-                                    let $anchor := substring-before(tokenize(util:document-name($doc),"_")[last()],'.xml')
-                                    let $heading := 
-                                        <tr><td colspan="3">
-                                            {util:document-name($doc)}&#160;
-                                            <a href="javascript:void(0);" onclick="goto('{$anchor}');" name="mei_{$anchor}" 
-                                            id="mei_{$anchor}" tabindex="1{translate($anchor,'rv','')}"
-                                            title="Forsøg at finde stedet i TEI-dokumentet">[{$anchor}]</a>
-                                        </td></tr>
-                                    let $texts   := <tr>
-                                                        <td>{$text}</td>
-                                                        <td>{local:de-hyphen($text)}</td>
-                                                    </tr>
-                                return ($heading, $texts)
+                                let $radio := if ($m_source="github") then
+                                    <span>
+                                        <input type="radio" name="m_source" id="m_source1" value="github" checked="checked"/> <label for="m_source1">Github (langsom)</label>
+                                        &#160;
+                                        <input type="radio" name="m_source" id="m_source2" value="salmer"/> <label for="m_source2">Salmeserveren (måske uaktuel)</label>
+                                    </span>
+                                else
+                                    <span>
+                                        <input type="radio" name="m_source" value="github"/> <label for="m_source1">Github (langsom)</label>
+                                        &#160;
+                                        <input type="radio" name="m_source" value="salmer" checked="checked"/> <label for="m_source2">Salmeserveren (måske uaktuel)</label>
+                                    </span>
+                                return $radio
                             }
-                        </table>
-                        <a name="mei_end" id="mei_end" tabindex="9998"/>
-                    </div>
-                    return $result_list
-                else
-                    <div>
-                        <!-- -->
-                    </div>
-            return $output
+                            &#160;
+                            <input type="submit" value="Hent"/>
+                            &#160;&#160;&#160;&#160;&#160;&#160;
+                            <input type="checkbox" checked="checked" name="hl" id="hl" onchange="toggle_highlight()"/> <label for="hl">Fremhæv forskelle</label>
+                        </div>
+                    </form>
+                </div>
+
+	
+	
+        <table style="border: 0px; top: 70px; width: 100%; position: absolute; z-index: -1;">
+        {   let $output1 := 
+                if ($tei != "") then 
+                    <tr>
+                        <th>MEI-tekst med delestreger</th>
+                        <th>MEI-tekst uden delestreger</th>
+                        <th>TEI-tekst</th>
+                    </tr>
+                else ""
+            return $output1
         }
-                </td>
-                <td style="width: 35%; border: 0px;">
-                    <div style="overflow-y: scroll; overflow-x: hidden; height: 85vh" id="tei">
-                       {
-                            let $tei_out := if ($tei) then
-                                local:transform_tei(doc(concat($tei_base, $tei)),$tei) 
+        {    let $output2 :=
+                if ($tei != "") then         
+                    for $notatedMusic in $tei_doc//t:notatedMusic
+                        let $mei_filename := tokenize($notatedMusic/t:ptr/@target,'#')[1]
+                        let $mdiv := substring-after($notatedMusic/t:ptr/@target,'#')
+                        let $mei_file := if ($m_source = "salmer") then
+                                local:get_local_mei($mei_filename) 
                             else 
-                                ""
-                            return $tei_out
-                       }
-                    </div>
-                </td>
-            </tr>
+                                local:get_mei($mei_filename) 
+                        let $hyphenated_text := local:text_hyphenated($mei_file, $mdiv)
+                        let $mei_text := <div xmlns="http://www.w3.org/1999/xhtml">{local:de-hyphen($hyphenated_text)}</div>
+                        let $no_of_lines := count($mei_text/h:div)
+                        let $tei_text := <div xmlns="http://www.w3.org/1999/xhtml">{local:tei_to_div($notatedMusic/following::t:lg[1]/(t:l | following::t:l)[position() <= $no_of_lines])}</div>
+                        let $anchor := substring-before(tokenize($mei_filename,"_")[last()],'.xml')  
+                        let $heading := 
+                            <tr>
+                                <td colspan="3"><b>{$mei_file/m:mei/m:meiHead/m:workList/m:work/m:title[1]} </b>({$notatedMusic/t:ptr/@target/string()})</td>
+                            </tr>
+                    return (
+                        $heading,
+                        <tr>
+                            <td>{$hyphenated_text}</td>
+                            <td>{local:compare_texts($mei_text, $tei_text)}</td>
+                            <td>{$tei_text}</td>
+                        </tr>
+                        )
+                else ""                        
+            return $output2
+        }
         </table>
 
     </body>
