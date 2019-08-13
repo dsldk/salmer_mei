@@ -180,8 +180,10 @@
             <xsl:apply-templates select="." mode="add_comment"/>
         </xsl:for-each>
         <xsl:apply-templates select="../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in measure -->
-        <xsl:apply-templates select="../../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:measure)]/ancestor::m:score/             (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/
+            ../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section; to appear at the beginning of each system -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/
+            (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
     </xsl:template>
     
     <xsl:template match="m:add | m:corr | m:damage | m:del |  m:gap | m:orig | m:reg | m:sic | m:supplied | m:unclear">
@@ -291,8 +293,8 @@
                 <xsl:sort select="position()" order="descending" data-type="number"/>
                 <xsl:apply-templates select="." mode="add_comment"/>
             </xsl:for-each>
-            <!-- Comments in <section>; show at the beginning of every measure -->
-            <xsl:apply-templates select="ancestor::m:section/(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/>
+            <!-- Comments in <section>; show at the beginning of every system -->
+            <xsl:apply-templates select=".[not(preceding-sibling::m:staff) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/ancestor::m:section/(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/>
             <xsl:if test="not(preceding-sibling::m:staff)">
                 <!-- Comments in <score>; show only in first measure -->
                 <xsl:apply-templates select="ancestor::m:score/(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/>
@@ -391,7 +393,7 @@
     </xsl:template>
     
     <xsl:template match="text()">
-        <xsl:value-of select="normalize-space()"/>
+        <xsl:value-of select="normalize-space()" />
     </xsl:template>
     
 </xsl:stylesheet>
