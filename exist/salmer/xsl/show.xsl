@@ -283,7 +283,7 @@
                 <xsl:apply-templates select="@* | node()[name()!='annot']"/>
             </xsl:copy>
             <!-- Add slurs -->
-            <xsl:apply-templates select="*//m:neume[count(m:nc)&gt;1]" mode="add_slur"/>
+            <xsl:apply-templates select="*//m:neume[count(.//m:nc)&gt;1]" mode="add_slur"/>
             <!-- Move fermata and dir elements out of <staff> and <layer> and add them to the <measure> -->
             <xsl:copy-of select=".//m:dir"/>
             <xsl:copy-of select=".//m:fermata"/>
@@ -311,15 +311,15 @@
     <!-- Render ligatures as slurs -->
     <xsl:template match="m:neume" mode="add_slur">
         <slur xmlns="http://www.music-encoding.org/ns/mei" layer="1" staff="1">
-            <xsl:choose>
-                <xsl:when test="m:nc">
-                    <!-- MEI 4.0.0 -->
-                    <xsl:attribute name="startid">#<xsl:value-of select="m:nc[1]/@xml:id"/>
-                    </xsl:attribute>
-                    <xsl:attribute name="endid">#<xsl:value-of select="m:nc[position()=last()]/@xml:id"/>
-                    </xsl:attribute>
-                </xsl:when>
-            </xsl:choose>
+            <xsl:if test="@xml:id">
+                <xsl:attribute name="xml:id"><xsl:value-of select="concat(@xml:id,'_slur')"/></xsl:attribute>
+            </xsl:if>
+            <xsl:if test=".//m:nc">
+                <xsl:attribute name="startid">#<xsl:value-of select=".//m:nc[1]/@xml:id"/>
+                </xsl:attribute>
+                <xsl:attribute name="endid">#<xsl:value-of select=".//m:nc[position()=last()]/@xml:id"/>
+                </xsl:attribute>
+            </xsl:if>
         </slur>
     </xsl:template>
     
@@ -337,14 +337,10 @@
         </verse>
     </xsl:template>
     
-    <!-- MEI 3.0.0: <xsl:template match="m:uneume"> -->
-    <!-- MEI 4.0.0: <xsl:template match="m:neume"> -->
     <xsl:template match="m:neume">
         <xsl:apply-templates/>
     </xsl:template>
     
-    <!-- MEI 3.0.0: <xsl:template match="m:note[not(ancestor::m:measure)]"> -->
-    <!-- MEI 4.0.0: <xsl:template match="m:nc"> -->
     <xsl:template match="m:nc">
         <note xmlns="http://www.music-encoding.org/ns/mei">
             <xsl:apply-templates select="@*[not(local-name()='label')]"/>
@@ -367,7 +363,7 @@
             <xsl:if test="$dur='long'">
                 <xsl:attribute name="colored">true</xsl:attribute>
             </xsl:if>
-            <xsl:if test="@xml:id=ancestor::m:syllable/m:neume[1]/m:nc[1]/@xml:id">
+            <xsl:if test="@xml:id=ancestor::m:syllable/m:neume[1]//m:nc[1]/@xml:id">
                 <xsl:apply-templates select="ancestor::m:syllable/m:verse | ancestor::m:syllable/m:syl"/>
             </xsl:if>
         </note>
