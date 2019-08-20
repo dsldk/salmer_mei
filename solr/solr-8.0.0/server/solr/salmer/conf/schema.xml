@@ -64,7 +64,7 @@
   </fieldType>
   
   <!-- Danish text field -->
-  <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100">
+  <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100" multiValued="true">
     <analyzer>
       <tokenizer class="solr.StandardTokenizerFactory"/>
       <filter class="solr.LowerCaseFilterFactory"/>
@@ -138,6 +138,7 @@
   <field name="abs_pitch" type="string" indexed="true" stored="true"/>
   <field name="abs_pitch_chars" type="ngramTextField" indexed="true" stored="true"/>
   <field name="abs_pitch_norepeat" type="ngramIgnoreRepeatedNote" indexed="true" stored="true"/>
+  <field name="collection" type="string" indexed="false" stored="true"/>
   <field name="contour" type="ngramTextField" indexed="true" stored="true"/>
   <field name="duration" type="string" indexed="true" stored="true"/>
   <field name="file" type="string" indexed="false" stored="true"/>
