@@ -243,8 +243,8 @@
 }
 
 .custom_input {
-/*    border: 1px solid #057abc;
-    background-color: #005a8c; */
+/*    border: 1px solid #057abc;  */
+    background-color: #fff; 
     border: 1px solid black;
     display: inline-block;
     padding: 4px 10px;
