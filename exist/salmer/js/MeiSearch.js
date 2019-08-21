@@ -147,7 +147,7 @@ function updateAction() {
     // generate a string containing the publications to be searched
     var q = "";
     if(document.getElementById("allPubl").checked === false) {
-        $("#publication input").each(function() {
+        $(".publication input").each(function() {
             if($(this).is(":checked")){q += $(this).attr("value") + ","}
         }) 
     }
@@ -156,21 +156,39 @@ function updateAction() {
 
 function allPublClicked() {
     if(document.getElementById("allPubl").checked) {
-        $('#publication input').prop('checked', true);
+        $('.publication input').prop('checked', true);
     } else {
-        $('#publication input').prop('checked', false);
+        $('.publication input').prop('checked', false);
     }
 }
 
 function publClicked() {
-    var all = $("#publication input").length;
-    var checked = $("#publication input:checked").length;
+    var all = $(".publication input").length;
+    var checked = $(".publication input:checked").length;
     if(checked < all) {
         $('#allPubl').prop('checked', false);
     } else {
         $('#allPubl').prop('checked', true);
     }
 }
+
+function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+} 
 
 
 $(document).ready(function() {

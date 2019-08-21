@@ -7,6 +7,7 @@ declare namespace m = "http://www.music-encoding.org/ns/mei";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
+declare variable $query_title   := request:get-parameter("qt", "");   (: Query by title          :)
 declare variable $pname         := request:get-parameter("q", "");    (: Query by pitch name     :)
 declare variable $contour       := request:get-parameter("c", "");    (: Query by melody contour :)
 declare variable $absp          := request:get-parameter("a", "");    (: Query by pitch number   :)
@@ -16,7 +17,7 @@ declare variable $page          := request:get-parameter("page", "1") cast as xs
 declare variable $search_in     := request:get-parameter("x", "");    (: List of publications to search in   :)
 declare variable $publications  := doc('index/publications.xml'); 
 declare variable $collection    := '/db/salmer';
-declare variable $solr_base     := 'http://localhost:8983/solr/salmer/'; (: Solr core :)
+declare variable $solr_base     := 'http://salmer.dsl.lan:8983/solr/salmer/'; (: Solr core :)
 declare variable $this_script   := 'mei_search.xq';
 
 (: key string for substituting numbers by characters. :)
@@ -33,7 +34,6 @@ declare variable $session   := session:create();
 declare variable $session-perpage   := xs:integer(session:set-attribute("perpage", if ($perpage>0) then $perpage else "5"));
 
 declare variable $from     := (xs:integer($page) - 1) * xs:integer(session:get-attribute("perpage"));
-
 
 
 (: \ and / not allowed as characters in Solr queries :)
@@ -76,7 +76,12 @@ declare function local:pitches_to_interval_chars($pitchstr as xs:string) as xs:s
 (:  Generate Solr query :)
 declare function local:solr_query() {
     let $ints as xs:string := if($absp != "") then local:pitches_to_interval_chars($absp) else "" (: Query by interval sequence :)
+    let $quot := '%22'
     let $solrQuery1 := 
+            if ($query_title != "") then
+                (: concat("freq=termfreq(title,'",$quot,translate($query_title," ","+"),$quot,"')&amp;q=title:'",$quot,translate($query_title," ","+"),$quot,"'") :)
+                concat("freq=termfreq(title,'%22",translate($query_title," ","+"),"%22')&amp;q=title:'%22",translate($query_title," ","+"),"%22'")
+            else
             if ($contour != "") then 
                 concat("freq=termfreq(contour,'",local:contour_to_chars($contour),"')&amp;hl.fl=contour&amp;q=contour:",local:contour_to_chars($contour))
             else
@@ -127,27 +132,18 @@ declare function local:solr_query() {
  
 (:  :declare function local:verovio_match($file as xs:string, $highlight as xs:string*)  {:)
 declare function local:verovio_match($doc as node(), $fileId as xs:string, $highlight as xs:string*) as node()* {
+    let $highlight_list := if (count($highlight) > 0) then 
+            <div class="highlight_list" style="display:none">{$highlight}</div>
+        else
+            ""
     let $output1 :=
         <div id="{$fileId}" class="mei"><p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p></div>
     let $output2 :=
         <div id="{$fileId}_options" class="mei_options">
             <!--MEI options menu will be inserted here-->
-            <div class="highlight_list" style="display:none">{$highlight}</div>
+            {$highlight_list}
         </div>
-(:     let $xsl := if (count($highlight) > 0) then "/xsl/highlight.xsl" else "/xsl/show.xsl"  
-    let $output3 :=    
-       <script id="{$fileId}_data" type="text/xml">
-       {
-            let $params := 
-            <parameters>
-                <param name="mdiv" value=""/>
-                <param name="highlight" value="{$highlight}"/>
-            </parameters>
-            return transform:transform($doc,doc(concat($collection,$xsl)),$params)
-       }
-       </script>  :)
     return ($output1, $output2)
-(:     return ($output1, $output2, $output3)  :)
 };
 
 declare function local:highlight_ids($idString as xs:string, $matches as node()*) as xs:string* {
@@ -235,6 +231,36 @@ declare function local:check_publications() as node()* {
     return ($all, $publ_list)
 };
 
+declare function local:get_titles_solr() as node()* {
+    let $query := concat($solr_base,"select?fl=title&amp;q=title:*&amp;rows=10000&amp;wt=xml")
+    let $solr_docs := doc($query)
+    let $options := 
+        for $doc in $solr_docs/*/*/*[name()='doc']
+            let $title := $doc/*[@name='title']/*[1]
+            order by $title ascending
+        return <option value="{$title}">{$title}</option>
+    return 
+        <select onchange="document.getElementById('query_title').value=this.value">
+            <option value="" selected="selected">Vælg titel</option>
+            {$options}
+        </select>
+};
+
+declare function local:get_titles() as node()* {
+    let $work_titles :=
+        for $work in collection($collection)//m:workList/m:work[m:title]
+            let $title := $work/m:title[@type="uniform" or not(../m:title[@type="uniform"])][1]
+            order by lower-case($title) ascending
+        return $title
+    let $options := 
+        for $title in distinct-values($work_titles/normalize-space(string()))
+        return <option value="{$title}">{$title}</option>
+    return 
+        <select id="title_select" onchange="document.getElementById('query_title').value = this.value; document.getElementById('title_form').submit();">
+            <option value="" selected="selected">Vælg titel</option>
+            {$options}
+        </select>
+};
 
 (: Timing :)
 declare function local:execution_time( $start-time, $end-time )  {
@@ -243,6 +269,12 @@ declare function local:execution_time( $start-time, $end-time )  {
     return
         <span class="debug">Søgningen tog {$seconds} s.</span>
 };
+
+let $active_tab := 
+    if($pname != "") then "openPitchTab"
+    else if($contour != "") then "openContourTab"
+    else if($absp != "") then "openPianoTab"
+    else "openTitleTab"
 
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -282,34 +314,52 @@ let $result :=
         <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
-        <script src="js/MeiAjax.js"><!-- MEI tools --></script>
-        <script src="js/MeiSearch.js"><!-- MEI search tools --></script>
+        <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>
+        <script type="text/javascript" src="js/MeiSearch.js"><!-- MEI search tools --></script>
 
 	    <!-- MIDI -->        
-        <script src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
-        <script src="js/midiplayer.js"><!-- MIDI player --></script>
-        <script src="js/midiLib.js"><!-- custom MIDI library --></script>
+        <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
+        <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
+        <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
 
 	</head>
-	<body class="metadata">
+	<body class="metadata" onload="document.getElementById('{$active_tab}').click();">
 	   {doc(concat($collection,"/assets/page_head.html"))}
 	   <div class="searchWrapper box-gradient-blue search">
     	   <div class="search_options search-bg">
                 <div class="search_block search_block_narrow">
                     <form action="" method="get" class="form" id="publ_form">
-                        <div class="input-label">Søg i:</div>
+                        <!--<div class="input-label">Søg i:</div>-->
                         <div class="checkbox-options checkbox-list">
                             {local:check_publications()}
                         </div>
                     </form>
                 </div>
         	   <div class="search_block">
-        	       <form action="" method="get" class="form" id="pitch_form">
-        	           <div class="input-label">Søg efter:</div>
-            	       <p><label class="input-label" for="pnames">Tonenavne</label>
+              	   <div class="tab form">
+              	      <!--<span class="input-label">Søg efter:</span>-->
+                      <button class="tablinks" onclick="openTab(event, 'title_form')" id="openTitleTab">Titel</button>
+                      <button class="tablinks" onclick="openTab(event, 'pitch_form')" id="openPitchTab">Tonenavne</button>
+                      <button class="tablinks" onclick="openTab(event, 'contour_form')" id="openContourTab">Kontur</button>
+                      <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab">Noder</button>
+                   </div>
+        	       <form action="" method="get" class="form tabcontent" id="title_form">
+        	           <p>
+        	               <input name="qt" id="query_title" type="text" value="{$query_title}" class="search-text input"/>
+        	               <img src="https://tekstnet.dk/static/info.png" alt="hint" title="Skriv titel eller del af en titel"/>
+        	               <input name="x" id="x0" type="hidden" value="{$search_in}"/>
+            	           <input type="submit" value="Søg" class="search-button box-gradient-green" onclick="this.form['x'].value = updateAction();"/>
+            	           <br/>
+        	           </p>
+        	           <p>
+                	       {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
+                	   </p>
+            	   </form>
+        	       <form action="" method="get" class="form tabcontent" id="pitch_form">
+            	       <p>
         	           <input name="x" id="x1" type="hidden" value="{$search_in}"/>
             	       <input type="text" name="q" id="pnames" value="{$pname}" class="search-text input"/> 
-            	       <img src="https://tekstnet.dk/static/info.png" 
+            	       <img src="https://tekstnet.dk/static/info.png"  alt="hint"
             	        title="Søg efter en bestemt tonefølge, f.eks. 'CDEF'.
 H skrives B.            	        
 Altererede toner skrives således: 
@@ -317,12 +367,12 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
             	       <input type="submit" value="Søg" class="search-button box-gradient-green"
             	       onclick="this.form['x'].value = updateAction();"/></p>
         	       </form>
-        	       <form action="" method="get" class="form" id="contour_form">
-            	       <p><label class="input-label" for="contour">Kontur</label>
+        	       <form action="" method="get" class="form tabcontent" id="contour_form">
+            	       <p>
                        <input name="x" id="x2" type="hidden" value="{$search_in}"/>
             	       <input type="text" name="c2" id="contour" value="{local:chars_to_contour($contour)}" class="search-text input"/> 
             	       <input type="hidden" name="c" id="contour_hidden" value="{$contour}"/> 
-            	       <img src="https://tekstnet.dk/static/info.png" title="Søg efter melodier med en bestemt kontur, f.eks. '-//\'. 
+            	       <img src="https://tekstnet.dk/static/info.png" alt="hint" title="Søg efter melodier med en bestemt kontur, f.eks. '-//\'. 
 - : Tonegentagelse
 / : Opadgående interval
 \ : Nedadgående interval"/>
@@ -330,7 +380,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
             	       onclick="this.form['c'].value = this.form['c2'].value.replace(/\//g, 'u').replace(/\\/g,'d').replace(/-/g,'r');this.form['x'].value = updateAction()"/></p>
         	       </form>
         	       
-        	       <div id="piano_wrapper">
+        	       <div id="piano_wrapper" class="form tabcontent">
             	       <div id="piano_cell">
                         <div id="pQueryOut"><!--  --></div>
                         <div id="piano">
@@ -381,7 +431,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	           <input type="checkbox" name="t" id="transpositions" value="1"/> 
                             	         return $tr
                             	        }
-                            	        <label class="input-label" for="transpositions">&#160;&#160;Alle transpositioner</label>
+                            	        <label class="input-label" for="transpositions">Alle transpositioner</label>
                     	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis intervalfølgen må begynde på en hvilken som helst tone"/>
                         	        </div>
                                     <div class="checkbox-options">
@@ -391,7 +441,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	           <input type="checkbox" name="r" id="repetitions" value="1"/> 
                             	         return $rep
                             	        }
-                            	        <label class="input-label" for="repetitions">&#160;&#160;Ignorer tonegentagelser</label>
+                            	        <label class="input-label" for="repetitions">Ignorer tonegentagelser</label>
                     	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>
                         	        </div>
                                 </div>
@@ -411,7 +461,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
 	   {
 	   let $start-time := util:system-time()
        let $solrResult := 
-            if($pname != "" or $absp != "" or $contour != "") then
+            if($query_title != "" or $pname != "" or $absp != "" or $contour != "") then
                 doc(local:solr_query())
             else
                 false()
@@ -435,29 +485,32 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	                let $file := doc(concat($coll,"/",$res/*[@name="file"]/string()))
     	                let $matches := local:get_match_positions($solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1])
     	                let $highlight_ids := local:highlight_ids($res/*[@name="ids"]/string(), $matches)
-    	                let $title := if($res/*[@name="title"]/string() != "") 
-    	                    then $res/*[@name="title"]/string()
+    	                let $title := if($res/*[@name="title"]/*/string() != "") 
+    	                    then $res/*[@name="title"]/*[1]/string()
     	                    else if (doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()])
     	                    then doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()][1]/string()    
                             else $res/*[@name="file"]/string()
     	                return
     	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                 <div>
-                                    <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" class="sprite arrow-white-circle">
+                                    <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
+                                        title="Slå op i melodidatabasen" class="sprite arrow-white-circle">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:editor/string()}&#160;
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
                                     </a>
                                     <br/>
-                                    {count($matches)} 
                                     {
-                                        let $hit_label := 
-                                        if(count($matches) = 1) then " forekomst" else " forekomster"
+                                        let $hit_label := if(count($matches) > 0) 
+                                            then   
+                                                if(count($matches) = 1) then "1 forekomst" else concat(count($matches)," forekomster")
+                                            else 
+                                                ""
                                         return $hit_label
                                     }
                                     {
                                         let $excerpts :=
-                                        if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids]) != count($file//m:mdiv) ) 
+                                        if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids] and count($matches) > 0) != count($file//m:mdiv) ) 
                                         then " (uddrag vises)" else ""
                                         return $excerpts
                                     }
@@ -479,6 +532,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     <!--[{count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) } / {count($file//m:mdiv) } dele]-->
                                     <!--{substring-after($res/*[@name="collection"],$collection)} -->
                                     <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
+                                    <!--[Title: {$res/*[@name="title"]/*[1]/string()}]-->
                                     </div>
                                 </div>
                                 { 

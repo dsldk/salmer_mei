@@ -11,11 +11,13 @@
 a.paging, a.paging:visited, a.paging:active {
 /*    color: #428bca; */
     color: white;
-    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgb(88, 135, 38) 0%, rgb(51, 98, 1) 100%) repeat scroll 0 0;
+/*    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgb(88, 135, 38) 0%, rgb(51, 98, 1) 100%) repeat scroll 0 0; */
+    background-color: #536d7e;
 }
 
 .paging_div a:hover, .paging_div a:active {
     text-decoration: none;
+    background-color: #6d8a9e;
 }
 
 .paging_div .selected {
@@ -27,13 +29,10 @@ a.paging, a.paging:visited, a.paging:active {
     padding-bottom: 10px;
 }
 
-.search .form .input-label {
-    cursor: pointer;
-}
-
 .search_block {
     display: table-cell;
-    width: 700px;
+    width: 650px;
+    vertical-align: top;
 }
 
 .search_block_narrow {
@@ -52,16 +51,30 @@ a.paging, a.paging:visited, a.paging:active {
     display: table;
 }
 
-.search .form .checkbox-list .input-label {
+.search .form .input-label {
+    cursor: pointer;
     font-size: 14px;
     display: inline-block;
-    width: 330px;
     margin: 0 0 5px 10px;
     vertical-align: top;
 }
 
+.search .form .checkbox-list .input-label {
+    width: 330px;
+}
+
+.search .form input[type="text"] {
+    font-size: 14px;
+    font-family: 'Noto Serif', serif;
+}
+
+.search .form select, .search .form select option {
+    font-size: 14px;
+    font-family: 'Noto Serif', serif;
+}
+
 .checkbox-list {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .search-button {
@@ -75,9 +88,21 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 .result_list .item {
-    border-top: 2px solid #000;
+/*    border-top: 2px solid #000; */
     margin-top: 5px;
     padding-top: 10px;
+}
+
+.result_list .arrow-white-circle {
+    background-color: #536d7e;
+    background-image: none;
+    border-radius: 6px;
+    color: white;
+}
+
+.result_list .arrow-white-circle:hover {
+    background-color: #6d8a9e;
+    text-decoration: none;
 }
 
 .mei svg .dir.pb, .mei svg .dir.sb {
@@ -115,22 +140,16 @@ a.paging, a.paging:visited, a.paging:active {
 
 #pnames, #contour {
     width: 220px;
+}
+
+#pnames, #contour, #query_title {
     text-align: left;
 }
 
-#pitch_form label, #contour_form label {
+#pitch_form label, #contour_form label, 
+#title_form label, #title_form2 label {
     width: 125px;
     display: inline-block;
-}
-
-#piano_wrapper {
-    display: table-row;
-}
-
-#piano_cell, #piano_search_cell {
-    display: table-cell;
-    vertical-align: top;
-    text-align: left;
 }
 
 #pQueryOut {
@@ -166,6 +185,68 @@ a.paging, a.paging:visited, a.paging:active {
     margin-left: 20px;
 }
 
+/* tabs */
+.tab {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.tab button {
+/*  background-color: inherit; */
+  float: left;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  margin-right: 1px;
+  outline: none;
+  cursor: pointer;
+  padding: 4px 20px;
+  color: #dcd2ab;
+  background-color: rgba(255,255,255,0.1);
+  transition: 0.3s;
+}
+
+.tab button:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.tab button.active {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+  background-color: rgba(255,255,255,0.2);
+  /*-webkit-animation: fadeEffect 1s;
+  animation: fadeEffect 1s;  Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+/* piano input */
+
+#piano_wrapper {
+/*    display: table-row;  */
+    padding: 20px 10px; 
+}
+
+#piano_cell, #piano_search_cell {
+    display: table-cell;
+    vertical-align: top;
+    text-align: left;
+}
+
 #piano {
     padding: 1px;
     width: 392px;
@@ -173,8 +254,6 @@ a.paging, a.paging:visited, a.paging:active {
     z-index: 2;
     text-align: center;
 }
-
-/** keys */
 
 #piano .keys {
     width: 392px;
