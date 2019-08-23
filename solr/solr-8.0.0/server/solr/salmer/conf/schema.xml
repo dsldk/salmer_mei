@@ -133,7 +133,9 @@
   <!-- Copy fields for fuzzy searches -->
   <copyField source="abs_pitch_chars" dest="abs_pitch_norepeat"/>
   <copyField source="intervals_chars" dest="intervals_nounison"/>
-  
+
+  <!-- Copy title text field to string type for exact match -->
+  <copyField source="title" dest="title_str"/>
   
   <field name="abs_pitch" type="string" indexed="true" stored="true"/>
   <field name="abs_pitch_chars" type="ngramTextField" indexed="true" stored="true"/>
@@ -150,6 +152,7 @@
   <field name="pitch" type="ngramTextField" indexed="true" stored="true"/>
   <field name="publ" type="string" indexed="true" stored="true"/>
   <field name="title" type="text_da" indexed="true" stored="true"/>
+  <field name="title_str" type="strings" indexed="true" stored="true"/>
   
   <!-- Field to use to determine and enforce document uniqueness.
     Unless this field is marked with required="false", it will be a required field
