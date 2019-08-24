@@ -63,30 +63,6 @@
     </analyzer>
   </fieldType>
   
-  <!-- Danish text field -->
-  <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100" multiValued="true">
-    <analyzer>
-      <tokenizer class="solr.StandardTokenizerFactory"/>
-      <filter class="solr.LowerCaseFilterFactory"/>
-      <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_da.txt" format="snowball"/>
-      <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>
-    </analyzer>
-  </fieldType>
-  
-  <!-- German text field -->
-  <!--<dynamicField name="*_txt_de" type="text_de"  indexed="true"  stored="true"/>
-    <fieldType name="text_de" class="solr.TextField" positionIncrementGap="100">
-    <analyzer> 
-    <tokenizer class="solr.StandardTokenizerFactory"/>
-    <filter class="solr.LowerCaseFilterFactory"/>
-    <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_de.txt" format="snowball" />
-    <filter class="solr.GermanNormalizationFilterFactory"/>
-    <filter class="solr.GermanLightStemFilterFactory"/>-->
-  <!-- less aggressive: <filter class="solr.GermanMinimalStemFilterFactory"/> -->
-  <!-- more aggressive: <filter class="solr.SnowballPorterFilterFactory" language="German2"/> -->
-  <!--</analyzer>
-    </fieldType>-->
-  
 
   <!-- N-GRAM FIELDS -->
   
@@ -133,9 +109,6 @@
   <!-- Copy fields for fuzzy searches -->
   <copyField source="abs_pitch_chars" dest="abs_pitch_norepeat"/>
   <copyField source="intervals_chars" dest="intervals_nounison"/>
-
-  <!-- Copy title text field to string type for exact match -->
-  <copyField source="title" dest="title_str"/>
   
   <field name="abs_pitch" type="string" indexed="true" stored="true"/>
   <field name="abs_pitch_chars" type="ngramTextField" indexed="true" stored="true"/>
@@ -151,8 +124,7 @@
   <field name="intervals_nounison" type="ngramIgnoreUnison" indexed="true" stored="true"/>
   <field name="pitch" type="ngramTextField" indexed="true" stored="true"/>
   <field name="publ" type="string" indexed="true" stored="true"/>
-  <field name="title" type="text_da" indexed="true" stored="true"/>
-  <field name="title_str" type="strings" indexed="true" stored="true"/>
+  <field name="title" type="text_general" indexed="true" stored="true"/>
   
   <!-- Field to use to determine and enforce document uniqueness.
     Unless this field is marked with required="false", it will be a required field

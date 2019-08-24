@@ -111,22 +111,21 @@ Debug here
 	   <!-- Search -->
 	   <div class="searchWrapper box-gradient-blue search subpage-search">
     	    <div class="search_options search-bg container row">
-    	       <form action="mei_search.xq" method="get" class="form" id="pitch_form">
-            	   <p><label class="input-label left-margin" for="pnames">Melodisøgning</label>
+    	       <form action="mei_search.xq" method="get" class="form" id="title_form">
+            	   <p><label class="input-label left-margin" for="pnames">Titelsøgning</label>
                    <input name="x" id="x1" type="hidden" value=""/>
-                   <input type="text" name="q" id="pnames" value="" class="search-text input"/> 
-                   <img src="https://tekstnet.dk/static/info.png" 
-                    title="Søg efter en bestemt tonefølge, f.eks. 'CDEF'.
-H skrives B.            	        
-Altererede toner skrives således: 
-cis: V, es: W, fis: X, as: Y, b: Z"/>
+                   <input name="qt" id="query_title" type="text" value="" class="search-text input"/>
+                   <img src="https://tekstnet.dk/static/info.png" alt="hint" title="Skriv titel eller del af en titel"/>
                    <input type="submit" value="Søg" class="search-button box-gradient-green"
-                   onclick="this.form['x'].value = updateAction();"/></p>
-                                       
+                   onclick="this.form['x'].value = updateAction();"/>                                       
+                       <br/>
+                   </p>
+                   <p>
+                       <label class="input-label left-margin">&#160;</label>{doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
+                   </p>
                     <div class="text-row">
                        <a href="mei_search.xq" id="advanced-search-link">Avanceret søgning</a>
                     </div>
-                                       
                </form>
     	    </div>
         </div>
