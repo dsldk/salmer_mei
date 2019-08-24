@@ -472,7 +472,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
 	       <div class="result_list">
     	   {
 	       let $count := 
-	            if($numFound > 0 or $pname or $absp or $contour) then
+	            if($numFound > 0 or $query_title or $pname or $absp or $contour) then
 	               concat("Resultater: ",$numFound)
 	            else ""
 	       let $list :=
