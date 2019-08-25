@@ -449,7 +449,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                         	        </div>
                         	        <div class="checkbox-options">
                         	            <label class="input-label" for="fuzzyness" style="margin-left: 20px;">Præcision:</label>
-                        	            <img src="https://tekstnet.dk/static/info.png" title="Der kan tillades en eller to afvigelser, 
+                        	            <img src="https://tekstnet.dk/static/info.png" title="Søgningen kan udvides ved at tillade en eller to afvigelser, 
 dvs. afvigende tonehøjder eller 
 manglende eller tilføjede toner"/><br/>
                         	            {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
