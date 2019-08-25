@@ -67,7 +67,7 @@
   <!-- N-GRAM FIELDS -->
   
   <!-- N-grams for exact matching -->
-  <fieldType name="ngramTextField" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
+  <fieldType name="ngramTextField" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
     <analyzer type="index">
       <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
     </analyzer>
@@ -78,7 +78,7 @@
   </fieldType>
 
   <!-- N-grams ignoring any repeated notes / unison intervals -->
-  <fieldType name="ngramIgnoreRepeatedNote" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
+  <fieldType name="ngramIgnoreRepeatedNote" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
     <analyzer type="index">
       <!-- Skip any repeated characters (= repeated notes) -->
       <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="$1" pattern="(\S)\1{1,}"/>  
@@ -109,6 +109,7 @@
   <!-- Copy fields for fuzzy searches -->
   <copyField source="abs_pitch_chars" dest="abs_pitch_norepeat"/>
   <copyField source="intervals_chars" dest="intervals_nounison"/>
+  <copyField source="transposition" dest="transposition_norepeat"/>
   
   <field name="abs_pitch" type="string" indexed="true" stored="true"/>
   <field name="abs_pitch_chars" type="ngramTextField" indexed="true" stored="true"/>
@@ -125,6 +126,8 @@
   <field name="pitch" type="ngramTextField" indexed="true" stored="true"/>
   <field name="publ" type="string" indexed="true" stored="true"/>
   <field name="title" type="text_general" indexed="true" stored="true"/>
+  <field name="transposition" type="ngramTextField" indexed="true" stored="true"/>
+  <field name="transposition_norepeat" type="ngramIgnoreRepeatedNote" indexed="true" stored="true"/>
   
   <!-- Field to use to determine and enforce document uniqueness.
     Unless this field is marked with required="false", it will be a required field

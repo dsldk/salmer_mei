@@ -13,6 +13,7 @@ declare variable $contour       := request:get-parameter("c", "");    (: Query b
 declare variable $absp          := request:get-parameter("a", "");    (: Query by pitch number   :)
 declare variable $transpose     := request:get-parameter("t", "");    (: All transpositions?     :)
 declare variable $repeat        := request:get-parameter("r", "");    (: Allow repeated notes?   :)
+declare variable $fuzzy         := request:get-parameter("f", "0") cast as xs:integer;   (: Fuzzyness :)
 declare variable $page          := request:get-parameter("page", "1") cast as xs:integer;
 declare variable $search_in     := request:get-parameter("x", "");    (: List of publications to search in   :)
 declare variable $publications  := doc('index/publications.xml'); 
@@ -48,18 +49,22 @@ declare function local:chars_to_contour($chars as xs:string) as xs:string {
 };
 
 declare function local:get_match_positions($highlights as xs:string?) as node()* {
-    let $frags as xs:string* := tokenize(normalize-space($highlights),"\]")
-    let $fragLengths as xs:integer* :=
-        for $frag in $frags
-        return string-length(translate($frag,"[",""))        
     let $matches as node()* :=
-        (: length correction (+1) is needed when the query is based on interval instead of notes :)  
-        for $frag at $pos in $frags[position() != last()]
-        return 
-            <match>
-                <pos>{sum($fragLengths[position() < $pos]) + string-length(substring-before($frag, "[")) + 1}</pos>
-                <length>{string-length(substring-after($frag,"[")) + xs:integer(($absp != "" and $transpose = "1") or $contour != "")}</length>
-            </match>
+        for $this_trsp in tokenize($highlights," ")
+        (: if all transpositions are searched, the higlighted string is a concatenation of all transpositions joined with spaces; separate them and return matches from each :)
+            let $frags as xs:string* := tokenize(normalize-space($this_trsp),"\]")
+            let $fragLengths as xs:integer* :=
+                for $frag in $frags
+                return string-length(translate($frag,"[",""))        
+            let $matches_in_this_trsp as node()* :=
+                (: length correction (+1) is needed when the query is based on interval instead of notes (i.e., contour search) :)  
+                for $frag at $pos in $frags[position() != last()]
+                return 
+                    <match>
+                        <pos>{sum($fragLengths[position() < $pos]) + string-length(substring-before($frag, "[")) + 1}</pos>
+                        <length>{string-length(substring-after($frag,"[")) + xs:integer($contour != "")}</length>
+                    </match>
+         return $matches_in_this_trsp
     return $matches
 };
 
@@ -77,6 +82,7 @@ declare function local:pitches_to_interval_chars($pitchstr as xs:string) as xs:s
 declare function local:solr_query() {
     let $ints as xs:string := if($absp != "") then local:pitches_to_interval_chars($absp) else "" (: Query by interval sequence :)
     let $q_str := concat('%22',encode-for-uri(translate(normalize-space($query_title)," ","+")),'%22')
+    let $fuzzyness := if($fuzzy > 0) then concat("~",xs:string($fuzzy)) else ""
     let $solrQuery1 := 
             if ($query_title != "") then
                 concat("freq=termfreq(title,'",$q_str,"')&amp;q=title:'",$q_str,"'")
@@ -87,13 +93,11 @@ declare function local:solr_query() {
             if ($pname != "") then 
                 concat("freq=termfreq(pitch,'",$pname,"')&amp;hl.fl=pitch&amp;q=pitch:",$pname)
             else
-            if ($absp != "" and $transpose = "1") then
-                (: all transpositions - only look at intervals :)
-                let $field := if ($repeat != "") then "intervals_nounison" else "intervals_chars"
-                return concat("freq=termfreq(",$field,",'",$ints,"')&amp;hl.fl=",$field,"&amp;q=",$field,":",$ints) 
-            else
-            if ($absp != "" and $transpose != "1") then
-                let $field := if ($repeat != "") then "abs_pitch_norepeat" else "abs_pitch_chars"
+            if ($absp != "") then
+                let $field := if ($repeat != "") then
+                    if ($transpose != "1") then "abs_pitch_norepeat" else "transposition_norepeat"  
+                    else
+                    if ($transpose != "1") then "abs_pitch_chars" else "transposition" 
                 let $pitches as xs:integer* :=
                     for $p in tokenize($absp, "-")
                     return xs:integer($p)
@@ -109,13 +113,13 @@ declare function local:solr_query() {
                         let $pseq := 
                             for $p in $transposedDownPitches
                             return encode-for-uri(substring($chars,number($p + $transpose),1))
-                    return string-join($pseq,"")
+                    return concat(string-join($pseq,""),$fuzzyness) 
                 let $freq as xs:string* := 
                     for $str in $pitchStrings
                     return concat("termfreq(",$field,",'",$str,"')") 
                 return concat("freq=sum(",string-join($freq,","),")&amp;hl.fl=",$field,"&amp;q=",$field,":(",string-join($pitchStrings,"+"),")")
-                else
-                ()
+            else
+            ()
     let $search_in_seq := 
         for $n in tokenize($search_in,",")
         return $publications/dsl:publications/dsl:pub[string(position()) = $n]/dsl:id/text()
@@ -443,6 +447,34 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	        <label class="input-label" for="repetitions">Ignorer tonegentagelser</label>
                     	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>
                         	        </div>
+                        	        <div class="checkbox-options">
+                        	            <label class="input-label" for="fuzzyness" style="margin-left: 20px;">Præcision:</label>
+                        	            <img src="https://tekstnet.dk/static/info.png" title="Der kan tillades en eller to afvigelser, 
+dvs. afvigende tonehøjder eller 
+manglende eller tilføjede toner"/><br/>
+                        	            {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
+                            	            <input type="radio" name="f" id="exact" value="0" checked="checked"/>
+                            	         else 
+                            	           <input type="radio" name="f" id="exact" value="0"/> 
+                            	         return $exact
+                            	        }
+                        	            <label class="input-label" for="exact">Eksakt match</label><br/> 
+                        	            {let $fuzzy1 := if($fuzzy=1) then 
+                            	            <input type="radio" name="f" id="fuzzy1" value="1" checked="checked"/>
+                            	         else 
+                            	            <input type="radio" name="f" id="fuzzy1" value="1"/>
+                            	         return $fuzzy1
+                            	        }
+                        	            <label class="input-label" for="fuzzy1">Tillad 1 afvigelse</label><br/> 
+                        	            {let $fuzzy2 := if($fuzzy=2) then 
+                            	            <input type="radio" name="f" id="fuzzy2" value="2" checked="checked"/>
+                            	         else 
+                            	            <input type="radio" name="f" id="fuzzy2" value="2"/>
+                            	         return $fuzzy2
+                            	        }
+                        	            <label class="input-label" for="fuzzy2">Tillad 2 afvigelser</label>
+                        	        </div>
+                        	        
                                 </div>
                             </form>
                         </div>
@@ -526,8 +558,9 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     <div class="debug">
                                     <!--[Solr hits: {$res/*[@name="freq"]}]<br/>-->
                                     <!--[Matches: {$matches}]<br/>-->
+                                    <!--[Highlight: {local:highlight_ids($res/*[@name="ids"]/string(), $matches)}]<br/>-->
                                     <!--[Highlight IDs: {$highlight_ids}]<br/>-->
-                                    <!--[Highlight:  {$solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1]}]-->
+                                    <!--[Solr highlight:  {$solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1]}]-->
                                     <!--[{count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) } / {count($file//m:mdiv) } dele]-->
                                     <!--{substring-after($res/*[@name="collection"],$collection)} -->
                                     <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
@@ -554,7 +587,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
 
     	    }
                        <!--<div class="debug">
-                            {local:solr_query()}
+                            {local:solr_query()} 
                        </div>-->
             </div>
         return $output

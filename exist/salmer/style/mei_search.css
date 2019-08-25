@@ -51,6 +51,10 @@ a.paging, a.paging:visited, a.paging:active {
     display: table;
 }
 
+.search .form {
+    margin: 0;
+}
+
 .search .form .input-label {
     cursor: pointer;
     font-size: 14px;
@@ -238,7 +242,7 @@ a.paging, a.paging:visited, a.paging:active {
 
 #piano_wrapper {
 /*    display: table-row;  */
-    padding: 20px 10px; 
+    padding: 20px 10px 10px 10px; 
 }
 
 #piano_cell, #piano_search_cell {

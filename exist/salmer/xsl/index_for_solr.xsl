@@ -2,10 +2,10 @@
     
     <!--
         
-    Create an index file to upload into Solr
-    
-    Axel Teich Geertinger
-    Det Danske Sprog- og Litteraturselskab, 2018
+        Create an index file to upload into Solr
+        
+        Axel Teich Geertinger
+        Det Danske Sprog- og Litteraturselskab, 2018–19
     -->
     
     
@@ -37,16 +37,17 @@
             <field name="id">
                 <xsl:value-of select="substring-before($filename,'.xml')"/>
             </field>
-            <field name="title">
-                <xsl:choose>
-                    <xsl:when test="//m:fileDesc/m:titleStmt/m:title/text()">
-                        <xsl:value-of select="//m:fileDesc/m:titleStmt/m:title[1]"/>
-                    </xsl:when>
-                    <xsl:when test="//m:workList/m:work/m:title/text()">
-                        <xsl:value-of select="//m:workList/m:work/m:title[1]"/>
-                    </xsl:when>
-                </xsl:choose>
-            </field>
+            <xsl:for-each select="//m:workList/m:work/m:title[text()]">
+                <field name="title">
+                    <xsl:value-of select="."/>
+                </field>
+            </xsl:for-each>
+            <!-- If no work titles are given, try fileDesc title instead -->
+            <xsl:if test="//m:fileDesc/m:titleStmt/m:title[text()] and not(//m:workList/m:work/m:title[text()])">
+                <field name="title">
+                    <xsl:value-of select="//m:fileDesc/m:titleStmt/m:title[1]"/>
+                </field>
+            </xsl:if>
             <field name="publ">
                 <xsl:value-of select="substring($filename,1,14)"/>
             </field>
@@ -64,32 +65,24 @@
             <field name="pitch">
                 <xsl:value-of select="translate($pitch_names,'R','')"/>
             </field>
-            <field name="abs_pitch">
-                <xsl:for-each select="$abs_pitches/*[not(.='0')]">
-                    <xsl:value-of select="."/>
-                    <xsl:if test="not(position()=last())">
-                        <xsl:text>,</xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
-            </field>
-            <field name="abs_pitch_chars">
+            <xsl:variable name="abs_pitch_chars">
                 <!-- translate absolute pitches to unicode characters  -->
                 <xsl:for-each select="$abs_pitches/*[not(.='0')]">
                     <xsl:value-of select="substring($chars,number(.),1)"/>
                 </xsl:for-each>
+            </xsl:variable>
+            <field name="abs_pitch_chars">
+                <xsl:value-of select="$abs_pitch_chars"/>
             </field>
-            <field name="intervals">
-                <xsl:for-each select="$abs_pitches/*[preceding-sibling::* and not(.='0')]">
-                    <xsl:variable name="int" select="number(.) - number(./preceding-sibling::*[not(.='0')][1])"/>
-                    <xsl:if test="$int &gt; 0">
-                        <xsl:text>+</xsl:text>
-                    </xsl:if>
-                    <xsl:value-of select="$int"/>
-                    <xsl:if test="not(position()=last())">
-                        <xsl:text>,</xsl:text>
-                    </xsl:if>
-                </xsl:for-each>
+            <field name="transposition">
+                <!-- first transposition is just a copy of the non-transposed pitch string -->
+                <xsl:value-of select="$abs_pitch_chars"/>
             </field>
+            <xsl:call-template name="transpositions">
+                <!-- remaining transpositions (between 1 and 11 semitones up) -->
+                <xsl:with-param name="i" select="number(11)"/>
+                <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
+            </xsl:call-template>
             <field name="intervals_chars">
                 <!-- translate intervals to unicode characters with offset 50 (Z = unison) -->
                 <xsl:for-each select="$abs_pitches/*[preceding-sibling::* and not(.='0')]">
@@ -141,6 +134,26 @@
             </field>
         </doc>
     </xsl:template>
+    
+    <xsl:template name="transpositions">
+        <!-- generate a pitch string for each transposition within one octave -->
+        <xsl:param name="i"/>
+        <xsl:param name="abs_pitches"/>
+        <xsl:if test="$i > 1">
+            <!-- count down the interval and call recursively to iterate through the octave -->
+            <xsl:call-template name="transpositions">
+                <xsl:with-param name="i" select="number($i - 1)"/>
+                <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
+            </xsl:call-template>
+        </xsl:if>
+        <field name="transposition">
+            <xsl:for-each select="$abs_pitches/*[not(.='0')]">
+                <xsl:value-of select="substring($chars,number(.) + $i,1)"/>
+            </xsl:for-each>
+        </field>
+    </xsl:template>
+    
+    
     <xsl:template name="collect_items">
         <!-- collect a sequence of timed elements (first layer top notes only) -->
         <layer xmlns="http://www.music-encoding.org/ns/mei">
