@@ -123,24 +123,28 @@ var $setBeams = {
 var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'beams'];
 
 var midiMenu = '\
-    <div class="midi_player">\
-        <div class="midi_button play" id="play_{id}" title="Afspil" onclick="play_midi(\'{id}\');">\
-            <span class="symbol"><span class=\'label\'>Afspil</span></span>\
-        </div>\
-        <div class="midi_button stop" id="stop_{id}" title="Stop afspilning" onclick="stop()">\
-            <span class="symbol"><span class=\'label\'>Stop</span></span>\
+    <div class="mei_menu_content"> \
+        <div class="midi_player">\
+            <div class="midi_button play" id="play_{id}" title="Afspil" onclick="play_midi(\'{id}\');">\
+                <span class="symbol"><span class=\'label\'>Afspil</span></span>\
+            </div>\
+            <div class="midi_button stop" id="stop_{id}" title="Stop afspilning" onclick="stop()">\
+                <span class="symbol"><span class=\'label\'>Stop</span></span>\
+            </div>\
         </div>\
     </div>';
 
 var existMenu = '\
-    <div class="exist_link">\
-        <!--<button onclick="location.href=\'http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
-        <a href="http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+    <div class="mei_menu_content"> \
+        <div class="exist_link">\
+            <!--<button onclick="location.href=\'http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
+            <a href="http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+        </div>\
     </div>';
     
 var meiOptionsMenu = ' \
-    <form id="optionsForm_{id}" action="" class="mei_menu"> \
-        <div> \
+    <div class="mei_menu_content"> \
+        <form id="optionsForm_{id}" action="" class="mei_menu"> \
             <div class="menu_block">\
                 <label for="clef_{id}">N&oslash;gle: </label> \
                 <br/> \
@@ -149,6 +153,14 @@ var meiOptionsMenu = ' \
                 <input type="radio" name="clef" value="G8" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</span> &#160;&#160; \
                 <input type="radio" name="clef" value="F" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</span> &#160;&#160; \
             </div> \
+            <hr/> \
+            <div class="menu_block">\
+                <label for="factor_{id}">Nodeværdier: </label> \
+                <br/> \
+                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/> 1:2 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/> 1:4 &#160;&#160;&#160;&#160; \
+            </div>\
             <hr/> \
             <div class="menu_block">\
                 <label for="transposeVal_{id}">Transposition: </label> \
@@ -170,19 +182,11 @@ var meiOptionsMenu = ' \
                 <input type="radio" name="direction" value="up" id="direction_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> Op \
                 <input type="radio" name="direction" value="down" onchange="updateFromForm(\'{id}\')"/> Ned \
             </div> \
-            <hr/> \
-            <div class="menu_block">\
-                <label for="factor_{id}">Nodeværdier: </label> \
-                <br/> \
-                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/> 1:2 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/> 1:4 &#160;&#160;&#160;&#160; \
-            </div>\
             <div id="mdiv-select_{id}"> \
                 <!--  mdiv-select indsættes automatisk her  --> \
             </div> \
-        </div> \
-    </form>';
+        </form> \
+    </div>';
  
  
 function updateFromForm(id) {
@@ -443,10 +447,11 @@ function createMenu(id){
     if(showMenu) {
         var menu = ''; 
         if(showOptions) { menu = meiOptionsMenu.replace(/{id}/g, id)}
-        if(midi && showOptions) { menu = '<hr/>' + menu}
+        if(midi && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
-        if(linkToExist && (midi || showOptions)) { menu = '<hr/>' + menu}
+        if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(linkToExist) { menu = existMenu.replace(/{id}/g, id) + menu}
+        if(menu != '') { menu = '<img src="style/img/menulink.png" alt="menu" class="mei_menu_icon"/>' + menu; }
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;
         // Add an MDIV select box to the menu if applicable
@@ -454,7 +459,7 @@ function createMenu(id){
             var mdivs = xml.getElementsByTagNameNS("http://www.music-encoding.org/ns/mei","mdiv");
             // if the encoding has more than one MDIV element and no selection is hard-coded, generate a select element
             if (id.indexOf("MDIV") < 0 && mdivs.length > 1) {
-                var select = '<div class="menu_block"> \
+                var select = '<div class="menu_block mei_menu_content"> \
                     <hr/> \
                     <label for="mdiv_' + id + '">Satsdel: </label> \
                     <select name="mdiv" id="mdiv_' + id + '" onchange="updateFromForm(\'' + id + '\')">';

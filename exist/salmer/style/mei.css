@@ -102,9 +102,9 @@
 .midi_button {
     width: 20px;
     height: 20px;
-    border: 1px solid #666;
+    border: 1px solid #ddd;
     border-radius: 5px; 
-    background-color: #fff;
+    background-color: #ddd;
     display: inline-block;
     margin-right: 2px;
     line-height: 1em;
@@ -112,10 +112,14 @@
     cursor: pointer;
     }
     
+.midi_button:hover {
+    background-color: #eee;
+}
+    
 .midi_button .symbol, .midi_button .symbol:hover {
     display: inline-block;
     position: relative;
-    color: #000;
+    /* color: #000; */
     text-decoration: none;
 }
 
@@ -180,6 +184,7 @@
 
 
 /* Place and format option menus. */
+
 .mei_options + .mei {
     min-height: 200px;  /* make sure there is room for the menu if a menu is displayed */
 }
@@ -188,15 +193,13 @@
     /*float: right;*/
     position: absolute;
     clear: both;
-    width: 260px;
-    padding: 10px;
+    padding: 10px 8px;
     margin:0 0 10px 740px;
     display: none;
-    border: 1px solid #fafafa;
-/*    background-color: #003b5c; */
+    background-color: #003b5c; 
+/*    border: 2px solid #003b5c; */
     border-radius: 10px;
-    background-color: #eee;
-    color: #000;
+    color: #dcd2ab;
     font-size: 14px;
 }
 
@@ -210,6 +213,23 @@
     padding: 0;
     border: 0;
     border-bottom: 1px solid #fff;
+}
+
+/* options menu expand effect */
+.mei_options .mei_menu_content {
+    display: none;
+}
+
+.mei_options:hover {
+    padding: 15px;
+}
+
+.mei_options:hover .mei_menu_content {
+    display: block;
+}
+
+.mei_options:hover .mei_menu_icon {
+    display: none;
 }
 
 /* only if jQuery UI-dialogs are NOT used: */
