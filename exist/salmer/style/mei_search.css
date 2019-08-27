@@ -186,6 +186,10 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 #pSearch input {
+    margin-left: 0;
+}
+
+#pSearchDiv input {
     margin-left: 20px;
 }
 

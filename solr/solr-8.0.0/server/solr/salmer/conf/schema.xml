@@ -49,10 +49,6 @@
     <analyzer type="index">
       <tokenizer class="solr.StandardTokenizerFactory"/>
       <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
-      <!-- in this example, we will only use synonyms at query time
-        <filter class="solr.SynonymGraphFilterFactory" synonyms="index_synonyms.txt" ignoreCase="true" expand="false"/>
-        <filter class="solr.FlattenGraphFilterFactory"/>
-        -->
       <filter class="solr.LowerCaseFilterFactory"/>
     </analyzer>
     <analyzer type="query">
@@ -77,6 +73,17 @@
     </analyzer>
   </fieldType>
 
+  <fieldType name="edgeNgramTextField" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
+    <!-- match at string beginning only -->
+    <analyzer type="index">
+      <tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+  
+
   <!-- N-grams ignoring any repeated notes / unison intervals -->
   <fieldType name="ngramIgnoreRepeatedNote" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
     <analyzer type="index">
@@ -91,7 +98,21 @@
       <tokenizer class="solr.StandardTokenizerFactory"/>
     </analyzer>
   </fieldType>
+
+  <fieldType name="edgeNgramIgnoreRepeatedNote" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
+    <!-- match at string beginning only -->
+    <analyzer type="index">
+      <!-- Skip any repeated characters (= repeated notes) -->
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="$1" pattern="(\S)\1{1,}"/>  
+      <tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
+    </analyzer>
+    <analyzer type="query">
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="$1" pattern="(\S)\1{1,}"/>  
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
   
+
   <fieldType name="ngramIgnoreUnison" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
     <analyzer type="index">
       <!-- Filter out character "Z" (= interval 0 / unison) -->
@@ -106,14 +127,34 @@
     </analyzer>
   </fieldType>
   
-  <!-- Copy fields for fuzzy searches -->
-  <copyField source="abs_pitch_chars" dest="abs_pitch_norepeat"/>
-  <copyField source="intervals_chars" dest="intervals_nounison"/>
+  <fieldType name="edgeNgramIgnoreUnison" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
+    <!-- match at string beginning only -->
+    <analyzer type="index">
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
+      <tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
+    </analyzer>
+    <analyzer type="query">
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+    </analyzer>
+  </fieldType>
+
+
+  <!-- Copy fields for searches ignoring repeated notes -->
+  <copyField source="abs_pitch" dest="abs_pitch_norepeat"/>
   <copyField source="transposition" dest="transposition_norepeat"/>
+
+  <!-- Copy fields for edge ngram search (to match beginning only) -->
+  <copyField source="abs_pitch" dest="abs_pitch_edge"/>
+  <copyField source="abs_pitch" dest="abs_pitch_norepeat_edge"/>
+  <copyField source="transposition" dest="transposition_edge"/>
+  <copyField source="transposition" dest="transposition_norepeat_edge"/>
   
-  <field name="abs_pitch" type="string" indexed="true" stored="true"/>
-  <field name="abs_pitch_chars" type="ngramTextField" indexed="true" stored="true"/>
+  <!--<field name="abs_pitch" type="string" indexed="true" stored="true"/>-->
+  <field name="abs_pitch" type="ngramTextField" indexed="true" stored="true"/>
+  <field name="abs_pitch_edge" type="edgeNgramTextField" indexed="true" stored="true"/>
   <field name="abs_pitch_norepeat" type="ngramIgnoreRepeatedNote" indexed="true" stored="true"/>
+  <field name="abs_pitch_norepeat_edge" type="edgeNgramIgnoreRepeatedNote" indexed="true" stored="true"/>
   <field name="collection" type="string" indexed="false" stored="true"/>
   <field name="contour" type="ngramTextField" indexed="true" stored="true"/>
   <field name="duration" type="string" indexed="true" stored="true"/>
@@ -127,7 +168,9 @@
   <field name="publ" type="string" indexed="true" stored="true"/>
   <field name="title" type="text_general" indexed="true" stored="true"/>
   <field name="transposition" type="ngramTextField" indexed="true" stored="true"/>
+  <field name="transposition_edge" type="edgeNgramTextField" indexed="true" stored="true"/>
   <field name="transposition_norepeat" type="ngramIgnoreRepeatedNote" indexed="true" stored="true"/>
+  <field name="transposition_norepeat_edge" type="edgeNgramIgnoreRepeatedNote" indexed="true" stored="true"/>
   
   <!-- Field to use to determine and enforce document uniqueness.
     Unless this field is marked with required="false", it will be a required field

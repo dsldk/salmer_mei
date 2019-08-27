@@ -7,13 +7,14 @@ declare namespace m = "http://www.music-encoding.org/ns/mei";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
-declare variable $query_title   := request:get-parameter("qt", "");   (: Query by title          :)
-declare variable $pname         := request:get-parameter("q", "");    (: Query by pitch name     :)
-declare variable $contour       := request:get-parameter("c", "");    (: Query by melody contour :)
-declare variable $absp          := request:get-parameter("a", "");    (: Query by pitch number   :)
-declare variable $transpose     := request:get-parameter("t", "");    (: All transpositions?     :)
-declare variable $repeat        := request:get-parameter("r", "");    (: Allow repeated notes?   :)
-declare variable $fuzzy         := request:get-parameter("f", "0") cast as xs:integer;   (: Fuzzyness :)
+declare variable $query_title   := request:get-parameter("qt", "");   (: Query by title                :)
+declare variable $pname         := request:get-parameter("q", "");    (: Query by pitch name           :)
+declare variable $contour       := request:get-parameter("c", "");    (: Query by melody contour       :)
+declare variable $absp          := request:get-parameter("a", "");    (: Query by pitch number         :)
+declare variable $transpose     := request:get-parameter("t", "");    (: All transpositions?           :)
+declare variable $edge          := request:get-parameter("e", "");    (: Edge search (beginning only)? :)
+declare variable $repeat        := request:get-parameter("r", "");    (: Allow repeated notes?         :)
+declare variable $fuzzy         := request:get-parameter("f", "0") cast as xs:integer;   (: Fuzzyness  :)
 declare variable $page          := request:get-parameter("page", "1") cast as xs:integer;
 declare variable $search_in     := request:get-parameter("x", "");    (: List of publications to search in   :)
 declare variable $publications  := doc('index/publications.xml'); 
@@ -85,19 +86,24 @@ declare function local:solr_query() {
     let $fuzzyness := if($fuzzy > 0) then concat("~",xs:string($fuzzy)) else ""
     let $solrQuery1 := 
             if ($query_title != "") then
+                (: search by title :)
                 concat("freq=termfreq(title,'",$q_str,"')&amp;q=title:'",$q_str,"'")
             else
             if ($contour != "") then 
+                (: search by contour :)
                 concat("freq=termfreq(contour,'",local:contour_to_chars($contour),"')&amp;hl.fl=contour&amp;q=contour:",local:contour_to_chars($contour))
             else
             if ($pname != "") then 
+                (: search by pitch names :)
                 concat("freq=termfreq(pitch,'",$pname,"')&amp;hl.fl=pitch&amp;q=pitch:",$pname)
             else
             if ($absp != "") then
-                let $field := if ($repeat != "") then
-                    if ($transpose != "1") then "abs_pitch_norepeat" else "transposition_norepeat"  
-                    else
-                    if ($transpose != "1") then "abs_pitch_chars" else "transposition" 
+                (: search by notated pitches :)
+                let $field_0 := if ($transpose != "1") then "abs_pitch" else "transposition"
+                let $field_1 := if ($repeat != "1") then 
+                    $field_0 else concat($field_0,'_norepeat')
+                let $field := if ($edge != "1") then 
+                    $field_1 else concat($field_1,'_edge')
                 let $pitches as xs:integer* :=
                     for $p in tokenize($absp, "-")
                     return xs:integer($p)
@@ -181,7 +187,7 @@ declare function local:paging( $total as xs:integer ) as node()* {
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&gt;</span> 
         	let $prevpage := ($page - 1) (:cast as xs:string:)
         	let $previous :=
-        	  if($page > 1) then
+        	  if($from - $perpage > 0) then
         	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="Foregående side" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$prevpage)}">&lt;</a>
         	  else
@@ -384,101 +390,116 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
         	       </form>
         	       
         	       <div id="piano_wrapper" class="form tabcontent">
-            	       <div id="piano_cell">
-                        <div id="pQueryOut"><!--  --></div>
-                        <div id="piano">
-                            <div class="keys">
-                                <div class="key" data-key="60"><!--  --></div>
-                                <div class="key black black1" data-key="61"><!--  --></div>
-                                <div class="key" data-key="62"><!--  --></div>
-                                <div class="key black black3" data-key="63"><!--  --></div>
-                                <div class="key" data-key="64"><!--  --></div>
-                                <div class="key" data-key="65"><!--  --></div>
-                                <div class="key black black1" data-key="66"><!--  --></div>
-                                <div class="key" data-key="67"><!--  --></div>
-                                <div class="key black black2" data-key="68"><!--  --></div>
-                                <div class="key" data-key="69"><!--  --></div>
-                                <div class="key black black3" data-key="70"><!--  --></div>
-                                <div class="key" data-key="71"><!--  --></div>
-                                <div class="key" data-key="72"><!--  --></div>
-                                <div class="key black black1" data-key="73"><!--  --></div>
-                                <div class="key" data-key="74"><!--  --></div>
-                                <div class="key black black3" data-key="75"><!--  --></div>
-                                <div class="key" data-key="76"><!--  --></div>
-                                <div class="key" data-key="77"><!--  --></div>
-                                <div class="key black black1" data-key="78"><!--  --></div>
-                                <div class="key" data-key="79"><!--  --></div>
-                                <div class="key black black2" data-key="80"><!--  --></div>
-                                <div class="key" data-key="81"><!--  --></div>
-                                <div class="key black black3" data-key="82"><!--  --></div>
-                                <div class="key" data-key="83"><!--  --></div>
-                                <div class="key" data-key="84"><!--  --></div>
-                                <!--<div class="key black black1" data-key="85"></div>-->
+        	           <form action="" id="pSearch" class="form">
+                         <div id="piano_cell">
+                            <div id="pQueryOut"><!--  --></div>
+                            <div id="piano">
+                                <div class="keys">
+                                    <div class="key" data-key="60"><!--  --></div>
+                                    <div class="key black black1" data-key="61"><!--  --></div>
+                                    <div class="key" data-key="62"><!--  --></div>
+                                    <div class="key black black3" data-key="63"><!--  --></div>
+                                    <div class="key" data-key="64"><!--  --></div>
+                                    <div class="key" data-key="65"><!--  --></div>
+                                    <div class="key black black1" data-key="66"><!--  --></div>
+                                    <div class="key" data-key="67"><!--  --></div>
+                                    <div class="key black black2" data-key="68"><!--  --></div>
+                                    <div class="key" data-key="69"><!--  --></div>
+                                    <div class="key black black3" data-key="70"><!--  --></div>
+                                    <div class="key" data-key="71"><!--  --></div>
+                                    <div class="key" data-key="72"><!--  --></div>
+                                    <div class="key black black1" data-key="73"><!--  --></div>
+                                    <div class="key" data-key="74"><!--  --></div>
+                                    <div class="key black black3" data-key="75"><!--  --></div>
+                                    <div class="key" data-key="76"><!--  --></div>
+                                    <div class="key" data-key="77"><!--  --></div>
+                                    <div class="key black black1" data-key="78"><!--  --></div>
+                                    <div class="key" data-key="79"><!--  --></div>
+                                    <div class="key black black2" data-key="80"><!--  --></div>
+                                    <div class="key" data-key="81"><!--  --></div>
+                                    <div class="key black black3" data-key="82"><!--  --></div>
+                                    <div class="key" data-key="83"><!--  --></div>
+                                    <div class="key" data-key="84"><!--  --></div>
+                                    <!--<div class="key black black1" data-key="85"></div>-->
+                                </div>
+                            </div>
+                            
+                            
+                            <input type="submit" value="Søg" class="search-button box-gradient-green" 
+                                onclick="this.form['x'].value = updateAction()"  style="margin-bottom:5px;"/>&#160;
+                            <input type="button" value="Nulstil" onclick="reset_a();" class="search-button box-gradient-green"/>
+                            
+
+                            
+                            
+                        </div>
+                        <div id="piano_search_cell">
+                            <div id="pSearchDiv">
+                                    <div>
+                        	            <input name="a" id="absp" type="hidden" value="{$absp}"/>
+                        	            <input name="x" id="x3" type="hidden" value="{$search_in}"/>
+                                        <div class="checkbox-options">
+                                	        {let $tr := if($transpose="1") then 
+                                	           <input type="checkbox" name="t" id="transpositions" value="1" checked="checked"/> 
+                                	         else 
+                                	           <input type="checkbox" name="t" id="transpositions" value="1"/> 
+                                	         return $tr
+                                	        }
+                                	        <label class="input-label" for="transpositions">Alle transpositioner</label>
+                        	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis intervalfølgen må begynde på en hvilken som helst tone"/>
+                            	        </div>
+                                        <div class="checkbox-options">
+                                	        {let $e := if($edge="1") then 
+                                	           <input type="checkbox" name="e" id="edge" value="1" checked="checked"/> 
+                                	         else 
+                                	           <input type="checkbox" name="e" id="edge" value="1"/> 
+                                	         return $e
+                                	        }
+                                	        <label class="input-label" for="edge">Begynder med</label>
+                        	                <img src="https://tekstnet.dk/static/info.png" title="Søg kun efter begyndelsen af melodien"/>
+                            	        </div>
+                                        <div class="checkbox-options">
+                                	        {let $rep := if($repeat="1") then 
+                                	           <input type="checkbox" name="r" id="repetitions" value="1" checked="checked"/> 
+                                	         else 
+                                	           <input type="checkbox" name="r" id="repetitions" value="1"/> 
+                                	         return $rep
+                                	        }
+                                	        <label class="input-label" for="repetitions">Ignorer tonegentagelser</label>
+                        	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>
+                            	        </div><br/>
+                            	        <div class="checkbox-options">
+                            	            <label class="input-label" for="fuzzyness" style="margin-left: 20px;">Præcision:</label>
+                            	            <img src="https://tekstnet.dk/static/info.png" title="Søgningen kan udvides ved at tillade en eller to afvigelser, 
+    dvs. afvigende tonehøjder eller 
+    manglende eller tilføjede toner"/><br/>
+                            	            {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
+                                	            <input type="radio" name="f" id="exact" value="0" checked="checked"/>
+                                	         else 
+                                	           <input type="radio" name="f" id="exact" value="0"/> 
+                                	         return $exact
+                                	        }
+                            	            <label class="input-label" for="exact">Eksakt match</label><br/> 
+                            	            {let $fuzzy1 := if($fuzzy=1) then 
+                                	            <input type="radio" name="f" id="fuzzy1" value="1" checked="checked"/>
+                                	         else 
+                                	            <input type="radio" name="f" id="fuzzy1" value="1"/>
+                                	         return $fuzzy1
+                                	        }
+                            	            <label class="input-label" for="fuzzy1">Tillad 1 afvigelse</label><br/> 
+                            	            {let $fuzzy2 := if($fuzzy=2) then 
+                                	            <input type="radio" name="f" id="fuzzy2" value="2" checked="checked"/>
+                                	         else 
+                                	            <input type="radio" name="f" id="fuzzy2" value="2"/>
+                                	         return $fuzzy2
+                                	        }
+                            	            <label class="input-label" for="fuzzy2">Tillad 2 afvigelser</label>
+                            	        </div>
+                            	        
+                                    </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="piano_search_cell">
-                        <div id="pSearchDiv">
-                            <form action="" id="pSearch" class="form">
-                                <div>
-                    	            <input name="a" id="absp" type="hidden" value="{$absp}"/>
-                    	            <input name="x" id="x3" type="hidden" value="{$search_in}"/>
-                                    <input type="submit" value="Søg" class="search-button box-gradient-green" 
-                                        onclick="this.form['x'].value = updateAction()"  style="margin-bottom:5px;"/><br/>
-                                    <input type="button" value="Nulstil" onclick="reset_a();" class="search-button box-gradient-green"/>
-                                    <br/>&#160;
-                                    <div class="checkbox-options">
-                            	        {let $tr := if($transpose="1") then 
-                            	           <input type="checkbox" name="t" id="transpositions" value="1" checked="checked"/> 
-                            	         else 
-                            	           <input type="checkbox" name="t" id="transpositions" value="1"/> 
-                            	         return $tr
-                            	        }
-                            	        <label class="input-label" for="transpositions">Alle transpositioner</label>
-                    	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis intervalfølgen må begynde på en hvilken som helst tone"/>
-                        	        </div>
-                                    <div class="checkbox-options">
-                            	        {let $rep := if($repeat="1") then 
-                            	           <input type="checkbox" name="r" id="repetitions" value="1" checked="checked"/> 
-                            	         else 
-                            	           <input type="checkbox" name="r" id="repetitions" value="1"/> 
-                            	         return $rep
-                            	        }
-                            	        <label class="input-label" for="repetitions">Ignorer tonegentagelser</label>
-                    	                <img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>
-                        	        </div>
-                        	        <div class="checkbox-options">
-                        	            <label class="input-label" for="fuzzyness" style="margin-left: 20px;">Præcision:</label>
-                        	            <img src="https://tekstnet.dk/static/info.png" title="Søgningen kan udvides ved at tillade en eller to afvigelser, 
-dvs. afvigende tonehøjder eller 
-manglende eller tilføjede toner"/><br/>
-                        	            {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
-                            	            <input type="radio" name="f" id="exact" value="0" checked="checked"/>
-                            	         else 
-                            	           <input type="radio" name="f" id="exact" value="0"/> 
-                            	         return $exact
-                            	        }
-                        	            <label class="input-label" for="exact">Eksakt match</label><br/> 
-                        	            {let $fuzzy1 := if($fuzzy=1) then 
-                            	            <input type="radio" name="f" id="fuzzy1" value="1" checked="checked"/>
-                            	         else 
-                            	            <input type="radio" name="f" id="fuzzy1" value="1"/>
-                            	         return $fuzzy1
-                            	        }
-                        	            <label class="input-label" for="fuzzy1">Tillad 1 afvigelse</label><br/> 
-                        	            {let $fuzzy2 := if($fuzzy=2) then 
-                            	            <input type="radio" name="f" id="fuzzy2" value="2" checked="checked"/>
-                            	         else 
-                            	            <input type="radio" name="f" id="fuzzy2" value="2"/>
-                            	         return $fuzzy2
-                            	        }
-                        	            <label class="input-label" for="fuzzy2">Tillad 2 afvigelser</label>
-                        	        </div>
-                        	        
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    </form>
                 </div>
 	        </div>
 	     </div>
@@ -527,7 +548,6 @@ manglende eller tilføjede toner"/><br/>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
                                         title="Slå op i melodidatabasen" class="sprite arrow-white-circle">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
-                                        {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:editor/string()}&#160;
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
                                     </a>
                                     <br/>

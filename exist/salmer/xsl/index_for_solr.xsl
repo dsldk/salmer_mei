@@ -71,7 +71,7 @@
                     <xsl:value-of select="substring($chars,number(.),1)"/>
                 </xsl:for-each>
             </xsl:variable>
-            <field name="abs_pitch_chars">
+            <field name="abs_pitch">
                 <xsl:value-of select="$abs_pitch_chars"/>
             </field>
             <field name="transposition">
@@ -83,8 +83,8 @@
                 <xsl:with-param name="i" select="number(11)"/>
                 <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
             </xsl:call-template>
-            <field name="intervals_chars">
-                <!-- translate intervals to unicode characters with offset 50 (Z = unison) -->
+            <field name="intervals">
+                <!-- translate intervals to unicode characters with offset 50 (Z = unison); currently not in use -->
                 <xsl:for-each select="$abs_pitches/*[preceding-sibling::* and not(.='0')]">
                     <xsl:variable name="int" select="50 + number(.) - number(./preceding-sibling::*[not(.='0')][1])"/>
                     <xsl:value-of select="substring($chars,number($int),1)"/>
@@ -139,7 +139,7 @@
         <!-- generate a pitch string for each transposition within one octave -->
         <xsl:param name="i"/>
         <xsl:param name="abs_pitches"/>
-        <xsl:if test="$i > 1">
+        <xsl:if test="$i &gt; 1">
             <!-- count down the interval and call recursively to iterate through the octave -->
             <xsl:call-template name="transpositions">
                 <xsl:with-param name="i" select="number($i - 1)"/>
