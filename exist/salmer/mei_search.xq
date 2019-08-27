@@ -181,7 +181,7 @@ declare function local:paging( $total as xs:integer ) as node()* {
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&gt;</span> 
         	let $prevpage := ($page - 1) (:cast as xs:string:)
         	let $previous :=
-        	  if($from - $perpage > 0) then
+        	  if($page > 1) then
         	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="Foregående side" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$prevpage)}">&lt;</a>
         	  else
