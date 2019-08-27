@@ -12,13 +12,14 @@ declare option exist:serialize "method=xhtml media-type=text/xml indent=yes";
 
 (: It is assumed that the data to be indexed is in /db/salmer/data :)
 
-let $collection := '/db/salmer'
+let $db := '/db/salmer'
+let $collection := ''  (: for instance, 'Th_1569'; use empty string to select all :)
 
 
 let $index-doc := 
 <add>
     {
-    for $doc in collection(concat($collection,'/data//'))/m:mei
+    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei
         let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
         let $params := 
@@ -33,10 +34,10 @@ let $index-doc :=
 (: let $login := xmldb:login($collection, 'mylogin', 'my-password') :)
 
 let $file-name := 'solr_index_add.xml'
-let $remove-return-status := if(exists(collection(concat($collection,'/index/',$file-name)))) then  xmldb:remove($collection, $file-name) else ""
-let $store-return-status := xmldb:store(concat($collection,'/index/'), $file-name, $index-doc)  
+let $remove-return-status := if(exists(collection(concat($db,'/index/',$file-name)))) then  xmldb:remove($db, $file-name) else ""
+let $store-return-status := xmldb:store(concat($db,'/index/'), $file-name, $index-doc)  
 
-return  (: <message>Document Created {$store-return-status} at {$collection}/{$file-name}</message>  :) 
+return  (: <message>Document Created {$store-return-status} at {$db}/{$file-name}</message>  :) 
           
     $index-doc
     
