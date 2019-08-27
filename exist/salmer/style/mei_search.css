@@ -189,6 +189,10 @@ a.paging, a.paging:visited, a.paging:active {
     margin-left: 20px;
 }
 
+#pSearch .checkbox-options {
+    white-space: nowrap;
+}
+
 /* tabs */
 .tab {
   overflow: hidden;
