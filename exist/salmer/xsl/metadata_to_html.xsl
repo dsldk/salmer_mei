@@ -25,8 +25,11 @@
 	<xsl:param name="coll"/>
 	<xsl:param name="filename"/>
 	<xsl:param name="language"/>
-
-	<xsl:param name="base_uri" select="concat('http://',$hostname,$database)"/>
+	
+	<!-- at salmer.dsl.lan:8080:  -->
+	<!--<xsl:param name="base_uri" select="concat('http://',$hostname,$database)"/>-->
+	<!-- at salmer.dsl.dk:  -->
+	<xsl:param name="base_uri" select="concat('http://',$hostname)"/>
 	<xsl:param name="base_file_uri" select="concat($base_uri,'/',$datadir,'/',$coll)"/>
 
 	<!-- GLOBAL VARIABLES -->

@@ -11,12 +11,12 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 declare variable $document := request:get-parameter("doc", "");
-declare variable $host     := concat(request:get-header('HOST'),'/exist/rest'); (: "localhost";  :)
+declare variable $host     := request:get-header('HOST'); (: "localhost"; with salmer.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
 declare variable $language := request:get-parameter("language", "");
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
-declare variable $database := "/db/salmer";
+declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $coll     := string-join(tokenize($document, '/')[position() lt last()], '/');
 declare variable $filename := tokenize($document, '/')[position() = last()];
@@ -98,13 +98,7 @@ let $result :=
 	</head>
 	<body class="frontpage metadata">
 	
-	
-<!--<div style="border: 1px solid black; width:80%; height: 200px; overflow:scroll;" id="debug">
-Debug here
-</div>-->
 
-	   <div class="wait_overlay"><!-- overlay for progress/wait cursor --></div>
-	
 	   <!-- Page head -->
 	   {doc(concat($database,"/assets/page_head.html"))}
 	   
@@ -149,7 +143,6 @@ Debug here
             	return transform:transform($doc,$metaXsl,$params)            	
             }
         </div>
-
         
         <div class="documentFrame container">
             <!-- Music and text -->
