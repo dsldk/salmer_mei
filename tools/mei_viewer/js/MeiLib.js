@@ -538,8 +538,7 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-                window.location.href = "http://salmer.dsl.lan:8080/exist/rest/db/salmer/mei_search.xq?a=" + qNotes.join("-");
-//                window.location.href = "http://dcm-udv-01.kb.dk:8080/exist/rest/db/dsl/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "http://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }

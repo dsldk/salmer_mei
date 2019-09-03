@@ -137,8 +137,8 @@ var midiMenu = '\
 var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
-            <!--<button onclick="location.href=\'http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
-            <a href="http://salmer.dsl.lan:8080/exist/rest/db/salmer/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+            <!--<button onclick="location.href=\'http://salmer.dsl.dk/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
+            <a href="http://salmer.dsl.dk/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
         </div>\
     </div>';
     
@@ -233,7 +233,7 @@ function updateFromOptions(id, options) {
         delete $mei[id].xsltOptions['beams']
     };
     // send a POST request to get the MEI data
-    $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+    $.post('http://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
 }
 
 function addComments(data) {
@@ -381,7 +381,7 @@ function renderData(data) {
 */        
     if(comments) {
         // send a POST request to get the editorial comments formatted as HTML
-        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+        $.post('http://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
         '',function(data){ addComments(data); },'xml');
     }
     
@@ -419,7 +419,7 @@ function loadMeiFromDoc() {
             $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
         });
         // send a POST request to get the MEI data
-        $.post('http://salmer.dsl.lan:8080/exist/rest/db/salmer/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+        $.post('http://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
 }
 
@@ -564,8 +564,7 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-                window.location.href = "http://salmer.dsl.lan:8080/exist/rest/db/salmer/mei_search.xq?a=" + qNotes.join("-");
-//                window.location.href = "http://dcm-udv-01.kb.dk:8080/exist/rest/db/dsl/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "http://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }

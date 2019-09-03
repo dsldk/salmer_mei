@@ -21,7 +21,7 @@
  
     <xsl:template match="tei:notatedMusic">
         <!-- Læse filer lokalt: -->
-        <!--<xsl:variable name="mei_base" select="'http://salmer.dsl.lan:8080/exist/rest/db/salmer/data/'"/>-->
+        <!--<xsl:variable name="mei_base" select="'http://salmer.dsl.dk/data/'"/>-->
         <xsl:variable name="mei_base" select="'https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/mei/'"/>
         <xsl:variable name="mei_dir">
             <xsl:value-of select="tokenize(tei:ptr/@target, '_')[position() &lt;= 2]" separator="_"/>/</xsl:variable>
