@@ -71,7 +71,7 @@ declare variable $database := "/db/salmer";
             </p>
             <p>Melodierne i salmebasen kan findes enten ved at slå titlerne op ovenfor eller ved at søge i selve musikken her:</p>
             <ul>
-                <li><a href="http://salmer.dsl.lan:8080/exist/rest/db/salmer/mei_search.xq" title="Slå op i salmebasen">Find melodier i salmebasen (avanceret søgning)</a></li>
+                <li><a href="http://salmer.dsl.dk/mei_search.xq" title="Slå op i salmebasen">Find melodier i salmebasen (avanceret søgning)</a></li>
             </ul>
             <p>En anden indgang til salmerne er de digitale udgaver af de salmebøger, der er omfattet af projektet:</p>
             <ul>
