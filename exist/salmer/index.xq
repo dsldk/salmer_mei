@@ -67,7 +67,7 @@ declare variable $database := "/db/salmer";
             <h1>Salmebasen</h1>
             <p>DSL's salmebase sammenfatter de melodier, der indgår i salmebøgerne i projektet <a href="https://dsl.dk/projekter/musik-og-sprog-i-reformationstidens-danske-salmesang" title="Musik og 
             sprog i reformationstidens danske salmesang">Musik og sprog i reformationstidens danske salmesang</a>. Det er hensigten, at salmebasen skal illustrere sammenhænge på tværs af de enkelte publikationer
-            og give supplerende historiske oplysnigner og henvisninger til andre ressourcer med relationer til melodierne.
+            og give supplerende historiske oplysninger og henvisninger til andre ressourcer med relation til melodierne.
             </p>
             <p>Melodierne i salmebasen kan findes enten ved at slå titlerne op ovenfor eller ved at søge i selve musikken her:</p>
             <ul>
