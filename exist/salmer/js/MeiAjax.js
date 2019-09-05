@@ -42,6 +42,8 @@ var $defaultVerovioOptions = {
 };
 
 // global variables - do not change
+var host = "http://salmer.dsl.dk/"
+
 var $mei = [];  // The array holding the MEI objects 
 var page = 1;
 var selectionmode  = "";
@@ -451,7 +453,7 @@ function createMenu(id){
         if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
         if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(linkToExist) { menu = existMenu.replace(/{id}/g, id) + menu}
-        if(menu != '') { menu = '<img src="style/img/menulink.png" alt="menu" class="mei_menu_icon"/>' + menu; }
+        if(menu != '') { menu = '<img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/>' + menu; }
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;
         // Add an MDIV select box to the menu if applicable
