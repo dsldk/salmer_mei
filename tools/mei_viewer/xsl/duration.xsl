@@ -61,8 +61,8 @@
                 <xsl:when test="$divisor=1">
                     <xsl:value-of select="."/>
                 </xsl:when>
-                <!-- Longa is reduced to a whole note (or less), not breve -->
-                <xsl:when test=".='long' and $divisor=2">1</xsl:when>
+                <!-- If longa is reduced to a whole note (or less), not breve: -->
+                <!--<xsl:when test=".='long' and $divisor=2">1</xsl:when>-->
                 <xsl:otherwise>
                     <xsl:value-of select="$durations/dur[.=$thisDur]/following-sibling::dur[number($shift)]"/>
                 </xsl:otherwise>

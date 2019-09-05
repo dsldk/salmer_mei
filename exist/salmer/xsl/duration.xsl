@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m xsl">
     
     <!-- Reduce note and rest values. Files containing neumes notation (i.e. containing any @stem.len=0) are ignored -->
@@ -62,8 +61,8 @@
                 <xsl:when test="$divisor=1">
                     <xsl:value-of select="."/>
                 </xsl:when>
-                <!-- Longa is reduced to a whole note (or less), not breve -->
-                <xsl:when test=".='long' and $divisor=2">1</xsl:when>
+                <!-- If longa is reduced to a whole note (or less), not breve: -->
+                <!--<xsl:when test=".='long' and $divisor=2">1</xsl:when>-->
                 <xsl:otherwise>
                     <xsl:value-of select="$durations/dur[.=$thisDur]/following-sibling::dur[number($shift)]"/>
                 </xsl:otherwise>
