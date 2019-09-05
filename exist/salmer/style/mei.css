@@ -193,13 +193,14 @@
     position: absolute;
     clear: both;
     padding: 10px 8px;
-    margin:0 0 10px 740px;
+    margin:0 0 10px 720px;
     display: none;
     background-color: #003b5c; 
     border-radius: 10px;
     color: #dcd2ab;
     font-size: 14px;
     transition: all .25s ease;
+    white-space: nowrap;
 }
 
 .mei_options form {
