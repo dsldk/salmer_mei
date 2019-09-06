@@ -94,6 +94,9 @@ let $result :=
         <script src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
+        <!--<script type="text/javascript">
+            enableMidi = false; 
+        </script>-->
 
 	</head>
 	<body class="frontpage metadata">
@@ -142,7 +145,20 @@ let $result :=
                     	</parameters>
             	return transform:transform($doc,$metaXsl,$params)            	
             }
-        </div> 
+            {
+                let $chapters := $tei_doc/tei:TEI/tei:text/tei:body/tei:div 
+                let $tekstnet_link := if($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]) 
+                    then
+                        let $chapter as xs:integer := count($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]/preceding-sibling::tei:div) + 1
+                        let $section as xs:integer := count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]])
+                        let $tei_name as xs:string := substring-before($index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei/string(),".xml") 
+                        return <p><a href="https://tekstnet.dk/{$tei_name}/{$chapter}/{$section}">&gt; Digital udgave på tekstnet.dk</a></p>
+                    else
+                        ""
+                return $tekstnet_link
+            }
+            
+        </div>
         
         <div class="documentFrame container">
             <!-- Music and text -->
