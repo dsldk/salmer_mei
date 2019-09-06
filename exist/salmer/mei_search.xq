@@ -28,14 +28,16 @@ declare variable $this_script   := 'mei_search.xq';
 declare variable $chars         := "ÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØ";
 
 (: get parameters from session attributes :)
-declare variable $perpage   := xs:integer(request:get-parameter("perpage", session:get-attribute("perpage")));
+(: declare variable $perpage   := xs:integer(request:get-parameter("perpage", session:get-attribute("perpage")));  :)
+declare variable $perpage   := xs:integer(request:get-parameter("perpage", 5));
 
 declare variable $session   := session:create();
 
 (: save parameters as session attributes; set to default values if not defined :)
-declare variable $session-perpage   := xs:integer(session:set-attribute("perpage", if ($perpage>0) then $perpage else "5"));
+(: declare variable $session-perpage   := xs:integer(session:set-attribute("perpage", if ($perpage>0) then $perpage else "5"));  :)
 
-declare variable $from     := (xs:integer($page) - 1) * xs:integer(session:get-attribute("perpage"));
+(: declare variable $from     := (xs:integer($page) - 1) * xs:integer(session:get-attribute("perpage")); :)
+declare variable $from     := (xs:integer($page) - 1) * $perpage;
 
 
 (: \ and / not allowed as characters in Solr queries :)
@@ -133,7 +135,8 @@ declare function local:solr_query() {
             ()
         else
             concat("+AND+publ:(",string-join($search_in_seq,'+'),")") 
-    return concat($solr_base,'select?wt=xml&amp;hl=on&amp;hl.fragsize=10000&amp;',$solrQuery1,$solrQuery2,'&amp;rows=',session:get-attribute("perpage"),'&amp;start=',$from,"&amp;fl=*,score,freq:$freq&amp;sort=$freq+desc,score+desc&amp;hl.method=fastVector&amp;hl.tag.pre=[&amp;hl.tag.post=]")
+    (:return concat($solr_base,'select?wt=xml&amp;hl=on&amp;hl.fragsize=10000&amp;',$solrQuery1,$solrQuery2,'&amp;rows=',session:get-attribute("perpage"),'&amp;start=',$from,"&amp;fl=*,score,freq:$freq&amp;sort=$freq+desc,score+desc&amp;hl.method=fastVector&amp;hl.tag.pre=[&amp;hl.tag.post=]"):)
+    return concat($solr_base,'select?wt=xml&amp;hl=on&amp;hl.fragsize=10000&amp;',$solrQuery1,$solrQuery2,'&amp;rows=',$perpage,'&amp;start=',$from,"&amp;fl=*,score,freq:$freq&amp;sort=$freq+desc,score+desc&amp;hl.method=fastVector&amp;hl.tag.pre=[&amp;hl.tag.post=]")
 };
 
 
@@ -206,7 +209,7 @@ declare function local:paging( $total as xs:integer ) as node()* {
                 </div>
             )
         else 
-            () 
+            ()
 	return $nav
 };
 
@@ -602,12 +605,12 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
 
                    </div>
                    
-                    else ""
+                    else "" 
     	       return ($count, local:paging($numFound), $list)
 
     	    }
                        <!--<div class="debug">
-                            {local:solr_query()} 
+                            {local:solr_query()}
                        </div>-->
             </div>
         return $output
