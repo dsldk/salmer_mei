@@ -22,7 +22,7 @@ var comments = (typeof enableComments !== 'undefined') ? enableComments : true; 
 var $defaultVerovioOptions = {
     inputFormat:               'mei',
     scale:                40,
-    pageWidth:            1800,
+    pageWidth:            1600,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
@@ -42,7 +42,7 @@ var $defaultVerovioOptions = {
 };
 
 // global variables - do not change
-var host = "http://salmer.dsl.dk/"
+var host = "https://salmer.dsl.dk/"
 
 var $mei = [];  // The array holding the MEI objects 
 var page = 1;
@@ -140,7 +140,7 @@ var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
             <!--<button onclick="location.href=\'http://salmer.dsl.dk/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
-            <a href="http://salmer.dsl.dk/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+            <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
         </div>\
     </div>';
     
@@ -150,18 +150,18 @@ var meiOptionsMenu = ' \
             <div class="menu_block">\
                 <label for="clef_{id}">N&oslash;gle: </label> \
                 <br/> \
-                <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> Original &#160;&#160; \
-                <input type="radio" name="clef" value="G" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</span> &#160;&#160; \
-                <input type="radio" name="clef" value="G8" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</span> &#160;&#160; \
-                <input type="radio" name="clef" value="F" onchange="updateFromForm(\'{id}\')"/> <span class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</span> &#160;&#160; \
+                <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp" title="Original nøgle">Original</label> &#160;&#160; \
+                <input type="radio" name="clef" id="Gclef_{id}" value="G" onchange="updateFromForm(\'{id}\')"/> <label for="Gclef_{id}" class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</label> &#160;&#160; \
+                <input type="radio" name="clef" id="G8clef_{id}" value="G8" onchange="updateFromForm(\'{id}\')"/> <label for="G8clef_{id}" class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</label> &#160;&#160; \
+                <input type="radio" name="clef" id="Fclef_{id}" value="F" onchange="updateFromForm(\'{id}\')"/> <label for="Fclef_{id}" class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</label> &#160;&#160; \
             </div> \
             <hr/> \
             <div class="menu_block">\
                 <label for="factor_{id}">Nodeværdier: </label> \
                 <br/> \
-                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="2" onchange="updateFromForm(\'{id}\')"/> 1:2 &#160;&#160;&#160;&#160; \
-                <input type="radio" name="factor" value="4" onchange="updateFromForm(\'{id}\')"/> 1:4 &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="factor_{id}" class="cursorHelp" title="Originale nodeværdier">1:1</label>&#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="2" id="factor2_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor2_{id}" class="cursorHelp" title="Halve nodeværdier">1:2</label> &#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="4" id="factor4_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor4_{id}" class="cursorHelp" title="Kvarte nodeværdier">1:4</label> &#160;&#160;&#160;&#160; \
             </div>\
             <hr/> \
             <div class="menu_block">\
@@ -181,8 +181,8 @@ var meiOptionsMenu = ' \
                     <option value="10">Lille septim</option> \
                     <option value="11">Stor septim</option> \
                 </select> \
-                <input type="radio" name="direction" value="up" id="direction_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> Op \
-                <input type="radio" name="direction" value="down" onchange="updateFromForm(\'{id}\')"/> Ned \
+                <input type="radio" name="direction" value="up" id="direction_{id}" checked="checked" onchange="if(document.getElementById(\'transposeVal_{id}\').value > 0) {updateFromForm(\'{id}\')} else {return false;}"/> <label for="direction_{id}" class="cursorHelp" title="Transponer op">Op</label> \
+                <input type="radio" name="direction" value="down" id="directionDown_{id}" onchange="if(document.getElementById(\'transposeVal_{id}\').value > 0) {updateFromForm(\'{id}\')} else {return false;}"/> <label for="directionDown_{id}" class="cursorHelp" title="Transponer ned">Ned</label> \
             </div> \
             <div id="mdiv-select_{id}"> \
                 <!--  mdiv-select indsættes automatisk her  --> \
@@ -235,7 +235,7 @@ function updateFromOptions(id, options) {
         delete $mei[id].xsltOptions['beams']
     };
     // send a POST request to get the MEI data
-    $.post('http://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+    $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
 }
 
 function addComments(data) {
@@ -383,7 +383,7 @@ function renderData(data) {
 */        
     if(comments) {
         // send a POST request to get the editorial comments formatted as HTML
-        $.post('http://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+        $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
         '',function(data){ addComments(data); },'xml');
     }
     
@@ -421,7 +421,7 @@ function loadMeiFromDoc() {
             $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
         });
         // send a POST request to get the MEI data
-        $.post('http://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+        $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
 }
 
@@ -566,7 +566,7 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-                window.location.href = "http://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "https://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }
