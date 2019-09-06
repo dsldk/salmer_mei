@@ -215,6 +215,17 @@
     border-bottom: 1px solid #fff;
 }
 
+.mei_options a, .mei_options a:link, .mei_options a:visited, .mei_options a:active {
+    color: #dcd2ab;
+    text-decoration: none;
+}
+
+.mei_options a:hover {
+    color: #dcd2ab;
+    text-decoration: underline;
+}
+
+
 /* options menu expand effect */
 .mei_options .mei_menu_content {
     display: none;

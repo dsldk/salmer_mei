@@ -56,17 +56,17 @@ let $result :=
 	    <title>{$title} – DSL</title>
         <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/fix_go_collisions.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/elements.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/layout.css" />
-    	<link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/styles.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/fix_go_collisions.css" />
+        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/elements.css" />
+        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/layout.css" />
+    	<link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/styles.css" />
+        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/print.css" media="print" />
         <link rel="stylesheet" type="text/css" href="style/mei.css"/>
         <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
         
         <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
         
         <!-- User interaction settings -->
         <script type="text/javascript">
@@ -142,7 +142,7 @@ let $result :=
                     	</parameters>
             	return transform:transform($doc,$metaXsl,$params)            	
             }
-        </div>
+        </div> 
         
         <div class="documentFrame container">
             <!-- Music and text -->
