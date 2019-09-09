@@ -18,24 +18,29 @@ declare variable $head     := request:get-parameter("head", "Musik og tekst i re
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
 declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
-declare variable $coll     := string-join(tokenize($document, '/')[position() lt last()], '/');
 declare variable $filename := tokenize($document, '/')[position() = last()];
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/index/publications.xml"));
 
-let $tei_doc  := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+let $coll := if(contains($document, '/'))
+    then
+        string-join(tokenize($document, '/')[position() lt last()], '/')
+    else 
+    (: Collection not specified; try to guess the collection name from the MEI file name.                                    :)
+    (: Works only if the MEI file name contains the collection name (for example, Th_1569_LN1426_001r.xml is in collection Th_1569) :)
+    if($index//dsl:pub[contains($filename,dsl:mei_coll)])
+    then 
+        $index//dsl:pub/dsl:mei_coll[contains($filename,string(.))]
+    else
+        ""
+
+let $tei_doc := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
     then 
         doc(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei))
     else 
-    (: TEI file or TEI file name not found; try to guess the collection name from the MEI file name. :)
-    (: Works only if the MEI file name contains the collection name (e.g., Th_1569_LN1426_001r.xml is in collection Th_1569) :)
-    if(doc-available(concat($tei_base,$index//dsl:pub[contains($filename,dsl:mei_coll)][1]/dsl:tei)))
-        then 
-            doc(concat($tei_base,$index//dsl:pub[contains($filename,dsl:mei_coll)][1]/dsl:tei))
-        else 
-            false()
+        false()
 
 let $text_data := if($tei_doc) 
     then
@@ -150,14 +155,18 @@ let $result :=
                 let $tekstnet_link := if($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]) 
                     then
                         let $chapter as xs:integer := count($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]/preceding-sibling::tei:div) + 1
-                        let $section as xs:integer := count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]])
+                        (: Use section only if there is more than one  :)
+                        let $section as xs:string := if(count($chapters[$chapter]/tei:div/tei:head[@type="add"]) > 1)
+                            then
+                                concat("/",count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]))
+                            else 
+                                ""
                         let $tei_name as xs:string := substring-before($index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei/string(),".xml") 
-                        return <p><a href="https://tekstnet.dk/{$tei_name}/{$chapter}/{$section}">&gt; Digital udgave på tekstnet.dk</a></p>
+                        return <p><a href="https://tekstnet.dk/{$tei_name}/{$chapter}{$section}">&gt; Digital udgave på tekstnet.dk</a></p>
                     else
                         ""
                 return $tekstnet_link
             }
-            
         </div>
         
         <div class="documentFrame container">
