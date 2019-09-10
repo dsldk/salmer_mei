@@ -57,4 +57,8 @@
         <xsl:value-of select="normalize-space()"/>
     </xsl:template>
     
+    <xsl:template match="comment()">
+        <xsl:text> </xsl:text>
+    </xsl:template>
+    
 </xsl:stylesheet>

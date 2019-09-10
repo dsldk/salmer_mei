@@ -19,10 +19,11 @@ var comments = (typeof enableComments !== 'undefined') ? enableComments : true; 
 
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
+// page width is deliberately set too narrow to force Verovio to use all line breaks 
 var $defaultVerovioOptions = {
-    inputFormat:               'mei',
+    inputFormat:          'mei',
     scale:                40,
-    pageWidth:            1600,
+    pageWidth:            1000,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
@@ -30,11 +31,11 @@ var $defaultVerovioOptions = {
     noFooter:             1,
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            4.5,
+    lyricSize:            3.8,
     lyricNoStartHyphen:   1,
     spacingStaff:         3,
-    spacingLinear:        0.9,
-    spacingNonLinear:     0.3,
+    spacingLinear:        0.92,
+    spacingNonLinear:     0.28,
     font:                 'Bravura',
     adjustPageHeight:     1,
     noJustification:      1,

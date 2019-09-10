@@ -1,0 +1,59 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic'); */
+
+body {    
+    color: #000;
+    font-family: 'Noto Serif', serif;
+    font-weight: 400;
+    background-color: #fff;
+    margin: 2em;
+    font-size: 11pt;
+    line-height: 1.428571429;
+}
+
+div.button {
+    margin: 0 0 1em 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+div.publication {
+    font-weight: bold;
+}
+
+div.music_container {
+    margin: 0 0 4em 0;
+}
+
+svg {
+    margin: 0 0 0 -1.3em;
+}
+
+div.poetry {
+    margin: 2em 0 0 1.3em;
+    page-break-inside: avoid;
+}
+
+div.score {
+    margin: 0;
+}
+
+div.footer {
+    font-size: 80%;
+    color: #666;
+    margin: 3em 0 0 0;
+    padding: 1em 0 0 0;
+    border-top: 1px solid #666;
+    
+}
+
+@media print {
+
+    input {
+        display: none;
+    }
+    
+}
