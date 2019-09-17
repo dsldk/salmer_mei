@@ -549,7 +549,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                 <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
-                                        title="Slå op i melodidatabasen" class="sprite arrow-white-circle">
+                                        title="Slå op i salmebasen" class="title">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
                                     </a>

@@ -164,6 +164,8 @@
 .midi_button .label {
     display: inline-block;
     position: relative;
+    top: 2px;
+    margin-left: 24px;
 }
 
 .midi_button.play .label {
@@ -176,12 +178,35 @@
     margin-left: 24px;
 }
 
+.midi_button.document {
+    background-image: url("img/document.png");
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+}
+
+.exist_link a:hover .midi_button.document {
+    background-image: url("img/document_hi.png");
+}
+
+.midi_button.print {
+    background-image: url("img/print.png");
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+}
+
+.print_link a:hover .midi_button.print {
+    background-image: url("img/print_hi.png");
+}
+
+.exist_link {
+    margin-bottom: 4px;
+}
+
 .mei svg .playing {
     fill: #c00 !important;
     stroke: #c00 !important;
     color: #c00;
 }
-
 
 /* Place and format option menus. */
 
@@ -222,7 +247,7 @@
 
 .mei_options a:hover {
     color: #dcd2ab;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 

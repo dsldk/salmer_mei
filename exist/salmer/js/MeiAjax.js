@@ -140,8 +140,11 @@ var midiMenu = '\
 var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
-            <!--<button onclick="location.href=\'http://salmer.dsl.dk/document.xq?doc={id}.xml\'">Slå op i melodidatabasen</button>-->\
-            <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">Slå op i melodidatabasen</a>\
+            <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">\
+                <div class="midi_button document" title="Slå op i salmebasen">\
+                    <span class="label">Slå op i salmebasen</span>\
+                </div>\
+            </a>\
         </div>\
     </div>';
     

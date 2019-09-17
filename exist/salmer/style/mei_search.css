@@ -97,14 +97,20 @@ a.paging, a.paging:visited, a.paging:active {
     padding-top: 10px;
 }
 
-.result_list .arrow-white-circle {
+.result_list .title {
     background-color: #536d7e;
-    background-image: none;
     border-radius: 6px;
     color: white;
+    font-weight: bold;
+    display: block;
+    padding-left: 40px;
+    background-image: url("img/document_white.png");
+    background-position: 10px 2px;
+    background-repeat: no-repeat;
+    height: 21px;
 }
 
-.result_list .arrow-white-circle:hover {
+.result_list .title:hover {
     background-color: #6d8a9e;
     text-decoration: none;
 }
