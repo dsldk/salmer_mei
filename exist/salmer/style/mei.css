@@ -393,11 +393,11 @@ a:hover.abbr .expan {
 
 @font-face {
 	font-family: 'Bravura Text';
-	src: url('fonts/BravuraText.eot');
+	src: url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot');
 	src: local('Bravura Text'), 
-	       url('fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
-	       url('fonts/BravuraText.woff') format('woff'), 
-	       url('fonts/BravuraText.svg#BravuraText') format('svg');
+	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
+	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.woff') format('woff'), 
+	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.svg#BravuraText') format('svg');
 } 
 
 /* print */

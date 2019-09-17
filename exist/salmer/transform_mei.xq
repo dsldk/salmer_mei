@@ -161,6 +161,6 @@ let $response := if ($post/post-parameters/id) then
         $mei
 
 (: allow access from other servers/locations (e.g., a local viewer or an edition on a different server) :)          
-let $headers := response:set-header("Access-Control-Allow-Origin", "*")  
+let $headers := response:set-header("Access-Control-Allow-Origin", "https://tekstnet.dk")  
 
 return $response 
