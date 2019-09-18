@@ -134,6 +134,16 @@ let $result :=
         </div>
 
         <div class="documentFrame container">
+            {
+                let $error := if(count($list) = 0) 
+                    then
+                        <div>
+                            <p>Melodien blev ikke fundet i databasen.</p>
+                            <p><a href="javascript:window.history.back();">Tilbage til foregående side</a></p>
+                        </div>
+                    else ""
+                return $error                    
+            }
             <!-- Metadata -->
             {  
             	for $doc in $list
@@ -152,7 +162,7 @@ let $result :=
             	return transform:transform($doc,$metaXsl,$params)            	
             }
             {
-                let $chapters := $tei_doc/tei:TEI/tei:text/tei:body/tei:div 
+                let $chapters := if($tei_doc) then $tei_doc/tei:TEI/tei:text/tei:body/tei:div else () 
                 let $tekstnet_link := if($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]) 
                     then
                         let $chapter as xs:integer := count($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]/preceding-sibling::tei:div) + 1
