@@ -77,6 +77,7 @@ let $result :=
         <script type="text/javascript">
             var enableMenu = true;      // show options menu
             var enableLink = false;     // do not show links to melody database (i.e., to this page)
+            var enablePrint = true;     // show link to print version
             var enableMidi = true;      // enable MIDI player
             var enableOptions = true;   // show melody customizations options menu
             var enableSearch = true;    // enable phrase marking for melodic search 

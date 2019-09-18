@@ -3,6 +3,7 @@
 //    <script type="text/javascript">
 //        var enableMenu = true;     // show options menu 
 //        var enableLink = false;    // do not show link to melody database
+//        var enablePrint = true;    // show link to print version
 //        var enableMidi = true;     // enable MIDI playback
 //        var enableOptions = true;  // enable notation customization options
 //        var enableSearch = false;  // disable phrase selection for melodic search
@@ -10,6 +11,7 @@
 //    </script>   
 
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  // options menu main switch
+var showPrint = (typeof enablePrint !== 'undefined') ? enablePrint : true;  // show link to print version
 var linkToExist = (typeof enableLink !== 'undefined') ? enableLink : true;  // show link to melody database
 var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
 var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;  //  show menu for customization of the notation
@@ -129,14 +131,25 @@ var midiMenu = '\
     <div class="mei_menu_content"> \
         <div class="midi_player">\
             <div class="midi_button play" id="play_{id}" title="Afspil" onclick="play_midi(\'{id}\');">\
-                <span class="symbol"><span class=\'label\'>Afspil</span></span>\
+                <span class="symbol"><span class="label">Afspil</span></span>\
             </div>\
             <div class="midi_button stop" id="stop_{id}" title="Stop afspilning" onclick="stop()">\
-                <span class="symbol"><span class=\'label\'>Stop</span></span>\
+                <span class="symbol"><span class="label">Stop</span></span>\
             </div>\
         </div>\
     </div>';
 
+var printMenu = '\
+    <div class="mei_menu_content"> \
+        <div class="print_link">\
+            <a href="https://salmer.dsl.dk/print.xq?doc={id}.xml" target="_blank">\
+                <div class="midi_button print" title="Printervenlig version"/>\
+                    <span class="label">Printervenlig version</span>\
+                </div>\
+            </a>\
+        </div>\
+    </div>';
+    
 var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
@@ -452,11 +465,13 @@ function createMenu(id){
     // Create a menu for an MEI object in the document
     if(showMenu) {
         var menu = ''; 
-        if(showOptions) { menu = meiOptionsMenu.replace(/{id}/g, id)}
-        if(midi && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
-        if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
-        if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
+        if(showPrint) { menu = printMenu.replace(/{id}/g, id)}
         if(linkToExist) { menu = existMenu.replace(/{id}/g, id) + menu}
+        if((linkToExist || showPrint) && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
+        if(showOptions) { menu = meiOptionsMenu.replace(/{id}/g, id) + menu}
+        if((midi || showPrint || linkToExist) && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
+        if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
+//        if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(menu != '') { menu = '<img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/>' + menu; }
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;

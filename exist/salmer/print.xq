@@ -76,7 +76,7 @@ let $result :=
 	<body>
 	
 
-	   <div class="button"><input type="button" onclick="window.print();" value=" Print " class="mei_menu"/></div>
+	   <div class="button"><button onclick="window.print();" class="mei_menu" style="padding:2px 10px;"><img src="style/img/print.png" alt="Udskriv" style="vertical-align: bottom;"/> UDSKRIV</button></div>
 
 
         <div>

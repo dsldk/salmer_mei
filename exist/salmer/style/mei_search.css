@@ -103,9 +103,9 @@ a.paging, a.paging:visited, a.paging:active {
     color: white;
     font-weight: bold;
     display: block;
-    padding-left: 40px;
+    padding: 2px 0 0 34px;
     background-image: url("img/document_white.png");
-    background-position: 10px 2px;
+    background-position: 10px 5px;
     background-repeat: no-repeat;
     height: 21px;
 }
