@@ -107,7 +107,7 @@ a.paging, a.paging:visited, a.paging:active {
     background-image: url("img/document_white.png");
     background-position: 10px 5px;
     background-repeat: no-repeat;
-    height: 21px;
+    height: 25px;
 }
 
 .result_list .title:hover {

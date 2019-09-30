@@ -101,54 +101,20 @@
         </xsl:copy>
     </xsl:template>
         
-    <!-- Set MIDI playback tempo -->
-    <xsl:template match="m:scoreDef[not(preceding-sibling::*)]">
-        <xsl:variable name="noteValues">
-            <xsl:for-each select="//m:note[not(@dur = preceding-sibling::m:note/@dur or @dur = ancestor::m:measure/preceding-sibling::*//m:note/@dur)]">
-                <xsl:variable name="dur" select="@dur"/>
-                <xsl:variable name="val">
-                    <xsl:choose>
-                        <xsl:when test="contains($dur,'brev')">0.5</xsl:when>
-                        <xsl:when test="contains($dur,'long')">0.25</xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="$dur"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
-                <value count="{count(//m:note[@dur = $dur])}">
-                    <xsl:value-of select="$val"/>
-                </value>
-            </xsl:for-each>
-            <value count="{count(//m:note[not(@dur)])}">4</value>
-        </xsl:variable>
-        <xsl:variable name="mostFrequentValue" select="$noteValues/*[@count = max($noteValues//@count)][1]/string()"/>
-        <xsl:variable name="tempo">
-            <xsl:choose>
-                <xsl:when test="string(number($mostFrequentValue)) != 'NaN'">
-                    <xsl:value-of select="400 div number($mostFrequentValue)"/>
-                </xsl:when>
-                <xsl:otherwise>100</xsl:otherwise>
-            </xsl:choose>
-        </xsl:variable>
-        <xsl:copy>
-            <xsl:attribute name="midi.bpm">
-                <xsl:value-of select="$tempo"/>
-            </xsl:attribute>
-            <xsl:apply-templates select="@* | node()"/>
-        </xsl:copy>
-    </xsl:template>
-    
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
     <xsl:template match="m:syl[//text()]">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <!--<xsl:text> </xsl:text>-->
             <!-- Extra space before last syllable -->
-            <xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])"><xsl:text> </xsl:text></xsl:if>
+            <!--<xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])"><xsl:text> </xsl:text></xsl:if>-->
             <xsl:apply-templates select="node()"/>
+            <!-- Pad all syllables with an extra space -->
             <xsl:text> </xsl:text>
+            <!-- Pad word endings with an extra space -->
+            <!--<xsl:if test="not(following::m:syl[text()][1]/@wordpos[.='m' or .='t'])"><xsl:text> </xsl:text></xsl:if>-->
             <!-- Extra space after penultimate syllable -->
-            <xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1"><xsl:text> </xsl:text></xsl:if>
+            <!--<xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1"><xsl:text> </xsl:text></xsl:if>-->
         </xsl:copy>
     </xsl:template>
     
@@ -165,7 +131,37 @@
         </xsl:copy>
     </xsl:template>
    
-   
+    <!-- Set MIDI playback tempo -->
+    <xsl:template match="m:scoreDef">
+        <xsl:variable name="noteValues">
+            <xsl:for-each select="//m:note[@dur and not(@dur = following::m:note/@dur)]">
+                <!-- For each note value, calculate the total "weight" of the notes (that is, total number / note value) -->
+                <xsl:variable name="dur" select="@dur"/>
+                <xsl:variable name="val">
+                    <xsl:choose>
+                        <xsl:when test="contains($dur,'brev')">0.5</xsl:when>
+                        <xsl:when test="contains($dur,'long')">0.25</xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="$dur"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:variable>
+                <xsl:variable name="count" select="count(//m:note[@dur = $dur])"/>
+                <value weight="{count(//m:note[@dur = $dur]) div $val}"/>
+            </xsl:for-each>
+            <!-- Neumes are counted as semibreves (duration = 1) -->
+            <value weight="{count(//m:nc)}"/>
+        </xsl:variable>
+        <xsl:variable name="tempo" select="ceiling((300 * sum($noteValues//@weight)) div count(//(m:note | m:nc)))"/>
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:attribute name="midi.bpm">
+                <xsl:value-of select="$tempo"/>
+            </xsl:attribute>
+            <xsl:apply-templates select="node()"/>
+        </xsl:copy>
+    </xsl:template>
+    
     <!-- HANDLING EDITORIAL MARKUP -->
     
     <xsl:template match="m:staff[ancestor::m:measure]">
@@ -180,10 +176,8 @@
             <xsl:apply-templates select="." mode="add_comment"/>
         </xsl:for-each>
         <xsl:apply-templates select="../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in measure -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/
-            ../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section; to appear at the beginning of each system -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/
-            (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/             ../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section; to appear at the beginning of each system -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/             (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
     </xsl:template>
     
     <xsl:template match="m:add | m:corr | m:damage | m:del |  m:gap | m:orig | m:reg | m:sic | m:supplied | m:unclear">
@@ -342,7 +336,7 @@
     </xsl:template>
     
     <xsl:template match="m:nc">
-        <note xmlns="http://www.music-encoding.org/ns/mei">
+        <note xmlns="http://www.music-encoding.org/ns/mei" type="neume">
             <xsl:apply-templates select="@*[not(local-name()='label')]"/>
             <xsl:variable name="dur" select="substring-after(@label,'dur')"/>
             <xsl:attribute name="dur">
@@ -389,7 +383,7 @@
     </xsl:template>
     
     <xsl:template match="text()">
-        <xsl:value-of select="normalize-space()" />
+        <xsl:value-of select="normalize-space()"/>
     </xsl:template>
     
 </xsl:stylesheet>
