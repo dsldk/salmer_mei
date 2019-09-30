@@ -61,6 +61,14 @@ declare variable $datadir    := "data";
 declare variable $xsldir     := "xsl";
 declare variable $defaultXSL := "show.xsl";
 declare variable $post       := local:get_post_data();
+declare variable $origin := request:get-header("origin");
+
+(: List of domains allowed to access this resource with Javascript :)
+declare variable $allowed as node():= 
+    <domains>
+        <domain>http://salmer.dsl.lan:8080</domain>
+        <domain>https://tekstnet.dk</domain>
+    </domains>;
 
 (: Decoding POST request :)
 
@@ -137,6 +145,7 @@ let $doc :=
     for $d in collection(concat($database,'/',$datadir))//m:mei
         where ( util:document-name($d) = $post/post-parameters/doc )
     return $d
+        
 
 let $mei :=   
     if($doc) then   
@@ -147,8 +156,9 @@ let $mei :=
         let $step4 := if($post/post-parameters/clef) then local:single_transformation($step3, $post/post-parameters/clef) else $step3
         let $step5 := if($post/post-parameters/noteValues) then local:single_transformation($step4, $post/post-parameters/noteValues) else $step4
         let $step6 := if($post/post-parameters/beams) then local:single_transformation($step5, $post/post-parameters/beams) else $step5     
+        let $step7 := if($post/post-parameters/midi) then local:single_transformation($step6, $post/post-parameters/midi) else $step6     
     return 
-        $step6
+        $step7
     else
         concat('Document ',$fileURI,' not found')
         
@@ -160,7 +170,11 @@ let $response := if ($post/post-parameters/id) then
     else
         $mei
 
-(: allow access from other servers/locations (e.g., a local viewer or an edition on a different server) :)          
-let $headers := response:set-header("Access-Control-Allow-Origin", "https://tekstnet.dk")  
-
+(: allow access from certain other domains :)          
+let $headers := 
+    if ($allowed//*[.=$origin]) then
+        response:set-header("Access-Control-Allow-Origin", $origin)
+    else
+        ""
+        
 return $response 
