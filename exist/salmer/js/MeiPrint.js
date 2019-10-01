@@ -144,6 +144,38 @@ function renderData(data) {
      }    
 }
 
+
+function getOptionsFromQuery(id) {
+    // Add the relevant transformations as transmitted in the query string
+    var urlParams = new URLSearchParams(window.location.search);
+    if(urlParams.get('mdiv')) {
+        console.log("Set mdiv:" + urlParams.get('mdiv'));
+        $mei[id].xsltOptions['show'].parameters['mdiv'] = urlParams.get('mdiv');
+    };
+    if(urlParams.get('transposeVal') != '0') {
+        console.log("Transpose:" + urlParams.get('transposeVal') + urlParams.get('direction'));
+        $mei[id].xsltOptions['transpose'] = $.extend(true, {}, $transpose);
+        $mei[id].xsltOptions['transpose'].parameters['interval']   =  parseInt(urlParams.get('transposeVal'));
+        $mei[id].xsltOptions['transpose'].parameters['direction'] =  urlParams.get('direction');
+    };
+    if(urlParams.get('clef')!= null && urlParams.get('clef')!='original') {
+        console.log("Set clef:" + urlParams.get('clef'));
+        $mei[id].xsltOptions['clef'] = $.extend(true, {}, $setClef);
+        $mei[id].xsltOptions['clef'].parameters['clef'] = urlParams.get('clef');
+    };
+    if(urlParams.get('factor') != null) {
+        console.log("Note values factor:" + urlParams.get('factor'));
+        $mei[id].xsltOptions['noteValues'] = $.extend(true, {}, $setNoteValues);
+        $mei[id].xsltOptions['noteValues'].parameters['factor']   =  parseInt(urlParams.get('factor'));
+        /* second run: add beams if relevant */
+        $mei[id].xsltOptions['beams'] = $.extend(true, {}, $setBeams);
+    };
+}
+
+
+
+
+
 function loadMeiFromDoc() {
     $(".mei").each( function() {
         id = $(this).attr("id");
@@ -153,6 +185,9 @@ function loadMeiFromDoc() {
         $mei[id].xsltOptions['id'] = id;
         $mei[id].xsltOptions['doc'] = filename_from_dataId(id) + '.xml';
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
+        
+        getOptionsFromQuery(id);
+        
         $("#"+id+"_options .highlight_list").each( function() {
             console.log("Highlight:" + $(this).html());
             $mei[id].xsltOptions['highlight'] = $.extend(true, {}, $highlight);

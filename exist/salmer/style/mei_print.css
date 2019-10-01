@@ -50,6 +50,11 @@ div.footer {
     
 }
 
+.mei svg .warning, .mei svg .warning:hover {
+    fill: #888;
+    stroke: #888;
+}
+
 @media print {
 
     input {

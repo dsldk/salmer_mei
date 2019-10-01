@@ -142,7 +142,7 @@ var midiMenu = '\
 var printMenu = '\
     <div class="mei_menu_content"> \
         <div class="print_link">\
-            <a href="https://salmer.dsl.dk/print.xq?doc={id}.xml" target="_blank">\
+            <a href="javascript:void(0);" onclick="printPage(\'{id}\')">\
                 <div class="midi_button print" title="Printervenlig version"/>\
                     <span class="label">Printervenlig version</span>\
                 </div>\
@@ -163,10 +163,11 @@ var existMenu = '\
     
 var meiOptionsMenu = ' \
     <div class="mei_menu_content"> \
-        <form id="optionsForm_{id}" action="" class="mei_menu"> \
+        <form id="optionsForm_{id}" action="print.xq" method="GET" target="_blank" class="mei_menu"> \
             <div class="menu_block">\
                 <label for="clef_{id}">N&oslash;gle: </label> \
                 <br/> \
+                <input type="hidden" name="doc" value="{id}.xml"/>\
                 <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp" title="Original nøgle">Original</label> &#160;&#160; \
                 <input type="radio" name="clef" id="Gclef_{id}" value="G" onchange="updateFromForm(\'{id}\')"/> <label for="Gclef_{id}" class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</label> &#160;&#160; \
                 <input type="radio" name="clef" id="G8clef_{id}" value="G8" onchange="updateFromForm(\'{id}\')"/> <label for="G8clef_{id}" class="musical_symbols cursorHelp" title="Oktaverende G-nøgle">&#x1d120;</label> &#160;&#160; \
@@ -496,6 +497,30 @@ function createMenu(id){
     }
 }
 
+// Printing
+
+function printPage(id) {
+//    var query = $.param(JSON.stringify($mei[id].xsltOptions));
+//    var query = $.param(JSON.stringify($mei[id].xsltOptions));
+//    var query = JSON.stringify($mei[id].xsltOptions);
+
+//alert(id);
+//alert (JSON.stringify($mei[id].xsltOptions));
+//alert (query);
+//    window.open("https://salmer.dsl.dk/printTest.xq?doc=" + id + ".xml&q=" + query,"_blank");
+    $("#optionsForm_" + id).submit();
+
+}
+
+// convert JSON object to query string
+function jsonToQuery(json) { 
+    return '&' +
+        Object.keys(json).map(function(key) { 
+            return encodeURIComponent(key) + '=' + 
+                encodeURIComponent(json[key]); 
+        }).join('&'); 
+} 
+
 
 // Functions for phrase selection
 
@@ -626,30 +651,7 @@ function getAttributes ( $node ) {
    } );
 }
  
-// File uploading
- 
-// These functions are used by local MEI viewer only
-function uploadFile(id){
-    var file = window.URL.createObjectURL(document.getElementById('upload').files[0]);
-    var filename = document.getElementById("upload").value.replace(/.*[\/\\]/, '');
-    $mei[id] = new meiObj({});
-    $mei[id].verovioOptions = $defaultVerovioOptions;
-    $mei[id].xsltOptions['show'] = $.extend(true, {}, $show);
-    $mei[id].xml = Saxon.requestXML(file);
-    if(document.getElementById("meiFileName")) { document.getElementById("meiFileName").innerHTML = filename; } 
-    if(document.getElementById("renderMeiFileLabel")) { document.getElementById("renderMeiFileLabel").style.visibility="visible"; }
-    if(document.getElementById(id + "_options") && showMenu) { document.getElementById(id + "_options").style.visibility="visible"; }
-    if(document.getElementById(id + "_data")) {
-        //An identity transform seems to be necessary to get the right data type for serialization
-        var xsl = Saxon.requestXML("xsl/nop.xsl");
-        var processor = Saxon.newXSLT20Processor(xsl);
-        var MEIdata = processor.transformToDocument($mei[id].xml);
-        document.getElementById(id + "_data").innerHTML = Saxon.serializeXML(MEIdata);
-    }
-    loadMeiFromDoc();
-    if(showMenu) { $("#" + id +"_options").css("display","block"); }
-}
- 
+
 function resetOptions(id) {
     if(showMenu) {
         document.getElementById('clef_' + id).checked = true;
