@@ -211,10 +211,6 @@
 
 /* Place and format option menus. */
 
-.mei_options + .mei {
-    min-height: 200px;  /* make sure there is room for the menu if a menu is displayed */
-}
-
 .mei_options {
     position: absolute;
     clear: both;
