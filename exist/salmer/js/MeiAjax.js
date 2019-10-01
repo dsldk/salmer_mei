@@ -473,7 +473,7 @@ function createMenu(id){
         if((midi || showPrint || linkToExist) && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
 //        if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
-        if(menu != '') { menu = '<img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/>' + menu; }
+        if(menu != '') { menu = '<div class="menu_icon_container"><img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/></div>' + menu; }
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;
         // Add an MDIV select box to the menu if applicable

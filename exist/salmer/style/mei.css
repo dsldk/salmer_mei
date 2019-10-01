@@ -102,9 +102,9 @@
 .midi_button {
     width: 20px;
     height: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #888;
     border-radius: 5px; 
-    background-color: #ddd;
+    background-color: #ccc;
     display: inline-block;
     margin-right: 2px;
     line-height: 1em;
@@ -196,6 +196,7 @@
 
 .print_link a:hover .midi_button.print {
     background-image: url("img/print_hi.png");
+    
 }
 
 .exist_link, .print_link {
@@ -221,10 +222,13 @@
     margin:0 0 10px 660px;
     display: none;
     background-color: #003b5c; 
+    background-color: #888; 
+    background-color: #ddd; 
+    border: 4px solid #888;
+    border: 4px solid #003b5c;
     border-radius: 10px;
-    color: #dcd2ab;
+/*    color: #dcd2ab; */
     font-size: 14px;
-    transition: all .25s ease;
     white-space: nowrap;
 }
 
@@ -241,15 +245,29 @@
 }
 
 .mei_options a, .mei_options a:link, .mei_options a:visited, .mei_options a:active {
-    color: #dcd2ab;
+/*    color: #dcd2ab;  */
+    color: #000;  
     text-decoration: none;
 }
 
 .mei_options a:hover {
-    color: #dcd2ab;
+/*    color: #dcd2ab;  */
+    color: #2a6496;
     text-decoration: none;
 }
 
+.mei_options .menu_icon_container {
+    background-color: #888;
+    background-color: #003b5c;
+    margin: -14px -12px -14px -12px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+.mei_options .mei_menu_icon {
+    width: 20px;
+    height: 16px;
+}
 
 /* options menu expand effect */
 .mei_options .mei_menu_content {
@@ -257,16 +275,23 @@
 }
 
 .mei_options:hover {
-    padding: 15px;
+    z-index: 10;
 }
 
 .mei_options:hover .mei_menu_content {
     display: block;
 }
 
-.mei_options:hover .mei_menu_icon {
-    display: none;
+.mei_options:hover .menu_icon_container {
+    margin-bottom: 5px;
+    padding-bottom: 0px;
+    border-radius: 10px 10px 0 0;
 }
+
+.mei_options:hover .mei_menu_icon {
+    margin-bottom: 8px;
+}
+
 
 /* only if jQuery UI-dialogs are NOT used: */
 .mei_overlay {
