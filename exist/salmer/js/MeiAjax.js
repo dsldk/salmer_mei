@@ -163,7 +163,7 @@ var existMenu = '\
     
 var meiOptionsMenu = ' \
     <div class="mei_menu_content"> \
-        <form id="optionsForm_{id}" action="print.xq" method="GET" target="_blank" class="mei_menu"> \
+        <form id="optionsForm_{id}" action="https://salmer.dsl.dk/print.xq" method="GET" target="_blank" class="mei_menu"> \
             <div class="menu_block">\
                 <label for="clef_{id}">N&oslash;gle: </label> \
                 <br/> \
@@ -498,29 +498,9 @@ function createMenu(id){
 }
 
 // Printing
-
 function printPage(id) {
-//    var query = $.param(JSON.stringify($mei[id].xsltOptions));
-//    var query = $.param(JSON.stringify($mei[id].xsltOptions));
-//    var query = JSON.stringify($mei[id].xsltOptions);
-
-//alert(id);
-//alert (JSON.stringify($mei[id].xsltOptions));
-//alert (query);
-//    window.open("https://salmer.dsl.dk/printTest.xq?doc=" + id + ".xml&q=" + query,"_blank");
     $("#optionsForm_" + id).submit();
-
 }
-
-// convert JSON object to query string
-function jsonToQuery(json) { 
-    return '&' +
-        Object.keys(json).map(function(key) { 
-            return encodeURIComponent(key) + '=' + 
-                encodeURIComponent(json[key]); 
-        }).join('&'); 
-} 
-
 
 // Functions for phrase selection
 
