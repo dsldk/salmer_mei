@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m xsl xs">
 
 	<!-- 
@@ -39,6 +38,7 @@
 					<xsl:comment>MEI options menu will be inserted here</xsl:comment>
 				</div>
 				<div id="{$id}{$mdivId}" class="mei">
+					Henter noder...<br/>
 					<p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p>
 				</div>
 <!--				<xsl:if test="$include_data">

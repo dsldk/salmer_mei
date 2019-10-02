@@ -45,17 +45,17 @@ let $coll := if(contains($document, '/'))
     else
         ""
 
-let $tei_doc := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+let $tei_doc_name := if($coll!="")
     then 
-        doc(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei))
+        $index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei
+    else 
+        ""
+
+let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc_name)))
+    then 
+        doc(concat($tei_base,$tei_doc_name))
     else 
         false()
-
-let $text_data := if($tei_doc) 
-    then
-        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
-    else
-        ()
 
 let $list := 
     for $doc in collection(concat($database,'/',$datadir,'/',$coll))/m:mei
@@ -143,32 +143,19 @@ let $result :=
         </div>
 
         <div class="documentFrame container">
+            <!-- Metadata -->
             {
-                let $error := if(count($list) = 0) 
+                let $metadata := if(count($list) = 0) 
                     then
                         <div>
                             <p>{$filename} blev ikke fundet i databasen.</p>
                             <p><a href="javascript:window.history.back();">Tilbage til foregående side</a></p>
                         </div>
-                    else ""
-                return $error                    
-            }
-            <!-- Metadata -->
-            {  
-            	for $doc in $list
-                	let $params := 
-                    	<parameters>
-                    	  <param name="hostname"    value="{$host}"/>
-                    	  <param name="database"    value="{$database}"/>
-                    	  <param name="datadir"     value="{$datadir}"/>
-                    	  <param name="database"    value="{$database}"/>
-                    	  <param name="coll"        value="{$coll}"/>
-                    	  <param name="filename"    value="{$filename}"/>
-                    	  <param name="doc"         value="{concat($database,'/',$datadir,'/',$document)}"/>
-                    	  <param name="script_path" value="./document.xq"/>
-                    	  <param name="language"    value="{$language}"/>
-                    	</parameters>
-            	return transform:transform($doc,$metaXsl,$params)            	
+                    else 
+                        <div id="mei_metadata" class="mei_metadata">
+                            <p class="loading">[Henter metadata...]</p>
+                        </div>
+                return $metadata                    
             }
             {
                 let $chapters := if($tei_doc) then $tei_doc/tei:TEI/tei:text/tei:body/tei:div else () 
@@ -198,32 +185,26 @@ let $result :=
                 	(:   false()   :)
                 	let $params := 
                     	<parameters>
-                    	  <param name="mdiv"         value="{$mdiv/@xml:id}"/>
-                    	  <param name="doc"          value="{$filename}"/>
+                    	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
+                    	  <param name="doc"  value="{$filename}"/>
                     	  <!--<param name="include_data" value="{$include_data}"/>-->
                     	</parameters>
                 	let $music := transform:transform($list[1],$mdivXsl,$params)
-                	(: get only the TEI elements after the current <notatedMusic> and only until the following one  :)
-                    let $text_step1 :=
-                        <div>
-                            {$text_data//tei:notatedMusic[contains(tei:ptr/@target,concat('#',$mdiv/@xml:id)) or tei:ptr/@target=$filename]/following-sibling::*}
-                        </div>
-                    let $text_step2 :=  
-                        if($text_step1//tei:notatedMusic) then
-                            <div>
-                                {$text_step1/*[not(preceding::tei:notatedMusic)][not(name()='notatedMusic')]}
-                            </div>
-                        else                               
-                            <div>{$text_step1}</div> 
-                	let $params2 := 
-                    	<parameters>
-                    	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
-                    	</parameters>
-                    let $text :=  transform:transform($text_step2,$textXsl,$params2)
+                	let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+                	   then 
+                    	   <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
+                    	       <!-- References to TEI file and MEI:mdiv/@xml:id transmitted in @class -->
+                               <p class="loading">[Henter tekst...]</p>
+                           </div>
+                	   else 
+                	       <div>
+                               <p>Tekst ikke fundet i databasen.</p>
+                           </div>
                 return ($music, $text)  
             }
         </div>
-        
+
+
         <div style="height: 30px;">
             <!-- MIDI Player -->
             <div id="player" style="z-index: 20; position: absolute;"/>

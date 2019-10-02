@@ -18,6 +18,7 @@ var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;
 var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable phrase selection for melodic search
 var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // show editorial comments
 
+const urlParams = new URLSearchParams(window.location.search);
 
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
@@ -258,7 +259,8 @@ function updateFromOptions(id, options) {
 
 function addComments(data) {
     /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
- 
+    
+    console.log("Retrieveing editorial comments");
     var targetId = $(data.firstChild).attr('targetId')
     // strip off the wrapping <response> element to get the MEI root element
     var xml = data.firstChild;
@@ -597,6 +599,32 @@ function saveSelection() {
     });
 }
 
+function loadMeiMetadata() {
+    /* Retrieve MEI metadadata if applicable */
+    var doc = urlParams.get('doc');
+    $(".mei_metadata").each( function() {
+        var id = $(this).attr("id");
+        console.log('Retrieving MEI metadata');
+        $.post('https://salmer.dsl.dk/document_metadata.xq?doc=' + doc,function(data){ 
+            $("#" + id).html(data);
+        },'html');
+    });
+}
+
+function loadTeiText() {
+    /* Retrieve TEI vocal text if applicable */
+    var doc = urlParams.get('doc');
+    $(".tei_vocal_text").each( function() {
+        var id = $(this).attr("id");
+        /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
+        var params = $(this).attr("class").split(" ");
+        console.log('Retrieving TEI text');
+        $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){ 
+            $("#" + id).html(data);
+        },'html');
+    });
+}
+
 // Validate search query
 function validateInput() {
     $("#pnames").keyup(function (e) {
@@ -645,6 +673,8 @@ function resetOptions(id) {
 $(document).ready(function() {        
     console.log("Document ready");
     if(midi) { initMidi() }
-    loadMeiFromDoc();    
+    loadMeiFromDoc();   
+    loadMeiMetadata();
+    loadTeiText();
     validateInput();
 });
