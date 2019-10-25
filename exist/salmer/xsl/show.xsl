@@ -12,6 +12,9 @@
     
     <xsl:param name="mdiv" select="''"/>
     
+    <!-- Set MIDI base tempo (BPM) -->
+    <xsl:variable name="midi_base_tempo" select="number('100')"/>
+    
     <xsl:variable name="editorials" select="'add corr damage del gap orig reg sic supplied unclear annot'"/>
     
     <xsl:template match="m:body">
@@ -152,7 +155,7 @@
             <!-- Neumes are counted as semibreves (duration = 1) -->
             <value weight="{count(//m:nc)}"/>
         </xsl:variable>
-        <xsl:variable name="tempo" select="ceiling((300 * sum($noteValues//@weight)) div count(//(m:note | m:nc)))"/>
+        <xsl:variable name="tempo" select="ceiling((4 * $midi_base_tempo * sum($noteValues//@weight)) div count(//(m:note | m:nc)))"/>
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <xsl:attribute name="midi.bpm">
@@ -306,7 +309,9 @@
     <xsl:template match="m:neume" mode="add_slur">
         <slur xmlns="http://www.music-encoding.org/ns/mei" layer="1" staff="1">
             <xsl:if test="@xml:id">
-                <xsl:attribute name="xml:id"><xsl:value-of select="concat(@xml:id,'_slur')"/></xsl:attribute>
+                <xsl:attribute name="xml:id">
+                    <xsl:value-of select="concat(@xml:id,'_slur')"/>
+                </xsl:attribute>
             </xsl:if>
             <xsl:if test=".//m:nc">
                 <xsl:attribute name="startid">#<xsl:value-of select=".//m:nc[1]/@xml:id"/>
