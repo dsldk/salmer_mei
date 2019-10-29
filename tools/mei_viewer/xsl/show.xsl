@@ -198,8 +198,7 @@
     <xsl:template match="m:music//m:annot" mode="add_comment">
         <xsl:variable name="annot" select="."/>
         <!-- Get the annotation's number -->
-        <xsl:variable name="annots" select="string-join(//m:music//m:annot/@xml:id,'¤')"/>
-        <xsl:variable name="no" select="count(tokenize(substring-before($annots,concat('¤',@xml:id)),'¤')) + 1"/>
+        <xsl:variable name="no" select="count(preceding::m:annot) + 1"/>
         <xsl:variable name="context" as="node()">
             <xsl:choose>
                 <xsl:when test="not(../*[name()!='annot'])">
