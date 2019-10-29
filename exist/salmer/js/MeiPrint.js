@@ -163,7 +163,7 @@ function getOptionsFromQuery(id) {
         $mei[id].xsltOptions['clef'] = $.extend(true, {}, $setClef);
         $mei[id].xsltOptions['clef'].parameters['clef'] = urlParams.get('clef');
     };
-    if(urlParams.get('factor') != null) {
+    if(urlParams.get('factor') != null && urlParams.get('factor') != '1' && urlParams.get('factor') != '') {
         console.log("Note values factor:" + urlParams.get('factor'));
         $mei[id].xsltOptions['noteValues'] = $.extend(true, {}, $setNoteValues);
         $mei[id].xsltOptions['noteValues'].parameters['factor']   =  parseInt(urlParams.get('factor'));
