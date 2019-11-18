@@ -126,7 +126,7 @@ var $setBeams = {
     parameters: {}
 }
  
-var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'beams'];
+var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'beams', 'midi'];
 
 var midiMenu = '\
     <div class="mei_menu_content"> \

@@ -238,7 +238,7 @@ declare function local:check_publications() as node()* {
                 <div xmlns="http://www.w3.org/1999/xhtml" class="publication">
                     {$checkbox}
                     <label class="input-label" for="{$publ/dsl:id/text()}"><span class="checkbox_title">{$publ/dsl:title/text()}</span> 
-                    ({$publ/dsl:editor/text()},&#160;{$publ/dsl:year/text()})</label>
+                    ({$publ/dsl:year/text()})</label>
                 </div>
     return ($all, $publ_list)
 };

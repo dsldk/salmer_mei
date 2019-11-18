@@ -1,5 +1,5 @@
 // JS for MIDI playback.
-// Requires that MeiLib.js and MeiAjax.js are loaded
+// Requires that midiplayer.js and MeiAjax.js are loaded
 
 // MIDI-related  variables
 var ids = [];
