@@ -5,6 +5,12 @@
 var ids = [];
 var isPlaying = false;
 
+// Parameters for the XSL transformation
+var $midi = {
+    xslt:       'midi.xsl',
+    parameters: {}
+}
+ 
 /* Reverse a string */
 function reverse(s){
     return s.split("").reverse().join("");
@@ -18,6 +24,9 @@ function play_midi(id) {
     var data = $mei[id].data;  
     $("#play_" + id).addClass('playing');
     $("#stop_" + id).addClass('playing');
+
+    // temporarily add the MIDI preparation XSL to the list of transformations
+    $mei[id].xsltOptions['midi'] = $.extend(true, {}, $midi);
 
     if(clientSideXSLT) {
         // apply relevant transformations
@@ -51,6 +60,9 @@ function play_midi(id) {
     // $("#player").show();
     $("#player").midiPlayer.play(song);
     isPlaying = true;
+
+    // remove the MIDI XSL from the transformation list
+    delete $mei[id].xsltOptions['midi'];
 }
  
  

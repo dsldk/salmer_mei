@@ -102,7 +102,7 @@ var $setBeams = {
     parameters: {}
 }
  
-var transformOrder = ['show', 'transpose', 'clef', 'noteValues', 'beams'];
+var transformOrder = ['show', 'transpose', 'clef', 'noteValues', 'beams', 'midi'];
 
 var midiMenu = '\
     <div class="midi_player">\
