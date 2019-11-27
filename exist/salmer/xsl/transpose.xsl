@@ -296,9 +296,6 @@
                     </xsl:choose>  
                 </xsl:attribute>
             </xsl:if>           
-            
-<xsl:attribute name="test"><xsl:value-of select="$newPitch"/><xsl:value-of select="$oct"/></xsl:attribute>            
-            
             <xsl:apply-templates select="@accid | node()" mode="transpose">
                 <xsl:with-param name="oldKey" select="$oldKey"/>
                 <xsl:with-param name="newKey" select="$newKey"/>
