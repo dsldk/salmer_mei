@@ -322,7 +322,7 @@
         </slur>
     </xsl:template>
     
-    <!-- Turn syllable/uneume/note structures into note/verse/syl -->
+    <!-- Turn syllable/neume/note structures into note/verse/syl -->
     <xsl:template match="m:syllable">
         <xsl:apply-templates select="*[not(local-name()='syl' or local-name()='verse')]"/>
     </xsl:template>
@@ -362,7 +362,7 @@
             <xsl:if test="$dur='long'">
                 <xsl:attribute name="colored">true</xsl:attribute>
             </xsl:if>
-            <xsl:if test="@xml:id=ancestor::m:syllable/m:neume[1]/descendant::m:nc[1]/@xml:id">
+            <xsl:if test="@xml:id=ancestor::m:syllable/descendant::m:neume[1]/descendant::m:nc[1]/@xml:id">
                 <xsl:apply-templates select="ancestor::m:syllable/m:verse | ancestor::m:syllable/m:syl"/>
             </xsl:if>
         </note>
