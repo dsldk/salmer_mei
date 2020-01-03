@@ -314,9 +314,9 @@
                 </xsl:attribute>
             </xsl:if>
             <xsl:if test=".//m:nc">
-                <xsl:attribute name="startid">#<xsl:value-of select=".//m:nc[1]/@xml:id"/>
+                <xsl:attribute name="startid">#<xsl:value-of select="./descendant::m:nc[1]/@xml:id"/>
                 </xsl:attribute>
-                <xsl:attribute name="endid">#<xsl:value-of select=".//m:nc[position()=last()]/@xml:id"/>
+                <xsl:attribute name="endid">#<xsl:value-of select="./descendant::m:nc[position()=last()]/@xml:id"/>
                 </xsl:attribute>
             </xsl:if>
         </slur>
@@ -362,7 +362,7 @@
             <xsl:if test="$dur='long'">
                 <xsl:attribute name="colored">true</xsl:attribute>
             </xsl:if>
-            <xsl:if test="@xml:id=ancestor::m:syllable/m:neume[1]//m:nc[1]/@xml:id">
+            <xsl:if test="@xml:id=ancestor::m:syllable/m:neume[1]/descendant::m:nc[1]/@xml:id">
                 <xsl:apply-templates select="ancestor::m:syllable/m:verse | ancestor::m:syllable/m:syl"/>
             </xsl:if>
         </note>
