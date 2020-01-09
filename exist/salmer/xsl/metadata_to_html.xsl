@@ -3206,7 +3206,8 @@
 
 
 	<!-- Look up abbreviations -->
-
+	
+	<!-- RISM sigla -->
 	<xsl:template match="m:identifier[@auth='RISM' or @auth='rism'][text()]">
 		<xsl:variable name="vUpper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
 		<xsl:variable name="vLower" select="'abcdefghijklmnopqrstuvwxyz'"/>
@@ -3217,7 +3218,6 @@
 			<!-- RISM sigla should match [A-Z]+-[A-Z]+[a-z]* -->
 			<xsl:when test="string-length($country)&gt;0 and     string-length($archive)&gt;0 and     string-length(translate($country,$vUpper,''))=0 and      string-length(translate($archive,$vAlpha,''))=0">
 				<xsl:variable name="RISM_file_name" select="concat($base_uri,'/rism_sigla/',      substring-before(normalize-space(.),'-'),'.xml')"/>
-				<!-- XXX -->
 				<!--<xsl:choose>
 					<xsl:when test="boolean(document($RISM_file_name))">
 						<xsl:variable name="RISM_file" select="document($RISM_file_name)"/>
@@ -3267,8 +3267,30 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	
+	<!-- Abbreviations marked up with <abbr> -->
+	<xsl:template match="m:abbr">
+		<xsl:variable name="abbr" select="."/>
+		<xsl:variable name="expan" select="$abbreviations[m:abbr=$abbr]/m:expan/node()"/>
+		<a href="javascript:void(0);" class="abbr">
+			<xsl:value-of select="."/>
+			<span class="expan">
+				<xsl:choose>
+					<!-- if the expansion is a nodeset, a <bibl> element for example, process it -->
+					<xsl:when test="$expan/*">
+						<xsl:apply-templates select="$expan"/>
+					</xsl:when>
+					<!-- otherwise just plain text; no further processing -->
+					<xsl:otherwise>
+						<xsl:value-of select="$expan"/>
+					</xsl:otherwise>
+				</xsl:choose>
+			</span>
+		</a>		
+	</xsl:template>
 
-	<!-- General abbreviations in instrument names, identifiers etc. -->
+
+	<!-- General abbreviations in instrument names, identifiers etc. not explicitly marked up-->
 
 	<!-- Abbreviations allowed to appear in the middle of a string -->
 	<xsl:template match="m:perfRes/text() | m:identifier/text()" name="multiReplace">
