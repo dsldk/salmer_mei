@@ -2,7 +2,8 @@
     Please note: Abbreviations containing other abbreviations 
     (for example "fl.picc.", also containing the abbreviations "fl." and "picc.") 
     must appear BEFORE the shorter abbreviations in order to resolve correctly. 
---><p xmlns="http://www.music-encoding.org/ns/mei">
+-->
+<p xmlns="http://www.music-encoding.org/ns/mei">
     <choice>
         <abbr>1 Kor</abbr>
         <expan>Første Korintherbrev</expan>
@@ -165,6 +166,34 @@
         </expan>
     </choice>
     <choice>
+        <abbr>Dietz 1529</abbr>
+        <expan>
+            <bibl label="Dietz 1529">
+                <genre>book</genre>
+                <title level="m">Een ny handbog med Psalmer oc aandelige lofsange</title>
+                <imprint>
+                    <date isodate="1529">1529</date>
+                    <pubPlace>Rostock</pubPlace>
+                    <publisher>Ludwig Dietz</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Dietz 1536</abbr>
+        <expan>
+            <bibl label="Dietz 1536">
+                <genre>book</genre>
+                <title level="m">Nogle nye Psalmer oc Lofsange</title>
+                <imprint>
+                    <date isodate="1536">1536</date>
+                    <pubPlace>Rostock</pubPlace>
+                    <publisher>Ludwig Dietz</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>DKL</abbr>
         <expan>
             <bibl label="DKL">
@@ -286,6 +315,21 @@
         <expan>gran cassa (bass drum)</expan>
     </choice>
     <choice>
+        <abbr>Jespersen 1573</abbr>
+        <expan>
+            <bibl label="Jespersen 1573">
+                <genre>book</genre>
+                <editor>Niels Jespersen</editor>
+                <title level="m">GRADVAL. En Almindelig Sangbog</title>
+                <imprint>
+                    <date isodate="1573">1573</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Lorenz Benedicht</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>keyb.</abbr>
         <expan>keyboard instrument</expan>
     </choice>
@@ -333,6 +377,21 @@
         <expan>mezzosoprano</expan>
     </choice>
     <choice>
+        <abbr>Mortensøn 1528</abbr>
+        <expan>
+            <bibl label="Mortensøn 1528">
+                <genre>book</genre>
+                <editor>Claus Mortensøn</editor>
+                <title level="m">Thet cristelighe mesßeembedhe</title>
+                <imprint>
+                    <date isodate="1528">1528</date>
+                    <pubPlace>Malmø</pubPlace>
+                    <publisher>Oluf Ulricksøn</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>ob.a.</abbr>
         <expan>oboe d'amore</expan>
     </choice>
@@ -347,6 +406,21 @@
     <choice>
         <abbr>org.</abbr>
         <expan>organo (organ)</expan>
+    </choice>
+    <choice>
+        <abbr>Pedersen 1533</abbr>
+        <expan>
+            <bibl label="Pedersen 1533">
+                <genre>book</genre>
+                <title level="m">[Salmebog]</title>
+                <editor>[Christiern Pedersen]</editor>
+                <imprint>
+                    <date isodate="1533">1533</date>
+                    <pubPlace>Malmø</pubPlace>
+                    <publisher>[Joh. Hoochstraten]</publisher>
+                </imprint>
+            </bibl>
+        </expan>
     </choice>
     <choice>
         <abbr>perc.</abbr>
@@ -429,6 +503,21 @@
         <expan>tamburino (tambourine)</expan>
     </choice>
     <choice>
+        <abbr>Thomissøn 1569</abbr>
+        <expan>
+            <bibl label="Thomissøn 1569">
+                <genre>book</genre>
+                <editor>Hans Thomissøn</editor>
+                <title level="m">Den danske Psalmebog</title>
+                <imprint>
+                    <date isodate="1569">1569</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Lorenz Benedicht</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>timp.</abbr>
         <expan>timpani</expan>
     </choice>
@@ -457,12 +546,40 @@
         <expan>triangolo (triangel)</expan>
     </choice>
     <choice>
+        <abbr>Ulricksøn 1535</abbr>
+        <expan>
+            <bibl label="Ulricksøn 1535">
+                <genre>book</genre>
+                <title level="m">Een handbog som inde holler det hellige Euangeliske Messe embede</title>
+                <imprint>
+                    <date isodate="1535">1535</date>
+                    <pubPlace>Malmø</pubPlace>
+                    <publisher>Oluf Ulricksøn</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>va.</abbr>
         <expan>viola</expan>
     </choice>
     <choice>
         <abbr>vc.</abbr>
         <expan>violoncello</expan>
+    </choice>
+    <choice>
+        <abbr>Vingaard 1553</abbr>
+        <expan>
+            <bibl label="Vingaard 1553">
+                <genre>book</genre>
+                <title level="m">En Ny Psalmebog</title>
+                <imprint>
+                    <date isodate="1553">1553</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Hans Vingaard</publisher>
+                </imprint>
+            </bibl>
+        </expan>
     </choice>
     <choice>
         <abbr>vl.1</abbr>
@@ -487,6 +604,21 @@
     <choice>
         <abbr>vle.</abbr>
         <expan>viole (violas)</expan>
+    </choice>
+    <choice>
+        <abbr>Vormordsen 1539</abbr>
+        <expan>
+            <bibl label="Vormordsen 1539">
+                <genre>book</genre>
+                <editor>Frands Vormordsen</editor>
+                <title level="m">Handbog Om den rette Euangeliske Messe</title>
+                <imprint>
+                    <date isodate="1539">1539</date>
+                    <pubPlace>Malmø</pubPlace>
+                    <publisher>Oluf Ulricksøn</publisher>
+                </imprint>
+            </bibl>
+        </expan>
     </choice>
     <choice>
         <abbr>ww.</abbr>
