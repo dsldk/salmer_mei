@@ -3271,22 +3271,30 @@
 	<!-- Abbreviations marked up with <abbr> -->
 	<xsl:template match="m:abbr">
 		<xsl:variable name="abbr" select="."/>
-		<xsl:variable name="expan" select="$abbreviations[m:abbr=$abbr]/m:expan/node()"/>
-		<a href="javascript:void(0);" class="abbr">
-			<xsl:value-of select="."/>
-			<span class="expan">
-				<xsl:choose>
-					<!-- if the expansion is a nodeset, a <bibl> element for example, process it -->
-					<xsl:when test="$expan/*">
-						<xsl:apply-templates select="$expan"/>
-					</xsl:when>
-					<!-- otherwise just plain text; no further processing -->
-					<xsl:otherwise>
-						<xsl:value-of select="$expan"/>
-					</xsl:otherwise>
-				</xsl:choose>
-			</span>
-		</a>		
+		<xsl:choose>
+			<xsl:when test="$abbreviations[m:abbr=$abbr]">
+				<xsl:variable name="expan" select="$abbreviations[m:abbr=$abbr]/m:expan/node()"/>
+				<a href="javascript:void(0);" class="abbr">
+					<xsl:value-of select="."/>
+					<span class="expan">
+						<xsl:choose>
+							<!-- if the expansion is a nodeset, a <bibl> element for example, process it -->
+							<xsl:when test="$expan/*">
+								<xsl:apply-templates select="$expan"/>
+							</xsl:when>
+							<!-- otherwise just plain text; no further processing -->
+							<xsl:otherwise>
+								<xsl:value-of select="$expan"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</span>
+				</a>		
+			</xsl:when>
+			<xsl:otherwise>
+				<!-- not found. don't resolve -->
+				<xsl:value-of select="."/>
+			</xsl:otherwise>
+		</xsl:choose>
 	</xsl:template>
 
 
