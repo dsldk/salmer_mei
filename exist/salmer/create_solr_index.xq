@@ -19,7 +19,8 @@ let $collection := ''  (: for instance, 'Th_1569'; use empty string to select al
 let $index-doc := 
 <add>
     {
-    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei
+    (: the count clause slows down the process; consider refrasing :)
+    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]
         let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
         let $params := 
