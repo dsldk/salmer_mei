@@ -260,7 +260,12 @@
         
         <xsl:copy>
             <xsl:apply-templates select="@*[name()!='pname' and name()!='oct' and name()!='pnum' and name()!='accid' and name()!='accid.ges']"/>
-            <xsl:variable name="newPitch" select="substring(substring-after($pitchNames,@pname), $pitchNameDistance, 1)"/>
+            <xsl:variable name="newPitch">
+                <xsl:choose>
+                    <xsl:when test="$pitchNameDistance=0"><xsl:value-of select="@pname"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="substring(substring-after($pitchNames,@pname), $pitchNameDistance, 1)"/></xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             <xsl:attribute name="pname"><xsl:value-of select="$newPitch"/></xsl:attribute>
             <!-- calculate octave -->
             <xsl:variable name="pitchSpan">

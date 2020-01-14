@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:m="http://www.music-encoding.org/ns/mei"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    version="1.0" exclude-result-prefixes="m xsl">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" version="1.0" exclude-result-prefixes="m xsl">
     
     <!-- Transpose MEI score n semitones. -->
     <!-- Works with simple(!) scores. Assumptions made: key changes only between bars or sections; simple alterations only; no cautionary accidentals. -->
@@ -263,7 +260,12 @@
         
         <xsl:copy>
             <xsl:apply-templates select="@*[name()!='pname' and name()!='oct' and name()!='pnum' and name()!='accid' and name()!='accid.ges']"/>
-            <xsl:variable name="newPitch" select="substring(substring-after($pitchNames,@pname), $pitchNameDistance, 1)"/>
+            <xsl:variable name="newPitch">
+                <xsl:choose>
+                    <xsl:when test="$pitchNameDistance=0"><xsl:value-of select="@pname"/></xsl:when>
+                    <xsl:otherwise><xsl:value-of select="substring(substring-after($pitchNames,@pname), $pitchNameDistance, 1)"/></xsl:otherwise>
+                </xsl:choose>
+            </xsl:variable>
             <xsl:attribute name="pname"><xsl:value-of select="$newPitch"/></xsl:attribute>
             <!-- calculate octave -->
             <xsl:variable name="pitchSpan">
@@ -299,9 +301,6 @@
                     </xsl:choose>  
                 </xsl:attribute>
             </xsl:if>           
-            
-<xsl:attribute name="test"><xsl:value-of select="$newPitch"/><xsl:value-of select="$oct"/></xsl:attribute>            
-            
             <xsl:apply-templates select="@accid | node()" mode="transpose">
                 <xsl:with-param name="oldKey" select="$oldKey"/>
                 <xsl:with-param name="newKey" select="$newKey"/>
