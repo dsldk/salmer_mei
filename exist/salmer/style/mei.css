@@ -81,8 +81,7 @@
 .mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
 /* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: Georgia, 'times new roman', times, serif; 
-    font-size: 500;  
-    font-weight: bold;
+    font-size: 400;  
 }
 
 /* CSS for non-SVG contents */
@@ -387,6 +386,12 @@ p.loading {
     line-height: 1.6em;
 }
 
+.download {
+    float: right;
+    width: auto;
+    margin-top: 20px;
+}
+
 a.abbr {
     border-bottom: 1px dashed #666;
     cursor: help;   
@@ -449,7 +454,7 @@ a:hover.abbr .expan {
 /* print */
 @media print {
     
-    .mei_menu, .custom_input {
+    .mei_menu, .custom_input, .noprint {
         display: none;
     }
     

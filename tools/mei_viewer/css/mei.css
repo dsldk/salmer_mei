@@ -80,8 +80,7 @@
 .mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
 /* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: Georgia, 'times new roman', times, serif; 
-    font-size: 500;  
-    font-weight: bold;
+    font-size: 400;  
 }
 
 /* CSS for non-SVG contents */
