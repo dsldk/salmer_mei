@@ -381,15 +381,18 @@ table.toc  {
     font-size: 14px;
 }
 
+table.toc th, table.toc td {
+    border: 0px;
+    vertical-align: top;
+}
+
 table.toc th {
     text-align: left; 
     padding: 15px 10px 10px 0;
-    border: 0px;
 }
 
 table.toc td {
     padding: 5px 10px 0 0;
-    border: 0px;
 }
 
 .clickable {

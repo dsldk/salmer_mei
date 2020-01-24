@@ -386,7 +386,7 @@
         <xsl:variable name="table_id" select="concat('toc_',count(preceding::m:contents)+1)"/>
         <table id="{$table_id}" class="toc">
             <tr>
-                <th>
+                <th style="white-space:nowrap;">
                     <xsl:if test="m:contentItem[normalize-space(@label)]">
                         <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)">Nr. 
                             <img src="style/img/sort_up.png" id="{$table_id}_sort_0" width="6" height="6" alt=""/>
@@ -423,7 +423,7 @@
     
     <xsl:template match="m:contentItem">
         <tr>
-            <td><xsl:value-of select="@label"/></td>
+            <td style="white-space:nowrap;"><xsl:value-of select="@label"/></td>
             <td>
                 <xsl:choose>
                     <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
@@ -437,8 +437,8 @@
                 </xsl:choose>
             </td>
             <td><xsl:apply-templates select="m:title[@type='uniform']"/></td>
-            <td><xsl:apply-templates select="m:locus"/></td>
-            <td>
+            <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
+            <td style="white-space:nowrap;">
                 <xsl:if test="m:ptr[@type='edition']">
                     <a href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk">&gt; Tekstnet</a>
                 </xsl:if>
