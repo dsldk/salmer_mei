@@ -376,6 +376,26 @@ p.loading {
     display: table;
 }
 
+table.toc  {
+    border: 0px;
+    font-size: 14px;
+}
+
+table.toc th {
+    text-align: left; 
+    padding: 15px 10px 10px 0;
+    border: 0px;
+}
+
+table.toc td {
+    padding: 5px 10px 0 0;
+    border: 0px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
 .relation_list {
     display: table-row;
 }
