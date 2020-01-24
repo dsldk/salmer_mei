@@ -724,45 +724,6 @@ function sortTable(tableId, n, numeric) {
 }
 
 
-function sortTableOK(tableId, n, numeric) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById(tableId);
-  switching = true;
-  dir = "asc";
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < (rows.length - 1); i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("TD")[n];
-      y = rows[i + 1].getElementsByTagName("TD")[n];
-      xval = numeric ? Number(x.textContent) : x.textContent.toLowerCase() 
-      yval = numeric ? Number(y.textContent) : y.textContent.toLowerCase() 
-      if (dir == "asc") {
-        if (xval > yval) {
-          shouldSwitch = true;
-          break;
-        }
-      } else if (dir == "desc") {
-        if (xval < yval) {
-          shouldSwitch = true;
-          break;
-        }
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      switchcount ++;
-    } else {
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
-        switching = true;
-      }
-    }
-  }
-}
- 
 $(document).ready(function() {        
     console.log("Document ready");
     if(midi) { initMidi() }
