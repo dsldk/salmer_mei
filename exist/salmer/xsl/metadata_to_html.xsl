@@ -427,7 +427,7 @@
             <td>
                 <xsl:choose>
                     <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
-                        <a href="{m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
+                        <a href="document.xq?doc={m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
                             <xsl:apply-templates select="m:title[not(@type)]"/>
                         </a>
                     </xsl:when>
