@@ -260,7 +260,7 @@ function updateFromOptions(id, options) {
 function addComments(data) {
     /* Verovio only handles plain text in <annot>; to support formatting and links, get annotation contents from the data */
     
-    console.log("Retrieveing editorial comments");
+    console.log("Retrieving editorial comments");
     var targetId = $(data.firstChild).attr('targetId')
     // strip off the wrapping <response> element to get the MEI root element
     var xml = data.firstChild;
@@ -333,6 +333,12 @@ function renderData(data) {
     vrvToolkit.loadData(xmlString);
     svg = vrvToolkit.renderToSVG(page, {});
     $("#" + targetId).html(svg);
+
+
+    // adjust the width of the DIV containing the SVG to the SVG's actual width; otherwise it always defaults to the SVG's preferred width (400px); 
+    var bBox = document.getElementById(targetId).firstChild.getBBox();
+    document.getElementById(targetId).style.width = Math.round(bBox.width) + "px";
+    //console.log(' Set ' + targetId + ' SVG width to: ' + Math.round(bBox.width) + 'px');
 
     // Make a list of all <note> IDs 
     $mei[targetId].notes = [];
@@ -411,7 +417,7 @@ function renderData(data) {
     $(".fragment text").each(function() {
         $(this).attr('x','750');
     });
-
+    
 }
 
 
@@ -474,8 +480,9 @@ function createMenu(id){
         if(showOptions) { menu = meiOptionsMenu.replace(/{id}/g, id) + menu}
         if((midi || showPrint || linkToExist) && showOptions) { menu = '<hr class="mei_menu_content"/>' + menu}
         if(midi) { menu = midiMenu.replace(/{id}/g, id) + menu}
-//        if(linkToExist && (midi || showOptions)) { menu = '<hr class="mei_menu_content"/>' + menu}
-        if(menu != '') { menu = '<div class="menu_icon_container"><img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/></div>' + menu; }
+        if(menu != '') { menu = '<div id="' + id + '_menu_container" class="mei_menu_container">\
+                <div class="menu_icon_container"><img src="' + host + 'style/img/menulink.png" alt="menu" class="mei_menu_icon"/></div>\
+                ' + menu + '</div>'; }
         $("#" + id + "_options").html(menu);
         var xml = $mei[id].xml;
         // Add an MDIV select box to the menu if applicable
@@ -496,7 +503,18 @@ function createMenu(id){
             }
         }
         $("#" + id +"_options").css("display","block");
+        moveMenu(id);
     }
+}
+
+// Fix menu positioning
+function moveMenu(id) {
+    // fix order of elements: svg score first, menu last (temporary fix - should be done by XSLT)
+    var $thisMenu = $("#" + id +"_options");
+    $thisMenu.parent().append($thisMenu);
+    
+    $("<div class='clear_both'><!-- DIV to force text to appear below score --></div>").insertAfter($thisMenu.parent());
+    
 }
 
 // Printing

@@ -4,6 +4,12 @@
     margin: 30px 0 20px 0;
 }
 
+.mei {
+    float: left;
+    width: auto;
+    margin-right: 70px;
+}
+
 .mei svg tspan.text {
 /* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: 'Noto Serif', Georgia, 'times new roman', times, serif; 
@@ -211,11 +217,18 @@
 /* Place and format option menus. */
 
 .mei_options {
-    position: absolute;
-    clear: both;
-    padding: 10px 8px;
-    margin:0 0 10px 660px;
+    float: left;
+    width: auto;
+    margin: 10px 0 0 -70px;
     display: none;
+}
+
+.mei_options .mei_menu_container {
+    position: absolute;
+    float: left;
+    width: auto;
+    padding: 10px 8px;
+    margin: 0 0 0 40px;
     background-color: #003b5c; 
     background-color: #888; 
     background-color: #ddd; 
@@ -262,6 +275,7 @@
 .mei_options .mei_menu_icon {
     width: 20px;
     height: 16px;
+    vertical-align: unset; 
 }
 
 /* options menu expand effect */
@@ -269,8 +283,8 @@
     display: none;
 }
 
-.mei_options:hover {
-    z-index: 10;
+.mei_options:hover, .mei_options:hover .mei_menu_container {
+    z-index: 1000;
 }
 
 .mei_options:hover .mei_menu_content {
@@ -407,6 +421,10 @@ table.toc td {
     display: table-cell;
     padding: .5em .5em 0 0;
     line-height: 1.6em;
+}
+
+.tei_vocal_text, .clear_both {
+    clear: both;
 }
 
 .download {
