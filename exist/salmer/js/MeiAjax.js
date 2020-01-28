@@ -418,6 +418,9 @@ function renderData(data) {
         $(this).attr('x','750');
     });
     
+    // break floating layout after score and menu (forcing following elements and text to appear below)
+    $("<div class='clear_both'><!-- clear --></div>").insertAfter($("#" + targetId).parent());
+
 }
 
 
@@ -512,9 +515,6 @@ function moveMenu(id) {
     // fix order of elements: svg score first, menu last (temporary fix - should be done by XSLT)
     var $thisMenu = $("#" + id +"_options");
     $thisMenu.parent().append($thisMenu);
-    
-    $("<div class='clear_both'><!-- DIV to force text to appear below score --></div>").insertAfter($thisMenu.parent());
-    
 }
 
 // Printing
