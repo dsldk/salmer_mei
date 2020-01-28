@@ -418,9 +418,6 @@ function renderData(data) {
         $(this).attr('x','750');
     });
     
-    // break floating layout after score and menu (forcing following elements and text to appear below)
-    $("<div class='clear_both'><!-- clear --></div>").insertAfter($("#" + targetId).parent());
-
 }
 
 
@@ -436,8 +433,13 @@ function loadMeiFromDoc() {
        <div id="Ul_1535_LN0076_000a04vMDIVmdiv-02_options" class="mei_options">
            <div class="highlight_list" style="display:none">Ul_1535_LN0076_000a04v_m-42 Ul_1535_LN0076_000a04v_m-43</div>
        </div> */
+
     $(".mei").each( function() {
         id = $(this).attr("id");
+
+        // break floating layout after score and menu (forcing following elements and text to appear below)
+        $("<div class='clear_both'><!-- clear --></div>").insertAfter($(this).parent());
+
         console.log('Reading ' + id);
         $mei[id] = new meiObj({});
         $mei[id].verovioOptions = $defaultVerovioOptions;
