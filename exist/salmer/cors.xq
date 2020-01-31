@@ -8,12 +8,10 @@ declare namespace xmldb =    "http://exist-db.org/xquery/xmldb";
 declare variable $resource := request:get-parameter("res", "");
 declare variable $origin := request:get-header("origin");
 
+
 (: List of domains allowed to access this resource with Javascript :)
-declare variable $allowed as node():= 
-    <domains>
-        <domain>http://salmer.dsl.lan:8080</domain>
-        <domain>https://tekstnet.dk</domain>
-    </domains>;
+declare variable $allowed as node():= doc("library/cors_domains.xml"); 
+    
 
 let $response := if (util:binary-doc-available($resource))
     then
