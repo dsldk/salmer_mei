@@ -34,12 +34,12 @@
                 </xsl:if>
 			</xsl:variable>
 			<div class="score">
-				<div id="{$id}{$mdivId}_options" class="mei_options">
-					<xsl:comment>MEI options menu will be inserted here</xsl:comment>
-				</div>
 				<div id="{$id}{$mdivId}" class="mei">
 					Henter noder...<br/>
 					<p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p>
+				</div>
+				<div id="{$id}{$mdivId}_options" class="mei_options">
+					<xsl:comment>MEI options menu will be inserted here</xsl:comment>
 				</div>
 <!--				<xsl:if test="$include_data">
 					<script id="{$id}_data" type="text/xml">
