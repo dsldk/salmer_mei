@@ -538,15 +538,14 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	                for $res at $pos in $solrResult/*/*/*[name()="doc"]
     	                let $coll := concat($collection, substring-after($res/*[@name="collection"],$collection))
     	                let $file := doc(concat($coll,"/",$res/*[@name="file"]/string()))
-    	                let $matches := local:get_match_positions($solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1])
-    	                let $highlight_ids := local:highlight_ids($res/*[@name="ids"]/string(), $matches)
     	                let $title := if($res/*[@name="title"]/*/string() != "") 
     	                    then $res/*[@name="title"]/*[1]/string()
     	                    else if (doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()])
     	                    then doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()][1]/string()    
                             else $res/*[@name="file"]/string()
+                        let $rec_type := string-join($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
     	                return
-    	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
+    	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result {$rec_type}">
                                 <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
                                         title="Slå op i salmebasen" class="title">
@@ -555,49 +554,58 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                     </a>
                                     <br/>
                                     {
-                                        let $hit_label := if(count($matches) > 0) 
-                                            then   
-                                                if(count($matches) = 1) then "1 forekomst" else concat(count($matches)," forekomster")
+                                        let $preview := if ($file/m:mei/m:music/m:body/m:mdiv/m:score)
+                                            then
+                            	                let $matches := local:get_match_positions($solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1])
+                            	                let $highlight_ids := local:highlight_ids($res/*[@name="ids"]/string(), $matches)
+                                                let $score_preview :=
+                                                    <div>
+                                                        {
+                                                            let $hit_label := if(count($matches) > 0) 
+                                                                then   
+                                                                    if(count($matches) = 1) then "1 forekomst" else concat(count($matches)," forekomster")
+                                                                else 
+                                                                    ""
+                                                            return $hit_label
+                                                        }
+                                                        {
+                                                            let $excerpts :=
+                                                            if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids] and count($matches) > 0) != count($file//m:mdiv) ) 
+                                                            then " (uddrag vises)" else ""
+                                                            return $excerpts
+                                                        }
+                                                        &#160;
+                                                        <div class="midi_player">
+                                                            <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="Afspil" 
+                                                                onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}');">
+                                                                <span class="symbol"><span class="label">Afspil</span></span> 
+                                                            </div>
+                                                            <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="Stop afspilning" onclick="stop()">
+                                                                <span class="symbol"><span class="label">Stop</span></span> 
+                                                            </div>
+                                                        </div> 
+                                                        <div class="debug">
+                                                        <!--[Solr hits: {$res/*[@name="freq"]}]<br/>-->
+                                                        <!--[Matches: {$matches}]<br/>-->
+                                                        <!--[Highlight: {local:highlight_ids($res/*[@name="ids"]/string(), $matches)}]<br/>-->
+                                                        <!--[Highlight IDs: {$highlight_ids}]<br/>-->
+                                                        <!--[Solr highlight:  {$solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1]}]-->
+                                                        <!--[{count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) } / {count($file//m:mdiv) } dele]-->
+                                                        <!--{substring-after($res/*[@name="collection"],$collection)} -->
+                                                        <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
+                                                        <!--[Title: {$res/*[@name="title"]/*[1]/string()}]-->
+                                                        </div>
+                                                        {
+                                                            local:verovio_match($file, $res/*[@name="id"], $highlight_ids)
+                                                        }
+                                                    </div>
+                                                return $score_preview    
                                             else 
-                                                ""
-                                        return $hit_label
+                                                <div>[ingen nodevisning]</div>
+                                            
+                                        return $preview
                                     }
-                                    {
-                                        let $excerpts :=
-                                        if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids] and count($matches) > 0) != count($file//m:mdiv) ) 
-                                        then " (uddrag vises)" else ""
-                                        return $excerpts
-                                    }
-                                    &#160;
-                                    <div class="midi_player">
-                                        <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="Afspil" 
-                                            onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}');">
-                                            <span class="symbol"><span class="label">Afspil</span></span> 
-                                        </div>
-                                        <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="Stop afspilning" onclick="stop()">
-                                            <span class="symbol"><span class="label">Stop</span></span> 
-                                        </div>
-                                    </div> 
-                                    <div class="debug">
-                                    <!--[Solr hits: {$res/*[@name="freq"]}]<br/>-->
-                                    <!--[Matches: {$matches}]<br/>-->
-                                    <!--[Highlight: {local:highlight_ids($res/*[@name="ids"]/string(), $matches)}]<br/>-->
-                                    <!--[Highlight IDs: {$highlight_ids}]<br/>-->
-                                    <!--[Solr highlight:  {$solrResult/*/*[@name="highlighting"]/*[@name=$res/*[@name="id"]]/*[1]/*[1]}]-->
-                                    <!--[{count($file//m:mdiv[.//m:note/@xml:id = $highlight_ids]) } / {count($file//m:mdiv) } dele]-->
-                                    <!--{substring-after($res/*[@name="collection"],$collection)} -->
-                                    <!--{concat($coll,"/",$res/*[@name="file"]/string())}-->
-                                    <!--[Title: {$res/*[@name="title"]/*[1]/string()}]-->
-                                    </div>
                                 </div>
-                                { 
-                                    let $vrv :=
-                                    if ($file) then
-                                        local:verovio_match($file, $res/*[@name="id"], $highlight_ids) 
-                                    else 
-                                        ""
-                                    return $vrv
-                                }
                             </div>
         	            }
         	            <div>{local:paging($numFound)}</div>
