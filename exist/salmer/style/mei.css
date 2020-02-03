@@ -183,14 +183,14 @@
     margin-left: 24px;
 }
 
-.midi_button.document {
-    background-image: url("img/document.png");
+.midi_button.music_document {
+    background-image: url("img/music_document.png");
     background-position: 1px 1px;
     background-repeat: no-repeat;
 }
 
-.exist_link a:hover .midi_button.document {
-    background-image: url("img/document_hi.png");
+.exist_link a:hover .midi_button.music_document {
+    background-image: url("img/music_document_hi.png");
 }
 
 .midi_button.print {
@@ -366,10 +366,45 @@ p.loading {
     color: #777;
 }
 
+
+.searchWrapper {
+    background-color: #245270; 
+}
+
+/* Item class styles */
+
+.music_document, .result_list .title.music_document {
+    background-color: #536d7e;
+}
+
+.publication, .result_list .title.publication {
+    background-color: #537e6e;
+}
+
+.collection, .result_list .title.collection {
+    background-color: #7e7353;
+}
+
+.melody, .result_list .title.melody {
+    background-color: #60537e;
+}
+
+.liturgy, .result_list .title.liturgy {
+    background-color: #7e5353;
+}
+
+.topic, .result_list .title.topic {
+    background-color: #666666;
+}
+
 .page_head_title {
     font-size: 15pt;
     color: #777;
     margin-left: 20px;
+}
+
+.wait, .wait * {
+    cursor: wait;
 }
 
 .wait_overlay {

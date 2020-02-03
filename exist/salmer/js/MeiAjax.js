@@ -155,7 +155,7 @@ var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
             <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">\
-                <div class="midi_button document" title="Slå op i salmebasen">\
+                <div class="midi_button music_document" title="Slå op i salmebasen">\
                     <span class="label">Slå op i salmebasen</span>\
                 </div>\
             </a>\
@@ -688,12 +688,14 @@ function resetOptions(id) {
         document.getElementById('mdiv-select_' + id).innerHTML = '';
     }
 }
- 
+
 // HTML table sorting 
 // adapted from https://www.w3schools.com/howto/howto_js_sort_table.asp
 function sortTable(tableId, n, numeric) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById(tableId);
+//  $("#" + tableId).addClass("wait");
+//  table.classList.add("wait"); 
   switching = true;
   dir = "asc";
   while (switching) {
@@ -740,7 +742,9 @@ function sortTable(tableId, n, numeric) {
       document.getElementById(tableId + "_sort_" + i).src = "/style/img/sort_no.png";
     }
   }
-  
+//  $("#" + tableId).removeClass("wait");
+//  table.classList.remove("wait"); 
+
 }
 
 

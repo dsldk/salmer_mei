@@ -64,6 +64,8 @@ let $list :=
 
 let $title := $list//m:workList/m:work[1]/m:title[string()][not(@type/string())][1]/string()
 
+let $rec_type := string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
+
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -121,7 +123,7 @@ let $result :=
 	   {doc(concat($database,"/assets/page_head.html"))}
 	   
 	   <!-- Search -->
-	   <div class="searchWrapper box-gradient-blue search subpage-search">
+	   <div class="searchWrapper search subpage-search {$rec_type}">
     	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="title_form">
             	   <p><label class="input-label left-margin" for="pnames">Titelsøgning</label>

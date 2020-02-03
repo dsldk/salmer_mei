@@ -235,7 +235,7 @@ declare function local:check_publications() as node()* {
                 else 
                 <input xmlns="http://www.w3.org/1999/xhtml" type="checkbox" name="x" id="{$publ/dsl:id/text()}" value="{$pos}" onchange="publClicked();"/> 
             return 
-                <div xmlns="http://www.w3.org/1999/xhtml" class="publication">
+                <div xmlns="http://www.w3.org/1999/xhtml" class="publicationCheckbox">
                     {$checkbox}
                     <label class="input-label" for="{$publ/dsl:id/text()}"><span class="checkbox_title">{$publ/dsl:title/text()}</span> 
                     ({$publ/dsl:year/text()})</label>
@@ -337,7 +337,7 @@ let $result :=
 	</head>
 	<body class="metadata" onload="document.getElementById('{$active_tab}').click();">
 	   {doc(concat($collection,"/assets/page_head.html"))}
-	   <div class="searchWrapper box-gradient-blue search">
+	   <div class="searchWrapper search">
     	   <div class="search_options search-bg">
                 <div class="search_block search_block_narrow">
                     <form action="" method="get" class="form" id="publ_form">
@@ -545,11 +545,17 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             else $res/*[@name="file"]/string()
                         let $rec_type := string-join($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
     	                return
-    	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result {$rec_type}">
+    	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                 <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
-                                        title="Slå op i salmebasen" class="title">
-                                        <span><!--{$from + $pos - 1}. -->{$title} ({$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string()}, 
+                                        title="Slå op i salmebasen" class="title {$rec_type}">
+                                        <span><!--{$from + $pos - 1}. -->{$title} ({
+                                            let $pub_title := if (not(contains($rec_type,'publication'))) then
+                                                concat($publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string(),', ')
+                                                else
+                                                ""
+                                             return $pub_title
+                                            } 
                                         {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
                                     </a>
                                     <br/>

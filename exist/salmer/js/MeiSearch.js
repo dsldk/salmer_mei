@@ -116,6 +116,31 @@ function render_query(data) {
     document.getElementById("pQueryOut").innerHTML = svg;
 }
 
+function make_mei_from_piano() {
+// preparations for rendering MEI instead of PAE...
+    var mei1 = '<?xml version="1.0"?>\
+<score>\
+    <section>\
+        <scoreDef>\
+            <staffGrp>\
+                <staffDef clef.shape="G" clef.line="2" n="1" lines="5" />\
+            </staffGrp>\
+        </scoreDef>\
+        <section>\
+            <measure right="invis">\
+                <staff n="1">\
+                    <layer n="1">'
+    var mei2 = '\
+                    </layer>\
+                </staff>\
+            </measure>\
+        </section>\
+    </section>\
+</score>'
+    var note = '<note dur="4" stem.length="0" oct="4" pitchname="c"/>' 
+}
+
+
 function initPiano() {
     $(".key").each(function() {
         $(this).click(function(event) {
@@ -156,15 +181,15 @@ function updateAction() {
 
 function allPublClicked() {
     if(document.getElementById("allPubl").checked) {
-        $('.publication input').prop('checked', true);
+        $('.publicationCheckbox input').prop('checked', true);
     } else {
-        $('.publication input').prop('checked', false);
+        $('.publicationCheckbox input').prop('checked', false);
     }
 }
 
 function publClicked() {
-    var all = $(".publication input").length;
-    var checked = $(".publication input:checked").length;
+    var all = $(".publicationCheckbox input").length;
+    var checked = $(".publicationCheckbox input:checked").length;
     if(checked < all) {
         $('#allPubl').prop('checked', false);
     } else {
