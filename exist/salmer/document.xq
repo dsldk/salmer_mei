@@ -62,7 +62,7 @@ let $list :=
     where util:document-name($doc)=$filename
     return $doc
 
-let $title := $list//m:workList/m:work[1]/m:title[string()][not(@type/string())][1]/string()
+let $title := $list//m:workList/m:work[1]/m:title[string()][1]/string()
 
 let $rec_type := string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
 

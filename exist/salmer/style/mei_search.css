@@ -94,7 +94,8 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 .result_list .title {
-    background-color: #536d7e;
+    background-color: #245270;
+    /* #536d7e; */
     border-radius: 6px;
     color: white;
     font-weight: bold;
@@ -105,35 +106,6 @@ a.paging, a.paging:visited, a.paging:active {
     background-repeat: no-repeat;
     height: 25px;
 }
-
-.result_list .title.music_document {
-    background-image: url("img/music_document_white.png");
-}
-
-.result_list .title.publication {
-    background-image: url("img/book_white.png");
-}
-
-.result_list .title.collection {
-    background-image: url("img/collection_white.png");
-}
-
-.result_list .title.melody {
-    background-image: url("img/melody_white.png");
-}
-
-.result_list .title.liturgy {
-    background-image: url("img/liturgy_white.png");
-}
-
-.result_list .title.topic {
-    background-image: url("img/topic_white.png");
-}
-
-.result_list .title.document {
-    background-image: url("img/document_white.png");
-}
-
 
 .result_list .title:hover {
     text-decoration: none;

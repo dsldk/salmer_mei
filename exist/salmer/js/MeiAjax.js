@@ -155,7 +155,7 @@ var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
             <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">\
-                <div class="midi_button music_document" title="Slå op i salmebasen">\
+                <div class="midi_button database" title="Slå op i salmebasen">\
                     <span class="label">Slå op i salmebasen</span>\
                 </div>\
             </a>\
@@ -165,9 +165,7 @@ var existMenu = '\
 var meiOptionsMenu = ' \
     <div class="mei_menu_content"> \
         <form id="optionsForm_{id}" action="https://salmer.dsl.dk/print.xq" method="GET" target="_blank" class="mei_menu"> \
-            <div class="menu_block">\
-                <label for="clef_{id}">N&oslash;gle: </label> \
-                <br/> \
+            <div class="menu_block">N&oslash;gle:<br/>\
                 <input type="hidden" name="doc" value="{id}.xml"/>\
                 <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp" title="Original nøgle">Original</label> &#160;&#160; \
                 <input type="radio" name="clef" id="Gclef_{id}" value="G" onchange="updateFromForm(\'{id}\')"/> <label for="Gclef_{id}" class="musical_symbols cursorHelp" title="G-nøgle på 2. linje">&#x1d11e;</label> &#160;&#160; \
@@ -175,17 +173,13 @@ var meiOptionsMenu = ' \
                 <input type="radio" name="clef" id="Fclef_{id}" value="F" onchange="updateFromForm(\'{id}\')"/> <label for="Fclef_{id}" class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</label> &#160;&#160; \
             </div> \
             <hr/> \
-            <div class="menu_block">\
-                <label for="factor_{id}">Nodeværdier: </label> \
-                <br/> \
+            <div class="menu_block">Nodeværdier:<br/> \
                 <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="factor_{id}" class="cursorHelp" title="Originale nodeværdier">1:1</label>&#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="2" id="factor2_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor2_{id}" class="cursorHelp" title="Halve nodeværdier">1:2</label> &#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="4" id="factor4_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor4_{id}" class="cursorHelp" title="Kvarte nodeværdier">1:4</label> &#160;&#160;&#160;&#160; \
             </div>\
             <hr/> \
-            <div class="menu_block">\
-                <label for="transposeVal_{id}">Transposition: </label> \
-                <br/> \
+            <div class="menu_block">Transposition:<br/> \
                 <select id="transposeVal_{id}" name="transposeVal" onchange="updateFromForm(\'{id}\')" class="custom_input"> \
                     <option value="0">Ingen</option> \
                     <option value="1">Lille sekund</option> \

@@ -47,6 +47,10 @@
         <xsl:value-of select="/m:mei/m:meiHead/m:fileDesc/m:seriesStmt/m:identifier[@type='file_collection'][1]"/>
     </xsl:variable>
     
+    <xsl:variable name="rec_type">
+        <xsl:value-of select="string-join(/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type='itemClass']/text(),' ')"/>
+    </xsl:variable>
+    
     <!-- files containing look-up information -->
     <xsl:variable name="bibl_file_name" select="concat($base_uri,'/library/standard_bibliography.xml')"/>
     <xsl:variable name="bibl_file" select="document($bibl_file_name)"/>
@@ -148,6 +152,9 @@
             <a href="{$base_file_uri}/{$filename}" title="Download som MEI XML" target="_blank">MEI<!--<img src="{$base_uri}/style/images/xml.gif" alt="XML" border="0"/>--></a>
         </div>
         
+        <!-- related files -->
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList"/>
+        
         <!-- work title -->
         <xsl:apply-templates select="m:meiHead/m:workList/m:work" mode="titles"/>
         
@@ -184,9 +191,6 @@
             <xsl:apply-templates select="."/>
         </xsl:for-each>
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links'][m:ptr[normalize-space(@target)]]" mode="link_list_p"/>
-        
-        <!-- related files -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList"/>
         
         <!-- work history -->
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:creation[//text()]"/>
@@ -262,8 +266,8 @@
     
     <xsl:template match="m:meiHead/m:workList/m:work" mode="titles">
         <!--  Work title -->
-        <xsl:if test="m:title[@type='main' or not(@type)][text()]">
-            <xsl:for-each select="m:title[@type='main' or not(@type)][text()]">
+        <xsl:if test="m:title[@type='main' or not(@type) or (contains($rec_type,'melody') and @type='uniform')][text()]">
+            <xsl:for-each select="m:title[@type='main' or not(@type) or (contains($rec_type,'melody') and @type='uniform')][text()]">
                 <xsl:variable name="lang" select="@xml:lang"/>
                 <xsl:variable name="pos" select="count(preceding-sibling::m:title[@xml:lang=$lang]) + 1"/>
                 <xsl:variable name="language_class">
@@ -304,7 +308,7 @@
         <!-- don't forget subtitles/alternative titles in other languages than the main title(s) -->
         <xsl:for-each select="m:title[@type='subordinate' and text()]">
             <xsl:variable name="lang" select="@xml:lang"/>
-            <xsl:if test="not(../m:title[(@type='main' or not(@type)) and text() and @xml:lang=$lang])">
+            <xsl:if test="not(../m:title[(@type='main' or not(@type) or (contains($rec_type,'melody') and @type='uniform')) and text() and @xml:lang=$lang])">
                 <h2 class="subtitle">
                     <span class="alternative_language">
                         <xsl:apply-templates select="."/>
@@ -314,7 +318,7 @@
         </xsl:for-each>
         <xsl:for-each select="m:title[@type='alternative' and text()]">
             <xsl:variable name="lang" select="@xml:lang"/>
-            <xsl:if test="not(../m:title[(@type='main' or not(@type)) and text() and @xml:lang=$lang])">
+            <xsl:if test="not(../m:title[(@type='main' or not(@type) or (contains($rec_type,'melody') and @type='uniform')) and text() and @xml:lang=$lang])">
                 <xsl:element name="h2">
                     <xsl:element name="span">
                         <xsl:call-template name="maybe_print_lang"/>(<xsl:apply-templates select="."/>)</xsl:element>
@@ -474,75 +478,49 @@
         <!-- this detour is necessary to enable overriding the default behaviour in 
             style sheets including this one (e.g., a print style sheet) -->
     </xsl:template>
-    
+
     <xsl:template match="m:relationList" mode="relation_list">
         <xsl:if test="m:relation[@target!='']">
-            <!-- loop through relations, but skip those where @label contains a ":";  -->
-            <!-- also skip "hasPart" relations if there is a table of contents -->
-            <xsl:for-each select="m:relation[@rel!='' and not(normalize-space(substring-after(@label,':')))                 and(not(../../m:contents) or @rel!='hasPart')]">
-                <xsl:variable name="rel" select="@rel"/>
-                <xsl:if test="count(preceding-sibling::*[@rel=$rel])=0">
-                    <!-- one <div> per relation type -->
-                    <div class="list_block">
-                        <div class="relation_list">
-                            <xsl:variable name="label">
-                                <xsl:call-template name="translate_relation">
-                                    <xsl:with-param name="label" select="@label"/>
-                                    <xsl:with-param name="rel" select="@rel"/>
-                                </xsl:call-template>
-                            </xsl:variable>
-                            <xsl:if test="$label!=''">
-                                <div class="p_heading relation_list_label">
-                                    <xsl:value-of select="$label"/>
-                                </div>
-                            </xsl:if>
-                            <xsl:if test="../m:relation[@rel=$rel or substring-before(@label,':')=$rel]">
-                                <div class="relations">
-                                    <xsl:for-each select="../m:relation[@rel=$rel and not(normalize-space(substring-after(@label,':')))]">
-                                        <xsl:apply-templates select="." mode="relation_link"/>
-                                        <xsl:if test="position()!=last()">
-                                            <br/>
-                                        </xsl:if>
-                                    </xsl:for-each>
-                                </div>
-                            </xsl:if>
-                        </div>
-                    </div>
-                </xsl:if>
-            </xsl:for-each>
-            <!-- relations with @label containing ":" use the part before the ":" as label instead -->
-            <xsl:for-each select="m:relation[@rel!='' and normalize-space(substring-after(@label,':'))]">
-                <xsl:variable name="label" select="substring-before(@label,':')"/>
-                <xsl:if test="count(preceding-sibling::*[substring-before(@label,':')=$label])=0">
-                    <!-- one <div> per relation type -->
-                    <div class="list_block">
-                        <div class="relation_list">
-                            <xsl:if test="$label!=''">
-                                <div class="p_heading relation_list_label">
-                                    <xsl:value-of select="$label"/>: </div>
-                            </xsl:if>
-                            <xsl:if test="../m:relation[substring-before(@label,':')=$label]">
-                                <div class="relations">
-                                    <xsl:for-each select="../m:relation[substring-before(@label,':')=$label]">
-                                        <xsl:apply-templates select="." mode="relation_link"/>
-                                        <xsl:if test="position()!=last()">
-                                            <br/>
-                                        </xsl:if>
-                                    </xsl:for-each>
-                                </div>
-                            </xsl:if>
-                        </div>
-                    </div>
-                </xsl:if>
-            </xsl:for-each>
-            <xsl:if test="m:relation[not(@rel) or @rel='']">
-                <!-- this shouldn't really be necessary - relations without @rel are not valid -->
-                <div>
-                    <xsl:for-each select="m:relation[not(@rel) or @rel='']">
-                        <xsl:apply-templates select="." mode="relation_link"/>
-                    </xsl:for-each>
-                </div>
-            </xsl:if>
+           <div class="list_block">
+               <!-- loop through relations, but skip those where @label contains a ":";  -->
+               <!-- also skip "hasPart" relations if there is a table of contents -->
+               <xsl:for-each select="m:relation[@rel!='' and not(normalize-space(substring-after(@label,':')))
+                   and(not(../../m:contents) or @rel!='hasPart')]">
+                   <xsl:variable name="class">
+                       <xsl:if test="doc-available(concat($base_uri,'/',$datadir,'/',@target))">
+                           <xsl:value-of select="document(concat($base_uri,'/',$datadir,'/',@target))/m:mei/m:meiHead/m:workList/m:work[1]/m:classification/m:termList/m:term[@type='itemClass'][1]/text()"/>
+                       </xsl:if>
+                   </xsl:variable>
+                   <div class="relation {$class}">
+                       <xsl:apply-templates select="." mode="relation_link"/>
+                   </div>
+               </xsl:for-each>
+               <!-- relations with @label containing ":" use the part before the ":" as label instead -->
+               <xsl:for-each select="m:relation[@rel!='' and normalize-space(substring-after(@label,':'))]">
+                   <xsl:variable name="label" select="substring-before(@label,':')"/>
+                   <xsl:if test="count(preceding-sibling::*[substring-before(@label,':')=$label])=0">
+                       <!-- one <div> per relation type -->
+                       <div class="list_block">
+                           <div class="relation_list">
+                               <xsl:if test="$label!=''">
+                                   <div class="p_heading relation_list_label">
+                                       <xsl:value-of select="$label"/>: </div>
+                               </xsl:if>
+                               <xsl:if test="../m:relation[substring-before(@label,':')=$label]">
+                                   <div class="relations">
+                                       <xsl:for-each select="../m:relation[substring-before(@label,':')=$label]">
+                                           <xsl:apply-templates select="." mode="relation_link"/>
+                                           <xsl:if test="position()!=last()">
+                                               <br/>
+                                           </xsl:if>
+                                       </xsl:for-each>
+                                   </div>
+                               </xsl:if>
+                           </div>
+                       </div>
+                   </xsl:if>
+               </xsl:for-each>
+           </div>
         </xsl:if>
     </xsl:template>
     
@@ -573,7 +551,6 @@
                 <br/>
             </xsl:if>
         </xsl:for-each>
-        
     </xsl:template>
     
     <xsl:template match="m:relation" mode="relation_link">
@@ -617,6 +594,12 @@
             <xsl:with-param name="class"/>
             <xsl:with-param name="text">
                 <xsl:value-of select="$label"/>
+            </xsl:with-param>
+            <xsl:with-param name="relation">
+                <xsl:call-template name="translate_relation">
+                    <xsl:with-param name="label" select="@label"/>
+                    <xsl:with-param name="rel" select="@rel"/>
+                </xsl:call-template>
             </xsl:with-param>
         </xsl:apply-templates>
         <!--<a href="{$href}" title="{$label}"><xsl:value-of select="$label"/></a>-->
@@ -663,8 +646,9 @@
         <xsl:param name="title"/>
         <xsl:param name="class"/>
         <xsl:param name="text"/>
+        <xsl:param name="relation"/>
         <a href="{$href}" title="{$title}" class="{$class}">
-            <xsl:value-of select="$text"/>
+            <xsl:value-of select="concat($relation,' ',$text)"/>
         </a>
     </xsl:template>
     
