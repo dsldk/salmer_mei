@@ -172,7 +172,7 @@ function updateAction() {
     // generate a string containing the publications to be searched
     var q = "";
     if(document.getElementById("allPubl").checked === false) {
-        $(".publication input").each(function() {
+        $(".publicationCheckbox input").each(function() {
             if($(this).is(":checked")){q += $(this).attr("value") + ","}
         }) 
     }
