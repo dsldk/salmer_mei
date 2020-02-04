@@ -51,6 +51,15 @@
     <web_sites>Websider</web_sites>
     <written_in>Skrevet med</written_in> <!-- refers to writing medium (e.g., "Written in pencil") -->
 
+    <!-- Record types (item classes) -->
+    <collection>Samling</collection>
+    <liturgy>Liturgisk enhed</liturgy>
+    <melody>Melodi</melody>
+    <music_document>Melodi i publikation</music_document>
+    <publication>Publikation</publication>
+    <text_document>Tekst</text_document>
+    <topic>Emne</topic>
+    
     <!-- Source classifications -->
     <notated_music>noder</notated_music>
     <text>tekst</text>

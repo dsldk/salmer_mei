@@ -390,7 +390,7 @@ p.loading {
     display: block;
     padding: 2px 5px 0 34px;
     background-image: url("img/music_document_white.png");
-    background-position: 10px 5px;
+    background-position: 4px 4px;
     background-repeat: no-repeat;
     height: 25px;
 }
@@ -409,7 +409,18 @@ p.loading {
     -ms-filter: brightness(1.15);    
 }
 
+.toc .relation {
+    margin: 0;
+    padding: 0 0 0 20px;
+}
 
+.toc .relation:hover {
+    filter: none;
+    -webkit-filter: none;
+    -moz-filter: none;
+    -o-filter: none;
+    -ms-filter: none;    
+}
 
 /* Item class styles */
 
@@ -436,6 +447,10 @@ p.loading {
 .liturgy, .result_list .title.liturgy {
     background-color: #664343; 
     /* #7e5353; */
+}
+
+.text, .result_list .title.text {
+    background-color: #444c64;
 }
 
 .topic, .result_list .title.topic {
@@ -468,8 +483,42 @@ p.loading {
     background-image: url("img/topic_white.png");
 }
 
-.result_list .title.document {
-    background-image: url("img/document_white.png");
+.result_list .title.text {
+    background-image: url("img/text_white.png");
+}
+
+
+.toc .music_document {
+    background-image: url("img/music_document.png");
+}
+
+.toc .publication {
+    background-image: url("img/book.png");
+}
+
+.toc .collection {
+    background-image: url("img/collection.png");
+}
+
+.toc .melody {
+    background-image: url("img/melody.png");
+}
+
+.toc .liturgy {
+    background-image: url("img/liturgy.png");
+}
+
+.toc .topic {
+    background-image: url("img/topic.png");
+}
+
+.toc .text {
+    background-image: url("img/text.png");
+}
+
+.toc .music_document, .toc .publication, .toc .collection, .toc .melody, 
+.toc .liturgy, .toc .topic, .toc .text {
+    background-color: inherit;
 }
 
 

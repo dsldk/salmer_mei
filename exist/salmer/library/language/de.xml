@@ -51,6 +51,15 @@
     <web_sites>Webseiten</web_sites>
     <written_in>Schreibmedium:</written_in> <!-- refers to writing medium (e.g., "Written in pencil"), groß oder Kleinschreibung hängt von Position ab -->
 
+    <!-- Record types (item classes) -->
+    <collection>Sammlung</collection>
+    <liturgy>Liturgischer Kontext</liturgy>
+    <melody>Melodie</melody>
+    <music_document>Melodie in Publikation</music_document>
+    <publication>Publikation</publication>
+    <text_document>Text</text_document>
+    <topic>Thema</topic>
+    
     <!-- Source classifications -->
     <notated_music>Noten</notated_music>
     <text>Text</text>

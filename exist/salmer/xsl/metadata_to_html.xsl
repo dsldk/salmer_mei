@@ -398,16 +398,21 @@
                     </xsl:if>
                 </th>
                 <th>
+                    <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)"> 
+                        <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
+                    </span>
+                </th>
+                <th>
                     <xsl:if test="m:contentItem/m:title/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)">Titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Titel 
+                            <img src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                 </th>
                 <th>
                     <xsl:if test="m:contentItem/m:title[@type='uniform']/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Normaliseret titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',3,false)">Normaliseret titel 
+                            <img src="style/img/sort_no.png" id="{$table_id}_sort_3" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                     <!-- pre-load images -->
@@ -429,6 +434,12 @@
         <tr>
             <td style="white-space:nowrap;"><xsl:value-of select="@label"/></td>
             <td>
+                <xsl:if test="@type">
+                    <xsl:variable name="type" select="@type"/>
+                    <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}">&#160;</div>&#160;
+                </xsl:if>
+            </td>
+            <td>
                 <xsl:choose>
                     <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
                         <a href="document.xq?doc={m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
@@ -449,7 +460,7 @@
             </td>
         </tr>
     </xsl:template>
-    
+        
     
     <!-- Relations -->
     <xsl:template match="m:relationList" mode="link_without_label">
@@ -484,41 +495,17 @@
            <div class="list_block">
                <!-- loop through relations, but skip those where @label contains a ":";  -->
                <!-- also skip "hasPart" relations if there is a table of contents -->
-               <xsl:for-each select="m:relation[@rel!='' and not(normalize-space(substring-after(@label,':')))
-                   and(not(../../m:contents) or @rel!='hasPart')]">
+               <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart')]">
                    <xsl:variable name="class">
-                       <xsl:if test="doc-available(concat($base_uri,'/',$datadir,'/',@target))">
-                           <xsl:value-of select="document(concat($base_uri,'/',$datadir,'/',@target))/m:mei/m:meiHead/m:workList/m:work[1]/m:classification/m:termList/m:term[@type='itemClass'][1]/text()"/>
-                       </xsl:if>
+                       <xsl:call-template name="get_rec_type">
+                           <xsl:with-param name="target" select="@target"/>
+                       </xsl:call-template>
                    </xsl:variable>
                    <div class="relation {$class}">
-                       <xsl:apply-templates select="." mode="relation_link"/>
+                       <xsl:apply-templates select="." mode="relation_link">
+                           <xsl:with-param name="rec_type" select="$class"></xsl:with-param>
+                       </xsl:apply-templates>
                    </div>
-               </xsl:for-each>
-               <!-- relations with @label containing ":" use the part before the ":" as label instead -->
-               <xsl:for-each select="m:relation[@rel!='' and normalize-space(substring-after(@label,':'))]">
-                   <xsl:variable name="label" select="substring-before(@label,':')"/>
-                   <xsl:if test="count(preceding-sibling::*[substring-before(@label,':')=$label])=0">
-                       <!-- one <div> per relation type -->
-                       <div class="list_block">
-                           <div class="relation_list">
-                               <xsl:if test="$label!=''">
-                                   <div class="p_heading relation_list_label">
-                                       <xsl:value-of select="$label"/>: </div>
-                               </xsl:if>
-                               <xsl:if test="../m:relation[substring-before(@label,':')=$label]">
-                                   <div class="relations">
-                                       <xsl:for-each select="../m:relation[substring-before(@label,':')=$label]">
-                                           <xsl:apply-templates select="." mode="relation_link"/>
-                                           <xsl:if test="position()!=last()">
-                                               <br/>
-                                           </xsl:if>
-                                       </xsl:for-each>
-                                   </div>
-                               </xsl:if>
-                           </div>
-                       </div>
-                   </xsl:if>
                </xsl:for-each>
            </div>
         </xsl:if>
@@ -555,6 +542,7 @@
     
     <xsl:template match="m:relation" mode="relation_link">
         <!-- internal cross references between works in the catalogue are treated in a special way -->
+        <xsl:param name="rec_type"/>
         <xsl:variable name="mermeid_crossref">
             <xsl:choose>
                 <xsl:when test="contains(@target,'://') or contains(@target,'#')">false</xsl:when>
@@ -584,73 +572,16 @@
                 <xsl:value-of select="@target"/>
             </xsl:if>
         </xsl:variable>
-        <xsl:apply-templates select="." mode="relation_reference">
-            <xsl:with-param name="href">
-                <xsl:value-of select="$href"/>
-            </xsl:with-param>
-            <xsl:with-param name="title">
-                <xsl:value-of select="$label"/>
-            </xsl:with-param>
-            <xsl:with-param name="class"/>
-            <xsl:with-param name="text">
-                <xsl:value-of select="$label"/>
-            </xsl:with-param>
-            <xsl:with-param name="relation">
-                <xsl:call-template name="translate_relation">
-                    <xsl:with-param name="label" select="@label"/>
-                    <xsl:with-param name="rel" select="@rel"/>
-                </xsl:call-template>
-            </xsl:with-param>
-        </xsl:apply-templates>
-        <!--<a href="{$href}" title="{$label}"><xsl:value-of select="$label"/></a>-->
-        <xsl:if test="$mermeid_crossref='true'">
-            <!-- get collection name and number from linked files -->
-            <!-- XXX -->
-            <!--            <xsl:variable name="fileName"
-                select="concat($base_file_uri,'/',@target)"/> <xsl:variable name="linkedDoc"
-                select="document($fileName)"/>
-                <xsl:variable name="file_context"
-                select="$linkedDoc/m:mei/m:meiHead/m:fileDesc/m:seriesStmt/m:identifier[@type='file_collection']"
-                /> <xsl:variable name="catalogue_no"
-                select="$linkedDoc/m:mei/m:meiHead/m:workList/m:work/m:identifier[@label=$file_context]"
-                /> <xsl:variable name="output">
-                <xsl:value-of select="$file_context"/>
-                <xsl:text> </xsl:text>
-                <xsl:choose>
-                <xsl:when test="string-length($catalogue_no)>11">
-                <xsl:variable name="part1" select="substring($catalogue_no, 1, 11)"/>
-                <xsl:variable name="part2" select="substring($catalogue_no, 12)"/>
-                <xsl:variable name="delimiter"
-                select="substring(concat(translate($part2,'0123456789',''),' '),1,1)"/>
-                <xsl:value-of
-                select="concat($part1,substring-before($part2,$delimiter),'...')"/>
-                </xsl:when>
-                <xsl:otherwise>
-                <xsl:value-of select="$catalogue_no"/>
-                </xsl:otherwise>
-                </xsl:choose>
-                </xsl:variable>
-                <xsl:if test="normalize-space($catalogue_no)!=''">
-                <xsl:apply-templates select="." mode="relation_reference">
-                <xsl:with-param name="href"><xsl:value-of select="$href"/></xsl:with-param>
-                <xsl:with-param name="title"><xsl:value-of select="$label"/></xsl:with-param>
-                <xsl:with-param name="class">work_number_reference</xsl:with-param>
-                <xsl:with-param name="text"><xsl:value-of select="$output"/></xsl:with-param>
-                </xsl:apply-templates>
-                </xsl:if>-->
-        </xsl:if>
-    </xsl:template>
-    
-    <xsl:template match="*" mode="relation_reference">
-        <xsl:param name="href"/>
-        <xsl:param name="title"/>
-        <xsl:param name="class"/>
-        <xsl:param name="text"/>
-        <xsl:param name="relation"/>
-        <a href="{$href}" title="{$title}" class="{$class}">
-            <xsl:value-of select="concat($relation,' ',$text)"/>
+        <xsl:variable name="relation">
+            <xsl:call-template name="translate_relation">
+                <xsl:with-param name="label" select="@label"/>
+                <xsl:with-param name="rel" select="@rel"/>
+            </xsl:call-template>
+        </xsl:variable>
+        <a href="{$href}" title="{concat($l/*[name()=$rec_type],': ',$label)}">
+            <xsl:value-of select="$label"/>
         </a>
-    </xsl:template>
+    </xsl:template>    
     
     <xsl:template name="translate_relation">
         <xsl:param name="rel"/>
@@ -682,6 +613,21 @@
         <xsl:call-template name="capitalize">
             <xsl:with-param name="str" select="concat($display_label,': ')"/>
         </xsl:call-template>
+    </xsl:template>
+    
+    <xsl:template name="get_rec_type">
+        <xsl:param name="target"/>
+        <xsl:if test="doc-available(concat($base_uri,'/',$datadir,'/',$target))">
+            <xsl:variable name="termList" select="document(concat($base_uri,'/',$datadir,'/',$target))/m:mei/m:meiHead/m:workList/m:work[1]/m:classification/m:termList"/>
+            <xsl:choose>
+                <xsl:when test="$termList/m:term[@type='itemClass']">
+                    <xsl:value-of select="$termList/m:term[@type='itemClass'][1]/text()"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>music_document</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="m:expression" mode="top_level">

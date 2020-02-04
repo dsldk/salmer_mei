@@ -725,7 +725,7 @@ function sortTable(tableId, n, numeric) {
     }
   }
   // update sort indicators
-  for (i = 0; i < 3; i++) {
+  for (i = 0; i < 4; i++) {
     if (i == n) {
       if (dir == "asc") {
         document.getElementById(tableId + "_sort_" + i).src = "/style/img/sort_up.png";
