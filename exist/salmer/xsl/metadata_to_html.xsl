@@ -436,7 +436,7 @@
             <td>
                 <xsl:if test="@type">
                     <xsl:variable name="type" select="@type"/>
-                    <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}">&#160;</div>&#160;
+                    <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> </div> 
                 </xsl:if>
             </td>
             <td>
@@ -503,7 +503,7 @@
                    </xsl:variable>
                    <div class="relation {$class}">
                        <xsl:apply-templates select="." mode="relation_link">
-                           <xsl:with-param name="rec_type" select="$class"></xsl:with-param>
+                           <xsl:with-param name="rec_type" select="$class"/>
                        </xsl:apply-templates>
                    </div>
                </xsl:for-each>

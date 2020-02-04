@@ -65,6 +65,11 @@ let $list :=
 
 let $title := $list//m:workList/m:work[1]/m:title[string()][not(@type/string())][1]/string()
 
+let $rec_type := if($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])
+    then 
+        string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
+    else "music_document"
+
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -90,7 +95,13 @@ let $result :=
 
         <div>
             <!-- Metadata -->
-            <div class="publication">
+            <div class="title">
+                {
+                    let $img_src := if(contains($rec_type,' '))
+                        then substring-before($rec_type,' ')
+                        else $rec_type
+                    return <img src="/style/img/{$img_src}.png" alt="{$rec_type}" style="margin-right:5px;"/> 
+                }
                 {
                     let $this_publ := if($index//dsl:pub[dsl:mei_coll=$coll])
                         then concat($index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:title," ")
@@ -152,7 +163,7 @@ let $result :=
                     	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
                     	</parameters>
                     let $text :=  transform:transform($text_step2,$textXsl,$params2)
-                return (<div class="music_container">{$music}</div>, <div class="text_container">{$text}</div>)  
+                return (<div class="score">{$music}</div>, <div class="clear_both"><!-- clear --></div>, <div class="text_container">{$text}</div>)  
             }
         </div>
         <div class="footer">&#169; Det Danske Sprog- og Litteraturselskab</div>

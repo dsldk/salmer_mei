@@ -20,16 +20,13 @@ h1 {
     margin: 0;
 }
 
-div.publication {
-    font-weight: bold;
-}
-
-div.music_container {
-    margin: 0 0 4em 0;
-}
-
-svg {
+.mei svg {
     margin: 0 0 0 -1.3em;
+}
+
+.mei svg .dir {
+    fill: #000;
+    stroke: #000;
 }
 
 div.poetry {

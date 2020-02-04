@@ -62,7 +62,7 @@ let $headers :=
         ""
 
 let $result :=
-        <div class="documentFrame container" xmlns="http://www.w3.org/1999/xhtml">
+        <div class="documentFrame" xmlns="http://www.w3.org/1999/xhtml">
             {  
             	for $doc in $list
                 	let $params := 

@@ -64,7 +64,10 @@ let $list :=
 
 let $title := $list//m:workList/m:work[1]/m:title[string()][1]/string()
 
-let $rec_type := string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
+let $rec_type := if($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])
+    then 
+        string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
+    else "music_document"
 
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">

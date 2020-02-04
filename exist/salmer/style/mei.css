@@ -464,7 +464,7 @@ p.loading {
 }
 
 .result_list .title.publication, .relation.publication {
-    background-image: url("img/book_white.png");
+    background-image: url("img/publication_white.png");
 }
 
 .result_list .title.collection, .relation.collection {
@@ -493,7 +493,7 @@ p.loading {
 }
 
 .toc .publication {
-    background-image: url("img/book.png");
+    background-image: url("img/publication.png");
 }
 
 .toc .collection {
