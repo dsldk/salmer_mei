@@ -64,9 +64,9 @@ let $list :=
 
 let $title := $list//m:workList/m:work[1]/m:title[string()][1]/string()
 
-let $rec_type := if($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])
+let $rec_type := if($list/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])
     then 
-        string-join($list//m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
+        string-join($list/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
     else "music_document"
 
 let $result :=
@@ -183,16 +183,13 @@ let $result :=
         
         <div class="documentFrame container">
             <!-- Music and text -->
+            <!-- Music included in this document -->
             {  
             	for $mdiv at $pos in $list[1]//m:mdiv
-                	let $include_data := 
-                	   if($pos=1) then true() else false()   
-                	(:   false()   :)
                 	let $params := 
                     	<parameters>
                     	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
                     	  <param name="doc"  value="{$filename}"/>
-                    	  <!--<param name="include_data" value="{$include_data}"/>-->
                     	</parameters>
                 	let $music := transform:transform($list[1],$mdivXsl,$params)
                 	let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
@@ -206,6 +203,26 @@ let $result :=
                                <p>Tekst ikke fundet i databasen.</p>
                            </div>
                 return ($music, $text)  
+            }
+            <!-- Music included from related records (for melody meta records) -->
+            {
+                for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment"]
+                    let $this_doc := doc(concat($database,'/',$datadir,'/',$embodiment/@target))
+                    let $output :=
+                    	for $mdiv at $pos in $this_doc/m:mei//m:mdiv
+                    	    let $this_filename := util:document-name($this_doc)
+                        	let $params := 
+                            	<parameters>
+                            	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
+                            	  <param name="doc"  value="{$this_filename}"/>
+                            	</parameters>
+                        	let $music := transform:transform($this_doc,$mdivXsl,$params) 
+                        return $music  
+                return 
+                    <div>
+                        <h3>{$embodiment/@label/string()}</h3>
+                        {$output}
+                    </div>
             }
         </div>
 
