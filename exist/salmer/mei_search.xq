@@ -18,6 +18,7 @@ declare variable $fuzzy         := request:get-parameter("f", "0") cast as xs:in
 declare variable $page          := request:get-parameter("page", "1") cast as xs:integer;
 declare variable $search_in     := request:get-parameter("x", "");    (: List of publications to search in   :)
 declare variable $publications  := doc('library/publications.xml'); 
+declare variable $l             := doc('library/language/da.xml');    (: Localisation of labels etc. :)   
 declare variable $collection    := '/db/salmer';
 declare variable $solr_base     := 'http://salmer.dsl.lan:8983/solr/salmer/'; (: Solr core :)
 declare variable $this_script   := 'mei_search.xq';
@@ -474,8 +475,8 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                             	        <div class="checkbox-options">
                             	            <label class="input-label" for="fuzzyness" style="margin-left: 20px;">Præcision:</label>
                             	            <img src="https://tekstnet.dk/static/info.png" title="Søgningen kan udvides ved at tillade en eller to afvigelser, 
-    dvs. afvigende tonehøjder eller 
-    manglende eller tilføjede toner"/><br/>
+dvs. afvigende tonehøjder eller 
+manglende eller tilføjede toner"/><br/>
                             	            {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
                                 	            <input type="radio" name="f" id="exact" value="0" checked="checked"/>
                                 	         else 
@@ -543,12 +544,14 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
     	                    else if (doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()])
     	                    then doc(concat("data/",$res/*[@name="file"]/string()))//m:titleStmt/m:title[text()][1]/string()    
                             else $res/*[@name="file"]/string()
-                        let $rec_type := string-join($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")   
+                        let $rec_type := if($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]) then
+                            string-join($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
+                            else "music_document"
     	                return
     	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                 <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
-                                        title="Slå op i salmebasen" class="title {$rec_type}">
+                                        title="{$l//*[name()=$rec_type]/string()}" class="title {$rec_type}">
                                         <span><!--{$from + $pos - 1}. -->{$title} ({
                                             let $pub_title := if (not(contains($rec_type,'publication'))) then
                                                 concat($publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string(),', ')
