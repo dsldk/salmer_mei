@@ -422,6 +422,14 @@ p.loading {
     -ms-filter: none;    
 }
 
+.toc tr:hover {
+    background-color: #e8e8e8;
+}
+
+.toc tr:hover th {
+    background-color: #fff;
+}
+
 /* Item class styles */
 
 .music_document, .result_list .title.music_document {
