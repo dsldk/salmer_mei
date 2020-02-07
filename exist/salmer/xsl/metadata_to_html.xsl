@@ -3445,7 +3445,7 @@
             </xsl:attribute>
             <xsl:attribute name="target">
                 <xsl:choose>
-                    <xsl:when test="@xl:show='new'">_blank</xsl:when>
+                    <xsl:when test="@xl:show='new' or substring(@target/string(),1,4)='http'">_blank</xsl:when>
                     <xsl:when test="@xl:show='replace'">_self</xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="@xl:show"/>
