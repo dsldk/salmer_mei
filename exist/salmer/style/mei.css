@@ -353,6 +353,7 @@ select.custom_input {
 
 /* Metadata and general page style */
 
+
 .metadata h1 {
     margin: 0 0 0 0;
 }
@@ -364,6 +365,10 @@ select.custom_input {
 .metadata .top .left {
     /*  overrides styles.css  */
     float: none;
+}
+
+div.mei_metadata {
+    margin: 10px 0 0 0;    
 }
 
 p.loading {
