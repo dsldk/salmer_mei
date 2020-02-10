@@ -48,7 +48,14 @@
     </xsl:variable>
     
     <xsl:variable name="rec_type">
-        <xsl:value-of select="string-join(/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type='itemClass']/text(),' ')"/>
+        <xsl:choose>
+            <xsl:when test="/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type='itemClass']">
+                <xsl:value-of select="string-join(/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type='itemClass']/text(),' ')"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:text>music_document</xsl:text>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:variable>
     
     <!-- files containing look-up information -->
@@ -147,13 +154,17 @@
     
     <xsl:template name="body_main_content">
         
-        <!-- data download -->
-        <div class="download noprint">
-            <a href="{$base_file_uri}/{$filename}" title="Download som MEI XML" target="_blank">MEI<!--<img src="{$base_uri}/style/images/xml.gif" alt="XML" border="0"/>--></a>
+        <!-- top bar -->
+        <div class="topbar {$rec_type}">
+            <!-- data download link -->
+            <div class="download noprint">
+                <a href="{$base_file_uri}/{$filename}" title="Download som MEI XML" target="_blank">MEI<!--<img src="{$base_uri}/style/images/xml.gif" alt="XML" border="0"/>--></a>
+            </div>
+            
+            <!-- record type -->
+            <xsl:value-of select="$l//*[name()=$rec_type]/string()"/>
+            
         </div>
-        
-        <!-- related files -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList"/>
         
         <!-- work title -->
         <xsl:apply-templates select="m:meiHead/m:workList/m:work" mode="titles"/>
@@ -177,6 +188,10 @@
                 </xsl:element>
             </div>
         </xsl:for-each>
+        
+        <!-- related files -->
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList"/>
+        
         
         <!-- table of contents -->
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contents"/>
@@ -493,6 +508,7 @@
     <xsl:template match="m:relationList" mode="relation_list">
         <xsl:if test="m:relation[@target!='']">
            <div class="list_block">
+               <div class="label">Relaterede poster: </div>
                <!-- loop through relations, but skip those where @label contains a ":";  -->
                <!-- also skip "hasPart" relations if there is a table of contents -->
                <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart')]">

@@ -22,6 +22,7 @@ declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"))
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
+declare variable $l        := doc('library/language/da.xml');    (: Localisation of labels etc. :)   
 
 
 (: Filter away any MDIV reference from URL :)
@@ -68,6 +69,7 @@ let $rec_type := if($list/m:meiHead/m:workList/m:work/m:classification/m:termLis
     then 
         string-join($list/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
     else "music_document"
+        
 
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -127,6 +129,7 @@ let $result :=
 	   
 	   <!-- Search -->
 	   <div class="searchWrapper search subpage-search {$rec_type}">
+	   
     	    <div class="search_options search-bg container row">
     	       <form action="mei_search.xq" method="get" class="form" id="title_form">
             	   <p><label class="input-label left-margin" for="pnames">Titelsøgning</label>
@@ -207,7 +210,8 @@ let $result :=
             <!-- Music included from related records (for melody meta records) -->
             {
                 for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment"]
-                    let $this_doc := doc(concat($database,'/',$datadir,'/',$embodiment/@target))
+                    let $this_doc_uri := concat($database,'/',$datadir,'/',$embodiment/@target) 
+                    let $this_doc := doc($this_doc_uri)
                     let $output :=
                     	for $mdiv at $pos in $this_doc/m:mei//m:mdiv
                     	    let $this_filename := util:document-name($this_doc)
@@ -217,7 +221,7 @@ let $result :=
                             	  <param name="doc"  value="{$this_filename}"/>
                             	</parameters>
                         	let $music := transform:transform($this_doc,$mdivXsl,$params) 
-                        return $music  
+                        return $music
                 return 
                     <div>
                         <h3>{$embodiment/@label/string()}</h3>

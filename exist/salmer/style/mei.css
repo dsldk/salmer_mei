@@ -381,7 +381,22 @@ p.loading {
     /* #1d4159; */ 
 }
 
-.relation {
+.rec_type {
+    margin: 10px 10px 10px 0;
+    font-size: 1.2em;
+}
+
+.rec_type img {
+    margin: 0 10px 0 0;
+}
+
+.list_block .label {
+/*     position: relative;
+    float: left; */
+    margin: 0 0 5px 0;
+}
+
+.relation, .topbar {
     position: relative;
     float: left;
     width: auto;
@@ -433,6 +448,11 @@ p.loading {
     background-color: #fff;
 }
 
+.topbar {
+    width: 100%;
+    float: none;
+}
+
 /* Item class styles */
 
 .music_document, .result_list .title.music_document {
@@ -470,27 +490,27 @@ p.loading {
 }
 
 
-.result_list .title.music_document, .relation.music_document {
+.result_list .title.music_document, .relation.music_document, .topbar.music_document {
     background-image: url("img/music_document_white.png");
 }
 
-.result_list .title.publication, .relation.publication {
+.result_list .title.publication, .relation.publication, .topbar.publication {
     background-image: url("img/publication_white.png");
 }
 
-.result_list .title.collection, .relation.collection {
+.result_list .title.collection, .relation.collection, .topbar.collection {
     background-image: url("img/collection_white.png");
 }
 
-.result_list .title.melody, .relation.melody {
+.result_list .title.melody, .relation.melody, .topbar.melody {
     background-image: url("img/melody_white.png");
 }
 
-.result_list .title.liturgy, .relation.liturgy {
+.result_list .title.liturgy, .relation.liturgy, .topbar.liturgy {
     background-image: url("img/liturgy_white.png");
 }
 
-.result_list .title.topic, .relation.topic {
+.result_list .title.topic, .relation.topic, .topbar.topic {
     background-image: url("img/topic_white.png");
 }
 
@@ -602,7 +622,7 @@ table.toc td {
 .download {
     float: right;
     width: auto;
-    margin-top: 20px;
+    margin: 0 10px 0 0;
 }
 
 a.abbr {

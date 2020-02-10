@@ -552,14 +552,26 @@ manglende eller tilføjede toner"/><br/>
                                 <div>
                                     <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
                                         title="{$l//*[name()=$rec_type]/string()}" class="title {$rec_type}">
-                                        <span><!--{$from + $pos - 1}. -->{$title} ({
-                                            let $pub_title := if (not(contains($rec_type,'publication'))) then
-                                                concat($publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string(),', ')
+                                        <span><!--{$from + $pos - 1}. -->{$title} 
+                                        
+                                            
+                                        {
+                                            let $pub_title := if ($rec_type="music_document") then
+                                                concat(
+                                                    ' (',
+                                                    $publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:title/string(),
+                                                    ', ',
+                                                    $publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string(),
+                                                    ')'                                                    
+                                                    )
                                                 else
                                                 ""
                                              return $pub_title
-                                            } 
-                                        {$publications/dsl:publications/dsl:pub[dsl:id=$res/*[@name="publ"]]/dsl:year/string()})</span>
+                                        } 
+                                        
+                                        
+                                        
+                                        </span>
                                     </a>
                                     <br/>
                                     {
@@ -610,7 +622,7 @@ manglende eller tilføjede toner"/><br/>
                                                     </div>
                                                 return $score_preview    
                                             else 
-                                                <div>[ingen nodevisning]</div>
+                                                <div>{$l//*[name()=$rec_type]/string()}</div>
                                             
                                         return $preview
                                     }
