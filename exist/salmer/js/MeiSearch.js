@@ -7,14 +7,14 @@ var pae_changed = false;
 
 // Verovio settings for rendering of search results. Overrides default settings defined in MeiAjax.js 
 $defaultVerovioOptions = {
-    inputFormat:        'mei',
+    from:              'mei',
     scale:              36,
     pageWidth:          2500,
     pageHeight:         20000,
     pageMarginTop:      30,
     pageMarginLeft:     0,
-    noHeader:           1,
-    noFooter:           1,
+    header:             'none',
+    footer:             'none',
     lyricTopMinMargin:  4,
     lyricSize:          4,
     spacingSystem:      1,
@@ -24,25 +24,27 @@ $defaultVerovioOptions = {
     font:               'Bravura',
     adjustPageHeight:   1,
     noJustification:    1,
-    breaks:             'auto'
+    breaks:             'auto',
+    systemDivider:      'none'
 };
 
 // Verovio settings for the piano input 
 var verovio_options_search = {
-    inputFormat:        'pae',
+    from:               'pae',
     scale:              32,
     pageWidth:          1200,
     pageHeight:         240,
     pageMarginTop:      0,
     pageMarginLeft:     0,
-    noHeader:           1,
-    noFooter:           1,
+    header:             'none',
+    footer:             'none',
     spacingStaff:       10,
     spacingLinear:      0.9,
     spacingNonLinear:   0.4,
     font:               'Bravura',
     adjustPageHeight:   0,
-    noJustification:    1 
+    noJustification:    1, 
+    systemDivider:      'none'
 };
 
 // An array of arrays holding the note IDs in each MEI instance

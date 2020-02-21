@@ -24,14 +24,14 @@ const urlParams = new URLSearchParams(window.location.search);
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
 // page width is deliberately set too narrow to force Verovio to use all line breaks 
 var $defaultVerovioOptions = {
-    inputFormat:          'mei',
+    from:                 'mei',
     scale:                40,
     pageWidth:            1000,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
-    noHeader:             1,
-    noFooter:             1,
+    header:               'none',
+    footer:               'none',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
     lyricSize:            3.8,
@@ -42,7 +42,8 @@ var $defaultVerovioOptions = {
     font:                 'Bravura',
     adjustPageHeight:     1,
     noJustification:      1,
-    breaks:               'encoded'
+    breaks:               'encoded',
+    systemDivider:        'none'
 };
 
 // global variables - do not change
@@ -390,6 +391,7 @@ function renderData(data) {
         $(".hover").removeClass('hover');
     });
     
+    /*  Disable note value reduction in neume-only notation */
     if($("#" + targetId + " .note").length <= $("#" + targetId + " .neume").length){
         $("#duration_" + targetId).css("display","none");
         console.log("hiding #duration_" + targetId);
