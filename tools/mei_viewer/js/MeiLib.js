@@ -18,14 +18,14 @@ var clientSideXSLT = (typeof enableClientSideXSLT !== 'undefined') ? enableClien
 // Verovio options
 // pageWidth * scale % = calculated width (should be 550-600px for DSL)
 var $defaultVerovioOptions = {
-    inputFormat:               'mei',
+    from:                 'mei',
     scale:                40,
     pageWidth:            1800,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
-    noHeader:             1,
-    noFooter:             1,
+    header:               'none',
+    footer:               'none',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
     lyricSize:            4.5,
@@ -36,7 +36,8 @@ var $defaultVerovioOptions = {
     font:                 'Bravura',
     adjustPageHeight:     1,
     noJustification:      1,
-    breaks:               'encoded'
+    breaks:               'encoded',
+    systemDivider:        'none'
 };
 
 // global variables - do not change
@@ -148,7 +149,7 @@ var meiOptionsMenu = ' \
                 <input type="radio" name="direction" value="down" onchange="updateFromForm(\'{id}\')"/> Ned \
             </div> \
             <hr/> \
-            <div class="menu_block">\
+            <div class="menu_block" id="duration_{id}">\
                 <label for="factor_{id}">Nodeværdier: </label> \
                 <br/> \
                 <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> 1:1 &#160;&#160;&#160;&#160; \
@@ -311,6 +312,13 @@ function loadPage(id) {
     .mouseout(function() {
         $(".hover").removeClass('hover');
     });
+    
+    /*  Disable note value reduction in neume-only notation */
+    if($("#" + id + " .note").length <= $("#" + id + " .neume").length){
+        $("#duration_" + id).css("display","none");
+        console.log("hiding #duration_" + id);
+    };
+    
     
     // Close selection mode when clicking outside selection
     // Overrides note clicking, unfortunately...

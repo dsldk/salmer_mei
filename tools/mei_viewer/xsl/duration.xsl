@@ -54,7 +54,7 @@
     </xsl:template>
     
     <!-- change note and rest durations if not in neume type notation -->
-    <xsl:template match="@dur[not((ancestor::m:chord | ancestor::m:note)[@stem.len=0])]">
+    <xsl:template match="@dur[not((ancestor::m:chord | ancestor::m:note)[@stem.len=0 or @type='neume'])]">
         <xsl:attribute name="dur">
             <xsl:variable name="thisDur" select="."/>
             <xsl:choose>
@@ -70,7 +70,7 @@
         </xsl:attribute>
     </xsl:template>    
 
-    <xsl:template match="@dur.ges[not((ancestor::m:chord | ancestor::m:note)[@stem.len=0])]">
+    <xsl:template match="@dur.ges[not((ancestor::m:chord | ancestor::m:note)[@stem.len=0 or @type='neume'])]">
         <xsl:attribute name="dur.ges">
             <xsl:variable name="thisDur" select="."/>
             <xsl:variable name="reduced_dur">
@@ -91,7 +91,7 @@
 
 
     <!-- move timestamped elements accordingly -->
-    <xsl:template match="@tstamp[not(ancestor::m:measure//(m:chord | m:note)[@stem.len=0])]">
+    <xsl:template match="@tstamp[not(ancestor::m:measure//(m:chord | m:note)[@stem.len=0 or @type='neume'])]">
         <xsl:attribute name="tstamp">
             <xsl:variable name="thisTstamp" select="."/>
             <xsl:choose>
