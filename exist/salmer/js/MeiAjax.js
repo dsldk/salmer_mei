@@ -173,12 +173,12 @@ var meiOptionsMenu = ' \
                 <input type="radio" name="clef" id="Fclef_{id}" value="F" onchange="updateFromForm(\'{id}\')"/> <label for="Fclef_{id}" class="musical_symbols cursorHelp" title="F-nøgle på 4. linje (basnøgle)">&#x1d122;</label> &#160;&#160; \
             </div> \
             <hr/> \
-            <div class="menu_block">Nodeværdier:<br/> \
+            <div class="menu_block" id="duration_{id}">Nodeværdier:<br/> \
                 <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="factor_{id}" class="cursorHelp" title="Originale nodeværdier">1:1</label>&#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="2" id="factor2_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor2_{id}" class="cursorHelp" title="Halve nodeværdier">1:2</label> &#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="4" id="factor4_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor4_{id}" class="cursorHelp" title="Kvarte nodeværdier">1:4</label> &#160;&#160;&#160;&#160; \
+                <hr/> \
             </div>\
-            <hr/> \
             <div class="menu_block">Transposition:<br/> \
                 <select id="transposeVal_{id}" name="transposeVal" onchange="updateFromForm(\'{id}\')" class="custom_input"> \
                     <option value="0">Ingen</option> \
@@ -389,6 +389,11 @@ function renderData(data) {
     .mouseout(function() {
         $(".hover").removeClass('hover');
     });
+    
+    if($("#" + targetId + " .note").length <= $("#" + targetId + " .neume").length){
+        $("#duration_" + targetId).css("display","none");
+        console.log("hiding #duration_" + targetId);
+    };
     
     // Close selection mode when clicking outside selection
     // Overrides note clicking, unfortunately...
