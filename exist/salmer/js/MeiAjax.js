@@ -397,6 +397,7 @@ function renderData(data) {
         console.log("hiding #duration_" + targetId);
     };
     
+    
     // Close selection mode when clicking outside selection
     // Overrides note clicking, unfortunately...
 /*    $("#" + targetId).click(function() {
@@ -509,15 +510,7 @@ function createMenu(id){
             }
         }
         $("#" + id +"_options").css("display","block");
-        moveMenu(id);
     }
-}
-
-// Fix menu positioning
-function moveMenu(id) {
-    // fix order of elements: svg score first, menu last (temporary fix - should be done by XSLT)
-    var $thisMenu = $("#" + id +"_options");
-    $thisMenu.parent().append($thisMenu);
 }
 
 // Printing
