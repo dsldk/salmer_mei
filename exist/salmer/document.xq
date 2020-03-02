@@ -165,23 +165,6 @@ let $result :=
                         </div>
                 return $metadata                    
             }
-            {
-                let $chapters := if($tei_doc) then $tei_doc/tei:TEI/tei:text/tei:body/tei:div else () 
-                let $tekstnet_link := if($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]) 
-                    then
-                        let $chapter as xs:integer := count($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]/preceding-sibling::tei:div) + 1
-                        (: Use section only if there is more than one  :)
-                        let $section as xs:string := if(count($chapters[$chapter]/tei:div/tei:head[@type="add"]) > 1)
-                            then
-                                concat("/",count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]))
-                            else 
-                                ""
-                        let $tei_name as xs:string := substring-before($index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei/string(),".xml") 
-                        return <p><a href="https://tekstnet.dk/{$tei_name}/{$chapter}{$section}">&gt; Digital udgave på tekstnet.dk</a></p>
-                    else
-                        ""
-                return $tekstnet_link
-            }
         </div>
         
         <div class="documentFrame container">
@@ -209,7 +192,7 @@ let $result :=
             }
             <!-- Music included from related records (for melody meta records) -->
             {
-                for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment"]
+                for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment" and not(contains(@target,"://"))]
                     let $this_doc_uri := concat($database,'/',$datadir,'/',$embodiment/@target) 
                     let $this_doc := doc($this_doc_uri)
                     let $output :=

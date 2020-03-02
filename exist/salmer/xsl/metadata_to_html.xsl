@@ -190,7 +190,9 @@
         </xsl:for-each>
         
         <!-- related files -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList"/>
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+            <xsl:with-param name="internal" select="true()"/>
+        </xsl:apply-templates>
         
         
         <!-- table of contents -->
@@ -210,6 +212,14 @@
         <!-- work history -->
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:creation[//text()]"/>
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[//text()]" mode="history"/>
+        
+        
+        <!-- digital editions and non-internal relations-->
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and @type='edition']"/>
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+            <xsl:with-param name="internal" select="false()"/>
+        </xsl:apply-templates>
+        
         
         <!-- works with versions: show global sources and performances before version details -->
         <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&gt;1">
@@ -412,22 +422,22 @@
                         </span>
                     </xsl:if>
                 </th>
-                <th>
+                <!--<th>
                     <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)"> 
                         <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
                     </span>
-                </th>
+                </th>-->
                 <th>
                     <xsl:if test="m:contentItem/m:title/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)">Titel 
+                            <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                 </th>
                 <th>
                     <xsl:if test="m:contentItem/m:title[@type='uniform']/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',3,false)">Normaliseret titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_3" width="6" height="6" alt=""/>
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Normaliseret titel 
+                            <img src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                     <!-- pre-load images -->
@@ -449,28 +459,25 @@
         <tr>
             <td style="white-space:nowrap;"><xsl:value-of select="@label"/></td>
             <td>
-                <xsl:if test="@type">
-                    <xsl:variable name="type" select="@type"/>
-                    <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> </div> 
-                </xsl:if>
-            </td>
-            <td>
-                <xsl:choose>
-                    <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
-                        <a href="document.xq?doc={m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
+                <xsl:variable name="type" select="@type"/>
+                <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> 
+                    <xsl:choose>
+                        <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
+                            <a href="document.xq?doc={m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
+                                <xsl:apply-templates select="m:title[not(@type)]"/>
+                            </a>
+                        </xsl:when>
+                        <xsl:otherwise>
                             <xsl:apply-templates select="m:title[not(@type)]"/>
-                        </a>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:apply-templates select="m:title[not(@type)]"/>
-                    </xsl:otherwise>
-                </xsl:choose>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </div> 
             </td>
             <td><xsl:apply-templates select="m:title[@type='uniform']"/></td>
             <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
             <td style="white-space:nowrap;">
                 <xsl:if test="m:ptr[@type='edition']">
-                    <a href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk">&gt; Tekstnet</a>
+                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk">Tekstnet</a>
                 </xsl:if>
             </td>
         </tr>
@@ -499,32 +506,51 @@
         </xsl:if>
     </xsl:template>
     
-    <xsl:template match="m:relationList">
-        <xsl:apply-templates select="." mode="relation_list"/>
-        <!-- this detour is necessary to enable overriding the default behaviour in 
-            style sheets including this one (e.g., a print style sheet) -->
-    </xsl:template>
 
-    <xsl:template match="m:relationList" mode="relation_list">
-        <xsl:if test="m:relation[@target!='']">
-           <div class="list_block">
-               <div class="label">Relaterede poster: </div>
-               <!-- loop through relations, but skip those where @label contains a ":";  -->
-               <!-- also skip "hasPart" relations if there is a table of contents -->
-               <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart')]">
-                   <xsl:variable name="class">
-                       <xsl:call-template name="get_rec_type">
-                           <xsl:with-param name="target" select="@target"/>
-                       </xsl:call-template>
-                   </xsl:variable>
-                   <div class="relation {$class}">
-                       <xsl:apply-templates select="." mode="relation_link">
-                           <xsl:with-param name="rec_type" select="$class"/>
-                       </xsl:apply-templates>
-                   </div>
-               </xsl:for-each>
-           </div>
-        </xsl:if>
+<!-- TO DO: MAKE INTERNAL/EXTERNAL RELATIONS WORK... -->
+    <xsl:template match="m:relationList">
+        <xsl:param name="internal" select="true()"/>
+        <xsl:choose>
+            <xsl:when test="$internal">
+                <xsl:if test="m:relation[@target!='' and not(contains(@target,'//:'))]">
+                    <!-- internal relations -->
+                    <div class="list_block">
+                        <div class="label">Relaterede poster: </div>
+                        <!-- loop through relations, but skip those where @label contains a ":";  -->
+                        <!-- also skip "hasPart" relations if there is a table of contents -->
+                        <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
+                            <xsl:variable name="class">
+                                <xsl:call-template name="get_rec_type">
+                                    <xsl:with-param name="target" select="@target"/>
+                                </xsl:call-template>
+                            </xsl:variable>
+                            <div class="relation {$class}">
+                                <xsl:apply-templates select="." mode="relation_link">
+                                    <xsl:with-param name="rec_type" select="$class"/>
+                                </xsl:apply-templates>
+                            </div>
+                        </xsl:for-each>
+                    </div>
+                </xsl:if>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:if test="m:relation[@target!='' and contains(@target,'//:')]">
+                    <!-- external relations, i.e., editions -->
+                    <div class="list_block">
+                        <div class="label">Digitale udgaver: </div>
+                        <!-- loop through relations, but skip those where @label contains a ":";  -->
+                        <!-- also skip "hasPart" relations if there is a table of contents -->
+                        <xsl:for-each select="m:relation[@rel!='' and @rel!='hasPart' and contains(@target,'//:') and not($internal)]">
+                            <div class="relation {@type}">
+                                <xsl:apply-templates select="." mode="relation_link">
+                                    <xsl:with-param name="rec_type" select="@type"/>
+                                </xsl:apply-templates>
+                            </div>
+                        </xsl:for-each>
+                    </div>
+                </xsl:if>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
     
     <xsl:template match="m:relationList" mode="plain_relation_list">
@@ -877,12 +903,12 @@
                         var data = "@data:<xsl:value-of select="."/>
                         ";
                         options = {
-                        inputFormat: 'pae',
+                        from: 'pae',
                         pageWidth: 3000,
                         pageMarginTop: 50,
                         pageMarginLeft: 50,
-                        noHeader: true,
-                        noFooter: true,
+                        header: 'none',
+                        footer: 'none',
                         spacingStaff: 3,
                         scale: 30,
                         adjustPageHeight: true,
@@ -1875,10 +1901,10 @@
     </xsl:template>
     
     
-    <xsl:template match="*[m:ptr[normalize-space(@target)]]" mode="link_list_p">
+    <xsl:template match="*[m:ptr[normalize-space(@target) and not(@type='edition')]]" mode="link_list_p">
         <!-- link list wrapped in a <p> -->
-        <p>
-            <xsl:apply-templates select="." mode="comma-separated_links"/>
+        <p> 
+            <xsl:apply-templates select="m:ptr[not(@type='edition')]" mode="comma-separated_links"/>
         </p>
     </xsl:template>
     
@@ -2773,11 +2799,11 @@
     </xsl:template>
     
     <!-- display external link -->
-    <xsl:template match="m:ptr[normalize-space(@target) or normalize-space(@xl:href)]">
+    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and not(@type='edition')]">
         <!--<img src="/dcm/{$coll}/style/images/html_link.png" title="Link to external resource"/>-->
         <div>
-            <xsl:text>&gt; </xsl:text>
-            <a target="_blank">
+            <!--<xsl:text>&gt; </xsl:text>-->
+            <a target="_blank" class="external_link">
                 <xsl:attribute name="href">
                     <xsl:choose>
                         <xsl:when test="normalize-space(@target)">
@@ -2810,6 +2836,42 @@
                 </xsl:choose>
             </a>
         </div>
+    </xsl:template>
+
+    <!-- link to digital edition -->
+    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and @type='edition']">
+        <a target="_blank" class="edition_link">
+            <xsl:attribute name="href">
+                <xsl:choose>
+                    <xsl:when test="normalize-space(@target)">
+                        <xsl:value-of select="@target"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:value-of select="@xl:href"/>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:attribute>
+            <xsl:choose>
+                <xsl:when test="normalize-space(@label)">
+                    <xsl:value-of select="@label"/>
+                </xsl:when>
+                <xsl:when test="normalize-space(@targettype)">
+                    <xsl:call-template name="capitalize">
+                        <xsl:with-param name="str" select="@targettype"/>
+                    </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:choose>
+                        <xsl:when test="normalize-space(@target)">
+                            <xsl:value-of select="@target"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="@xl:href"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:otherwise>
+            </xsl:choose>
+        </a>
     </xsl:template>
     
     
