@@ -2802,7 +2802,7 @@
     <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and not(@type='edition')]">
         <!--<img src="/dcm/{$coll}/style/images/html_link.png" title="Link to external resource"/>-->
         <div>
-            <!--<xsl:text>&gt; </xsl:text>-->
+            <!--<xsl:text>> </xsl:text>-->
             <a target="_blank" class="external_link">
                 <xsl:attribute name="href">
                     <xsl:choose>
@@ -2840,7 +2840,7 @@
 
     <!-- link to digital edition -->
     <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and @type='edition']">
-        <a target="_blank" class="edition_link">
+        <a class="edition_link">
             <xsl:attribute name="href">
                 <xsl:choose>
                     <xsl:when test="normalize-space(@target)">
