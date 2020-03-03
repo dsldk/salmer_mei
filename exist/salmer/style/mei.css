@@ -419,7 +419,7 @@ p.loading {
     text-decoration: none;
 }
 
-.relation:hover, .edition_link:hover {
+.relation:hover {
     text-decoration: none;
     filter: brightness(1.15);
     -webkit-filter: brightness(1.15);
@@ -451,7 +451,8 @@ p.loading {
 }
 
 .edition_link  {
-    background-color: #eeaa00;
+    background-color: #fdda82; 
+    /*background-color: #eeaa00;*/
     color: black;
     background-image: url("img/link.png");
 }
@@ -466,6 +467,15 @@ p.loading {
 .edition_link:hover, .edition_link:active, .edition_link:visited, 
 .external_link:hover, .external_link:active, .external_link:visited {
     color: black;
+}
+
+.edition_link:hover {
+    text-decoration: none;
+    filter: brightness(0.9);
+    -webkit-filter: brightness(0.9);
+    -moz-filter: brightness(0.9);
+    -o-filter: brightness(0.9);
+    -ms-filter: brightness(0.9);    
 }
 
 
