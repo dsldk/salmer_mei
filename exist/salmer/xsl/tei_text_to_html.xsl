@@ -7,7 +7,7 @@
     <!-- 
 		Render vocal text from TEI  
 		
-		Authors: 
+		Author: 
 		Axel Teich Geertinger
 		Det Danske Sprog- og Literaturselskab, 2019-2020
 	-->
@@ -20,11 +20,14 @@
     <xsl:param name="mdiv"/>
     
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/c.xsl"/>
+    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/app.xsl"/>
+    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/ex.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/div.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/hi.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/l.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/lb.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/lg.xsl"/>
+    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/note.xsl"/>
     <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/p.xsl"/>
     
     <xsl:template match="/">
@@ -43,8 +46,19 @@
         <xsl:text> </xsl:text><xsl:value-of select="normalize-space()"/>
     </xsl:template>
     
-    <xsl:template match="tei:app">
+    <!--<xsl:template match="tei:app">-->
         <!-- show lemma if present -->
+        <!--<xsl:choose>
+            <xsl:when test="tei:lem">
+                <xsl:apply-templates select="tei:lem"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:apply-templates/>
+            </xsl:otherwise>
+        </xsl:choose>
+        </xsl:template>-->
+    
+    <xsl:template match="tei:app" priority="10">
         <xsl:choose>
             <xsl:when test="tei:lem">
                 <xsl:apply-templates select="tei:lem"/>
@@ -53,7 +67,20 @@
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
-        
+        <xsl:variable name="appNote">
+            <xsl:apply-templates select="." mode="apparatusCriticus"/>
+        </xsl:variable>
+        <xsl:variable name="appNo" select="substring-before($appNote/string(),'.')"></xsl:variable>
+        <xsl:variable name="appText" select="substring-after($appNote/string(),'.')"></xsl:variable>
+        <span class="notelink" id="{concat('notelinkApp',$appNo)}">
+            <sup>[<xsl:value-of select="$appNo"/>]</sup>
+        </span>
+        <span class="appnotecontents" id="{concat('App',$appNo)}" style="display: none;"><xsl:value-of select="$appText"/></span>
+        <!-- should generate something like this:
+        <span class="notelink" id="notelinkApp1">
+            <sup>[1]</sup>
+        </span>
+        <span class="appnotecontents" id="App1" style="display: none;">forbarme dig offuer oss.] forba rettet <em> orig.</em>, rettet </span>-->
     </xsl:template>
     
     <!-- Transfer certain TEI elements and attributes to HTML namespace. -->

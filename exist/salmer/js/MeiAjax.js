@@ -277,8 +277,16 @@ function addComments(data) {
         $("#" + targetId).append(div);
         // Make the div a hidden jQuery dialog 
         $("#" + commentId + "_div").dialog({
-              autoOpen: false,
-              closeOnEscape: true
+            autoOpen: false,
+            closeOnEscape: true,
+        	show: {
+        	    effect: "fade",
+                duration: 300
+        	},
+        	hide: {
+                effect: "fade",
+                duration: 300
+        	}
         });
         // Put the annotation in it
         $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
@@ -635,9 +643,61 @@ function loadTeiText() {
         console.log('Retrieving TEI text');
         $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){ 
             $("#" + id).html(data);
+            teiApp();
         },'html');
     });
 }
+
+function teiApp() {
+    // adopted from https://tekstnet.dk/static/popup.js
+    function insertNote(dialog_opts, note_type, note_title) {
+        var note_text_ids =  $(note_type);
+        var app_note_text_ids =  $(note_type);
+        for(var i = 0; i < note_text_ids.length; i++) {
+            current_note_no = note_text_ids[i].id;
+            note_contents_id = "#" + current_note_no;
+            note_link_id = "#notelink" + current_note_no;
+            dialog_opts.title =note_title; //+ current_note_no.substring(3);
+            note_box = $( note_contents_id ).dialog(dialog_opts);
+            $( note_link_id ).click({note_box: note_box,
+                         note_contents_id: note_contents_id },
+            dialogPosition);
+        }
+    }
+
+    var dialog_opts = {
+    	title: 'Note',
+    	autoOpen: false,
+        closeOnEscape: true,
+    	show: {
+    	    effect: "fade",
+            duration: 300
+    	},
+    	hide: {
+            effect: "fade",
+            duration: 300
+    	},
+    	width: 320,
+    	minHeight: 80
+    };
+
+    function dialogPosition(event) {
+        event.data.note_box.dialog("option", "position", {
+            my: "left top+13",
+            at: "left top",
+            of: event,
+            offset: "20 200"
+        });
+        // closing the dialog is necessary for initialization
+        $( event.data.note_contents_id ).dialog( "close" );
+        $( event.data.note_contents_id ).dialog( "open" );
+    }
+
+    insertNote(dialog_opts, ".notecontents", "Ordforklaring");
+    insertNote(dialog_opts, ".appnotecontents", "Tekstkritisk note");
+
+}
+
 
 // Validate search query
 function validateInput() {
