@@ -215,7 +215,7 @@
         
         
         <!-- digital editions and non-internal relations-->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and @type='edition']"/>
+        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and (@type='edition' or @type='text_edition')]"/>
         <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
             <xsl:with-param name="internal" select="false()"/>
         </xsl:apply-templates>
@@ -1901,10 +1901,10 @@
     </xsl:template>
     
     
-    <xsl:template match="*[m:ptr[normalize-space(@target) and not(@type='edition')]]" mode="link_list_p">
+    <xsl:template match="*[m:ptr[normalize-space(@target) and not(@type='edition' or @type='text_edition')]]" mode="link_list_p">
         <!-- link list wrapped in a <p> -->
         <p> 
-            <xsl:apply-templates select="m:ptr[not(@type='edition')]" mode="comma-separated_links"/>
+            <xsl:apply-templates select="m:ptr[not(@type='edition' or @type='text_edition')]" mode="comma-separated_links"/>
         </p>
     </xsl:template>
     
@@ -1914,7 +1914,7 @@
             <!-- Show items as bulleted list if 
                 1) there are more than one item or
                 2) an item has a label, and source is not a manuscript -->
-            <xsl:when test="count(m:item)&gt;1 or    (m:item/@label and m:item/@label!='' and   ../m:classification/m:termList/m:term[@class='#DcmPresentationClass']!='manuscript')">
+            <xsl:when test="count(m:item)&gt;1 or  (m:item/@label and m:item/@label!='' and   ../m:classification/m:termList/m:term[@class='#DcmPresentationClass']!='manuscript')">
                 <ul class="item_list">
                     <xsl:for-each select="m:item[*//text()]">
                         <li>
@@ -2799,7 +2799,7 @@
     </xsl:template>
     
     <!-- display external link -->
-    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and not(@type='edition')]">
+    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and not(@type='edition' or @type='text_edition')]">
         <!--<img src="/dcm/{$coll}/style/images/html_link.png" title="Link to external resource"/>-->
         <div>
             <!--<xsl:text>> </xsl:text>-->
@@ -2839,7 +2839,7 @@
     </xsl:template>
 
     <!-- link to digital edition -->
-    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and @type='edition']">
+    <xsl:template match="m:ptr[(normalize-space(@target) or normalize-space(@xl:href)) and (@type='edition' or @type='text_edition')]">
         <a class="edition_link">
             <xsl:attribute name="href">
                 <xsl:choose>
@@ -2851,26 +2851,28 @@
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:attribute>
-            <xsl:choose>
-                <xsl:when test="normalize-space(@label)">
-                    <xsl:value-of select="@label"/>
-                </xsl:when>
-                <xsl:when test="normalize-space(@targettype)">
-                    <xsl:call-template name="capitalize">
-                        <xsl:with-param name="str" select="@targettype"/>
-                    </xsl:call-template>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:choose>
-                        <xsl:when test="normalize-space(@target)">
-                            <xsl:value-of select="@target"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="@xl:href"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:otherwise>
-            </xsl:choose>
+            <span class="{@type}">
+                <xsl:choose>
+                    <xsl:when test="normalize-space(@label)">
+                        <xsl:value-of select="@label"/>
+                    </xsl:when>
+                    <xsl:when test="normalize-space(@targettype)">
+                        <xsl:call-template name="capitalize">
+                            <xsl:with-param name="str" select="@targettype"/>
+                        </xsl:call-template>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:choose>
+                            <xsl:when test="normalize-space(@target)">
+                                <xsl:value-of select="@target"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="@xl:href"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </span>
         </a>
     </xsl:template>
     
