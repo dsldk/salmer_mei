@@ -32,6 +32,10 @@ var $defaultVerovioOptions = {
     pageMarginLeft:       0,
     header:               'none',
     footer:               'none',
+// old parameters kept for backwards compatibility until tekstnet.dk has been updated
+noHeader:             'true',
+noFooter:             'true',
+inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
     lyricSize:            3.8,
@@ -634,8 +638,9 @@ function loadMeiMetadata() {
 }
 
 function loadTeiText() {
-    /* Retrieve TEI vocal text if applicable */
-    var doc = urlParams.get('doc');
+    /* Retrieve TEI vocal text if applicable. */
+    /* Filter away MDIV information from the file name */
+    var doc = urlParams.get('doc').indexOf('MDIV') ? urlParams.get('doc').substring(0,urlParams.get('doc').indexOf('MDIV')) + '.xml' : urlParams.get('doc');
     $(".tei_vocal_text").each( function() {
         var id = $(this).attr("id");
         /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
