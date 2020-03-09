@@ -506,8 +506,6 @@
         </xsl:if>
     </xsl:template>
     
-
-<!-- TO DO: MAKE INTERNAL/EXTERNAL RELATIONS WORK... -->
     <xsl:template match="m:relationList">
         <xsl:param name="internal" select="true()"/>
         <xsl:choose>
@@ -551,6 +549,7 @@
                 </xsl:if>
             </xsl:otherwise>
         </xsl:choose>
+        <div class="clear_both"><xsl:comment> clear </xsl:comment></div>
     </xsl:template>
     
     <xsl:template match="m:relationList" mode="plain_relation_list">

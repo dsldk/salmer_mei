@@ -81,7 +81,7 @@ let $result :=
         
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js"><!-- jquery --></script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js"><!-- jquery ui --></script>     
-        <script type="text/javascript" src="js/libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"><!-- Verovio --></script>
+        <script type="text/javascript" src="js/libs/verovio/verovio-toolkit.js"><!-- Verovio --></script>
 
         <script type="text/javascript" src="js/MeiPrint.js"><!-- jquery --></script>
 

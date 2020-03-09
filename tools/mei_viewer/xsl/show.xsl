@@ -103,6 +103,18 @@
             <xsl:apply-templates select="*"/>
         </xsl:copy>
     </xsl:template>
+    
+    <!-- Add a leading <pb> to make Verovio render encoded system breaks -->
+    <xsl:template match="m:section">
+        <xsl:copy>
+            <xsl:apply-templates select="@*"/>
+            <xsl:if test="not(m:measure[1]/preceding-sibling::m:pb)">
+                <pb xmlns="http://www.music-encoding.org/ns/mei"/>
+            </xsl:if>
+            <xsl:apply-templates select="*"/>
+        </xsl:copy>
+    </xsl:template>  
+    
         
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
     <xsl:template match="m:syl[//text()]">
@@ -322,7 +334,7 @@
         </slur>
     </xsl:template>
     
-    <!-- Turn syllable/neume/note structures into note/verse/syl -->
+    <!-- Turn syllable/uneume/note structures into note/verse/syl -->
     <xsl:template match="m:syllable">
         <xsl:apply-templates select="*[not(local-name()='syl' or local-name()='verse')]"/>
     </xsl:template>
@@ -356,11 +368,12 @@
                 <xsl:attribute name="stem.dir">down</xsl:attribute>
                 <xsl:attribute name="stem.len">0</xsl:attribute>
                 <xsl:attribute name="head.shape">square</xsl:attribute>
-                <!--                <xsl:attribute name="head.fill">solid</xsl:attribute>-->
-                <!--                <xsl:attribute name="colored">true</xsl:attribute>-->
+                <xsl:attribute name="head.fill">solid</xsl:attribute>
+                <!--<xsl:attribute name="colored">true</xsl:attribute>-->
             </xsl:if>
             <xsl:if test="$dur='long'">
                 <xsl:attribute name="colored">true</xsl:attribute>
+                <!--<xsl:attribute name="color">#800</xsl:attribute>-->
             </xsl:if>
             <xsl:if test="@xml:id=ancestor::m:syllable/descendant::m:neume[1]/descendant::m:nc[1]/@xml:id">
                 <xsl:apply-templates select="ancestor::m:syllable/m:verse | ancestor::m:syllable/m:syl"/>

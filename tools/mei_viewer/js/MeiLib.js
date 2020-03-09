@@ -16,11 +16,11 @@ var clientSideXSLT = (typeof enableClientSideXSLT !== 'undefined') ? enableClien
 
 
 // Verovio options
-// pageWidth * scale % = calculated width (should be 550-600px for DSL)
+// pageWidth * scale % = calculated width 
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    pageWidth:            1800,
+    pageWidth:            1000,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
@@ -28,13 +28,14 @@ var $defaultVerovioOptions = {
     footer:               'none',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            4.5,
+    lyricSize:            3.8,
     lyricNoStartHyphen:   1,
     spacingStaff:         3,
-    spacingLinear:        0.9,
-    spacingNonLinear:     0.3,
+    spacingLinear:        0.92,
+    spacingNonLinear:     0.28,
     font:                 'Bravura',
     adjustPageHeight:     1,
+/*    adjustPageWidth:      1,  */
     noJustification:      1,
     breaks:               'encoded',
     systemDivider:        'none'

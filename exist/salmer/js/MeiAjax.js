@@ -45,6 +45,7 @@ inputFormat:          'mei',
     spacingNonLinear:     0.28,
     font:                 'Bravura',
     adjustPageHeight:     1,
+/*    adjustPageWidth:      1,  */
     noJustification:      1,
     breaks:               'encoded',
     systemDivider:        'none'

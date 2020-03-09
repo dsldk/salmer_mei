@@ -16,25 +16,29 @@ var disabledOptions = ["adjustPageHeight", "breaks", "landscape", "pageHeight", 
 
 // Verovio options
 // pageWidth * scale % = calculated width 
-// page width is deliberately set too narrow to force Verovio to use alle line breaks 
+// page width is deliberately set too narrow to force Verovio to use all line breaks 
 var $defaultVerovioOptions = {
-    mmOutput:             1,
-    pageHeight:           400,
-    pageWidth:            500,
-    scale:                100,
-    noHeader:             1,
-    noFooter:             1,
+    from:                 'mei',
+    scale:                40,
+    pageWidth:            1000,
+    pageHeight:           20000,
+    pageMarginTop:        0,
+    pageMarginLeft:       50,
+    header:               'none',
+    footer:               'none',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            4.2,
+    lyricSize:            3.8,
     lyricNoStartHyphen:   1,
     spacingStaff:         3,
     spacingLinear:        0.92,
     spacingNonLinear:     0.28,
     font:                 'Bravura',
-    noJustification:      1,
     adjustPageHeight:     1,
-    breaks:               'auto'
+/*  adjustPageWidth:      1,  */
+    noJustification:      1,
+    breaks:               'encoded',
+    systemDivider:        'none'
 }
     
 
@@ -171,9 +175,6 @@ function getOptionsFromQuery(id) {
         $mei[id].xsltOptions['beams'] = $.extend(true, {}, $setBeams);
     };
 }
-
-
-
 
 
 function loadMeiFromDoc() {
