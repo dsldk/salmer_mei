@@ -641,7 +641,7 @@ function loadMeiMetadata() {
 function loadTeiText() {
     /* Retrieve TEI vocal text if applicable. */
     /* Filter away MDIV information from the file name */
-    var doc = urlParams.get('doc').indexOf('MDIV') ? urlParams.get('doc').substring(0,urlParams.get('doc').indexOf('MDIV')) + '.xml' : urlParams.get('doc');
+    var doc = urlParams.get('doc').search('MDIV') > 0 ? urlParams.get('doc').substring(0,urlParams.get('doc').indexOf('MDIV')) + '.xml' : urlParams.get('doc');
     $(".tei_vocal_text").each( function() {
         var id = $(this).attr("id");
         /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
@@ -813,6 +813,7 @@ $(document).ready(function() {
     if(midi) { initMidi() }
     loadMeiFromDoc();   
     loadMeiMetadata();
-    loadTeiText();
+    console.log('Host: ' + window.location.hostname);
+    if(window.location.hostname.search('salmer.dsl.dk') >= 0) { loadTeiText() };
     validateInput();
 });
