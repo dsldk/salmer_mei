@@ -807,13 +807,15 @@ function sortTable(tableId, n, numeric) {
 
 }
 
+function initMusic() {
+    if(midi) { initMidi() }
+    loadMeiFromDoc();  
+    loadMeiMetadata();
+    if(window.location.hostname.search('salmer.dsl.dk') >= 0) { loadTeiText() };
+    validateInput();
+}
 
 $(document).ready(function() {        
     console.log("Document ready");
-    if(midi) { initMidi() }
-    loadMeiFromDoc();   
-    loadMeiMetadata();
-    console.log('Host: ' + window.location.hostname);
-    if(window.location.hostname.search('salmer.dsl.dk') >= 0) { loadTeiText() };
-    validateInput();
+    initMusic();   
 });
