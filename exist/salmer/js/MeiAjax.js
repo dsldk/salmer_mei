@@ -640,18 +640,20 @@ function loadMeiMetadata() {
 
 function loadTeiText() {
     /* Retrieve TEI vocal text if applicable. */
-    /* Filter away MDIV information from the file name */
-    var doc = urlParams.get('doc').search('MDIV') > 0 ? urlParams.get('doc').substring(0,urlParams.get('doc').indexOf('MDIV')) + '.xml' : urlParams.get('doc');
-    $(".tei_vocal_text").each( function() {
-        var id = $(this).attr("id");
-        /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
-        var params = $(this).attr("class").split(" ");
-        console.log('Retrieving TEI text');
-        $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){ 
-            $("#" + id).html(data);
-            teiApp();
-        },'html');
-    });
+    if(urlParams.get('doc')) {
+        /* Filter away MDIV information from the file name */
+        var doc = urlParams.get('doc').search('MDIV') > 0 ? urlParams.get('doc').substring(0,urlParams.get('doc').indexOf('MDIV')) + '.xml' : urlParams.get('doc');
+        $(".tei_vocal_text").each( function() {
+            var id = $(this).attr("id");
+            /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
+            var params = $(this).attr("class").split(" ");
+            console.log('Retrieving TEI text');
+            $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){ 
+                $("#" + id).html(data);
+                teiApp();
+            },'html');
+        });
+    }
 }
 
 function teiApp() {
