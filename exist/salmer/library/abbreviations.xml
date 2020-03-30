@@ -25,6 +25,25 @@
         <expan>alto</expan>
     </choice>
     <choice>
+        <abbr>Andersen 1972</abbr>
+        <expan>
+            <bibl label="Andersen 1972">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Niels Knud Andersen</author>
+                <editor>Niels Knud Andersen</editor>
+                <title level="a">Efterskrift</title>
+                <title level="m">Ludwig Dietz' Salmebog 1536</title>
+                <biblScope unit="page">5-116</biblScope>                
+                <imprint>
+                    <date isodate="1972">1972</date>
+                    <publisher>UJDS · Akademisk Forlag</publisher>
+                    <pubPlace>København</pubPlace>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>arm.</abbr>
         <expan>armonium (harmonium)</expan>
     </choice>
@@ -198,7 +217,8 @@
         <expan>
             <bibl label="DKL">
                 <genre>book</genre>
-                <title level="m">Das Deutsche Kirchenlied. Kritische Gesamtausgabe der Melodien</title>
+                <title level="m">Das Deutsche Kirchenlied. Kritische Gesamtausgabe der
+                    Melodien</title>
                 <imprint>
                     <date isodate="1975">1975-</date>
                     <publisher>Bärenreiter</publisher>
@@ -265,13 +285,50 @@
             <bibl label="Glahn 1954">
                 <genre>book</genre>
                 <author>Henrik Glahn</author>
-                <title level="m">Melodistudier til den lutherske salmesangs historie fra 1524 til ca. 1600</title>
+                <title level="m">Melodistudier til den lutherske salmesangs historie fra 1524 til
+                    ca. 1600</title>
                 <imprint>
                     <date isodate="1954">1954</date>
                     <pubPlace>København</pubPlace>
                     <publisher>Rosenkilde &amp; Bagger</publisher>
                 </imprint>
                 <biblScope unit="page"/>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Glahn 1963</abbr>
+        <expan>
+            <bibl label="Glahn 1963">
+                <genre>journal</genre>
+                <genre>article</genre>
+                <author>Henrik Glahn</author>
+                <title level="a">Nogle hidtil ukendte forlæg til melodier i Hans Thomissøns Psalmebog 1569</title>
+                <title level="j">Dansk Årbog for Musikforskning</title>
+                <biblScope unit="vol">3</biblScope>
+                <biblScope unit="page">69-85</biblScope>                
+                <imprint>
+                    <date isodate="1963">1963</date>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Glahn 1999</abbr>
+        <expan>
+            <bibl label="Glahn 1999">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Henrik Glahn</author>
+                <editor>Carsten Bach-Nielsen, Troels Nørager, Peter Thyssen</editor>
+                <title level="a">Om Miles Coverdale og "Goostly Psalmes". En salmegennemgang i udvidet form</title>
+                <title level="m">Ordet og livet. Festskrift til Christian Thodberg</title>
+                <biblScope unit="page">80-103</biblScope>                
+                <imprint>
+                    <date isodate="1999">1999</date>
+                    <pubPlace>Aarhus</pubPlace>
+                    <publisher>Aarhus Universitetsforlag</publisher>
+                </imprint>
             </bibl>
         </expan>
     </choice>
@@ -316,8 +373,6 @@
     </choice>
     <choice>
         <abbr>Jespersen 1573</abbr>
-        <abbr>Jesperssøn 1573</abbr>
-        <abbr>Jesperssøn</abbr>
         <expan>
             <bibl label="Jespersen 1573">
                 <genre>book</genre>
@@ -336,16 +391,49 @@
         <expan>keyboard instrument</expan>
     </choice>
     <choice>
+        <abbr>Kock 1623</abbr>
+        <expan>
+            <bibl label="Kock 1623">
+                <genre>book</genre>
+                <author>Hans Møller Kock</author>
+                <title level="m">En Nye Vijse</title>
+                <imprint>
+                    <date isodate="1623">1623</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Georg Hantzsch</publisher>
+                </imprint>
+                <biblScope unit="page"/>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Korth 2017</abbr>
         <expan>
             <bibl label="Korth 2017">
                 <genre>book</genre>
                 <author>Hans-Otto Korth</author>
-                <title level="m">Lass uns leuchten des Lebens Wort. Die Lieder Martin Luthers</title>
+                <title level="m">Lass uns leuchten des Lebens Wort. Die Lieder Martin
+                    Luthers</title>
                 <imprint>
                     <date isodate="2017">2017</date>
                     <pubPlace>Beeskow</pubPlace>
                     <publisher>ortus musikverlag</publisher>
+                </imprint>
+                <biblScope unit="page"/>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Leaver 2017</abbr>
+        <expan>
+            <bibl label="Leaver 2017">
+                <genre>book</genre>
+                <author>Robin A. Leaver</author>
+                <title level="m">The Whole Church Sings. Congregational Singing in Luther’s Wittenberg</title>
+                <imprint>
+                    <date isodate="2017">2017</date>
+                    <pubPlace>Grand Rapids, Michigan</pubPlace>
+                    <publisher>William B. Eerdmans Publishing Company</publisher>
                 </imprint>
                 <biblScope unit="page"/>
             </bibl>
@@ -379,18 +467,35 @@
         <expan>mezzosoprano</expan>
     </choice>
     <choice>
-        <abbr>Malmø 1528</abbr>
-        <abbr>Malmømessen 1528</abbr>
-        <abbr>Mortensøn 1528</abbr>
+        <abbr>Mortensøn 1529</abbr>
         <expan>
-            <bibl label="Mortensøn 1528">
+            <bibl label="Mortensøn 1529">
                 <genre>book</genre>
                 <editor>Claus Mortensøn</editor>
                 <title level="m">Thet cristelighe mesßeembedhe</title>
                 <imprint>
-                    <date isodate="1528">1528</date>
+                    <date isodate="1529">1529</date>
                     <pubPlace>Malmø</pubPlace>
                     <publisher>Oluf Ulricksøn</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Nehlsen og Schlegel 2012</abbr>
+        <expan>
+            <bibl label="Nehlsen og Schlegel 2012">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Eberhard Nehlsen, Andreas Schlegel</author>
+                <editor>Albrecht Classen, Michael Fischer, Nils Grosch</editor>
+                <title level="a">Der Benzenauer – Lied, Ton, Tanz</title>
+                <title level="m">Kultur- und kommunikationshistorischer Wandel des Liedes im 16. Jahrhundert</title>
+                <biblScope unit="page">187-218</biblScope>                
+                <imprint>
+                    <date isodate="1999">2012</date>
+                    <pubPlace>Münster</pubPlace>
+                    <publisher>Waxmann Verlag</publisher>
                 </imprint>
             </bibl>
         </expan>
@@ -412,7 +517,6 @@
         <expan>organo (organ)</expan>
     </choice>
     <choice>
-        <abbr>Malmø 1533</abbr>
         <abbr>Pedersen 1533</abbr>
         <expan>
             <bibl label="Pedersen 1533">
@@ -423,6 +527,21 @@
                     <date isodate="1533">1533</date>
                     <pubPlace>Malmø</pubPlace>
                     <publisher>[Joh. Hoochstraten]</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Pedersøn 1620</abbr>
+        <expan>
+            <bibl label="Pedersøn 1620">
+                <genre>book</genre>
+                <title level="m">PRATVM SPIRITVALE</title>
+                <author>Mogens Pedersøn</author>
+                <imprint>
+                    <date isodate="1620">1620</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Heinrich Waldkirch</publisher>
                 </imprint>
             </bibl>
         </expan>
@@ -509,7 +628,6 @@
     </choice>
     <choice>
         <abbr>Thomissøn 1569</abbr>
-        <abbr>Thomissøn</abbr>
         <expan>
             <bibl label="Thomissøn 1569">
                 <genre>book</genre>
@@ -556,7 +674,8 @@
         <expan>
             <bibl label="Ulricksøn 1535">
                 <genre>book</genre>
-                <title level="m">Een handbog som inde holler det hellige Euangeliske Messe embede</title>
+                <title level="m">Een handbog som inde holler det hellige Euangeliske Messe
+                    embede</title>
                 <imprint>
                     <date isodate="1535">1535</date>
                     <pubPlace>Malmø</pubPlace>
@@ -575,7 +694,6 @@
     </choice>
     <choice>
         <abbr>Vingaard 1553</abbr>
-        <abbr>Vingaard</abbr>
         <expan>
             <bibl label="Vingaard 1553">
                 <genre>book</genre>
@@ -614,7 +732,6 @@
     </choice>
     <choice>
         <abbr>Vormordsen 1539</abbr>
-        <abbr>Vormordsen</abbr>
         <expan>
             <bibl label="Vormordsen 1539">
                 <genre>book</genre>
@@ -624,6 +741,21 @@
                     <date isodate="1539">1539</date>
                     <pubPlace>Malmø</pubPlace>
                     <publisher>Oluf Ulricksøn</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Widding 1933</abbr>
+        <expan>
+            <bibl label="Widding 1933">
+                <genre>book</genre>
+                <editor>S. Widding</editor>
+                <title level="m">Dansk Messe, Tide- og Psalmesang 1528-1573</title>
+                <imprint>
+                    <date isodate="1933">1933</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Levin &amp; Munksgaards Forlag</publisher>
                 </imprint>
             </bibl>
         </expan>
