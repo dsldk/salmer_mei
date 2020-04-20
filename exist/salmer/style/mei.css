@@ -6,7 +6,8 @@
 
 .mei {
     float: left;
-    width: auto;
+    width: 100%; 
+    width: calc(100% - 3.5rem);
     margin-right: 70px;
 }
 
@@ -453,7 +454,7 @@ p.loading {
 .edition_link  {
     display: inline-table;
     background-color: #fdda82;
-    margin: 0 0 5px 10px;
+    margin: 0 0 5px 0;
     border-radius: 6px;
     color: black;
     font-weight: normal;

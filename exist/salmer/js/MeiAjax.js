@@ -26,7 +26,6 @@ const urlParams = new URLSearchParams(window.location.search);
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    pageWidth:            1000,
     pageHeight:           20000,
     pageMarginTop:        0,
     pageMarginLeft:       0,
@@ -45,7 +44,6 @@ inputFormat:          'mei',
     spacingNonLinear:     0.28,
     font:                 'Bravura',
     adjustPageHeight:     1,
-/*    adjustPageWidth:      1,  */
     noJustification:      1,
     breaks:               'encoded',
     systemDivider:        'none'
@@ -421,7 +419,33 @@ function renderData(data) {
             });
         }
     });
-*/        
+*/     
+
+    // Handling oversized MEI renderings
+
+    // If the SVG clips, calculate the proper viewBox and allow the SVG to scale down
+
+    var outerSvg = document.getElementById(targetId).firstChild;
+    var innerSvg = outerSvg.querySelector('svg.definition-scale');
+    var outerSvgSize = outerSvg.getBoundingClientRect()
+    var innerSvgSize = outerSvg.querySelector('g.page-margin').getBoundingClientRect()
+
+    if (innerSvgSize.width > outerSvgSize.width) {
+      // We could simply set the SVG viewBox attribute to the values from getBBox(), but not all browsers support this method.
+      // Instead, we determine the actual width and height of the SVG, convert that to a scaling factor,
+      // and update the viewBox attribute based on these values.
+      // Also, we only need the viewBox on the outer SVG, not the inner one.
+      var scalingX = innerSvgSize.width / outerSvgSize.width;
+      var scalingY = innerSvgSize.height / outerSvgSize.height;
+      var viewBox = innerSvg.getAttribute('viewBox').split(' ');
+      viewBox[2] = Math.ceil(viewBox[2] * scalingX)
+      viewBox[3] = Math.ceil(viewBox[3] * scalingY)
+      outerSvg.setAttribute('viewBox', viewBox.join(' '));
+      outerSvg.removeAttribute('width');
+      outerSvg.removeAttribute('height');
+      innerSvg.removeAttribute('viewBox');
+    }
+
     if(comments) {
         // send a POST request to get the editorial comments formatted as HTML
         $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
