@@ -6,8 +6,7 @@
 
 .mei {
     float: left;
-    width: 100%; 
-    width: calc(100% - 3.5rem);
+    width: 550px; 
     margin-right: 70px;
 }
 
