@@ -868,7 +868,7 @@ $(document).ready(function() {
         param = param.split('=')
         params[param[0]] = param[1]
     })
-    scriptLang = new URL("http://salmer.dsl.dk/" + $("script[src*='MeiAjax']").attr("src")).searchParams.get("lang");
+    scriptLang = new URL("http://salmer.dsl.dk/" + $("script[src*='MeiAjax.js']").attr("src")).searchParams.get("lang");
     // language priority: 1) language requested in the querystring; 2) language requested in the js script tag; 3) default language
     if(params.lang) {language = params.lang} else if(scriptLang) {language = scriptLang}
     $(".lang:not(." + language + ")").hide();
