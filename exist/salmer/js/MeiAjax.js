@@ -173,7 +173,6 @@ var meiOptionsMenu = ' \
         <form id="optionsForm_{id}" action="https://salmer.dsl.dk/print.xq" method="GET" target="_blank" class="mei_menu"> \
             <div class="menu_block"><span class="lang da">N&oslash;gle</span><span class="lang en">Clef</span>:<br/>\
                 <input type="hidden" name="doc" value="{id}.xml"/>\
-                <input type="hidden" name="lang" id="lang_{id}" value=""/>\
                 <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp"><span class="lang da" title="Original nøgle">Original</span><span class="lang en" title="Original clef">Original</span></label> &#160;&#160; \
                 <input type="radio" name="clef" id="Gclef_{id}" value="G" onchange="updateFromForm(\'{id}\')"/> <label for="Gclef_{id}" class="musical_symbols cursorHelp"><span class="lang da" title="G-nøgle på 2. linje">&#x1d11e;</span><span class="lang en" title="G clef on 2. line (treble clef)">&#x1d11e;</span></label> &#160;&#160; \
                 <input type="radio" name="clef" id="G8clef_{id}" value="G8" onchange="updateFromForm(\'{id}\')"/> <label for="G8clef_{id}" class="musical_symbols cursorHelp"><span class="lang da" title="Oktaverende G-nøgle">&#x1d120;</span><span class="lang en" title="Transposing G clef">&#x1d120;</span></label> &#160;&#160; \
@@ -181,7 +180,7 @@ var meiOptionsMenu = ' \
             </div> \
             <hr/> \
             <div class="menu_block" id="duration_{id}"><span class="lang da">Nodeværdier</span><span class="lang en">Note values</span>:<br/> \
-                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="factor_{id}" class="cursorHelp"><span class="lang da" title="Originale nodeværdier">1:1</span><span class="lang en" title="Original note values">1:1</span></label>&#160;&#160;&#160;&#160; \
+                <input type="radio" name="factor" value="1" id="factor_{id}" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="factor_{id}" class="cursorHelp"><span class="lang da" title="Originale nodeværdier">1:1</span><span class="lang en" title="Originale note values">1:1</span></label>&#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="2" id="factor2_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor2_{id}" class="cursorHelp"><span class="lang da" title="Halve nodeværdier">1:2</span><span class="lang en" title="Diminish note values by factor 2">1:2</span></label> &#160;&#160;&#160;&#160; \
                 <input type="radio" name="factor" value="4" id="factor4_{id}" onchange="updateFromForm(\'{id}\')"/> <label for="factor4_{id}" class="cursorHelp"><span class="lang da" title="Kvarte nodeværdier">1:4</span><span class="lang en" title="Diminish note values by factor 4">1:4</span></label> &#160;&#160;&#160;&#160; \
                 <hr/> \
@@ -562,7 +561,6 @@ function createMenu(id){
         $("#" + id +"_options .lang." + language).show();
         // avoid selecting a hidden value
         $("#transposeVal_" + id)[0].selectedIndex = $("#transposeVal_" + id + " option." + language).first().index();
-        $("#lang_" + id).val(language);
     }
 }
 
@@ -870,9 +868,11 @@ $(document).ready(function() {
         param = param.split('=')
         params[param[0]] = param[1]
     })
-    if (params.lang) {language = params.lang}
+    scriptLang = new URL("http://salmer.dsl.dk/" + $("script[src*='MeiAjax']").attr("src")).searchParams.get("lang");
+    // language priority: 1) language requested in the querystring; 2) language requested in the js script tag; 3) default language
+    if(params.lang) {language = params.lang} else if(scriptLang) {language = scriptLang}
     $(".lang:not(." + language + ")").hide();
     $(".lang." + language).show();
     console.log("Document ready");
-    initMusic();
+    initMusic(language);
 });
