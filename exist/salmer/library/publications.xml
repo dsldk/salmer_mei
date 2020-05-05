@@ -48,4 +48,37 @@
         <tei>jespersen_1573.xml</tei>
         <mei_coll>Je_1573</mei_coll>
     </pub>
+    <!-- text-only publications -->
+    <pub>
+        <id>Chr3_1550</id>
+        <year>1550</year>
+        <title>Christian 3.s danske Bibel</title>
+        <editor/>
+        <tei>christian-3-bibel.xml</tei>
+        <mei_coll/>
+    </pub>
+    <pub>
+        <id>Dietz_1529</id>
+        <year>1529</year>
+        <title>Een ny handbog med Psalmer oc aandelige lofsange</title>
+        <editor>Dietz</editor>
+        <tei>dietz-salmebog-1529.xml</tei>
+        <mei_coll/>
+    </pub>
+    <pub>
+        <id>Dietz_1536</id>
+        <year>1536</year>
+        <title>Nogle nye Psalmer oc Lofsange</title>
+        <editor>Dietz</editor>
+        <tei>dietz-salmebog-1536.xml</tei>
+        <mei_coll/>
+    </pub>
+    <pub>
+        <id>Pedersen_1533</id>
+        <year>1533</year>
+        <title>Malmøsalmebogen</title>
+        <editor>Pedersen</editor>
+        <tei>malmoe-salmebog.xml</tei>
+        <mei_coll/>
+    </pub>
 </publications>
