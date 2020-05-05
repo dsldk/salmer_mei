@@ -42,13 +42,13 @@ let $coll := if(contains($document, '/'))
     (: Works only if the MEI file name contains the collection name (for example, Th_1569_LN1426_001r.xml is in collection Th_1569) :)
     if($index//dsl:pub[contains($filename,dsl:mei_coll)])
     then 
-        $index//dsl:pub/dsl:mei_coll[contains($filename,string(.))][1]
+        $index//dsl:pub/dsl:mei_coll[normalize-space(.) and contains($filename,string(.))]
     else
         ""
 
 let $tei_doc_name := if($coll!="")
     then 
-        $index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei
+        $index//dsl:pub[dsl:mei_coll=$coll]/dsl:tei
     else 
         ""
 
@@ -237,9 +237,9 @@ let $result :=
             <div id="player" style="z-index: 20; position: absolute;"/>
         </div>
         
-        
-        <input type="button" onclick="javascript:comments = !comments; comments ? $('.notelink').css('display','inline') : $('.notelink').css('display','none');" value="Tekstkritik"/>
-        
+        <!-- test
+        <input type="button" onclick="javascript:comments = !comments; comments ? $('.textcriticalnote.annotation-marker').css('display','inline') : $('.textcriticalnote.annotation-marker').css('display','none');" value="Tekstkritik"/>
+        test end -->
     </body>
 </html>
 
