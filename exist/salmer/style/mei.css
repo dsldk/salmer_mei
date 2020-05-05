@@ -27,12 +27,18 @@
 
 /* Editorial comments */
 
-.notelink {
-    display: none; 
+.mei svg .dir.textcriticalnote.annotation-marker {
+    transform: translate(-150px,-75px);
+    display: none;
 }
 
-.mei svg .dir.notelink {
-    transform: translate(-150px,-75px);
+.ui-dialog-titlebar-close {
+    display: none !important;
+}
+
+.ui-widget-header {
+    border: none !important;
+    background: none !important;
 }
 
 .mei svg .dir.comment tspan.text {

@@ -327,18 +327,13 @@ function addComments(data) {
             $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritik" );
             // Show the dialog 
             $("#" + commentId + "_div").dialog("open");
-            //$("#" + commentId + "_div").find("a").blur();
         });
-        //if(comments) {
-            // Make the comment marker visible
-            //$(this).addClass('visible');
-        //}
-        /*if(comments) {
+        if(comments) {
             // Make comment markers visible
             $(this).css('display','inline');
         } else {
             $(this).css('display','none');
-        }*/
+        }
         $(this).mouseout(function(){
             $("#" + commentId + "_div").dialog("close");
         });
@@ -701,10 +696,10 @@ function loadTeiText() {
                 teiApp();
                 if(comments) {
                     // Make comment markers visible
-                    $("#" + id).find(".notelink").css('display','inline');
+                    $("#" + id).find(".textcriticalnote.annotation-marker").css('display','inline');
                     $("#" + id).find("sup").css('display','inline');
                 } else {
-                    $("#" + id).find(".notelink").css('display','none');
+                    $("#" + id).find(".textcriticalnote.annotation-marker").css('display','none');
                     $("#" + id).find("sup").css('display','none');
                 }
 
@@ -892,10 +887,4 @@ $(document).ready(function() {
     $(".lang." + language).show();
     console.log("Document ready");
     initMusic(language);
-    /*if(comments) {
-        // Make text comment markers visible
-        $(".notelink").css('display','inline');
-    } else {
-        $(".notelink").css('display','none');
-    }*/
 });
