@@ -118,18 +118,16 @@
     
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
     <xsl:template match="m:syl[//text()]">
+        <!-- Determine lyric line number (in case there is than one) -->
+        <xsl:variable name="line" select="count(ancestor::m:verse/preceding-sibling::m:verse) + 1"/>
+        <xsl:variable name="next_syl" select="ancestor::m:note/following-sibling::m:note[1]/m:verse[$line]/m:syl"/> 
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <!--<xsl:text> </xsl:text>-->
-            <!-- Extra space before last syllable -->
-            <!--<xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])"><xsl:text> </xsl:text></xsl:if>-->
             <xsl:apply-templates select="node()"/>
-            <!-- Pad all syllables with an extra space -->
-            <xsl:text> </xsl:text>
-            <!-- Pad word endings with an extra space -->
-            <!--<xsl:if test="not(following::m:syl[text()][1]/@wordpos[.='m' or .='t'])"><xsl:text> </xsl:text></xsl:if>-->
-            <!-- Extra space after penultimate syllable -->
-            <!--<xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1"><xsl:text> </xsl:text></xsl:if>-->
+            <!-- If syllables are long, pad word beginnings and inner syllables with an extra space  -->
+            <xsl:if test="string-length(.//text()[1]) &gt; 4 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) &gt; 5)"><xsl:text>&#160;</xsl:text></xsl:if>
+            <!-- Alternatively: Pad all syllables with an extra space -->
+            <!--<xsl:text>&#160;</xsl:text>-->
         </xsl:copy>
     </xsl:template>
     
@@ -221,7 +219,7 @@
         <!-- Change context node if necessary -->
         <xsl:for-each select="ancestor-or-self::*[name()=$context]">
             <!-- Place a marker -->
-            <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment">
+            <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment textcriticalnote annotation-marker"><!-- class was: comment notelink -->
                 <xsl:if test="descendant-or-self::m:annot/@xml:id">
                     <xsl:attribute name="xml:id">
                         <xsl:value-of select="concat(descendant-or-self::m:annot/@xml:id,'_dir')"/>

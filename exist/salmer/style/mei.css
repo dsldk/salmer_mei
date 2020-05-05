@@ -1,3 +1,8 @@
+/* Google fonts */
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+@import url(//fonts.googleapis.com/css?family=Cormorant:500,600);
+@import url(//fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600);
+
 /* CSS for SVG */
 
 .score {
@@ -12,7 +17,8 @@
 
 .mei svg tspan.text {
 /* tekstnet bruger:     font-family: 'Noto Serif', serif  */
-    font-family: 'Noto Serif', Georgia, 'times new roman', times, serif; 
+    font-family: 'Cormorant', 'Noto Serif', Georgia, 'times new roman', times, serif; 
+    font-size: 400px;
 }
 
 .mei svg .dir.sb, .mei svg .dir.pb {
@@ -21,18 +27,17 @@
 
 /* Editorial comments */
 
-.mei svg .dir.comment {
-    transform: translate(-150px,-75px);
-    visibility: hidden; 
+.notelink {
+    display: none; 
 }
 
-.mei svg .dir.comment.visible {
-    visibility: visible; 
+.mei svg .dir.notelink {
+    transform: translate(-150px,-75px);
 }
 
 .mei svg .dir.comment tspan.text {
     font-style: normal;
-    font-size: 250pt;
+    font-size: 250pt;  
 }
 
 .mei_comment {

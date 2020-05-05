@@ -38,7 +38,7 @@ noFooter:             'true',
 inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            3.8,
+    lyricSize:            5,
     lyricNoStartHyphen:   1,
     spacingStaff:         3,
     spacingLinear:        0.92,
@@ -309,27 +309,39 @@ function addComments(data) {
         $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
         /* Make the bounding box clickable (works on Opera only )*/
         $(this).attr("pointer-events", "bounding-box");
-        $(this).click(function(event) {
-            /* Close all open dialogs? */
-            //$(".ui-dialog-content").dialog("close");
-            /* Reposition the dialog */
-            $("#" + commentId + "_div").dialog( "option", "position", { my: "left top", at: "left bottom", of: event } );
+        $(this).mouseover(function(event) {
+            // Close all open dialogs? 
+            $(".ui-dialog-content").dialog("close");
+            // Reposition the dialog 
+            $("#" + commentId + "_div").dialog( "option", "position", { 
+                my: "left top+13",
+                at: "left top",
+                of: event,
+                offset: "20 200",
+                collision: "none",
+                resizable: false,
+                draggable: false } );
             $("#" + commentId + "_div").dialog( "option", "height", "auto" );
             $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
             $("#" + commentId + "_div").dialog( "option", "resizable", false );
-            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritisk note" );
-            /* Show the dialog */
+            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritik" );
+            // Show the dialog 
             $("#" + commentId + "_div").dialog("open");
-            $("#" + commentId + "_div").find("a").blur();
+            //$("#" + commentId + "_div").find("a").blur();
         });
-        // Add a hover title
-        var svgns = "http://www.w3.org/2000/svg";
-        var title = document.createElementNS(svgns, 'title');
-        title.setAttributeNS(null, 'class', 'labelAttr');
-        title.innerHTML = "Tekstkritisk note";
-        $(this).append(title);
-        // Make the comment marker visible
-        $(this).addClass('visible');
+        //if(comments) {
+            // Make the comment marker visible
+            //$(this).addClass('visible');
+        //}
+        /*if(comments) {
+            // Make comment markers visible
+            $(this).css('display','inline');
+        } else {
+            $(this).css('display','none');
+        }*/
+        $(this).mouseout(function(){
+            $("#" + commentId + "_div").dialog("close");
+        });
     });
 }
 
@@ -455,11 +467,9 @@ function renderData(data) {
       innerSvg.removeAttribute('viewBox');
     }
 
-    if(comments) {
-        // send a POST request to get the editorial comments formatted as HTML
-        $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
-        '',function(data){ addComments(data); },'xml');
-    }
+    // send a POST request to get the editorial comments formatted as HTML
+    $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+    '',function(data){ addComments(data); },'xml');
 
     // In search results, move the '[...]' omission markers all to the left
     $(".fragment text").each(function() {
@@ -689,6 +699,15 @@ function loadTeiText() {
             $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){
                 $("#" + id).html(data);
                 teiApp();
+                if(comments) {
+                    // Make comment markers visible
+                    $("#" + id).find(".notelink").css('display','inline');
+                    $("#" + id).find("sup").css('display','inline');
+                } else {
+                    $("#" + id).find(".notelink").css('display','none');
+                    $("#" + id).find("sup").css('display','none');
+                }
+
             },'html');
         });
     }
@@ -705,9 +724,7 @@ function teiApp() {
             note_link_id = "#notelink" + current_note_no;
             dialog_opts.title =note_title; //+ current_note_no.substring(3);
             note_box = $( note_contents_id ).dialog(dialog_opts);
-            $( note_link_id ).click({note_box: note_box,
-                         note_contents_id: note_contents_id },
-            dialogPosition);
+            $( note_link_id ).mouseover({note_box: note_box,note_contents_id: note_contents_id },dialogPosition);
         }
     }
 
@@ -875,4 +892,10 @@ $(document).ready(function() {
     $(".lang." + language).show();
     console.log("Document ready");
     initMusic(language);
+    /*if(comments) {
+        // Make text comment markers visible
+        $(".notelink").css('display','inline');
+    } else {
+        $(".notelink").css('display','none');
+    }*/
 });
