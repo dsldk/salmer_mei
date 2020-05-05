@@ -42,7 +42,7 @@ let $coll := if(contains($document, '/'))
     (: Works only if the MEI file name contains the collection name (for example, Th_1569_LN1426_001r.xml is in collection Th_1569) :)
     if($index//dsl:pub[contains($filename,dsl:mei_coll)])
     then 
-        $index//dsl:pub/dsl:mei_coll[contains($filename,string(.))]
+        $index//dsl:pub/dsl:mei_coll[contains($filename,string(.))][1]
     else
         ""
 
@@ -59,7 +59,7 @@ let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc
         false()
 
 let $list := 
-    for $doc in collection(concat($database,'/',$datadir,'/',$coll))/m:mei
+    for $doc in collection(concat($database,'/',$datadir,'/',$coll[1]))/m:mei
     where util:document-name($doc)=$filename
     return $doc
 
@@ -236,6 +236,10 @@ let $result :=
             <!-- MIDI Player -->
             <div id="player" style="z-index: 20; position: absolute;"/>
         </div>
+        
+        
+        <input type="button" onclick="javascript:comments = !comments; comments ? $('.notelink').css('display','inline') : $('.notelink').css('display','none');" value="Tekstkritik"/>
+        
     </body>
 </html>
 
