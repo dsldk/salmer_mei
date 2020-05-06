@@ -125,9 +125,9 @@
             <xsl:apply-templates select="@*"/>
             <xsl:apply-templates select="node()"/>
             <!-- If syllables are long, pad word beginnings and inner syllables with an extra space  -->
-            <xsl:if test="string-length(.//text()[1]) &gt; 4 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) &gt; 5)"><xsl:text>&#160;</xsl:text></xsl:if>
+            <xsl:if test="string-length(.//text()[1]) &gt; 2 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) &gt; 5)"><xsl:text> </xsl:text></xsl:if>
             <!-- Alternatively: Pad all syllables with an extra space -->
-            <!--<xsl:text>&#160;</xsl:text>-->
+            <!--<xsl:text> </xsl:text>-->
         </xsl:copy>
     </xsl:template>
     
