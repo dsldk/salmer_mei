@@ -23,11 +23,10 @@ var language = 'da';  // default language
 
 
 // Verovio options
-// pageWidth * scale % = calculated width (should be 550-600px for DSL)
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    pageHeight:           20000,
+    svgViewBox:           'true',
     pageMarginTop:        0,
     pageMarginLeft:       0,
     header:               'none',
@@ -435,7 +434,10 @@ function renderData(data) {
     });
 */
 
-    resizeSVG(targetId);
+    // Set max. SVG width to inital width to avoid up-scaling 
+    var outerSvg = document.getElementById(targetId).firstChild;
+    var viewBox = outerSvg.getAttribute('viewBox').split(' ');
+    outerSvg.setAttribute('style', 'max-width: ' + viewBox[2] + 'px;');
 
     // send a POST request to get the editorial comments formatted as HTML
     $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
@@ -445,43 +447,7 @@ function renderData(data) {
     $(".fragment text").each(function() {
         $(this).attr('x','750');
     });
-
-}
-
-function resizeSVG(targetId) {
-    // Handling oversized MEI renderings
-    var divWidth = Math.floor(document.getElementById(targetId).getBoundingClientRect().width);
-    var outerSvg = document.getElementById(targetId).firstChild;
-    var innerSvg = outerSvg.querySelector('svg.definition-scale');
-    var outerSvgSize = outerSvg.getBoundingClientRect();
-    var innerSvgSize = outerSvg.querySelector('g.page-margin').getBoundingClientRect();
     
-    if (outerSvgSize.width > divWidth) {
-      console.log("Scaling down SVG from " + Math.ceil(outerSvgSize.width) + "px to " + divWidth + "px");
-      outerSvg.setAttribute('width', divWidth);
-      outerSvg.setAttribute('height', outerSvgSize.height * (divWidth/outerSvgSize.width));
-    }
-    
-    // In older Verovio versions, the outer SVG width is not always calculated correctly. 
-    // The following may correct this behaviour but is probably not needed any more. 
-
-    // If the SVG clips, calculate the proper viewBox and allow the SVG to scale down
-    if (innerSvgSize.width > outerSvgSize.width) {
-      // We could simply set the SVG viewBox attribute to the values from getBBox(), but not all browsers support this method.
-      // Instead, we determine the actual width and height of the SVG, convert that to a scaling factor,
-      // and update the viewBox attribute based on these values.
-      // Also, we only need the viewBox on the outer SVG, not the inner one.
-      var scalingX = innerSvgSize.width / outerSvgSize.width;
-      var scalingY = innerSvgSize.height / outerSvgSize.height;
-      var viewBox = innerSvg.getAttribute('viewBox').split(' ');
-      viewBox[2] = Math.ceil(viewBox[2] * scalingX)
-      viewBox[3] = Math.ceil(viewBox[3] * scalingY)
-      outerSvg.setAttribute('viewBox', viewBox.join(' '));
-      outerSvg.removeAttribute('width');
-      outerSvg.removeAttribute('height');
-      innerSvg.removeAttribute('viewBox');
-      console.log("Adjusting SVG viewBox");
-    }
 }
 
 function rerenderAllSVG() {
