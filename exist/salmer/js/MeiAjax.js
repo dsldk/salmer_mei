@@ -223,14 +223,12 @@ var meiOptionsMenu = ' \
 
 
 function updateFromForm(id) {
-    $('.wait_overlay').addClass('visible');
-    console.log(id + ": Options changed");
+    console.log("Re-rendering " + id);
     var result = { };
     $.each($('#optionsForm_' + id).serializeArray(), function() {
         result[this.name] = this.value;
     });
     updateFromOptions(id, result);
-    $('.wait_overlay').removeClass('visible');
 }
 
 
@@ -437,15 +435,37 @@ function renderData(data) {
     });
 */
 
+    resizeSVG(targetId);
+
+    // send a POST request to get the editorial comments formatted as HTML
+    $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+    '',function(data){ addComments(data); },'xml');
+
+    // In search results, move the '[...]' omission markers all to the left
+    $(".fragment text").each(function() {
+        $(this).attr('x','750');
+    });
+
+}
+
+function resizeSVG(targetId) {
     // Handling oversized MEI renderings
-
-    // If the SVG clips, calculate the proper viewBox and allow the SVG to scale down
-
+    var divWidth = Math.floor(document.getElementById(targetId).getBoundingClientRect().width);
     var outerSvg = document.getElementById(targetId).firstChild;
     var innerSvg = outerSvg.querySelector('svg.definition-scale');
-    var outerSvgSize = outerSvg.getBoundingClientRect()
-    var innerSvgSize = outerSvg.querySelector('g.page-margin').getBoundingClientRect()
+    var outerSvgSize = outerSvg.getBoundingClientRect();
+    var innerSvgSize = outerSvg.querySelector('g.page-margin').getBoundingClientRect();
+    
+    if (outerSvgSize.width > divWidth) {
+      console.log("Scaling down SVG from " + Math.ceil(outerSvgSize.width) + "px to " + divWidth + "px");
+      outerSvg.setAttribute('width', divWidth);
+      outerSvg.setAttribute('height', outerSvgSize.height * (divWidth/outerSvgSize.width));
+    }
+    
+    // In older Verovio versions, the outer SVG width is not always calculated correctly. 
+    // The following may correct this behaviour but is probably not needed any more. 
 
+    // If the SVG clips, calculate the proper viewBox and allow the SVG to scale down
     if (innerSvgSize.width > outerSvgSize.width) {
       // We could simply set the SVG viewBox attribute to the values from getBBox(), but not all browsers support this method.
       // Instead, we determine the actual width and height of the SVG, convert that to a scaling factor,
@@ -460,19 +480,16 @@ function renderData(data) {
       outerSvg.removeAttribute('width');
       outerSvg.removeAttribute('height');
       innerSvg.removeAttribute('viewBox');
+      console.log("Adjusting SVG viewBox");
     }
-
-    // send a POST request to get the editorial comments formatted as HTML
-    $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
-    '',function(data){ addComments(data); },'xml');
-
-    // In search results, move the '[...]' omission markers all to the left
-    $(".fragment text").each(function() {
-        $(this).attr('x','750');
-    });
-
 }
 
+function rerenderAllSVG() {
+    console.log("Re-rendering all SVGs");
+    $('.mei').each(function() {
+        updateFromForm($(this).attr('id'));
+    });
+}
 
 function loadMeiFromDoc() {
     /* Read MEI data from <DIV> elements in the HTML document.
@@ -752,7 +769,7 @@ function teiApp() {
     }
 
     insertNote(dialog_opts, ".notecontents", "Ordforklaring");
-    insertNote(dialog_opts, ".appnotecontents", "Tekstkritisk note");
+    insertNote(dialog_opts, ".appnotecontents", "Tekstkritik");
 
 }
 
