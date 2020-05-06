@@ -26,14 +26,14 @@ var language = 'da';  // default language
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    svgViewBox:           'true',
+    svgViewBox:           true,
     pageMarginTop:        0,
     pageMarginLeft:       0,
     header:               'none',
     footer:               'none',
 // old parameters kept for backwards compatibility until tekstnet.dk has been updated
-noHeader:             'true',
-noFooter:             'true',
+noHeader:             true,
+noFooter:             true,
 inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
