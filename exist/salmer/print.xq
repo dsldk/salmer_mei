@@ -42,7 +42,7 @@ let $coll := if(contains($document, '/'))
     (: Works only if the MEI file name contains the collection name (for example, Th_1569_LN1426_001r.xml is in collection Th_1569) :)
     if($index//dsl:pub[contains($filename,dsl:mei_coll)])
     then 
-        $index//dsl:pub/dsl:mei_coll[contains($filename,string(.))]
+        $index//dsl:pub/dsl:mei_coll[normalize-space(.) and contains($filename,string(.))]
     else
         ""
 
