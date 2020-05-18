@@ -230,7 +230,7 @@ declare function local:check_publications() as node()* {
             <hr/>
         </div>
     let $publ_list :=
-        for $publ at $pos in $publications/dsl:publications/dsl:pub
+        for $publ at $pos in $publications/dsl:publications/dsl:pub[normalize-space(dsl:mei_coll)]
             let $checkbox := if(string($pos) = $search_in_seq or count($search_in_seq) = 0) then 
 	            <input xmlns="http://www.w3.org/1999/xhtml" type="checkbox" name="x" id="{$publ/dsl:id/text()}" value="{$pos}" onchange="publClicked();" checked="checked"/> 
                 else 
