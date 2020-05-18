@@ -37,7 +37,15 @@
             <field name="id">
                 <xsl:value-of select="substring-before($filename,'.xml')"/>
             </field>
-            <xsl:for-each select="//m:workList/m:work/m:title[text()]">
+            <!-- Title to be displayed in search results first -->
+            <xsl:variable name="main_title" select="//m:workList/m:work/m:title[text() and (@type='uniform' or not(../m:title[@type='uniform']))][1]"/>
+            <xsl:if test="normalize-space($main_title)">
+                <field name="title">
+                    <xsl:value-of select="$main_title"/>
+                </field>
+            </xsl:if>
+            <!-- Other titles -->
+            <xsl:for-each select="//m:workList/m:work/m:title[text() and not(.=$main_title)]">
                 <field name="title">
                     <xsl:value-of select="."/>
                 </field>
@@ -49,7 +57,10 @@
                 </field>
             </xsl:if>
             <field name="publ">
-                <xsl:value-of select="substring($filename,1,14)"/>
+                <!-- Meta-records do not contain score -->
+                <xsl:if test="//m:music//m:score">
+                    <xsl:value-of select="substring($filename,1,14)"/>
+                </xsl:if>
             </field>
             <field name="collection">
                 <xsl:value-of select="$collection"/>

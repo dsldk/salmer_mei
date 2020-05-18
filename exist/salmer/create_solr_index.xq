@@ -19,8 +19,15 @@ let $collection := ''  (: for instance, 'Th_1569'; use empty string to select al
 let $index-doc := 
 <add>
     {
-    (: the count clause slows down the process; consider refrasing :)
-    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]
+(: Kun småbøgerne: :)    
+(:    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"Je_" ) or contains(util:document-name(.),"Th_"))][count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]  :)
+(:  Kun Vingaard :)
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[contains(util:document-name(.),"Vi_" )]  :)
+(:  Kun metaposter :)
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"_15" ))]  :)
+(:  Alle  :)    
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  :)
+    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  
         let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
         let $params := 

@@ -249,7 +249,7 @@ declare function local:get_titles_solr() as node()* {
     let $solr_docs := doc($query)
     let $options := 
         for $doc in $solr_docs/*/*/*[name()='doc']
-            let $title := $doc/*[@name='title']/*[1]
+            let $title := $doc/*[@name='title'][@type='uniform' or not(../m:title[@type="uniform"])]/*[1]
             order by $title ascending
         return <option value="{$title}">{$title}</option>
     return 
