@@ -32,7 +32,7 @@ let $output :=
 
         
 	</head>
-	<body class="subpage metadata">
+	<body class="metadata">
 	
        <header xmlns="http://www.w3.org/1999/xhtml" class="header" id="header">
        
@@ -69,7 +69,7 @@ let $output :=
        <div class="page-wrapper">
             <div class="background-box">
                 <div class="headline-box container">
-                    <h1>Vejledning til salmebasen</h1>
+                    <h2>Vejledning til melodibasen</h2>
                 </div>
             </div>
             <div class="documentFrame container">
@@ -128,11 +128,15 @@ let $output :=
                 <tr>
                     <td><span class="relation liturgy">Liturgisk enhed</span></td>
                     <td>Beskriver en enhed, som typisk består af flere korte melodistykker og tekst, der ikke kan karakteriseres som 
-                    en salme, men tilsammen danner en liturgisk enhed. <br/>
+                    en salme, men som tilsammen danner en liturgisk enhed. <br/>
                     Det gælder f.eks. <a href="https://salmer.dsl.dk/document.xq?doc=kyrie_eleison_gud_fader_forbarme_dig.xml">litaniet</a>,
                     som står i både Thomissøns salmebog og Jespersens graduale.</td>
                 </tr>
             </table>
+            
+            <p>Links til den digitale udgave af salmebøgerne er markeret med gult og indikerer med ikoner, om der er tale om en salmetekst med noder:
+            <span class="edition_link"><span class="edition" title="Salme med noder">Digital udgave</span></span> eller uden: 
+            <span class="edition_link"><span class="text_edition" title="Salmetekst uden noder">Digital udgave</span></span>.</p>
             
             <h2><a name="notation">Brug af noderne</a></h2>
 
