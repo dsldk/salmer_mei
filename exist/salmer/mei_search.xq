@@ -323,8 +323,6 @@ let $result :=
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
         <script type="text/javascript" src="js/libs/verovio/verovio-toolkit.js">/* Verovio */</script>
         <!-- alternatively use CDNs, like: -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">/* */</script>-->
-        <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
         <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>

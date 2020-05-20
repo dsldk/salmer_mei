@@ -8,6 +8,7 @@ var pae_changed = false;
 // Verovio settings for rendering of search results. Overrides default settings defined in MeiAjax.js 
 $defaultVerovioOptions = {
     from:              'mei',
+    svgViewBox:         true,
     scale:              36,
     pageWidth:          2500,
     pageHeight:         20000,
@@ -22,8 +23,8 @@ $defaultVerovioOptions = {
     spacingLinear:      0.9,
     spacingNonLinear:   0.3,
     font:               'Bravura',
-    adjustPageHeight:   1,
-    noJustification:    1,
+    adjustPageHeight:   true,
+    noJustification:    true,
     breaks:             'auto',
     systemDivider:      'none'
 };
@@ -31,6 +32,7 @@ $defaultVerovioOptions = {
 // Verovio settings for the piano input 
 var verovio_options_search = {
     from:               'pae',
+    svgViewBox:         true,
     scale:              32,
     pageWidth:          1200,
     pageHeight:         240,
@@ -43,7 +45,7 @@ var verovio_options_search = {
     spacingNonLinear:   0.4,
     font:               'Bravura',
     adjustPageHeight:   0,
-    noJustification:    1, 
+    noJustification:    true, 
     systemDivider:      'none'
 };
 
@@ -199,6 +201,21 @@ function publClicked() {
     }
 }
 
+// Validate search query
+function validateInput() {
+    $("#pnames").keyup(function (e) {
+        this.value = this.value.toLocaleUpperCase();
+        this.value = this.value.replace(/[^A-H|^V-Z]/gi,'');
+        this.value = this.value.replace(/[H]/gi,'B');
+    });
+    $("#contour").keyup(function (e) {
+        this.value = this.value.replace(/[dD]/gi,'\\');
+        this.value = this.value.replace(/[uU]/gi,'\/');
+        this.value = this.value.replace(/[rR]/gi,'-');
+        this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
+    });
+}
+
 function openTab(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -220,4 +237,5 @@ function openTab(evt, tabName) {
 
 $(document).ready(function() {
     initPiano();
+    validateInput();
 });

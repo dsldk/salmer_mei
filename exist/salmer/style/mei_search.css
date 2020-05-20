@@ -82,7 +82,7 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 .result_list {
-    width: 720px;
+    max-width: 1025px;
     min-width: 720px;
     margin: 20px auto;
 }
@@ -117,6 +117,10 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 
+.mei {
+    width: 100%;
+    margin-right: 0;
+}
 
 .mei svg .dir.pb, .mei svg .dir.sb {
     transform: translate(0px,-50px);
@@ -204,6 +208,11 @@ a.paging, a.paging:visited, a.paging:active {
 
 #pSearch .checkbox-options {
     white-space: nowrap;
+}
+
+#contour {
+    font-family: courier, fixed, monospace;
+    font-size: 1.2em;
 }
 
 /* tabs */
