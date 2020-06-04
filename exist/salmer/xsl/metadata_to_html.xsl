@@ -510,7 +510,7 @@
         <xsl:param name="internal" select="true()"/>
         <xsl:choose>
             <xsl:when test="$internal">
-                <xsl:if test="m:relation[@target!='' and not(contains(@target,'//:'))]">
+                <xsl:if test="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
                     <!-- internal relations -->
                     <div class="list_block">
                         <div class="label">Relaterede poster: </div>
