@@ -7,7 +7,7 @@
 //        var enableMidi = true;     // enable MIDI playback
 //        var enableOptions = true;  // enable notation customization options
 //        var enableSearch = false;  // disable phrase selection for melodic search
-//        var enableComments = true; // do not show editorial comments in score
+//        var enableComments = true; // show editorial comments in score
 //    </script>
 
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  // options menu main switch
@@ -37,11 +37,17 @@ noFooter:             true,
 inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            5,
+    lyricSize:            7,
     lyricNoStartHyphen:   1,
+    lyricHyphenLength:    1.1,
     spacingStaff:         3,
-    spacingLinear:        0.92,
-    spacingNonLinear:     0.28,
+    spacingLinear:        0.35,
+    spacingNonLinear:     0.4,
+//    spacingLinear:        0.35,
+//    spacingNonLinear:     0.48,
+
+//    spacingLinear:        0.92,
+//    spacingNonLinear:     0.28,
     font:                 'Bravura',
     adjustPageHeight:     1,
     adjustPageWidth:      1,
@@ -161,7 +167,7 @@ var existMenu = '\
         <div class="exist_link">\
             <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">\
                 <div class="midi_button database">\
-                    <span class="label"><span class="lang da">Slå op i salmebasen</span><span class="lang en">See database entry</span></span>\
+                    <span class="label"><span class="lang da">Slå op i melodibasen</span><span class="lang en">See database entry</span></span>\
                 </div>\
             </a>\
         </div>\
@@ -447,7 +453,19 @@ function renderData(data) {
     $(".fragment text").each(function() {
         $(this).attr('x','750');
     });
-    
+
+    // Adjust lyric hyphen width and position
+    // (option lyricHyphenWidth apparently not supported by Verovio)
+    $(".syl rect").each(function() {
+        $(this).attr('height','20');
+        $(this).attr('y',parseInt($(this).attr('y')) + 30);
+        $(this).attr('x',parseInt($(this).attr('x')) + 50);
+    });
+    // Adjust lyrics position
+    $(".syl text").each(function() {
+        $(this).attr('x',parseInt($(this).attr('x')) + 50);
+    });
+
 }
 
 function rerenderAllSVG() {
