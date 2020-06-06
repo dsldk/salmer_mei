@@ -146,7 +146,20 @@ function renderData(data) {
     for (i = 0; i < vrvToolkit.getPageCount(); i++) {
         svg = vrvToolkit.renderToSVG(i + 1, {});
         $("#" + targetId).html($("#" + targetId).html() + "<br/>" + svg);
-     }    
+    }
+         
+    // Adjust lyrics and hyphen position
+    $(".syl").each(function() {
+        var t = $(this).find("text");
+        var text = t.find("tspan.text tspan.text").text();
+        // Adjust lyrics position proportionally to syllable length
+        t.attr('x',parseInt(t.attr('x')) + 120 - 40*text.length);
+        var hyph = $(this).find("rect");
+        if (hyph && text.length > 3) {
+            hyph.attr('x',parseInt(hyph.attr('x')) - 20*text.length);
+        }
+    });     
+    
 }
 
 
