@@ -37,17 +37,12 @@ noFooter:             true,
 inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            7,
+    lyricSize:            5,
     lyricNoStartHyphen:   1,
     lyricHyphenLength:    1.1,
     spacingStaff:         3,
-    spacingLinear:        0.35,
-    spacingNonLinear:     0.4,
-//    spacingLinear:        0.35,
-//    spacingNonLinear:     0.48,
-
-//    spacingLinear:        0.92,
-//    spacingNonLinear:     0.28,
+    spacingLinear:        0.25,
+    spacingNonLinear:     0.5,
     font:                 'Bravura',
     adjustPageHeight:     1,
     adjustPageWidth:      1,
@@ -454,16 +449,16 @@ function renderData(data) {
         $(this).attr('x','750');
     });
 
-    // Adjust lyric hyphen width and position
-    // (option lyricHyphenWidth apparently not supported by Verovio)
-    $(".syl rect").each(function() {
-        $(this).attr('height','20');
-        $(this).attr('y',parseInt($(this).attr('y')) + 30);
-        $(this).attr('x',parseInt($(this).attr('x')) + 50);
-    });
-    // Adjust lyrics position
-    $(".syl text").each(function() {
-        $(this).attr('x',parseInt($(this).attr('x')) + 50);
+    // Adjust lyrics and hyphen position
+    $(".syl").each(function() {
+        var t = $(this).find("text");
+        var text = t.find("tspan.text tspan.text").text();
+        // Adjust lyrics position proportionally to syllable length
+        t.attr('x',parseInt(t.attr('x')) + 120 - 40*text.length);
+        var hyph = $(this).find("rect");
+        if (hyph && text.length > 3) {
+            hyph.attr('x',parseInt(hyph.attr('x')) - 20*text.length);
+        }
     });
 
 }
