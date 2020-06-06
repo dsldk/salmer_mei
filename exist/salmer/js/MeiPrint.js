@@ -21,26 +21,27 @@ var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
     pageWidth:            1000,
-    pageHeight:           20000,
+    // minimal page height forces Verovio to render only one system per page     
+    pageHeight:           100,
     pageMarginTop:        0,
     pageMarginLeft:       50,
     header:               'none',
     footer:               'none',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
-    lyricSize:            3.8,
+    lyricSize:            5,
     lyricNoStartHyphen:   1,
     spacingStaff:         3,
-    spacingLinear:        0.92,
-    spacingNonLinear:     0.28,
+    spacingLinear:        0.25,
+    spacingNonLinear:     0.5,
     font:                 'Bravura',
     adjustPageHeight:     1,
-/*  adjustPageWidth:      1,  */
+    adjustPageWidth:      1,  
     noJustification:      1,
     breaks:               'encoded',
     systemDivider:        'none'
 }
-    
+
 
 // global variables - do not change
 var host = "https://salmer.dsl.dk/"
