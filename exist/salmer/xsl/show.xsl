@@ -129,11 +129,12 @@
             <xsl:apply-templates select="node()"/>
             <!-- Specific cases hard-coded: -->
             <xsl:choose>
-                <xsl:when test="normalize-space(.)='Him'"><xsl:text>&#160;&#160;</xsl:text></xsl:when>
+                <xsl:when test="normalize-space(.)='Him'"><xsl:text>&#160;</xsl:text></xsl:when>
                 <xsl:when test="normalize-space(.)='Kon'"><xsl:text>&#160;</xsl:text></xsl:when>
                 <xsl:when test="normalize-space(.)='HA' and not(ancestor::m:note/preceding-sibling::m:note)"><xsl:text>&#160;&#160;&#160;</xsl:text></xsl:when>
                 <xsl:when test="substring(normalize-space(.),1,1)='A'"><xsl:text>&#160;</xsl:text></xsl:when>
                 <xsl:when test="substring(normalize-space(.),1,1)='D'"><xsl:text>&#160;</xsl:text></xsl:when>
+                <xsl:when test="substring(normalize-space(.),1,1)='G'"><xsl:text>&#160;</xsl:text></xsl:when>
                 <xsl:when test="substring(normalize-space(.),1,1)='H'"><xsl:text>&#160;</xsl:text></xsl:when>
                 <xsl:when test="substring(normalize-space(.),1,1)='Æ'"><xsl:text>&#160;</xsl:text></xsl:when>
             </xsl:choose>

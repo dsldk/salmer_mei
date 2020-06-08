@@ -39,11 +39,9 @@ inputFormat:          'mei',
     lyricTopMinMargin:    4,
     lyricSize:            5,
     lyricNoStartHyphen:   1,
-    lyricHyphenLength:    1,
-    lyricWordSpace:       1,
     spacingStaff:         3,
-    spacingLinear:        0.35,
-    spacingNonLinear:     0.6,
+    spacingLinear:        0.99,
+    spacingNonLinear:     0.35,
     spacingDurDetection:  true,
     font:                 'Bravura',
     adjustPageHeight:     1,
@@ -628,7 +626,7 @@ function saveSelection() {
             // Add a hover title
             var title = document.createElementNS(svgns, 'title');
             title.setAttributeNS(null, 'class', 'labelAttr');
-            title.innerHTML = "Søg efter den markerede frase";
+            title.innerHTML = "Søg efter de markerede toner";
             document.getElementById('selectionBox_' + layer).appendChild(title);
 
             // Parse original XML from string in document
