@@ -125,15 +125,21 @@
             <xsl:apply-templates select="@*"/>
             <!-- Pad inner syllable with an extra space before text -->
             <!--<xsl:if test="@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
-            <!--<xsl:if test="string-length(.) &gt; 3"><xsl:text>&#160;</xsl:text></xsl:if>-->
+            <!--<xsl:if test="string-length(.) > 3"><xsl:text> </xsl:text></xsl:if>-->
             <xsl:apply-templates select="node()"/>
             <!-- Specific cases hard-coded: -->
             <xsl:choose>
                 <xsl:when test="normalize-space(.)='Him'"><xsl:text>&#160;&#160;</xsl:text></xsl:when>
+                <xsl:when test="normalize-space(.)='Kon'"><xsl:text>&#160;</xsl:text></xsl:when>
+                <xsl:when test="normalize-space(.)='HA' and not(ancestor::m:note/preceding-sibling::m:note)"><xsl:text>&#160;&#160;&#160;</xsl:text></xsl:when>
+                <xsl:when test="substring(normalize-space(.),1,1)='A'"><xsl:text>&#160;</xsl:text></xsl:when>
+                <xsl:when test="substring(normalize-space(.),1,1)='D'"><xsl:text>&#160;</xsl:text></xsl:when>
+                <xsl:when test="substring(normalize-space(.),1,1)='H'"><xsl:text>&#160;</xsl:text></xsl:when>
+                <xsl:when test="substring(normalize-space(.),1,1)='Æ'"><xsl:text>&#160;</xsl:text></xsl:when>
             </xsl:choose>
+            <!-- Alternatives: -->
             <!-- Pad before hyphen -->
             <!--<xsl:if test="$next_syl/@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
-            <!-- Alternatives: -->
             <!-- If syllables are long, pad word beginnings and inner syllables with an extra space  -->
             <!--<xsl:if test="string-length(.//text()[1]) > 2 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) > 5)"><xsl:text> </xsl:text></xsl:if>-->
         </xsl:copy>
