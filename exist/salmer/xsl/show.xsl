@@ -1,5 +1,9 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dsl="http://www.dsl.dk" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h dsl xsl">
-    
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:h="http://www.w3.org/1999/xhtml" 
+    xmlns:dsl="http://www.dsl.dk" 
+    xmlns:m="http://www.music-encoding.org/ns/mei" 
+    version="2.0" 
+    exclude-result-prefixes="m h dsl xsl">
     
     <!-- Prepare MEI for viewing with Verovio -->
     
@@ -118,31 +122,30 @@
     
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
     <xsl:template match="m:syl[//text()]">
-        <!-- Determine lyric line number (in case there is than one) -->
-        <xsl:variable name="line" select="count(ancestor::m:verse/preceding-sibling::m:verse) + 1"/>
-        <xsl:variable name="next_syl" select="ancestor::m:note/following-sibling::m:note[1]/m:verse[$line]/m:syl"/> 
+        <!-- Determine lyric line number (in case there is than one); base 0 -->
+        <xsl:variable name="line" select="ancestor::m:verse/@n"/>
+        <xsl:variable name="next_syl" select="ancestor::m:note/following-sibling::m:note[1]/m:verse[@n = $line]/m:syl"/> 
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
             <!-- Pad inner syllable with an extra space before text -->
             <!--<xsl:if test="@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
             <!--<xsl:if test="string-length(.) > 3"><xsl:text> </xsl:text></xsl:if>-->
+            <!-- Neumes get an extra space -->
+            <xsl:if test="ancestor::m:syllable"><xsl:text>&#160;</xsl:text></xsl:if>
+            
             <xsl:apply-templates select="node()"/>
-            <!-- Specific cases hard-coded: -->
-            <xsl:choose>
-                <xsl:when test="normalize-space(.)='Him'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="normalize-space(.)='Kon'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="normalize-space(.)='HA' and not(ancestor::m:note/preceding-sibling::m:note)"><xsl:text>&#160;&#160;&#160;</xsl:text></xsl:when>
-                <xsl:when test="substring(normalize-space(.),1,1)='A'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="substring(normalize-space(.),1,1)='D'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="substring(normalize-space(.),1,1)='G'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="substring(normalize-space(.),1,1)='H'"><xsl:text>&#160;</xsl:text></xsl:when>
-                <xsl:when test="substring(normalize-space(.),1,1)='Æ'"><xsl:text>&#160;</xsl:text></xsl:when>
-            </xsl:choose>
+            
+            <!-- Add an extra space for each capital letter -->
+            <xsl:variable name="countCaps" select="string-length(normalize-space(.)) - string-length(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅÄÖÜ',''))"/>
+            <xsl:if test="$countCaps &gt; 0">
+                <xsl:for-each select="1 to $countCaps">&#160;</xsl:for-each>
+            </xsl:if>
             <!-- Alternatives: -->
             <!-- Pad before hyphen -->
             <!--<xsl:if test="$next_syl/@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
             <!-- If syllables are long, pad word beginnings and inner syllables with an extra space  -->
             <!--<xsl:if test="string-length(.//text()[1]) > 2 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) > 5)"><xsl:text> </xsl:text></xsl:if>-->
+            <!--<xsl:if test="string-length($next_syl) > 3"><xsl:text>&#160;</xsl:text></xsl:if>-->
         </xsl:copy>
     </xsl:template>
     
