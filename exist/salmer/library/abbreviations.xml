@@ -64,6 +64,22 @@
         <expan>baritono (baritone)</expan>
     </choice>
     <choice>
+        <abbr>Bergsagel 1995</abbr>
+        <expan>
+            <bibl label="Bergsagel 1995">
+                <genre>journal</genre>
+                <genre>article</genre>
+                <author>John Bergsagel</author>
+                <title level="a">Om melodien til »Maria bold«</title>
+                <title level="j">Danske Studier</title>
+                <biblScope unit="page">39-41</biblScope>                
+                <imprint>
+                    <date isodate="1995">1995</date>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>bc.</abbr>
         <expan>basso continuo</expan>
     </choice>
@@ -297,6 +313,23 @@
         </expan>
     </choice>
     <choice>
+        <abbr>Glahn 1961</abbr>
+        <expan>
+            <bibl label="Glahn 1961">
+                <genre>journal</genre>
+                <genre>article</genre>
+                <author>Henrik Glahn</author>
+                <title level="a">En ny kilde til belysning af det preussiske hofkapels repertoire på Hertug Albrechts tid</title>
+                <title level="j">Svensk Tidskrift för Musikforskning</title>
+                <biblScope unit="vol">43</biblScope>
+                <biblScope unit="page">145-161</biblScope>                
+                <imprint>
+                    <date isodate="1961">1961</date>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Glahn 1963</abbr>
         <expan>
             <bibl label="Glahn 1963">
@@ -372,6 +405,21 @@
         <expan>gran cassa (bass drum)</expan>
     </choice>
     <choice>
+        <abbr>Hegelund 1578</abbr>
+        <expan>
+            <bibl label="Hegelund 1578">
+                <genre>book</genre>
+                <editor>Peder Hegelund</editor>
+                <title level="m">Argumenta RESVRRECTIONIS CORPORVM</title>
+                <imprint>
+                    <date isodate="1578">1578</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Lorenz Benedicht</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Jespersen 1573</abbr>
         <expan>
             <bibl label="Jespersen 1573">
@@ -424,6 +472,22 @@
         </expan>
     </choice>
     <choice>
+        <abbr>Larsen 1948-49</abbr>
+        <expan>
+            <bibl label="Larsen 1948-49">
+                <genre>journal</genre>
+                <genre>article</genre>
+                <author>Jens Peter Larsen</author>
+                <title level="a">Litaniet i den danske kirke</title>
+                <title level="j">Dansk Kirkesangs Aarskrift</title>
+                <biblScope unit="page">18-46</biblScope>                
+                <imprint>
+                    <date isodate="1948">1948-49</date>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Leaver 2017</abbr>
         <expan>
             <bibl label="Leaver 2017">
@@ -436,6 +500,22 @@
                     <publisher>William B. Eerdmans Publishing Company</publisher>
                 </imprint>
                 <biblScope unit="page"/>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Louis-Jensen 1995</abbr>
+        <expan>
+            <bibl label="Louis-Jensen 1995">
+                <genre>journal</genre>
+                <genre>article</genre>
+                <author>Jonna Louis-Jensen</author>
+                <title level="a">Maria bold på danske</title>
+                <title level="j">Danske Studier</title>
+                <biblScope unit="page">18-39</biblScope>                
+                <imprint>
+                    <date isodate="1995">1995</date>
+                </imprint>
             </bibl>
         </expan>
     </choice>
@@ -467,11 +547,11 @@
         <expan>mezzosoprano</expan>
     </choice>
     <choice>
-        <abbr>Mortensøn 1529</abbr>
+        <abbr>Mortensen 1529</abbr>
         <expan>
-            <bibl label="Mortensøn 1529">
+            <bibl label="Mortensen 1529">
                 <genre>book</genre>
-                <editor>Claus Mortensøn</editor>
+                <editor>Claus Mortensen</editor>
                 <title level="m">Thet cristelighe mesßeembedhe</title>
                 <imprint>
                     <date isodate="1529">1529</date>
@@ -742,6 +822,22 @@
                     <pubPlace>Malmø</pubPlace>
                     <publisher>Oluf Ulricksøn</publisher>
                 </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Wackernagel 1864-1877</abbr>
+        <expan>
+            <bibl label="Wackernagel 1864-1877">
+                <genre>book</genre>
+                <author>Philipp Wackernagel</author>
+                <title level="m">Das deutsche Kirchenlied von der ältesten Zeit bis zum Anfang des XVII. Jahrhunderts</title>
+                <imprint>
+                    <date isodate="1864">1864-1877</date>
+                    <pubPlace>Leipzig</pubPlace>
+                    <publisher>B. G. Teubner</publisher>
+                </imprint>
+                <biblScope unit="page"/>
             </bibl>
         </expan>
     </choice>
