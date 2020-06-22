@@ -31,9 +31,9 @@ $defaultVerovioOptions = {
 
 // Verovio settings for the piano input 
 var verovio_options_search = {
-    from:               'pae',
+    from:               'mei',
     svgViewBox:         true,
-    scale:              32,
+    scale:              100,
     pageWidth:          1200,
     pageHeight:         240,
     pageMarginTop:      0,
@@ -42,7 +42,7 @@ var verovio_options_search = {
     footer:             'none',
     spacingStaff:       10,
     spacingLinear:      0.9,
-    spacingNonLinear:   0.4,
+    spacingNonLinear:   0.36,
     font:               'Bravura',
     adjustPageHeight:   0,
     noJustification:    true, 
@@ -68,7 +68,7 @@ function reset_a() {
     $("#absp").attr("value","");
     pae_data = "4-";
     pae_changed = true;
-    render_query(pae + pae_data, "pQueryOut", verovio_options_search);
+    render_query(pae + pae_data, "pQueryOut");
 }
 
 function pnum_to_pae(pnum) {
@@ -114,36 +114,16 @@ function absp_to_pae(absp, separator) {
     return to_pae;
 }
 
-function render_query(data) {
-    // a simplified rendering function for the piano input
-    var svg = vrvToolkit.renderData( data + "\n", verovio_options_search );
-    document.getElementById("pQueryOut").innerHTML = svg;
+function render_query(pae) {
+    // a rendering function for the piano input
+    // first rendering is for conversion to MEI only              
+    vrvToolkit.renderData(pae + "\n", {from: 'pae'});
+    // remove stems before displaying
+    var stemless = vrvToolkit.getMEI(-1, true).replace(new RegExp('<note ', 'g'),'<note stem.len="0" ');
+    vrvToolkit.setOptions(verovio_options_search);
+    vrvToolkit.loadData(stemless);
+    document.getElementById("pQueryOut").innerHTML = vrvToolkit.renderToSVG(page, {});
 }
-
-function make_mei_from_piano() {
-// preparations for rendering MEI instead of PAE...
-    var mei1 = '<?xml version="1.0"?>\
-<score>\
-    <section>\
-        <scoreDef>\
-            <staffGrp>\
-                <staffDef clef.shape="G" clef.line="2" n="1" lines="5" />\
-            </staffGrp>\
-        </scoreDef>\
-        <section>\
-            <measure right="invis">\
-                <staff n="1">\
-                    <layer n="1">'
-    var mei2 = '\
-                    </layer>\
-                </staff>\
-            </measure>\
-        </section>\
-    </section>\
-</score>'
-    var note = '<note dur="4" stem.length="0" oct="4" pitchname="c"/>' 
-}
-
 
 function initPiano() {
     $(".key").each(function() {
@@ -157,19 +137,18 @@ function initPiano() {
                 if(pae_data == "1-" | !pae_changed) { pae_data = ""; }
                 new_data = check_accidental(pae_data, pnum_to_pae(pnum));
                 pae_data += new_data;
-                render_query(pae + pae_data, "pQueryOut", verovio_options_search);
+                render_query(pae + pae_data,"pQueryOut");
                 pae_changed = true;
                 // play the added note; start with a 64th rest – otherwise the MIDI player skips the (first) note;
                 // play halves instead of quarter notes to get a reasonable note length
-                play_midi_data(pae + "6-" + pnum_to_pae(pnum).replace("4","2"), verovio_options_search);
-                
+                play_midi_data(pae + "6-" + pnum_to_pae(pnum).replace("4","2"), {from: 'pae'});                
             }
         });
     });
-    /* Render the data and insert it as content of the target div */
+    /* Render the initial staff and insert it as content of the target div */
     var absp_query = getParameterByName("a");
     if(absp_query) { pae_data = absp_to_pae(absp_query,"-"); }
-    render_query(pae + pae_data, "pQueryOut", verovio_options_search);
+    render_query(pae + pae_data, "pQueryOut");
 }
 
 function updateAction() {
