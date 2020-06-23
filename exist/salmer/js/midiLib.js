@@ -33,7 +33,7 @@ function play_midi(id) {
 
         if (isPlaying === true) {pause();}
         var options = {
-            inputFormat: 'mei'
+            from: 'mei'
         };
         console.log("Playing MIDI");
 
@@ -60,7 +60,67 @@ function play_midi(id) {
     // remove the MIDI XSL from the transformation list
     delete $mei[id].xsltOptions['midi'];
 }
- 
+
+//////////////////////////////////////////////////////
+/* Similar to play_midi, only download MIDI instead */
+//////////////////////////////////////////////////////
+function download_midi(id) {
+    console.log("Preparing for download: " + id);
+    
+    // temporarily add the MIDI preparation XSL to the list of transformations
+    $mei[id].xsltOptions['midi'] = $.extend(true, {}, $midi);
+
+    // send a POST request to get the MIDI-playable MEI data
+    $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
+
+        var options = {
+            from: 'mei'
+        };
+
+        // strip off the wrapping <response> element to get the MEI root element
+        var mei = data.firstChild;
+        
+        // make a document fragment containing the MEI
+        var frag = document.createDocumentFragment();
+        while(mei.firstChild) {
+            frag.appendChild(mei.firstChild);
+        }
+        var xmlString = (new XMLSerializer()).serializeToString(frag);    
+
+        vrvToolkit.setOptions(options);
+        vrvToolkit.loadData(xmlString);
+        var base64midi = vrvToolkit.renderToMIDI();
+        var binaryMidi = atob(base64midi);
+        
+        // Some data conversion necessary to produce a valid MIDI file.
+        // See https://blog.logrocket.com/binary-data-in-the-browser-untangling-an-encoding-mess-with-javascript-typed-arrays-119673c0f1fe/
+        // for a description of what we are doing here (basically converting a UTF-8 string to binary data) 
+        var u16 = new Uint16Array(binaryMidi.length);
+        var u8 = new Uint8Array(binaryMidi.length);
+        // Copy over all the values
+        for(var i=0;i<binaryMidi.length;i++){
+          u16[i] = binaryMidi[i].charCodeAt(0);
+          u8[i] = u16[i];
+        }
+        saveAs(new Blob([u8], {type:'audio/midi'}),"midi.mid");
+
+        // Alternatively: This also works, but behaviour (playback in browser or download) depends on the browser and user settings:
+        // var song = 'data:audio/midi;base64,' + base64midi;
+        // window.open(song, "My MIDI file", "resizable=yes,scrollbars=no,status=no");
+
+    },'xml');
+
+    // remove the MIDI XSL from the transformation list
+    delete $mei[id].xsltOptions['midi'];
+}
+
+function base64DecodeUnicode(str) {
+    // Convert Base64 encoded bytes to percent-encoding, and then get the original string.
+    percentEncodedStr = atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join('');
+    return decodeURIComponent(percentEncodedStr);
+}
  
 ////////////////////////////////////////////
 /* A function playing submitted data      */
