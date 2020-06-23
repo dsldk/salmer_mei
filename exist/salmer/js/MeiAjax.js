@@ -312,7 +312,7 @@ function addComments(data) {
             $(".ui-dialog-content").dialog("close");
             // Reposition the dialog 
             $("#" + commentId + "_div").dialog( "option", "position", { 
-                my: "left top+13",
+                my: "left-20 top-20",
                 at: "left top",
                 of: event,
                 offset: "20 200",
@@ -332,7 +332,7 @@ function addComments(data) {
         } else {
             $(this).css('display','none');
         }
-        $(this).mouseout(function(){
+        $("#" + commentId + "_div").parent().mouseleave(function(){
             $("#" + commentId + "_div").dialog("close");
         });
     });
