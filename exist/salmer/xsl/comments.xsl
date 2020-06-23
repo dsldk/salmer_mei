@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h xl xsl">
+<xsl:stylesheet 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xl="http://www.w3.org/1999/xlink" 
+    xmlns:h="http://www.w3.org/1999/xhtml" 
+    xmlns:m="http://www.music-encoding.org/ns/mei" 
+    version="2.0" 
+    exclude-result-prefixes="m h xl xsl">
     
     
     <!-- Extract MEI annotations and transform them to HTML -->
@@ -24,6 +29,8 @@
             <span xmlns="http://www.w3.org/1999/xhtml">
                 <xsl:attribute name="id"><xsl:value-of select="@xml:id"/>_content</xsl:attribute>
                 <xsl:apply-templates select="node()"/>
+                <!-- create a hidden dummy input element to absorb the focus -->
+                <input type="hidden" autofocus="autofocus" />
             </span>
     </xsl:template>
 <!--    
@@ -41,34 +48,34 @@
     
     <!-- Formatted text and links -->
     <xsl:template match="m:lb">
-        <br/>
+        <br xmlns="http://www.w3.org/1999/xhtml"/>
     </xsl:template>
     <xsl:template match="m:p[normalize-space(.)]">
-        <p><xsl:apply-templates/></p>
+        <p xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></p>
     </xsl:template>
     <xsl:template match="m:p[not(child::text()) and not(child::node())]">
         <!-- ignore -->
     </xsl:template> 
     <xsl:template match="m:rend[@fontweight = 'bold'][normalize-space(.)]">
-        <b><xsl:apply-templates/></b>
+        <b xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></b>
     </xsl:template>
     <xsl:template match="m:rend[@fontstyle = 'italic' or @rend = 'italic'][normalize-space(.)]">
-        <i><xsl:apply-templates/></i>
+        <i xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></i>
     </xsl:template>
     <xsl:template match="m:rend[@rend = 'underline'][normalize-space(.)]">
-        <u><xsl:apply-templates/></u>
+        <u xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></u>
     </xsl:template>
     <xsl:template match="m:rend[@rend = 'underline(2)'][normalize-space(.)]">
-        <span style="border-bottom: 3px double;"><xsl:apply-templates/></span>
+        <span xmlns="http://www.w3.org/1999/xhtml" style="border-bottom: 3px double;"><xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="m:rend[@rend = 'line-through'][normalize-space(.)]">
-        <span style="text-decoration: line-through;"><xsl:apply-templates/></span>
+        <span xmlns="http://www.w3.org/1999/xhtml" style="text-decoration: line-through;"><xsl:apply-templates/></span>
     </xsl:template>
     <xsl:template match="m:rend[@rend = 'sub'][normalize-space(.)]">
-        <sub><xsl:apply-templates/></sub>
+        <sub xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></sub>
     </xsl:template>
     <xsl:template match="m:rend[@rend = 'sup'][normalize-space(.)]">
-        <sup><xsl:apply-templates/></sup>
+        <sup xmlns="http://www.w3.org/1999/xhtml"><xsl:apply-templates/></sup>
     </xsl:template>
     <xsl:template match="m:rend[@fontfam or @fontsize or @color][normalize-space(.)]">
         <xsl:variable name="atts">
@@ -82,7 +89,7 @@
                 <xsl:value-of select="concat('color:',@color,';')"/>
             </xsl:if>
         </xsl:variable>
-        <xsl:element name="span">
+        <xsl:element name="span" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="style">
                 <xsl:value-of select="$atts"/>
             </xsl:attribute>
@@ -90,7 +97,7 @@
         </xsl:element>
     </xsl:template>
     <xsl:template match="m:ref[@target][normalize-space(.)]">
-        <xsl:element name="a">
+        <xsl:element name="a" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="href">
                 <xsl:value-of select="@target"/>
             </xsl:attribute>
@@ -108,7 +115,7 @@
         </xsl:element>
     </xsl:template>
     <xsl:template match="m:rend[@halign][normalize-space(.)]">
-        <xsl:element name="div">
+        <xsl:element name="div" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="style">text-align:<xsl:value-of select="@halign"/>;</xsl:attribute>
             <xsl:apply-templates/>
         </xsl:element>
@@ -116,14 +123,14 @@
     <xsl:template match="m:list">
         <xsl:choose>
             <xsl:when test="@form = 'simple'">
-                <ul>
+                <ul xmlns="http://www.w3.org/1999/xhtml">
                     <xsl:for-each select="m:li">
                         <li><xsl:apply-templates/></li>
                     </xsl:for-each>
                 </ul>
             </xsl:when>
             <xsl:when test="@form = 'ordered'">
-                <ol>
+                <ol xmlns="http://www.w3.org/1999/xhtml">
                     <xsl:for-each select="m:li">
                         <li><xsl:apply-templates/></li>
                     </xsl:for-each>
@@ -132,7 +139,7 @@
         </xsl:choose>
     </xsl:template>
     <xsl:template match="m:fig[m:graphic[@target!='']]">
-        <xsl:element name="img">
+        <xsl:element name="img" namespace="http://www.w3.org/1999/xhtml">
             <xsl:attribute name="src">
                 <xsl:value-of select="m:graphic/@target"/>
             </xsl:attribute>
