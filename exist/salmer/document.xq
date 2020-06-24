@@ -120,6 +120,7 @@ let $result :=
             enableMidi = false; 
         </script>-->
 
+        <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
         
 	</head>
 	<body class="frontpage metadata">
@@ -195,7 +196,7 @@ let $result :=
                     	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
                     	  <param name="doc"  value="{$filename}"/>
                     	</parameters>
-                	let $music := transform:transform($list[1],$mdivXsl,$params)
+                	let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
                 	let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
                 	   then 
                     	   <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
@@ -221,7 +222,7 @@ let $result :=
                             	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
                             	  <param name="doc"  value="{$this_filename}"/>
                             	</parameters>
-                        	let $music := transform:transform($this_doc,$mdivXsl,$params) 
+                        	let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
                         return $music
                 return 
                     <div>

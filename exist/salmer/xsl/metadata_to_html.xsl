@@ -158,7 +158,7 @@
         <div class="topbar {$rec_type}">
             <!-- data download link -->
             <div class="download noprint">
-                <a href="{$base_file_uri}/{$filename}" title="Download som MEI XML" target="_blank">MEI<!--<img src="{$base_uri}/style/images/xml.gif" alt="XML" border="0"/>--></a>
+                <a href="{$base_file_uri}/{$filename}" title="Download data som MEI XML" target="_blank">MEI</a>
             </div>
             
             <!-- record type -->

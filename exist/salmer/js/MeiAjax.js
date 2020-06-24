@@ -137,6 +137,9 @@ var transformOrder = ['show', 'highlight', 'transpose', 'clef', 'noteValues', 'b
 var midiMenu = '\
     <div class="mei_menu_content"> \
         <div class="midi_player">\
+            <div class="midi_download" onclick="download_midi(\'{id}\')" title="Download som MIDI-fil">\
+                <!-- download link here -->\
+            </div>\
             <div class="midi_button play" id="play_{id}" onclick="play_midi(\'{id}\');">\
                 <span class="symbol"><span class="label"><span class="lang da" title="Afspil">Afspil</span><span class="lang en" title="Play">Play</span></span></span>\
             </div>\

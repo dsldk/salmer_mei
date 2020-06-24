@@ -12,7 +12,6 @@
 .mei {
     float: left;
     width: 550px; 
-    margin-right: 70px;
 }
 
 .mei svg tspan.text {
@@ -229,13 +228,34 @@
     color: #c00;
 }
 
+.midi_download {
+    position: absolute;
+    right: 10px;
+    width: 24px;
+    height: 28px;
+    background: url("https://salmer.dsl.dk/style/img/midi.svg") no-repeat;
+}
+
+.midi_download:hover {
+    background: url("https://salmer.dsl.dk/style/img/midi_hi.svg") no-repeat;
+    cursor: pointer;
+}
+
 /* Place and format option menus. */
 
 .mei_options {
-    float: left;
+/*  Magenta bruger:
+    position: absolute;
+    top: 0; */
     width: auto;
-    margin: 10px 0 0 -70px;
     display: none;
+}
+
+.metadata .mei_options, .frontpage .mei_options {
+    /* .frontpage bruges på tekstnet.dk */
+    position: relative;
+    float: left;
+    right: 2em;
 }
 
 .mei_options .mei_menu_container {
@@ -643,6 +663,10 @@ table.toc td {
     float: right;
     width: auto;
     margin: 0 10px 0 0;
+}
+
+.download a {
+    color: #fff;
 }
 
 a.abbr {
