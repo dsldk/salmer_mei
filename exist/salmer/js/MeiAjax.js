@@ -5,18 +5,20 @@
 //        var enableLink = false;    // do not show link to melody database
 //        var enablePrint = true;    // show link to print version
 //        var enableMidi = true;     // enable MIDI playback
+//        var enableMidiDownload = true;     // enable binary MIDI download
 //        var enableOptions = true;  // enable notation customization options
 //        var enableSearch = false;  // disable phrase selection for melodic search
 //        var enableComments = true; // show editorial comments in score
 //    </script>
 
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  // options menu main switch
-var showPrint = (typeof enablePrint !== 'undefined') ? enablePrint : true;  // show link to print version
-var linkToExist = (typeof enableLink !== 'undefined') ? enableLink : true;  // show link to melody database
-var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback
-var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;  //  show menu for customization of the notation
-var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable phrase selection for melodic search
-var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // show editorial comments
+var showPrint = (typeof enablePrint !== 'undefined') ? enablePrint : true;  // show link to print version?
+var linkToExist = (typeof enableLink !== 'undefined') ? enableLink : true;  // show link to melody database?
+var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MIDI playback?
+var midiDownload = (typeof enableMidiDownload !== 'undefined') ? enableMidiDownload : false; // disable MIDI download?
+var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;  //  show menu for customization of the notation?
+var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable phrase selection for melodic search?
+var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // show editorial comments? currently not in use; set in javascript.js instead
 
 var params = {}
 var language = 'da';  // default language
@@ -553,6 +555,9 @@ function createMenu(id){
         $("#" + id +"_options .lang." + language).show();
         // avoid selecting a hidden value
         $("#transposeVal_" + id)[0].selectedIndex = $("#transposeVal_" + id + " option." + language).first().index();
+        if(!midiDownload){
+            $(".midi_download").remove();
+        }
     }
 }
 

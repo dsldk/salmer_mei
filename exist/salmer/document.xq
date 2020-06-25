@@ -91,24 +91,20 @@ let $result :=
         
         <!-- User interaction settings -->
         <script type="text/javascript">
-            var enableMenu = true;      // show options menu
-            var enableLink = false;     // do not show links to melody database (i.e., to this page)
-            var enablePrint = true;     // show link to print version
-            var enableMidi = true;      // enable MIDI player
-            var enableOptions = true;   // show melody customizations options menu
-            var enableSearch = true;    // enable phrase marking for melodic search 
-            var enableComments = true;  // show editorial comments
+            var enableMenu = true;              // show options menu
+            var enableLink = false;             // do not show links to melody database (i.e., to this page)
+            var enablePrint = true;             // show link to print version
+            var enableMidi = true;              // enable MIDI player
+            var enableMidiDownload = true;      // enable MIDI download
+            var enableOptions = true;           // show melody customizations options menu
+            var enableSearch = true;            // enable phrase marking for melodic search 
+            //var enableComments = true;        // show editorial comments
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
         <script type="text/javascript" src="js/libs/verovio/verovio-toolkit.js">/* Verovio */</script>
-        <!-- alternatively use CDNs, like: -->
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">/* */</script>-->
-        <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
         <script src="js/MeiAjax.js"><!-- MEI tools --></script>
 
 	    <!-- MIDI -->        
@@ -116,9 +112,6 @@ let $result :=
         <script src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
         <script src="js/midiplayer.js"><!-- MIDI player --></script>
         <script src="js/midiLib.js"><!-- custom MIDI library --></script>
-        <!--<script type="text/javascript">
-            enableMidi = false; 
-        </script>-->
 
         <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
         
