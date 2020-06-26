@@ -131,6 +131,8 @@ let $result :=
 	</head>
 	<body class="frontpage metadata">
 	
+	   <div id="wait" class="wait_overlay"><!-- "busyS" indicator overlay --></div>
+
        <header xmlns="http://www.w3.org/1999/xhtml" class="header" id="header">
        
             <!-- Page head -->
