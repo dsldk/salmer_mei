@@ -1,0 +1,111 @@
+/*body {
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+    max-width: 50em;
+    width: 28em;
+    text-align: justify;
+}*/
+
+h1 {
+    margin: 1em 0;
+    /* position: relative; */
+}
+div.metadata {
+    margin: 1.9em 0;
+    margin-bottom: 2.7em;
+    /* position: relative; */
+}
+div.body {
+    margin: 10em 0;
+    position: relative;
+}
+p {
+    margin: 1em 0;
+    /* position: relative; */
+}
+p.poetry{
+    margin-left: 1em;
+}
+.speech {
+    position:relative;
+}
+.epigraph {
+    margin-bottom: 3em;
+    margin-left: 20%;
+    position:relative;
+    /* display: block;*/
+}
+.bibl-ref {
+    float: right;
+    position: relative;
+    display:block;
+}
+.content{
+    position: relative;
+}
+span.caption {
+    display: block;
+    /* left: -6em;
+    width: 6em;
+    position: absolute;
+    top: 0;
+    font-size: 1em;
+    text-align: center; */
+    color: #999;
+}
+
+.p-number {
+    display: block;
+    /* left: -4em;
+    width: 6em;
+    position: absolute;
+    top: 0;
+    font-size: 1em;
+    text-align: center; */
+    color: #999;
+}
+.legacy-page-break{
+}
+.page-break-mark{
+    font-weight:normal;
+    color: #999;
+}
+/* .page-break-value{
+    font-size: 12px;
+    left:-30px;
+    position: absolute;
+    width: 29px;
+    color: #999;
+}
+*/
+
+/*This places the text-and-note container in relative position to ??*/
+.text-and-note {
+    position:relative;
+}
+
+.sidenotes {
+    color: gray;
+    font: .700em/1.44 Verdana, sans-serif;
+    list-style: none;
+    background: none;
+    position: absolute;
+    text-align: left;
+    top:0;
+    right: -21.5em;
+    width: 20em;
+    /* margin: .2em 0 1.44em 0; */
+    margin: 0;
+    /*overflow: hidden;*/
+}
+.signature {
+    text-align: right;
+}
+#titlePage{
+    text-align: center;
+}
+.poetry-center{
+    text-align: center;
+}

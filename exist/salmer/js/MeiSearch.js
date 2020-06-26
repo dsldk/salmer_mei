@@ -35,7 +35,7 @@ var verovio_options_search = {
     svgViewBox:         true,
     scale:              100,
     pageWidth:          1200,
-    pageHeight:         240,
+    pageHeight:         260,
     pageMarginTop:      0,
     pageMarginLeft:     0,
     header:             'none',
@@ -61,7 +61,6 @@ function getParameterByName(name, url) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
-
 
 function reset_a() {
     pQuery = [];
@@ -134,7 +133,7 @@ function initPiano() {
                 // transfer values to search form
                 $("#absp").attr("value",pQuery.join("-"));
                 // display query
-                if(pae_data == "1-" | !pae_changed) { pae_data = ""; }
+                if(pae_data == "4-" | !pae_changed) { pae_data = ""; }
                 new_data = check_accidental(pae_data, pnum_to_pae(pnum));
                 pae_data += new_data;
                 render_query(pae + pae_data,"pQueryOut");
@@ -154,11 +153,9 @@ function initPiano() {
 function updateAction() {
     // generate a string containing the publications to be searched
     var q = "";
-    if(document.getElementById("allPubl").checked === false) {
-        $(".publicationCheckbox input").each(function() {
-            if($(this).is(":checked")){q += $(this).attr("value") + ","}
-        }) 
-    }
+    $("#search-form .checkbox-container input").each(function() {
+        if($(this).is(":checked")){q += $(this).attr("value") + " "}
+    }) 
     return q.substring(0,q.length - 1);
 }
 
@@ -195,6 +192,36 @@ function validateInput() {
     });
 }
 
+function initTextSelect() {
+//Adapted from javascript.js
+
+	// when expanding/collapsing search field, calculate the proper height
+	$('#text-select-toggle').change(function (event, settings) {
+		var checked = $(this).prop('checked');
+		var searchBox = $('#text-select');
+		var height = checked ? searchBox.get(0).scrollHeight + 'px' : '';
+		requestAnimationFrame(function () {
+			if (settings && settings.instant) {
+				searchBox.css('transition-duration', '0s');
+			}
+			else {
+				searchBox.css('transition-duration', '');
+			}
+			searchBox.css('height', height);
+		});
+		$('#text-select-label').toggleClass('open');
+	})
+	
+	// initialize
+    if(params.txt) {
+        // hide text selection if no texts or all are selected
+        if(params.txt!='' && params.txt!='1+2+3+4+5+6') {
+            $('#text-select').css('height', $('#text-select').get(0).scrollHeight + 'px');
+            $('#text-select-label').removeClass('open');
+        }
+    } 
+}
+
 function openTab(evt, tabName) {
   // Declare all variables
   var i, tabcontent, tablinks;
@@ -217,4 +244,5 @@ function openTab(evt, tabName) {
 $(document).ready(function() {
     initPiano();
     validateInput();
+    initTextSelect();
 });

@@ -155,9 +155,6 @@ a.paging, a.paging:visited, a.paging:active {
     -o-transform: translate(-750px,600px); /* Opera */
 }
 
-#pnames, #contour {
-    width: 220px;
-}
 
 #pnames, #contour, #query_title {
     text-align: left;
@@ -200,17 +197,66 @@ a.paging, a.paging:visited, a.paging:active {
     margin-left: 0;
 }
 
+#pSearchDiv {
+    color: #fff;
+}
+
 #pSearchDiv input {
     margin-left: 20px;
 }
 
 #pSearch .checkbox-options {
     white-space: nowrap;
+    position: relative;
+    float:left;
+    margin-left: 40px;
+}
+
+#pSearch .radio-inline {
+    white-space: nowrap;
+    line-height: 2.5em;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #contour {
     font-family: courier, fixed, monospace;
     font-size: 1.2em;
+}
+
+#text-select {
+    height: 0;
+    overflow: hidden;
+    transition:height 250ms ease-in-out;
+}
+
+.fold-out {
+    margin-top: 20px;
+}
+
+.fold-out::after {
+    content: "";
+    background:url("/style/img/fold-right.png");
+    background-position: 0 5px;
+    height: 27px;
+    width: 27px;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.fold-out.open::after {
+    background:url("/style/img/fold-left.png");
+    background-position: 0px 5px;
+}
+
+/* override other style sheets */
+
+#search-field {
+    height: auto;
+}
+
+#search-field::before, #search-field::after {
+    height: 10px;
 }
 
 /* tabs */
@@ -266,7 +312,7 @@ a.paging, a.paging:visited, a.paging:active {
 
 #piano_wrapper {
 /*    display: table-row;  */
-    padding: 20px 10px 10px 10px; 
+    padding: 20px 10px 2px 10px; 
 }
 
 #piano_cell, #piano_search_cell {

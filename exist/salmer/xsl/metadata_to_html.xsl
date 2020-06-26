@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:local="urn:my-stuff" version="2.0" exclude-result-prefixes="m xsl xs local marc zs xl">
     
     
@@ -154,105 +155,125 @@
     
     <xsl:template name="body_main_content">
         
-        <!-- top bar -->
-        <div class="topbar {$rec_type}">
-            <!-- data download link -->
-            <div class="download noprint">
-                <a href="{$base_file_uri}/{$filename}" title="Download data som MEI XML" target="_blank">MEI</a>
+        <div class="background-box {$rec_type}">
+            <div class="headline-box container">
+
+                <!-- data download link -->
+                <div class="download noprint">
+                    <a href="{$base_file_uri}/{$filename}" title="Download data som MEI XML" target="_blank"><!-- MEI download icon here --></a>
+                </div>
+                
+                <!-- top bar -->
+                <div class="topbar {$rec_type}">                    
+                    <!-- record type -->
+                    <xsl:value-of select="$l//*[name()=$rec_type]/string()"/>
+                </div>
+                
+                <!-- work title -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work" mode="titles"/>
+            
             </div>
-            
-            <!-- record type -->
-            <xsl:value-of select="$l//*[name()=$rec_type]/string()"/>
-            
         </div>
         
-        <!-- work title -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work" mode="titles"/>
-        
-        <!-- other identifiers -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work[m:identifier/text()]" mode="work_identifiers"/>
-        
-        <!-- persons -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contributor[m:persName[text()]]"/>
-        
-        <!-- text source -->
-        <xsl:for-each select="m:meiHead/m:workList/m:work/m:title[@type='text_source'][text()]">
-            <div>
-                <xsl:if test="position()=1">
-                    <span class="p_heading">
-                        <xsl:value-of select="$l/text_source"/>: </span>
-                </xsl:if>
-                <xsl:element name="span">
-                    <xsl:call-template name="maybe_print_lang"/>
+        <div class="documentFrame container">
+
+            <div class="main_section">
+    
+                <!-- general description -->
+                <xsl:for-each select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='general_description'][//text()]">
+                    <xsl:if test="normalize-space(@label)">
+                        <p class="p_heading">
+                            <xsl:value-of select="@label"/>
+                        </p>
+                    </xsl:if>
                     <xsl:apply-templates select="."/>
-                </xsl:element>
+                </xsl:for-each>
+            
+                <!-- work history -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:creation[//text()]"/>
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[//text()]" mode="history"/>
+                
+                <!-- works with versions: show global sources and performances before version details -->
+                <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&gt;1">
+                    <!-- global sources -->
+                    <xsl:apply-templates select="m:meiHead/m:manifestationList[count(m:manifestation[not(m:relationList/m:relation[@rel='isEmbodimentOf']/@target)])&gt;0]">
+                        <xsl:with-param name="global">true</xsl:with-param>
+                    </xsl:apply-templates>
+                    <!-- work-level performances  -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
+                </xsl:if>
+                
+                <!-- top-level expression (versions and one-movement work details) -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:expressionList/m:expression" mode="top_level"/>
+                
+                <!-- works with only one version: show performances and global sources after movements -->
+                <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&lt;2">
+                    <!-- sources -->
+                    <xsl:apply-templates select="m:meiHead/m:manifestationList[normalize-space(string-join(*//text(),'')) or m:manifestation/@target!='']"/>
+                    <!-- work-level performances -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
+                    <!-- Performances entered at expression level displayed at work level if only one expression -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:expressionList/m:expression/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
+                </xsl:if>
+                
+                <!-- works with versions: draw separator before general bibliography -->
+                <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&gt;1">
+                    <xsl:if test="m:meiHead/m:workList/m:work/m:biblList[m:bibl/*[text()]]">
+                        <hr class="noprint"/>
+                    </xsl:if>
+                </xsl:if>
+                
+                <!-- bibliography -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:biblList[m:bibl/*[text()]]"/>
+                
+            </div> <!-- end main section -->
+            
+            <div class="supplementary_section">
+                <!-- other identifiers -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work[m:identifier/text()]" mode="work_identifiers"/>
+                
+                <!-- persons -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contributor[m:persName[text()]]"/>
+                
+                <!-- text source -->
+                <xsl:for-each select="m:meiHead/m:workList/m:work/m:title[@type='text_source'][text()]">
+                    <div>
+                        <xsl:if test="position()=1">
+                            <span class="p_heading">
+                                <xsl:value-of select="$l/text_source"/>: </span>
+                        </xsl:if>
+                        <xsl:element name="span">
+                            <xsl:call-template name="maybe_print_lang"/>
+                            <xsl:apply-templates select="."/>
+                        </xsl:element>
+                    </div>
+                </xsl:for-each>
+
+                <!-- related files -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+                    <xsl:with-param name="internal" select="true()"/>
+                </xsl:apply-templates>
+                
+                
+                <!-- digital editions and non-internal relations-->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and (@type='edition' or @type='text_edition')]"/>
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+                    <xsl:with-param name="internal" select="false()"/>
+                </xsl:apply-templates>
+
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links'][m:ptr[normalize-space(@target)]]" mode="link_list_p"/>
+                
+
+            </div> <!-- end supplementary section -->
+            
+            <div class="toc_section">
+                
+                <!-- table of contents -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contents"/>
+                
             </div>
-        </xsl:for-each>
         
-        <!-- related files -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
-            <xsl:with-param name="internal" select="true()"/>
-        </xsl:apply-templates>
-        
-        
-        <!-- table of contents -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contents"/>
-        
-        <!-- general description -->
-        <xsl:for-each select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='general_description'][//text()]">
-            <xsl:if test="normalize-space(@label)">
-                <p class="p_heading">
-                    <xsl:value-of select="@label"/>
-                </p>
-            </xsl:if>
-            <xsl:apply-templates select="."/>
-        </xsl:for-each>
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links'][m:ptr[normalize-space(@target)]]" mode="link_list_p"/>
-        
-        <!-- work history -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:creation[//text()]"/>
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[//text()]" mode="history"/>
-        
-        
-        <!-- digital editions and non-internal relations-->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and (@type='edition' or @type='text_edition')]"/>
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
-            <xsl:with-param name="internal" select="false()"/>
-        </xsl:apply-templates>
-        
-        
-        <!-- works with versions: show global sources and performances before version details -->
-        <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&gt;1">
-            <!-- global sources -->
-            <xsl:apply-templates select="m:meiHead/m:manifestationList[count(m:manifestation[not(m:relationList/m:relation[@rel='isEmbodimentOf']/@target)])&gt;0]">
-                <xsl:with-param name="global">true</xsl:with-param>
-            </xsl:apply-templates>
-            <!-- work-level performances  -->
-            <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
-        </xsl:if>
-        
-        <!-- top-level expression (versions and one-movement work details) -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:expressionList/m:expression" mode="top_level"/>
-        
-        <!-- works with only one version: show performances and global sources after movements -->
-        <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&lt;2">
-            <!-- sources -->
-            <xsl:apply-templates select="m:meiHead/m:manifestationList[normalize-space(string-join(*//text(),'')) or m:manifestation/@target!='']"/>
-            <!-- work-level performances -->
-            <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
-            <!-- Performances entered at expression level displayed at work level if only one expression -->
-            <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:expressionList/m:expression/m:history[m:eventList[@type='performances']/m:event/*/text()]" mode="performances"/>
-        </xsl:if>
-        
-        <!-- works with versions: draw separator before general bibliography -->
-        <xsl:if test="count(m:meiHead/m:workList/m:work/m:expressionList/m:expression)&gt;1">
-            <xsl:if test="m:meiHead/m:workList/m:work/m:biblList[m:bibl/*[text()]]">
-                <hr class="noprint"/>
-            </xsl:if>
-        </xsl:if>
-        
-        <!-- bibliography -->
-        <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:biblList[m:bibl/*[text()]]"/>
+        </div>
         
         <!--<xsl:apply-templates select="." mode="colophon"/>-->
         
@@ -418,7 +439,7 @@
                 <th style="white-space:nowrap;">
                     <xsl:if test="m:contentItem[normalize-space(@label)]">
                         <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)">Nr. 
-                            <img src="style/img/sort_up.png" id="{$table_id}_sort_0" width="6" height="6" alt=""/>
+                            <img class="sort_direction" src="style/img/sort_up.png" id="{$table_id}_sort_0" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                 </th>
@@ -430,19 +451,19 @@
                 <th>
                     <xsl:if test="m:contentItem/m:title/text()">
                         <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)">Titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
+                            <img class="sort_direction" src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                 </th>
                 <th>
                     <xsl:if test="m:contentItem/m:title[@type='uniform']/text()">
                         <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Normaliseret titel 
-                            <img src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
+                            <img class="sort_direction" src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                     <!-- pre-load images -->
-                    <span style="visibility:hidden;"><img src="style/img/sort_up.png" width="1" height="1"/></span>
-                    <span style="visibility:hidden;"><img src="style/img/sort_down.png" width="1" height="1"/></span>
+                    <span style="visibility:hidden;"><img class="sort_direction" src="style/img/sort_up.png" width="1" height="1"/></span>
+                    <span style="visibility:hidden;"><img class="sort_direction" src="style/img/sort_down.png" width="1" height="1"/></span>
                 </th>
                 <xsl:if test="m:contentItem/m:locus/text()">
                     <th/>
@@ -477,7 +498,7 @@
             <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
             <td style="white-space:nowrap;">
                 <xsl:if test="m:ptr[@type='edition']">
-                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk">Tekstnet</a>
+                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk"><span class="edition">Digital udgave</span></a>
                 </xsl:if>
             </td>
         </tr>
@@ -513,7 +534,7 @@
                 <xsl:if test="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
                     <!-- internal relations -->
                     <div class="list_block">
-                        <div class="label">Relaterede poster: </div>
+                        <div>Relaterede poster: </div>
                         <!-- loop through relations, but skip those where @label contains a ":";  -->
                         <!-- also skip "hasPart" relations if there is a table of contents -->
                         <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
@@ -535,7 +556,7 @@
                 <xsl:if test="m:relation[@target!='' and contains(@target,'//:')]">
                     <!-- external relations, i.e., editions -->
                     <div class="list_block">
-                        <div class="label">Digitale udgaver: </div>
+                        <div>Digitale udgaver: </div>
                         <!-- loop through relations, but skip those where @label contains a ":";  -->
                         <!-- also skip "hasPart" relations if there is a table of contents -->
                         <xsl:for-each select="m:relation[@rel!='' and @rel!='hasPart' and contains(@target,'//:') and not($internal)]">
@@ -1057,8 +1078,8 @@
         <xsl:if test="@sym!=''">
         <span class="music_symbols time_signature">
         <xsl:choose>
-        <xsl:when test="@sym='common'">𝄴</xsl:when>
-        <xsl:when test="@sym='cut'">𝄵</xsl:when>
+        <xsl:when test="@sym='common'">턴</xsl:when>
+        <xsl:when test="@sym='cut'">턵</xsl:when>
         </xsl:choose>
         </span>
         </xsl:if>

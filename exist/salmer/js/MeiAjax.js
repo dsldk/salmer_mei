@@ -1,14 +1,13 @@
 // DEFAULT VALUES FOR PAGE OPTIONS
 // To change page settings, override defaults on the hosting page. Example:
 //    <script type="text/javascript">
-//        var enableMenu = true;     // show options menu
-//        var enableLink = false;    // do not show link to melody database
-//        var enablePrint = true;    // show link to print version
-//        var enableMidi = true;     // enable MIDI playback
+//        var enableMenu = true;             // show options menu
+//        var enableLink = false;            // do not show link to melody database
+//        var enablePrint = true;            // show link to print version
+//        var enableMidi = true;             // enable MIDI playback
 //        var enableMidiDownload = true;     // enable binary MIDI download
-//        var enableOptions = true;  // enable notation customization options
-//        var enableSearch = false;  // disable phrase selection for melodic search
-//        var enableComments = true; // show editorial comments in score
+//        var enableOptions = true;          // enable notation customization options
+//        var enableSearch = false;          // disable phrase selection for melodic search
 //    </script>
 
 var showMenu = (typeof enableMenu !== 'undefined') ? enableMenu : true;  // options menu main switch
@@ -18,7 +17,7 @@ var midi = (typeof enableMidi !== 'undefined') ? enableMidi : true; // enable MI
 var midiDownload = (typeof enableMidiDownload !== 'undefined') ? enableMidiDownload : false; // disable MIDI download?
 var showOptions = (typeof enableOptions !== 'undefined') ? enableOptions : true;  //  show menu for customization of the notation?
 var searchForSelection = (typeof enableSearch !== 'undefined') ? enableSearch : true; // enable phrase selection for melodic search?
-var comments = (typeof enableComments !== 'undefined') ? enableComments : true;  // show editorial comments? currently not in use; set in javascript.js instead
+var comments = true;  // show editorial comments
 
 var params = {}
 var language = 'da';  // default language
@@ -33,10 +32,6 @@ var $defaultVerovioOptions = {
     pageMarginLeft:       0,
     header:               'none',
     footer:               'none',
-// old parameters kept for backwards compatibility until tekstnet.dk has been updated
-noHeader:             true,
-noFooter:             true,
-inputFormat:          'mei',
     staffLineWidth:       0.25,
     lyricTopMinMargin:    4,
     lyricSize:            5.5,
@@ -339,7 +334,7 @@ function addComments(data) {
         }
         $("#" + commentId + "_div").parent().mouseleave(function(){
             $("#" + commentId + "_div").dialog("close");
-        });
+        }); 
     });
 }
 
@@ -489,7 +484,7 @@ function loadMeiFromDoc() {
         $mei[id].xsltOptions['doc'] = filename_from_dataId(id) + '.xml';
         $mei[id].xsltOptions['show'].parameters['mdiv'] =  mdivId(id);
         $("#"+id+"_options .highlight_list").each( function() {
-            console.log("Highlight:" + $(this).html());
+            //console.log("Highlight:" + $(this).html());
             $mei[id].xsltOptions['highlight'] = $.extend(true, {}, $highlight);
             $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
         });
@@ -556,7 +551,7 @@ function createMenu(id){
         // avoid selecting a hidden value
         $("#transposeVal_" + id)[0].selectedIndex = $("#transposeVal_" + id + " option." + language).first().index();
         if(!midiDownload){
-            $(".midi_download").remove();
+            $("#" + id + "_options .midi_download").remove();
         }
     }
 }
@@ -667,7 +662,7 @@ function loadMeiMetadata() {
     $(".mei_metadata").each( function() {
         var id = $(this).attr("id");
         console.log('Retrieving MEI metadata');
-        $.post('https://salmer.dsl.dk/document_metadata.xq?doc=' + doc,function(data){
+        $.post('https://salmer.dsl.dk/magenta/document_metadata.xq?doc=' + doc,function(data){
             $("#" + id).html(data);
         },'html');
     });
@@ -746,6 +741,20 @@ function teiApp() {
     insertNote(dialog_opts, ".notecontents", "Ordforklaring");
     insertNote(dialog_opts, ".appnotecontents", "Tekstkritik");
 
+}
+
+
+// Validate search query
+function validateInput() {
+    $("#pnames").keyup(function (e) {
+        this.value = this.value.toLocaleUpperCase();
+        this.value = this.value.replace(/[^A-H|^V-Z]/gi,'');
+        this.value = this.value.replace(/[H]/gi,'B');
+    });
+    $("#contour").keyup(function (e) {
+        this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
+        this.value = this.value.replace(/[H]/gi,'B');
+    });
 }
 
 
@@ -846,6 +855,7 @@ function initMusic(lang) {
     loadMeiFromDoc();
     loadMeiMetadata();
     if(window.location.hostname.search('salmer.dsl.dk') >= 0) { loadTeiText() };
+    validateInput();
 }
 
 $(document).ready(function() {

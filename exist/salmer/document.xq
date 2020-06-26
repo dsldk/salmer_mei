@@ -18,7 +18,7 @@ declare variable $head     := request:get-parameter("head", "Musik og tekst i re
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
 declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
-declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
+(: declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl")); :)
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
@@ -76,19 +76,22 @@ let $result :=
 	<head>
 	    <title>{$title} – DSL</title>
         <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
-        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/fix_go_collisions.css" />
-        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/elements.css" />
-        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/layout.css" />
-    	<link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/styles.css" />
-        <link rel="stylesheet" type="text/css" href="https://tekstnet.dk/static/print.css" media="print" />
+        
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        
+        <link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
+        
+        <link rel="stylesheet" type="text/css" href="style/dsl-basis_screen.css" />
+        <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="style/elements.css" />
+        <link rel="stylesheet" type="text/css" href="style/select-css.css" />
+        <link rel="stylesheet" type="text/css" href="style/styles.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="style/dsl-basis_print.css" media="print"/>
+        <link rel="stylesheet" type="text/css" href="style/print.css" media="print"/>-->
+        
         <link rel="stylesheet" type="text/css" href="style/mei.css"/>
-        <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
-        
-        <!--<link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />-->
-        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" />
-        
+                
         <!-- User interaction settings -->
         <script type="text/javascript">
             var enableMenu = true;              // show options menu
@@ -98,54 +101,75 @@ let $result :=
             var enableMidiDownload = true;      // enable MIDI download
             var enableOptions = true;           // show melody customizations options menu
             var enableSearch = true;            // enable phrase marking for melodic search 
-            //var enableComments = true;        // show editorial comments
         </script>   
         
         <!-- Note highlighting only works with jQuery 3+ -->
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
         <script type="text/javascript" src="js/libs/verovio/verovio-toolkit.js">/* Verovio */</script>
-        <script src="js/MeiAjax.js"><!-- MEI tools --></script>
+        <!-- alternatively use CDNs, like: -->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
+        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
+        <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>
+
+        <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+
 
 	    <!-- MIDI -->        
         <!--<script src="js/wildwebmidi.js"> MIDI library </script>-->
-        <script src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
-        <script src="js/midiplayer.js"><!-- MIDI player --></script>
-        <script src="js/midiLib.js"><!-- custom MIDI library --></script>
+        <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
+        <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
+        <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
+        <!--<script type="text/javascript">
+            enableMidi = false; 
+        </script>-->
 
         <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
         
 	</head>
 	<body class="frontpage metadata">
 	
+       <header xmlns="http://www.w3.org/1999/xhtml" class="header" id="header">
+       
+            <!-- Page head -->
+	        {doc(concat($database,"/assets/header.html"))}
+	       
+            <!-- Search -->
+	           
+            <div class="main-top-section background-cover">
+                <div class="container">
+                    <input type="checkbox" id="search-field-toggle"/>
+                    <label for="search-field-toggle"><span class="sr-only">Vis/skjul søgefelt</span></label>
+                        <div id="search-field">
+                            <form action="mei_search.xq" method="get" id="search-mobile">
+                                <div class="search-line input-group">
+                                    <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
+                                    <input id="query_title" type="text" class="form-control" name="qt" placeholder="Søg i salmetitlerne i databasen" value=""/>
+                                    <button title="Søg" class="btn btn-primary arrow-r" type="submit"><!-- Søg --></button>
+                                </div>
+                            </form>
+                            <div>
+                                {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
+                            </div>
+                            <div id="advanced-search-link">
+                                <a href="mei_search.xq">Avanceret søgning</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
 
-	   <!-- Page head -->
-	   {doc(concat($database,"/assets/page_head.html"))}
+	   </header>
 	   
-	   <!-- Search -->
-	   <div class="searchWrapper search subpage-search {$rec_type}">
-	   
-    	    <div class="search_options search-bg container row">
-    	       <form action="mei_search.xq" method="get" class="form" id="title_form">
-            	   <p><label class="input-label left-margin" for="pnames">Titelsøgning</label>
-                   <input name="x" id="x1" type="hidden" value=""/>
-                   <input name="qt" id="query_title" type="text" value="" class="search-text input"/>
-                   <img src="https://tekstnet.dk/static/info.png" alt="hint" title="Skriv titel eller del af en titel"/>
-                   <input type="submit" value="Søg" class="search-button box-gradient-green"
-                   onclick="this.form['x'].value = updateAction();"/>                                       
-                       <br/>
-                   </p>
-                   <p>
-                       <label class="input-label left-margin">&#160;</label>{doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
-                   </p>
-                    <div class="text-row">
-                       <a href="mei_search.xq" id="advanced-search-link">Avanceret søgning</a>
-                    </div>
-               </form>
-    	    </div>
-        </div>
-
-        <div class="documentFrame container">
+       <div class="page-wrapper">
+            
+            <!-- Enable critical comments -->
+            <!--<label class="checkbox-inline" for="text-critical-note-checkbox">-->
+              <input type="checkbox" id="text-critical-note-checkbox" data-toggle="appnote" checked="checked" style="display: none;"/>
+            <!--  <span class="checkbox-label-text">Tekstkritik</span>
+            </label>-->
+            
             <!-- Metadata -->
             {
                 let $metadata := if(count($list) = 0) 
@@ -156,75 +180,64 @@ let $result :=
                         </div>
                     else 
                         <div id="mei_metadata" class="mei_metadata">
-                            <p class="loading">[Henter metadata...]</p>
+                            <div class="container">
+                                <p class="loading">Henter metadata...</p>
+                            </div>
                         </div>
                 return $metadata                    
             }
-<!--            
-                let $chapters := if($tei_doc) then $tei_doc/tei:TEI/tei:text/tei:body/tei:div else () 
-                let $tekstnet_link := if($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]) 
-                    then
-                        let $chapter as xs:integer := count($chapters[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]/preceding-sibling::tei:div) + 1
-                        (: Use section only if there is more than one  :)
-                        let $section as xs:string := if(count($chapters[$chapter]/tei:div/tei:head[@type="add"]) > 1)
-                            then
-                                concat("/",count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]]))
-                            else 
-                                ""
-                        let $tei_name as xs:string := substring-before($index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei/string(),".xml") 
-                        return <p><a href="https://tekstnet.dk/{$tei_name}/{$chapter}{$section}">&gt; Digital udgave på tekstnet.dk</a></p>
-                    else
-                        ""
-                return $tekstnet_link
--->
-        </div>
-        
-        <div class="documentFrame container">
+
             <!-- Music and text -->
-            <!-- Music included in this document -->
-            {  
-            	for $mdiv at $pos in $list[1]//m:mdiv
-                	let $params := 
-                    	<parameters>
-                    	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
-                    	  <param name="doc"  value="{$filename}"/>
-                    	</parameters>
-                	let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
-                	let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
-                	   then 
-                    	   <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
-                    	       <!-- References to TEI file and MEI:mdiv/@xml:id transmitted in @class -->
-                               <p class="loading">[Henter tekst...]</p>
-                           </div>
-                	   else 
-                	       <div>
-                               <p>Tekst ikke fundet i databasen.</p>
-                           </div>
-                return ($music, $text)  
-            }
-            <!-- Music included from related records (for melody meta records) -->
-            {
-                for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment" and not(contains(@target,"://"))]
-                    let $this_doc_uri := concat($database,'/',$datadir,'/',$embodiment/@target) 
-                    let $this_doc := doc($this_doc_uri)
-                    let $output :=
-                    	for $mdiv at $pos in $this_doc/m:mei//m:mdiv
-                    	    let $this_filename := util:document-name($this_doc)
-                        	let $params := 
-                            	<parameters>
-                            	  <param name="mdiv" value="{$mdiv/@xml:id}"/>
-                            	  <param name="doc"  value="{$this_filename}"/>
-                            	</parameters>
-                        	let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
-                        return $music
-                return 
-                    <div>
-                        <h3>{$embodiment/@label/string()}</h3>
-                        {$output}
-                    </div>
-            }
+
+            <div class="documentFrame container">
+                <!-- Music included in this document -->
+                {  
+                    for $mdiv at $pos in $list[1]//m:mdiv
+                        let $params := 
+                            <parameters>
+                              <param name="mdiv" value="{$mdiv/@xml:id}"/>
+                              <param name="doc"  value="{$filename}"/>
+                            </parameters>
+                        let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
+                        let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+                           then 
+                               <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
+                                   <!-- References to TEI file and MEI:mdiv/@xml:id transmitted in @class -->
+                                   <p class="loading">Henter tekst...</p>
+                               </div>
+                           else 
+                               <div>
+                                   <p>Tekst ikke fundet i databasen.</p>
+                               </div>
+                    return ($music, $text)  
+                }
+                <!-- Music included from related records (for melody meta records) -->
+                {
+                    for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment" and not(contains(@target,"://"))]
+                        let $this_doc_uri := concat($database,'/',$datadir,'/',$embodiment/@target) 
+                        let $this_doc := doc($this_doc_uri)
+                        let $output :=
+                            for $mdiv at $pos in $this_doc/m:mei//m:mdiv
+                                let $this_filename := util:document-name($this_doc)
+                                let $params := 
+                                    <parameters>
+                                      <param name="mdiv" value="{$mdiv/@xml:id}"/>
+                                      <param name="doc"  value="{$this_filename}"/>
+                                    </parameters>
+                                let $music := <div class="mei-wrapper">{transform:transform($this_doc,$mdivXsl,$params)}</div> 
+                            return $music
+                    return 
+                        <div>
+                            <h3>{$embodiment/@label/string()}</h3>
+                            {$output}
+                        </div>
+                }
+            </div>
+            
         </div>
 
+	    <!-- Page footer -->
+	    {doc(concat($database,"/assets/footer.html"))}
 
         <div style="height: 30px;">
             <!-- MIDI Player -->
@@ -234,6 +247,7 @@ let $result :=
         <!-- test
         <input type="button" onclick="javascript:comments = !comments; comments ? $('.textcriticalnote.annotation-marker').css('display','inline') : $('.textcriticalnote.annotation-marker').css('display','none');" value="Tekstkritik"/>
         test end -->
+        
     </body>
 </html>
 

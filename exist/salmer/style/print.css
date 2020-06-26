@@ -1,0 +1,14 @@
+@media print {
+
+div.top,
+div.searchWrapper {
+    display:none;
+}
+
+
+.footnote {
+    display:block;
+    padding-bottom:10px;
+}
+
+            }

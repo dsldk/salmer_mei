@@ -9,13 +9,7 @@
     margin: 30px 0 20px 0;
 }
 
-.mei {
-    float: left;
-    width: 550px; 
-}
-
 .mei svg tspan.text {
-/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: 'Cormorant', 'Noto Serif', Georgia, 'times new roman', times, serif; 
     font-size: 400px;
 }
@@ -61,7 +55,6 @@
     cursor: pointer;
 }
 
-
 .mei svg .bracketspan, .mei svg .warning, .cursorHelp:hover {
     cursor: help;
 }
@@ -95,7 +88,6 @@
 }
 
 .mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
-/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: Georgia, 'times new roman', times, serif; 
     font-size: 400;  
 }
@@ -198,23 +190,23 @@
 }
 
 .midi_button.database {
-    background-image: url("img/music_document.png");
+    background-image: url("/style/img/music_document.png");
     background-position: 1px 1px;
     background-repeat: no-repeat;
 }
 
 .exist_link a:hover .midi_button.database {
-    background-image: url("img/music_document_hi.png");
+    background-image: url("/style/img/music_document_hi.png");
 }
 
 .midi_button.print {
-    background-image: url("img/print.png");
+    background-image: url("/style/img/print.png");
     background-position: 1px 1px;
     background-repeat: no-repeat;
 }
 
 .print_link a:hover .midi_button.print {
-    background-image: url("img/print_hi.png");
+    background-image: url("/style/img/print_hi.png");
     
 }
 
@@ -241,21 +233,14 @@
     cursor: pointer;
 }
 
+
 /* Place and format option menus. */
 
 .mei_options {
-/*  Magenta bruger:
-    position: absolute;
-    top: 0; */
-    width: auto;
-    display: none;
-}
-
-.metadata .mei_options, .frontpage .mei_options {
-    /* .frontpage bruges på tekstnet.dk */
-    position: relative;
     float: left;
-    right: 2em;
+    width: auto;
+    margin: 10px 0 0 -70px;
+    display: none;
 }
 
 .mei_options .mei_menu_container {
@@ -270,9 +255,12 @@
     border: 4px solid #888;
     border: 4px solid #003b5c;
     border-radius: 10px;
-/*    color: #dcd2ab; */
-    font-size: 14px;
     white-space: nowrap;
+}
+
+.mei_options, .mei_options .label, .mei_options label {
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .mei_options form {
@@ -385,12 +373,153 @@ select.custom_input {
 /* Metadata and general page style */
 
 
-.metadata h1 {
-    margin: 0 0 0 0;
+a:not([href]), a:not([href]):hover, a:not([href]):focus, a:not([href]):visited, a:not([href]):active  {
+    color: #000;
 }
 
-.metadata h2 {
-    margin: 0;
+kbd {
+    font-family: courier, fixed, monospace;
+    font-size: 1.2em;
+    background: none;
+    color: inherit;
+    border: none;
+    box-shadow: none;
+}
+
+
+.metadata .main_section {
+    float: left;
+    width: 60%;
+    min-width: 300px;
+    padding-right: 20px;
+}
+
+.metadata .supplementary_section {
+    float: left;
+    width: 40%;
+    min-width: 350px;
+    background-color: #eee;
+    padding: 15px;
+    /*font-size: .9em;*/
+}
+
+.metadata .toc_section {
+    clear: both;
+    padding-top: 20px;
+}
+
+/* Override other style sheets */
+
+.metadata #front-page-splash {
+    background-image: url("/style/img/melodibasen.jpg");
+    padding-top: 30px;
+}
+
+.metadata .library__item-head {
+    white-space: nowrap;
+}
+
+.metadata .background-box {
+    padding-bottom: 20px;
+/*    margin-top: 10px;*/
+}
+
+.metadata .form-control, .metadata .form-control::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.metadata .select-css, .metadata .select-css option {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.metadata .checkbox-container {
+    /* avoid clipping the border when in focus: */
+    left: 3px;
+}
+
+.metadata a.list-link-a {
+    display: list-item;
+    list-style-type: none;
+    margin: 0 0 -30px 0;
+}
+
+.metadata .btn.btn-primary.arrow-r.list-link {
+    display: block;
+    clip: auto;
+    overflow: visible;
+    color: black;
+    padding: 2px 0px 0px 5px;
+    margin: 10px 0 0 -60px;
+    height: 40px;
+    width: 40px;
+    background-image: url("/style/img/white-arrow.png");
+    background-position: 13px 13px;
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+.metadata a.list-link-a:hover * {
+    color: #c2005c;
+}
+
+.metadata a.list-link-a:hover .btn.btn-primary.arrow-r.list-link {
+    visibility: visible;
+}
+
+.metadata .btn.btn-primary.arrow-r.list-link::after {
+    background: none;
+    height: 30px;
+}
+
+.metadata .list-link-a .link-text {
+    display: inline-block;
+    width: 275px;
+    white-space: normal;
+    text-align: left;
+    font-family: 'Cormorant', serif;
+    font-weight: 500;
+    font-size: 20px;
+ /*   color: #23527c;  */
+    color: #000; 
+    line-height: 1.1em;
+    position: relative;
+    top: -40px; 
+}
+
+.metadata .list-link-a .link-text:hover {
+    color: #c2005c;
+}
+
+.metadata .top-spacer {
+    background-color: transparent;
+}
+
+.metadata table tr td {
+    padding: 5px 10px 5px 0;
+    font-weight: 500;
+    vertical-align: top;
+}
+
+.headline-box h1 {
+    margin: 10px 0 0 0; 
+}
+
+.headline-box h2 {
+    margin: 0 0 5px 0; 
+}
+
+.metadata .h2 {
+ font-size: 33px;
+}
+
+.metadata h3 {
+ font-size: 28px;
+}
+
+.metadata h4 {
+ /*   margin: 0; */
+ font-size: 24px;
 }
 
 .metadata .top .left {
@@ -398,18 +527,27 @@ select.custom_input {
     float: none;
 }
 
-div.mei_metadata {
-    margin: 10px 0 0 0;    
-}
-
 p.loading {
-    color: #777;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    height: 100px;
 }
 
+.loading::after {
+   margin: 30px; 
+}
 
-.searchWrapper {
-    background-color: #245270; 
-    /* #1d4159; */ 
+#advanced-search-link {
+    text-align: right;
+    margin-top: 10px;
+}
+
+#advanced-search-link a:link, #advanced-search-link a:active, #advanced-search-link a:visited, #advanced-search-link a:hover {
+    color: #ecece8;    
+}
+
+#advanced-search-link a:hover {
+    color: #c2005c;    
 }
 
 .rec_type {
@@ -427,27 +565,28 @@ p.loading {
     margin: 0 0 5px 0;
 }
 
-.relation, .topbar {
+.relation {
     position: relative;
     float: left;
     width: auto;
-    margin: 0 10px 10px 0;
+    margin: 2px 10px 5px 0;
     background-color: #245270;
     border-radius: 6px;
     color: white;
     font-weight: normal;
     display: block;
     padding: 2px 10px 0 34px;
-    background-image: url("img/music_document_white.png");
+    background-image: url("/style/img/music_document_white.png");
     background-position: 4px 4px;
     background-repeat: no-repeat;
     height: 25px;
-    white-space: nowrap;
+    white-space: nowrap; 
 }
 
 .relation a {
     color: white;
     text-decoration: none;
+    font-size: 15px;
 }
 
 .relation:hover {
@@ -459,9 +598,24 @@ p.loading {
     -ms-filter: brightness(1.15);    
 }
 
-.toc .relation, .toc .edition_link {
+.supplementary_section .relation {
+    white-space: normal;
+}
+
+.toc .relation {
     margin: 0;
     padding: 2px 10px 0 25px;
+}
+
+.toc .edition_link {
+    margin: 0;
+    padding: 2px 10px 0 5px;
+}
+
+.toc .edition {
+    display: inline-block;
+    height: 20px;
+    padding-top: 2px;
 }
 
 .toc tr:hover {
@@ -477,32 +631,57 @@ p.loading {
 }
 
 .topbar {
-    width: 100%;
+    position: relative;
     float: none;
+    width: 100%;
+    margin: 10px 10px 10px 0;
+    font-weight: normal;
+    display: block;
+    padding: 2px 10px 0 25px;
+    background-image: url("/style/img/music_document.png");
+    background-position: 4px 4px;  
+    background-repeat: no-repeat;
+    height: 25px;
+    white-space: nowrap;
 }
+
 
 .edition_link  {
     display: inline-table;
+    display: inline-block;
     background-color: #fdda82;
     margin: 0 0 5px 0;
     border-radius: 6px;
     color: black;
     font-weight: normal;
-    padding: 2px 10px 0 10px;
+    font-size: .9em;
+    padding: 2px 10px 0 5px;
     height: 25px;
     white-space: nowrap;
 }
 
 .external_link {
-    background-image: url("img/link.png");
+    background-image: url("/style/img/link.png");
     padding-left: 25px;
     background-position: 4px 4px;
     background-repeat: no-repeat;
+    display: list-item;
+    list-style-type: none;
+    
+    /* wrap long URLs */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
 }
 
 .edition_link:hover, .edition_link:active, .edition_link:visited, 
 .external_link:hover, .external_link:active, .external_link:visited {
     color: black;
+}
+
+.external_link:hover {
+    color: #c2005c;
 }
 
 .edition_link:hover {
@@ -515,82 +694,96 @@ p.loading {
 }
 
 .edition_link .edition, .edition_link .text_edition {
-    padding-left: 20px;
+    padding-left: 29px;
     background-position: 0px 2px;
     background-repeat: no-repeat;
 }
 
 .edition_link .edition {
-    background-image: url("img/music_document.png");
+    background-image: url("/style/img/music_document.png");
 }
 
 .edition_link .text_edition {
-    background-image: url("img/text.png");
+    background-image: url("/style/img/text.png");
 }
+
+ .sort_direction {
+    vertical-align: baseline;
+ }
 
 /* Item class styles */
 
 .music_document, .result_list .title.music_document {
     background-color: #1d4159; 
     /* #536d7e; */
+    color: #fff;
 }
 
 .publication, .result_list .title.publication {
     background-color: #446458; 
     /* #537e6e; */
+    color: #fff;
 }
 
 .collection, .result_list .title.collection {
     background-color: #665d43; 
     /* #7e7353; */
+    color: #fff;
 }
 
 .melody, .result_list .title.melody {
     background-color: #4f4368; 
     /* #60537e; */
+    color: #fff;
 }
 
 .liturgy, .result_list .title.liturgy {
     background-color: #664343; 
     /* #7e5353; */
+    color: #fff;
 }
 
 .text, .result_list .title.text {
     background-color: #444c64;
+    color: #fff;
 }
 
 .topic, .result_list .title.topic {
     background-color: #4d4d4d; 
     /* #666666; */
+    color: #fff;
 }
 
+.topbar {
+    background-color: transparent;
+}
 
 .result_list .title.music_document, .relation.music_document, .topbar.music_document {
-    background-image: url("img/music_document_white.png");
+    background-image: url("/style/img/music_document_white.png");
 }
 
-.result_list .title.publication, .relation.publication, .topbar.publication {
-    background-image: url("img/publication_white.png");
+.result_list .title.publication, .relation.publication, .topbar.publication  {
+    background-image: url("/style/img/publication_white.png");
 }
 
 .result_list .title.collection, .relation.collection, .topbar.collection {
-    background-image: url("img/collection_white.png");
+    background-image: url("/style/img/collection_white.png");
 }
 
 .result_list .title.melody, .relation.melody, .topbar.melody {
-    background-image: url("img/melody_white.png");
+    background-image: url("/style/img/melody_white.png");
 }
 
 .result_list .title.liturgy, .relation.liturgy, .topbar.liturgy {
-    background-image: url("img/liturgy_white.png");
+    background-image: url("/style/img/liturgy_white.png");
 }
 
 .result_list .title.topic, .relation.topic, .topbar.topic {
-    background-image: url("img/topic_white.png");
+    background-image: url("/style/img/topic_white.png");
 }
 
 .result_list .title.text {
-    background-image: url("img/text_white.png");
+    background-image: url("/style/img/text_white.png");
 }
 
 
@@ -620,6 +813,7 @@ p.loading {
 
 .list_block {
     display: table;
+    margin: 20px 0 20px 0;
 }
 
 table.toc  {
@@ -655,18 +849,37 @@ table.toc td {
     line-height: 1.6em;
 }
 
-.tei_vocal_text, .clear_both {
+.clear_both {
     clear: both;
 }
 
-.download {
-    float: right;
-    width: auto;
-    margin: 0 10px 0 0;
+.tei_vocal_text {
+    font-family: 'Cormorant', 'Noto Serif', Georgia, 'times new roman', times, serif; 
+    font-size: 1.4em;
+    clear: both;
 }
 
-.download a {
+
+.download {
+    position: relative;
+    float: right;
+    width: auto;
+    margin: 10px -10px 0 0;
+    font-size: .8em;
+    letter-spacing: .8px;
+    z-index: 100;
+}
+
+.download a, .download a:link, .download a:active, .download a:visited {
     color: #fff;
+    display: block;
+    width:24px;
+    height: 28px;
+    background: url("https://salmer.dsl.dk/style/img/mei.svg") no-repeat;
+}
+
+.download a:hover {
+    background: url("https://salmer.dsl.dk/style/img/mei_hi.svg") no-repeat;
 }
 
 a.abbr {
@@ -697,8 +910,9 @@ a:hover.abbr .expan {
     margin-top: 15px;
     margin-left: -5px;
     border: 1px solid #ddd;
-    font-weight:normal;
+    font-weight:500;
     font-style: normal;
+    font-size: .85em;
     text-align: left;
     box-shadow: 7px 7px 10px 5px #333;
     border-radius: 4px;
@@ -727,6 +941,23 @@ a:hover.abbr .expan {
 	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.woff') format('woff'), 
 	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.svg#BravuraText') format('svg');
 } 
+
+/* responsive design */
+
+@media (max-width: 992px) {
+    
+    .metadata .main_section {
+        width: auto;
+        padding-right: 0px;
+    }
+    
+    .metadata .supplementary_section {
+        width: auto;
+        min-width: 350px;
+        margin-top: 20px;
+    }
+}
+
 
 /* print */
 @media print {
