@@ -13,22 +13,22 @@ let $output :=
         
         <link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
         
-        <link rel="stylesheet" type="text/css" href="style/magenta/dsl-basis_screen.css" />
-        <link rel="stylesheet" type="text/css" href="style/magenta/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="style/magenta/elements.css" />
-        <link rel="stylesheet" type="text/css" href="style/magenta/select-css.css" />
-        <link rel="stylesheet" type="text/css" href="style/magenta/layout.css" />
-        <link rel="stylesheet" type="text/css" href="style/magenta/styles.css"/>
-        <link rel="stylesheet" type="text/css" href="style/magenta/dsl-basis_print.css" media="print"/>
-        <link rel="stylesheet" type="text/css" href="style/magenta/print.css" media="print"/>
+        <link rel="stylesheet" type="text/css" href="style/dsl-basis_screen.css" />
+        <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="style/elements.css" />
+        <link rel="stylesheet" type="text/css" href="style/select-css.css" />
+        <link rel="stylesheet" type="text/css" href="style/layout.css" />
+        <link rel="stylesheet" type="text/css" href="style/styles.css"/>
+        <link rel="stylesheet" type="text/css" href="style/dsl-basis_print.css" media="print"/>
+        <link rel="stylesheet" type="text/css" href="style/print.css" media="print"/>
         
-        <link rel="stylesheet" type="text/css" href="style/magenta/mei.css"/>
-        <link rel="stylesheet" type="text/css" href="style/mei_search.css"/>
+        <link rel="stylesheet" type="text/css" href="style/mei.css"/>
+        <!--<link rel="stylesheet" type="text/css" href="style/mei_search.css"/>-->
         
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
 
-        <script type="text/javascript" src="js/magenta/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
 
         
 	</head>
@@ -37,7 +37,7 @@ let $output :=
        <header class="header" id="header">
        
             <!-- Page head -->
-	        {doc(concat($database,"/assets/magenta/header.html"))}
+	        {doc(concat($database,"/assets/header.html"))}
 	       
             <!-- Search -->
 	           
@@ -54,7 +54,7 @@ let $output :=
                                 </div>
                             </form>
                             <div>
-                                {doc("assets/magenta/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
+                                {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
                             </div>
                             <div id="advanced-search-link">
                                 <a href="mei_search.xq">Avanceret søgning</a>
@@ -227,7 +227,7 @@ let $output :=
         </div>
 
 	    <!-- Page footer -->
-	    {doc(concat($database,"/assets/magenta/footer.html"))}
+	    {doc(concat($database,"/assets/footer.html"))}
 
     </body>
 </html>

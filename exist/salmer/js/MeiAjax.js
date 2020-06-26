@@ -662,7 +662,7 @@ function loadMeiMetadata() {
     $(".mei_metadata").each( function() {
         var id = $(this).attr("id");
         console.log('Retrieving MEI metadata');
-        $.post('https://salmer.dsl.dk/magenta/document_metadata.xq?doc=' + doc,function(data){
+        $.post('https://salmer.dsl.dk/document_metadata.xq?doc=' + doc,function(data){
             $("#" + id).html(data);
         },'html');
     });
