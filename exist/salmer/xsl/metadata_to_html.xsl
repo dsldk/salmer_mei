@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:local="urn:my-stuff" version="2.0" exclude-result-prefixes="m xsl xs local marc zs xl">
     
     
@@ -228,43 +227,46 @@
                 
             </div> <!-- end main section -->
             
-            <div class="supplementary_section">
-                <!-- other identifiers -->
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work[m:identifier/text()]" mode="work_identifiers"/>
-                
-                <!-- persons -->
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contributor[m:persName[text()]]"/>
-                
-                <!-- text source -->
-                <xsl:for-each select="m:meiHead/m:workList/m:work/m:title[@type='text_source'][text()]">
-                    <div>
-                        <xsl:if test="position()=1">
-                            <span class="p_heading">
-                                <xsl:value-of select="$l/text_source"/>: </span>
-                        </xsl:if>
-                        <xsl:element name="span">
-                            <xsl:call-template name="maybe_print_lang"/>
-                            <xsl:apply-templates select="."/>
-                        </xsl:element>
-                    </div>
-                </xsl:for-each>
-
-                <!-- related files -->
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
-                    <xsl:with-param name="internal" select="true()"/>
-                </xsl:apply-templates>
-                
-                
-                <!-- digital editions and non-internal relations-->
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and (@type='edition' or @type='text_edition')]"/>
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
-                    <xsl:with-param name="internal" select="false()"/>
-                </xsl:apply-templates>
-
-                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links'][m:ptr[normalize-space(@target)]]" mode="link_list_p"/>
-                
-
-            </div> <!-- end supplementary section -->
+            <xsl:variable name="suppl_sect" as="node()">
+                <div class="supplementary_section">
+                    <!-- other identifiers -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work[m:identifier/text()]" mode="work_identifiers"/>
+                    
+                    <!-- persons -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contributor[m:persName[text()]]"/>
+                    
+                    <!-- text source -->
+                    <xsl:for-each select="m:meiHead/m:workList/m:work/m:title[@type='text_source'][text()]">
+                        <div>
+                            <xsl:if test="position()=1">
+                                <span class="p_heading">
+                                    <xsl:value-of select="$l/text_source"/>: </span>
+                            </xsl:if>
+                            <xsl:element name="span">
+                                <xsl:call-template name="maybe_print_lang"/>
+                                <xsl:apply-templates select="."/>
+                            </xsl:element>
+                        </div>
+                    </xsl:for-each>
+    
+                    <!-- related files -->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+                        <xsl:with-param name="internal" select="true()"/>
+                    </xsl:apply-templates>
+                    
+                    
+                    <!-- digital editions and non-internal relations-->
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links']/m:ptr[normalize-space(@target) and (@type='edition' or @type='text_edition')]"/>
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:relationList">
+                        <xsl:with-param name="internal" select="false()"/>
+                    </xsl:apply-templates>
+    
+                    <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='links'][m:ptr[normalize-space(@target)]]" mode="link_list_p"/>
+                    
+    
+                </div> <!-- end supplementary section -->
+            </xsl:variable>
+            <xsl:if test="normalize-space($suppl_sect)"><xsl:copy-of select="$suppl_sect"/></xsl:if>
             
             <div class="toc_section">
                 
