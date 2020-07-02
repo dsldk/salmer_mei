@@ -1,7 +1,4 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:m="http://www.music-encoding.org/ns/mei" 
-    version="2.0" 
-    exclude-result-prefixes="m xsl">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:m="http://www.music-encoding.org/ns/mei" version="1.0" exclude-result-prefixes="m xsl">
 
     <!-- Prepare MEI for MIDI playback -->
 
@@ -10,19 +7,25 @@
 
     <xsl:output xml:space="default" method="xml" encoding="UTF-8" omit-xml-declaration="no"/>
 
-    <xsl:param name="repeat" select="true()"/>
-
-
+    <xsl:param name="repeat" select="'true'"/>
+    <xsl:param name="online" select="'no'"/>
+    
+    <!-- Adjustments for the online MIDI player -->
+    
     <!-- Add a rest before the first note to make the first note play (apparently a bug in MIDI player) -->
     <xsl:template match="m:note[not(preceding::m:note)]">
-        <rest xmlns="http://www.music-encoding.org/ns/mei" dur="4"/>
+        <xsl:if test="$online='yes'">
+            <rest xmlns="http://www.music-encoding.org/ns/mei" dur="4"/>
+        </xsl:if>
         <xsl:apply-templates select="." mode="check_if_neume"/>
     </xsl:template>
 
     <!-- Add a rest at the end too to prevent the MIDI player from stopping too early -->
     <xsl:template match="m:note[not(following::m:note)]">
         <xsl:apply-templates select="." mode="check_if_neume"/>
-        <rest xmlns="http://www.music-encoding.org/ns/mei" dur="4"/>    
+        <xsl:if test="$online='yes'">
+            <rest xmlns="http://www.music-encoding.org/ns/mei" dur="4"/>
+        </xsl:if>
     </xsl:template>
     
     <xsl:template match="m:note">
@@ -41,22 +44,10 @@
         </note>
     </xsl:template>
     
-    <!-- Play repeats and endings according to <expansion> elements  -->
-    <xsl:template match="m:section[m:expansion]">
-        <xsl:copy>
-            <xsl:apply-templates select="@*"/>
-            <xsl:variable name="sections" select="."/>
-            <xsl:for-each select="tokenize(translate(m:expansion/@plist,'#',''),' ')">
-                <xsl:variable name="this_id" select="."/>
-                <xsl:apply-templates select="$sections/*[@xml:id = $this_id]"/>
-            </xsl:for-each>            
-        </xsl:copy>
-    </xsl:template>    
-    
-    <!-- Play repeat unless repetitions are controlled by an <expansion> element -->
-    <xsl:template match="*[@right='rptend' and not((ancestor::m:section | ancestor::m:ending)[preceding-sibling::m:expansion])]">
+    <!-- Play repeat -->
+    <xsl:template match="*[@right='rptend']">
         <xsl:copy-of select="."/>
-        <xsl:if test="$repeat">
+        <xsl:if test="$repeat='true'">
             <xsl:choose>
                 <xsl:when test="not(preceding-sibling::m:measure[@left='rptstart'] or @left='rptstart')">
                     <!-- No start repetition sign; repeat from beginning -->

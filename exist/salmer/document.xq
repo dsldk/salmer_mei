@@ -122,9 +122,6 @@ let $result :=
         <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
         <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
         <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
-        <!--<script type="text/javascript">
-            enableMidi = false; 
-        </script>-->
 
         <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
         

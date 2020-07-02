@@ -8,7 +8,9 @@ var isPlaying = false;
 // Parameters for the XSL transformation
 var $midi = {
     xslt:       'midi.xsl',
-    parameters: {}
+    parameters: {
+        online: 'yes'
+    }
 }
  
 /* Reverse a string */
@@ -27,6 +29,7 @@ function play_midi(id) {
     
     // temporarily add the MIDI preparation XSL to the list of transformations
     $mei[id].xsltOptions['midi'] = $.extend(true, {}, $midi);
+    $mei[id].xsltOptions['midi'].parameters['online'] = 'yes';
 
     // send a POST request to get the MIDI-playable MEI data
     $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
@@ -71,6 +74,7 @@ function download_midi(id) {
         
         // temporarily add the MIDI preparation XSL to the list of transformations
         $mei[id].xsltOptions['midi'] = $.extend(true, {}, $midi);
+        $mei[id].xsltOptions['midi'].parameters['online'] = 'no';
     
         // send a POST request to get the MIDI-playable MEI data
         $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
