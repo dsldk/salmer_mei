@@ -713,9 +713,9 @@ manglende eller tilføjede toner"/>-->
         	       return ($count, local:paging($numFound), $list)
     
         	    }
-                           <div class="debug">
+                           <!--<div class="debug">
                                 {local:solr_query()}
-                           </div>
+                           </div>-->
                 </div>
             return $output
     	    }
