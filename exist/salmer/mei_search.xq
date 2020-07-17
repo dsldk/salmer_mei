@@ -135,7 +135,7 @@ declare function local:solr_query() {
     let $search_in_seq := 
         for $n in tokenize($search_in," ")
         return $publications/dsl:publications/dsl:pub[string(position()) = $n]/dsl:id/text()
-    let $solrQuery2 := if (not($solrQuery1) or count($search_in_seq) = 0 or count($search_in_seq) = count($publications/dsl:publications/dsl:pub)) then
+    let $solrQuery2 := if (not($solrQuery1) or count($search_in_seq) = 0 or count($search_in_seq) = count($publications/dsl:publications/dsl:pub[dsl:mei_coll/text()])) then
             ()
         else
             concat("+AND+publ:(",string-join($search_in_seq,'+'),")") 
@@ -713,9 +713,9 @@ manglende eller tilføjede toner"/>-->
         	       return ($count, local:paging($numFound), $list)
     
         	    }
-                           <!--<div class="debug">
+                           <div class="debug">
                                 {local:solr_query()}
-                           </div>-->
+                           </div>
                 </div>
             return $output
     	    }
