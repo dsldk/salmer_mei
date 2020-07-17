@@ -1,6 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:dsl="http://www.dsl.dk" xmlns:m="http://www.music-encoding.org/ns/mei" version="2.0" exclude-result-prefixes="m h dsl xsl">
     
-    
     <!-- Prepare MEI for viewing with Verovio -->
     
     <!-- Det Danske Sprog- og Litteraturselskab, 2018 -->
@@ -115,21 +114,33 @@
         </xsl:copy>
     </xsl:template>  
     
-        
+    
     <!-- Pad lyrics with spaces to compensate for Verovio's too narrow spacing -->
     <xsl:template match="m:syl[//text()]">
+        <!-- Determine lyric line number (in case there is than one); base 0 -->
+        <xsl:variable name="line" select="ancestor::m:verse/@n"/>
+        <xsl:variable name="next_syl" select="ancestor::m:note/following-sibling::m:note[1]/m:verse[@n = $line]/m:syl"/> 
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <!--<xsl:text> </xsl:text>-->
-            <!-- Extra space before last syllable -->
-            <!--<xsl:if test="not(ancestor::m:note/following-sibling::m:note//m:syl[text()] or parent::m:syllable/following-sibling::m:syllable/m:syl[text()])"><xsl:text> </xsl:text></xsl:if>-->
+            <!-- Pad inner syllable with an extra space before text -->
+            <!--<xsl:if test="@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
+            <!--<xsl:if test="string-length(.) > 3"><xsl:text> </xsl:text></xsl:if>-->
+            <!-- Neumes get an extra space -->
+            <xsl:if test="ancestor::m:syllable"><xsl:text> </xsl:text></xsl:if>
+            
             <xsl:apply-templates select="node()"/>
-            <!-- Pad all syllables with an extra space -->
-            <xsl:text> </xsl:text>
-            <!-- Pad word endings with an extra space -->
-            <!--<xsl:if test="not(following::m:syl[text()][1]/@wordpos[.='m' or .='t'])"><xsl:text> </xsl:text></xsl:if>-->
-            <!-- Extra space after penultimate syllable -->
-            <!--<xsl:if test="count(ancestor::m:note/following-sibling::m:note//m:syl[text()]) = 1"><xsl:text> </xsl:text></xsl:if>-->
+            
+            <!-- Add an extra space for each capital letter -->
+            <xsl:variable name="countCaps" select="string-length(normalize-space(.)) - string-length(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅÄÖÜ',''))"/>
+            <xsl:if test="$countCaps &gt; 0">
+                <xsl:for-each select="1 to $countCaps"> </xsl:for-each>
+            </xsl:if>
+            <!-- Alternatives: -->
+            <!-- Pad before hyphen -->
+            <!--<xsl:if test="$next_syl/@wordpos[.='m' or .='t']"><xsl:text> </xsl:text></xsl:if>-->
+            <!-- If syllables are long, pad word beginnings and inner syllables with an extra space  -->
+            <!--<xsl:if test="string-length(.//text()[1]) > 2 or ($next_syl/@wordpos[.='m' or .='t'] and string-length(concat(.//text()[1],$next_syl[1]//text()[1])) > 5)"><xsl:text> </xsl:text></xsl:if>-->
+            <!--<xsl:if test="string-length($next_syl) > 3"><xsl:text> </xsl:text></xsl:if>-->
         </xsl:copy>
     </xsl:template>
     
@@ -221,7 +232,7 @@
         <!-- Change context node if necessary -->
         <xsl:for-each select="ancestor-or-self::*[name()=$context]">
             <!-- Place a marker -->
-            <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment">
+            <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment textcriticalnote annotation-marker"><!-- class was: comment notelink -->
                 <xsl:if test="descendant-or-self::m:annot/@xml:id">
                     <xsl:attribute name="xml:id">
                         <xsl:value-of select="concat(descendant-or-self::m:annot/@xml:id,'_dir')"/>
@@ -356,25 +367,29 @@
         <note xmlns="http://www.music-encoding.org/ns/mei" type="neume">
             <xsl:apply-templates select="@*[not(local-name()='label')]"/>
             <xsl:variable name="dur" select="substring-after(@label,'dur')"/>
-            <xsl:attribute name="dur">
-                <xsl:choose>
-                    <xsl:when test="$dur = '8'">4</xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="$dur"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:attribute>
-            <xsl:if test="$dur='4'">
-                <xsl:attribute name="stem.dir">down</xsl:attribute>
-                <xsl:attribute name="stem.len">0</xsl:attribute>
-                <xsl:attribute name="head.shape">square</xsl:attribute>
-                <xsl:attribute name="head.fill">solid</xsl:attribute>
-                <!--<xsl:attribute name="colored">true</xsl:attribute>-->
-            </xsl:if>
-            <xsl:if test="$dur='long'">
-                <xsl:attribute name="colored">true</xsl:attribute>
-                <!--<xsl:attribute name="color">#800</xsl:attribute>-->
-            </xsl:if>
+            <xsl:choose>
+                <xsl:when test="$dur = '8'">
+                    <!-- display virga as quarter, but play at half value -->
+                    <xsl:attribute name="dur">4</xsl:attribute>
+                    <xsl:attribute name="dur.ges">2</xsl:attribute>
+                </xsl:when>
+                <xsl:when test="$dur='4'">
+                    <xsl:attribute name="dur">4</xsl:attribute>
+                    <xsl:attribute name="stem.dir">down</xsl:attribute>
+                    <xsl:attribute name="stem.len">0</xsl:attribute>
+                    <xsl:attribute name="head.shape">square</xsl:attribute>
+                    <xsl:attribute name="head.fill">solid</xsl:attribute>
+                    <!--<xsl:attribute name="colored">true</xsl:attribute>-->
+                </xsl:when>
+                <xsl:when test="$dur='long'">
+                    <xsl:attribute name="dur">long</xsl:attribute>
+                    <xsl:attribute name="colored">true</xsl:attribute>
+                    <!--<xsl:attribute name="color">#800</xsl:attribute>-->
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:attribute name="dur"><xsl:value-of select="$dur"/></xsl:attribute>
+                </xsl:otherwise>
+            </xsl:choose>
             <xsl:if test="@xml:id=ancestor::m:syllable/descendant::m:neume[1]/descendant::m:nc[1]/@xml:id">
                 <xsl:apply-templates select="ancestor::m:syllable/m:verse | ancestor::m:syllable/m:syl"/>
             </xsl:if>
