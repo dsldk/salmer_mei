@@ -371,7 +371,9 @@
                 <xsl:when test="$dur = '8'">
                     <!-- display virga as quarter, but play at half value -->
                     <xsl:attribute name="dur">4</xsl:attribute>
-                    <xsl:attribute name="dur.ges">2</xsl:attribute>
+                    <xsl:attribute name="dur.ges">8</xsl:attribute>
+                    <xsl:attribute name="head.shape">diamond</xsl:attribute>
+                    <xsl:attribute name="head.fill">solid</xsl:attribute>
                 </xsl:when>
                 <xsl:when test="$dur='4'">
                     <xsl:attribute name="dur">4</xsl:attribute>
