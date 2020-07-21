@@ -278,7 +278,7 @@ function play() {
 //    midiPlayer_pause.style.display = 'inline-block';
 //    midiPlayer_stop.style.display = 'inline-block';
     // add small delay so UI can update.
-    setTimeout(runConversion, 100);
+    setTimeout(runConversion, 200);
 }
 
 function stop() {

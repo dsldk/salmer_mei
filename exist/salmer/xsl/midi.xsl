@@ -27,12 +27,25 @@
             <rest xmlns="http://www.music-encoding.org/ns/mei" dur="4"/>
         </xsl:if>
     </xsl:template>
-    
+
     <xsl:template match="m:note">
         <xsl:apply-templates select="." mode="check_if_neume"/>
     </xsl:template>
     
     <xsl:template match="m:note" mode="check_if_neume">
+        <!-- When playing neumes, try to phrase the music just a little by adding a rest between phrases -->
+        <xsl:if test="@type='neume' and $online='yes'">
+            <xsl:choose>
+                <xsl:when test="not(preceding-sibling::m:note) and ancestor::m:measure/preceding-sibling::m:measure[1]/@right!='invis'">
+                    <!-- First note after a vertical line; add rest -->
+                    <rest xmlns="http://www.music-encoding.org/ns/mei" dur="breve"/>
+                </xsl:when>
+                <xsl:when test="m:verse/m:syl/text() and preceding-sibling::m:note[m:verse/m:syl/text()][1]//m:syl[substring(.,string-length(.),1)=',' or substring(.,string-length(.),1)='.']">
+                    <!-- First note after a comma or stop; add short rest -->
+                    <rest xmlns="http://www.music-encoding.org/ns/mei" dur="1"/>
+                </xsl:when>
+            </xsl:choose>
+        </xsl:if>
         <note xmlns="http://www.music-encoding.org/ns/mei">
             <xsl:copy-of select="@*[not(substring(name(),1,3)='dur')]"/>
             <xsl:choose>
@@ -40,17 +53,17 @@
                 <xsl:when test="@type='neume'">
                     <xsl:choose>
                         <!-- @dur.ges has highest priority -->
-                        <xsl:when test="number(@dur.ges) >= 4">
+                        <xsl:when test="number(@dur.ges) &gt;= 4">
                             <xsl:attribute name="dur"><xsl:value-of select="number(@dur.ges) div 4"/></xsl:attribute>
                         </xsl:when>
                         <!-- values longer than 4: make it a breve -->
-                        <xsl:when test="number(@dur.ges) > 0">
+                        <xsl:when test="number(@dur.ges) &gt; 0">
                             <xsl:attribute name="dur">breve</xsl:attribute>
                         </xsl:when>
-                        <xsl:when test="number(@dur) >= 4">
+                        <xsl:when test="number(@dur) &gt;= 4">
                             <xsl:attribute name="dur"><xsl:value-of select="number(@dur) div 4"/></xsl:attribute>
                         </xsl:when>
-                        <xsl:when test="number(@dur) > 0">
+                        <xsl:when test="number(@dur) &gt; 0">
                             <xsl:attribute name="dur">breve</xsl:attribute>
                         </xsl:when>
                         <!-- breve and longa keep their encoded value -->

@@ -278,7 +278,7 @@ function play() {
 //    midiPlayer_pause.style.display = 'inline-block';
 //    midiPlayer_stop.style.display = 'inline-block';
     // add small delay so UI can update.
-    setTimeout(runConversion, 100);
+    setTimeout(runConversion, 200);
 }
 
 function stop() {
@@ -309,6 +309,7 @@ function runConversion() {
     
     var sleep = 10;
     circularBuffer.reset();
+    // set delay to (roughly) synchronize playback and highlighting
     setTimeout(startAudio, 100);
 
     console.log(midiPlayer_convertionJob);
