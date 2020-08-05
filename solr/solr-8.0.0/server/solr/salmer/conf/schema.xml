@@ -113,28 +113,28 @@
   </fieldType>
   
 
-  <fieldType name="ngramIgnoreUnison" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
+  <fieldType name="ngramIgnoreUnison" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
     <analyzer type="index">
       <!-- Filter out character "Z" (= interval 0 / unison) -->
-      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
-      <tokenizer class="solr.NGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z+"/>  
+      <tokenizer class="solr.NGramTokenizerFactory" minGramSize="1" maxGramSize="14"/>
     </analyzer>
     <analyzer type="query">
       <!-- Also skip "Z" in query -->
-      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z+"/>  
       <!-- Queries are not tokenized into N-grams; otherwise also partial matches will count -->
       <tokenizer class="solr.StandardTokenizerFactory"/>
     </analyzer>
   </fieldType>
   
-  <fieldType name="edgeNgramIgnoreUnison" class="solr.TextField" multiValued="false" termVectors="true" termPositions="true" termOffsets="true" >
+  <fieldType name="edgeNgramIgnoreUnison" class="solr.TextField" multiValued="true" termVectors="true" termPositions="true" termOffsets="true" >
     <!-- match at string beginning only -->
     <analyzer type="index">
-      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
-      <tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="2" maxGramSize="15"/>
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z+"/>  
+      <tokenizer class="solr.EdgeNGramTokenizerFactory" minGramSize="1" maxGramSize="14"/>
     </analyzer>
     <analyzer type="query">
-      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z"/>  
+      <charFilter class="solr.PatternReplaceCharFilterFactory" replacement="" pattern="Z+"/>  
       <tokenizer class="solr.StandardTokenizerFactory"/>
     </analyzer>
   </fieldType>
@@ -143,13 +143,16 @@
   <!-- Copy fields for searches ignoring repeated notes -->
   <copyField source="abs_pitch" dest="abs_pitch_norepeat"/>
   <copyField source="transposition" dest="transposition_norepeat"/>
-
+  <copyField source="intervals" dest="intervals_norepeat"/>
+    
   <!-- Copy fields for edge ngram search (to match beginning only) -->
   <copyField source="abs_pitch" dest="abs_pitch_edge"/>
   <copyField source="abs_pitch" dest="abs_pitch_norepeat_edge"/>
   <copyField source="transposition" dest="transposition_edge"/>
   <copyField source="transposition" dest="transposition_norepeat_edge"/>
-  
+  <copyField source="intervals" dest="intervals_edge"/>
+  <copyField source="intervals" dest="intervals_norepeat_edge"/>
+    
   <!--<field name="abs_pitch" type="string" indexed="true" stored="true"/>-->
   <field name="abs_pitch" type="ngramTextField" indexed="true" stored="true"/>
   <field name="abs_pitch_edge" type="edgeNgramTextField" indexed="true" stored="true"/>
@@ -161,9 +164,10 @@
   <field name="file" type="string" indexed="false" stored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="ids" type="string" indexed="true" stored="true"/>
-  <field name="intervals" type="string" indexed="true" stored="true"/>
-  <field name="intervals_chars" type="ngramTextField" indexed="true" stored="true"/>
-  <field name="intervals_nounison" type="ngramIgnoreUnison" indexed="true" stored="true"/>
+  <field name="intervals" type="ngramTextField" indexed="true" stored="true"/>
+  <field name="intervals_edge" type="edgeNgramTextField" indexed="true" stored="true"/>
+  <field name="intervals_norepeat" type="ngramIgnoreUnison" indexed="true" stored="true"/>
+  <field name="intervals_norepeat_edge" type="edgeNgramIgnoreUnison" indexed="true" stored="true"/>
   <field name="pitch" type="ngramTextField" indexed="true" stored="true"/>
   <field name="publ" type="string" indexed="true" stored="true"/>
   <field name="title" type="text_general" indexed="true" stored="true"/>

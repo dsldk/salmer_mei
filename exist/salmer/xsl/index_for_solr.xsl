@@ -68,39 +68,48 @@
             <field name="file">
                 <xsl:value-of select="$filename"/>
             </field>
-            <xsl:variable name="pitch_names">
-                <xsl:call-template name="pitch_names">
-                    <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
-                </xsl:call-template>
-            </xsl:variable>
-            <field name="pitch">
-                <xsl:value-of select="translate($pitch_names,'R','')"/>
-            </field>
-            <xsl:variable name="abs_pitch_chars">
-                <!-- translate absolute pitches to unicode characters  -->
-                <xsl:for-each select="$abs_pitches/*[not(.='0')]">
-                    <xsl:value-of select="substring($chars,number(.),1)"/>
-                </xsl:for-each>
-            </xsl:variable>
-            <field name="abs_pitch">
-                <xsl:value-of select="$abs_pitch_chars"/>
-            </field>
-            <field name="transposition">
-                <!-- first transposition is just a copy of the non-transposed pitch string -->
-                <xsl:value-of select="$abs_pitch_chars"/>
-            </field>
-            <xsl:call-template name="transpositions">
-                <!-- remaining transpositions (between 1 and 11 semitones up) -->
-                <xsl:with-param name="i" select="number(11)"/>
-                <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
-            </xsl:call-template>
-            <field name="intervals">
-                <!-- translate intervals to unicode characters with offset 50 (Z = unison); currently not in use -->
-                <xsl:for-each select="$abs_pitches/*[preceding-sibling::* and not(.='0')]">
-                    <xsl:variable name="int" select="50 + number(.) - number(./preceding-sibling::*[not(.='0')][1])"/>
-                    <xsl:value-of select="substring($chars,number($int),1)"/>
-                </xsl:for-each>
-            </field>
+            <xsl:if test="string-length($abs_pitches) &gt; 0">
+                <xsl:variable name="pitch_names">
+                    <xsl:call-template name="pitch_names">
+                        <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <field name="pitch">
+                    <!-- omit rests -->
+                    <xsl:value-of select="translate($pitch_names,'R','')"/>
+                </field>
+                <xsl:variable name="abs_pitch_chars">
+                    <!-- translate absolute pitches to unicode characters  -->
+                    <xsl:for-each select="$abs_pitches/*[not(.='0')]">
+                        <xsl:value-of select="substring($chars,number(.),1)"/>
+                    </xsl:for-each>
+                </xsl:variable>
+                <field name="abs_pitch">
+                    <xsl:value-of select="$abs_pitch_chars"/>
+                </field>
+                <field name="intervals">
+                    <!-- translate intervals to unicode characters with offset 50 (Z = unison); currently not in use -->
+                    <xsl:for-each select="$abs_pitches/*[preceding-sibling::* and not(.='0')]">
+                        <xsl:variable name="int" select="50 + number(.) - number(./preceding-sibling::*[not(.='0')][1])"/>
+                        <xsl:value-of select="substring($chars,number($int),1)"/>
+                    </xsl:for-each>
+                </field>
+                <field name="contour">
+                    <xsl:call-template name="contour">
+                        <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
+                    </xsl:call-template>
+                </field>
+                <field name="duration">
+                    <xsl:call-template name="durations">
+                        <xsl:with-param name="items" select="$item_list"/>
+                    </xsl:call-template>
+                </field>
+                <field name="ids">
+                    <xsl:call-template name="id_list">
+                        <xsl:with-param name="items" select="$item_list"/>
+                    </xsl:call-template>
+                </field>
+            </xsl:if>
             
             <!-- alternative index (if rests are to be taken into account) -->
             <!--
@@ -128,21 +137,6 @@
                 </xsl:for-each>
                 </intervals_w_rests>
             -->
-            <field name="contour">
-                <xsl:call-template name="contour">
-                    <xsl:with-param name="abs_pitches" select="$abs_pitches"/>
-                </xsl:call-template>
-            </field>
-            <field name="duration">
-                <xsl:call-template name="durations">
-                    <xsl:with-param name="items" select="$item_list"/>
-                </xsl:call-template>
-            </field>
-            <field name="ids">
-                <xsl:call-template name="id_list">
-                    <xsl:with-param name="items" select="$item_list"/>
-                </xsl:call-template>
-            </field>
         </doc>
     </xsl:template>
     

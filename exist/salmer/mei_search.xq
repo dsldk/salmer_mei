@@ -55,7 +55,7 @@ declare function local:chars_to_contour($chars as xs:string) as xs:string {
   return $contour
 };
 
-declare function local:get_match_positions($highlights as xs:string?) as node()* {
+declare function local:DEACTIVATEDget_match_positions($highlights as xs:string?) as node()* {
     let $matches as node()* :=
         for $this_trsp in tokenize($highlights," ")
         (: if all transpositions are searched, the higlighted string is a concatenation of all transpositions joined with spaces; separate them and return matches from each :)
@@ -75,7 +75,38 @@ declare function local:get_match_positions($highlights as xs:string?) as node()*
     return $matches
 };
 
+declare function local:get_match_positions($highlights as xs:string?) as node()* {
+    let $matches as node()* :=
+            let $frags as xs:string* := tokenize(normalize-space($highlights),"\]")
+            let $fragLengths as xs:integer* :=
+                for $frag in $frags
+                return string-length(translate($frag,"[",""))        
+            let $matches_in_highlights as node()* :=
+                for $frag at $pos in $frags[position() != last()]
+                let $len := string-length(substring-after($frag,"["))
+                let $start_pos := sum($fragLengths[position() < $pos]) + string-length(substring-before($frag, "[")) + 1
+                (: include leading and trailing note repetitions if "ignore repeated notes" is turned on in transposing search :)
+                let $pos_offset_start := if ($repeat != "" and $transpose != "") then
+                        string-length(replace($frag,"^.*?(Z*)\[.*","$1"))
+                    else 
+                        0
+                let $pos_offset_end := if ($repeat != "" and $transpose != "") then
+                        string-length(replace($frags[$pos + 1],"(^Z*).*","$1"))
+                    else 
+                        0
+                (: length correction (+1) is needed when the query is based on interval instead of notes (i.e., contour search or all transpositions) :)  
+                let $len_corr := xs:integer($contour != "" or $transpose != "") + $pos_offset_end + $pos_offset_start
+                return 
+                    <match>
+                        <pos>{sum($fragLengths[position() < $pos]) + string-length(substring-before($frag, "[")) + 1 - $pos_offset_start}</pos>
+                        <length>{string-length(substring-after($frag,"[")) + $len_corr}</length>
+                    </match>
+         return $matches_in_highlights
+    return $matches
+};
+
 declare function local:pitches_to_interval_chars($pitchstr as xs:string) as xs:string {
+    (: translate intervals to unicode characters with offset 50 (Z = unison)  :)
     let $pitches as xs:string* := tokenize($pitchstr, "-")
     let $intervals as xs:string* :=
         for $i in (1 to count($pitches) - 1)
@@ -105,7 +136,8 @@ declare function local:solr_query() {
             else
             if ($absp != "") then
                 (: search by notated pitches :)
-                let $field_0 := if ($transpose != "1") then "abs_pitch" else "transposition"
+                (:let $field_0 := if ($transpose != "1") then "abs_pitch" else "transposition":)
+                let $field_0 := if ($transpose != "1") then "abs_pitch" else "intervals"
                 let $field_1 := if ($repeat != "1") then 
                     $field_0 else concat($field_0,'_norepeat')
                 let $field := if ($edge != "1") then 
@@ -126,10 +158,16 @@ declare function local:solr_query() {
                             for $p in $transposedDownPitches
                             return encode-for-uri(substring($chars,number($p + $transpose),1))
                     return concat(string-join($pseq,""),$fuzzyness) 
-                let $freq as xs:string* := 
-                    for $str in $pitchStrings
-                    return concat("termfreq(",$field,",'",$str,"')") 
-                return concat("freq=sum(",string-join($freq,","),")&amp;hl.fl=",$field,"&amp;q=",$field,":(",string-join($pitchStrings,"+"),")")
+                let $q_melody := if ($transpose != "1") then concat("(",string-join($pitchStrings,"+"),")") else $ints
+                let $freq as xs:string :=
+                    if ($transpose != "1") then
+                        let $freqs as xs:string* :=
+                            for $str in $pitchStrings
+                            return concat("termfreq(",$field,",'",$str,"')")
+                        return string-join($freqs,",")
+                    else 
+                        concat("termfreq(",$field,",'",$q_melody,"')")
+                return concat("freq=sum(",$freq,")&amp;hl.fl=",$field,"&amp;q=",$field,":",$q_melody)
             else
             ()
     let $search_in_seq := 
