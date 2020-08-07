@@ -12,7 +12,7 @@ declare option exist:serialize "method=xml media-type=text/html";
 
 declare variable $docref   := request:get-parameter("doc", "");
 declare variable $host     := request:get-header('HOST'); (: "localhost"; with salmer.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
-declare variable $language := request:get-parameter("language", "");
+declare variable $language := request:get-parameter("language", "da");
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
@@ -22,7 +22,7 @@ declare variable $datadir  := "data";
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
-declare variable $l        := doc('library/language/da.xml');    (: Localisation of labels etc. :)   
+declare variable $l        := doc(concat('library/language/',$language,'.xml'));    (: Localisation of labels etc. :)   
 
 
 (: Filter away any MDIV reference from URL :)
@@ -124,6 +124,10 @@ let $result :=
         <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
 
         <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
+        
+        <script type="text/javascript">
+            language = "{$language}";
+        </script>
         
 	</head>
 	<body class="frontpage metadata">

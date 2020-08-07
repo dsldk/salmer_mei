@@ -536,7 +536,7 @@
                 <xsl:if test="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
                     <!-- internal relations -->
                     <div class="list_block">
-                        <div>Relaterede poster: </div>
+                        <div><xsl:value-of select="$l/related_records"/>: </div>
                         <!-- loop through relations, but skip those where @label contains a ":";  -->
                         <!-- also skip "hasPart" relations if there is a table of contents -->
                         <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
@@ -3205,6 +3205,13 @@
         </xsl:choose>
     </xsl:template>
     
+    
+    <!-- HANDLE MULTILINGUAL TEXT -->
+    <xsl:template match="*[not(name()='title')]
+        [../*[name()=name(current()) and @xml:lang='en'] and ../*[name()=name(current()) and @xml:lang='da']]
+        [@xml:lang!=$language]" priority="1">
+        <!-- If there are sibling elements available in both main languages, display only the chosen language version -->
+    </xsl:template>    
     
     
     <!-- HANDLE TEXT AND SPECIAL CHARACTERS -->
