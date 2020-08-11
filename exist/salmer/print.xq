@@ -1,5 +1,7 @@
 xquery version "3.0" encoding "UTF-8";
 
+import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
@@ -24,6 +26,9 @@ declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
 
+(: Set language :)
+let $language := settings:language(request:get-parameter("language", ""))
+let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 (: Filter away any MDIV reference from URL :)
 let $document := if(contains($docref,"MDIV"))

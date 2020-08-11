@@ -1,8 +1,11 @@
 xquery version "3.0" encoding "UTF-8";
 
+import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
+declare namespace session="http://exist-db.org/xquery/session";
 declare namespace util="http://exist-db.org/xquery/util";
 declare namespace dsl = "http://dsl.dk";
 declare namespace m="http://www.music-encoding.org/ns/mei";
@@ -12,17 +15,21 @@ declare option exist:serialize "method=xml media-type=text/html";
 
 declare variable $docref   := request:get-parameter("doc", "");
 declare variable $host     := request:get-header('HOST'); (: "localhost"; with salmer.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
-declare variable $language := request:get-parameter("language", "da");
+(:declare variable $session_language := request:set-session-attribute("random", $r) :)
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
 declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
-(: declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl")); :)
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
-declare variable $l        := doc(concat('library/language/',$language,'.xml'));    (: Localisation of labels etc. :)   
+
+
+(: Set language :)
+let $language := settings:language(request:get-parameter("language", ""))
+
+let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 
 (: Filter away any MDIV reference from URL :)

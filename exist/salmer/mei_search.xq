@@ -1,5 +1,7 @@
 xquery version "3.0" encoding "UTF-8";
 
+import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+
 declare namespace local = "http://dsl.dk/this/app";
 declare namespace dsl = "http://dsl.dk"; 
 declare namespace transform = "http://exist-db.org/xquery/transform";
@@ -24,7 +26,6 @@ declare variable $this_script   := 'mei_search.xq';
 
 (: List of publications to search in   :)
 declare variable $search_in     := if (normalize-space(request:get-parameter("txt", ""))) then request:get-parameter("txt", "") else "1 2 3 4 5 6" ;    
-
 
 (: key string for substituting numbers by characters. :)
 (: pitches:   j = c4 (= MIDI pitch no. 60);           :)
@@ -320,6 +321,10 @@ declare function local:execution_time( $start-time, $end-time )  {
     return
         <span class="debug">Søgningen tog {$seconds} s.</span>
 };
+
+(: Set language :)
+let $language := settings:language(request:get-parameter("language", ""))
+let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 let $active_tab := 
     if($pname != "") then "openPitchTab"

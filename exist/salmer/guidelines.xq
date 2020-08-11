@@ -1,8 +1,14 @@
 xquery version "3.0" encoding "UTF-8";
 
+import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 declare variable $database := "/db/salmer";  
+
+(: Set language :)
+let $language := settings:language(request:get-parameter("language", ""))
+let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 let $output :=
 <html xmlns="http://www.w3.org/1999/xhtml">
