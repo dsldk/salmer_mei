@@ -1,6 +1,7 @@
 xquery version "3.0" encoding "UTF-8";
 
 import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+import module namespace search="http://dsl.dk/salmer/search" at "./simple_search.xqm";
 
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
@@ -28,7 +29,6 @@ declare variable $index    := doc(concat($database,"/library/publications.xml"))
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-
 let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 
@@ -80,8 +80,8 @@ let $rec_type := if($list/m:meiHead/m:workList/m:work/m:classification/m:termLis
 
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-	    <title>{$title} – DSL</title>
+    <head>
+        <title>{$title} – DSL</title>
         <meta charset="UTF-8"/>
         
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -124,7 +124,7 @@ let $result :=
         <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
 
 
-	    <!-- MIDI -->        
+        <!-- MIDI -->        
         <!--<script src="js/wildwebmidi.js"> MIDI library </script>-->
         <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
         <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
@@ -136,42 +136,21 @@ let $result :=
             language = "{$language}";
         </script>
         
-	</head>
-	<body class="frontpage metadata">
-	
-	   <div id="wait" class="wait_overlay"><!-- "busyS" indicator overlay --></div>
+    </head>
+    <body class="frontpage metadata">
+    
+       <div id="wait" class="wait_overlay"><!-- "busyS" indicator overlay --></div>
 
        <header xmlns="http://www.w3.org/1999/xhtml" class="header" id="header">
        
             <!-- Page head -->
-	        {doc(concat($database,"/assets/header.html"))}
-	       
+            {doc(concat($database,"/assets/header.html"))}
+           
             <!-- Search -->
-	           
-            <div class="main-top-section background-cover">
-                <div class="container">
-                    <input type="checkbox" id="search-field-toggle"/>
-                    <label for="search-field-toggle"><span class="sr-only">Vis/skjul søgefelt</span></label>
-                        <div id="search-field">
-                            <form action="mei_search.xq" method="get" id="search-mobile">
-                                <div class="search-line input-group">
-                                    <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                                    <input id="query_title" type="text" class="form-control" name="qt" placeholder="Søg i salmetitlerne i databasen" value=""/>
-                                    <button title="Søg" class="btn btn-primary arrow-r" type="submit"><!-- Søg --></button>
-                                </div>
-                            </form>
-                            <div>
-                                {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
-                            </div>
-                            <div id="advanced-search-link">
-                                <a href="mei_search.xq">Avanceret søgning</a>
-                            </div>
-                        </div>
-                </div>
-            </div>
+           {search:searchbox()}
 
-	   </header>
-	   
+       </header>
+       
        <div class="page-wrapper">
             
             <!-- Enable critical comments -->
@@ -246,8 +225,8 @@ let $result :=
             
         </div>
 
-	    <!-- Page footer -->
-	    {doc(concat($database,"/assets/footer.html"))}
+        <!-- Page footer -->
+        {doc(concat($database,"/assets/footer.html"))}
 
         <div style="height: 30px;">
             <!-- MIDI Player -->

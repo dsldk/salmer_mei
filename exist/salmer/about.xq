@@ -1,6 +1,7 @@
 xquery version "3.0" encoding "UTF-8";
 
 import module namespace settings="http://dsl.dk/salmer/settings" at "./settings.xqm";
+import module namespace search="http://dsl.dk/salmer/search" at "./simple_search.xqm";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
@@ -8,7 +9,6 @@ declare variable $database := "/db/salmer";
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 let $output :=
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -46,29 +46,7 @@ let $output :=
 	        {doc(concat($database,"/assets/header.html"))}
 	       
             <!-- Search -->
-	           
-            <div class="main-top-section background-cover">
-                <div class="container">
-                    <input type="checkbox" id="search-field-toggle"/>
-                    <label for="search-field-toggle"><span class="sr-only">Vis/skjul søgefelt</span></label>
-                        <div id="search-field">
-                            <form action="mei_search.xq" method="get" id="search-mobile">
-                                <div class="search-line input-group">
-                                    <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                                    <input id="query_title" type="text" class="form-control" name="qt" placeholder="Søg i salmetitlerne i databasen" value=""/>
-                                    <button title="Søg" class="btn btn-primary arrow-r" type="submit" onclick="this.form['x'].value = updateAction();"/>
-                                    <input name="x" id="x1" type="hidden" value=""/>
-                                </div>
-                            </form>
-                            <div>
-                                {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
-                            </div>
-                            <div id="advanced-search-link">
-                                <a href="mei_search.xq">Avanceret søgning</a>
-                            </div>
-                        </div>
-                </div>
-            </div>
+            {search:searchbox()}
 
 	   </header>
 	   
