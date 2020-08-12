@@ -8,10 +8,13 @@
     <classification>Classification</classification>
     <composition>Composition</composition>
     <condition>Condition</condition>
+    <contents>Contents</contents>
     <date>Date</date>
     <date_and_place>Date and place</date_and_place>
     <description>Description</description>      <!-- Used for description of file revisions (change log) -->
     <diary_entries>Diary entries</diary_entries>
+    <digital_edition>Digital edition</digital_edition>
+    <download_mei>Download MEI XML data</download_mei>
     <duration>Duration</duration>
     <edition>Edition</edition>
     <evidence>Evidence</evidence>
@@ -19,6 +22,7 @@
     <file_publication>File publication</file_publication>
     <file_title>File title</file_title>
     <instrumentation>Instrumentation</instrumentation>
+    <item_number>No.</item_number>
     <key>Key</key>
     <last_changed>Last changed</last_changed>
     <letters>Letters</letters>
@@ -26,6 +30,7 @@
     <metre>Metre</metre>
     <music>Music</music>
     <music_incipit>Music incipit</music_incipit>
+    <normalised_title>Normalised title</normalised_title>
     <original_title>Original title</original_title>
     <other>Other</other>    <!-- refers to other bibliographical material / documents -->
     <performances>Performances</performances>
@@ -42,8 +47,11 @@
     <roles>Roles</roles>
     <sections>Sections</sections>
     <series>Series</series>
+    <see_digital_edition>See digital edition at tekstnet.dk</see_digital_edition>
+    <see_melody_in_database>Look up the melody in the database</see_melody_in_database>
     <sources>Sources</sources>
     <tempo>Tempo</tempo>
+    <title>Title</title>
     <title_page>Title page</title_page>
     <text_author>Text author</text_author>
     <text_incipit>Text incipit</text_incipit>

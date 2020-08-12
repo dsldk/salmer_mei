@@ -8,10 +8,13 @@
     <classification>Klassifikation</classification>
     <composition>Komposition</composition>
     <condition>Tilstand</condition>
+    <contents>Indhold</contents>
     <date>Dato</date>
     <date_and_place>Dato og sted</date_and_place>
     <description>Beskrivelse</description>      <!-- Used for description of file revisions (change log) -->
     <diary_entries>Dagbogsnotater</diary_entries>
+    <digital_edition>Digital udgave</digital_edition>
+    <download_mei>Download data som MEI XML</download_mei>
     <duration>Varighed</duration>
     <edition>Udgave</edition>
     <evidence>Dokumentation</evidence>
@@ -19,6 +22,7 @@
     <file_publication>Fil udgivet af</file_publication>
     <file_title>Filtitel</file_title>
     <instrumentation>Instrumentation</instrumentation>
+    <item_number>Nr.</item_number>
     <key>Toneart</key>
     <last_changed>Sidst ændret</last_changed>
     <letters>Breve</letters>
@@ -26,6 +30,7 @@
     <metre>Taktart</metre>
     <music>Musik</music>
     <music_incipit>Incipit</music_incipit>
+    <normalised_title>Normaliseret titel</normalised_title>
     <original_title>Originaltitel</original_title>
     <other>Andet</other>    <!-- refers to other bibliographical material / documents -->
     <performances>Opførelser</performances>
@@ -42,8 +47,11 @@
     <roles>Roller</roles>
     <sections>Satser</sections>
     <series>Serie</series>
+    <see_digital_edition>Se digital udgave på tekstnet.dk</see_digital_edition>
+    <see_melody_in_database>Se melodien i melodibasen</see_melody_in_database>
     <sources>Kilder</sources>
     <tempo>Tempo</tempo>
+    <title>Titel</title>
     <title_page>Titelblad</title_page>
     <text_author>Tekstforfatter</text_author>
     <text_incipit>Tekstincipit</text_incipit>

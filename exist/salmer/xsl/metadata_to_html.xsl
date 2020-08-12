@@ -159,7 +159,10 @@
 
                 <!-- data download link -->
                 <div class="download noprint">
-                    <a href="{$base_file_uri}/{$filename}" title="Download data som MEI XML" target="_blank"><!-- MEI download icon here --></a>
+                    <a href="{$base_file_uri}/{$filename}" target="_blank">
+                        <xsl:attribute name="title"><xsl:value-of select="$l/download_mei"/></xsl:attribute>
+                        <!-- MEI download icon here -->
+                    </a>
                 </div>
                 
                 <!-- top bar -->
@@ -434,13 +437,13 @@
     
     <!-- Table of contents -->
     <xsl:template match="m:contents">
-        <h2>Indhold</h2>
+        <h2><xsl:value-of select="$l/contents"/></h2>
         <xsl:variable name="table_id" select="concat('toc_',count(preceding::m:contents)+1)"/>
         <table id="{$table_id}" class="toc">
             <tr>
                 <th style="white-space:nowrap;">
                     <xsl:if test="m:contentItem[normalize-space(@label)]">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)">Nr. 
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)"><xsl:value-of select="$l/item_number"/><xsl:text> </xsl:text> 
                             <img class="sort_direction" src="style/img/sort_up.png" id="{$table_id}_sort_0" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
@@ -452,14 +455,14 @@
                 </th>-->
                 <th>
                     <xsl:if test="m:contentItem/m:title/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)">Titel 
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)"><xsl:value-of select="$l/title"/><xsl:text> </xsl:text> 
                             <img class="sort_direction" src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
                 </th>
                 <th>
                     <xsl:if test="m:contentItem/m:title[@type='uniform']/text()">
-                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)">Normaliseret titel 
+                        <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',2,false)"><xsl:value-of select="$l/normalised_title"/><xsl:text> </xsl:text> 
                             <img class="sort_direction" src="style/img/sort_no.png" id="{$table_id}_sort_2" width="6" height="6" alt=""/>
                         </span>
                     </xsl:if>
@@ -486,7 +489,8 @@
                 <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> 
                     <xsl:choose>
                         <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
-                            <a href="document.xq?doc={m:ptr[@type='db']/@target}" title="Se melodien i melodibasen">
+                            <a href="document.xq?doc={m:ptr[@type='db']/@target}">
+                                <xsl:attribute name="title"><xsl:value-of select="$l/see_melody_in_database"/></xsl:attribute>
                                 <xsl:apply-templates select="m:title[not(@type)]"/>
                             </a>
                         </xsl:when>
@@ -500,7 +504,10 @@
             <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
             <td style="white-space:nowrap;">
                 <xsl:if test="m:ptr[@type='edition']">
-                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}" title="Se digital udgave på tekstnet.dk"><span class="edition">Digital udgave</span></a>
+                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}">
+                        <xsl:attribute name="title"><xsl:value-of select="$l/see_digital_edition"/></xsl:attribute>
+                        <span class="edition"><xsl:value-of select="$l/digital_edition"/></span>
+                    </a>
                 </xsl:if>
             </td>
         </tr>
@@ -3207,9 +3214,7 @@
     
     
     <!-- HANDLE MULTILINGUAL TEXT -->
-    <xsl:template match="*[not(name()='title')]
-        [../*[name()=name(current()) and @xml:lang='en'] and ../*[name()=name(current()) and @xml:lang='da']]
-        [@xml:lang!=$language]" priority="1">
+    <xsl:template match="*[not(name()='title')]         [../*[name()=name(current()) and @xml:lang='en'] and ../*[name()=name(current()) and @xml:lang='da']]         [@xml:lang!=$language]" priority="1">
         <!-- If there are sibling elements available in both main languages, display only the chosen language version -->
     </xsl:template>    
     
