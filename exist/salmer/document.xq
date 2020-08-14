@@ -29,7 +29,7 @@ declare variable $index    := doc(concat($database,"/library/publications.xml"))
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
+let $l := doc(concat('library/language/',$language,'.xml'))/*[1]    (: Localisation of labels etc. :)   
 
 
 (: Filter away any MDIV reference from URL :)
@@ -147,7 +147,7 @@ let $result :=
             {doc(concat($database,"/assets/header_",$language,".html"))}
            
             <!-- Search -->
-           {search:searchbox()}
+           {search:searchbox($l)}
 
        </header>
        

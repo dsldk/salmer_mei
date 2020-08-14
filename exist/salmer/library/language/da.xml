@@ -5,6 +5,60 @@
     <page_title_about>Om salmemelodibasen – DSL</page_title_about>
     <page_title_general>Melodibasen – Danske reformationssalmer – DSL</page_title_general>
     <page_title_guidelines>Vejledning til melodibasen – DSL</page_title_guidelines>
+    <page_title_search>Melodisøgning – DSL</page_title_search>
+    
+    <!-- User interface texts and messages -->
+    <advanced_search>Avanceret søgning</advanced_search>
+    <checkbox_label_all_trsp>Alle transpositioner</checkbox_label_all_trsp>
+    <checkbox_label_books>Bøger</checkbox_label_books>
+    <checkbox_label_exact>Eksakt match</checkbox_label_exact>
+    <checkbox_label_filter>Afgræns søgning</checkbox_label_filter>
+    <checkbox_label_fuzzy1>Tillad 1 afvigelse</checkbox_label_fuzzy1>
+    <checkbox_label_fuzzy2>Tillad 2 afvigelser</checkbox_label_fuzzy2>
+    <checkbox_label_ignore_repeat>Ignorer tonegentagelser</checkbox_label_ignore_repeat>
+    <checkbox_label_precision>Præcision</checkbox_label_precision>
+    <checkbox_label_starts_with>Begynder med...</checkbox_label_starts_with>
+    <checkbox_hint_all_trsp>Kryds af, hvis intervalfølgen må begynde på en hvilken som helst tone</checkbox_hint_all_trsp>
+    <checkbox_hint_ignore_repeat>Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)</checkbox_hint_ignore_repeat>
+    <checkbox_hint_precision>Søgningen kan udvides ved at tillade en eller to afvigelser, 
+dvs. afvigende tonehøjder eller 
+manglende eller tilføjede toner</checkbox_hint_precision>
+    <checkbox_hint_starts_with>Søg kun efter begyndelsen af melodien</checkbox_hint_starts_with>
+    <choose_from_list>Vælg fra liste...</choose_from_list>
+    <deselect_all>Fravælg alle</deselect_all>
+    <found>Fundet</found>
+    <previous_page>Foregående side</previous_page>
+    <go_to_page>Gå til side</go_to_page>
+    <hide_alt_lang>Skjul andre sprog</hide_alt_lang>
+    <next_page>Næste side</next_page>
+    <occurrences>Forekomster</occurrences>
+    <play>Afspil</play>
+    <play_hint>Afspil</play_hint>
+    <print_button>Udskriv</print_button>
+    <search_button>Søg</search_button>
+    <search_label_title>Titel</search_label_title>
+    <search_label_title_hint>Søg efter salmetitel eller del af en titel</search_label_title_hint>
+    <search_label_pitch>Tonenavne</search_label_pitch>
+    <search_label_pitch_hint>Søg efter en bestemt tonefølge, f.eks. CDECCDEC.
+H skrives B.            	        
+Altererede toner skrives således: 
+cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
+    <search_label_contour>Kontur</search_label_contour>
+    <search_label_contour_hint>Søg efter melodier med en bestemt kontur, f.eks. //\-//\. 
+- eller r: Tonegentagelse
+/ eller u: Opadgående interval
+\ eller d: Nedadgående interval</search_label_contour_hint>
+    <search_label_piano>Noder</search_label_piano>
+    <search_label_piano_hint>Søg efter noder</search_label_piano_hint>
+    <search_placeholder_title>Søg i salmetitlerne i databasen</search_placeholder_title>
+    <search_placeholder_pitch>Søg efter en bestemt tonefølge, f.eks. CDECCDEC</search_placeholder_pitch>
+    <search_placeholder_contour>Søg efter melodikontur, f.eks. //\-//\</search_placeholder_contour>
+    <select_all>Vælg alle</select_all>
+    <show_alt_lang>Vis andre sprog</show_alt_lang>
+    <showing_excerpts>Uddrag vises</showing_excerpts>
+    <stop>Stop</stop>
+    <stop_hint>Stop afspilning</stop_hint>
+    <toggle_search_field>Vis/skjul søgefelt</toggle_search_field>
     
     <!-- Field labels -->
     <additions>Tilføjelser</additions>  
@@ -159,11 +213,6 @@
     <locrian>lokrisk</locrian>
     
         
-    <!-- User interface texts -->
-    <hide_alt_lang>Skjul andre sprog</hide_alt_lang>
-    <show_alt_lang>Vis andre sprog</show_alt_lang>
-    
-    
     <!-- FRBR relation labels -->    
     <hasAbridgement>Forkortet version</hasAbridgement>
     <isAbridgementOf>Forkortet version af</isAbridgementOf>

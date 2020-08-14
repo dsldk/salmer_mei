@@ -28,7 +28,7 @@ declare variable $index    := doc(concat($database,"/library/publications.xml"))
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
+let $l := doc(concat('library/language/',$language,'.xml'))/*[1]    (: Localisation of labels etc. :)   
 
 (: Filter away any MDIV reference from URL :)
 let $document := if(contains($docref,"MDIV"))
@@ -95,7 +95,8 @@ let $result :=
 	<body>
 	
 
-	   <div class="button"><button onclick="window.print();" class="mei_menu" style="padding:2px 10px;"><img src="style/img/print.png" alt="Udskriv" style="vertical-align: bottom;"/> UDSKRIV</button></div>
+	   <div class="button"><button onclick="window.print();" class="mei_menu" style="padding:2px 10px;"><img src="style/img/print.png" alt="{$l/*[name()='print_button']/text()}" 
+	   style="vertical-align: bottom;"/>&#160; {upper-case($l/*[name()='print_button']/text())}</button></div>
 
 
         <div>

@@ -227,21 +227,21 @@ declare function local:paging( $total as xs:integer ) as node()* {
         	let $nextpage := ($page + 1) (:cast as xs:string:)
         	let $next     :=
         	  if($from + $perpage <= $total) then
-        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="next" title="Næste side" class="paging" 
+        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="next" title="{$l/*[name()='next_page']/text()}" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$nextpage)}">&gt;</a>
         	  else
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&gt;</span> 
         	let $prevpage := ($page - 1) (:cast as xs:string:)
         	let $previous :=
         	  if($from - $perpage > 0) then
-        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="Foregående side" class="paging" 
+        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="{$l/*[name()='previous_page']/text()}" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$prevpage)}">&lt;</a>
         	  else
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&lt;</span> 
         	let $page_nav := for $p in 1 to ceiling( $total div $perpage ) cast as xs:integer
         		  return 
         		  (if( not($page = $p) ) then
-        		    <a xmlns="http://www.w3.org/1999/xhtml" title="Gå til side {xs:string($p)}" class="paging"
+        		    <a xmlns="http://www.w3.org/1999/xhtml" title="{$l/*[name()='go_to_page']/text()} {xs:string($p)}" class="paging"
         		    href="{concat($this_script,'?', $query_string, '&amp;page=',xs:string($p))}" >{$p}</a>
         		  else
         		    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">{$p}</span>
@@ -324,7 +324,7 @@ declare function local:execution_time( $start-time, $end-time )  {
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
+let $l := doc(concat('library/language/',$language,'.xml'))/*[1]    (: Localisation of labels etc. :)   
 
 let $active_tab := 
     if($pname != "") then "openPitchTab"
@@ -335,11 +335,11 @@ let $active_tab :=
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-	    <title>DSL-melodisøgning</title>
+	    <title>{$l/*[name()='page_title_search']/text()}</title>
         <meta charset="UTF-8"/> 
         
-        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"/>
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
         
         <link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
         
@@ -380,6 +380,7 @@ let $result :=
         <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
 
         <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
 	</head>
 	<body class="metadata" onload="document.getElementById('{$active_tab}').click();">
@@ -388,10 +389,10 @@ let $result :=
        <header class="header" id="header">
        
             <!-- Page head -->
-	        {doc(concat($collection,"/assets/header.html"))}
+	        {doc(concat($collection,"/assets/header_",$language,".html"))}
             
             <!-- Search -->
-	           
+<!--*{name($l)}-->	           
             <div class="main-top-section background-cover">
                 <div class="container">
    
@@ -400,17 +401,10 @@ let $result :=
            <div id="search-field">
         
               	   <div class="tab form">
-              	      <!--<span class="input-label">Søg efter:</span>-->
-                      <button class="tablinks" onclick="openTab(event, 'search-mobile')" id="openTitleTab" title="Søg efter salmetitel eller del af en titel">Titel</button>
-                      <button class="tablinks" onclick="openTab(event, 'pitch_form')" id="openPitchTab" title="Søg efter en bestemt tonefølge, f.eks. 'CDECCDEC'.
-H skrives B.            	        
-Altererede toner skrives således: 
-cis: V, es: W, fis: X, as: Y, b: Z">Tonenavne</button>
-                      <button class="tablinks" onclick="openTab(event, 'contour_form')" id="openContourTab" title="Søg efter melodier med en bestemt kontur, f.eks. '//\-//\'. 
-- eller r: Tonegentagelse
-/ eller u: Opadgående interval
-\ eller d: Nedadgående interval">Kontur</button>
-                      <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab">Noder</button>
+                      <button class="tablinks" onclick="openTab(event, 'search-mobile')" id="openTitleTab" title="{$l/*[name()='search_label_title_hint']/text()}">{$l/*[name()='search_label_title']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'pitch_form')" id="openPitchTab" title="{$l/*[name()='search_label_pitch_hint']/text()}">{$l/*[name()='search_label_pitch']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'contour_form')" id="openContourTab" title="{$l/*[name()='search_label_contour_hint']/text()}">{$l/*[name()='search_label_contour']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab" title="{$l/*[name()='search_label_piano_hint']/text()}">{$l/*[name()='search_label_piano']/text()}</button>
                    </div>
                    
                    
@@ -419,39 +413,36 @@ cis: V, es: W, fis: X, as: Y, b: Z">Tonenavne</button>
                         <form action="" method="get" class="form tabcontent" id="search-mobile">
                             <div class="search-line input-group">
                                 <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                                <input id="query_title" type="text" class="form-control" name="qt" placeholder="Søg i salmetitlerne i databasen" value="{$query_title}"
-                                title="Søg efter salmetitel eller del af en titel"/>
-                                <button title="Søg" class="btn btn-primary arrow-r" type="submit" onclick="this.form['txt'].value = updateAction();"/>
+                                <input id="query_title" type="text" class="form-control" name="qt" placeholder="{$l/*[name()='search_placeholder_title']/text()}" value="{$query_title}"
+                                title="{$l/*[name()='search_hint_title']/text()}"/>
+                                <button title="{$l/*[name()='search_button']/text()}" class="btn btn-primary arrow-r" type="submit" onclick="this.form['txt'].value = updateAction();"/>
                                 <input name="txt" id="txt0" type="hidden" value=""/>
                             </div>
                             <div style="margin-top: 10px;">
-                                {doc("assets/title_select.html")   (: or generate dynamically with: local:get_titles() :)}
+                                <select xmlns="http://www.w3.org/1999/xhtml" class="select-css" id="title_select" onchange="document.getElementById('query_title').value = this.value; document.getElementById('query_title').focus(); this.value='';">
+                                    <option value="" selected="selected">{$l/*[name()='choose_from_list']/text()}</option>
+                                    {doc("assets/title_select.html")/*/*   (: or generate dynamically with: local:get_titles() :)}
+                                </select>
                             </div>
                         </form>
 
                        <form action="" method="get" class="form tabcontent" id="pitch_form">
                            <div class="search-line input-group">
                                <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                               <input type="text" name="q" id="pnames" value="{$pname}" class="form-control" placeholder="Søg efter tonenavne (f.eks. CDECCDEC)"
-                                title="Søg efter en bestemt tonefølge, f.eks. 'CDECCDEC'.
-H skrives B.            	        
-Altererede toner skrives således: 
-cis: V, es: W, fis: X, as: Y, b: Z"/> 
+                               <input type="text" name="q" id="pnames" value="{$pname}" class="form-control" placeholder="{$l/*[name()='search_placeholder_pitch']/text()}"
+                                title="{$l/*[name()='search_label_pitch_hint']/text()}"/> 
                                <input name="txt" id="txt1" type="hidden" value="{$search_in}"/>
-                               <button type="submit"class="btn btn-primary arrow-r" title="Søg" onclick="this.form['txt'].value = updateAction();"/>
+                               <button type="submit"class="btn btn-primary arrow-r" title="{$l/*[name()='search_button']/text()}" onclick="this.form['txt'].value = updateAction();"/>
                            </div>
                        </form>
                        <form action="" method="get" class="form tabcontent" id="contour_form">
                            <div class="search-line input-group">
                                <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
                                <input type="text" name="c2" id="contour" value="{local:chars_to_contour($contour)}" class="form-control"
-                               placeholder="Søg efter melodikontur (f.eks. //\-//\)" title="Søg efter melodier med en bestemt kontur, f.eks. '//\-//\'. 
-- eller r: Tonegentagelse
-/ eller u: Opadgående interval
-\ eller d: Nedadgående interval"/> 
+                               placeholder="{$l/*[name()='search_placeholder_contour']/text()}" title="{$l/*[name()='search_label_contour_hint']/text()}"/> 
                                <input type="hidden" name="c" id="contour_hidden" value="{$contour}"/> 
                                <input name="txt" id="txt2" type="hidden" value="{$search_in}"/>
-                               <button type="submit" class="btn btn-primary arrow-r" title="Søg" 
+                               <button type="submit" class="btn btn-primary arrow-r" title="{$l/*[name()='search_button']/text()}" 
                                onclick="this.form['c'].value = this.form['c2'].value.replace(/\//g, 'u').replace(/\\/g,'d').replace(/-/g,'r');this.form['txt'].value = updateAction()"/>
                            </div>
                        </form>
@@ -490,7 +481,7 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                         <!--<div class="key black black1" data-key="85"></div>-->
                                     </div>
                                 </div>
-                                <input type="submit" value="Søg" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
+                                <input type="submit" value="{$l/*[name()='search_button']/text()}" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
                                 <input type="button" value="Nulstil" onclick="reset_a();" class="btn btn-info"/>
                             </div>
                             <div id="piano_search_cell">
@@ -500,33 +491,31 @@ cis: V, es: W, fis: X, as: Y, b: Z"/>
                                         <input name="txt" id="txt3" type="hidden" value="{$search_in}"/>
                                         <div class="checkbox-options">
                                             <label class="checkbox-container">
-                                              Begynder med
+                                              {$l/*[name()='checkbox_label_starts_with']/text()}
                                               {local:set_checkbox('e')}
                                               <span class="checkmark"></span>
                                             </label>                
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="Søg kun efter begyndelsen af melodien"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_starts_with']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
-                                              Alle transpositioner
+                                              {$l/*[name()='checkbox_label_all_trsp']/text()}
                                               {local:set_checkbox('t')}
                                               <span class="checkmark"></span>
                                             </label>
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis intervalfølgen må begynde på en hvilken som helst tone"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
-                                              Ignorer tonegentagelser
+                                              {$l/*[name()='checkbox_label_ignore_repeat']/text()}
                                               {local:set_checkbox('r')}
                                               <span class="checkmark"></span>
                                             </label>               
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="Kryds af, hvis hvis tonegentagelser skal betragtes som én tone, f.eks. ved afvigende antal stavelser på samme melodi (giver flere resultater)"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
                                             <br/>
                                         </div>
                                         <div class="checkbox-options">
-                                            <!--<label>Præcision:</label>-->
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="Søgningen kan udvides ved at tillade en eller to afvigelser, 
-dvs. afvigende tonehøjder eller 
-manglende eller tilføjede toner"/>-->
-                                            <label class="radio-inline" for="exact">Eksakt match
+                                            <!--<label>{$l/*[name()='checkbox_label_precision']/text()}:</label>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_precision']/text()}"/>-->
+                                            <label class="radio-inline" for="exact">{$l/*[name()='checkbox_label_exact']/text()}
                                                 {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
                                                     <input type="radio" name="f" id="exact" value="0" checked="checked"/>
                                                  else 
@@ -535,7 +524,7 @@ manglende eller tilføjede toner"/>-->
                                                 }
                                                 <span class="radio-icon"></span>
                                             </label><br/> 
-                                            <label class="radio-inline" for="fuzzy1">Tillad 1 afvigelse
+                                            <label class="radio-inline" for="fuzzy1">{$l/*[name()='checkbox_label_fuzzy1']/text()}
                                                 {let $fuzzy1 := if($fuzzy=1) then 
                                                     <input type="radio" name="f" id="fuzzy1" value="1" checked="checked"/>
                                                  else 
@@ -544,7 +533,7 @@ manglende eller tilføjede toner"/>-->
                                                 }
                                                 <span class="radio-icon"></span>
                                             </label><br/>
-                                            <label class="radio-inline" for="fuzzy2">Tillad 2 afvigelser
+                                            <label class="radio-inline" for="fuzzy2">{$l/*[name()='checkbox_label_fuzzy2']/text()}
                                                 {let $fuzzy2 := if($fuzzy=2) then 
                                                     <input type="radio" name="f" id="fuzzy2" value="2" checked="checked"/>
                                                  else 
@@ -576,10 +565,10 @@ manglende eller tilføjede toner"/>-->
           <div class="background-box">
               <div class="container">
                   <input type="checkbox" id="text-select-toggle"/>
-                  <label for="text-select-toggle" class="fold-out" id="text-select-label">Afgræns søgning</label>
+                  <label for="text-select-toggle" class="fold-out" id="text-select-label">{$l/*[name()='checkbox_label_filter']/text()}</label>
                   <div class="col" id="text-select">
                           <form action="" name="manuscripts" method="get" id="search-form">
-                              <span>Bøger:</span>
+                              <span>{$l/*[name()='checkbox_label_books']/text()}:</span>
                               <input type="hidden" name="q" value=""/>
                               <div class="manuscript-option-wrapper">
                                   <label class="checkbox-container">
@@ -614,9 +603,9 @@ manglende eller tilføjede toner"/>-->
                                   </label>
                               </div>
                               <div class="search-actions-wrapper">
-                                  <button type="button" class="select-all btn btn-info">Vælg alle</button>
-                                  <button type="button" class="deselect-all btn btn-info">Fravælg alle</button>
-                                  <!--<button type="submit" class="btn btn-primary">Søg</button>-->
+                                  <button type="button" class="select-all btn btn-info">{$l/*[name()='select_all']/text()}</button>
+                                  <button type="button" class="deselect-all btn btn-info">{$l/*[name()='deselect_all']/text()}</button>
+                                  <!--<button type="submit" class="btn btn-primary">{$l/*[name()='search_button']/text()}</button>-->
                               </div>
                           </form>
                   </div>
@@ -648,7 +637,7 @@ manglende eller tilføjede toner"/>-->
         	   {
     	       let $count := 
     	            if($numFound > 0 or $query_title or $pname or $absp or $contour) then
-    	               concat("Resultater: ",$numFound)
+    	               concat($l/*[name()='found']/text(),": ",$numFound)
     	            else ""
     	       let $list :=
             	   if($numFound > 0) then
@@ -669,7 +658,7 @@ manglende eller tilføjede toner"/>-->
         	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                     <div>
                                         <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
-                                            title="{$l//*[name()=$rec_type]/string()}" class="title {$rec_type}">
+                                            title="{$l/*[name()=$rec_type]/string()}" class="title {$rec_type}">
                                             <span><!--{$from + $pos - 1}. -->{$title} 
                                             
                                                 
@@ -715,12 +704,12 @@ manglende eller tilføjede toner"/>-->
                                                             }
                                                             &#160;
                                                             <div class="midi_player">
-                                                                <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="Afspil" 
+                                                                <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$l/*[name()='play_hint']/text()}" 
                                                                     onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}');">
-                                                                    <span class="symbol"><span class="label">Afspil</span></span> 
+                                                                    <span class="symbol"><span class="label">{$l/*[name()='play']/text()}</span></span> 
                                                                 </div>
-                                                                <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="Stop afspilning" onclick="stop()">
-                                                                    <span class="symbol"><span class="label">Stop</span></span> 
+                                                                <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$l/*[name()='stop_hint']/text()}" onclick="stop()">
+                                                                    <span class="symbol"><span class="label">{$l/*[name()='stop_hint']/text()}</span></span> 
                                                                 </div>
                                                             </div> 
                                                             <div class="debug">
@@ -740,7 +729,7 @@ manglende eller tilføjede toner"/>-->
                                                         </div>
                                                     return $score_preview    
                                                 else 
-                                                    <div>{$l//*[name()=$rec_type]/string()}</div>
+                                                    <div>{$l/*[name()=$rec_type]/string()}</div>
                                                 
                                             return $preview
                                         }
@@ -768,7 +757,7 @@ manglende eller tilføjede toner"/>-->
         </div> <!-- page-wrapper -->
 
 	    <!-- Page footer -->
-	    {doc(concat($collection,"/assets/footer.html"))}
+	    {doc(concat($collection,"/assets/footer_",$language,".html"))}
 
 	    
 	</body>

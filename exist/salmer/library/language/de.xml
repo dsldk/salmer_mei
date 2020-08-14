@@ -5,6 +5,11 @@
     <page_title_about>Über die Melodiendatenbank – DSL</page_title_about>
     <page_title_general>Melodiendatenbank – Dänische Kirchenlieder der Reformationszeit – DSL</page_title_general>
     <page_title_guidelines>Hilfe zur Melodiendatenbank – DSL</page_title_guidelines>
+    <page_title_search>Melodiensuche – DSL</page_title_search>
+    
+    <!-- User interface texts and messages -->
+    <hide_alt_lang>Verberge alternative Ausgabesprache(n)</hide_alt_lang>
+    <show_alt_lang>Zeige alternative Ausgabesprache(n)</show_alt_lang>
     
     <!-- Field labels -->
     <additions>Ergänzungen:</additions>  
@@ -158,11 +163,6 @@
     <locrian>lokrisch</locrian>
     
     
-    <!-- User interface texts --> 
-    <hide_alt_lang>Verberge alternative Ausgabesprache(n)</hide_alt_lang>
-    <show_alt_lang>Zeige alternative Ausgabesprache(n)</show_alt_lang>
-
-
     <!-- FRBR relation labels -->    
     <hasAbridgement>wurde verkürzt in</hasAbridgement>
     <isAbridgementOf>Auszug oder Kurzfassung von</isAbridgementOf>

@@ -9,7 +9,7 @@ declare variable $database := "/db/salmer";
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)
+let $l := doc(concat('library/language/',$language,'.xml'))/*[1]    (: Localisation of labels etc. :)
 
 let $content := if (doc(concat("texts/about_",$language,".html")))
     then doc(concat("texts/about_",$language,".html"))
@@ -18,7 +18,7 @@ let $content := if (doc(concat("texts/about_",$language,".html")))
 let $output :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-	    <title>{$l//*[name()='page_title_about']/text()}</title>
+	    <title>{$l/*[name()='page_title_about']/text()}</title>
         <meta charset="UTF-8"/>
         
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -55,7 +55,7 @@ let $output :=
 	        {doc(concat($database,"/assets/header_",$language,".html"))}
 	       
             <!-- Search -->
-            {search:searchbox()}
+            {search:searchbox($l)}
 
 	   </header>
 	   

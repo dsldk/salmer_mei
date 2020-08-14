@@ -5,6 +5,60 @@
     <page_title_about>About the Melody Database – DSL</page_title_about>
     <page_title_general>Melody Database – Danish Reformation Hymns – DSL</page_title_general>
     <page_title_guidelines>Using the Melody Database – DSL</page_title_guidelines>
+    <page_title_search>Melodic search – DSL</page_title_search>
+    
+    <!-- User interface texts and messages -->
+    <advanced_search>Advanced search</advanced_search>
+    <checkbox_label_all_trsp>All transpositions</checkbox_label_all_trsp>
+    <checkbox_label_books>Books</checkbox_label_books>
+    <checkbox_label_exact>Exact match</checkbox_label_exact>
+    <checkbox_label_filter>Filter</checkbox_label_filter>
+    <checkbox_label_fuzzy1>Allow 1 edit</checkbox_label_fuzzy1>
+    <checkbox_label_fuzzy2>Allow 2 edits</checkbox_label_fuzzy2>
+    <checkbox_label_ignore_repeat>Ignore repeated notes</checkbox_label_ignore_repeat>
+    <checkbox_label_precision>Precision</checkbox_label_precision>
+    <checkbox_label_starts_with>Starts with...</checkbox_label_starts_with>
+    <checkbox_hint_all_trsp>Check if the sequence may start at any pitch</checkbox_hint_all_trsp>
+    <checkbox_hint_ignore_repeat>Check if repeated notes are to be treated as one, 
+e.g. to find the same melody with a different 
+number of syllables (yields more results)</checkbox_hint_ignore_repeat>
+    <checkbox_hint_precision>Search can be widened by allowing one or two differences (edits) from the query, 
+i.e. differing pitches or added/missing notes</checkbox_hint_precision>
+    <checkbox_hint_starts_with>Match only the beginning of the melody</checkbox_hint_starts_with>
+    <choose_from_list>Choose from list...</choose_from_list>
+    <deselect_all>Deselect all</deselect_all>
+    <found>Found</found>
+    <previous_page>Previous page</previous_page>
+    <go_to_page>Go to page</go_to_page>
+    <hide_alt_lang>Hide alternative languages</hide_alt_lang>
+    <next_page>Next page</next_page>
+    <occurrences>Occurrences</occurrences>
+    <play>Play</play>
+    <play_hint>Play</play_hint>
+    <print_button>Print</print_button>
+    <search_button>Search</search_button>
+    <search_label_title>Title</search_label_title>
+    <search_label_title_hint>Search for a title or part of a title</search_label_title_hint>
+    <search_label_pitch>Pitch names</search_label_pitch>
+    <search_label_pitch_hint>Search for a pitch sequence, e.g. CDECCDEC.
+Altered notes are notated as follows: 
+c sharp: V, e flat: W, f sharp: X, a flat: Y, b flat: Z</search_label_pitch_hint>
+    <search_label_contour>Contour</search_label_contour>
+    <search_label_contour_hint>Search by melody contour, e.g. //\-//\. 
+- or r: Repeated note
+/ or u: Ascending interval
+\ or d: Descending interval</search_label_contour_hint>
+    <search_label_piano>Piano</search_label_piano>
+    <search_label_piano_hint>Search by notation</search_label_piano_hint>
+    <search_placeholder_title>Search the melody titles in the database</search_placeholder_title>
+    <search_placeholder_pitch>Search for a pitch sequence, e.g. CDECCDEC</search_placeholder_pitch>
+    <search_placeholder_contour>Search by melody contour, e.g. //\-//\</search_placeholder_contour>
+    <select_all>Select all</select_all>
+    <show_alt_lang>Show alternative languages</show_alt_lang>
+    <showing_excerpts>Showing excerpts</showing_excerpts>
+    <stop>Stop</stop>
+    <stop_hint>Stop playback</stop_hint>
+    <toggle_search_field>Show or hide search field</toggle_search_field>
     
     <!-- Field labels -->
     <additions>Additions</additions>  
@@ -157,11 +211,6 @@
     <mixolydian>mixolydian</mixolydian>
     <aeolian>aeolian</aeolian>
     <locrian>locrian</locrian>
-    
-    
-    <!-- User interface texts -->
-    <hide_alt_lang>Hide alternative languages</hide_alt_lang>
-    <show_alt_lang>Show alternative languages</show_alt_lang>
     
     
     <!-- FRBR relation labels -->    
