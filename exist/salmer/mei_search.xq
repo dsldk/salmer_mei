@@ -227,21 +227,21 @@ declare function local:paging( $total as xs:integer ) as node()* {
         	let $nextpage := ($page + 1) (:cast as xs:string:)
         	let $next     :=
         	  if($from + $perpage <= $total) then
-        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="next" title="{$l/*[name()='next_page']/text()}" class="paging" 
+        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="next" title="{$lang_lib//*[name()='next_page']/text()}" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$nextpage)}">&gt;</a>
         	  else
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&gt;</span> 
         	let $prevpage := ($page - 1) (:cast as xs:string:)
         	let $previous :=
         	  if($from - $perpage > 0) then
-        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="{$l/*[name()='previous_page']/text()}" class="paging" 
+        	    <a xmlns="http://www.w3.org/1999/xhtml" rel="prev" title="{$lang_lib//*[name()='previous_page']/text()}" class="paging" 
         	    href="{concat($this_script,'?', $query_string, '&amp;page=',$prevpage)}">&lt;</a>
         	  else
         	    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">&lt;</span> 
         	let $page_nav := for $p in 1 to ceiling( $total div $perpage ) cast as xs:integer
         		  return 
         		  (if( not($page = $p) ) then
-        		    <a xmlns="http://www.w3.org/1999/xhtml" title="{$l/*[name()='go_to_page']/text()} {xs:string($p)}" class="paging"
+        		    <a xmlns="http://www.w3.org/1999/xhtml" title="{$lang_lib//*[name()='go_to_page']/text()} {xs:string($p)}" class="paging"
         		    href="{concat($this_script,'?', $query_string, '&amp;page=',xs:string($p))}" >{$p}</a>
         		  else
         		    <span xmlns="http://www.w3.org/1999/xhtml" class="paging selected">{$p}</span>
@@ -293,7 +293,7 @@ declare function local:get_titles_solr() as node()* {
         return <option value="{$title}">{$title}</option>
     return 
         <select onchange="document.getElementById('query_title').value=this.value">
-            <option value="" selected="selected">Vælg titel</option>
+            <option value="" selected="selected">{$lang_lib//*[name()='choose_from_list']/text()}</option>
             {$options}
         </select>
 };
@@ -309,7 +309,7 @@ declare function local:get_titles() as node()* {
         return <option value="{$title}">{$title}</option>
     return 
         <select id="title_select" onchange="document.getElementById('query_title').value = this.value; document.getElementById('title_form').submit();">
-            <option value="" selected="selected">Vælg titel</option>
+            <option value="" selected="selected">{$lang_lib//*[name()='choose_from_list']/text()}</option>
             {$options}
         </select>
 };
@@ -319,12 +319,12 @@ declare function local:execution_time( $start-time, $end-time )  {
     let $duration := $end-time - $start-time
     let $seconds := $duration div xs:dayTimeDuration("PT1S")
     return
-        <span class="debug">Søgningen tog {$seconds} s.</span>
+        <span class="debug">{$lang_lib//*[name()='search_time']/text()}&#160;{$seconds} s.</span>
 };
 
 (: Set language :)
-let $language := settings:language(request:get-parameter("language", ""))
-let $l := doc(concat('library/language/',$language,'.xml'))/*[1]    (: Localisation of labels etc. :)   
+declare variable $language := settings:language(request:get-parameter("language", ""));
+declare variable $lang_lib := doc(concat('library/language/',$language,'.xml'))/*[1];    (: Localisation of labels etc. :)   
 
 let $active_tab := 
     if($pname != "") then "openPitchTab"
@@ -335,7 +335,7 @@ let $active_tab :=
 let $result :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-	    <title>{$l/*[name()='page_title_search']/text()}</title>
+	    <title>{$lang_lib/*[name()='page_title_search']/text()}</title>
         <meta charset="UTF-8"/> 
         
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
@@ -368,9 +368,6 @@ let $result :=
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
         <script type="text/javascript" src="js/libs/verovio/verovio-toolkit.js">/* Verovio */</script>
-        <!-- alternatively use CDNs, like: -->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
-        <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
         <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>
         <script type="text/javascript" src="js/MeiSearch.js"><!-- MEI search tools --></script>
 
@@ -382,6 +379,10 @@ let $result :=
         <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
         <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
+        <script type="text/javascript">
+            language = "{$language}";
+        </script>
+
 	</head>
 	<body class="metadata" onload="document.getElementById('{$active_tab}').click();">
 
@@ -392,19 +393,16 @@ let $result :=
 	        {doc(concat($collection,"/assets/header_",$language,".html"))}
             
             <!-- Search -->
-<!--*{name($l)}-->	           
             <div class="main-top-section background-cover">
                 <div class="container">
-   
-   
    
            <div id="search-field">
         
               	   <div class="tab form">
-                      <button class="tablinks" onclick="openTab(event, 'search-mobile')" id="openTitleTab" title="{$l/*[name()='search_label_title_hint']/text()}">{$l/*[name()='search_label_title']/text()}</button>
-                      <button class="tablinks" onclick="openTab(event, 'pitch_form')" id="openPitchTab" title="{$l/*[name()='search_label_pitch_hint']/text()}">{$l/*[name()='search_label_pitch']/text()}</button>
-                      <button class="tablinks" onclick="openTab(event, 'contour_form')" id="openContourTab" title="{$l/*[name()='search_label_contour_hint']/text()}">{$l/*[name()='search_label_contour']/text()}</button>
-                      <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab" title="{$l/*[name()='search_label_piano_hint']/text()}">{$l/*[name()='search_label_piano']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'search-mobile')" id="openTitleTab" title="{$lang_lib/*[name()='search_label_title_hint']/text()}">{$lang_lib/*[name()='search_label_title']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'pitch_form')" id="openPitchTab" title="{$lang_lib/*[name()='search_label_pitch_hint']/text()}">{$lang_lib/*[name()='search_label_pitch']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'contour_form')" id="openContourTab" title="{$lang_lib/*[name()='search_label_contour_hint']/text()}">{$lang_lib/*[name()='search_label_contour']/text()}</button>
+                      <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab" title="{$lang_lib/*[name()='search_label_piano_hint']/text()}">{$lang_lib/*[name()='search_label_piano']/text()}</button>
                    </div>
                    
                    
@@ -413,14 +411,14 @@ let $result :=
                         <form action="" method="get" class="form tabcontent" id="search-mobile">
                             <div class="search-line input-group">
                                 <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                                <input id="query_title" type="text" class="form-control" name="qt" placeholder="{$l/*[name()='search_placeholder_title']/text()}" value="{$query_title}"
-                                title="{$l/*[name()='search_hint_title']/text()}"/>
-                                <button title="{$l/*[name()='search_button']/text()}" class="btn btn-primary arrow-r" type="submit" onclick="this.form['txt'].value = updateAction();"/>
+                                <input id="query_title" type="text" class="form-control" name="qt" placeholder="{$lang_lib/*[name()='search_placeholder_title']/text()}" value="{$query_title}"
+                                title="{$lang_lib/*[name()='search_hint_title']/text()}"/>
+                                <button title="{$lang_lib/*[name()='search_button']/text()}" class="btn btn-primary arrow-r" type="submit" onclick="this.form['txt'].value = updateAction();"/>
                                 <input name="txt" id="txt0" type="hidden" value=""/>
                             </div>
                             <div style="margin-top: 10px;">
                                 <select xmlns="http://www.w3.org/1999/xhtml" class="select-css" id="title_select" onchange="document.getElementById('query_title').value = this.value; document.getElementById('query_title').focus(); this.value='';">
-                                    <option value="" selected="selected">{$l/*[name()='choose_from_list']/text()}</option>
+                                    <option value="" selected="selected">{$lang_lib/*[name()='choose_from_list']/text()}</option>
                                     {doc("assets/title_select.html")/*/*   (: or generate dynamically with: local:get_titles() :)}
                                 </select>
                             </div>
@@ -429,20 +427,20 @@ let $result :=
                        <form action="" method="get" class="form tabcontent" id="pitch_form">
                            <div class="search-line input-group">
                                <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
-                               <input type="text" name="q" id="pnames" value="{$pname}" class="form-control" placeholder="{$l/*[name()='search_placeholder_pitch']/text()}"
-                                title="{$l/*[name()='search_label_pitch_hint']/text()}"/> 
+                               <input type="text" name="q" id="pnames" value="{$pname}" class="form-control" placeholder="{$lang_lib/*[name()='search_placeholder_pitch']/text()}"
+                                title="{$lang_lib/*[name()='search_label_pitch_hint']/text()}"/> 
                                <input name="txt" id="txt1" type="hidden" value="{$search_in}"/>
-                               <button type="submit"class="btn btn-primary arrow-r" title="{$l/*[name()='search_button']/text()}" onclick="this.form['txt'].value = updateAction();"/>
+                               <button type="submit"class="btn btn-primary arrow-r" title="{$lang_lib/*[name()='search_button']/text()}" onclick="this.form['txt'].value = updateAction();"/>
                            </div>
                        </form>
                        <form action="" method="get" class="form tabcontent" id="contour_form">
                            <div class="search-line input-group">
                                <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
                                <input type="text" name="c2" id="contour" value="{local:chars_to_contour($contour)}" class="form-control"
-                               placeholder="{$l/*[name()='search_placeholder_contour']/text()}" title="{$l/*[name()='search_label_contour_hint']/text()}"/> 
+                               placeholder="{$lang_lib/*[name()='search_placeholder_contour']/text()}" title="{$lang_lib/*[name()='search_label_contour_hint']/text()}"/> 
                                <input type="hidden" name="c" id="contour_hidden" value="{$contour}"/> 
                                <input name="txt" id="txt2" type="hidden" value="{$search_in}"/>
-                               <button type="submit" class="btn btn-primary arrow-r" title="{$l/*[name()='search_button']/text()}" 
+                               <button type="submit" class="btn btn-primary arrow-r" title="{$lang_lib/*[name()='search_button']/text()}" 
                                onclick="this.form['c'].value = this.form['c2'].value.replace(/\//g, 'u').replace(/\\/g,'d').replace(/-/g,'r');this.form['txt'].value = updateAction()"/>
                            </div>
                        </form>
@@ -481,8 +479,8 @@ let $result :=
                                         <!--<div class="key black black1" data-key="85"></div>-->
                                     </div>
                                 </div>
-                                <input type="submit" value="{$l/*[name()='search_button']/text()}" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
-                                <input type="button" value="Nulstil" onclick="reset_a();" class="btn btn-info"/>
+                                <input type="submit" value="{$lang_lib/*[name()='search_button']/text()}" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
+                                <input type="button" value="{$lang_lib/*[name()='reset_button']/text()}" onclick="reset_a();" class="btn btn-info"/>
                             </div>
                             <div id="piano_search_cell">
                                 <div id="pSearchDiv">
@@ -491,31 +489,31 @@ let $result :=
                                         <input name="txt" id="txt3" type="hidden" value="{$search_in}"/>
                                         <div class="checkbox-options">
                                             <label class="checkbox-container">
-                                              {$l/*[name()='checkbox_label_starts_with']/text()}
+                                              {$lang_lib/*[name()='checkbox_label_starts_with']/text()}
                                               {local:set_checkbox('e')}
                                               <span class="checkmark"></span>
                                             </label>                
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_starts_with']/text()}"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_starts_with']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
-                                              {$l/*[name()='checkbox_label_all_trsp']/text()}
+                                              {$lang_lib/*[name()='checkbox_label_all_trsp']/text()}
                                               {local:set_checkbox('t')}
                                               <span class="checkmark"></span>
                                             </label>
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
-                                              {$l/*[name()='checkbox_label_ignore_repeat']/text()}
+                                              {$lang_lib/*[name()='checkbox_label_ignore_repeat']/text()}
                                               {local:set_checkbox('r')}
                                               <span class="checkmark"></span>
                                             </label>               
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
                                             <br/>
                                         </div>
                                         <div class="checkbox-options">
-                                            <!--<label>{$l/*[name()='checkbox_label_precision']/text()}:</label>-->
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$l/*[name()='checkbox_hint_precision']/text()}"/>-->
-                                            <label class="radio-inline" for="exact">{$l/*[name()='checkbox_label_exact']/text()}
+                                            <!--<label>{$lang_lib/*[name()='checkbox_label_precision']/text()}:</label>-->
+                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_precision']/text()}"/>-->
+                                            <label class="radio-inline" for="exact">{$lang_lib/*[name()='checkbox_label_exact']/text()}
                                                 {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
                                                     <input type="radio" name="f" id="exact" value="0" checked="checked"/>
                                                  else 
@@ -524,7 +522,7 @@ let $result :=
                                                 }
                                                 <span class="radio-icon"></span>
                                             </label><br/> 
-                                            <label class="radio-inline" for="fuzzy1">{$l/*[name()='checkbox_label_fuzzy1']/text()}
+                                            <label class="radio-inline" for="fuzzy1">{$lang_lib/*[name()='checkbox_label_fuzzy1']/text()}
                                                 {let $fuzzy1 := if($fuzzy=1) then 
                                                     <input type="radio" name="f" id="fuzzy1" value="1" checked="checked"/>
                                                  else 
@@ -533,7 +531,7 @@ let $result :=
                                                 }
                                                 <span class="radio-icon"></span>
                                             </label><br/>
-                                            <label class="radio-inline" for="fuzzy2">{$l/*[name()='checkbox_label_fuzzy2']/text()}
+                                            <label class="radio-inline" for="fuzzy2">{$lang_lib/*[name()='checkbox_label_fuzzy2']/text()}
                                                 {let $fuzzy2 := if($fuzzy=2) then 
                                                     <input type="radio" name="f" id="fuzzy2" value="2" checked="checked"/>
                                                  else 
@@ -565,10 +563,10 @@ let $result :=
           <div class="background-box">
               <div class="container">
                   <input type="checkbox" id="text-select-toggle"/>
-                  <label for="text-select-toggle" class="fold-out" id="text-select-label">{$l/*[name()='checkbox_label_filter']/text()}</label>
+                  <label for="text-select-toggle" class="fold-out" id="text-select-label">{$lang_lib/*[name()='checkbox_label_filter']/text()}</label>
                   <div class="col" id="text-select">
                           <form action="" name="manuscripts" method="get" id="search-form">
-                              <span>{$l/*[name()='checkbox_label_books']/text()}:</span>
+                              <span>{$lang_lib/*[name()='checkbox_label_books']/text()}:</span>
                               <input type="hidden" name="q" value=""/>
                               <div class="manuscript-option-wrapper">
                                   <label class="checkbox-container">
@@ -603,9 +601,9 @@ let $result :=
                                   </label>
                               </div>
                               <div class="search-actions-wrapper">
-                                  <button type="button" class="select-all btn btn-info">{$l/*[name()='select_all']/text()}</button>
-                                  <button type="button" class="deselect-all btn btn-info">{$l/*[name()='deselect_all']/text()}</button>
-                                  <!--<button type="submit" class="btn btn-primary">{$l/*[name()='search_button']/text()}</button>-->
+                                  <button type="button" class="select-all btn btn-info">{$lang_lib/*[name()='select_all']/text()}</button>
+                                  <button type="button" class="deselect-all btn btn-info">{$lang_lib/*[name()='deselect_all']/text()}</button>
+                                  <!--<button type="submit" class="btn btn-primary">{$lang_lib/*[name()='search_button']/text()}</button>-->
                               </div>
                           </form>
                   </div>
@@ -637,7 +635,7 @@ let $result :=
         	   {
     	       let $count := 
     	            if($numFound > 0 or $query_title or $pname or $absp or $contour) then
-    	               concat($l/*[name()='found']/text(),": ",$numFound)
+    	               concat($lang_lib/*[name()='found']/text(),": ",$numFound)
     	            else ""
     	       let $list :=
             	   if($numFound > 0) then
@@ -658,10 +656,8 @@ let $result :=
         	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                     <div>
                                         <a href="document.xq?doc={substring-after($res/*[@name="collection"],'data/')}/{$res/*[@name="file"]/string()}" 
-                                            title="{$l/*[name()=$rec_type]/string()}" class="title {$rec_type}">
+                                            title="{$lang_lib/*[name()=$rec_type]/string()}" class="title {$rec_type}">
                                             <span><!--{$from + $pos - 1}. -->{$title} 
-                                            
-                                                
                                             {
                                                 let $pub_title := if ($rec_type="music_document") then
                                                     concat(
@@ -675,9 +671,6 @@ let $result :=
                                                     ""
                                                  return $pub_title
                                             } 
-                                            
-                                            
-                                            
                                             </span>
                                         </a>
                                         <br/>
@@ -691,7 +684,7 @@ let $result :=
                                                             {
                                                                 let $hit_label := if(count($matches) > 0) 
                                                                     then   
-                                                                        if(count($matches) = 1) then "1 forekomst" else concat(count($matches)," forekomster")
+                                                                        if(count($matches) = 1) then concat("1 ",$lang_lib/*[name()='occurrence']/text()) else concat(count($matches)," ",$lang_lib/*[name()='occurrences']/text())
                                                                     else 
                                                                         ""
                                                                 return $hit_label
@@ -704,12 +697,12 @@ let $result :=
                                                             }
                                                             &#160;
                                                             <div class="midi_player">
-                                                                <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$l/*[name()='play_hint']/text()}" 
+                                                                <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$lang_lib/*[name()='play_hint']/text()}" 
                                                                     onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}');">
-                                                                    <span class="symbol"><span class="label">{$l/*[name()='play']/text()}</span></span> 
+                                                                    <span class="symbol"><span class="label">{$lang_lib/*[name()='play']/text()}</span></span> 
                                                                 </div>
-                                                                <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$l/*[name()='stop_hint']/text()}" onclick="stop()">
-                                                                    <span class="symbol"><span class="label">{$l/*[name()='stop_hint']/text()}</span></span> 
+                                                                <div class="midi_button stop" id="stop_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$lang_lib/*[name()='stop_hint']/text()}" onclick="stop()">
+                                                                    <span class="symbol"><span class="label">{$lang_lib/*[name()='stop_hint']/text()}</span></span> 
                                                                 </div>
                                                             </div> 
                                                             <div class="debug">
@@ -729,7 +722,7 @@ let $result :=
                                                         </div>
                                                     return $score_preview    
                                                 else 
-                                                    <div>{$l/*[name()=$rec_type]/string()}</div>
+                                                    <div>{$lang_lib/*[name()=$rec_type]/string()}</div>
                                                 
                                             return $preview
                                         }

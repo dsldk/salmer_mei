@@ -31,11 +31,14 @@ manglende eller tilføjede toner</checkbox_hint_precision>
     <go_to_page>Gå til side</go_to_page>
     <hide_alt_lang>Skjul andre sprog</hide_alt_lang>
     <next_page>Næste side</next_page>
-    <occurrences>Forekomster</occurrences>
+    <occurrence>forekomst</occurrence>
+    <occurrences>forekomster</occurrences>
     <play>Afspil</play>
     <play_hint>Afspil</play_hint>
     <print_button>Udskriv</print_button>
+    <reset_button>Nulstil</reset_button>
     <search_button>Søg</search_button>
+    <search_time>Søgningen tog</search_time>
     <search_label_title>Titel</search_label_title>
     <search_label_title_hint>Søg efter salmetitel eller del af en titel</search_label_title_hint>
     <search_label_pitch>Tonenavne</search_label_pitch>
@@ -59,6 +62,7 @@ cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
     <stop>Stop</stop>
     <stop_hint>Stop afspilning</stop_hint>
     <toggle_search_field>Vis/skjul søgefelt</toggle_search_field>
+    
     
     <!-- Field labels -->
     <additions>Tilføjelser</additions>  

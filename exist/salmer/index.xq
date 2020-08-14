@@ -55,7 +55,7 @@ let $output :=
     
     <html xmlns="http://www.w3.org/1999/xhtml">
     	<head>
-    	    <title>{$l/*[name()='page_title_guidelines']/text()}</title>
+    	    <title>{$l/*[name()='page_title_general']/text()}</title>
             <meta charset="UTF-8"/>
             
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
