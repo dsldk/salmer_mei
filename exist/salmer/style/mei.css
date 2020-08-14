@@ -386,7 +386,6 @@ kbd {
     box-shadow: none;
 }
 
-
 .metadata .main_section {
     float: left;
     width: 60%;
@@ -416,6 +415,10 @@ kbd {
 }
 
 .metadata .library__item-head {
+    white-space: nowrap;
+}
+
+.metadata .header__menu-primary {
     white-space: nowrap;
 }
 

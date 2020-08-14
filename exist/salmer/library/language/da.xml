@@ -1,6 +1,11 @@
 <language name="da">
-    <!-- Danish language module for MerMEId's HTML preview -->
+    <!-- Danish language module -->
 
+    <!-- Page titles -->
+    <page_title_about>Om salmemelodibasen – DSL</page_title_about>
+    <page_title_general>Melodibasen – Danske reformationssalmer – DSL</page_title_general>
+    <page_title_guidelines>Vejledning til melodibasen – DSL</page_title_guidelines>
+    
     <!-- Field labels -->
     <additions>Tilføjelser</additions>  
     <additions_in>Tilføjelser med</additions_in>   <!-- refers to writing medium (e.g., "Additions in pencil") -->

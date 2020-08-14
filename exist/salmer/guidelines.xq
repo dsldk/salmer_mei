@@ -18,9 +18,11 @@ let $content := if (doc(concat("texts/guidelines_",$language,".html")))
 let $output :=
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-	    <title>Vejledning – Salmemelodier – DSL</title>
+	    <title>{$l//*[name()='page_title_guidelines']/text()}</title>
         <meta charset="UTF-8"/>
         
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
         
         <link rel="stylesheet" href="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
         
@@ -28,7 +30,6 @@ let $output :=
         <link rel="stylesheet" type="text/css" href="style/bootstrap.min.css" />
         <link rel="stylesheet" type="text/css" href="style/elements.css" />
         <link rel="stylesheet" type="text/css" href="style/select-css.css" />
-        <link rel="stylesheet" type="text/css" href="style/layout.css" />
         <link rel="stylesheet" type="text/css" href="style/styles.css"/>
         <link rel="stylesheet" type="text/css" href="style/dsl-basis_print.css" media="print"/>
         <link rel="stylesheet" type="text/css" href="style/print.css" media="print"/>
@@ -39,15 +40,19 @@ let $output :=
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
 
         <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
-        
+        <script type="text/javascript">
+            language = "{$language}";
+        </script>
+
 	</head>
 	<body class="metadata">
 	
        <header class="header" id="header">
        
             <!-- Page head -->
-	        {doc(concat($database,"/assets/header.html"))}
+	        {doc(concat($database,"/assets/header_",$language,".html"))}
 	       
             <!-- Search -->
             {search:searchbox()}
@@ -58,7 +63,7 @@ let $output :=
        {$content}
 
 	   <!-- Page footer -->
-	   {doc(concat($database,"/assets/footer.html"))}
+	   {doc(concat($database,"/assets/footer_",$language,".html"))}
 
     </body>
 </html>

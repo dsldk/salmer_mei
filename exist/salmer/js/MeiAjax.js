@@ -848,7 +848,6 @@ function sortTable(tableId, n, numeric) {
 function initMusic(lang) {
     if(lang) { 
         language = lang;
-        console.log("Language set to " + language);    
     }
     if(midi) { initMidi() }
     loadMeiFromDoc();
@@ -871,6 +870,7 @@ $(document).ready(function() {
     if(params.lang) {language = params.lang} else if(scriptLang) {language = scriptLang}
     $(".lang:not(." + language + ")").hide();
     $(".lang." + language).show();
-    console.log("Document ready");
+    console.log("Language set to " + language);    
     initMusic(language);
+    console.log("Document ready");
 });

@@ -45,6 +45,7 @@ declare function local:list-publications() as node()* {
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
+let $l := doc(concat('library/language/',$language,'.xml'))    (: Localisation of labels etc. :)   
 
 let $content := if (doc(concat("texts/index_",$language,".html")))
     then doc(concat("texts/index_",$language,".html"))
@@ -54,7 +55,7 @@ let $output :=
     
     <html xmlns="http://www.w3.org/1999/xhtml">
     	<head>
-    	    <title>Melodibasen – Danske reformationssalmer - DSL</title>
+    	    <title>{$l//*[name()='page_title_guidelines']/text()}</title>
             <meta charset="UTF-8"/>
             
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
@@ -71,14 +72,17 @@ let $output :=
             <link rel="stylesheet" type="text/css" href="style/print.css" media="print"/>
             
             <link rel="stylesheet" type="text/css" href="style/mei.css"/>
-            <!--<link rel="stylesheet" type="text/css" href="style/mei_search.css"/>-->
             
             <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
             <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
     
             <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
-    
-    
+            <script type="text/javascript" src="js/general.js">/* utilities */</script>
+
+            <script type="text/javascript">
+                language = "{$language}";
+            </script>
+
     	</head>
     	<body class="frontpage metadata">
         
@@ -86,7 +90,7 @@ let $output :=
            <header class="header" id="header">
            
                 <!-- Page head -->
-    	        {doc(concat($database,"/assets/header.html"))}
+    	        {doc(concat($database,"/assets/header_",$language,".html"))}
     	       
                 <!-- Search -->
                 {search:searchbox()}
@@ -95,7 +99,7 @@ let $output :=
     	   
     	   <!-- page content -->
            {$content}
-    
+        
     	</body>
     </html>
 
