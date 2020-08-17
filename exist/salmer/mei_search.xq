@@ -56,25 +56,6 @@ declare function local:chars_to_contour($chars as xs:string) as xs:string {
   return $contour
 };
 
-declare function local:DEACTIVATEDget_match_positions($highlights as xs:string?) as node()* {
-    let $matches as node()* :=
-        for $this_trsp in tokenize($highlights," ")
-        (: if all transpositions are searched, the higlighted string is a concatenation of all transpositions joined with spaces; separate them and return matches from each :)
-            let $frags as xs:string* := tokenize(normalize-space($this_trsp),"\]")
-            let $fragLengths as xs:integer* :=
-                for $frag in $frags
-                return string-length(translate($frag,"[",""))        
-            let $matches_in_this_trsp as node()* :=
-                (: length correction (+1) is needed when the query is based on interval instead of notes (i.e., contour search) :)  
-                for $frag at $pos in $frags[position() != last()]
-                return 
-                    <match>
-                        <pos>{sum($fragLengths[position() < $pos]) + string-length(substring-before($frag, "[")) + 1}</pos>
-                        <length>{string-length(substring-after($frag,"[")) + xs:integer($contour != "")}</length>
-                    </match>
-         return $matches_in_this_trsp
-    return $matches
-};
 
 declare function local:get_match_positions($highlights as xs:string?) as node()* {
     let $matches as node()* :=

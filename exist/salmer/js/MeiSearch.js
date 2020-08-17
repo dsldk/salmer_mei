@@ -152,11 +152,14 @@ function initPiano() {
 
 function updateAction() {
     // generate a string containing the publications to be searched
-    var q = "";
+    var q = ""
     $("#search-form .checkbox-container input").each(function() {
         if($(this).is(":checked")){q += $(this).attr("value") + " "}
-    }) 
-    return q.substring(0,q.length - 1);
+    })
+    q = q.substring(0,q.length - 1);
+    // don't return checked values if all 
+    if (q.split(" ").length == $("#search-form .checkbox-container input").length) {q = "";}    
+    return q;
 }
 
 function allPublClicked() {
@@ -191,6 +194,7 @@ function validateInput() {
         this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
     });
 }
+
 
 function initTextSelect() {
 //Adapted from javascript.js

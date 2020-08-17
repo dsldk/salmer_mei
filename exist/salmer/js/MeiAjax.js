@@ -744,20 +744,6 @@ function teiApp() {
 }
 
 
-// Validate search query
-function validateInput() {
-    $("#pnames").keyup(function (e) {
-        this.value = this.value.toLocaleUpperCase();
-        this.value = this.value.replace(/[^A-H|^V-Z]/gi,'');
-        this.value = this.value.replace(/[H]/gi,'B');
-    });
-    $("#contour").keyup(function (e) {
-        this.value = this.value.replace(/[^/\\|^//|^/-]/gi,'');
-        this.value = this.value.replace(/[H]/gi,'B');
-    });
-}
-
-
 function FindByAttributeValue(doc, attribute, value, element_type)    {
     // rather slow solution; querySelector would be better but didn't seem to work with '[xml:\\id = "value"]'
     element_type = element_type || "*";
@@ -873,4 +859,11 @@ $(document).ready(function() {
     console.log("Language set to " + language);    
     initMusic(language);
     console.log("Document ready");
+    
+		
+var test = $('#search-form input[name="q"]').val();		
+console.log("manuscripts: " + test);		
+		
+    
+    
 });
