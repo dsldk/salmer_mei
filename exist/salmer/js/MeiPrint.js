@@ -44,7 +44,7 @@ var $defaultVerovioOptions = {
 
 
 // global variables - do not change
-var host = "https://melodier.dsl.dk/"
+var host = "https://melodier.dsl.dk"
 
 var $mei = [];  // The array holding the MEI objects 
 
@@ -209,7 +209,7 @@ function loadMeiFromDoc() {
             $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
         });
         // send a POST request to get the MEI data
-        $.post('https://melodier.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+        $.post(host + '/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
 }
 
