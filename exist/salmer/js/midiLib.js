@@ -32,7 +32,7 @@ function play_midi(id) {
     $mei[id].xsltOptions['midi'].parameters['online'] = 'yes';
 
     // send a POST request to get the MIDI-playable MEI data
-    $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
+    $.post('https://melodier.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
 
         if (isPlaying === true) {pause();}
         var options = {
@@ -77,7 +77,7 @@ function download_midi(id) {
         $mei[id].xsltOptions['midi'].parameters['online'] = 'no';
     
         // send a POST request to get the MIDI-playable MEI data
-        $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
+        $.post('https://melodier.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){
     
             var options = {
                 from: 'mei'

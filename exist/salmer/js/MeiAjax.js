@@ -49,7 +49,7 @@ var $defaultVerovioOptions = {
 };
 
 // global variables - do not change
-var host = "https://salmer.dsl.dk/"
+var host = "https://melodier.dsl.dk/"
 
 var $mei = [];  // The array holding the MEI objects
 var page = 1;
@@ -160,7 +160,7 @@ var printMenu = '\
 var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
-            <a href="https://salmer.dsl.dk/document.xq?doc={id}.xml">\
+            <a href="https://melodier.dsl.dk/document.xq?doc={id}.xml">\
                 <div class="midi_button database">\
                     <span class="label"><span class="lang da">Slå op i melodibasen</span><span class="lang en">See database entry</span></span>\
                 </div>\
@@ -170,7 +170,7 @@ var existMenu = '\
 
 var meiOptionsMenu = ' \
     <div class="mei_menu_content"> \
-        <form id="optionsForm_{id}" action="https://salmer.dsl.dk/print.xq" method="GET" target="_blank" class="mei_menu"> \
+        <form id="optionsForm_{id}" action="https://melodier.dsl.dk/print.xq" method="GET" target="_blank" class="mei_menu"> \
             <div class="menu_block"><span class="lang da">N&oslash;gle</span><span class="lang en">Clef</span>:<br/>\
                 <input type="hidden" name="doc" value="{id}.xml"/>\
                 <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp"><span class="lang da" title="Original nøgle">Original</span><span class="lang en" title="Original clef">Original</span></label> &#160;&#160; \
@@ -264,7 +264,7 @@ function updateFromOptions(id, options) {
         delete $mei[id].xsltOptions['beams']
     };
     // send a POST request to get the MEI data
-    $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+    $.post('https://melodier.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
 }
 
 function addComments(data) {
@@ -441,7 +441,7 @@ function renderData(data) {
     outerSvg.setAttribute('style', 'max-width: ' + viewBox[2] + 'px;');
 
     // send a POST request to get the editorial comments formatted as HTML
-    $.post('https://salmer.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
+    $.post('https://melodier.dsl.dk/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
     '',function(data){ addComments(data); },'xml');
 
     // In search results, move the '[...]' omission markers all to the left
@@ -489,7 +489,7 @@ function loadMeiFromDoc() {
             $mei[id].xsltOptions['highlight'].parameters['ids'] = $(this).html();
         });
         // send a POST request to get the MEI data
-        $.post('https://salmer.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
+        $.post('https://melodier.dsl.dk/transform_mei.xq',$mei[id].xsltOptions,function(data){ renderData(data); },'xml');
     });
 }
 
@@ -649,7 +649,7 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-                window.location.href = "https://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "https://melodier.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }
@@ -662,7 +662,7 @@ function loadMeiMetadata() {
     $(".mei_metadata").each( function() {
         var id = $(this).attr("id");
         console.log('Retrieving MEI metadata');
-        $.post('https://salmer.dsl.dk/document_metadata.xq?language=' + language + '&doc=' + doc,function(data){
+        $.post('https://melodier.dsl.dk/document_metadata.xq?language=' + language + '&doc=' + doc,function(data){
             $("#" + id).html(data);
         },'html');
     });
@@ -678,7 +678,7 @@ function loadTeiText() {
             /*  TEI file name and MEI mdiv ID are stored in the DIV's @class */
             var params = $(this).attr("class").split(" ");
             console.log('Retrieving TEI text');
-            $.post('https://salmer.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){
+            $.post('https://melodier.dsl.dk/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){
                 $("#" + id).html(data);
                 teiApp();
                 if(comments) {
@@ -838,8 +838,7 @@ function initMusic(lang) {
     if(midi) { initMidi() }
     loadMeiFromDoc();
     loadMeiMetadata();
-    if(window.location.hostname.search('salmer.dsl.dk') >= 0) { loadTeiText() };
-    validateInput();
+    if(window.location.hostname.search('melodier.dsl.dk') >= 0) { loadTeiText() };
 }
 
 $(document).ready(function() {
@@ -851,7 +850,7 @@ $(document).ready(function() {
         param = param.split('=')
         params[param[0]] = param[1]
     })
-    scriptLang = new URL("http://salmer.dsl.dk/" + $("script[src*='MeiAjax.js']").attr("src")).searchParams.get("lang");
+    scriptLang = new URL("http://melodier.dsl.dk/" + $("script[src*='MeiAjax.js']").attr("src")).searchParams.get("lang");
     // language priority: 1) language requested in the querystring; 2) language requested in the js script tag; 3) default language
     if(params.lang) {language = params.lang} else if(scriptLang) {language = scriptLang}
     $(".lang:not(." + language + ")").hide();
@@ -859,11 +858,4 @@ $(document).ready(function() {
     console.log("Language set to " + language);    
     initMusic(language);
     console.log("Document ready");
-    
-		
-var test = $('#search-form input[name="q"]').val();		
-console.log("manuscripts: " + test);		
-		
-    
-    
 });

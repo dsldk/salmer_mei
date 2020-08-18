@@ -21,7 +21,7 @@ declare variable $page          := request:get-parameter("page", "1") cast as xs
 declare variable $publications  := doc('library/publications.xml'); 
 declare variable $l             := doc('library/language/da.xml');    (: Localisation of labels etc. :)   
 declare variable $collection    := '/db/salmer';
-declare variable $solr_base     := 'http://salmer.dsl.lan:8983/solr/salmer/'; (: Solr core :)
+declare variable $solr_base     := 'http://melodier.dsl.lan:8983/solr/salmer/'; (: Solr core :)
 declare variable $this_script   := 'mei_search.xq';
 
 (: List of publications to search in   :)

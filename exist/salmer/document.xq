@@ -15,12 +15,12 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare option exist:serialize "method=xml media-type=text/html"; 
 
 declare variable $docref   := request:get-parameter("doc", "");
-declare variable $host     := request:get-header('HOST'); (: "localhost"; with salmer.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
+declare variable $host     := request:get-header('HOST'); (: "localhost"; with melodier.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
 (:declare variable $session_language := request:set-session-attribute("random", $r) :)
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
-declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
+declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));

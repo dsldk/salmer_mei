@@ -177,7 +177,7 @@ $(function(){
 	}))
 
 
-// Language selection deactivated at salmer.dsl.dk
+// Language selection deactivated at melodier.dsl.dk
 /*
 	var rightLanguageSelector = $('<select/>', {
 		'class': 'language-dropdown select-css',

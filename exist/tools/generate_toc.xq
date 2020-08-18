@@ -10,13 +10,13 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare option exist:serialize "method=xml media-type=text/html"; 
 
-declare variable $host     := request:get-header('HOST'); (: "localhost"; with salmer.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
+declare variable $host     := request:get-header('HOST'); (: "localhost"; with melodier.dsl.lan on port 8080 use: concat(request:get-header('HOST'),'/exist/rest') :)
 declare variable $origin   := request:get-header("origin");
 declare variable $docref   := request:get-parameter("doc", "");
 declare variable $language := request:get-parameter("language", "");
 
 declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
-declare variable $database := "/db/salmer"; (: with salmer.dsl.lan on port 8080 use "/db/salmer" :) 
+declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
@@ -26,7 +26,7 @@ declare variable $index    := doc(concat($database,"/library/publications.xml"))
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= 
     <domains>
-        <domain>http://salmer.dsl.lan:8080</domain>
+        <domain>http://melodier.dsl.lan:8080</domain>
         <domain>https://tekstnet.dk</domain>
     </domains>;
     

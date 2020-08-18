@@ -225,11 +225,11 @@
     right: 10px;
     width: 24px;
     height: 28px;
-    background: url("https://salmer.dsl.dk/style/img/midi.svg") no-repeat;
+    background: url("https://melodier.dsl.dk/style/img/midi.svg") no-repeat;
 }
 
 .midi_download:hover {
-    background: url("https://salmer.dsl.dk/style/img/midi_hi.svg") no-repeat;
+    background: url("https://melodier.dsl.dk/style/img/midi_hi.svg") no-repeat;
     cursor: pointer;
 }
 
@@ -878,11 +878,11 @@ table.toc td {
     display: block;
     width:24px;
     height: 28px;
-    background: url("https://salmer.dsl.dk/style/img/mei.svg") no-repeat;
+    background: url("https://melodier.dsl.dk/style/img/mei.svg") no-repeat;
 }
 
 .download a:hover {
-    background: url("https://salmer.dsl.dk/style/img/mei_hi.svg") no-repeat;
+    background: url("https://melodier.dsl.dk/style/img/mei_hi.svg") no-repeat;
 }
 
 a.abbr {
@@ -938,11 +938,11 @@ a:hover.abbr .expan {
 
 @font-face {
 	font-family: 'Bravura Text';
-	src: url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot');
+	src: url('https://melodier.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot');
 	src: local('Bravura Text'), 
-	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
-	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.woff') format('woff'), 
-	       url('https://salmer.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.svg#BravuraText') format('svg');
+	       url('https://melodier.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.eot?#iefix') format('embedded-opentype'),
+	       url('https://melodier.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.woff') format('woff'), 
+	       url('https://melodier.dsl.dk/cors.xq?res=/salmer/style/fonts/BravuraText.svg#BravuraText') format('svg');
 } 
 
 /* responsive design */

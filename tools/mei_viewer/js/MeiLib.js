@@ -547,7 +547,7 @@ function saveSelection() {
                     qNotes[i] = add(qNotes[i], transposeOctaves * 12);
                 }
                 // Search!
-                window.location.href = "http://salmer.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
+                window.location.href = "http://melodier.dsl.dk/mei_search.xq?a=" + qNotes.join("-");
             });
 
         }
