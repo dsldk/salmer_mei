@@ -121,7 +121,7 @@ let $result :=
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
         <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>
 
-        <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/javascript.js">/* Text site js */</script>
         <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
         <!-- MIDI -->        

@@ -5,7 +5,6 @@
 }
 
 .mei svg tspan.text {
-/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: Georgia, 'times new roman', times, serif; 
 }
 
@@ -78,7 +77,6 @@
 }
 
 .mei svg .dir.sb tspan.text, .mei svg .dir.pb tspan.text {
-/* tekstnet bruger:     font-family: 'Noto Serif', serif  */
     font-family: Georgia, 'times new roman', times, serif; 
     font-size: 400;  
 }

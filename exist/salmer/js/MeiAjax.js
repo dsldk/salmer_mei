@@ -696,7 +696,7 @@ function loadTeiText() {
 }
 
 function teiApp() {
-    // adopted from https://tekstnet.dk/static/popup.js
+    // adopted from https://salmer.dsl.dk/static/popup.js
     function insertNote(dialog_opts, note_type, note_title) {
         var note_text_ids =  $(note_type);
         var app_note_text_ids =  $(note_type);

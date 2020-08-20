@@ -62,7 +62,7 @@ let $coll := if(contains($document, '/'))
 let $doc := doc(concat('/db/salmer/data/',$document))    
 
 
-(: guess URL to tekstnet.dk page :)                
+(: guess URL to salmer.dsl.dk page :)                
 let $tei_doc_name := if($coll!="")
     then 
         $index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei
@@ -92,7 +92,7 @@ let $output :=
                 concat("/",count($chapters[$chapter]/tei:div/tei:head[@type="add"][following::tei:notatedMusic/tei:ptr[@target=$this_filename or substring-before(@target,'#')=$this_filename]]))
             else 
                 ""
-        let $tekstnet_link := <ptr type="edition" target="https://tekstnet.dk/{$tei_doc_name}/{$chapter}{$section}"/>
+        let $text_link := <ptr type="edition" target="https://salmer.dsl.dk/{$tei_doc_name}/{$chapter}{$section}"/>
         
     return 
           <contentItem label="{$pos}">
@@ -100,7 +100,7 @@ let $output :=
                <title type="uniform">{$target//m:meiHead/m:workList/m:work/m:title[@type='uniform'][1]/text()}</title>
                <locus>{$target//m:meiHead/m:workList/m:work/m:identifier[@label='Thomissøn 1569' or @label='Jespersen 1573' or 
                     @label='Mortensøn 1528' or @label='Ulricksøn 1535' or @label='Vingaard 1553' or @label='Vormordsen 1539'][1]/text()}</locus>
-               {$tekstnet_link}
+               {$text_link}
                <ptr type="db" target="{$rel/@target}"/>
           </contentItem>
 

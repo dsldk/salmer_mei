@@ -95,12 +95,12 @@ declare function local:transform_tei($doc, $filename){
 	    <title>DSL-meloditekstkorrektur</title>
         <meta charset="UTF-8"/> 
         <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/fix_go_collisions.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/elements.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/layout.css" />
-    	<link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/styles.css" />
-        <link rel="stylesheet" type="text/css" href="http://tekstnet.dk/static/print.css" media="print" />
+        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/fix_go_collisions.css" />
+        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/elements.css" />
+        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/layout.css" />
+    	<link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/styles.css" />
+        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/print.css" media="print" />
         <script type="text/javascript" src="meloditekstkorrektur.js">
             <!-- some javascript -->
         </script>

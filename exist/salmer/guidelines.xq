@@ -39,7 +39,7 @@ let $output :=
         <script type="text/javascript" src="js/libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
         <script type="text/javascript" src="js/libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery ui */</script>     
 
-        <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/javascript.js">/* Text site js */</script>
         <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
         <script type="text/javascript">

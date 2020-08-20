@@ -357,7 +357,7 @@ let $result :=
         <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
         <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
 
-        <script type="text/javascript" src="js/javascript.js">/* "Tekstnet" JS */</script>
+        <script type="text/javascript" src="js/javascript.js">/* Text site js */</script>
         <script type="text/javascript" src="js/general.js">/* utilities */</script>
 
         <script type="text/javascript">
@@ -474,26 +474,26 @@ let $result :=
                                               {local:set_checkbox('e')}
                                               <span class="checkmark"></span>
                                             </label>                
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_starts_with']/text()}"/>-->
+                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_starts_with']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
                                               {$lang_lib/*[name()='checkbox_label_all_trsp']/text()}
                                               {local:set_checkbox('t')}
                                               <span class="checkmark"></span>
                                             </label>
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
+                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
                                               {$lang_lib/*[name()='checkbox_label_ignore_repeat']/text()}
                                               {local:set_checkbox('r')}
                                               <span class="checkmark"></span>
                                             </label>               
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
+                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
                                             <br/>
                                         </div>
                                         <div class="checkbox-options">
                                             <!--<label>{$lang_lib/*[name()='checkbox_label_precision']/text()}:</label>-->
-                                            <!--<img src="https://tekstnet.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_precision']/text()}"/>-->
+                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_precision']/text()}"/>-->
                                             <label class="radio-inline" for="exact">{$lang_lib/*[name()='checkbox_label_exact']/text()}
                                                 {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
                                                     <input type="radio" name="f" id="exact" value="0" checked="checked"/>
