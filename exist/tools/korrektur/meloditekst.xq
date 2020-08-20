@@ -12,7 +12,7 @@ declare option exist:serialize "method=xml media-type=text/xml";
 declare variable $database := '/db/salmer/data';
 declare variable $m_source := request:get-parameter("m_source", "salmer");
 declare variable $tei := request:get-parameter("tei", "");
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
+declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 declare variable $mei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/mei/";  
 declare variable $tei_doc := if ($tei != "") then doc(concat($tei_base, request:get-parameter("tei", ""))) else (); 
 

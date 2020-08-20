@@ -6,7 +6,7 @@ declare namespace transform = "http://exist-db.org/xquery/transform";
 
 declare option exist:serialize "method=html5 media-type=text/html"; 
 
-declare variable $tei_base      := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
+declare variable $tei_base      := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 (: Local test:  :)
 (: declare variable $tei_base      := xs:anyURI(concat("http://",request:get-header('HOST'),"/exist/rest/db/tools/html/"));  :)
 declare variable $tei_xslt_base := xs:anyURI(concat("http://",request:get-header('HOST'),"/exist/rest/db/tools/html/xslt/"));

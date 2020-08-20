@@ -19,7 +19,7 @@ declare variable $host     := request:get-header('HOST'); (: "localhost"; with m
 (:declare variable $session_language := request:set-session-attribute("random", $r) :)
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
+declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));

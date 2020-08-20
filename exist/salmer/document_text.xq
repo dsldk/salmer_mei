@@ -16,7 +16,8 @@ declare variable $meidocref  := request:get-parameter("doc", "");
 declare variable $teidocref  := request:get-parameter("tei", "");
 declare variable $mdiv       := request:get-parameter("mdiv", "");
 
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/";
+(: was: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/"; :)
+declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
