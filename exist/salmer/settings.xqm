@@ -9,8 +9,8 @@ declare function settings:language($new_language as xs:string) as xs:string {
         then 
             request:get-cookie-value("language")
         else 
-            "da"    
-    let $language_cookie := response:set-cookie("language", $language)    
+            "da"  
+    let $language_cookie := response:set-cookie("language", $language, "P1Y", true())    
     return $language
 };    
 
