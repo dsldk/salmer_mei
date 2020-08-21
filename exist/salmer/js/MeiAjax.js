@@ -306,7 +306,7 @@ function addComments(data) {
         // Put the annotation in it
         $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
         /* Make the bounding box clickable (works on Opera only )*/
-        $(this).attr("pointer-events", "bounding-box");
+        //$(this).attr("pointer-events", "bounding-box");
         $(this).mouseover(function(event) {
             // Close all open dialogs? 
             $(".ui-dialog-content").dialog("close");
