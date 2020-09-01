@@ -80,6 +80,25 @@
         </expan>
     </choice>
     <choice>
+        <abbr>Bergsagel 2008</abbr>
+        <expan>
+            <bibl label="Bergsagel 2008">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>John Bergsagel</author>
+                <editor>Britta Olrik Frederiksen et al.</editor>
+                <title level="a">The musical content of the manuscript AM 76, 8o</title>
+                <title level="m">A Danish Teacher's Manual of the Mid-Fifteenth Century (Codex AM 76, 8o)</title>
+                <biblScope unit="page">116-151</biblScope>                
+                <imprint>
+                    <date isodate="2008">2008</date>
+                    <pubPlace>Lund</pubPlace>
+                    <publisher>Lund University Press</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>bc.</abbr>
         <expan>basso continuo</expan>
     </choice>
@@ -313,6 +332,24 @@
         </expan>
     </choice>
     <choice>
+        <abbr>Glahn 1959</abbr>
+        <expan>
+            <bibl label="Glahn 1959">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Henrik Glahn</author>
+                <title level="a">Messehåndbøgernes Melodistof</title>
+                <title level="m">Danske messebøger fra reformationstiden</title>
+                <biblScope unit="page">132-150</biblScope>                
+                <imprint>
+                    <date isodate="1959">1959</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>UJDS · J. H. Schultz Forlag</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Glahn 1961</abbr>
         <expan>
             <bibl label="Glahn 1961">
@@ -342,6 +379,24 @@
                 <biblScope unit="page">69-85</biblScope>                
                 <imprint>
                     <date isodate="1963">1963</date>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Glahn 1990</abbr>
+        <expan>
+            <bibl label="Glahn 1990">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Henrik Glahn</author>
+                <title level="a">“Hvo som vil salig udi Verden leve”. En salme af Peder Palladius og dens melodi – forhistorie og efterliv</title>
+                <title level="m">Festskrift Søren Sørensen. 1920-29. september 1990</title>
+                <biblScope unit="page">223-240</biblScope>                
+                <imprint>
+                    <date isodate="1990">1990</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Dan Fog</publisher>
                 </imprint>
             </bibl>
         </expan>
@@ -547,6 +602,25 @@
         <expan>mezzosoprano</expan>
     </choice>
     <choice>
+        <abbr>Moe 2017</abbr>
+        <expan>
+            <bibl label="Moe 2017">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Bjarke Moe</author>
+                <editor>Grethe Jacobsen og Ninna Jørgensen</editor>
+                <title level="a">Træk af kvindernes musik i den danske renæssance</title>
+                <title level="m">Kvindernes Renæssance og Reformation</title>
+                <biblScope unit="page">181-208</biblScope>                
+                <imprint>
+                    <date isodate="2017">2017</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Museum Tusculanums Forlag</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Mortensen 1529</abbr>
         <expan>
             <bibl label="Mortensen 1529">
@@ -635,6 +709,25 @@
         <expan>pianoforte (piano)</expan>
     </choice>
     <choice>
+        <abbr>Piltz 2011</abbr>
+        <expan>
+            <bibl label="Piltz 2011">
+                <genre>book</genre>
+                <genre>article</genre>
+                <author>Anders Piltz</author>
+                <editor>Mattias Lundberg og Sven-Åke Selander</editor>
+                <title level="a">»Den signade dag« och dess dunkla gryning</title>
+                <title level="m">Melos och logos. Festskrift till Folke Bohlin</title>
+                <biblScope unit="page">295-310</biblScope>                
+                <imprint>
+                    <date isodate="2011">2011</date>
+                    <pubPlace>Skellefteå</pubPlace>
+                    <publisher>Artos</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>tamb.picc.</abbr>
         <expan>tamburo piccolo (snare drum)</expan>
     </choice>
@@ -671,6 +764,35 @@
         <expan>soprano</expan>
     </choice>
     <choice>
+        <abbr>Schildbach 1967</abbr>
+        <expan>
+            <bibl label="Schildbach 1967">
+                <genre>book</genre>
+                <editor>Martin Schildbach</editor>
+                <title level="m">Das einstimmige Agnus Dei und seine handschriftliche Überlieferung vom 10. bis zum 16. Jahrhundert</title>
+                <imprint>
+                    <date isodate="1967">1967</date>
+                    <pubPlace>Erlangen</pubPlace>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
+        <abbr>Schiørring 1950</abbr>
+        <expan>
+            <bibl label="Schiørring 1950">
+                <genre>book</genre>
+                <editor>Nils Schiørring</editor>
+                <title level="m">Det 16. og 17. århundredes verdslige danske visesang. En efterforskning efter det anvendte melodistofs kår og veje</title>
+                <imprint>
+                    <date isodate="1950">1950</date>
+                    <pubPlace>København</pubPlace>
+                    <publisher>Thaning &amp; Appels Forlag</publisher>
+                </imprint>
+            </bibl>
+        </expan>
+    </choice>
+    <choice>
         <abbr>Sl</abbr>
         <expan>Salmernes Bog</expan>
     </choice>
@@ -705,6 +827,21 @@
     <choice>
         <abbr>tbno.</abbr>
         <expan>tamburino (tambourine)</expan>
+    </choice>
+    <choice>
+        <abbr>Thannabaur 1962</abbr>
+        <expan>
+            <bibl label="Thannabaur 1962">
+                <genre>book</genre>
+                <editor>Peter Josef Thannabaur</editor>
+                <title level="m">Das einstimmige Sanctus der römischen Messe in der handschriftlichen Überlieferung des 11. bis 16. Jahrhunderts</title>
+                <imprint>
+                    <date isodate="1962">1962</date>
+                    <pubPlace>München</pubPlace>
+                    <publisher>Walter Ricke</publisher>
+                </imprint>
+            </bibl>
+        </expan>
     </choice>
     <choice>
         <abbr>Thomissøn 1569</abbr>
