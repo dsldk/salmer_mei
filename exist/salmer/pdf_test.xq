@@ -2,7 +2,6 @@ xquery version "3.0" encoding "UTF-8";
 
 import module namespace process="http://exist-db.org/xquery/process" at "java:org.exist.xquery.modules.process.ProcessModule";
 import module namespace file="http://exist-db.org/xquery/file" at "java:org.exist.xquery.modules.file.FileModule";
-import module namespace login="http://dsl.dk/salmer/login" at "./login.xqm";
 
 declare namespace request=   "http://exist-db.org/xquery/request";
 declare namespace response = "http://exist-db.org/xquery/response";
@@ -19,14 +18,34 @@ declare variable $shellScript := "./url_to_pdf.sh";
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= doc("library/cors_domains.xml"); 
 
+(: Login required for public use only :)
+declare function local:login() as xs:boolean
+{
+  let $lgin := xmldb:login("/db", "YourAdminUserName", "YourAdminPassword")
+  return $lgin
+};
 
 declare function local:url_to_pdf($url as xs:string) as node()* {
     let $options := 
         <options>
             <workingDir>{$workingDir}</workingDir>
         </options>
-    (: process:execute is available for dba group users only :)
-    let $login := login:function()
+    (: process:execute is available for dba group users only. :)
+    (: If used publicly, the script must log in to the db:    :)
+    (: let $login := local:login()                            :)
+    let $results := if (normalize-space($url)) 
+        then
+            process:execute(($shellScript, $url),$options)  (: generate PDF file on server :)
+        else
+            <p>Invalid URL</p>
+    return $results
+};
+
+declare function local:url_to_pdf($url as xs:string) as node()* {
+    let $options := 
+        <options>
+            <workingDir>{$workingDir}</workingDir>
+        </options>
     let $results := if (normalize-space($url)) 
         then
             process:execute(($shellScript, $url),$options)  (: generate PDF file on server :)
@@ -71,18 +90,10 @@ declare function local:pdf($url as xs:string, $filename as xs:string) as node()*
     return $download
 };
 
-(: get the file name from 1) the "doc" parameter, 2) the page/script name, or 3) just call it "download" :)  
-declare function local:get_filename($url as xs:string) as xs:string {
-      let $filename := if (normalize-space(substring-before(tokenize(substring-after($url,"doc="),"/")[last()],"."))) then
-            substring-before(tokenize(substring-after($url,"doc="),"/")[last()],".")
-        else if (normalize-space(substring-before(tokenize(tokenize($url,"\?")[1],"/")[last()],"."))) then
-            substring-before(tokenize(tokenize($url,"\?")[1],"/")[last()],".")
-        else
-            "download"
-    return $filename   
-};
 
-let $filename := local:get_filename($url)
+let $filename := "download"
+
+let $response := local:pdf($url, $filename)
 
 let $response := if ($url = "") then 
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,17 +105,8 @@ let $response := if ($url = "") then
                 <p>Parameter missing: url</p>
             </body>
         </html>
-    else if (local:url_accepted($url)) then 
+    else 
         local:pdf($url,$filename)
-    else
-        <html xmlns="http://www.w3.org/1999/xhtml">
-            <head>
-                <title>Error</title>
-                <meta charset="UTF-8"/>
-            </head>
-            <body>
-                <p>URL {$requestedDomain} invalid or blocked</p>
-            </body>
-        </html>
-        
+
+
 return $response
