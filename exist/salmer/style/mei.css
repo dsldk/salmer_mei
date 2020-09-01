@@ -207,7 +207,16 @@
 
 .print_link a:hover .midi_button.print {
     background-image: url("/style/img/print_hi.png");
-    
+}
+
+.midi_button.pdf_download {
+    background-image: url("https://melodier.dsl.dk/style/img/pdf.png");
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+}
+
+.print_link a:hover .midi_button.pdf_download {
+    background-image: url("https://melodier.dsl.dk/style/img/pdf_hi.png");
 }
 
 .exist_link, .print_link {
@@ -528,6 +537,10 @@ kbd {
 .metadata .top .left {
     /*  overrides styles.css  */
     float: none;
+}
+
+body.metadata>div.ui-dialog {
+    top: -10px;
 }
 
 p.loading {

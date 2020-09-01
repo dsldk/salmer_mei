@@ -150,9 +150,12 @@ var printMenu = '\
     <div class="mei_menu_content"> \
         <div class="print_link">\
             <a href="javascript:void(0);" onclick="printPage(\'{id}\')">\
-                <div class="midi_button print"/>\
-                    <span class="label"><span class="lang da" title="Printervenlig version">Printervenlig version</span><span class="lang en" title="Printer version">Printer version</span></span>\
+                <div class="midi_button pdf_download"/>\
+                    <span class="label"><span class="lang da" title="Download noder og tekst som PDF">Download PDF</span><span class="lang en" title="Download music and text as PDF">Download PDF</span></span>\
                 </div>\
+                <!--<div class="midi_button print"/>\
+                    <span class="label"><span class="lang da" title="Printervenlig version">Printervenlig version</span><span class="lang en" title="Printer version">Printer version</span></span>\
+                </div>-->\
             </a>\
         </div>\
     </div>';
@@ -170,7 +173,7 @@ var existMenu = '\
 
 var meiOptionsMenu = ' \
     <div class="mei_menu_content"> \
-        <form id="optionsForm_{id}" action="' + host + '/print.xq" method="GET" target="_blank" class="mei_menu"> \
+        <form id="optionsForm_{id}" action="' + host + '/print.xq" method="GET" target="_blank" class="mei_menu">\
             <div class="menu_block"><span class="lang da">N&oslash;gle</span><span class="lang en">Clef</span>:<br/>\
                 <input type="hidden" name="doc" value="{id}.xml"/>\
                 <input type="radio" name="clef" id="clef_{id}" value="original" checked="checked" onchange="updateFromForm(\'{id}\')"/> <label for="clef_{id}" class="cursorHelp"><span class="lang da" title="Original nøgle">Original</span><span class="lang en" title="Original clef">Original</span></label> &#160;&#160; \
@@ -556,9 +559,29 @@ function createMenu(id){
     }
 }
 
-// Printing
+
+function makeQueryFromForm(id) {
+  const formData = new FormData(document.getElementById("optionsForm_" + id));
+  const data = [...formData.entries()];
+  const asString = data
+      .map(x => `${encodeURIComponent(x[0])}=${encodeURIComponent(x[1])}`)
+      .join('%26');
+  // or, ignoring IE 11: 
+  // const asString = new URLSearchParams(formData).toString();
+  return asString;
+}
+
+// Printing or PDF download
 function printPage(id) {
-    $("#optionsForm_" + id).submit();
+    // Generate PDF:
+    var formObj = document.getElementById("optionsForm_" + id);
+    var requestedURI = formObj.action + "%3F" + makeQueryFromForm(id) 
+    // Make a PDF file from the desired page
+    //console.log(host + "/pdf.xq?url=" + requestedURI);
+    location.href = host + "/pdf.xq?url=" + requestedURI;
+    
+    // Alternatively, show the printer-friendly page:
+    // $("#optionsForm_" + id).submit();
 }
 
 // Functions for phrase selection
@@ -695,6 +718,7 @@ function loadTeiText() {
     }
 }
 
+
 function teiApp() {
     // adopted from https://salmer.dsl.dk/static/popup.js
     function insertNote(dialog_opts, note_type, note_title) {
@@ -707,6 +731,13 @@ function teiApp() {
             dialog_opts.title =note_title; //+ current_note_no.substring(3);
             note_box = $( note_contents_id ).dialog(dialog_opts);
             $( note_link_id ).mouseover({note_box: note_box,note_contents_id: note_contents_id },dialogPosition);
+            
+        $(note_link_id).mouseout(function(event) {
+            // Close all open dialogs 
+            $(".ui-dialog-content").dialog("close");
+         0});
+
+
         }
     }
 
@@ -723,18 +754,20 @@ function teiApp() {
             duration: 300
     	},
     	width: 320,
+    	height: "auto",
     	minHeight: 80
     };
 
     function dialogPosition(event) {
         event.data.note_box.dialog("option", "position", {
-            my: "left top+13",
+            my: "left-20 top-20",
             at: "left top",
             of: event,
             offset: "20 200"
         });
         // closing the dialog is necessary for initialization
-        $( event.data.note_contents_id ).dialog( "close" );
+        //$( event.data.note_contents_id ).dialog( "close" );
+        $(".ui-dialog-content").dialog("close");
         $( event.data.note_contents_id ).dialog( "open" );
     }
 
