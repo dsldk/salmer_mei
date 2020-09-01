@@ -575,7 +575,7 @@ function makeQueryFromForm(id) {
 function printPage(id) {
     // Generate PDF:
     var formObj = document.getElementById("optionsForm_" + id);
-    var requestedURI = formObj.action + "%3F" + makeQueryFromForm(id) 
+    var requestedURI = encodeURIComponent(formObj.action) + "%3F" + makeQueryFromForm(id) 
     // Make a PDF file from the desired page
     //console.log(host + "/pdf.xq?url=" + requestedURI);
     location.href = host + "/pdf.xq?url=" + requestedURI;
