@@ -25,6 +25,20 @@ declare function local:login() as xs:boolean
   return $lgin
 };
 
+declare function local:error($msg as xs:string) as node() {
+    let $output := 
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <title>Error</title>
+                <meta charset="UTF-8"/>
+            </head>
+            <body>
+                <p>{$msg}</p>
+            </body>
+        </html>
+    return $output        
+};
+
 declare function local:url_to_pdf($url as xs:string) as node()* {
     let $options := 
         <options>
@@ -71,9 +85,8 @@ declare function local:download_file($path as xs:string, $mimetype, $as_filename
     return $status    
 };
 
-(: limit PDF creation to pages from listed sites only :)
-declare function local:url_accepted($url as xs:string) as xs:boolean {
-    let $ok := if ($allowed//*[.=$requestedDomain]) then
+declare function local:url_valid($url as xs:string) as xs:boolean {
+    let $ok := if (matches($url,"^http[s]?://.*")) then
             true()
         else 
             false()
@@ -86,26 +99,32 @@ declare function local:pdf($url as xs:string, $filename as xs:string) as node()*
         if (file:exists(concat($workingDir,"/output.pdf"))) then
             local:download_file(concat($workingDir,"/output.pdf"),"application/pdf",concat($filename,".pdf"))
         else 
-            <p>Error</p>
+            local:error("Error")
     return $download
 };
 
 
 let $filename := "download"
 
-let $response := local:pdf($url, $filename)
+
 
 let $response := if ($url = "") then 
         <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
-                <title>Error</title>
+                <title>PDF</title>
                 <meta charset="UTF-8"/>
             </head>
             <body>
-                <p>Parameter missing: url</p>
+                <input size="50" type="text" placeholder="Indtast URL (f.eks. https://www.dr.dk/)" id="urlinput"/>
+                <form action="" method="get">
+                    <input name="url" value="" type="hidden" id="url" style="display:inline;"/>  
+                    <button type="submit" onclick="this.form.url.value=encodeURI(document.getElementById('urlinput').value);" style="display:inline;">PDF mig!</button>
+                </form>
             </body>
-        </html>
-    else 
+        </html>    
+    else if (not(local:url_valid($url))) then
+        local:error("Invalid URL")
+    else
         local:pdf($url,$filename)
 
 
