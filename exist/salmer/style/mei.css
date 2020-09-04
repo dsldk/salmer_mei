@@ -94,7 +94,6 @@
 
 /* CSS for non-SVG contents */
 
-
 /* MIDI player */
 #player {
     visibility: hidden;  
@@ -105,19 +104,18 @@
     margin: 3px 0 10px 0;
 }
 
-
 .midi_button {
     width: 20px;
     height: 20px;
-    border: 1px solid #888;
-    border-radius: 5px; 
-    background-color: #ccc;
     display: inline-block;
     margin-right: 2px;
     line-height: 1em;
     vertical-align: text-bottom;
     cursor: pointer;
-    }
+    border: 1px solid #888;
+    border-radius: 5px; 
+    background-color: #ccc;
+}
     
 .midi_button:hover {
     background-color: #eee;
@@ -189,38 +187,43 @@
     margin-left: 24px;
 }
 
-.midi_button.database {
-    background-image: url("/style/img/music_document.png");
-    background-position: 1px 1px;
+.menu_button {
+    width: 24px;
+    height: 28px;
+    display: inline-block; 
+    line-height: 1em;
+    cursor: pointer;
+    background-position: 0px 5px;
     background-repeat: no-repeat;
 }
 
-.exist_link a:hover .midi_button.database {
-    background-image: url("/style/img/music_document_hi.png");
+.menu_button .label {
+    display: inline-block;
+    margin: 8px 24px;
 }
 
-.midi_button.print {
-    background-image: url("/style/img/print.png");
-    background-position: 1px 1px;
-    background-repeat: no-repeat;
+.menu_button.database {
+    background-image: url("https://melodier.dsl.dk/style/img/music_document.png");
 }
 
-.print_link a:hover .midi_button.print {
-    background-image: url("/style/img/print_hi.png");
+.exist_link a:hover .menu_button.database {
+    background-image: url("https://melodier.dsl.dk/style/img/music_document_hi.png");
 }
 
-.midi_button.pdf_download {
-    background-image: url("https://melodier.dsl.dk/style/img/pdf.png");
-    background-position: 1px 1px;
-    background-repeat: no-repeat;
+.menu_button.print {
+    background-image: url("https://melodier.dsl.dk/style/img/print.png");
 }
 
-.print_link a:hover .midi_button.pdf_download {
-    background-image: url("https://melodier.dsl.dk/style/img/pdf_hi.png");
+.print_link a:hover .menu_button.print {
+    background-image: url("https://melodier.dsl.dk/style/img/print_hi.png");
 }
 
-.exist_link, .print_link {
-    margin: 8px 0 0 0;
+.menu_button.pdf_download {
+    background-image: url("https://melodier.dsl.dk/style/img/pdf.svg");
+}
+
+.print_link a:hover .menu_button.pdf_download {
+    background-image: url("https://melodier.dsl.dk/style/img/pdf_hi.svg");
 }
 
 .mei svg .playing {
@@ -312,7 +315,7 @@
 
 /* options menu expand effect */
 .mei_options .mei_menu_content {
-    display: none;
+    display: none;  
 }
 
 .mei_options:hover, .mei_options:hover .mei_menu_container {

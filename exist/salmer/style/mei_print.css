@@ -1,13 +1,14 @@
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
-/* @import url('https://fonts.googleapis.com/css?family=Noto+Serif:400,700,400italic,700italic'); */
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+@import url(//fonts.googleapis.com/css?family=Cormorant:500,600);
+@import url(//fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600);
 
 body {    
-    font-family: Montserrat, sans-serif;
+    font-family: Cormorant, serif; 
     color: #000;
     background-color: #fff;
     margin: 2em;
-    font-size: 11pt;
+    font-size: 13pt;
     line-height: 1.428571429;
 }
 

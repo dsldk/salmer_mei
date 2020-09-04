@@ -150,10 +150,10 @@ var printMenu = '\
     <div class="mei_menu_content"> \
         <div class="print_link">\
             <a href="javascript:void(0);" onclick="printPage(\'{id}\')">\
-                <div class="midi_button pdf_download"/>\
+                <div class="menu_button pdf_download">\
                     <span class="label"><span class="lang da" title="Download noder og tekst som PDF">Download PDF</span><span class="lang en" title="Download music and text as PDF">Download PDF</span></span>\
                 </div>\
-                <!--<div class="midi_button print"/>\
+                <!--<div class="menu_button print"/>\
                     <span class="label"><span class="lang da" title="Printervenlig version">Printervenlig version</span><span class="lang en" title="Printer version">Printer version</span></span>\
                 </div>-->\
             </a>\
@@ -164,7 +164,7 @@ var existMenu = '\
     <div class="mei_menu_content"> \
         <div class="exist_link">\
             <a href="' +  host + '/document.xq?doc={id}.xml">\
-                <div class="midi_button database">\
+                <div class="menu_button database">\
                     <span class="label"><span class="lang da">Slå op i melodibasen</span><span class="lang en">See database entry</span></span>\
                 </div>\
             </a>\
