@@ -13,7 +13,7 @@ declare variable $origin := request:get-header("origin");
 declare variable $requestedDomain := replace($url,"^(http[s]?://[a-z\.]*).*$","$1");
 
 declare variable $workingDir := "/tmp";
-declare variable $shellScript := "./url_to_pdf.sh";
+declare variable $shellScript := "/opt/url_to_pdf.sh";
 
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= doc("library/cors_domains.xml"); 
