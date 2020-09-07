@@ -357,7 +357,7 @@ function renderData(data) {
     // save the MEI xml for later;
     $mei[targetId].xml = $.parseXML(xmlString);
 
-    vrvToolkit.setOptions($mei[id].verovioOptions);
+    vrvToolkit.setOptions($mei[targetId].verovioOptions);
     vrvToolkit.loadData(xmlString);
     svg = vrvToolkit.renderToSVG(page, {});
     $("#" + targetId).html(svg);

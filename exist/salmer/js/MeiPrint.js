@@ -138,7 +138,7 @@ function renderData(data) {
     // save the MEI xml for later;
     $mei[targetId].xml = $.parseXML(xmlString);
 
-    vrvToolkit.setOptions($mei[id].verovioOptions);
+    vrvToolkit.setOptions($mei[targetId].verovioOptions);
     vrvToolkit.loadData(xmlString);
     vrvToolkit.redoLayout();
      
@@ -171,7 +171,7 @@ function getOptionsFromQuery(id) {
         console.log("Set mdiv:" + urlParams.get('mdiv'));
         $mei[id].xsltOptions['show'].parameters['mdiv'] = urlParams.get('mdiv');
     };
-    if(urlParams.get('transposeVal') != '0') {
+    if(urlParams.get('transposeVal') != null && parseInt(urlParams.get('transposeVal')) > 0 && (urlParams.get('direction') == 'up' | urlParams.get('direction') == 'down')) {
         console.log("Transpose:" + urlParams.get('transposeVal') + urlParams.get('direction'));
         $mei[id].xsltOptions['transpose'] = $.extend(true, {}, $transpose);
         $mei[id].xsltOptions['transpose'].parameters['interval']   =  parseInt(urlParams.get('transposeVal'));
