@@ -11,6 +11,10 @@
     
     <xsl:param name="mdiv" select="''"/>
     
+    <!-- To disable editorial comments (in pdf/print view or other), send parameter comments=no -->
+    <xsl:param name="comments" select="'yes'"/>
+    
+    
     <!-- Set MIDI base tempo (BPM) -->
     <xsl:variable name="midi_base_tempo" select="number('100')"/>
     
@@ -129,7 +133,6 @@
             <xsl:if test="ancestor::m:syllable"><xsl:text> </xsl:text></xsl:if>
             
             <xsl:apply-templates select="node()"/>
-            
             <!-- Add an extra space for each capital letter -->
             <xsl:variable name="countCaps" select="string-length(normalize-space(.)) - string-length(translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅÄÖÜ',''))"/>
             <xsl:if test="$countCaps &gt; 0">
@@ -204,7 +207,8 @@
         </xsl:for-each>
         <xsl:apply-templates select="../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in measure -->
         <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/             ../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section; to appear at the beginning of each system -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/             (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/             
+            (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
     </xsl:template>
     
     <xsl:template match="m:add | m:corr | m:damage | m:del |  m:gap | m:orig | m:reg | m:sic | m:supplied | m:unclear">
@@ -217,7 +221,7 @@
     </xsl:template>
     
     <xsl:template match="m:music//m:annot" mode="add_comment">
-        <xsl:variable name="annot" select="."/>
+        <!--<xsl:variable name="annot" select="."/>-->
         <!-- Get the annotation's number -->
         <xsl:variable name="no" select="count(preceding::m:annot[ancestor::m:music]) + 1"/>
         <xsl:variable name="context" as="node()">
@@ -230,7 +234,7 @@
             </xsl:choose>
         </xsl:variable>
         <!-- Change context node if necessary -->
-        <xsl:for-each select="ancestor-or-self::*[name()=$context]">
+        <xsl:for-each select="ancestor-or-self::*[name()=$context][$comments='yes']">
             <!-- Place a marker -->
             <dir xmlns="http://www.music-encoding.org/ns/mei" place="above" type="comment textcriticalnote annotation-marker"><!-- class was: comment notelink -->
                 <xsl:if test="descendant-or-self::m:annot/@xml:id">

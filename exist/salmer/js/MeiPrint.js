@@ -20,7 +20,8 @@ var disabledOptions = ["adjustPageHeight", "breaks", "landscape", "pageHeight", 
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    pageWidth:            1000,
+    pageWidth:            2000,
+//    pageWidth:            1000,
     // minimal page height forces Verovio to render only one system per page     
     pageHeight:           100,
     pageMarginTop:        0,
@@ -62,7 +63,8 @@ function meiObj (data, xml, verovioOptions) {
         show: {
             xslt:       'show.xsl',
             parameters: {
-                mdiv:   ''
+                mdiv:     '',
+                comments: 'no'
             }
         }
     };
@@ -81,7 +83,8 @@ Then change the properties as desired
 var $show = {
     xslt:       'show.xsl',
     parameters: {
-        mdiv:   ''
+        mdiv:     '',
+        comments: 'no'
     }
 }
  
