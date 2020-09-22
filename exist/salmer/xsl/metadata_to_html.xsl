@@ -38,6 +38,9 @@
     <!-- Language to use for labels etc. Default is overridden if the calling script provides a language parameter -->
     <xsl:variable name="default_language">da</xsl:variable>
     
+    <!-- Text server -->
+    <xsl:variable name="textsite" select="'https://salmer.dsl.dk/'"/>
+    
     <!-- Other variables - do not edit -->
     
     <!-- preferred language in titles and other multilingual fields -->
@@ -59,11 +62,11 @@
     </xsl:variable>
     
     <!-- files containing look-up information -->
-    <xsl:variable name="bibl_file_name" select="concat($base_uri,'/library/standard_bibliography.xml')"/>
-    <xsl:variable name="bibl_file" select="document($bibl_file_name)"/>
+    <xsl:variable name="bibl_file" select="document(concat($base_uri,'/library/standard_bibliography.xml'))"/>
     
-    <xsl:variable name="abbreviations_file_name" select="concat($base_uri,'/library/abbreviations.xml')"/>
-    <xsl:variable name="abbreviations" select="document($abbreviations_file_name)/m:p/*"/>
+    <xsl:variable name="abbreviations" select="document(concat($base_uri,'/library/abbreviations.xml'))/m:p/*"/>
+    
+    <xsl:variable name="concordance" select="document(concat($base_uri,'/library/concordance.xml'))"/>
     
     <xsl:variable name="language_pack_file_name">
         <xsl:choose>
@@ -101,13 +104,6 @@
         </div>
         <div>base_file_uri: <xsl:value-of select="$base_file_uri"/>
         </div>
-        <div>bibl_file_name: <xsl:value-of select="$bibl_file_name"/>
-        </div>
-        <div>abbreviations_file_name: <xsl:value-of select="$abbreviations_file_name"/>
-        </div>
-        <div>language_pack_file_name: <xsl:value-of select="$language_pack_file_name"/>
-        </div>
-        
     </xsl:template>
     <!-- END DEBUG -->
     
@@ -2873,7 +2869,16 @@
             <xsl:attribute name="href">
                 <xsl:choose>
                     <xsl:when test="normalize-space(@target)">
-                        <xsl:value-of select="@target"/>
+                        <xsl:choose>
+                            <xsl:when test="substring(@target,1,1)='#' and $concordance//ref[@id=substring-after(current()/@target,'#')]">
+                                <!-- #id: look up the id in the concordance and replace with link to chapter/section -->
+                                <xsl:variable name="ref" select="$concordance//ref[@id=substring-after(current()/@target,'#')]"/>
+                                <xsl:value-of select="concat($ref/parent::*/@id, $ref/@target)"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="@target"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="@xl:href"/>
