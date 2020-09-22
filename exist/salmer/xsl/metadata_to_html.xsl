@@ -2873,7 +2873,7 @@
                             <xsl:when test="substring(@target,1,1)='#' and $concordance//ref[@id=substring-after(current()/@target,'#')]">
                                 <!-- #id: look up the id in the concordance and replace with link to chapter/section -->
                                 <xsl:variable name="ref" select="$concordance//ref[@id=substring-after(current()/@target,'#')]"/>
-                                <xsl:value-of select="concat($ref/parent::*/@id, $ref/@target)"/>
+                                <xsl:value-of select="concat($textsite, $ref/parent::*/@id, $ref/@target)"/>
                             </xsl:when>
                             <xsl:otherwise>
                                 <xsl:value-of select="@target"/>
