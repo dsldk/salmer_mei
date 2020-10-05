@@ -42,9 +42,9 @@
             the Danish hymn and service books published online at  
             <a href="https://salmer.dsl.dk" target="_blank" titel="Digital edition of the hymn books">salmer.dsl.dk</a>.<br/>
             The database is intended to illustrate relations between the melodies involved. Apart from the notated melodies 
-            themselves the database informs about the melodies' transmission and their use during the 16th century. 
-            References to further reading and links to other digital resources provide further information.</p>
-        <p>The database records describe the material at various levels. Record types and internal links 
+            themselves the database informs about their transmission and use during the 16th century. 
+            References to further reading and links to other digital resources provide access to further information.</p>
+        <p>Various types of database records describe the material at different levels. Record types and internal links 
             are colour-coded as follows to guide the user:</p>
         <table>
             <tr>
@@ -56,7 +56,7 @@
             </tr>
             <tr>             
                 <td><span class="relation melody">Melody</span></td>
-                <td>Information about a melody occurring in more than one book within the edited corpus.<br/>
+                <td>General information about a melody occurring in more than one book within the edited corpus.<br/>
                     Conveys historical information about the melody and provides links to the records
                     describing the melody as found in each of the books.<br/>
                     The various notations of the melody are shown as well for easy comparison.</td>
@@ -64,8 +64,8 @@
             <tr>
                 <td><span class="relation publication">Publication</span></td>
                 <td>Publication records represent a single hymn or service book.<br/>
-                    They provide a sortable list of melodies included and may serve as a quick overview
-                    and an entry point into each of the books.
+                    They offer a sortable list of the melodies included and may serve as a quick overview
+                    and an entry point to each of the books.
                 </td>
             </tr>
             <tr>
@@ -84,7 +84,7 @@
         
         <h2><a name="notation">Interacting with scores</a></h2>
         
-        <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/menu.png" title="Music menu" alt="Music menu"/>The 
+        <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/menu_en.png" title="Music menu" alt="Music menu"/>The 
             menu icon <img src="/style/img/menu_icon.png" title="Menu" alt="Menu" width="26"/> next to each melody
             offers various kinds of interaction with the score:</p>
         
@@ -137,46 +137,52 @@
         <h3><a name="advanced">Melodic search</a></h3> 
         <p>From the melody databases' search page also the music is searchable. 
             The search page is available at <a href="mei_search.xq">https://melodier.dsl.dk/mei_search.xq</a>.
-            It is also reachable from any other page by clicking "Advanced search" below the title search field.<br/> 
+            It is also reachable from any other page by clicking "Advanced search" below the title search field.<br/>
+            Due to the rhythmic variation of the melodies and the rhythmic ambiguity of some of the notational systems 
+            involved, all searches are rhythmic unaware and take into account only pitch.<br/>
             The search page's tabs offer various ways of searching the melodies:</p>
         
         <h4><a name="search_pitchname">Searching by pitch name</a></h4>
         <p>Melodies are searchable using pitch names. <br/>
-            Altered notes are written as <kbd>V</kbd> (C sharp/D flat), <kbd>Y</kbd> (D sharp/E flat), 
-            <kbd>X</kbd> (F sharp/G flat), <kbd>Y</kbd> (G sharp/A flat) and <kbd>Z</kbd> (A sharp/ B flat).</p>
+            Altered notes are written as <kbd>V</kbd> (C sharp/D flat), <kbd>W</kbd> (D sharp/E flat), 
+            <kbd>X</kbd> (F sharp/G flat), <kbd>Y</kbd> (G sharp/A flat), and <kbd>Z</kbd> (A sharp/ B flat).</p>
         <p>EXAMPLE: <a href="https://melodier.dsl.dk/mei_search.xq?x=&amp;q=CAFACDC" title="Search for pitch sequence CAFACDC">Searching for the pitch sequence <kbd>CAFACDC</kbd></a> 
             finds the melody <em>Nu er fød os Jesus Christ / Resonet in laudibus</em> 
             (In Denmark also known today as <em>Lad det klinge sødt i sky</em>).</p>
         
         <h4><a name="search_contour">Searching by melodic contour</a></h4>
-        <p>En mere fleksibel måde at søge i melodierne på er at angive melodiens kontur, dvs. om melodien bevæger sig op (angives ved tegnet <kbd>/</kbd>),
-            ned (<kbd>\</kbd>) eller har tonegentagelse (<kbd>-</kbd>). Alternativt kan konturen skrives med bogstaver: <kbd>u</kbd> for "up" (op), 
-            <kbd>d</kbd> for "down" (ned) eller <kbd>r</kbd> for "repeat" (tonegentagelse).<br/>
-            Da kontursøgningen ikke tager hensyn til intervallernes størrelse, men kun deres retning, finder den langt flere resultater end tonesøgningen. 
-            Ofte vil det derfor være hensigtsmæssigt med en længere søgestreng for at begrænse antallet af resultater.</p> 
-        <p>EKSEMPEL: <a href="https://melodier.dsl.dk/mei_search.xq?x=&amp;c=dduuudrdduuud" title="Søgning efter konturen \\///\-\\///\">Søgning efter konturen <kbd>\\///\-\\///\</kbd></a> finder – ligesom ovenfor – 
+        <p>A more flexible way of searching the melodies is by specifying the contour of the melody, that is, whether the melodic 
+            line is ascending (indicated by a <kbd>/</kbd>), descending (<kbd>\</kbd>) or repeating a note (<kbd>-</kbd>). 
+            Alternatively, the letters <kbd>u</kbd>, <kbd>d</kbd> and <kbd>r</kbd> may be used for "up", "down", and "repeat", respectively.<br/>
+            As the countour search takes into account only the direction of the intervals but is indifferent to their size,
+            it yields many more results than the pitch name search. Therefore a somewhat longer query string will usually be 
+            needed to limit the number of results.</p> 
+        <p>EXAMPLE: <a href="https://melodier.dsl.dk/mei_search.xq?x=&amp;c=dduuudrdduuud" 
+            title="Search for the contour \\///\-\\///\">Searching for the contour <kbd>\\///\-\\///\</kbd></a> finds – as above – 
             <em>Nu er fød os Jesus Christ / Resonet in laudibus</em>.</p>
         
         <h4><a name="search_notation">Searching by notation (piano input)</a></h4>
-        <p>Der kan søges i melodierne ved indtastning af noder. Nodesøgningen tager kun tonehøjder i betragtning, ikke rytme. 
-            Der kan indtastes op til 12 toner.</p>
-        <p>Søgningen kan indsnævres eller udvides ved et antal valgmuligheder: </p>
+        <p>Melodies are searchable also by means of music notation. The piano input allows sequences of 
+            up to twelve notes.</p>
+        <p>The search may be narrowed or broadened by a number of options: </p>
         <ul>
-            <li>Alle transpositioner: Udvider søgningen til at finde den angivne intervalfølge i alle transpositioner</li>
-            <li>Begynder med: Indsnævrer søgningen til kun at søge på melodiernes begyndelse</li>
-            <li>Ignorer tonegentagelser: Udvider søgningen ved at se bort fra tonegentagelser, sådan at f.eks. en underdeling af en tone på grund af 
-                afvigende antal tekststavelser også findes</li>
-            <li>Præcision: Der kan tillades op til to afvigelser fra den angivne søgestreng. 
-                Som afvigelser tæller manglende toner, ekstra toner samt afvigende tonehøjder.</li>
+            <li>All transpositions: Broadens the search by including results matching the note sequence in all transpositions
+                (in essence, searching by intervals instead of pitches)</li>
+            <li>Starts with: Narrows the search to melodies starting with the specified note sequence</li>
+            <li>Ignore repeated notes: Broadens the search by treating repeated notes as one, thus enabling matches also 
+                where, for instance, notes are subdivided into two or more to fit differing numbers of syllables.</li>
+            <li>Precision: One or two edits (deviations) from the specified query sequence may be allowed. Missing notes, 
+                added notes and altered pitches each count as one edit.</li>
         </ul>
-        <p>EKSEMPEL: <a href="https://melodier.dsl.dk/mei_search.xq?a=77-77-77-72-76-77-74-72&amp;x=&amp;e=1&amp;f=2" title="Søg efter: Vor Gud han er så fast en borg">Søgning 
-            efter de første otte toner af <em>Vor Gud han er 
-                så fast en borg</em></a> efter den i dag kendte melodiversion kræver, at der tillades op til to afvigelser, da femte tone afviger (d i stedet for e) og der 
-            er en ekstra gennemgangstone (mellem f og d) i den gamle melodiform.</p>
+        <p>EXAMPLE: <a href="https://melodier.dsl.dk/mei_search.xq?a=77-77-77-72-76-77-74-72&amp;x=&amp;e=1&amp;f=2" title="Search for: Vor Gud han er så fast en borg">Searching
+            for the first eight notes of <em>Vor Gud han er så fast en borg</em></a> ("A Mighty Fortress Is Our God") in its 
+            modern Danish shape requires allowing two edits, because the fifth note diverges in pitch (D instead of E) 
+            and because the old form of the melody has an extra note (between F and D).</p>
         
-        <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/search_phrase.png" title="Markering og søgning" alt="Markering"/>Nodesøgningen kan også aktiveres 
-            direkte fra salmebøgerne eller noderne i salmebasen: Klik på en node og derefter en anden node for at markere et melodiudsnit. 
-            Klik derefter på markeringen for at søge efter tilsvarende passager i alle melodierne.</p>
+        <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/search_phrase.png" title="Marking and searching" alt="Marking"/>Melodic 
+            search is also immidiately available wherever there is music notation in the digital edition of the books or 
+            in the melody database: Click on a note and then on another to mark a melodic passage. Click the marked passage to 
+            perform a search for similar sequences (or click on a note outside the marking to unselect).</p>
         
     </div>
     

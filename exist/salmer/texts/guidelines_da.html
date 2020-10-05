@@ -48,7 +48,7 @@
         <table>
             <tr>
                 <td><span class="relation music_document">En melodi i publikation</span></td>
-                <td>Melodi, som den står i en bestemt salme- eller messebog.<br/> 
+                <td>Melodi og tekst, som den står i en bestemt salme- eller messebog.<br/> 
                     Hvis melodien ikke forekommer i andre af korpussets bøger, findes eventuel historisk information om melodien også her.</td>
             </tr>
             <tr>             
@@ -64,8 +64,8 @@
             </tr>
             <tr>
                 <td><span class="relation liturgy">Liturgisk enhed</span></td>
-                <td>Beskriver en enhed, som typisk består af flere melodistykker og tekst, der ikke kan karakteriseres som 
-                    en salme, men som tilsammen danner en liturgisk enhed. <br/>
+                <td>Beskriver en enhed, typisk bestående af flere melodistykker og tekst, der ikke kan karakteriseres som 
+                    en salme, men som tilsammen danner en liturgisk enhed, f.eks. et messeled. <br/>
                     Det gælder f.eks. <a href="https://melodier.dsl.dk/document.xq?doc=kyrie_eleison_gud_fader_forbarme_dig.xml">litaniet</a>,
                     som står i både Thomissøns salmebog og Jespersens graduale.</td>
             </tr>
@@ -78,7 +78,7 @@
         <h2><a name="notation">Brug af noderne</a></h2>
         
         <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/menu.png" title="Nodemenu" alt="Nodemenu"/>Via menuknappen 
-            <img src="/style/img/menu_icon.png" title="Menu" alt="Menu" width="26px"/> ud for hver melodi er 
+            <img src="/style/img/menu_icon.png" title="Menu" alt="Menu" width="26"/> ud for hver melodi er 
             der mulighed for at interagere med noderne på forskellig vis:</p>
         
         <h3><a name="play">Afspilning</a></h3>
@@ -94,14 +94,15 @@
         
         <h4><a name="clef">Nøgler</a></h4>
         <p>Melodierne er ofte noteret med nøgler, som er ualmindelige i dag. For at lette læsningen kan nøglerne udskiftes med mere nutidige: 
-            G-nøgle, oktaverende G-nøgle (&quot;tenornøgle&quot;) eller basnøgle. Klik på den ønskede nøgle i nodemenuen for at skifte nøgle.</p>
+            G-nøgle, oktaverende G-nøgle ("tenornøgle") eller basnøgle. Klik på den ønskede nøgle i nodemenuen for at skifte nøgle.</p>
         
         <h4><a name="duration">Nodeværdier</a></h4>
-        <p>I salme- og messebøgerne er melodierne noteret med ældre nodeformer: enten koralnotation (nodehoveder uden halse) eller mensuralnotation. 
-            Mensuralnotation ligner moderne noder, og de er i den digitale udgave noteret med de tilsvarende nutidige noder. 
+        <p>I salme- og messebøgerne er melodierne noteret med ældre nodeformer: enten koralnotation (nodehoveder uden halse), 
+            mensuralnotation eller en blandingsform heraf. 
+            Mensuralnotation ligner moderne noder og er i den digitale udgave gengivet med de tilsvarende nutidige noder. 
             Det gør dog, at nodeværdierne kan synes meget lange i forhold til gængs praksis i dag. 
             For at tilpasse noderne mere til nutidig praksis og undgå de meget lange nodeværdier, kan nodeværdier i mensuralnotation reduceres til det halve eller det kvarte ved hjælp af nodemenuen.<br/>
-            NB: Ved reduktion af nodeværdier markeres mensurtegnet (det, som vi i dag ville læse som en &quot;taktart&quot;) i begyndelsen af satsen med rødt for at understrege, 
+            NB: Ved reduktion af nodeværdier markeres mensurtegnet (det, som vi i dag ville læse som en "taktart") i begyndelsen af satsen med rødt for at understrege, 
             at det ikke skal læses som en nutidig taktart, men en angivelse af mensur, som ikke umiddelbart kan halveres og derfor vil være misvisende i sammenhæng med de ændrede nodeværdier.</p>
         
         <h4><a name="transposition">Transponering</a></h4>
@@ -117,30 +118,34 @@
         </p>
         
         <h3><a name="advanced">Melodisøgning</a></h3> 
-        <p>På melodibasens søgeside er der desuden mulighed for at søge i selve melodierne. Søgesiden findes på <a href="mei_search.xq">https://melodier.dsl.dk/mei_search.xq</a>
-            eller fra de øvrige sider ved at klikke på &quot;Avanceret søgning&quot; under titelsøgefeltet. Fanebladene giver adgang til en række forskellige søgefunktioner:</p>
+        <p>På melodibasens søgeside er der desuden mulighed for at søge i selve melodierne. 
+            Søgesiden findes på <a href="mei_search.xq">https://melodier.dsl.dk/mei_search.xq</a>
+            eller fra de øvrige sider ved at klikke på "Avanceret søgning" under titelsøgefeltet.
+            På grund af den historisk set store rytmiske variation i melodierne og den grundlæggende 
+            rytmiske ubestemthed i koralnotation tager nodesøgningen kun tonehøjder i betragtning, ikke rytme.<br/>
+            Fanebladene giver adgang til en række forskellige søgefunktioner:</p>
         
         <h4><a name="search_pitchname">Søgning efter tonenavne</a></h4>
         <p>Der kan søges efter melodier ved hjælp af tonernes navne. <br/>
-            Tonen h skrives <kbd>B</kbd>. Tonen cis/des skrives <kbd>V</kbd>, dis/es <kbd>Y</kbd>, fis/ges <kbd>X</kbd>, gis/as <kbd>Y</kbd> og ais/b <kbd>Z</kbd>.</p>
+            Tonen h skrives <kbd>B</kbd>. Tonen cis/des skrives <kbd>V</kbd>, dis/es <kbd>W</kbd>, fis/ges <kbd>X</kbd>, gis/as <kbd>Y</kbd> og ais/b <kbd>Z</kbd>.</p>
         <p>EKSEMPEL: <a href="https://melodier.dsl.dk/mei_search.xq?x=&amp;q=CAFACDC" title="Søg efter tonerne CAFACDC">Søgning efter tonerne <kbd>CAFACDC</kbd></a> 
             finder melodien <em>Nu er fød os Jesus Christ / Resonet in laudibus</em> (i dag også kendt som <em>Lad det klinge sødt i sky</em>).</p>
         
         <h4><a name="search_contour">Søgning efter melodikontur</a></h4>
         <p>En mere fleksibel måde at søge i melodierne på er at angive melodiens kontur, dvs. om melodien bevæger sig op (angives ved tegnet <kbd>/</kbd>),
-            ned (<kbd>\</kbd>) eller har tonegentagelse (<kbd>-</kbd>). Alternativt kan konturen skrives med bogstaver: <kbd>u</kbd> for &quot;up&quot; (op), 
-            <kbd>d</kbd> for &quot;down&quot; (ned) eller <kbd>r</kbd> for &quot;repeat&quot; (tonegentagelse).<br/>
+            ned (<kbd>\</kbd>) eller har tonegentagelse (<kbd>-</kbd>). Alternativt kan konturen skrives med bogstaver: <kbd>u</kbd> for "up" (op), 
+            <kbd>d</kbd> for "down" (ned) eller <kbd>r</kbd> for "repeat" (tonegentagelse).<br/>
             Da kontursøgningen ikke tager hensyn til intervallernes størrelse, men kun deres retning, finder den langt flere resultater end tonesøgningen. 
             Ofte vil det derfor være hensigtsmæssigt med en længere søgestreng for at begrænse antallet af resultater.</p> 
         <p>EKSEMPEL: <a href="https://melodier.dsl.dk/mei_search.xq?x=&amp;c=dduuudrdduuud" title="Søgning efter konturen \\///\-\\///\">Søgning efter konturen <kbd>\\///\-\\///\</kbd></a> finder – ligesom ovenfor – 
             <em>Nu er fød os Jesus Christ / Resonet in laudibus</em>.</p>
         
         <h4><a name="search_notation">Søgning med noder</a></h4>
-        <p>Der kan søges i melodierne ved indtastning af noder. Nodesøgningen tager kun tonehøjder i betragtning, ikke rytme. 
-            Der kan indtastes op til 12 toner.</p>
+        <p>Der kan søges i melodierne ved indtastning af noder. Der kan indtastes op til tolv toner.</p>
         <p>Søgningen kan indsnævres eller udvides ved et antal valgmuligheder: </p>
         <ul>
-            <li>Alle transpositioner: Udvider søgningen til at finde den angivne intervalfølge i alle transpositioner</li>
+            <li>Alle transpositioner: Udvider søgningen til at finde den angivne tonefølge i alle transpositioner, 
+                (det vil i praksis sige søgning efter intervalfølge i stedet for tonefølge)</li>
             <li>Begynder med: Indsnævrer søgningen til kun at søge på melodiernes begyndelse</li>
             <li>Ignorer tonegentagelser: Udvider søgningen ved at se bort fra tonegentagelser, sådan at f.eks. en underdeling af en tone på grund af 
                 afvigende antal tekststavelser også findes</li>
@@ -154,7 +159,8 @@
         
         <p><img style="float:right; margin: 0 0 20px 20px;" src="/style/img/search_phrase.png" title="Markering og søgning" alt="Markering"/>Nodesøgningen kan også aktiveres 
             direkte fra salmebøgerne eller noderne i salmebasen: Klik på en node og derefter en anden node for at markere et melodiudsnit. 
-            Klik derefter på markeringen for at søge efter tilsvarende passager i alle melodierne.</p>
+            Klik derefter på markeringen for at søge efter tilsvarende passager i alle melodierne 
+            (eller klik på en node uden for den valgte passage for at fjerne markeringen).</p>
         
     </div>
 
