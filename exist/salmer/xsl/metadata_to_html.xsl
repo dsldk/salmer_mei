@@ -626,7 +626,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <xsl:variable name="label">
+        <xsl:variable name="full_label">
             <xsl:choose>
                 <xsl:when test="normalize-space(substring-after(@label,':'))">
                     <xsl:value-of select="normalize-space(substring-after(@label,':'))"/>
@@ -639,16 +639,52 @@
                 <xsl:value-of select="@target"/>
             </xsl:if>
         </xsl:variable>
-        <xsl:variable name="relation">
-            <xsl:call-template name="translate_relation">
-                <xsl:with-param name="label" select="@label"/>
-                <xsl:with-param name="rel" select="@rel"/>
-            </xsl:call-template>
+        <!-- displayed label may need abbreviation -->
+        <xsl:variable name="label">
+            <xsl:choose>
+                <xsl:when test="string-length($full_label) &gt; 40 and contains($full_label,' ')">
+                    <xsl:variable name="revLabel">
+                        <xsl:call-template name="reverse">
+                            <xsl:with-param name="pStr" select="substring($full_label,1,41)"/>
+                        </xsl:call-template>
+                    </xsl:variable>
+                    <xsl:call-template name="reverse">
+                        <xsl:with-param name="pStr" select="substring-after($revLabel,' ')"/>
+                    </xsl:call-template>
+                    <xsl:text> [...]</xsl:text>
+                </xsl:when>
+                <xsl:otherwise><xsl:value-of select="$full_label"/></xsl:otherwise>
+            </xsl:choose>            
         </xsl:variable>
-        <a href="{$href}" title="{concat($l/*[name()=$rec_type],': ',$label)}">
+        <a href="{$href}" title="{concat($l/*[name()=$rec_type],': ',$full_label)}">
             <xsl:value-of select="$label"/>
         </a>
     </xsl:template>    
+    
+    <xsl:template name="reverse">
+        <!-- reverses a string -->
+        <xsl:param name="pStr"/>
+        <xsl:variable name="vLength" select="string-length($pStr)"/>
+        <xsl:choose>
+            <xsl:when test="$vLength = 1"><xsl:value-of select="$pStr"/></xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="vHalfLength" select="floor($vLength div 2)"/>
+                <xsl:variable name="vrevHalf1">
+                    <xsl:call-template name="reverse">
+                        <xsl:with-param name="pStr" 
+                            select="substring($pStr, 1, $vHalfLength)"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="vrevHalf2">
+                    <xsl:call-template name="reverse">
+                        <xsl:with-param name="pStr" 
+                            select="substring($pStr, $vHalfLength+1)"/>
+                    </xsl:call-template>
+                </xsl:variable>
+                <xsl:value-of select="concat($vrevHalf2, $vrevHalf1)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:template>
     
     <xsl:template name="translate_relation">
         <xsl:param name="rel"/>
