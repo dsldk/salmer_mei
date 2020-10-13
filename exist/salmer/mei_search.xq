@@ -551,7 +551,7 @@ let $result :=
                               <input type="hidden" name="q" value=""/>
                               <div class="manuscript-option-wrapper">
                                   <label class="checkbox-container">
-                                      {local:full-title("Mo_1528_LN0174")}
+                                      {local:full-title("Mo_1529_LN0174")}
                                       {local:publ_checkbox(1)}
                                       <span class="checkmark"></span>
                                   </label>

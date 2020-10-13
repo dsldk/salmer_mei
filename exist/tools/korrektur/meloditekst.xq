@@ -24,9 +24,9 @@ declare variable $books :=
             <mei>Je_1573</mei>
         </book>
         <book>
-            <title>Mortensøn 1528</title>
-            <tei>claus-mortensen-messe-1528.xml</tei>
-            <mei>Mo_1528</mei>
+            <title>Mortensøn 1529</title>
+            <tei>claus-mortensen-messe-1529.xml</tei>
+            <mei>Mo_1529</mei>
         </book>
         <book>
             <title>Thomissøn 1569</title>

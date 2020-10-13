@@ -21,8 +21,8 @@ declare variable $books :=
         </book>-->
         <book>
             <title>Det kristelige messeembede (Mortensøn, 1528)</title>
-            <tei>claus-mortensen-messe-1528.xml</tei>
-            <mei>Mo_1528</mei>
+            <tei>claus-mortensen-messe-1529.xml</tei>
+            <mei>Mo_1529</mei>
         </book>
         <book>
             <title>Haandbog i det evangeliske messeembede (Ulricksøn, 1535)</title>
