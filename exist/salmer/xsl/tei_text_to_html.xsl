@@ -19,16 +19,16 @@
     
     <xsl:param name="mdiv"/>
     
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/c.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/app.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/ex.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/div.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/hi.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/l.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/lb.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/lg.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/note.xsl"/>
-    <xsl:include href="https://raw.githubusercontent.com/dsldk/dsl-tei/master/xslt/p.xsl"/>
+    <xsl:include href="xsl-tei/c.xsl"/>
+    <xsl:include href="xsl-tei/app.xsl"/>
+    <xsl:include href="xsl-tei/div.xsl"/>
+    <xsl:include href="xsl-tei/ex.xsl"/>
+    <xsl:include href="xsl-tei/hi.xsl"/>
+    <xsl:include href="xsl-tei/l.xsl"/>
+    <xsl:include href="xsl-tei/lb.xsl"/>
+    <xsl:include href="xsl-tei/lg.xsl"/>
+    <xsl:include href="xsl-tei/note.xsl"/>
+    <xsl:include href="xsl-tei/p.xsl"/>
     
     <xsl:template match="/">
         <xsl:apply-templates/>
@@ -70,8 +70,8 @@
         <xsl:variable name="appNote">
             <xsl:apply-templates select="." mode="apparatusCriticus"/>
         </xsl:variable>
-        <xsl:variable name="appNo" select="substring-before($appNote/string(),'.')"></xsl:variable>
-        <xsl:variable name="appText" select="substring-after($appNote/string(),'.')"></xsl:variable>
+        <xsl:variable name="appNo" select="substring-before($appNote/string(),'.')"/>
+        <xsl:variable name="appText" select="substring-after($appNote/string(),'.')"/>
         <span class="notelink" id="{concat('notelinkApp',$appNo)}">
             <sup>[<xsl:value-of select="$appNo"/>]</sup>
         </span>

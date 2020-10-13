@@ -19,12 +19,15 @@ declare variable $host     := request:get-header('HOST'); (: "localhost"; with m
 (:declare variable $session_language := request:set-session-attribute("random", $r) :)
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
+declare variable $datadirTEI  := "data-tei";
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
+
+(: if TEI documents are to be read from another server: :)
+(: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
 
 
 (: Set language :)
@@ -59,9 +62,16 @@ let $tei_doc_name := if($coll!="")
     else 
         ""
 
-let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc_name)))
+(: if TEI documents are to be read from another server: :)
+(: let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc_name)))
     then 
         doc(concat($tei_base,$tei_doc_name))
+    else 
+        false()  :)
+
+let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$tei_doc_name)])
+    then 
+        collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$tei_doc_name)]
     else 
         false()
 
@@ -188,7 +198,7 @@ let $result :=
                               <param name="doc"  value="{$filename}"/>
                             </parameters>
                         let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
-                        let $text := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[dsl:mei_coll=$coll][1]/dsl:tei)))
+                        let $text := if($tei_doc)
                            then 
                                <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
                                    <!-- References to TEI file and MEI:mdiv/@xml:id transmitted in @class -->

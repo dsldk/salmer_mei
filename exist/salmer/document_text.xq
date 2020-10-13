@@ -1,5 +1,7 @@
 xquery version "3.0" encoding "UTF-8";
 
+(: retrieve and format the TEI text for the current melody :)
+
 declare namespace transform="http://exist-db.org/xquery/transform";
 declare namespace request="http://exist-db.org/xquery/request";
 declare namespace response="http://exist-db.org/xquery/response";
@@ -16,14 +18,16 @@ declare variable $meidocref  := request:get-parameter("doc", "");
 declare variable $teidocref  := request:get-parameter("tei", "");
 declare variable $mdiv       := request:get-parameter("mdiv", "");
 
-(: was: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/"; :)
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
+declare variable $datadirTEI  := "data-tei";
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
+
+(: if TEI documents are to be read from another server: :)
+(: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
 
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= 
@@ -34,16 +38,22 @@ declare variable $allowed as node():=
 
 let $filename := tokenize($meidocref, '/')[position() = last()]
 
-
-let $tei_doc := if(doc-available(concat($tei_base,$teidocref)))
+(: if TEI documents are to be read from another server: :)
+(: let $tei_doc := if(doc-available(concat($tei_base,$teidocref)))
     then 
         doc(concat($tei_base,$teidocref))
+    else 
+        false()  :)
+
+let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$teidocref)])
+    then 
+        collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$teidocref)]
     else 
         false()
 
 let $text_data := if($tei_doc) 
     then
-        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
+        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  
     else
         ()
 

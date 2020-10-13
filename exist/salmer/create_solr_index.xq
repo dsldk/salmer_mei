@@ -39,8 +39,6 @@ let $index-doc :=
     }
 </add>
 
-(: let $login := xmldb:login($collection, 'mylogin', 'my-password') :)
-
 let $file-name := 'solr_index_add.xml'
 let $remove-return-status := if(exists(collection(concat($db,'/index/',$file-name)))) then  xmldb:remove($db, $file-name) else ""
 let $store-return-status := xmldb:store(concat($db,'/index/'), $file-name, $index-doc)  
