@@ -26,7 +26,7 @@ declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
 
-(: if TEI documents are to be read from another server: :)
+(: if TEI documents are to be read from another server, e.g. github: :)
 (: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
 
 (: List of domains allowed to access this resource with Javascript :)
@@ -53,7 +53,9 @@ let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains
 
 let $text_data := if($tei_doc) 
     then
-        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  
+(: Ulriksen 1535 does not use @type='psalm' :)    
+(:        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  :)  
+        $tei_doc//tei:div[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  
     else
         ()
 
