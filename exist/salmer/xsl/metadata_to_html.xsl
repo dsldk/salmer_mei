@@ -1,4 +1,13 @@
-<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:local="urn:my-stuff" version="2.0" exclude-result-prefixes="m xsl xs local marc zs xl">
+<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+    xmlns:xl="http://www.w3.org/1999/xlink" 
+    xmlns:marc="http://www.loc.gov/MARC21/slim" 
+    xmlns:zs="http://www.loc.gov/zing/srw/" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:m="http://www.music-encoding.org/ns/mei" 
+    xmlns:local="urn:my-stuff" 
+    version="2.0" 
+    exclude-result-prefixes="m xsl xs local marc zs xl">
     
     
     <!-- 
@@ -89,23 +98,83 @@
     
     <xsl:variable name="document" select="/"/>
     
+
+    <!-- FUNCTIONS -->
+    
+    <xsl:function name="local:accidental">
+        <xsl:param name="attr"/>
+        <span class="accidental">
+            <xsl:choose>
+                <xsl:when test="$attr='f'">♭</xsl:when>
+                <xsl:when test="$attr='ff'">♭♭</xsl:when>
+                <xsl:when test="$attr='s'">♯</xsl:when>
+                <xsl:when test="$attr='ss'">x</xsl:when>
+                <xsl:when test="$attr='n'">♮</xsl:when>
+                <xsl:when test="$attr='-flat'">♭</xsl:when>
+                <xsl:when test="$attr='-dblflat'">♭♭</xsl:when>
+                <xsl:when test="$attr='-sharp'">♯</xsl:when>
+                <xsl:when test="$attr='-dblsharp'">x</xsl:when>
+                <xsl:when test="$attr='-neutral'">♮</xsl:when>
+                <xsl:when test="$attr='-natural'">♮</xsl:when>
+                <xsl:otherwise/>
+            </xsl:choose>
+        </span>
+    </xsl:function>
+    
+    <!-- change first letter to uppercase -->
+    <xsl:function name="local:capitalize">
+        <xsl:param name="str"/>
+        <xsl:value-of select="concat(upper-case(substring($str,1,1)),substring($str,2))"/>
+    </xsl:function>
+    
+    <xsl:function name="local:get_rec_type">
+        <xsl:param name="target"/>
+        <xsl:if test="doc-available(concat($base_uri,'/',$datadir,'/',$target))">
+            <xsl:variable name="termList" select="document(concat($base_uri,'/',$datadir,'/',$target))/m:mei/m:meiHead/m:workList/m:work[1]/m:classification/m:termList"/>
+            <xsl:choose>
+                <xsl:when test="$termList/m:term[@type='itemClass']">
+                    <xsl:value-of select="$termList/m:term[@type='itemClass'][1]/text()"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:text>music_document</xsl:text>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+    </xsl:function>
+    
     <xsl:function name="local:nodifier" as="text()">
         <xsl:param name="str"/>
         <xsl:value-of select="$str"/>
     </xsl:function>
     
-    <!-- DEBUG -->
-    <xsl:template match="m:meiTEST" xml:space="default">
-        <div>Host: <xsl:value-of select="$hostname"/>
-        </div>
-        <div>Doc: <xsl:value-of select="$doc"/>
-        </div>
-        <div>base_uri: <xsl:value-of select="$base_uri"/>
-        </div>
-        <div>base_file_uri: <xsl:value-of select="$base_file_uri"/>
-        </div>
-    </xsl:template>
-    <!-- END DEBUG -->
+    <xsl:function name="local:abbreviate_line">
+        <!-- limits a line of text to the length indicated by $max -->
+        <xsl:param name="line" as="xs:string"/>
+        <xsl:param name="max" as="xs:integer"/>
+        <xsl:choose>
+            <xsl:when test="string-length($line) &gt; $max and contains($line,' ')">
+                <xsl:variable name="revStr" select="local:reverse(substring($line,1,$max + 1))"/>
+                <xsl:value-of select="concat(local:reverse(substring-after($revStr,' ')),' [...]')"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="$line"/></xsl:otherwise>
+        </xsl:choose>      
+    </xsl:function>
+    
+    <xsl:function name="local:reverse">
+        <!-- reverses a string -->
+        <xsl:param name="pStr" as="xs:string"/>
+        <xsl:variable name="vLength" select="string-length($pStr)"/>
+        <xsl:choose>
+            <xsl:when test="$vLength = 1"><xsl:value-of select="$pStr"/></xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="vHalfLength" select="floor($vLength div 2)"/>
+                <xsl:variable name="vrevHalf1" select="local:reverse(substring($pStr, 1, $vHalfLength))"/>
+                <xsl:variable name="vrevHalf2" select="local:reverse(substring($pStr, $vHalfLength+1))"/>
+                <xsl:value-of select="concat($vrevHalf2, $vrevHalf1)"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
     
     
     <!-- MAIN TEMPLATE -->
@@ -543,11 +612,7 @@
                         <!-- loop through relations, but skip those where @label contains a ":";  -->
                         <!-- also skip "hasPart" relations if there is a table of contents -->
                         <xsl:for-each select="m:relation[@rel!='' and(not(../../m:contents) or @rel!='hasPart') and not(contains(@target,'//:')) and $internal]">
-                            <xsl:variable name="class">
-                                <xsl:call-template name="get_rec_type">
-                                    <xsl:with-param name="target" select="@target"/>
-                                </xsl:call-template>
-                            </xsl:variable>
+                            <xsl:variable name="class" select="local:get_rec_type(@target)"/>
                             <div class="relation {$class}">
                                 <xsl:apply-templates select="." mode="relation_link">
                                     <xsl:with-param name="rec_type" select="$class"/>
@@ -640,52 +705,12 @@
             </xsl:if>
         </xsl:variable>
         <!-- displayed label may need abbreviation -->
-        <xsl:variable name="label">
-            <xsl:choose>
-                <xsl:when test="string-length($full_label) &gt; 40 and contains($full_label,' ')">
-                    <xsl:variable name="revLabel">
-                        <xsl:call-template name="reverse">
-                            <xsl:with-param name="pStr" select="substring($full_label,1,41)"/>
-                        </xsl:call-template>
-                    </xsl:variable>
-                    <xsl:call-template name="reverse">
-                        <xsl:with-param name="pStr" select="substring-after($revLabel,' ')"/>
-                    </xsl:call-template>
-                    <xsl:text> [...]</xsl:text>
-                </xsl:when>
-                <xsl:otherwise><xsl:value-of select="$full_label"/></xsl:otherwise>
-            </xsl:choose>            
-        </xsl:variable>
+        <xsl:variable name="label" select="local:abbreviate_line($full_label,40)"/>
         <a href="{$href}" title="{concat($l/*[name()=$rec_type],': ',$full_label)}">
             <xsl:value-of select="$label"/>
         </a>
     </xsl:template>    
-    
-    <xsl:template name="reverse">
-        <!-- reverses a string -->
-        <xsl:param name="pStr"/>
-        <xsl:variable name="vLength" select="string-length($pStr)"/>
-        <xsl:choose>
-            <xsl:when test="$vLength = 1"><xsl:value-of select="$pStr"/></xsl:when>
-            <xsl:otherwise>
-                <xsl:variable name="vHalfLength" select="floor($vLength div 2)"/>
-                <xsl:variable name="vrevHalf1">
-                    <xsl:call-template name="reverse">
-                        <xsl:with-param name="pStr" 
-                            select="substring($pStr, 1, $vHalfLength)"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:variable name="vrevHalf2">
-                    <xsl:call-template name="reverse">
-                        <xsl:with-param name="pStr" 
-                            select="substring($pStr, $vHalfLength+1)"/>
-                    </xsl:call-template>
-                </xsl:variable>
-                <xsl:value-of select="concat($vrevHalf2, $vrevHalf1)"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
+        
     <xsl:template name="translate_relation">
         <xsl:param name="rel"/>
         <xsl:param name="label"/>
@@ -713,24 +738,7 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <xsl:call-template name="capitalize">
-            <xsl:with-param name="str" select="concat($display_label,': ')"/>
-        </xsl:call-template>
-    </xsl:template>
-    
-    <xsl:template name="get_rec_type">
-        <xsl:param name="target"/>
-        <xsl:if test="doc-available(concat($base_uri,'/',$datadir,'/',$target))">
-            <xsl:variable name="termList" select="document(concat($base_uri,'/',$datadir,'/',$target))/m:mei/m:meiHead/m:workList/m:work[1]/m:classification/m:termList"/>
-            <xsl:choose>
-                <xsl:when test="$termList/m:term[@type='itemClass']">
-                    <xsl:value-of select="$termList/m:term[@type='itemClass'][1]/text()"/>
-                </xsl:when>
-                <xsl:otherwise>
-                    <xsl:text>music_document</xsl:text>
-                </xsl:otherwise>
-            </xsl:choose>
-        </xsl:if>
+        <xsl:value-of select="local:capitalize(concat($display_label,': '))"/>
     </xsl:template>
     
     <xsl:template match="m:expression" mode="top_level">
@@ -1159,9 +1167,7 @@
                 <xsl:value-of select="$l/key"/>: </span>
             <xsl:value-of select="translate(@pname,'abcdefgh','ABCDEFGH')"/>
             <xsl:if test="@accid and @accid!='n'">
-                <xsl:call-template name="key_accidental">
-                    <xsl:with-param name="attr" select="@accid"/>
-                </xsl:call-template>
+                <xsl:value-of select="local:accidental(@accid)"/>
             </xsl:if>
             <xsl:if test="substring($l/*[name()=$mode],1,1)!='-'">
                 <xsl:text> </xsl:text>
@@ -1282,11 +1288,7 @@
                     <br/>
                 </xsl:if>
                 <span class="p_heading:">
-                    <xsl:call-template name="capitalize">
-                        <xsl:with-param name="str">
-                            <xsl:value-of select="$l/soloist"/>
-                        </xsl:with-param>
-                    </xsl:call-template>
+                    <xsl:value-of select="local:capitalize($l/soloist)"/>
                     <xsl:if test="count(m:perfRes[@solo='true'])&gt;1 and ($language='en' or ($language='' and $default_language='en'))">s</xsl:if>: </span>
                 <xsl:apply-templates select="m:perfRes[@solo='true'][text()]">
                     <!-- Sort instruments according to top-level list -->
@@ -1642,9 +1644,7 @@
             <xsl:variable name="role">
                 <xsl:choose>
                     <xsl:when test="$capitalize='yes'">
-                        <xsl:call-template name="capitalize">
-                            <xsl:with-param name="str" select="$role_str"/>
-                        </xsl:call-template>
+                        <xsl:value-of select="local:capitalize($role_str)"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="$role_str"/>
@@ -2172,9 +2172,7 @@
     
     <!-- format scribe's name and medium -->
     <xsl:template match="m:hand" mode="scribe">
-        <xsl:call-template name="lowercase">
-            <xsl:with-param name="str" select="translate(@medium,'_',' ')"/>
-        </xsl:call-template>
+        <xsl:value-of select="lower-case(translate(@medium,'_',' '))"/>
         <xsl:if test=".//text()"> (<xsl:apply-templates select="."/>)</xsl:if>
     </xsl:template>
     
@@ -2477,12 +2475,7 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:variable name="from">
-                                        <xsl:call-template name="capitalize">
-                                            <xsl:with-param name="str" select="$l/from"/>
-                                        </xsl:call-template>
-                                    </xsl:variable>
-                                    <xsl:value-of select="$from"/>
+                                    <xsl:value-of select="local:capitalize($l/from)"/>
                                     <xsl:text> </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
@@ -2497,12 +2490,7 @@
                                     <xsl:text> </xsl:text>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:variable name="to">
-                                        <xsl:call-template name="capitalize">
-                                            <xsl:with-param name="str" select="$l/to"/>
-                                        </xsl:call-template>
-                                    </xsl:variable>
-                                    <xsl:value-of select="$to"/>
+                                    <xsl:value-of select="local:capitalize($l/to)"/>
                                     <xsl:text> </xsl:text>
                                 </xsl:otherwise>
                             </xsl:choose>
@@ -2880,9 +2868,7 @@
                         <xsl:value-of select="@label"/>
                     </xsl:when>
                     <xsl:when test="normalize-space(@targettype)">
-                        <xsl:call-template name="capitalize">
-                            <xsl:with-param name="str" select="@targettype"/>
-                        </xsl:call-template>
+                        <xsl:value-of select="local:capitalize(@targettype)"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
@@ -2927,9 +2913,7 @@
                         <xsl:value-of select="@label"/>
                     </xsl:when>
                     <xsl:when test="normalize-space(@targettype)">
-                        <xsl:call-template name="capitalize">
-                            <xsl:with-param name="str" select="@targettype"/>
-                        </xsl:call-template>
+                        <xsl:value-of select="local:capitalize(@targettype)"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:choose>
@@ -3066,49 +3050,6 @@
             </xsl:if>
         </xsl:if>
     </xsl:template>
-    
-    <!-- convert lowercase to uppercase -->
-    <xsl:template name="uppercase">
-        <xsl:param name="str"/>
-        <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyzæøå'"/>
-        <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ'"/>
-        <xsl:value-of select="translate($str, $smallcase, $uppercase)"/>
-    </xsl:template>
-    
-    <!-- convert uppercase to lowercase -->
-    <xsl:template name="lowercase">
-        <xsl:param name="str"/>
-        <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyzæøå'"/>
-        <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ'"/>
-        <xsl:value-of select="translate($str, $uppercase, $smallcase)"/>
-    </xsl:template>
-    
-    <!-- change first letter to uppercase -->
-    <xsl:template name="capitalize">
-        <xsl:param name="str"/>
-        <xsl:if test="$str">
-            <xsl:call-template name="uppercase">
-                <xsl:with-param name="str" select="substring($str,1,1)"/>
-            </xsl:call-template>
-            <xsl:value-of select="substring($str,2)"/>
-        </xsl:if>
-    </xsl:template>
-    
-    <xsl:template name="remove_">
-        <!-- removes _ if it's there, otherwise just return the string passed as
-            argument -->
-        <xsl:param name="str"/>
-        <xsl:choose>
-            <xsl:when test="contains($str,'_')">
-                <xsl:value-of select="concat(substring-before($str,'_'),       ' ',       substring-after($str,'_'))"/>
-            </xsl:when>
-            <xsl:otherwise>
-                <xsl:value-of select="$str"/>
-            </xsl:otherwise>
-        </xsl:choose>
-    </xsl:template>
-    
-    
     
     <!-- change date format from YYYY-MM-DD to D Month YYYY -->
     <!-- "??"-wildcards (e.g. "20??-09-??") are treated like numbers -->
@@ -3272,26 +3213,6 @@
         <!-- changes paragraphs to running text with line breaks instead of new paragraphs  -->
         <xsl:apply-templates/>
         <xsl:call-template name="maybe_print_br"/>
-    </xsl:template>
-    
-    <xsl:template name="key_accidental">
-        <xsl:param name="attr"/>
-        <span class="accidental">
-            <xsl:choose>
-                <xsl:when test="$attr='f'">♭</xsl:when>
-                <xsl:when test="$attr='ff'">♭♭</xsl:when>
-                <xsl:when test="$attr='s'">♯</xsl:when>
-                <xsl:when test="$attr='ss'">x</xsl:when>
-                <xsl:when test="$attr='n'">♮</xsl:when>
-                <xsl:when test="$attr='-flat'">♭</xsl:when>
-                <xsl:when test="$attr='-dblflat'">♭♭</xsl:when>
-                <xsl:when test="$attr='-sharp'">♯</xsl:when>
-                <xsl:when test="$attr='-dblsharp'">x</xsl:when>
-                <xsl:when test="$attr='-neutral'">♮</xsl:when>
-                <xsl:when test="$attr='-natural'">♮</xsl:when>
-                <xsl:otherwise/>
-            </xsl:choose>
-        </span>
     </xsl:template>
     
     <!-- entity replacements -->
