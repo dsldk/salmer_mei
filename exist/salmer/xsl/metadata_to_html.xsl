@@ -705,7 +705,37 @@
             </xsl:if>
         </xsl:variable>
         <!-- displayed label may need abbreviation -->
-        <xsl:variable name="label" select="local:abbreviate_line($full_label,40)"/>
+        <xsl:variable name="tmpLabel">
+            <!-- first, try if omitting the (YYYY) year indication is enough -->
+            <xsl:choose>
+                <xsl:when test="string-length($full_label) &gt; 35 and contains($full_label,' (')">
+                    <xsl:value-of select="concat(substring-before($full_label,' ('),substring-after($full_label,')'))"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$full_label"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="label">
+            <xsl:choose>
+                <xsl:when test="string-length($tmpLabel) &gt; 40">
+                    <xsl:choose>
+                        <xsl:when test="contains($tmpLabel,', fol.')">
+                            <xsl:value-of select="concat(local:abbreviate_line(substring-before($tmpLabel,', fol.'),30),', fol.',substring-after($tmpLabel,', fol.'))"/>
+                        </xsl:when>
+                        <xsl:when test="contains($tmpLabel,', s.')">
+                            <xsl:value-of select="concat(local:abbreviate_line(substring-before($tmpLabel,', s.'),30),', s.',substring-after($tmpLabel,', s.'))"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="local:abbreviate_line($tmpLabel,40)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>            
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$tmpLabel"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <a href="{$href}" title="{concat($l/*[name()=$rec_type],': ',$full_label)}">
             <xsl:value-of select="$label"/>
         </a>
