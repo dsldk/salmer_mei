@@ -727,7 +727,7 @@ function teiApp() {
         for(var i = 0; i < note_text_ids.length; i++) {
             current_note_no = note_text_ids[i].id;
             note_contents_id = "#" + current_note_no;
-            note_link_id = "#notelink" + current_note_no;
+            note_link_id = "#appnotelink" + current_note_no;
             dialog_opts.title =note_title; //+ current_note_no.substring(3);
             note_box = $( note_contents_id ).dialog(dialog_opts);
             $( note_link_id ).mouseover({note_box: note_box,note_contents_id: note_contents_id },dialogPosition);
