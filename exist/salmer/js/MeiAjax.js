@@ -287,47 +287,18 @@ function addComments(data) {
     var xmlString = (new XMLSerializer()).serializeToString(frag);
     var annotations = $.parseXML(xmlString);
 
-    /* Bind a click event on all editorial comment markers */
+    /* Bind a mouseover event on all editorial comment markers */
     $("#" + targetId + " .comment").each(function() {
         var commentId = $(this).attr("id");
         // Create a div for each comment
         var div = '<div id="' + commentId + '_div" class="mei_comment"></div>';
-        $("#" + targetId).append(div);
+        $("#" + targetId).append(div);        
         // Make the div a hidden jQuery dialog
-        $("#" + commentId + "_div").dialog({
-            autoOpen: false,
-            closeOnEscape: true,
-        	show: {
-        	    effect: "fade",
-                duration: 300
-        	},
-        	hide: {
-                effect: "fade",
-                duration: 300
-        	}
-        });
+        initializeComment(commentId + "_div");
         // Put the annotation in it
         $("#" + commentId + "_div").html($(annotations).find("#" + commentId.replace('_dir','_content')).html());
-        /* Make the bounding box clickable (works on Opera only )*/
-        //$(this).attr("pointer-events", "bounding-box");
         $(this).mouseover(function(event) {
-            // Close all open dialogs? 
-            $(".ui-dialog-content").dialog("close");
-            // Reposition the dialog 
-            $("#" + commentId + "_div").dialog( "option", "position", { 
-                my: "left-20 top-20",
-                at: "left top",
-                of: event,
-                offset: "20 200",
-                collision: "none",
-                resizable: false,
-                draggable: false } );
-            $("#" + commentId + "_div").dialog( "option", "height", "auto" );
-            $("#" + commentId + "_div").dialog( "option", "minHeight", "32px" );
-            $("#" + commentId + "_div").dialog( "option", "resizable", false );
-            $("#" + commentId + "_div").dialog( "option", "title", "Tekstkritik" );
-            // Show the dialog 
-            $("#" + commentId + "_div").dialog("open");
+            openOnMouseover(commentId + "_div");
         });
         if(comments) {
             // Make comment markers visible
@@ -361,7 +332,6 @@ function renderData(data) {
     vrvToolkit.loadData(xmlString);
     svg = vrvToolkit.renderToSVG(page, {});
     $("#" + targetId).html(svg);
-
 
     // Make a list of all <note> IDs
     $mei[targetId].notes = [];
@@ -438,7 +408,7 @@ function renderData(data) {
     });
 */
 
-    // Set max. SVG width to inital width to avoid up-scaling 
+    // Set max. SVG width to initial width to avoid up-scaling 
     var outerSvg = document.getElementById(targetId).firstChild;
     var viewBox = outerSvg.getAttribute('viewBox').split(' ');
     outerSvg.setAttribute('style', 'max-width: ' + viewBox[2] + 'px;');
@@ -703,14 +673,12 @@ function loadTeiText() {
             console.log('Retrieving TEI text');
             $.post(host + '/document_text.xq?doc=' + doc + '&tei=' + params[1] + '&mdiv=' + params[2],function(data){
                 $("#" + id).html(data);
-                teiApp();
+                addTeiComment(id);
                 if(comments) {
                     // Make comment markers visible
                     $("#" + id).find(".textcriticalnote.annotation-marker").css('display','inline');
-                    $("#" + id).find("sup").css('display','inline');
                 } else {
                     $("#" + id).find(".textcriticalnote.annotation-marker").css('display','none');
-                    $("#" + id).find("sup").css('display','none');
                 }
 
             },'html');
@@ -718,64 +686,63 @@ function loadTeiText() {
     }
 }
 
-
-function teiApp() {
-    // adopted from https://salmer.dsl.dk/static/popup.js
-    function insertNote(dialog_opts, note_type, note_title) {
-        var note_text_ids =  $(note_type);
-        var app_note_text_ids =  $(note_type);
-        for(var i = 0; i < note_text_ids.length; i++) {
-            current_note_no = note_text_ids[i].id;
-            note_contents_id = "#" + current_note_no;
-            note_link_id = "#appnotelink" + current_note_no;
-            dialog_opts.title =note_title; //+ current_note_no.substring(3);
-            note_box = $( note_contents_id ).dialog(dialog_opts);
-            $( note_link_id ).mouseover({note_box: note_box,note_contents_id: note_contents_id },dialogPosition);
-            
-        $(note_link_id).mouseout(function(event) {
-            // Close all open dialogs 
-            $(".ui-dialog-content").dialog("close");
-         0});
-
-
-        }
-    }
-
-    var dialog_opts = {
-    	title: 'Note',
-    	autoOpen: false,
-        closeOnEscape: true,
-    	show: {
-    	    effect: "fade",
-            duration: 300
-    	},
-    	hide: {
-            effect: "fade",
-            duration: 300
-    	},
-    	width: 320,
-    	height: "auto",
-    	minHeight: 80
-    };
-
-    function dialogPosition(event) {
-        event.data.note_box.dialog("option", "position", {
-            my: "left-20 top-20",
-            at: "left top",
-            of: event,
-            offset: "20 200"
+function addTeiComment(targetId) {
+    /* Bind a mouseover event on all editorial comment markers */
+    $("#" + targetId + " .appnotecontents").each(function() {
+        var commentId = $(this).attr("id");
+        var markerId = "appnotelink" + commentId;
+        // Make the comment a hidden jQuery dialog
+        initializeComment(commentId);
+        $("#" + markerId).mouseover(function(event) {
+            openOnMouseover(commentId);
         });
-        // closing the dialog is necessary for initialization
-        //$( event.data.note_contents_id ).dialog( "close" );
-        $(".ui-dialog-content").dialog("close");
-        $( event.data.note_contents_id ).dialog( "open" );
-    }
-
-    insertNote(dialog_opts, ".notecontents", "Ordforklaring");
-    insertNote(dialog_opts, ".appnotecontents", "Tekstkritik");
-
+        if(comments) {
+            // Make comment markers visible
+            $("#" + markerId).css('display','inline');
+        } else {
+            $("#" + markerId).css('display','none');
+        }
+        $(this).parent().mouseleave(function(){
+            $("#" + commentId).dialog("close");
+        }); 
+    });
 }
 
+function initializeComment(commentId) {
+    $("#" + commentId).dialog({
+        autoOpen: false,
+        closeOnEscape: true,
+        show: {
+            effect: "fade",
+            duration: 300
+        },
+        hide: {
+            effect: "fade",
+            duration: 300
+        }
+    });
+}
+
+function openOnMouseover(commentId) {
+// Opens a textcritical note dialog. 
+    // Close all open dialogs 
+    $(".ui-dialog-content").dialog("close");
+    // Reposition the dialog 
+    $("#" + commentId).dialog( "option", "position", { 
+        my: "left-20 top-20",
+        at: "left top",
+        of: event,
+        offset: "20 200",
+        collision: "none",
+        resizable: false,
+        draggable: false } );
+    $("#" + commentId).dialog( "option", "height", "auto" );
+    $("#" + commentId).dialog( "option", "minHeight", "32px" );
+    $("#" + commentId).dialog( "option", "resizable", false );
+    $("#" + commentId).dialog( "option", "title", "Tekstkritik" );
+    // Show the dialog 
+    $("#" + commentId).dialog("open");    
+}
 
 function FindByAttributeValue(doc, attribute, value, element_type)    {
     // rather slow solution; querySelector would be better but didn't seem to work with '[xml:\\id = "value"]'
