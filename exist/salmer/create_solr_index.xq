@@ -7,7 +7,14 @@ declare namespace dsl="http://dsl.dk";
 
 declare option exist:serialize "method=xhtml media-type=text/xml indent=yes";
 
-(: Generate a file for indexing MEI files in Solr :)
+(:
+    Generate a file for indexing MEI files in Solr.            
+    The resulting XML is stored in ./tmp/                     
+    To update Solr:                                        
+    Copy the XML into the "Documents" field at http://melodier.dsl.lan:8983/solr/#/salmer/documents 
+    (remember to change "Document type" to XML)
+    and submit it. Web interface may time out with large updates; that does not affect the indexing process.
+:)
 
 
 (: It is assumed that the data to be indexed is in /db/salmer/data :)
@@ -19,7 +26,7 @@ let $collection := ''  (: for instance, 'Th_1569'; use empty string to select al
 let $index-doc := 
 <add>
     {
-(: Kun småbøgerne: :)    
+(:  Kun småbøgerne: :)    
 (:    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"Je_" ) or contains(util:document-name(.),"Th_"))][count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]  :)
 (:  Kun Vingaard :)
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[contains(util:document-name(.),"Vi_" )]  :)
@@ -27,8 +34,7 @@ let $index-doc :=
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"_15" ))]  :)
 (:  Alle  :)    
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  :)
-    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  
-        let $doc-name  := util:document-name($doc)
+    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]        let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
         let $params := 
             <parameters>
@@ -39,9 +45,11 @@ let $index-doc :=
     }
 </add>
 
+(: let $login := xmldb:login($collection, 'mylogin', 'my-password') :)
+
 let $file-name := 'solr_index_add.xml'
-let $remove-return-status := if(exists(collection(concat($db,'/index/',$file-name)))) then  xmldb:remove($db, $file-name) else ""
-let $store-return-status := xmldb:store(concat($db,'/index/'), $file-name, $index-doc)  
+let $remove-return-status := if(exists(collection(concat($db,'/tmp/',$file-name)))) then  xmldb:remove($db, $file-name) else ""
+let $store-return-status := xmldb:store(concat($db,'/tmp/'), $file-name, $index-doc)  
 
 return  (: <message>Document Created {$store-return-status} at {$db}/{$file-name}</message>  :) 
           
