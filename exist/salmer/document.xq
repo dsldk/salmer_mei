@@ -104,8 +104,6 @@ let $result :=
         <link rel="stylesheet" type="text/css" href="style/elements.css" />
         <link rel="stylesheet" type="text/css" href="style/select-css.css" />
         <link rel="stylesheet" type="text/css" href="style/styles.css"/>
-        <!--<link rel="stylesheet" type="text/css" href="style/dsl-basis_print.css" media="print"/>
-        <link rel="stylesheet" type="text/css" href="style/print.css" media="print"/>-->
         
         <link rel="stylesheet" type="text/css" href="style/mei.css"/>
                 
@@ -129,16 +127,14 @@ let $result :=
         <!--<script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/latest/verovio-toolkit.js">/* */</script>-->
         <!--<script type="text/javascript" src="http://www.verovio.org/javascript/develop/verovio-toolkit.js">/* */</script>-->
-        <script type="text/javascript" src="js/MeiAjax.js"><!-- MEI tools --></script>
+        <script type="text/javascript" src="js/MeiAjax.js">/* MEI tools */</script>
 
-        <script type="text/javascript" src="js/javascript.js">/* Text site js */</script>
-        <script type="text/javascript" src="js/general.js">/* utilities */</script>
+        <script type="text/javascript" src="js/javascript.js">/* JS adapted from salmer.dsl.dk */</script>
 
         <!-- MIDI -->        
-        <!--<script src="js/wildwebmidi.js"> MIDI library </script>-->
-        <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
-        <script type="text/javascript" src="js/midiplayer.js"><!-- MIDI player --></script>
-        <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
+        <script type="text/javascript" src="js/libs/wildwebmidi/074_recorder.js">/* MIDI library */</script>
+        <script type="text/javascript" src="js/midiplayer.js">/* MIDI player */</script>
+        <script type="text/javascript" src="js/midiLib.js">/* custom MIDI library */</script>
 
         <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
         

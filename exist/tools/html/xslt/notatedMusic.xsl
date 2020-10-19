@@ -81,23 +81,27 @@
             <xsl:variable name="mei_css_base" select="'style/'"/>
             <xsl:variable name="mei_xslt_base" select="'xsl/'"/>
 
-            <!-- External JS libraries -->
-            <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"/>
-            <!-- Note highlighting only works with jQuery 3+ -->
-            <script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"><!-- jquery --></script>
-            <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"><!-- jquery UI --></script>
+            <!-- JS libraries -->
+            <link rel="stylesheet" href="{$mei_js_base}libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
+            <script type="text/javascript" src="{$mei_js_base}libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
+            <script type="text/javascript" src="{$mei_js_base}libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery UI */</script>
             
-            <!-- Local JS libraries -->
-            <script type="text/javascript" src="{$mei_js_base}libs/verovio/2.0.2-95c61b2/verovio-toolkit.js"> </script>
+            <script type="text/javascript" src="{$mei_js_base}libs/verovio/verovio-toolkit.js">/* Verovio*/ </script>
             <script type="text/javascript" src="{$mei_js_base}MeiAjax.js"> </script>
             <!-- MIDI -->        
-            <!--<script type="text/javascript" src="{$mei_js_base}wildwebmidi.js"> standard MIDI library (piano sound) </script>-->
-            <script type="text/javascript" src="{$mei_js_base}libs/wildwebmidi/074_recorder.js"><!-- MIDI library --></script>
-            <script type="text/javascript" src="{$mei_js_base}midiplayer.js"><!-- MIDI player --></script>
-            <script type="text/javascript" src="{$mei_js_base}midiLib.js"><!-- Custom MIDI library --></script>
+            <script type="text/javascript" src="{$mei_js_base}libs/wildwebmidi/074_recorder.js">/* MIDI sound library */</script>
+            <script type="text/javascript" src="{$mei_js_base}midiplayer.js">/* MIDI player */</script>
+            <script type="text/javascript" src="{$mei_js_base}midiLib.js">/* Custom MIDI library */</script>
             
             <!-- SVG CSS styling -->
             <link rel="stylesheet" type="text/css" href="{$mei_css_base}mei.css"/>
+            
+            <!--<script type="text/javascript" src="js/javascript.js">/* JS adapted from salmer.dsl.dk */</script>
+            <script type="text/javascript" src="js/FileSaver.js">/* js for file download */</script>
+            <script type="text/javascript">
+                language = "{$language}";
+            </script>-->      
+            
             
         </xsl:if>
     </xsl:template>

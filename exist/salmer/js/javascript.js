@@ -1,6 +1,5 @@
 $(function(){
 
-
 	/* checkCookie(); // Uncomment to enable cookie popup */
 
 	// attach click functionality to annotation controls
@@ -144,7 +143,7 @@ $(function(){
 			'Dansk': 'christian-3-bibel',
 		},
 		{
-			'Dansk': 'claus-mortensen-messe-1529',
+			'Dansk': 'claus-mortensen-messe-1528',
 		},
 		{
 			'Dansk': 'dietz-salmebog-1529',
@@ -176,203 +175,6 @@ $(function(){
 		})
 	}))
 
-
-// Language selection deactivated at melodier.dsl.dk
-/*
-	var rightLanguageSelector = $('<select/>', {
-		'class': 'language-dropdown select-css',
-		name: 'language'
-	}).append($('<option/>', { // append the placeholder option
-		value: null,
-		text: __[loc]('Vælg sprog'),
-		disabled: 'disabled',
-		selected: 'selected'
-	}));
-
-	// get the specified text when changing the language selector, and then show the chapter wrapper
-	rightLanguageSelector.change(function(){
-		var langId = $(this).val()
-		$('#lang-chapter-wrapper').addClass('loading');
-		requestText('/' + langId + '?text_only=1')
-		.done(function(result) {
-			updateTextWrapper('#lang-chapter-wrapper', result);
-			$('#lang-chapter-wrapper').show();
-			$('#lang-chapter-wrapper').removeClass('loading');
-		})
-	});
-
-	var currentPath = window.location.pathname;
-	// find the translation object that contains a substring of the current path as one of its IDs
-	var availableLanguages = translations.find(function(translation) {
-		return Object.entries(translation).some(function(lang) {
-			var hasCurrentPath = currentPath.indexOf(lang[1]) !== -1;
-			if (hasCurrentPath) {
-				delete translation[lang[0]]; // delete the language we came from, as we don't want to display the same language on both sides
-			}
-			return hasCurrentPath;
-		})
-	});
-	// see if we are actually left with any languages
-	var showLanguageSelector = function () {
-		for (var prop in availableLanguages) {
-			if (availableLanguages.hasOwnProperty(prop)) {
-				return true;
-			}
-			return false;
-		}
-		return false;
-	}
-	if(showLanguageSelector()) {
-		// add the langauges as options to the select element
-		Object.entries(availableLanguages).forEach(function(lang) {
-			rightLanguageSelector.append($('<option/>', {
-				value: lang[1],
-				text: lang[0]
-			}))
-		});
-		// add the select element to the DOM
-		rightLanguageSelector.appendTo('.language-selector');
-	} else {
-		// hide the tab and the content pane from view
-		$('#translations').hide();
-		$('[href="#translations"]').closest('li').hide();
-	}
-
-	var docId = currentPath.replace(/^\//,'').split('/')[0]; // replace any leading slash, then split on slash, then take the 0th item
-
-	// only if we are on a text page: get the meta texts
-	if (textIds.indexOf(docId) > -1) {
-		// create and populate a meta text selector, and listen to change events in
-		// order to load meta texts
-		var metaTypes = [
-			{
-				type: 'introductions',
-				label: __[loc]('Indledning')
-			},
-			{
-				type: 'colophons',
-				label: __[loc]('Kolofon')
-			},
-			{
-				type:	'accounts',
-				label: __[loc]('Tekstredegørelse')
-			},
-			{
-				type: 'sources',
-				label: __[loc]('Tekstvidner')
-			}
-		];
-
-		var metaSelector = $('<select/>', {
-			'class': 'meta-dropdown select-css',
-			name: 'meta'
-		}).append($('<option/>', { // append the placeholder option
-			value: null,
-			text: __[loc]('Vælg supplerende tekst'),
-			disabled: 'disabled',
-			selected: 'selected'
-		}));
-
-		metaSelector.change(function(){
-			var metaType = $(this).val()
-			requestText('/meta/' + docId + '/' + metaType)
-			.done(function(result) {
-				$('#meta-wrapper').html(result).show()
-			})
-		})
-
-		// make a HEAD request for each meta type, in order to see if we should add it
-		// to the selector. We can't just make an array of deferreds with $.when.apply,
-    // 'cause if one of them were to fail, the "master" deferred would fail with
-    // the failure of this single deferred, and discard the other deferreds
-    // irregardless of their success, failure or even completion
-		var metaTexts = metaTypes.forEach(function (metaType) {
-			$.ajax({
-				url: '/meta/' + docId + '/' + metaType.type,
-				method: 'HEAD',
-        complete: function (jqXHR, status) {
-          var status = jqXHR.status
-          if (status === 200) {
-            // check if the meta selector is already appended to page,
-            // and if not, add the option to the metaSelector variable,
-            // and then reassign that variable so that the next options
-            // are added to the DOM element rather than the variable
-            metaSelector.append($('<option/>', {
-              value: metaType.type,
-              text: metaType.label
-            }));
-            if (!$('.meta-selector .meta-dropdown').length) {
-              metaSelector.appendTo('.meta-selector');
-              metaSelector = $('.meta-selector .meta-dropdown');
-            }
-            // order the options according to 'metaTypes', so that they always
-            // appear in the same order regardless of the order in which
-            // the HEAD requests completed
-            metaTypes.forEach(function (metaType) {
-              metaSelector.find('option[value="' + metaType.type + '"]').detach().appendTo(metaSelector);
-            });
-            // show the meta tab, as we have at least one option to show
-    				$('#meta').removeClass('displaynone');
-    				$('[href="#meta"]').closest('li').removeClass('displaynone');
-          }
-          else if(!metaSelector.find('option').length) {
-            // remove the tab and the content pane from view
-            $('#meta').hide();
-            $('[href="#meta"]').closest('li').hide();
-          }
-        }
-			})
-		});
-
-    // toggling reader width
-    $('#reader-width').change(function() {
-      var isOn = $(this).prop('checked');
-      if (isOn) {
-        $('.page-wrapper .documentFrame.container').addClass('full-width');
-        $('label[for="reader-width"] .checkbox-label-text img').attr('src', '/static/collapse.svg');
-      } else {
-        $('.page-wrapper .documentFrame.container').removeClass('full-width');
-        $('label[for="reader-width"] .checkbox-label-text img').attr('src', '/static/expand.svg');
-      }
-    })
-	}
-
-	// when popping to another state, get the text corresponding to the state title
-	$(window).on('popstate', function (event) {
-		var stateObj = event.originalEvent.state
-
-		// only actually refetch content if we're popping to a state that has a state object
-		if (stateObj) {
-			// select the chapter option corresponding to the state we just popped
-			$('.chapter-box .chapter-dropdown option[data-ajax-url="/text' + window.location.pathname + '"]').prop('selected', true);
-
-			// load the chapter corresponding to the state we just popped
-			$('.chapter-box').addClass('loading');
-			requestText('/text' + window.location.pathname)
-			.done(function(result) {
-				updateTextWrapper('.chapter-box', result)
-				$('.chapter-box').removeClass('loading');
-			})
-			.fail(function() {
-				showStatusPopup(__[loc]('Der skete en fejl. Teksten kunne ikke indlæses.'));
-			});
-
-			// also get any notes for the notes tab
-			// with the requestText as AJAX request
-			updateCommentBox(requestText('/notes' + window.location.pathname));
-
-			// set up other dropdowns according to state
-			Object.entries(stateObj).forEach(function (item) {
-				var dropdown = item[0]
-				var value = item[1] // Object.entries() returns pairs of key, value
-				if ($(dropdown).val() != value) { // if the dropdown is not already set to the value stored in the state...
-					$(dropdown).val(value); // ... set it
-					$(dropdown).trigger('change');
-				}
-			})
-		}
-	});
-*/
 	// convenience function for making AJAX requests
 	function requestText(url) {
 		return $.ajax({
@@ -610,8 +412,6 @@ function colorAllNotesByCookie(checkbox, note_class, background_color) {
 /* if (getCookie(note_class) != 'checked') { } */
 }
 
-
-
 function colorAllTextCriticalNotes(checkbox, note_class, cookie_name, background_color) {
   if (checkbox.checked) {
     $(note_class).each(function() {
@@ -640,4 +440,20 @@ function colorAllTextCriticalNotes(checkbox, note_class, cookie_name, background
   // we should change "comments" directly as this is the variable eventually
   // evaluated during initMusic()
   comments = checkbox.checked
+}
+
+function removeParameterFromURL(name) {
+    var qstring = window.location.search.replace(/^\?/, ''); // strip any leading question mark
+    var urlParams = qstring.split('&') // split into ["foo=bar", "baz=boo"]
+    var filtered = '';
+    for (i=0; i<urlParams.length; i++) {
+        if (urlParams[i].split('=')[0] !== name && urlParams[i] !== '') {
+            if (filtered !== '') { 
+                filtered += '&' + urlParams[i];
+            } else {
+                filtered += urlParams[i];
+            }
+        }
+    }
+    return window.location.href.split('?')[0] + '?' + filtered; 
 }

@@ -8,6 +8,19 @@ declare namespace xmldb =    "http://exist-db.org/xquery/xmldb";
 declare variable $resource := request:get-parameter("res", "");
 declare variable $origin := request:get-header("origin");
 
+(: 
+    Allows javascript / css from selected domains to use resources from this server. 
+    Example:
+    
+    https://melodier.dsl.dk/assets/074_recorder.data
+    
+    is available for scripts at melodier.dsl.dk only, while
+    
+    https://melodier.dsl.dk/cors.xq?res=/salmer/assets/074_recorder.data
+    
+    is available to all domains listed in library/cors_domains.xml 
+:)    
+
 
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= doc("library/cors_domains.xml"); 

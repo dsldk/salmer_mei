@@ -16,6 +16,9 @@ declare variable $requestedDomain := replace($url,"^(http[s]?://[a-z\.]*).*$","$
 declare variable $workingDir := "/tmp";
 declare variable $shellScript := "/opt/url_to_pdf.sh";
 
+(: Generate a PDF file from URL :)
+
+
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= doc("library/cors_domains.xml"); 
 
@@ -53,8 +56,8 @@ declare function local:download_file($path as xs:string, $mimetype, $as_filename
 };
 
 (: limit PDF creation to pages from listed sites only :)
-declare function local:url_accepted($url as xs:string) as xs:boolean {
-    let $ok := if ($allowed//*[.=$requestedDomain]) then
+declare function local:domain_accepted($domain as xs:string) as xs:boolean {
+    let $ok := if ($allowed//*[.=$domain]) then
             true()
         else 
             false()
@@ -94,7 +97,7 @@ let $response := if ($url = "") then
                 <p>Parameter missing: url</p>
             </body>
         </html>
-    else if (local:url_accepted($url)) then 
+    else if (local:domain_accepted($requestedDomain)) then 
         local:pdf($url,$filename)
     else
         <html xmlns="http://www.w3.org/1999/xhtml">
