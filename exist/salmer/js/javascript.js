@@ -143,7 +143,7 @@ $(function(){
 			'Dansk': 'christian-3-bibel',
 		},
 		{
-			'Dansk': 'claus-mortensen-messe-1528',
+			'Dansk': 'claus-mortensen-messe-1529',
 		},
 		{
 			'Dansk': 'dietz-salmebog-1529',
