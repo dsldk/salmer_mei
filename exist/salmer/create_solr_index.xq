@@ -28,13 +28,12 @@ let $index-doc :=
     {
 (:  Kun småbøgerne: :)    
 (:    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"Je_" ) or contains(util:document-name(.),"Th_"))][count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]  :)
-(:  Kun Vingaard :)
-(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[contains(util:document-name(.),"Vi_" )]  :)
 (:  Kun metaposter :)
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"_15" ))]  :)
 (:  Alle  :)    
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  :)
-    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]        let $doc-name  := util:document-name($doc)
+    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]
+        let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
         let $params := 
             <parameters>
