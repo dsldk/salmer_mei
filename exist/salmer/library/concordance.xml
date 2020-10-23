@@ -1,8 +1,8 @@
 <index>
     <text id="christian-3-bibel">
-        <ref target="preface-christian-3-bibel" id="preface-christian-3-bibel"/>
+        <ref target="preface" id="preface"/>
         <ref target="preface-section" id="preface-section"/>
-        <ref target="toc-section-christian-3-bibel" id="toc-section-christian-3-bibel"/>
+        <ref target="toc-section" id="toc-section"/>
         <ref target="/1" id="gt"/>
         <ref target="/2" id="mos-1"/>
         <ref target="/2/1" id="mos-1-1"/>
@@ -1410,7 +1410,7 @@
         <ref target="/80/22" id="aab-22"/>
     </text>
     <text id="claus-mortensen-messe-1529">
-        <ref target="preface-mortensen" id="preface-mortensen"/>
+        <ref target="preface" id="preface"/>
         <ref target="/1" id="messens-indledende-boen"/>
         <ref target="/2" id="skriftemaal-mortensen"/>
         <ref target="/3" id="absolution-mortensen"/>
@@ -1568,7 +1568,7 @@
         <ref target="/10/1" id="den-som-vil-en-kristen-hedde-dietz-1529"/>
         <ref target="/10/2" id="o-jesu-krist-som-manddom-tog-dietz-1529"/>
         <ref target="/10/3" id="o-herre-gud-af-himmerig-dietz-1529"/>
-        <ref target="index-dietz-1529" id="index-dietz-1529"/>
+        <ref target="index" id="index"/>
     </text>
     <text id="dietz-salmebog-1536">
         <ref target="/1" id="forord"/>
@@ -1614,8 +1614,8 @@
         <ref target="/41" id="alle-kristne-fryde-sig-nu-dietz-1536"/>
     </text>
     <text id="jespersen_1573">
-        <ref target="frederik-1-preface" id="frederik-1-preface"/>
-        <ref target="niels-jespersen-preface" id="niels-jespersen-preface"/>
+        <ref target="preface" id="preface"/>
+        <ref target="preface-2" id="preface-2"/>
         <ref target="/1" id="foerste-soendag-i-advent"/>
         <ref target="/1/1" id="section-1-1"/>
         <ref target="/1/2" id="section-1-2"/>
@@ -1896,15 +1896,15 @@
         <ref target="/68/2" id="kyrieleison"/>
         <ref target="/68/3" id="fader-vor-udi-himmerig"/>
         <ref target="/69" id="diverse"/>
-        <ref target="/69/1" id="litani-paa-dansk"/>
-        <ref target="/69/2" id="soendagsbrudemesse"/>
-        <ref target="/69/3" id="mandagsbrudemesse"/>
-        <ref target="/69/4" id="praestekalent"/>
-        <ref target="/69/4" id="sacerdotes-eius-induant-salutare"/>
-        <ref target="/69/5" id="responsoriumprimum"/>
-        <ref target="/69/6" id="responsoriumsecundum"/>
-        <ref target="/69/7" id="responsoriumtertium"/>
-        <ref target="register-jespersen-1573" id="register-jespersen-1573"/>
+        <ref target="/70" id="litani-paa-dansk"/>
+        <ref target="/71" id="soendagsbrudemesse"/>
+        <ref target="/72" id="mandagsbrudemesse"/>
+        <ref target="/73" id="praestekalent"/>
+        <ref target="/73/1" id="sacerdotes-eius-induant-salutare"/>
+        <ref target="/73/2" id="responsoriumprimum"/>
+        <ref target="/73/3" id="responsoriumsecundum"/>
+        <ref target="/73/4" id="responsoriumtertium"/>
+        <ref target="register" id="register"/>
         <ref target="register-hoejtider" id="register-hoejtider"/>
         <ref target="register-danske-salmer" id="register-danske-salmer"/>
         <ref target="section-a-jespersen-1573" id="section-a-jespersen-1573"/>
@@ -1965,7 +1965,7 @@
         <ref target="register-responsorier" id="register-responsorier"/>
     </text>
     <text id="malmoe-salmebog">
-        <ref target="calendar-malmoe" id="calendar-malmoe"/>
+        <ref target="calendar" id="calendar"/>
         <ref target="januar-mgl" id="januar-mgl"/>
         <ref target="februar" id="februar"/>
         <ref target="marts" id="marts"/>
@@ -1980,7 +1980,7 @@
         <ref target="december" id="december"/>
         <ref target="introduction-malmoe" id="introduction-malmoe"/>
         <ref target="tabel-for-kopsaetning" id="tabel-for-kopsaetning"/>
-        <ref target="introduction-malmoe-2" id="introduction-malmoe-2"/>
+        <ref target="introduction" id="introduction"/>
         <ref target="/1" id="kapitel-salmer"/>
         <ref target="/1/1" id="i-jesu-navn-begynde-vi-malmoe"/>
         <ref target="/1/2" id="te-deum-laudamus"/>
@@ -2018,83 +2018,81 @@
         <ref target="/1/34" id="kyrie-1"/>
         <ref target="/1/35" id="kyrie-o-herre-gud-fader-med-din-kraft"/>
         <ref target="/1/36" id="guds-engel-sidder-ved-graven"/>
-        <ref target="/1/37" id="crucifixum-in-carne"/>
-        <ref target="/1/38" id="nolite-metuere"/>
-        <ref target="/1/39" id="aerens-konge"/>
-        <ref target="/1/40" id="kristus-jesus-for-os-ofret"/>
-        <ref target="/1/41" id="jesus-krist-vor-frelsermand-malmoe"/>
-        <ref target="/1/42" id="krist-stod-op-af-doede-malmoe"/>
-        <ref target="/1/43" id="krist-stod-op-af-doede-malmoe-2"/>
-        <ref target="/1/44" id="krist-laa-i-doedsens-vaande"/>
-        <ref target="/1/45" id="dixit-dominus-domino-meo"/>
-        <ref target="/1/46" id="hvorfor-stormede-de-hedninge"/>
-        <ref target="/1/47" id="herre-hvem-skal-have-sin-bolig-malmoe"/>
-        <ref target="/1/48" id="veni-creator-spiritus"/>
-        <ref target="/1/49" id="var-gud-ikke-med-os"/>
-        <ref target="/1/50" id="alene-gud-i-hojeste"/>
-        <ref target="/1/51" id="o-herre-gud-benaade-mig-malmoe"/>
-        <ref target="/1/52" id="beklage-af-al-min-sinde-malmoe"/>
-        <ref target="/1/53" id="jesu-som-er-vor-salighed-2"/>
-        <ref target="/1/54" id="esajas-den-profet"/>
-        <ref target="/1/55" id="sanctus-2"/>
-        <ref target="/1/56" id="o-guds-lam-uskyldig"/>
-        <ref target="/1/57" id="o-jesu-bold-med-meget-vold-malmoe"/>
-        <ref target="/1/58" id="hjaelp-gud-hvor-stor"/>
-        <ref target="/1/59" id="hvo-som-vil-leve-kristeligt"/>
-        <ref target="/1/60" id="gud-lod-sin-roest-af-skyen-lyde-malmoe"/>
-        <ref target="/1/61" id="den-som-vil-en-kristen-hedde-malmoe"/>
-        <ref target="/1/62" id="gud-fader-udi-himmerig-malmoe"/>
-        <ref target="/1/63" id="nu-bede-vi-den-helligaand-malmoe"/>
-        <ref target="/1/64" id="guds-soen-er-kommen-af-himmelen-ned-malmoe"/>
-        <ref target="/1/65" id="med-glaede-og-fred-farer-jeg-nu-hen"/>
-        <ref target="/1/66" id="o-fader-vor-barmhjertig-og-god"/>
-        <ref target="/1/67" id="haleluja-det-boer-os-altid-synge"/>
-        <ref target="/1/68" id="jesu-krist-dig-takke-vi-malmoe"/>
-        <ref target="/1/69" id="o-vor-fader-vi-bede-dig"/>
-        <ref target="/1/70" id="til-dig-raaber-jeg-af-hjertens-grund-malmoe"/>
-        <ref target="/1/71" id="lover-gud-i-fromme-kristne-malmoe"/>
-        <ref target="/1/72" id="kaptajn-herre-gud-fader-min"/>
-        <ref target="/1/73" id="vaag-op-og-vag-op-i-guds-navn"/>
-        <ref target="/1/74" id="o-krist-hvor-var-din-kundskab"/>
-        <ref target="/1/75" id="vaer-glad-og-fro-al-kristenhed-malmoe"/>
-        <ref target="/1/76" id="jerusalem-du-hellige-stad-malmoe"/>
-        <ref target="/1/77" id="forlae-os-med-fred"/>
+        <ref target="/1/37" id="aerens-konge"/>
+        <ref target="/1/38" id="kristus-jesus-for-os-ofret"/>
+        <ref target="/1/39" id="jesus-krist-vor-frelsermand-malmoe"/>
+        <ref target="/1/40" id="krist-stod-op-af-doede-malmoe"/>
+        <ref target="/1/41" id="krist-stod-op-af-doede-malmoe-2"/>
+        <ref target="/1/42" id="krist-laa-i-doedsens-vaande"/>
+        <ref target="/1/43" id="dixit-dominus-domino-meo"/>
+        <ref target="/1/44" id="hvorfor-stormede-de-hedninge"/>
+        <ref target="/1/45" id="herre-hvem-skal-have-sin-bolig-malmoe"/>
+        <ref target="/1/46" id="veni-creator-spiritus"/>
+        <ref target="/1/47" id="var-gud-ikke-med-os"/>
+        <ref target="/1/48" id="alene-gud-i-hojeste"/>
+        <ref target="/1/49" id="o-herre-gud-benaade-mig-malmoe"/>
+        <ref target="/1/50" id="beklage-af-al-min-sinde-malmoe"/>
+        <ref target="/1/51" id="jesu-som-er-vor-salighed-2"/>
+        <ref target="/1/52" id="esajas-den-profet"/>
+        <ref target="/1/53" id="sanctus-2"/>
+        <ref target="/1/54" id="o-guds-lam-uskyldig"/>
+        <ref target="/1/55" id="o-jesu-bold-med-meget-vold-malmoe"/>
+        <ref target="/1/56" id="hjaelp-gud-hvor-stor"/>
+        <ref target="/1/57" id="hvo-som-vil-leve-kristeligt"/>
+        <ref target="/1/58" id="gud-lod-sin-roest-af-skyen-lyde-malmoe"/>
+        <ref target="/1/59" id="den-som-vil-en-kristen-hedde-malmoe"/>
+        <ref target="/1/60" id="gud-fader-udi-himmerig-malmoe"/>
+        <ref target="/1/61" id="nu-bede-vi-den-helligaand-malmoe"/>
+        <ref target="/1/62" id="guds-soen-er-kommen-af-himmelen-ned-malmoe"/>
+        <ref target="/1/63" id="med-glaede-og-fred-farer-jeg-nu-hen"/>
+        <ref target="/1/64" id="o-fader-vor-barmhjertig-og-god"/>
+        <ref target="/1/65" id="haleluja-det-boer-os-altid-synge"/>
+        <ref target="/1/66" id="jesu-krist-dig-takke-vi-malmoe"/>
+        <ref target="/1/67" id="o-vor-fader-vi-bede-dig"/>
+        <ref target="/1/68" id="til-dig-raaber-jeg-af-hjertens-grund-malmoe"/>
+        <ref target="/1/69" id="lover-gud-i-fromme-kristne-malmoe"/>
+        <ref target="/1/70" id="kaptajn-herre-gud-fader-min"/>
+        <ref target="/1/71" id="vaag-op-og-vag-op-i-guds-navn"/>
+        <ref target="/1/72" id="o-krist-hvor-var-din-kundskab"/>
+        <ref target="/1/73" id="vaer-glad-og-fro-al-kristenhed-malmoe"/>
+        <ref target="/1/74" id="jerusalem-du-hellige-stad-malmoe"/>
+        <ref target="/1/75" id="forlae-os-med-fred"/>
         <ref target="/2" id="det-evangeliske-messeembede"/>
         <ref target="/2/1" id="vor-hjaelp-vaere-i-herrens-navn-malmoe"/>
         <ref target="/2/2" id="jeg-arme-syndige-menneske"/>
         <ref target="/2/3" id="den-almaegtigste-barmhjertige-gud"/>
         <ref target="/2/4" id="introduktion-til-messen"/>
-        <ref target="/2/4" id="af-hjertens-noed"/>
-        <ref target="/2/5" id="kyrieleyson2"/>
-        <ref target="/2/6" id="gloria-aere-og-pris-vaere-gud"/>
-        <ref target="/2/7" id="gloria-aleneste-gud-i-himmerig"/>
-        <ref target="/2/5" id="o-herre-jesus-krist-du-som-har-ladet"/>
-        <ref target="/2/6" id="o-almaegtigste-evige-gud"/>
-        <ref target="/2/7" id="broedre-i-de-ting"/>
-        <ref target="/2/8" id="gladelig-ville-vi-halleluja"/>
-        <ref target="/2/9" id="evangelium-om-aandelig-foede"/>
-        <ref target="/2/10" id="divisio"/>
-        <ref target="/2/11" id="divisio-2"/>
-        <ref target="/2/12" id="vi-tro-allesammen-paa-en-gud-alt"/>
-        <ref target="/2/13" id="dansk-patrem"/>
-        <ref target="/2/14" id="trosbekendelse"/>
-        <ref target="/2/15" id="nu-bede-vi-den-helligaand-malmoe-2"/>
-        <ref target="/2/16" id="nu-bede-vi-den-helligaand-malmoe-3"/>
-        <ref target="/2/17" id="nu-bede-vi-helligaand-malmoe-4"/>
-        <ref target="/2/18" id="nu-er-os-gud-miskundelig-malmoe"/>
-        <ref target="/2/19" id="en-kort-formaning-pater-noster"/>
-        <ref target="/2/20" id="trosbekendelse-foer-nadver"/>
-        <ref target="/2/21" id="den-evangeliske-afloesning"/>
-        <ref target="/2/22" id="foer-en-trosbekendelse"/>
-        <ref target="/2/23" id="en-formaning"/>
-        <ref target="/2/24" id="hellig-hellig-hellig-malmoe"/>
-        <ref target="/2/25" id="nadver-malmoe"/>
-        <ref target="/2/26" id="dig-vaere-lov-og-pris"/>
-        <ref target="/2/27" id="agnus-dei-malmoe"/>
-        <ref target="/2/28" id="en-kort-formaning"/>
-        <ref target="/2/29" id="introduktion-til-jesus-kristus-er-vor-salighed"/>
-        <ref target="/2/30" id="jesus-kristus-er-vor-salighed-malmoe"/>
-        <ref target="/2/31" id="jesus-kristus-er-vor-frelsermand"/>
+        <ref target="/2/5" id="af-hjertens-noed"/>
+        <ref target="/2/6" id="kyrieleyson2"/>
+        <ref target="/2/7" id="gloria-aere-og-pris-vaere-gud"/>
+        <ref target="/2/8" id="gloria-aleneste-gud-i-himmerig"/>
+        <ref target="/2/9" id="o-herre-jesus-krist-du-som-har-ladet"/>
+        <ref target="/2/10" id="o-almaegtigste-evige-gud"/>
+        <ref target="/2/11" id="broedre-i-de-ting"/>
+        <ref target="/2/12" id="gladelig-ville-vi-halleluja"/>
+        <ref target="/2/13" id="evangelium-om-aandelig-foede"/>
+        <ref target="/2/14" id="divisio"/>
+        <ref target="/2/15" id="divisio-2"/>
+        <ref target="/2/16" id="vi-tro-allesammen-paa-en-gud-alt"/>
+        <ref target="/2/17" id="dansk-patrem"/>
+        <ref target="/2/18" id="trosbekendelse"/>
+        <ref target="/2/19" id="nu-bede-vi-den-helligaand-malmoe-2"/>
+        <ref target="/2/20" id="nu-bede-vi-den-helligaand-malmoe-3"/>
+        <ref target="/2/21" id="nu-bede-vi-helligaand-malmoe-4"/>
+        <ref target="/2/22" id="nu-er-os-gud-miskundelig-malmoe"/>
+        <ref target="/2/23" id="en-kort-formaning-pater-noster"/>
+        <ref target="/2/24" id="trosbekendelse-foer-nadver"/>
+        <ref target="/2/25" id="den-evangeliske-afloesning"/>
+        <ref target="/2/26" id="foer-en-trosbekendelse"/>
+        <ref target="/2/27" id="en-formaning"/>
+        <ref target="/2/28" id="hellig-hellig-hellig-malmoe"/>
+        <ref target="/2/29" id="nadver-malmoe"/>
+        <ref target="/2/30" id="dig-vaere-lov-og-pris"/>
+        <ref target="/2/31" id="agnus-dei-malmoe"/>
+        <ref target="/2/32" id="en-kort-formaning"/>
+        <ref target="/2/33" id="introduktion-til-jesus-kristus-er-vor-salighed"/>
+        <ref target="/2/34" id="jesus-kristus-er-vor-salighed-malmoe"/>
+        <ref target="/2/35" id="jesus-kristus-er-vor-frelsermand"/>
         <ref target="/3" id="salmer-litani-m-v"/>
         <ref target="/3/1" id="gud-vaere-lovet-og-benedidet"/>
         <ref target="/3/2" id="dominus-vobiscum"/>
@@ -2143,7 +2141,7 @@
         <ref target="/4/30" id="o-milde-gud-fader-i-himmelen"/>
         <ref target="/4/31" id="men-vi-leve-paa-jorden-her-malmoe-2"/>
         <ref target="/4/32" id="herre-frels-mig-fra-onde"/>
-        <ref target="register-malmoe" id="register-malmoe"/>
+        <ref target="register" id="register"/>
     </text>
     <text id="oluf-ulriksen-messe-1535">
         <ref target="/1" id="salme-kyrie-gloria-hilsen"/>
@@ -2199,7 +2197,7 @@
         <ref target="/51" id="kolofon"/>
     </text>
     <text id="oluf-ulriksen-messehaandbog-1539">
-        <ref target="oluf-ulriksen-1539-preface" id="oluf-ulriksen-1539-preface"/>
+        <ref target="preface" id="preface"/>
         <ref target="/1" id="om-messen-boenner-og-ceremonier"/>
         <ref target="/3" id="af-dybsens-noed-ulriksen"/>
         <ref target="/4" id="kyrie-gud-fader-alsomhoegeste-troest"/>
@@ -2267,8 +2265,8 @@
         <ref target="toc-section" id="toc-section"/>
         <ref target="calendar" id="calendar"/>
         <ref target="introduction" id="introduction"/>
-        <ref target="martin-luther-preface" id="martin-luther-preface"/>
-        <ref target="hans-thomsen-preface" id="hans-thomsen-preface"/>
+        <ref target="preface" id="preface"/>
+        <ref target="preface-2" id="preface-2"/>
         <ref target="/1" id="section-1"/>
         <ref target="/1/1" id="veni-redemptor-gentium"/>
         <ref target="/1/2" id="conditor-alme-siderum"/>
@@ -2362,29 +2360,29 @@
         <ref target="/8/3" id="section-8-hymn-3"/>
         <ref target="/9" id="section-9"/>
         <ref target="/9/1" id="section-9-1"/>
-        <ref target="/9/1" id="section-9-1-hymn-1"/>
-        <ref target="/9/2" id="section-9-1-hymn-2"/>
-        <ref target="/9/3" id="section-9-1-hymn-3"/>
-        <ref target="/9/4" id="section-9-1-hymn-4"/>
-        <ref target="/9/5" id="section-9-1-hymn-5"/>
-        <ref target="/9/2" id="section-9-2"/>
-        <ref target="/9/2" id="section-9-2-hymn-1"/>
-        <ref target="/9/3" id="section-9-2-hymn-2"/>
-        <ref target="/9/3" id="section-9-3"/>
-        <ref target="/9/3" id="section-9-3-hymn-1"/>
-        <ref target="/9/4" id="section-9-3-hymn-2"/>
-        <ref target="/9/5" id="section-9-3-hymn-3"/>
-        <ref target="/9/6" id="section-9-3-hymn-4"/>
-        <ref target="/9/4" id="section-9-4"/>
-        <ref target="/9/4" id="section-9-4-hymn-1"/>
-        <ref target="/9/5" id="section-9-5"/>
-        <ref target="/9/5" id="section-9-5-hymn-1"/>
-        <ref target="/9/6" id="section-9-5-hymn-2"/>
-        <ref target="/9/7" id="section-9-5-hymn-3"/>
-        <ref target="/9/8" id="section-9-5-hymn-4"/>
-        <ref target="/9/9" id="section-9-5-hymn-5"/>
-        <ref target="/9/10" id="section-9-5-hymn-6"/>
-        <ref target="/9/11" id="section-9-5-hymn-7"/>
+        <ref target="/9/2" id="section-9-1-hymn-1"/>
+        <ref target="/9/3" id="section-9-1-hymn-2"/>
+        <ref target="/9/4" id="section-9-1-hymn-3"/>
+        <ref target="/9/5" id="section-9-1-hymn-4"/>
+        <ref target="/9/6" id="section-9-1-hymn-5"/>
+        <ref target="/9/7" id="section-9-2"/>
+        <ref target="/9/8" id="section-9-2-hymn-1"/>
+        <ref target="/9/9" id="section-9-2-hymn-2"/>
+        <ref target="/9/10" id="section-9-3"/>
+        <ref target="/9/11" id="section-9-3-hymn-1"/>
+        <ref target="/9/12" id="section-9-3-hymn-2"/>
+        <ref target="/9/13" id="section-9-3-hymn-3"/>
+        <ref target="/9/14" id="section-9-3-hymn-4"/>
+        <ref target="/9/15" id="section-9-4"/>
+        <ref target="/9/16" id="section-9-4-hymn-1"/>
+        <ref target="/9/17" id="section-9-5"/>
+        <ref target="/9/18" id="section-9-5-hymn-1"/>
+        <ref target="/9/19" id="section-9-5-hymn-2"/>
+        <ref target="/9/20" id="section-9-5-hymn-3"/>
+        <ref target="/9/21" id="section-9-5-hymn-4"/>
+        <ref target="/9/22" id="section-9-5-hymn-5"/>
+        <ref target="/9/23" id="section-9-5-hymn-6"/>
+        <ref target="/9/24" id="section-9-5-hymn-7"/>
         <ref target="/10" id="section-10"/>
         <ref target="/10/1" id="section-10-hymn-1"/>
         <ref target="/10/2" id="section-10-hymn-2"/>
@@ -2512,15 +2510,13 @@
         <ref target="/19/14" id="section-19-hymn-14"/>
         <ref target="/19/15" id="section-19-hymn-15"/>
         <ref target="/19/16" id="section-19-hymn-16"/>
-        <ref target="/19/17" id="section-19-antiphona"/>
-        <ref target="/19/18" id="section-19-nunc-dimittis"/>
-        <ref target="/19/19" id="section-19-hymn-17"/>
-        <ref target="/19/20" id="section-19-hymn-18"/>
-        <ref target="/19/21" id="section-19-hymn-19"/>
-        <ref target="/19/22" id="section-19-hymn-20"/>
-        <ref target="/19/23" id="section-19-hymn-21"/>
-        <ref target="/19/24" id="section-19-hymn-22"/>
-        <ref target="/19/25" id="section-19-hymn-23"/>
+        <ref target="/19/17" id="section-19-hymn-17"/>
+        <ref target="/19/18" id="section-19-hymn-18"/>
+        <ref target="/19/19" id="section-19-hymn-19"/>
+        <ref target="/19/20" id="section-19-hymn-20"/>
+        <ref target="/19/21" id="section-19-hymn-21"/>
+        <ref target="/19/22" id="section-19-hymn-22"/>
+        <ref target="/19/23" id="section-19-hymn-23"/>
         <ref target="/20" id="section-20"/>
         <ref target="/20/1" id="section-20-hymn-1"/>
         <ref target="/20/2" id="section-20-hymn-2"/>
@@ -2571,7 +2567,7 @@
         <ref target="/25/7" id="section-25-hymn-7"/>
         <ref target="/25/8" id="section-25-hymn-8"/>
         <ref target="/25/9" id="section-25-hymn-9"/>
-        <ref target="register-thomissoen-1569" id="register-thomissoen-1569"/>
+        <ref target="register" id="register"/>
         <ref target="index-messe" id="index-messe"/>
         <ref target="index-davids-salmer" id="index-davids-salmer"/>
         <ref target="index-andre-steder" id="index-andre-steder"/>
@@ -2581,8 +2577,8 @@
         <ref target="index-mikkel-praests-salmer" id="index-mikkel-praests-salmer"/>
         <ref target="index-diverse" id="index-diverse"/>
         <ref target="index-alle-salmer" id="index-alle-salmer"/>
-        <ref target="as-dedikation" id="as-dedikation"/>
-        <ref target="til-laeseren" id="til-laeseren"/>
+        <ref target="dedication" id="dedication"/>
+        <ref target="epilogue" id="epilogue"/>
     </text>
     <text id="vingaard_1553">
         <ref target="/1" id="kalendarium"/>
@@ -2629,53 +2625,53 @@
         <ref target="/3/18" id="versikel-vingaard-1553"/>
         <ref target="/3/19" id="nunc-dimittis"/>
         <ref target="/3/20" id="til-natsang-i-faste"/>
-        <ref target="/3/20" id="ecce-nunc-benedicite"/>
-        <ref target="/3/21" id="kriste-du-est-baade-lys-og-dag"/>
-        <ref target="/3/22" id="christe-du-est-dag-lys-og-salighed"/>
-        <ref target="/3/23" id="versickel"/>
-        <ref target="/3/24" id="men-vi-leve-paa-jorden-her"/>
-        <ref target="/3/25" id="vi-som-leve-paa-jorden-her"/>
-        <ref target="/3/26" id="salve-jesu-kriste-vor-frelsermand"/>
-        <ref target="/3/27" id="salve-haelsel-mildeste-jesu-kriste"/>
-        <ref target="/3/21" id="jesu-kriste-guds-soen"/>
-        <ref target="/3/22" id="jesu-du-est-vor-troest"/>
-        <ref target="/3/23" id="jesu-du-est-vor-vej"/>
-        <ref target="/3/24" id="lamentationes-efter-kaere-soendag"/>
-        <ref target="/3/24" id="o-datter-jerusalem"/>
-        <ref target="/3/25" id="herrens-fromhed-er-ikke-end-ude"/>
-        <ref target="/3/26" id="ja-dine-profeter-havde-prædiket"/>
-        <ref target="/3/27" id="du-lader-os-nu-udlede-og-ransage-vore-veje"/>
-        <ref target="/3/28" id="nu-haver-din-udåd-fået-ende"/>
-        <ref target="/3/29" id="o-herre-betaenk-min-elendighed"/>
-        <ref target="/3/25" id="det-hellige-kors-vor-herre-selv-bar"/>
-        <ref target="/3/26" id="englen-indgangen-til-jomfru-maria"/>
-        <ref target="/3/27" id="til-paaske"/>
-        <ref target="/3/27" id="kristus-som--for-os-til-jorderig-kom"/>
-        <ref target="/3/28" id="kyrie-gud-fader-forbarme-dig"/>
-        <ref target="/3/29" id="guds-engel-klar-og-hvid"/>
-        <ref target="/3/30" id="guds-engel-sidder-hos-graven"/>
-        <ref target="/3/31" id="victime-pascali-laudes"/>
-        <ref target="/3/32" id="krist-stod-op-af-doede"/>
-        <ref target="/3/33" id="nu-ville-vi-kristne-sjunge"/>
-        <ref target="/3/34" id="communio"/>
-        <ref target="/3/35" id="erens-konning"/>
-        <ref target="/3/36" id="jesus-krist-vor-frelsermand"/>
-        <ref target="/3/37" id="om-kristi-opstandelse"/>
-        <ref target="/3/38" id="jesus-krist-vor-frelsermand-alt"/>
-        <ref target="/3/28" id="til-vor-herres-himmelfaerd"/>
-        <ref target="/3/28" id="jesu-som-er-vor-salighed"/>
-        <ref target="/3/29" id="til-pinsedag"/>
-        <ref target="/3/29" id="kom-helligaand-o-herre-gud"/>
-        <ref target="/3/30" id="sekvens-nu-bede-vi-den-helligaand"/>
-        <ref target="/3/31" id="nu-bede-vi-den-helligaand"/>
-        <ref target="/3/32" id="nu-bede-vi-den-helligaand-alt"/>
-        <ref target="/3/33" id="kom-gud-skaber-helligaand"/>
-        <ref target="/3/34" id="nu-bede-vi-den-helligaand-2"/>
-        <ref target="/3/35" id="til-hellig-trefoldigheds-soendag"/>
-        <ref target="/3/35" id="gud-fader-bliv-du-nu-med-os"/>
-        <ref target="/3/36" id="boen-til-hellig-trefoldighed"/>
-        <ref target="/3/37" id="gud-fader-soen-og-helligaand"/>
-        <ref target="/3/38" id="jesu-krist-dig-takke-vi"/>
+        <ref target="/3/21" id="ecce-nunc-benedicite"/>
+        <ref target="/3/22" id="kriste-du-est-baade-lys-og-dag"/>
+        <ref target="/3/23" id="christe-du-est-dag-lys-og-salighed"/>
+        <ref target="/3/24" id="versickel"/>
+        <ref target="/3/25" id="men-vi-leve-paa-jorden-her"/>
+        <ref target="/3/26" id="vi-som-leve-paa-jorden-her"/>
+        <ref target="/3/27" id="salve-jesu-kriste-vor-frelsermand"/>
+        <ref target="/3/28" id="salve-haelsel-mildeste-jesu-kriste"/>
+        <ref target="/3/29" id="jesu-kriste-guds-soen"/>
+        <ref target="/3/30" id="jesu-du-est-vor-troest"/>
+        <ref target="/3/31" id="jesu-du-est-vor-vej"/>
+        <ref target="/3/32" id="lamentationes-efter-kaere-soendag"/>
+        <ref target="/3/33" id="o-datter-jerusalem"/>
+        <ref target="/3/34" id="herrens-fromhed-er-ikke-end-ude"/>
+        <ref target="/3/35" id="ja-dine-profeter-havde-prædiket"/>
+        <ref target="/3/36" id="du-lader-os-nu-udlede-og-ransage-vore-veje"/>
+        <ref target="/3/37" id="nu-haver-din-udåd-fået-ende"/>
+        <ref target="/3/38" id="o-herre-betaenk-min-elendighed"/>
+        <ref target="/3/39" id="det-hellige-kors-vor-herre-selv-bar"/>
+        <ref target="/3/40" id="englen-indgangen-til-jomfru-maria"/>
+        <ref target="/3/41" id="til-paaske"/>
+        <ref target="/3/42" id="kristus-som--for-os-til-jorderig-kom"/>
+        <ref target="/3/43" id="kyrie-gud-fader-forbarme-dig"/>
+        <ref target="/3/44" id="guds-engel-klar-og-hvid"/>
+        <ref target="/3/45" id="guds-engel-sidder-hos-graven"/>
+        <ref target="/3/46" id="victime-pascali-laudes"/>
+        <ref target="/3/47" id="krist-stod-op-af-doede"/>
+        <ref target="/3/48" id="nu-ville-vi-kristne-sjunge"/>
+        <ref target="/3/49" id="communio"/>
+        <ref target="/3/50" id="erens-konning"/>
+        <ref target="/3/51" id="jesus-krist-vor-frelsermand"/>
+        <ref target="/3/52" id="om-kristi-opstandelse"/>
+        <ref target="/3/53" id="jesus-krist-vor-frelsermand-alt"/>
+        <ref target="/3/54" id="til-vor-herres-himmelfaerd"/>
+        <ref target="/3/55" id="jesu-som-er-vor-salighed"/>
+        <ref target="/3/56" id="til-pinsedag"/>
+        <ref target="/3/57" id="kom-helligaand-o-herre-gud"/>
+        <ref target="/3/58" id="sekvens-nu-bede-vi-den-helligaand"/>
+        <ref target="/3/59" id="nu-bede-vi-den-helligaand"/>
+        <ref target="/3/60" id="nu-bede-vi-den-helligaand-alt"/>
+        <ref target="/3/61" id="kom-gud-skaber-helligaand"/>
+        <ref target="/3/62" id="nu-bede-vi-den-helligaand-2"/>
+        <ref target="/3/63" id="til-hellig-trefoldigheds-soendag"/>
+        <ref target="/3/64" id="gud-fader-bliv-du-nu-med-os"/>
+        <ref target="/3/65" id="boen-til-hellig-trefoldighed"/>
+        <ref target="/3/66" id="gud-fader-soen-og-helligaand"/>
+        <ref target="/3/67" id="jesu-krist-dig-takke-vi"/>
         <ref target="/4" id="salmer-og-sange"/>
         <ref target="/4/1" id="vel-er-den-mand-der-vandrer-ej"/>
         <ref target="/4/2" id="hvor-faare-stormede-de-hedninge"/>
@@ -2936,12 +2932,12 @@
         <ref target="/10/11" id="versus"/>
         <ref target="/10/12" id="credo-in-unum-deum"/>
         <ref target="/10/13" id="media-vita-latin"/>
-        <ref target="/10/13" id="bona-suscepimus"/>
-        <ref target="/10/14" id="cognoscimus"/>
-        <ref target="/10/15" id="scio-quod-redemptor"/>
-        <ref target="/10/16" id="veni-sancte-spiritus"/>
-        <ref target="/10/17" id="deus-qui-corda-fidelium"/>
-        <ref target="/10/18" id="spiritus-sancti-gratia"/>
+        <ref target="/10/14" id="bona-suscepimus"/>
+        <ref target="/10/15" id="cognoscimus"/>
+        <ref target="/10/16" id="scio-quod-redemptor"/>
+        <ref target="/10/17" id="veni-sancte-spiritus"/>
+        <ref target="/10/18" id="deus-qui-corda-fidelium"/>
+        <ref target="/10/19" id="spiritus-sancti-gratia"/>
         <ref target="register" id="register"/>
         <ref target="section-a" id="section-a"/>
         <ref target="section-b" id="section-b"/>
