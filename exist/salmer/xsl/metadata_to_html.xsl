@@ -1,13 +1,4 @@
-<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" 
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
-    xmlns:xl="http://www.w3.org/1999/xlink" 
-    xmlns:marc="http://www.loc.gov/MARC21/slim" 
-    xmlns:zs="http://www.loc.gov/zing/srw/" 
-    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-    xmlns:m="http://www.music-encoding.org/ns/mei" 
-    xmlns:local="urn:my-stuff" 
-    version="2.0" 
-    exclude-result-prefixes="m xsl xs local marc zs xl">
+<xsl:stylesheet xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:marc="http://www.loc.gov/MARC21/slim" xmlns:zs="http://www.loc.gov/zing/srw/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:m="http://www.music-encoding.org/ns/mei" xmlns:local="urn:my-stuff" version="2.0" exclude-result-prefixes="m xsl xs local marc zs xl">
     
     
     <!-- 
@@ -175,6 +166,19 @@
         </xsl:choose>
     </xsl:function>
     
+    <xsl:function name="local:id_to_chapter">
+        <!-- If reference points to an xml:id: look up the id in the concordance and replace with link to chapter/section -->
+        <xsl:param name="target"/>
+            <xsl:choose>
+                <xsl:when test="starts-with($target, '#') and $concordance//ref[@id=substring-after($target,'#')]">
+                    <xsl:variable name="targetRef" select="$concordance//ref[@id=substring-after($target,'#')][1]"/>
+                    <xsl:value-of select="concat($textsite, $targetRef/parent::*/@id, $targetRef/@target)"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$target"/>
+                </xsl:otherwise>
+            </xsl:choose>
+    </xsl:function>
     
     
     <!-- MAIN TEMPLATE -->
@@ -513,11 +517,6 @@
                         </span>
                     </xsl:if>
                 </th>
-                <!--<th>
-                    <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',0,true)"> 
-                        <img src="style/img/sort_no.png" id="{$table_id}_sort_1" width="6" height="6" alt=""/>
-                    </span>
-                </th>-->
                 <th>
                     <xsl:if test="m:contentItem/m:title/text()">
                         <span class="clickable" title="Sorter" onclick="sortTable('{$table_id}',1,false)"><xsl:value-of select="$l/title"/><xsl:text> </xsl:text> 
@@ -569,7 +568,7 @@
             <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
             <td style="white-space:nowrap;">
                 <xsl:if test="m:ptr[@type='edition']">
-                    <a class="edition_link" href="{m:ptr[@type='edition']/@target}">
+                    <a class="edition_link" href="{local:id_to_chapter(m:ptr[@type='edition']/@target)}">
                         <xsl:attribute name="title"><xsl:value-of select="$l/see_digital_edition"/></xsl:attribute>
                         <span class="edition"><xsl:value-of select="$l/digital_edition"/></span>
                     </a>
@@ -2921,16 +2920,7 @@
             <xsl:attribute name="href">
                 <xsl:choose>
                     <xsl:when test="normalize-space(@target)">
-                        <xsl:choose>
-                            <xsl:when test="substring(@target,1,1)='#' and $concordance//ref[@id=substring-after(current()/@target,'#')]">
-                                <!-- #id: look up the id in the concordance and replace with link to chapter/section -->
-                                <xsl:variable name="ref" select="$concordance//ref[@id=substring-after(current()/@target,'#')]"/>
-                                <xsl:value-of select="concat($textsite, $ref/parent::*/@id, $ref/@target)"/>
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:value-of select="@target"/>
-                            </xsl:otherwise>
-                        </xsl:choose>
+                        <xsl:value-of select="local:id_to_chapter(@target)"/>
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:value-of select="@xl:href"/>
