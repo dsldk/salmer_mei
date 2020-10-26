@@ -56,9 +56,5 @@
     <xsl:template match="text()">
         <xsl:copy-of select="."/>
     </xsl:template>
-    
-    <xsl:template match="comment()">
-        <xsl:text> </xsl:text>
-    </xsl:template>
-    
+        
 </xsl:stylesheet>
