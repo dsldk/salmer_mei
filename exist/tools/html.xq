@@ -6,73 +6,24 @@ declare namespace transform = "http://exist-db.org/xquery/transform";
 
 declare option exist:serialize "method=html5 media-type=text/html"; 
 
-declare variable $tei_base      := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
+(: read TEI documents from salmer.dsl.lan: :)
+declare variable $tei_base      := "http://salmer.dsl.lan:8080/exist/apps/salmer/xml/";
+(: read TEI documents from Github: :)
+(:declare variable $tei_base      := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
 (: Locally: :)
 (: declare variable $tei_base      := "/db/salmer/data-tei/"; :)  
 declare variable $tei_xslt_base := "/db/tools/html/xslt/";
 
 declare variable $tei := request:get-parameter("tei", "");
-declare variable $books := 
-    <books xmlns="http://dsl.dk">
-        <book>
-            <title>En ny håndbog med salmer og åndelige lovsange (Dietz, 1529)</title>
-            <tei>dietz-salmebog-1529.xml</tei>
-            <mei/>
-        </book>
-        <book>
-            <title>Det kristelige messeembede (Mortensen, 1529)</title>
-            <tei>claus-mortensen-messe-1529.xml</tei>
-            <mei>Mo_1529</mei>
-        </book>
-        <book>
-            <title>Malmøsalmebogen (Pedersen, 1533)</title>
-            <tei>malmoe-salmebog.xml</tei>
-            <mei/>
-        </book>
-        <book>
-            <title>Håndbog i det evangeliske messeembede (Ulriksen, 1535)</title>
-            <tei>oluf-ulriksen-messe-1535.xml</tei>
-            <mei>Ul_1535</mei>
-        </book>
-        <book>
-            <title>Nogle nye salmer og lovsange (Dietz, 1536)</title>
-            <tei>dietz-salmebog-1536.xml</tei>
-            <mei/>
-        </book>
-        <book>
-            <title>Håndbog om den rette evangeliske messe (Vormordsen/Ulriksen, 1539)</title>
-            <tei>oluf-ulriksen-messehaandbog-1539.xml</tei>
-            <mei>Vo_1539</mei>
-        </book>
-        <book>
-            <title>En ny salmebog (Vingaard, 1553)</title>
-            <tei>vingaard_1553.xml</tei>
-            <mei>Vi_1553</mei>
-        </book>
-        <book>
-            <title>Den danske salmebog (Thomissøn, 1569)</title>
-            <tei>thomissoen_1569.xml</tei>
-            <mei>Th_1569</mei>
-        </book>
-        <book>
-            <title>Graduale (Jespersen, 1573)</title>
-            <tei>jespersen_1573.xml</tei>
-            <mei>Je_1573</mei>
-        </book>
-        <book>
-            <title>Christian 3.s danske Bibel (1550)</title>
-            <tei>christian-3-bibel.xml</tei>
-            <mei/>
-        </book>
-    </books>;
+declare variable $database := "/db/salmer";  
+declare variable $books := doc(concat($database,"/library/publications.xml"));
 
 let $output := if (normalize-space($tei)) then
     let $doc := doc(concat($tei_base, $tei))
-    (: tilføj betingelse her: hvis $tei begynder med http://, så spring $tei_base over)  :)
+    (: tilføj evt. betingelse her: hvis $tei begynder med http://, så spring $tei_base over)  :)
     
     let $params := <parameters/>
     let $transformed := transform:transform($doc,"http://melodier.dsl.lan:8080/exist/rest/db/tools/html/xslt/main.xsl",$params)
-    (:let $transformed := transform:transform(doc(concat($tei_base, $tei)),xs:anyURI(concat($tei_xslt_base,"main.xsl")),$params):)
     return $transformed
 else    
     <html>
@@ -86,7 +37,7 @@ else
                     <select name="tei" id="tei" onchange="this.form.submit(); return false;" style="margin-bottom: 10px;">
                         <option value=""/>
                         {
-                            for $book in $books/dsl:book 
+                            for $book in $books//dsl:pub 
                             return <option value="{$book/dsl:tei}">{$book/dsl:title}</option>
                         }
                     </select>

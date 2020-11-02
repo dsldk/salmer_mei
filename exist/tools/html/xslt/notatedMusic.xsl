@@ -20,9 +20,10 @@
     </xd:doc>
  
     <xsl:template match="tei:notatedMusic">
-        <!-- Læse filer lokalt: -->
-        <!--<xsl:variable name="mei_base" select="'http://melodier.dsl.dk/data/'"/>-->
-        <xsl:variable name="mei_base" select="'https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/mei/'"/>
+        <!-- Læse MEI-filer lokalt: -->
+        <xsl:variable name="mei_base" select="'http://melodier.dsl.dk/data/'"/>
+        <!-- Læse MEI-filer fra Github: -->
+        <!--<xsl:variable name="mei_base" select="'https://raw.githubusercontent.com/dsldk/middelaldertekster/master/data/mei/'"/>-->
         <xsl:variable name="mei_dir">
             <xsl:value-of select="tokenize(tei:ptr/@target, '_')[position() &lt;= 2]" separator="_"/>/</xsl:variable>
         <xsl:if test="tei:ptr/@target">
@@ -77,12 +78,12 @@
         <xsl:if test="//tei:notatedMusic">
 
             <!-- TO DO: Change relative paths to whatever is the right place... -->
-            <xsl:variable name="mei_js_base" select="'js/'"/>
-            <xsl:variable name="mei_css_base" select="'style/'"/>
-            <xsl:variable name="mei_xslt_base" select="'xsl/'"/>
+            <xsl:variable name="mei_js_base" select="'https://melodier.dsl.dk/js/'"/>
+            <xsl:variable name="mei_css_base" select="'https://melodier.dsl.dk/style/'"/>
+            <xsl:variable name="mei_xslt_base" select="'https://melodier.dsl.dk/xsl/'"/>
 
             <!-- JS libraries -->
-            <link rel="stylesheet" href="{$mei_js_base}libs/jquery/jquery-ui-1.12.1/jquery-ui.css" />
+            <link rel="stylesheet" href="{$mei_js_base}libs/jquery/jquery-ui-1.12.1/jquery-ui.css"/>
             <script type="text/javascript" src="{$mei_js_base}libs/jquery/jquery-3.2.1.min.js">/* jquery */</script>
             <script type="text/javascript" src="{$mei_js_base}libs/jquery/jquery-ui-1.12.1/jquery-ui.js">/* jquery UI */</script>
             

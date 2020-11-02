@@ -20,14 +20,14 @@ declare variable $mdiv       := request:get-parameter("mdiv", "");
 
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
-declare variable $datadirTEI  := "data-tei";
+declare variable $tei_base := "http://salmer.dsl.lan:8080/exist/apps/salmer/xml/";
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
 
-(: if TEI documents are to be read from another server, e.g. github: :)
-(: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
+(: if TEI documents are to be read from local eXist: :)
+(:declare variable $datadirTEI  := "data-tei";       :)
 
 (: List of domains allowed to access this resource with Javascript :)
 declare variable $allowed as node():= 
@@ -38,18 +38,19 @@ declare variable $allowed as node():=
 
 let $filename := tokenize($meidocref, '/')[position() = last()]
 
-(: if TEI documents are to be read from another server: :)
-(: let $tei_doc := if(doc-available(concat($tei_base,$teidocref)))
+(: read TEI documents from other server: :)
+let $tei_doc := if(doc-available(concat($tei_base,$teidocref)))
     then 
         doc(concat($tei_base,$teidocref))
     else 
-        false()  :)
+        false() 
 
-let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$teidocref)])
+(: to read TEI from local eXist: :)
+(:let $tei_doc := if (collection($datadirTEI)/*[contains(util:document-name(.),$teidocref)])
     then 
-        collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$teidocref)]
+        collection($datadirTEI)/*[contains(util:document-name(.),$teidocref)]
     else 
-        false()
+        false()  :)
 
 let $text_data := if($tei_doc) 
     then

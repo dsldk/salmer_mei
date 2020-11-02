@@ -21,14 +21,13 @@ declare variable $head     := request:get-parameter("head", "Musik og tekst i re
 
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
-declare variable $datadirTEI  := "data-tei";
+declare variable $tei_base := "http://salmer.dsl.lan:8080/exist/apps/salmer/xml/";
 declare variable $mdivXsl  := doc(concat($database,"/xsl/mdiv_to_html.xsl"));
 declare variable $textXsl  := doc(concat($database,"/xsl/tei_text_to_html.xsl"));
 declare variable $index    := doc(concat($database,"/library/publications.xml"));
 
-(: if TEI documents are to be read from another server: :)
-(: declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/"; :)
-
+(: if TEI documents are to be read from local eXist: :)
+(:declare variable $datadirTEI  := "data-tei";       :)
 
 (: Set language :)
 let $language := settings:language(request:get-parameter("language", ""))
@@ -62,18 +61,20 @@ let $tei_doc_name := if($coll!="")
     else 
         ""
 
-(: if TEI documents are to be read from another server: :)
-(: let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc_name)))
+(: read TEI documents from other server: :)
+let $tei_doc := if($tei_doc_name!="" and doc-available(concat($tei_base,$tei_doc_name)))
     then 
         doc(concat($tei_base,$tei_doc_name))
     else 
-        false()  :)
+        false()  
 
-let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$tei_doc_name)])
+(: to read TEI from local eXist: :)
+(:let $tei_doc := if (collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$tei_doc_name)])
     then 
         collection(concat($database,'/',$datadirTEI,'/'))/*[contains(util:document-name(.),$tei_doc_name)]
     else 
         false()
+:)
 
 let $list := 
     for $doc in collection(concat($database,'/',$datadir,'/',$coll[1]))/m:mei
