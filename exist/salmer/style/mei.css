@@ -419,6 +419,34 @@ kbd {
     padding-top: 20px;
 }
 
+.metadata .toc_section p.trigger_foldable {
+    margin: 0 0 3px 0;
+    padding: 2px 20px;
+    border-radius: 6px;
+    background-color: #ddd;
+}
+
+.metadata .toc_section p.trigger_foldable:hover {
+    background-color: #ccc;
+}
+
+.metadata .toc_section .foldable {
+    display: none;
+    overflow: visible; 
+    margin: 0 0 20px 20px;
+}
+
+.metadata .toc_section .foldable div.relation {
+    margin: 0 0 2px 0;
+    clear: both;
+}
+
+.metadata .toc_section .foldable.toc tr:hover {
+    background-color: inherit;
+}
+
+
+
 /* Override other style sheets */
 
 .metadata #front-page-splash {
@@ -847,7 +875,7 @@ table.toc th, table.toc td {
 
 table.toc th {
     text-align: left; 
-    padding: 15px 10px 10px 0;
+    padding: 5px 10px 10px 0;
 }
 
 table.toc td {

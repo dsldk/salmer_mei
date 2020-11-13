@@ -657,6 +657,13 @@ function loadMeiMetadata() {
         console.log('Retrieving MEI metadata');
         $.post(host + '/document_metadata.xq?language=' + language + '&doc=' + doc,function(data){
             $("#" + id).html(data);
+            // make certain elements foldable
+            $(".trigger_foldable").click(function(){
+                var fold_id = $(this).attr("id").substr(8);
+                $("#" + fold_id).slideToggle();
+                $("#unfolded_" + fold_id).toggle();
+                $("#folded_" + fold_id).toggle();
+            });
         },'html');
     });
 }

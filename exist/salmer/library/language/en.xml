@@ -28,7 +28,6 @@ i.e. differing pitches or added/missing notes</checkbox_hint_precision>
     <choose_from_list>Choose from list...</choose_from_list>
     <deselect_all>Deselect all</deselect_all>
     <found>Found</found>
-    <previous_page>Previous page</previous_page>
     <go_to_page>Go to page</go_to_page>
     <hide_alt_lang>Hide alternative languages</hide_alt_lang>
     <next_page>Next page</next_page>
@@ -36,6 +35,7 @@ i.e. differing pitches or added/missing notes</checkbox_hint_precision>
     <occurrences>occurrences</occurrences>
     <play>Play</play>
     <play_hint>Play</play_hint>
+    <previous_page>Previous page</previous_page>
     <print_button>Print</print_button>
     <reset_button>Reset</reset_button>
     <search_button>Search</search_button>
@@ -67,6 +67,7 @@ c sharp: V, e flat: W, f sharp: X, a flat: Y, b flat: Z</search_label_pitch_hint
     <additions>Additions</additions>  
     <additions_in>Additions in</additions_in>   <!-- refers to writing medium (e.g., "Additions in pencil") -->
     <bibliography>Bibliography</bibliography>
+    <cf_page>Cf. remark on page</cf_page>
     <classification>Classification</classification>
     <composition>Composition</composition>
     <condition>Condition</condition>
@@ -83,6 +84,7 @@ c sharp: V, e flat: W, f sharp: X, a flat: Y, b flat: Z</search_label_pitch_hint
     <extent>Extent</extent>
     <file_publication>File publication</file_publication>
     <file_title>File title</file_title>
+    <function>Function</function>
     <instrumentation>Instrumentation</instrumentation>
     <item_number>No.</item_number>
     <key>Key</key>

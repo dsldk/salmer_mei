@@ -27,7 +27,6 @@ manglende eller tilføjede toner</checkbox_hint_precision>
     <choose_from_list>Vælg fra liste...</choose_from_list>
     <deselect_all>Fravælg alle</deselect_all>
     <found>Fundet</found>
-    <previous_page>Foregående side</previous_page>
     <go_to_page>Gå til side</go_to_page>
     <hide_alt_lang>Skjul andre sprog</hide_alt_lang>
     <next_page>Næste side</next_page>
@@ -35,6 +34,7 @@ manglende eller tilføjede toner</checkbox_hint_precision>
     <occurrences>forekomster</occurrences>
     <play>Afspil</play>
     <play_hint>Afspil</play_hint>
+    <previous_page>Foregående side</previous_page>
     <print_button>Udskriv</print_button>
     <reset_button>Nulstil</reset_button>
     <search_button>Søg</search_button>
@@ -68,6 +68,7 @@ cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
     <additions>Tilføjelser</additions>  
     <additions_in>Tilføjelser med</additions_in>   <!-- refers to writing medium (e.g., "Additions in pencil") -->
     <bibliography>Bibliografi</bibliography>
+    <cf_page>Jf. bemærkning s.</cf_page>
     <classification>Klassifikation</classification>
     <composition>Komposition</composition>
     <condition>Tilstand</condition>
@@ -84,6 +85,7 @@ cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
     <extent>Omfang</extent>
     <file_publication>Fil udgivet af</file_publication>
     <file_title>Filtitel</file_title>
+    <function>Funktion</function>
     <instrumentation>Instrumentation</instrumentation>
     <item_number>Nr.</item_number>
     <key>Toneart</key>

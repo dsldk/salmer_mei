@@ -345,6 +345,9 @@
                 <!-- table of contents -->
                 <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:contents"/>
                 
+                <!-- table of songs for the church year (in Jespersen) -->
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']"/>
+                
             </div>
         
         </div>
@@ -506,7 +509,7 @@
     
     <!-- Table of contents -->
     <xsl:template match="m:contents">
-        <h2><xsl:value-of select="$l/contents"/></h2>
+        <h2><a name="contents"><xsl:value-of select="$l/contents"/></a></h2>
         <xsl:variable name="table_id" select="concat('toc_',count(preceding::m:contents)+1)"/>
         <table id="{$table_id}" class="toc">
             <tr>
@@ -549,20 +552,7 @@
         <tr>
             <td style="white-space:nowrap;"><xsl:value-of select="@label"/></td>
             <td>
-                <xsl:variable name="type" select="@type"/>
-                <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> 
-                    <xsl:choose>
-                        <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
-                            <a href="document.xq?doc={m:ptr[@type='db']/@target}">
-                                <xsl:attribute name="title"><xsl:value-of select="$l/see_melody_in_database"/></xsl:attribute>
-                                <xsl:apply-templates select="m:title[not(@type)]"/>
-                            </a>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:apply-templates select="m:title[not(@type)]"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </div> 
+                <xsl:apply-templates select="." mode="content_item_link"/>
             </td>
             <td><xsl:apply-templates select="m:title[@type='uniform']"/></td>
             <td style="white-space:nowrap;"><xsl:apply-templates select="m:locus"/></td>
@@ -576,7 +566,85 @@
             </td>
         </tr>
     </xsl:template>
+    
+    <xsl:template match="m:contentItem" mode="content_item_link">
+        <xsl:variable name="type" select="@type"/>
+        <div class="relation {$type}" title="{$l/*[local-name()=$type]/string()}"> 
+            <xsl:choose>
+                <xsl:when test="m:title[not(@type)]/text() and m:ptr[@type='db']">
+                    <a href="document.xq?doc={m:ptr[@type='db']/@target}">
+                        <xsl:attribute name="title"><xsl:value-of select="$l/see_melody_in_database"/></xsl:attribute>
+                        <xsl:apply-templates select="m:title[not(@type)]"/>
+                    </a>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:apply-templates select="m:title[not(@type)]"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </div> 
+    </xsl:template>
+    
+    <!-- Table of church year (used in Jespersen)  -->
+    
+    <xsl:template match="m:annot[@type='church_year']">
+        <h2><a name="church_year"><xsl:value-of select="m:head[@xml:lang=$language or (not($language) and position()=1)]"/></a></h2>
+        <xsl:apply-templates select="m:table"/>
+    </xsl:template>
         
+    <xsl:template match="m:annot[@type='church_year']/m:table">
+        <xsl:variable name="id" select="generate-id(.)"/>
+        <p id="trigger_{$id}" class="trigger_foldable clickable">
+            <xsl:value-of select="m:tr[1]/m:th/text()"/>
+            <xsl:text> </xsl:text>
+            <img src="style/img/fold-left.png" id="unfolded_{$id}" alt="" style="display:none;"/><img src="style/img/fold-right.png" id="folded_{$id}" alt=""/>
+        </p>
+        <div class="foldable toc" id="{$id}" style="display:none;">
+            <table>
+                <tr>
+                    <th><!--<xsl:value-of select="$l/function"/>--></th>
+                    <th><!--<xsl:value-of select="$l/title"/>--></th>
+                    <th>
+                        <xsl:if test="m:tr/m:td[3][text()]"><xsl:value-of select="$l/cf_page"/></xsl:if>
+                    </th>
+                </tr>
+                <xsl:apply-templates select="m:tr[not(m:th)]"/>
+            </table>
+        </div>
+    </xsl:template>
+  
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr[not(m:th)]">
+        <tr>
+            <xsl:apply-templates select="*"/>
+        </tr>
+    </xsl:template>    
+
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[1][not(../preceding-sibling::m:tr/m:td) or .//text() != ../preceding-sibling::m:tr[1]/m:td[1]//text()]">
+        <td>
+            <xsl:value-of select=".//text()"/>
+        </td>
+    </xsl:template>   
+
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[1][.//text() and .//text() = ../preceding-sibling::m:tr[1]/m:td[1]//text()]">
+        <td></td>
+    </xsl:template>    
+    
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[2]">
+        <xsl:variable name="item_nos" select="tokenize(m:title/@corresp,' ')"/>
+        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+        <td>
+            <xsl:for-each select="$item_nos">
+                <xsl:variable name="item_no" select="."/>
+                <div><xsl:apply-templates select="$contents/m:contentItem[@label=$item_no]" mode="content_item_link"/></div>
+            </xsl:for-each>
+        </td>
+    </xsl:template>    
+        
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[3]">
+        <td style="text-align:right;">
+            <xsl:value-of select=".//text()"/>
+        </td>
+    </xsl:template>    
+    
     
     <!-- Relations -->
     <xsl:template match="m:relationList" mode="link_without_label">
@@ -3466,8 +3534,7 @@
         </xsl:choose>
     </xsl:template>
     
-    
-    
+
     <!-- Formatted text -->
     <xsl:template match="m:lb">
         <br/>
