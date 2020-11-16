@@ -347,7 +347,7 @@
                 
                 <!-- table of songs for the church year (in Jespersen) -->
                 <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']"/>
-<xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']" mode="church_year_functional"/>
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']" mode="church_year_functional"/>
                 
             </div>
         
@@ -509,6 +509,7 @@
     </xsl:template>
     
     <!-- Table of contents -->
+    
     <xsl:template match="m:contents">
         <h2><a name="contents"><xsl:value-of select="$l/contents"/></a></h2>
         <xsl:variable name="table_id" select="concat('toc_',count(preceding::m:contents)+1)"/>
@@ -592,6 +593,7 @@
         <xsl:apply-templates select="m:table"/>
     </xsl:template>
         
+    <!-- Hymns grouped by sunday -->        
     <xsl:template match="m:annot[@type='church_year']/m:table">
         <xsl:variable name="id" select="generate-id(.)"/>
         <p id="trigger_{$id}" class="trigger_foldable clickable">
