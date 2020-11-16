@@ -445,6 +445,9 @@ kbd {
     background-color: inherit;
 }
 
+.metadata .toc_section .foldable.toc td.sundays_list {
+    white-space: normal;
+}
 
 
 /* Override other style sheets */

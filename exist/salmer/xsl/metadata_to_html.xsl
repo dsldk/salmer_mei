@@ -347,6 +347,7 @@
                 
                 <!-- table of songs for the church year (in Jespersen) -->
                 <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']"/>
+<xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']" mode="church_year_functional"/>
                 
             </div>
         
@@ -596,10 +597,10 @@
         <p id="trigger_{$id}" class="trigger_foldable clickable">
             <xsl:value-of select="m:tr[1]/m:th/text()"/>
             <xsl:text> </xsl:text>
-            <img src="style/img/fold-left.png" id="unfolded_{$id}" alt="" style="display:none;"/><img src="style/img/fold-right.png" id="folded_{$id}" alt=""/>
+            <img src="style/img/fold-up.png" id="unfolded_{$id}" alt="" style="display:none;"/><img src="style/img/fold-down.png" id="folded_{$id}" alt=""/>
         </p>
         <div class="foldable toc" id="{$id}" style="display:none;">
-            <table>
+            <table class="toc">
                 <tr>
                     <th><!--<xsl:value-of select="$l/function"/>--></th>
                     <th><!--<xsl:value-of select="$l/title"/>--></th>
@@ -625,7 +626,7 @@
     </xsl:template>   
 
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[1][.//text() and .//text() = ../preceding-sibling::m:tr[1]/m:td[1]//text()]">
-        <td></td>
+        <td/>
     </xsl:template>    
     
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[2]">
@@ -644,7 +645,46 @@
             <xsl:value-of select=".//text()"/>
         </td>
     </xsl:template>    
+
+    <!-- Hymns grouped by function -->
+    <xsl:template match="m:annot[@type='church_year']" mode="church_year_functional">
+        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+        <xsl:variable name="church_year" select="."/>
+        <h2><a name="hymns_by_function"><xsl:value-of select="$l/hymns_by_function"/></a></h2>
+        <xsl:for-each select="m:table/m:tr/m:td[@type='function' and @n][not(text() = preceding::m:td[@type='function']/text())]">
+            <xsl:sort select="xs:integer(@n)"/>
+            <xsl:variable name="funct" select="text()"/>
+            <xsl:variable name="id" select="generate-id(.)"/>
+            <p id="trigger_{$id}" class="trigger_foldable clickable">
+                <xsl:value-of select="$funct"/>
+                <xsl:text> </xsl:text>
+                <img src="style/img/fold-up.png" id="unfolded_{$id}" alt="" style="display:none;"/><img src="style/img/fold-down.png" id="folded_{$id}" alt=""/>
+            </p>
+            <div class="foldable toc" id="{$id}" style="display:none;">
+                <table class="toc">
+                    <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td/m:title[not(@corresp = preceding::m:td/m:title/@corresp)]">
+                        <xsl:variable name="corresp" select="@corresp"/>
+                        <tr>
+                            <td>
+                                <xsl:variable name="item_nos" select="tokenize(@corresp,' ')"/>
+                                <xsl:for-each select="$item_nos">
+                                    <xsl:variable name="item_no" select="."/>
+                                    <div><xsl:apply-templates select="$contents/m:contentItem[@label=$item_no]" mode="content_item_link"/></div>
+                                </xsl:for-each>
+                            </td>
+                            <td class="sundays_list">
+                                <xsl:for-each select="$church_year/m:table[m:tr/m:td[@type='function']/text()=$funct and m:tr/m:td/m:title/@corresp=$corresp]">
+                                    <xsl:value-of select="m:tr/m:th/text()"/><xsl:if test="not(position() = last())"><br/></xsl:if>
+                                </xsl:for-each>
+                            </td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </div>
+        </xsl:for-each>        
+    </xsl:template>
     
+
     
     <!-- Relations -->
     <xsl:template match="m:relationList" mode="link_without_label">
