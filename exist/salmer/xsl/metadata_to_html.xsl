@@ -632,16 +632,26 @@
     </xsl:template>    
     
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[2]">
-        <xsl:variable name="item_nos" select="tokenize(m:title/@corresp,' ')"/>
         <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
         <td>
-            <xsl:for-each select="$item_nos">
-                <xsl:variable name="item_no" select="."/>
-                <div><xsl:apply-templates select="$contents/m:contentItem[@label=$item_no]" mode="content_item_link"/></div>
-            </xsl:for-each>
+            <xsl:apply-templates select="node()"/>
         </td>
     </xsl:template>    
-        
+    
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td/m:title[@corresp]">
+        <xsl:variable name="item_nos" select="tokenize(@corresp,' ')"/>
+        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+        <xsl:for-each select="$item_nos">
+            <xsl:variable name="item_no" select="."/>
+            <xsl:apply-templates select="$contents/m:contentItem[@label=$item_no]" mode="content_item_link"/>
+        </xsl:for-each>
+    </xsl:template>
+
+    <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td/m:title[not(@corresp)]">
+        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+            <div class="relation relation_inactive"><xsl:apply-templates/></div>
+    </xsl:template>
+    
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[3]">
         <td style="text-align:right;">
             <xsl:value-of select=".//text()"/>

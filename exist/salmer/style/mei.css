@@ -438,8 +438,27 @@ kbd {
 
 .metadata .toc_section .foldable div.relation {
     margin: 0 0 2px 0;
-    clear: both;
+    /* clear: both; */
+    display: inline-block;
+    float: none;    
 }
+
+.metadata .toc_section .foldable div.relation_inactive {
+    margin: 0 0 2px 0;
+    display: inline-block;
+    float: none;
+    background-color: #888;    
+}
+
+.metadata .toc_section .foldable div.relation_inactive:hover {
+    filter: none;
+    -webkit-filter: none;
+    -moz-filter: none;
+    -o-filter: none;
+    -ms-filter: none;    
+}
+
+
 
 .metadata .toc_section .foldable.toc tr:hover {
     background-color: inherit;
