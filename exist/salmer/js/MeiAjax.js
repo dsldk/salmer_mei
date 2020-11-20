@@ -422,6 +422,8 @@ function renderData(data) {
         $(this).attr('x','750');
     });
 
+    gotoAnchor();
+
 }
 
 function rerenderAllSVG() {
@@ -664,6 +666,7 @@ function loadMeiMetadata() {
                 $("#unfolded_" + fold_id).toggle();
                 $("#folded_" + fold_id).toggle();
             });
+            gotoAnchor();            
         },'html');
     });
 }
@@ -687,7 +690,7 @@ function loadTeiText() {
                 } else {
                     $("#" + id).find(".textcriticalnote.annotation-marker").css('display','none');
                 }
-
+                gotoAnchor();
             },'html');
         });
     }
@@ -778,6 +781,12 @@ function resetOptions(id) {
         document.getElementById('transposeVal_' + id).value = '0';
         document.getElementById('factor_' + id).checked = true;
         document.getElementById('mdiv-select_' + id).innerHTML = '';
+    }
+}
+
+function gotoAnchor() {
+    if(window.location.hash) {
+        window.location.href=window.location.hash; 
     }
 }
 
