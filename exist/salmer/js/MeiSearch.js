@@ -36,7 +36,7 @@ var verovio_options_search = {
     scale:              100,
     pageWidth:          1200,
     pageHeight:         260,
-    pageMarginTop:      0,
+    pageMarginTop:      90,
     pageMarginLeft:     0,
     header:             'none',
     footer:             'none',
@@ -44,7 +44,7 @@ var verovio_options_search = {
     spacingLinear:      0.9,
     spacingNonLinear:   0.36,
     font:               'Bravura',
-    adjustPageHeight:   0,
+    adjustPageHeight:   false,
     noJustification:    true, 
     systemDivider:      'none'
 };
