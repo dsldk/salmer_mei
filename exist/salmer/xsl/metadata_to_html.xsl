@@ -632,7 +632,7 @@
     </xsl:template>    
     
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td[2]">
-        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+        <!--<xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>-->
         <td>
             <xsl:apply-templates select="node()"/>
         </td>
@@ -674,17 +674,14 @@
             </p>
             <div class="foldable toc" id="{$id}" style="display:none;">
                 <table class="toc">
-                    <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td/m:title[not(@corresp = preceding::m:td/m:title/@corresp)]">
-                        <xsl:variable name="corresp" select="@corresp"/>
+                    <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td[2][not(. = preceding::m:tr[m:td[@type='function']/text()=$funct]/m:td[2])]">
+                        <xsl:sort select="m:title[1]/text()"/>
                         <tr>
                             <td>
-                                <xsl:variable name="item_nos" select="tokenize(@corresp,' ')"/>
-                                <xsl:for-each select="$item_nos">
-                                    <xsl:variable name="item_no" select="."/>
-                                    <div><xsl:apply-templates select="$contents/m:contentItem[@label=$item_no]" mode="content_item_link"/></div>
-                                </xsl:for-each>
+                                <xsl:apply-templates select="."/>
                             </td>
                             <td class="sundays_list">
+                                <xsl:variable name="corresp" select="m:title[@corresp][1]/@corresp"/>
                                 <xsl:for-each select="$church_year/m:table[m:tr/m:td[@type='function']/text()=$funct and m:tr/m:td/m:title/@corresp=$corresp]">
                                     <xsl:value-of select="m:tr/m:th/text()"/><xsl:if test="not(position() = last())"><br/></xsl:if>
                                 </xsl:for-each>

@@ -438,16 +438,13 @@ kbd {
 
 .metadata .toc_section .foldable div.relation {
     margin: 0 0 2px 0;
-    /* clear: both; */
     display: inline-block;
     float: none;    
 }
 
 .metadata .toc_section .foldable div.relation_inactive {
-    margin: 0 0 2px 0;
-    display: inline-block;
-    float: none;
-    background-color: #888;    
+    background-color: #888;
+    padding-left: 32px;
 }
 
 .metadata .toc_section .foldable div.relation_inactive:hover {
@@ -693,9 +690,27 @@ p.loading {
     background-color: #fff;
 }
 
-.toc td {
+table.toc  {
+    border: 0px;
+    font-size: 14px;
+}
+
+table.toc th, table.toc td {
+    border: 0px;
+    vertical-align: top;
     white-space: nowrap;
 }
+
+table.toc th {
+    text-align: left; 
+    padding: 5px 10px 10px 0;
+}
+
+table.toc td {
+    padding: 5px 10px 0 0;
+}
+
+
 
 .topbar {
     position: relative;
@@ -880,25 +895,6 @@ p.loading {
 .list_block {
     display: table;
     margin: 20px 0 20px 0;
-}
-
-table.toc  {
-    border: 0px;
-    font-size: 14px;
-}
-
-table.toc th, table.toc td {
-    border: 0px;
-    vertical-align: top;
-}
-
-table.toc th {
-    text-align: left; 
-    padding: 5px 10px 10px 0;
-}
-
-table.toc td {
-    padding: 5px 10px 0 0;
 }
 
 .clickable {
