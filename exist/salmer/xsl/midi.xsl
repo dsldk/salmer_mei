@@ -40,7 +40,7 @@
                     <!-- First note after a vertical line; add rest -->
                     <rest xmlns="http://www.music-encoding.org/ns/mei" dur="breve"/>
                 </xsl:when>
-                <xsl:when test="m:verse/m:syl/text() and preceding-sibling::m:note[m:verse/m:syl/text()][1]//m:syl[substring(.,string-length(.),1)=',' or substring(.,string-length(.),1)='.']">
+                <xsl:when test="m:verse/m:syl/text() and preceding::m:note[m:verse/m:syl/text()][1]//m:syl[substring(.,string-length(.),1)=',' or substring(.,string-length(.),1)='.']">
                     <!-- First note after a comma or stop; add short rest -->
                     <rest xmlns="http://www.music-encoding.org/ns/mei" dur="1"/>
                 </xsl:when>
