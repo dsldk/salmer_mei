@@ -228,7 +228,7 @@
 
 .mei svg .playing {
     fill: #c00 !important;
-    stroke: #c00 !important;
+    stroke: #c00 !important;  
     color: #c00;
 }
 
@@ -472,8 +472,22 @@ kbd {
     padding-top: 30px;
 }
 
+.metadata .library__item {
+    padding: 40px 30px 30px;
+    font-size: 14px;
+}
+
 .metadata .library__item-head {
     white-space: nowrap;
+}
+
+.metadata .library__item-head h3 {
+    white-space: normal;
+}
+
+.metadata .library__item-icon {
+    vertical-align: top;
+    margin-top: 3px;
 }
 
 .metadata .header__menu-primary {
@@ -520,6 +534,16 @@ kbd {
     visibility: hidden;
 }
 
+.metadata div.clickable .btn-primary {
+    cursor: pointer;
+}
+
+.metadata div.clickable:hover .btn-primary {
+    background-color: #c2005c;
+}
+
+.metadata div.clickable:hover,
+.metadata div.clickable:hover *,
 .metadata a.list-link-a:hover * {
     color: #c2005c;
 }
@@ -535,7 +559,6 @@ kbd {
 
 .metadata .list-link-a .link-text {
     display: inline-block;
-    width: 275px;
     white-space: normal;
     text-align: left;
     font-family: 'Cormorant', serif;
@@ -543,7 +566,7 @@ kbd {
     font-size: 20px;
  /*   color: #23527c;  */
     color: #000; 
-    line-height: 1.1em;
+    line-height: 1em;
     position: relative;
     top: -40px; 
 }

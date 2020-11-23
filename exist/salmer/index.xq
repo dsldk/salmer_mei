@@ -24,10 +24,17 @@ declare function local:full-title($id as xs:string) as node()* {
     let $title := 
         for $p in $publications/dsl:publications/dsl:pub
         where $p/dsl:id = $id
-        return <span xmlns="http://www.w3.org/1999/xhtml" class="link-text">{$p/dsl:editor/string()}, <em>{$p/dsl:title/string()}</em> ({$p/dsl:year/string()})</span>
+        return <span xmlns="http://www.w3.org/1999/xhtml" class="link-text">{$p/dsl:editor/string()}, {$p/dsl:title/string()} ({$p/dsl:year/string()})</span>
     return $title
 };
 
+declare function local:title($id as xs:string) as node()* {
+    let $title := 
+        for $p in $publications/dsl:publications/dsl:pub
+        where $p/dsl:id = $id
+        return <span xmlns="http://www.w3.org/1999/xhtml" class="link-text"><em>{$p/dsl:title/string()}</em> ({$p/dsl:year/string()})</span>
+    return $title
+};
 
 declare function local:list-publications() as node()* {
     let $titles := 
@@ -35,9 +42,9 @@ declare function local:list-publications() as node()* {
         where normalize-space($p/dsl:mei_coll)
         return 
             <div xmlns="http://www.w3.org/1999/xhtml" >
-                <a href="document.xq?doc={$p/dsl:mei_coll}/{$p/dsl:id}.xml" class="list-link-a">
+                <a href="document.xq?doc={$p/dsl:mei_coll}/{$p/dsl:id}.xml" class="list-link-a" title="{local:full-title($p/dsl:id)//text()}">
                     <div class="btn btn-primary arrow-r list-link"><!-- link marker --></div>
-                    {local:full-title($p/dsl:id)}
+                    {local:title($p/dsl:id)}
                 </a>
             </div>
     return $titles

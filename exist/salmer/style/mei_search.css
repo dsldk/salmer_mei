@@ -129,11 +129,6 @@ a.paging, a.paging:visited, a.paging:active {
     -o-transform: translate(0px,-50px); /* Opera */
 }
 
-.mei svg .highlight {
-    fill: #080;
-    stroke: #080;
-}
-
 .mei svg .dir.fragment {
     fill: #000;
     stroke: #000;
