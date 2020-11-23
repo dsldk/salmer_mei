@@ -114,13 +114,6 @@ declare function local:compare_texts($mei, $tei) {
 	<head>
 	    <title>DSL-meloditekstkorrektur</title>
         <meta charset="UTF-8"/> 
-        <link rel="stylesheet" type="text/css" href="https://static.ordnet.dk/app/go_smn_app.css" />
-        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/fix_go_collisions.css" />
-        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/elements.css" />
-        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/layout.css" />
-    	<link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/styles.css" />
-        <link rel="stylesheet" type="text/css" href="http://salmer.dsl.dk/static/print.css" media="print" />
     	<link rel="stylesheet" type="text/css" href="meloditekstkorrektur.css" />
         
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"><!-- --></script>
@@ -143,17 +136,15 @@ declare function local:compare_texts($mei, $tei) {
                             Hent MEI-tekst fra: &#160;
                             {
                                 let $radio := if ($m_source="github") then
-                                    <span>
-                                        <input type="radio" name="m_source" id="m_source1" value="github" checked="checked"/> <label for="m_source1">Github (langsom)</label>
-                                        &#160;
-                                        <input type="radio" name="m_source" id="m_source2" value="salmer"/> <label for="m_source2">Salmeserveren (måske uaktuel)</label>
-                                    </span>
+                                    <select>
+                                        <option value="github" selected="selected">Github (langsom)</option>
+                                        <option value="salmer">salmer.dsl.dk (måske uaktuel)</option>
+                                    </select>
                                 else
-                                    <span>
-                                        <input type="radio" name="m_source" value="github"/> <label for="m_source1">Github (langsom)</label>
-                                        &#160;
-                                        <input type="radio" name="m_source" value="salmer" checked="checked"/> <label for="m_source2">Salmeserveren (måske uaktuel)</label>
-                                    </span>
+                                    <select>
+                                        <option value="github">Github (langsom)</option>
+                                        <option value="salmer" selected="selected">salmer.dsl.dk (måske uaktuel)</option>
+                                    </select>
                                 return $radio
                             }
                             &#160;
