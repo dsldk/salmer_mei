@@ -19,7 +19,6 @@ declare variable $repeat        := request:get-parameter("r", "");    (: Allow r
 declare variable $fuzzy         := request:get-parameter("f", "0") cast as xs:integer;   (: Fuzzyness  :)
 declare variable $page          := request:get-parameter("page", "1") cast as xs:integer;
 declare variable $publications  := doc('library/publications.xml'); 
-declare variable $l             := doc('library/language/da.xml');    (: Localisation of labels etc. :)   
 declare variable $collection    := '/db/salmer';
 declare variable $solr_base     := 'http://melodier.dsl.lan:8983/solr/salmer/'; (: Solr core :)
 declare variable $this_script   := 'mei_search.xq';
@@ -173,7 +172,7 @@ declare function local:verovio_match($doc as node(), $fileId as xs:string, $high
         else
             ""
     let $output1 :=
-        <div id="{$fileId}" class="mei"><p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p></div>
+        <div id="{$fileId}" class="mei"><p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="{$lang_lib/*[name()='retrieving_score']/text()}" title="{$lang_lib/*[name()='retrieving_score']/text()}"/></p></div>
     let $output2 :=
         <div id="{$fileId}_options" class="mei_options">
             <!--MEI options menu will be inserted here-->
@@ -358,7 +357,7 @@ let $result :=
         <script type="text/javascript" src="js/midiLib.js"><!-- custom MIDI library --></script>
 
         <script type="text/javascript" src="js/javascript.js">/* Text site js */</script>
-        <script type="text/javascript" src="js/general.js">/* utilities */</script>
+        <!--<script type="text/javascript" src="js/general.js">/* utilities */</script>-->
 
         <script type="text/javascript">
             language = "{$language}";
@@ -474,26 +473,21 @@ let $result :=
                                               {local:set_checkbox('e')}
                                               <span class="checkmark"></span>
                                             </label>                
-                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_starts_with']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
                                               {$lang_lib/*[name()='checkbox_label_all_trsp']/text()}
                                               {local:set_checkbox('t')}
                                               <span class="checkmark"></span>
                                             </label>
-                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_all_trsp']/text()}"/>-->
                                             <br/>
                                             <label class="checkbox-container">
                                               {$lang_lib/*[name()='checkbox_label_ignore_repeat']/text()}
                                               {local:set_checkbox('r')}
                                               <span class="checkmark"></span>
                                             </label>               
-                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_ignore_repeat']/text()}"/>-->
                                             <br/>
                                         </div>
                                         <div class="checkbox-options">
-                                            <!--<label>{$lang_lib/*[name()='checkbox_label_precision']/text()}:</label>-->
-                                            <!--<img src="https://salmer.dsl.dk/static/info.png" title="{$lang_lib/*[name()='checkbox_hint_precision']/text()}"/>-->
                                             <label class="radio-inline" for="exact">{$lang_lib/*[name()='checkbox_label_exact']/text()}
                                                 {let $exact := if($fuzzy!=-1 and $fuzzy!=1 and $fuzzy!=2) then 
                                                     <input type="radio" name="f" id="exact" value="0" checked="checked"/>
@@ -673,7 +667,7 @@ let $result :=
                                                             {
                                                                 let $excerpts :=
                                                                 if(count($file//m:mdiv[.//*/@xml:id = $highlight_ids] and count($matches) > 0) != count($file//m:mdiv) ) 
-                                                                then " (uddrag vises)" else ""
+                                                                then concat("(", $lang_lib/*[name()='excerpts']/text(), ")") else ""
                                                                 return $excerpts
                                                             }
                                                             &#160;

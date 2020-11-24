@@ -9,6 +9,7 @@
     
     <!-- User interface texts and messages -->
     <advanced_search>Avanceret søgning</advanced_search>
+    <back_to_previous>Tilbage til foregående side</back_to_previous>
     <checkbox_label_all_trsp>Alle transpositioner</checkbox_label_all_trsp>
     <checkbox_label_books>Bøger</checkbox_label_books>
     <checkbox_label_exact>Eksakt match</checkbox_label_exact>
@@ -26,10 +27,12 @@ manglende eller tilføjede toner</checkbox_hint_precision>
     <checkbox_hint_starts_with>Søg kun efter begyndelsen af melodien</checkbox_hint_starts_with>
     <choose_from_list>Vælg fra liste...</choose_from_list>
     <deselect_all>Fravælg alle</deselect_all>
+    <excerpts>Uddrag vises</excerpts>
     <found>Fundet</found>
     <go_to_page>Gå til side</go_to_page>
     <hide_alt_lang>Skjul andre sprog</hide_alt_lang>
     <next_page>Næste side</next_page>
+    <not_found>ikke fundet i databasen</not_found>
     <occurrence>forekomst</occurrence>
     <occurrences>forekomster</occurrences>
     <play>Afspil</play>
@@ -37,6 +40,9 @@ manglende eller tilføjede toner</checkbox_hint_precision>
     <previous_page>Foregående side</previous_page>
     <print_button>Udskriv</print_button>
     <reset_button>Nulstil</reset_button>
+    <retrieving_metadata>Henter metadata...</retrieving_metadata>
+    <retrieving_score>Henter noder...</retrieving_score>
+    <retrieving_text>Henter tekst...</retrieving_text>
     <search_button>Søg</search_button>
     <search_time>Søgningen tog</search_time>
     <search_label_title>Titel</search_label_title>
@@ -61,6 +67,7 @@ cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
     <showing_excerpts>Uddrag vises</showing_excerpts>
     <stop>Stop</stop>
     <stop_hint>Stop afspilning</stop_hint>
+    <not_found>Tekst ikke fundet i databasen</not_found>
     <toggle_search_field>Vis/skjul søgefelt</toggle_search_field>
     
     
@@ -80,7 +87,7 @@ cis: V, es: W, fis: X, as: Y, b: Z</search_label_pitch_hint>
     <digital_edition>Digital udgave</digital_edition>
     <download_mei>Download data som MEI XML</download_mei>
     <duration>Varighed</duration>
-    <edition>Udgave</edition>
+    <edition>Digital udgave</edition>
     <evidence>Dokumentation</evidence>
     <extent>Omfang</extent>
     <file_publication>Fil udgivet af</file_publication>

@@ -15,8 +15,28 @@
 
 	<xsl:param name="mdiv"/>
 	<xsl:param name="doc" select="//m:music[1]/@xml:id"/>
-<!--	<xsl:param name="include_data" as="xs:boolean"/>  -->
+	<xsl:param name="linewise" select="false()"/>
+	<xsl:param name="language"/>
+	<xsl:param name="hostname"/>
+	<!--	<xsl:param name="include_data" as="xs:boolean"/>  -->
 
+	<xsl:param name="base_uri" select="concat('https://',$hostname)"/>
+
+	<!-- Default language for labels etc. Default is overridden if the calling script provides a language parameter -->
+	<xsl:variable name="default_language">da</xsl:variable>
+
+	<xsl:variable name="language_pack_file_name">
+		<xsl:choose>
+			<xsl:when test="$language!=''">
+				<xsl:value-of select="string(concat($base_uri,'/library/language/',$language,'.xml'))"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="string(concat($base_uri,'/library/language/',$default_language,'.xml'))"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable>
+	<xsl:variable name="l" select="document($language_pack_file_name)/language"/>
+	
 	
 	<!-- MAIN TEMPLATE -->
 	<xsl:template match="m:mei" xml:space="default">
@@ -34,19 +54,25 @@
                 </xsl:if>
 			</xsl:variable>
 			<div class="score">
-				<div id="{$id}{$mdivId}" class="mei">
-					Henter noder...<br/>
-					<p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="Henter noder..." title="Henter noder..."/></p>
-				</div>
-				<div id="{$id}{$mdivId}_options" class="mei_options">
-					<xsl:comment>MEI options menu will be inserted here</xsl:comment>
-				</div>
-<!--				<xsl:if test="$include_data">
-					<script id="{$id}_data" type="text/xml">
-						<xsl:comment>Commented out</xsl:comment>
-						<xsl:copy-of select="/"/>  
-					</script>
-				</xsl:if>-->
+				<xsl:choose>
+					<xsl:when test="not($linewise)">
+						<div id="{$id}{$mdivId}" class="mei">
+						    <p class="loading"><xsl:value-of select="$l/retrieving_score"/></p>
+						</div>
+						<div id="{$id}{$mdivId}_options" class="mei_options">
+							<xsl:comment>MEI options menu will be inserted here</xsl:comment>
+						</div>
+						<!--				<xsl:if test="$include_data">
+							<script id="{$id}_data" type="text/xml">
+							<xsl:comment>Commented out</xsl:comment>
+							<xsl:copy-of select="/"/>  
+							</script>
+							</xsl:if>-->
+					</xsl:when>
+					<xsl:otherwise>
+						<!-- split up the score into single-system chunks -->
+					</xsl:otherwise>
+				</xsl:choose>
 			</div>
 	</xsl:template>
 	

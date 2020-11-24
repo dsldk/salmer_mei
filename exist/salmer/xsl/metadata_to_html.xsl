@@ -3046,6 +3046,10 @@
             </xsl:attribute>
             <span class="{@type}">
                 <xsl:choose>
+                    <xsl:when test="$l/*[name()=current()/@type]">
+                        <!-- translate if possible -->
+                        <xsl:value-of select="$l/*[name()=current()/@type]/text()"/>
+                    </xsl:when>
                     <xsl:when test="normalize-space(@label)">
                         <xsl:value-of select="@label"/>
                     </xsl:when>

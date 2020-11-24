@@ -171,13 +171,13 @@ let $result :=
                 let $metadata := if(count($list) = 0) 
                     then
                         <div>
-                            <p>{$filename} blev ikke fundet i databasen.</p>
-                            <p><a href="javascript:window.history.back();">Tilbage til foregående side</a></p>
+                            <p>{$filename}  {$l/*[name()='not_found']/text()}.</p>
+                            <p><a href="javascript:window.history.back();">{$l/*[name()='back_to_previous']/text()}</a></p>
                         </div>
                     else 
                         <div id="mei_metadata" class="mei_metadata">
                             <div class="container">
-                                <p class="loading">Henter metadata...</p>
+                                <p class="loading">{$l/*[name()='retrieving_metadata']/text()}</p>
                             </div>
                         </div>
                 return $metadata                    
@@ -193,17 +193,19 @@ let $result :=
                             <parameters>
                               <param name="mdiv" value="{$mdiv/@xml:id}"/>
                               <param name="doc"  value="{$filename}"/>
+                              <param name="language" value="{$language}"/>
+                    	      <param name="hostname" value="{$host}"/>
                             </parameters>
                         let $music := <div class="mei-wrapper">{transform:transform($list[1],$mdivXsl,$params)}</div>
                         let $text := if($tei_doc)
                            then 
                                <div id="tei_vocal_text_{$mdiv/@xml:id}" class="tei_vocal_text {$tei_doc_name} {$mdiv/@xml:id}">
                                    <!-- References to TEI file and MEI:mdiv/@xml:id transmitted in @class -->
-                                   <p class="loading">Henter tekst...</p>
+                                   <p class="loading">{$l/*[name()='retrieving_text']/text()}</p>
                                </div>
                            else 
                                <div>
-                                   <p>Tekst ikke fundet i databasen.</p>
+                                   <p>{$l/*[name()='text_not_found']/text()}.</p>
                                </div>
                     return ($music, $text)  
                 }
