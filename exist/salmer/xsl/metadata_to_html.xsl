@@ -681,7 +681,7 @@
             <div class="foldable toc" id="{$id}" style="display:none;">
                 <table class="toc">
                     <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td[2][not(m:title/@corresp = preceding::m:tr[m:td[@type='function']/text()=$funct]/m:td[2]/m:title/@corresp)]">
-                        <xsl:sort select="m:title[1]/text()"/>
+                        <xsl:sort select="$contents/m:contentItem[@label=current()/m:title[@corresp][1]/@corresp]"/>
                         <tr>
                             <td>
                                 <xsl:apply-templates select="."/>
