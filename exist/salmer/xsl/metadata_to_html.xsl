@@ -348,6 +348,7 @@
                 <!-- table of songs for the church year (in Jespersen) -->
                 <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']"/>
                 <xsl:apply-templates select="m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']" mode="church_year_functional"/>
+                <xsl:apply-templates select="m:meiHead/m:workList/m:work[m:notesStmt/m:annot[@type='church_year']]/m:contents" mode="church_year_by_hymns"/>
                 
             </div>
         
@@ -693,7 +694,44 @@
         </xsl:for-each>        
     </xsl:template>
     
-
+    
+    <!-- Use of hymns during the year -->
+    <xsl:template match="m:contents" mode="church_year_by_hymns">
+        <h2><a name="hymns_use"><xsl:value-of select="$l/hymns_use"/></a></h2>
+        <xsl:variable name="table_id" select="concat('toc_use_',generate-id())"/>
+        <xsl:apply-templates select="m:contentItem[@label = /m:mei/m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']/m:table/m:tr/m:td/m:title/@corresp]" mode="church_year_by_hymns">
+            <xsl:sort select="m:title[not(@type)]"/>
+        </xsl:apply-templates>
+    </xsl:template>
+    
+    <xsl:template match="m:contentItem" mode="church_year_by_hymns">
+        <xsl:variable name="item_no" select="@label"/>
+        <xsl:variable name="church_year" select="/m:mei/m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']/m:table[m:tr/m:td/m:title/@corresp=$item_no]"/>
+        <xsl:variable name="functions" select="distinct-values($church_year/m:tr[m:td[2]/m:title[@corresp=$item_no]]/m:td[@type='function']/text())"/>
+        <xsl:variable name="id" select="generate-id(.)"/>
+        <p id="trigger_{$id}" class="trigger_foldable clickable">
+            <xsl:value-of select="m:title[not(@type)][1]"/> (<xsl:value-of select="m:locus"/>)
+            <xsl:text> </xsl:text>
+            <img src="style/img/fold-up.png" id="unfolded_{$id}" alt="" style="display:none;"/><img src="style/img/fold-down.png" id="folded_{$id}" alt=""/>
+        </p>
+        <div class="foldable toc" id="{$id}" style="display:none;">
+            <table class="toc">
+                <xsl:for-each select="$functions[. = $church_year/m:tr[m:td[2]/m:title[@corresp=$item_no]]/m:td[1]/text()]">
+                    <xsl:variable name="function" select="."/>
+                    <tr>
+                        <td><xsl:value-of select="$function"/>:<xsl:text> </xsl:text></td>
+                        <td class="sundays_list">
+                            <xsl:for-each select="$church_year/m:tr[m:td[@type='function']/text()=$function and m:td[m:title/@corresp=$item_no]]">
+                                <xsl:value-of select="./preceding::m:th[1]/text()"/>
+                                <xsl:if test="not(position() = last())"><br/></xsl:if>
+                            </xsl:for-each>
+                        </td>
+                    </tr>
+                </xsl:for-each>
+            </table>
+        </div>
+    </xsl:template>
+    
     
     <!-- Relations -->
     <xsl:template match="m:relationList" mode="link_without_label">
