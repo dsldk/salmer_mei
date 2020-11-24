@@ -663,10 +663,15 @@
     <xsl:template match="m:annot[@type='church_year']" mode="church_year_functional">
         <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
         <xsl:variable name="church_year" select="."/>
+        <xsl:variable name="functions">
+            <xsl:for-each select="$church_year/m:table/m:tr/m:td[@type='function' and @n]">
+                <xsl:sort select="xs:integer(@n)"/>
+                <xsl:copy-of select="."/>
+            </xsl:for-each>
+        </xsl:variable>
         <h2><a name="hymns_by_function"><xsl:value-of select="$l/hymns_by_function"/></a></h2>
-        <xsl:for-each select="m:table/m:tr/m:td[@type='function' and @n][not(text() = preceding::m:td[@type='function']/text())]">
-            <xsl:sort select="xs:integer(@n)"/>
-            <xsl:variable name="funct" select="text()"/>
+        <xsl:for-each select="$functions/m:td/text()">
+            <xsl:variable name="funct" select="."/>
             <xsl:variable name="id" select="generate-id(.)"/>
             <p id="trigger_{$id}" class="trigger_foldable clickable">
                 <xsl:value-of select="$funct"/>
@@ -675,7 +680,7 @@
             </p>
             <div class="foldable toc" id="{$id}" style="display:none;">
                 <table class="toc">
-                    <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td[2][not(. = preceding::m:tr[m:td[@type='function']/text()=$funct]/m:td[2])]">
+                    <xsl:for-each select="$church_year/m:table/m:tr[m:td[@type='function']/text()=$funct]/m:td[2][not(m:title/@corresp = preceding::m:tr[m:td[@type='function']/text()=$funct]/m:td[2]/m:title/@corresp)]">
                         <xsl:sort select="m:title[1]/text()"/>
                         <tr>
                             <td>
@@ -683,7 +688,7 @@
                             </td>
                             <td class="sundays_list">
                                 <xsl:variable name="corresp" select="m:title[@corresp][1]/@corresp"/>
-                                <xsl:for-each select="$church_year/m:table[m:tr/m:td[@type='function']/text()=$funct and m:tr/m:td/m:title/@corresp=$corresp]">
+                                <xsl:for-each select="$church_year/m:table[m:tr[m:td[@type='function']/text()=$funct and m:td/m:title/@corresp=$corresp]]">
                                     <xsl:value-of select="m:tr/m:th/text()"/><xsl:if test="not(position() = last())"><br/></xsl:if>
                                 </xsl:for-each>
                             </td>
