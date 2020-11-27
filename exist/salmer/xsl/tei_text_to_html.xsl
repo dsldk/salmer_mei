@@ -16,6 +16,7 @@
     <xsl:param name="mdiv"/>
     
     <xsl:include href="xsl-tei/c.xsl"/>
+    <xsl:include href="xsl-tei/choice.xsl"/>
     <xsl:include href="xsl-tei/app.xsl"/>
     <xsl:include href="xsl-tei/div.xsl"/>
     <xsl:include href="xsl-tei/ex.xsl"/>

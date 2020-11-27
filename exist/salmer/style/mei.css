@@ -585,6 +585,14 @@ kbd {
     vertical-align: top;
 }
 
+/* move this to styles.css? */
+.alternative_text {
+    display: inline-table;
+    vertical-align: middle;
+    line-height: 1em;
+}
+/* end move */
+
 .headline-box h1 {
     margin: 10px 0 0 0; 
 }
