@@ -24,7 +24,9 @@
     <xsl:include href="xsl-tei/l.xsl"/>
     <xsl:include href="xsl-tei/lb.xsl"/>
     <xsl:include href="xsl-tei/lg.xsl"/>
+    <xsl:include href="xsl-tei/note.xsl"/>
     <xsl:include href="xsl-tei/q.xsl"/>
+    <xsl:include href="xsl-tei/ref.xsl"/>
     
     <xsl:template match="/">
         <xsl:apply-templates/>
