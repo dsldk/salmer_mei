@@ -207,8 +207,7 @@
         </xsl:for-each>
         <xsl:apply-templates select="../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in measure -->
         <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure) or name(preceding-sibling::*[1])='sb' or name(preceding-sibling::*[1])='pb']/             ../(m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in section; to appear at the beginning of each system -->
-        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/             
-            (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
+        <xsl:apply-templates select="ancestor::m:measure[not(preceding-sibling::m:staff or preceding-sibling::m:measure)]/ancestor::m:score/                          (m:annot | *[contains($editorials, name(.))]/m:annot)" mode="add_comment"/><!-- comments in score; show only in first measure -->
     </xsl:template>
     
     <xsl:template match="m:add | m:corr | m:damage | m:del |  m:gap | m:orig | m:reg | m:sic | m:supplied | m:unclear">
@@ -376,7 +375,7 @@
                     <!-- display virga as quarter, but play at half value -->
                     <xsl:attribute name="dur">4</xsl:attribute>
                     <xsl:attribute name="dur.ges">8</xsl:attribute>
-                    <xsl:attribute name="head.shape">diamond</xsl:attribute>
+                    <xsl:attribute name="head.shape">square</xsl:attribute>
                     <xsl:attribute name="head.fill">solid</xsl:attribute>
                 </xsl:when>
                 <xsl:when test="$dur='4'">
