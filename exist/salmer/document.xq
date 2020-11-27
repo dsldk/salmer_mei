@@ -221,8 +221,10 @@ let $result :=
                                     <parameters>
                                       <param name="mdiv" value="{$mdiv/@xml:id}"/>
                                       <param name="doc"  value="{$this_filename}"/>
+                                      <param name="language" value="{$language}"/>
+                            	      <param name="hostname" value="{$host}"/>
                                     </parameters>
-                                let $music := <div class="mei-wrapper">{transform:transform($this_doc,$mdivXsl,$params)}</div> 
+                                let $music := <div class="mei-wrapper">{transform:transform($this_doc,$mdivXsl,$params)}</div>   
                             return $music
                     return 
                         <div>
