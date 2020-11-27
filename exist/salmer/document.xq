@@ -211,7 +211,7 @@ let $result :=
                 }
                 <!-- Music included from related records (for melody meta records) -->
                 {
-                    for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work/m:relationList/m:relation[@rel="hasEmbodiment" and not(contains(@target,"://"))]
+                    for $embodiment at $pos in $list[1]//m:meiHead/m:workList/m:work[not(m:classification/m:termList/m:term[@type='itemClass']='liturgy')]/m:relationList/m:relation[@rel="hasEmbodiment" and not(contains(@target,"://"))]
                         let $this_doc_uri := concat($database,'/',$datadir,'/',$embodiment/@target) 
                         let $this_doc := doc($this_doc_uri)
                         let $output :=
