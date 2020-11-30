@@ -149,6 +149,8 @@ let $result :=
                     	<parameters>
                     	  <param name="mdiv"         value="{$mdiv/@xml:id}"/>
                     	  <param name="doc"          value="{$filename}"/>
+                          <param name="language" value="{$language}"/>
+                          <param name="hostname" value="{$host}"/>
                     	  <!--<param name="include_data" value="{$include_data}"/>-->
                     	</parameters>
                 	let $music := transform:transform($list[1],$mdivXsl,$params)
