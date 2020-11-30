@@ -18,7 +18,7 @@ declare variable $host     := request:get-header('HOST'); (: "localhost"; with m
 declare variable $language := request:get-parameter("language", "");
 declare variable $head     := request:get-parameter("head", "Musik og tekst i reformationstidens danske salmesang");
 
-declare variable $tei_base := "https://raw.githubusercontent.com/dsldk/salmer_data/develop/xml/";
+declare variable $tei_base := "http://salmer.dsl.lan:8080/exist/apps/salmer/xml/";
 declare variable $database := "/db/salmer"; (: with melodier.dsl.lan on port 8080 use "/db/salmer" :) 
 declare variable $datadir  := "data";
 declare variable $metaXsl  := doc(concat($database,"/xsl/metadata_to_html.xsl"));
@@ -59,7 +59,7 @@ let $tei_doc := if($coll!="" and doc-available(concat($tei_base,$index//dsl:pub[
 
 let $text_data := if($tei_doc) 
     then
-        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
+        $tei_doc//tei:div[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]
     else
         ()
 
@@ -157,7 +157,7 @@ let $result :=
                 	(: get only the TEI elements after the current <notatedMusic> and only until the following one  :)
                     let $text_step1 :=
                         <div>
-                            {$text_data//tei:notatedMusic[contains(tei:ptr/@target,concat('#',$mdiv/@xml:id)) or tei:ptr/@target=$filename]/following-sibling::*}
+                            {$text_data//tei:notatedMusic[contains(tei:ptr/@target,concat('#',$mdiv)) or tei:ptr/@target=$filename]/following-sibling::*}
                         </div>
                     let $text_step2 :=  
                         if($text_step1//tei:notatedMusic) then
