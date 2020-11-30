@@ -20,8 +20,8 @@ var disabledOptions = ["adjustPageHeight", "breaks", "landscape", "pageHeight", 
 var $defaultVerovioOptions = {
     from:                 'mei',
     scale:                40,
-    pageWidth:            2000,
-//    pageWidth:            1000,
+    // system breaks seem to depend on page width rather than the "breaks" option :-(
+    pageWidth:            1000,
     // minimal page height forces Verovio to render only one system per page     
     pageHeight:           100,
     pageMarginTop:        0,
@@ -29,10 +29,10 @@ var $defaultVerovioOptions = {
     header:               'none',
     footer:               'none',
     staffLineWidth:       0.25,
-    lyricTopMinMargin:    4,
+    lyricTopMinMargin:    2,
     lyricSize:            5.5,
     lyricNoStartHyphen:   1,
-    spacingStaff:         3,
+    defaultBottomMargin:  0,
     spacingLinear:        0.75,
     spacingNonLinear:     0.35,
     spacingDurDetection:  true,
@@ -42,11 +42,11 @@ var $defaultVerovioOptions = {
     noJustification:      1,
     breaks:               'encoded',
     systemDivider:        'none'
-};
+}
 
 
 // global variables - do not change
-var host = "https://melodier.dsl.dk";
+var host = "https://melodier.dsl.dk"
 
 var $mei = [];  // The array holding the MEI objects 
 
