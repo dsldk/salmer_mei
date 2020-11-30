@@ -149,7 +149,7 @@ function renderData(data) {
    
     for (i = 0; i < vrvToolkit.getPageCount(); i++) {
         svg = vrvToolkit.renderToSVG(i + 1, {});
-        $("#" + targetId).html($("#" + targetId).html() + "<br/>" + svg);
+        $("#" + targetId).html($("#" + targetId).html() + svg);
     }
          
     // Adjust lyrics and hyphen position
