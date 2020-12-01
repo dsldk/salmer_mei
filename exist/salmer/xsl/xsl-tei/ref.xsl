@@ -4,8 +4,8 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     exclude-result-prefixes="xs tei" 
     version="2.0">
-    <!-- Omit textual cross references in the melody database -->
+    <!-- Do not make cross references clickable in the melody database -->
     <xsl:template match="tei:ref">
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="text() | *[not(name()='reg')]"/>
     </xsl:template>
 </xsl:stylesheet>

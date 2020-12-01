@@ -4405,6 +4405,21 @@ body.home-page #search-field::before {
     position:relative;
     top:-.25em
 }
+.alternative_text {
+    display: inline-table;
+    vertical-align: middle;
+    line-height: 1em;
+}
+
+.marginal-note {
+    display: block;
+    position: absolute;
+    left: 0;
+    margin-top: -1.4em;
+    width: 4rem;
+    font-size: .7em;
+}
+
 .nextPreviousbox {
     overflow:hidden;
     background-color:#ecece8;
