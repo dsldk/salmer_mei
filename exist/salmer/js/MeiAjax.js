@@ -411,7 +411,14 @@ function renderData(data) {
     // Set max. SVG width to initial width to avoid up-scaling 
     var outerSvg = document.getElementById(targetId).firstChild;
     var viewBox = outerSvg.getAttribute('viewBox').split(' ');
+    console.log('Set SVG width to ' + viewBox[2] + 'px');  
     outerSvg.setAttribute('style', 'max-width: ' + viewBox[2] + 'px;');
+    
+    // Set width of .mei_wrapper container accordingly
+    var containerWidth = parseInt(viewBox[2]) + 300;
+    if ($(".metadata")) {
+        document.getElementById(targetId).parentNode.parentNode.setAttribute('style', 'max-width: ' + containerWidth + 'px;');
+    }
 
     // send a POST request to get the editorial comments formatted as HTML
     $.post(host + '/transform_mei.xq?doc=' + $mei[targetId].xsltOptions['doc'] + '&id=' + targetId + '&xsl=comments.xsl',
