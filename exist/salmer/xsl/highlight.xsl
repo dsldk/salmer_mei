@@ -59,12 +59,10 @@
     <xsl:template match="m:measure">
         <xsl:copy>
             <xsl:apply-templates select="@*|node()"/>
-            <xsl:if test="$excerpt='yes' and count(preceding-sibling::m:measure)=0 and                 
-                ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="$excerpt='yes' and count(preceding-sibling::m:measure)=0 and                                  ancestor::m:mdiv/preceding-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment above" label="Dele udeladt" tstamp="0" place="above">[...]</dir>
             </xsl:if>
-            <xsl:if test="$excerpt='yes' and count(following-sibling::m:measure)=0 and                 
-                ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
+            <xsl:if test="$excerpt='yes' and count(following-sibling::m:measure)=0 and                                  ancestor::m:mdiv/following-sibling::m:mdiv[1][not(.//*[contains($highlight_ids,concat(' ',@xml:id,' '))])]">
                 <dir xmlns="http://www.music-encoding.org/ns/mei" type="fragment below" label="Dele udeladt" tstamp="0" place="below">[...]</dir>
             </xsl:if>
         </xsl:copy>
@@ -86,8 +84,15 @@
             <xsl:if test="not(@type) and contains($highlight_ids,concat(' ',@xml:id,' '))">
                 <xsl:attribute name="type">highlight</xsl:attribute>
             </xsl:if>
-            <xsl:if test="@type and contains($highlight_ids,concat(' ',@xml:id,' '))">
-                <xsl:attribute name="type"><xsl:value-of select="@type"/> highlight</xsl:attribute>
+            <xsl:if test="@type">
+                <xsl:choose>
+                    <xsl:when test="contains($highlight_ids,concat(' ',@xml:id,' '))">
+                        <xsl:attribute name="type"><xsl:value-of select="@type"/> highlight</xsl:attribute>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:attribute name="type" select="@type"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:if>
             <xsl:apply-templates select="@*[not(name()='type')]|node()">
                 <xsl:with-param name="last" select="$last"/>

@@ -34,7 +34,7 @@
     
     <xsl:template match="m:note" mode="check_if_neume">
         <!-- When playing neumes, try to phrase the music just a little by adding a rest between phrases -->
-        <xsl:if test="@type='neume' and $online='yes'">
+        <xsl:if test="contains(@type,'neume') and $online='yes'">
             <xsl:choose>
                 <xsl:when test="not(preceding-sibling::m:note) and ancestor::m:measure/preceding-sibling::m:measure[1]/@right!='invis'">
                     <!-- First note after a vertical line; add rest -->
@@ -50,7 +50,7 @@
             <xsl:copy-of select="@*[not(substring(name(),1,3)='dur')]"/>
             <xsl:choose>
                 <!-- Play neumes (stemless quarters) at 1/4 tempo to match tempo in mixed notation-->
-                <xsl:when test="@type='neume'">
+                <xsl:when test="contains(@type,'neume')">
                     <xsl:choose>
                         <!-- @dur.ges has highest priority -->
                         <xsl:when test="number(@dur.ges) &gt;= 4">
