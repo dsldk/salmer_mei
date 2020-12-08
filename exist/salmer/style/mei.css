@@ -24,6 +24,19 @@
             width: 4em;
             font-size: .7em;
         }
+        
+        .introduction .toc ul {
+            list-style: none;
+        }
+
+        .app:hover .lemma {
+            background-color: #eef;
+        }
+
+        .app .lemma:hover {
+            background: none;
+        }
+
 /* end temporary /*
 
 /* Google fonts */
