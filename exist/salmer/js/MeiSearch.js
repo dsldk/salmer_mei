@@ -18,19 +18,18 @@ $defaultVerovioOptions = {
     footer:             'none',
     lyricTopMinMargin:  4,
     lyricSize:          4,
-    spacingSystem:      1,
-    spacingStaff:       3,
+    spacingSystem:      0, 
     spacingLinear:      0.9,
     spacingNonLinear:   0.3,
     font:               'Bravura',
     adjustPageHeight:   true,
     noJustification:    true,
-    breaks:             'auto',
+    breaks:             'auto', 
     systemDivider:      'none'
 };
 
 // Verovio settings for the piano input 
-var verovio_options_search = {
+verovio_options_search = {
     from:               'mei',
     svgViewBox:         true,
     scale:              100,
@@ -46,6 +45,12 @@ var verovio_options_search = {
     adjustPageHeight:   0,
     noJustification:    true, 
     systemDivider:      'none'
+};
+
+// PAE rendering options. Top margin must match the one for the piano input
+verovio_options_pae = {
+    from:              'pae',
+    pageMarginTop:      20
 };
 
 // An array of arrays holding the note IDs in each MEI instance
@@ -114,11 +119,13 @@ function absp_to_pae(absp, separator) {
 
 function render_query(pae) {
     // a rendering function for the piano input
-    // first rendering is for conversion to MEI only              
-    vrvToolkit.renderData(pae + "\n", {from: 'pae'});
+    // first rendering is for conversion from PAE to MEI only
+vrvToolkit.setOptions(verovio_options_search);
+
+    vrvToolkit.renderData(pae + "\n", verovio_options_pae);
     // remove stems before displaying
-    var stemless = vrvToolkit.getMEI(-1, true).replace(new RegExp('<note ', 'g'),'<note stem.len="0" ');
     vrvToolkit.setOptions(verovio_options_search);
+    var stemless = vrvToolkit.getMEI(-1, true).replace(new RegExp('<note ', 'g'),'<note stem.len="0" ');
     vrvToolkit.loadData(stemless);
     document.getElementById("pQueryOut").innerHTML = vrvToolkit.renderToSVG(page, {});
 }

@@ -36,7 +36,7 @@ var $defaultVerovioOptions = {
     lyricTopMinMargin:    4,
     lyricSize:            5.5,
     lyricNoStartHyphen:   1,
-    spacingStaff:         3,
+    spacingSystem:        0,
     spacingLinear:        0.75,
     spacingNonLinear:     0.35,
     spacingDurDetection:  true,
