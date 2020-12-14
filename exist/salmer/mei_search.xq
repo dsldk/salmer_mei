@@ -362,7 +362,7 @@ let $result :=
         <script type="text/javascript">
             language = "{$language}";
         </script>
-
+        
 	</head>
 	<body class="metadata" onload="document.getElementById('{$active_tab}').click();">
 
@@ -373,8 +373,6 @@ let $result :=
 	        {doc(concat($collection,"/assets/header_",$language,".html"))}
             
             <!-- Search -->
-            <div class="main-top-section background-cover">
-                <div class="container">
    
            <div id="search-field">
         
@@ -385,9 +383,9 @@ let $result :=
                       <button class="tablinks" onclick="openTab(event, 'piano_wrapper')" id="openPianoTab" title="{$lang_lib/*[name()='search_label_piano_hint']/text()}">{$lang_lib/*[name()='search_label_piano']/text()}</button>
                    </div>
                    
-                   
                    <div class="search-form-container">
     
+                     <div id="search-field-contents">        
                         <form action="" method="get" class="form tabcontent" id="search-mobile">
                             <div class="search-line input-group">
                                 <span class="input-group-addon"><img src="/style/img/search.png" alt=""/></span>
@@ -459,8 +457,6 @@ let $result :=
                                         <!--<div class="key black black1" data-key="85"></div>-->
                                     </div>
                                 </div>
-                                <input type="submit" value="{$lang_lib/*[name()='search_button']/text()}" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
-                                <input type="button" value="{$lang_lib/*[name()='reset_button']/text()}" onclick="reset_a();" class="btn btn-info"/>
                             </div>
                             <div id="piano_search_cell">
                                 <div id="pSearchDiv">
@@ -518,19 +514,18 @@ let $result :=
                                         </div>
                                     </div>
                                 </div>
+                                <div class="checkbox-options search-buttons">
+                                    <input type="submit" value="{$lang_lib/*[name()='search_button']/text()}" class="btn btn-primary" onclick="this.form['txt'].value = updateAction()"/>&#160;
+                                    <input type="button" value="{$lang_lib/*[name()='reset_button']/text()}" onclick="reset_a();" class="btn btn-info"/>
+                                </div>                                
                             </div>
                         </form>
                     </div>
     
+                </div>
             </div>
-    
-        </div>
         
-
-
-                 </div> <!-- header-wrapper -->
-            </div> <!-- container -->
-
+         </div>
 	   </header>
 
        <div class="page-wrapper">
@@ -648,7 +643,6 @@ let $result :=
                                             } 
                                             </span>
                                         </a>
-                                        <br/>
                                         {
                                             let $preview := if ($file/m:mei/m:music/m:body/m:mdiv/m:score)
                                                 then
@@ -670,7 +664,6 @@ let $result :=
                                                                 then concat("(", $lang_lib/*[name()='excerpts']/text(), ")") else ""
                                                                 return $excerpts
                                                             }
-                                                            &#160;
                                                             <div class="midi_player">
                                                                 <div class="midi_button play" id="play_{substring-before($res/*[@name="file"]/string(),'.')}" title="{$lang_lib/*[name()='play_hint']/text()}" 
                                                                     onclick="play_midi('{substring-before($res/*[@name="file"]/string(),'.')}');">

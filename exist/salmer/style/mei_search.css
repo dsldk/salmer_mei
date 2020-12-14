@@ -9,9 +9,7 @@
 }
 
 a.paging, a.paging:visited, a.paging:active {
-/*    color: #428bca; */
     color: white;
-/*    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgb(88, 135, 38) 0%, rgb(51, 98, 1) 100%) repeat scroll 0 0; */
     background-color: #536d7e;
 }
 
@@ -82,25 +80,24 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 .result_list {
-    max-width: 1025px;
+    /*max-width: 1025px;*/
     min-width: 720px;
-    margin: 20px auto;
+    /*margin: 20px auto;*/
 }
 
 .result_list .item {
-/*    border-top: 2px solid #000; */
-    margin-top: 5px;
+    margin-bottom: 0;
     padding-top: 10px;
 }
 
 .result_list .title {
     background-color: #245270;
-    /* #536d7e; */
     border-radius: 6px;
     color: white;
     font-weight: bold;
     display: block;
     padding: 2px 0 0 34px;
+    margin-bottom: 8px;
     background-image: url("img/music_document_white.png");
     background-position: 10px 5px;
     background-repeat: no-repeat;
@@ -116,6 +113,13 @@ a.paging, a.paging:visited, a.paging:active {
     -ms-filter: brightness(1.15);    
 }
 
+.result_list .midi_player {
+    display: block;
+    margin: 0;
+    position: relative;
+    top: 4px;
+    height: 16px;
+}
 
 .mei {
     width: 100%;
@@ -162,10 +166,10 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 #pQueryOut {
-    background-color: #fff; 
-    border: 2px solid #333;
+    background-color: #ecece8; 
+    border: 2px solid #275874;
     border-bottom: none;
-    margin: 0 -1px -1px 1px;
+    margin: 0 -1px 1px 1px;
     width: 392px;
     height: 80px;
     padding: 0 8px;
@@ -205,6 +209,7 @@ a.paging, a.paging:visited, a.paging:active {
     position: relative;
     float:left;
     margin-left: 40px;
+    margin-bottom: 12px;
 }
 
 #pSearch .radio-inline {
@@ -251,17 +256,60 @@ a.paging, a.paging:visited, a.paging:active {
 }
 
 #search-field::before, #search-field::after {
-    height: 10px;
+    height: 0px;
 }
 
 /* tabs */
+
+#search-field .tablinks 
+{
+    background-color: #003B5C;
+}
+
+#search-field .search-form-container,
+#search-field .tablinks.active,
+#search-field .tablinks:hover {
+    background-color: #275874;
+    transition:height 250ms ease-in-out;
+}
+
+.tab.form {
+    padding-left: 15px;
+}
+
+#search-field-contents, 
+.tab.form {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    #search-field-contents, 
+    .tab.form {
+        width: 750px;
+    }
+}
+
+@media (min-width: 992px) {
+    #search-field-contents, 
+    .tab.form {
+        width: 970px;
+    }
+}
+
+@media (min-width: 1200px) {
+    #search-field-contents, 
+    .tab.form {
+        width: 1170px;
+    }
+}
+
 .tab {
   overflow: hidden;
   margin-top: 10px;
 }
 
 .tab button {
-/*  background-color: inherit; */
   float: left;
   border: none;
   border-radius: 8px 8px 0 0;
@@ -270,26 +318,13 @@ a.paging, a.paging:visited, a.paging:active {
   cursor: pointer;
   padding: 4px 20px;
   color: #dcd2ab;
-  background-color: rgba(255,255,255,0.1);
-  transition: 0.3s;
-}
-
-.tab button:hover {
-  background-color: rgba(255,255,255,0.2);
-}
-
-.tab button.active {
-  background-color: rgba(255,255,255,0.2);
 }
 
 .tabcontent {
   display: none;
-  padding: 6px 12px;
-  /* border: 1px solid #ccc; */
+  padding: 20px 16px;
   border-top: none;
-  background-color: rgba(255,255,255,0.2);
-  /*-webkit-animation: fadeEffect 1s;
-  animation: fadeEffect 1s;  Fading effect takes 1 second */
+  margin-bottom: 0;
 }
 
 @-webkit-keyframes fadeEffect {
@@ -306,8 +341,7 @@ a.paging, a.paging:visited, a.paging:active {
 /* piano input */
 
 #piano_wrapper {
-/*    display: table-row;  */
-    padding: 20px 10px 2px 10px; 
+    padding: 20px 10px 2px 13px; 
 }
 
 #piano_cell, #piano_search_cell {

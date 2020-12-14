@@ -12,7 +12,7 @@ $defaultVerovioOptions = {
     scale:              36,
     pageWidth:          2500,
     pageHeight:         20000,
-    pageMarginTop:      30,
+    pageMarginTop:      0,
     pageMarginLeft:     0,
     header:             'none',
     footer:             'none',
