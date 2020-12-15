@@ -882,7 +882,7 @@
                </contentItem>
                <contentItem label="119" type="music_document">
                   <title xml:lang="da">Salig er den i Guds fryct staar</title>
-                  <title xml:lang="da" type="uniform">Salig er den i Guds frygt står</title>
+                  <title xml:lang="da" type="uniform">Salig er den, i Guds frygt står</title>
                   <locus>fol. 195r</locus>
                   <ptr target="#section-15-hymn-1" type="edition"/>
                   <ptr type="db" target="Th_1569/Th_1569_LN1426_195r.xml"/>
@@ -1056,7 +1056,7 @@
                </contentItem>
                <contentItem label="144" type="music_document">
                   <title xml:lang="da">Forlæ oss met Fred naadelig</title>
-                  <title xml:lang="da" type="uniform">Forlen os med fred nådelig</title>
+                  <title xml:lang="da" type="uniform">Forlæ os med fred nådelig</title>
                   <locus>fol. 253v</locus>
                   <ptr target="#section-18-hymn-5" type="edition"/>
                   <ptr type="db" target="Th_1569/Th_1569_LN1426_253v.xml"/>
@@ -1105,7 +1105,7 @@
                </contentItem>
                <contentItem label="151" type="music_document">
                   <title xml:lang="da">O Herre Gud betee din mact</title>
-                  <title xml:lang="da" type="uniform">O Herre Gud, betee din magt</title>
+                  <title xml:lang="da" type="uniform">O Herre Gud, beté din magt</title>
                   <locus>fol. 262r</locus>
                   <ptr target="#section-18-hymn-13" type="edition"/>
                   <ptr type="db" target="Th_1569/Th_1569_LN1426_262r.xml"/>
@@ -1476,7 +1476,7 @@
                </contentItem>
                <contentItem label="204" type="music_document">
                   <title xml:lang="da">Huad min Gud vil det skee alle tid</title>
-                  <title xml:lang="da" type="uniform">Hvad min Gud vil det ske alle tid</title>
+                  <title xml:lang="da" type="uniform">Hvad min Gud vil, det ske alle tid</title>
                   <locus>fol. 341v</locus>
                   <ptr target="#section-24-hymn-10" type="edition"/>
                   <ptr type="db" target="Th_1569/Th_1569_LN1426_341v.xml"/>
@@ -1690,7 +1690,7 @@
                <relation label="Hielp Gud huor stor er Menniskens sorrig oc nød" rel="hasPart" target="Th_1569/Th_1569_LN1426_186r.xml" xml:id="Th_1569_LN1426_relation_931adc30"/>
                <relation label="O Herre Gud Fader i euighed" rel="hasPart" target="Th_1569/Th_1569_LN1426_187v.xml" xml:id="Th_1569_LN1426_relation_e8e29a97"/>
                <relation label="Den Christelig Kirckis skøne naffn" rel="hasPart" target="Th_1569/Th_1569_LN1426_193r.xml" xml:id="Th_1569_LN1426_relation_b3a17440"/>
-               <relation label="Salig er den i Guds fryct staar" rel="hasPart" target="Th_1569/Th_1569_LN1426_195r.xml" xml:id="Th_1569_LN1426_relation_7dcfc042"/>
+               <relation label="Salig er den, i Guds fryct staar" rel="hasPart" target="Th_1569/Th_1569_LN1426_195r.xml" xml:id="Th_1569_LN1426_relation_7dcfc042"/>
                <relation label="Salig er den Mand der Gud frycter" rel="hasPart" target="Th_1569/Th_1569_LN1426_195v.xml" xml:id="Th_1569_LN1426_relation_9199decd"/>
                <relation label="Huo som vil salig vdi Verden leffue" rel="hasPart" target="Th_1569/Th_1569_LN1426_196v.xml" xml:id="Th_1569_LN1426_relation_95bf278d"/>
                <relation label="Hielp oss Gud Fader i Himmerig" rel="hasPart" target="Th_1569/Th_1569_LN1426_198r.xml" xml:id="Th_1569_LN1426_relation_3bdcd553"/>

@@ -144,7 +144,7 @@
                     </contentItem>
                     <contentItem label="12" type="music_document">
                         <title xml:lang="da">FOrlæ oss met Fred naadelig</title>
-                        <title xml:lang="da" type="uniform">Forlen os med fred nådelig</title>
+                        <title xml:lang="da" type="uniform">Forlæ os med fred nådelig</title>
                         <locus>s. 22</locus>
                         <ptr target="#section-1-13" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_022.xml"/>
@@ -343,7 +343,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_091.xml"/>
                     </contentItem>
                     <contentItem label="44" type="music_document">
-                        <title xml:lang="la">VVltum tuum de precabuntur omnes diuites plebis</title>
+                        <title xml:lang="la">VVltum tuum deprecabuntur omnes diuites plebis</title>
                         <locus>s. 94</locus>
                         <ptr target="#section-10-1" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_094.xml"/>
@@ -379,7 +379,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_103.xml"/>
                     </contentItem>
                     <contentItem label="50" type="music_document">
-                        <title xml:lang="la">OMnis terra adorette Deus</title>
+                        <title xml:lang="la">OMnis terra adoret te Deus</title>
                         <locus>s. 104</locus>
                         <ptr target="#section-13-1" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_104.xml"/>
@@ -642,7 +642,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_199.xml"/>
                     </contentItem>
                     <contentItem label="91" type="music_document">
-                        <title xml:lang="la">MAne prima sabbathi sirgens Dei Filius</title>
+                        <title xml:lang="la">MAne prima sabbathi surgens Dei Filius</title>
                         <locus>s. 200</locus>
                         <ptr target="#section-29-8" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_200.xml"/>
@@ -893,7 +893,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_293.xml"/>
                     </contentItem>
                     <contentItem label="131" type="music_document">
-                        <title xml:lang="la">HAleluia. Deus index iustus</title>
+                        <title xml:lang="la">HAleluia. Deus iudex iustus</title>
                         <locus>s. 295</locus>
                         <ptr target="#anden-soendag-efter-trinitatis" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_295.xml"/>
@@ -1210,7 +1210,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_399.xml"/>
                     </contentItem>
                     <contentItem label="182" type="music_document">
-                        <title xml:lang="la">HAleluia. Dextera Dei fecit virtutem dextera Domini ex altauit me</title>
+                        <title xml:lang="la">HAleluia. Dextera Dei fecit virtutem dextera Domini exaltauit me</title>
                         <locus>s. 401</locus>
                         <ptr target="#nittende-soendag-efter-trinitatis" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_401.xml"/>
@@ -1266,7 +1266,7 @@
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_417.xml"/>
                     </contentItem>
                     <contentItem label="191" type="music_document">
-                        <title xml:lang="la">SJ iniquitates obserua ueris Domine</title>
+                        <title xml:lang="la">SJ iniquitates obseruaueris Domine</title>
                         <locus>s. 419</locus>
                         <ptr target="#toogtyvende-soendag-efter-trinitatis" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_419.xml"/>
@@ -6679,13 +6679,13 @@
                     <relation label="Dum medium silentium teneret omnia" rel="hasPart" target="Je_1573/Je_1573_LN0981_087.xml" xml:id="Je_1573_LN0981_relation_4e148e3f"/>
                     <relation label="HAleluia. Dominus regnauit" rel="hasPart" target="Je_1573/Je_1573_LN0981_090.xml" xml:id="Je_1573_LN0981_relation_585735cf"/>
                     <relation label="ET postquam consummati sunt dies octo" rel="hasPart" target="Je_1573/Je_1573_LN0981_091.xml" xml:id="Je_1573_LN0981_relation_645ef14f"/>
-                    <relation label="VVltum tuum de precabuntur omnes diuites plebis" rel="hasPart" target="Je_1573/Je_1573_LN0981_094.xml" xml:id="Je_1573_LN0981_relation_a4258583"/>
+                    <relation label="VVltum tuum deprecabuntur omnes diuites plebis" rel="hasPart" target="Je_1573/Je_1573_LN0981_094.xml" xml:id="Je_1573_LN0981_relation_a4258583"/>
                     <relation label="HAleluia. Diffusa est gratia in labiis tuis" rel="hasPart" target="Je_1573/Je_1573_LN0981_096.xml" xml:id="Je_1573_LN0981_relation_6797c89c"/>
                     <relation label="ECce aduenit Dominator Dominus" rel="hasPart" target="Je_1573/Je_1573_LN0981_097.xml" xml:id="Je_1573_LN0981_relation_1d629039"/>
                     <relation label="HAleluia. Vidimus stellam eius in oriente" rel="hasPart" target="Je_1573/Je_1573_LN0981_099.xml" xml:id="Je_1573_LN0981_relation_7904974e"/>
                     <relation label="IN excelso throno vidi sedere virum" rel="hasPart" target="Je_1573/Je_1573_LN0981_101.xml" xml:id="Je_1573_LN0981_relation_6bd69514"/>
                     <relation label="HAleluia. Jubilate Deo omnis terra" rel="hasPart" target="Je_1573/Je_1573_LN0981_103.xml" xml:id="Je_1573_LN0981_relation_6322a376"/>
-                    <relation label="OMnis terra adorette Deus" rel="hasPart" target="Je_1573/Je_1573_LN0981_104.xml" xml:id="Je_1573_LN0981_relation_01582a3b"/>
+                    <relation label="OMnis terra adoret te Deus" rel="hasPart" target="Je_1573/Je_1573_LN0981_104.xml" xml:id="Je_1573_LN0981_relation_01582a3b"/>
                     <relation label="HAleluia. Laudate Deum omnes Angelj eius" rel="hasPart" target="Je_1573/Je_1573_LN0981_106.xml" xml:id="Je_1573_LN0981_relation_028d32b6"/>
                     <relation label="ADorate Deum omnes Angelj eius" rel="hasPart" target="Je_1573/Je_1573_LN0981_107.xml" xml:id="Je_1573_LN0981_relation_658d2493"/>
                     <relation label="HAleluia. Dominus regnauit" rel="hasPart" target="Je_1573/Je_1573_LN0981_109.xml" xml:id="Je_1573_LN0981_relation_11cc51ed"/>
@@ -6726,7 +6726,7 @@
                     <relation label="HAleluia. Pascha nostrum immolatus est Christus" rel="hasPart" target="Je_1573/Je_1573_LN0981_195.xml" xml:id="Je_1573_LN0981_relation_435aa65b"/>
                     <relation label="VJctimæ paschali laudes immolant Christiani" rel="hasPart" target="Je_1573/Je_1573_LN0981_196.xml" xml:id="Je_1573_LN0981_relation_154289e1"/>
                     <relation label="CHrist stod op aff Døde" rel="hasPart" target="Je_1573/Je_1573_LN0981_199.xml" xml:id="Je_1573_LN0981_relation_b9948eda"/>
-                    <relation label="MAne prima sabbathi sirgens Dei Filius" rel="hasPart" target="Je_1573/Je_1573_LN0981_200.xml" xml:id="Je_1573_LN0981_relation_aadc2f87"/>
+                    <relation label="MAne prima sabbathi surgens Dei Filius" rel="hasPart" target="Je_1573/Je_1573_LN0981_200.xml" xml:id="Je_1573_LN0981_relation_aadc2f87"/>
                     <relation label="CHrist laa i Dødens baande" rel="hasPart" target="Je_1573/Je_1573_LN0981_205.xml" xml:id="Je_1573_LN0981_relation_da186693"/>
                     <relation label="VErè dignum et iustum est" rel="hasPart" target="Je_1573/Je_1573_LN0981_208.xml" xml:id="Je_1573_LN0981_relation_f71979b6"/>
                     <relation label="Erens Konning/ O Christe/ Haleluia" rel="hasPart" target="Je_1573/Je_1573_LN0981_210.xml" xml:id="Je_1573_LN0981_relation_edeec4f8"/>
@@ -6766,7 +6766,7 @@
                     <relation label="HAleluia. Domine Deus meus" rel="hasPart" target="Je_1573/Je_1573_LN0981_288.xml" xml:id="Je_1573_LN0981_relation_8fe7f9e5"/>
                     <relation label="Gud Fader vdi Himmerig" rel="hasPart" target="Je_1573/Je_1573_LN0981_290.xml" xml:id="Je_1573_LN0981_relation_0a194a0e"/>
                     <relation label="FActus est Dominus protector meus" rel="hasPart" target="Je_1573/Je_1573_LN0981_293.xml" xml:id="Je_1573_LN0981_relation_a33087e6"/>
-                    <relation label="HAleluia. Deus index iustus" rel="hasPart" target="Je_1573/Je_1573_LN0981_295.xml" xml:id="Je_1573_LN0981_relation_a7a50f04"/>
+                    <relation label="HAleluia. Deus iudex iustus" rel="hasPart" target="Je_1573/Je_1573_LN0981_295.xml" xml:id="Je_1573_LN0981_relation_a7a50f04"/>
                     <relation label="REspice in me et miserere mei Domine" rel="hasPart" target="Je_1573/Je_1573_LN0981_296.xml" xml:id="Je_1573_LN0981_relation_031d02fd"/>
                     <relation label="HAleluia. Diligam te Domine virtus mea" rel="hasPart" target="Je_1573/Je_1573_LN0981_298.xml" xml:id="Je_1573_LN0981_relation_91dce112"/>
                     <relation label="DOminus illuminatio mea" rel="hasPart" target="Je_1573/Je_1573_LN0981_300.xml" xml:id="Je_1573_LN0981_relation_3bec37b0"/>
@@ -6817,7 +6817,7 @@
                     <relation label="DA pacem Domine sustinentibus te" rel="hasPart" target="Je_1573/Je_1573_LN0981_396.xml" xml:id="Je_1573_LN0981_relation_63d2293a"/>
                     <relation label="HAleluia. Laudate Dominum omnes gentes" rel="hasPart" target="Je_1573/Je_1573_LN0981_398.xml" xml:id="Je_1573_LN0981_relation_d9ae2cf7"/>
                     <relation label="SAlus populi ego sum" rel="hasPart" target="Je_1573/Je_1573_LN0981_399.xml" xml:id="Je_1573_LN0981_relation_b4a4dcc8"/>
-                    <relation label="HAleluia. Dextera Dei fecit virtutem dextera Domini ex altauit me" rel="hasPart" target="Je_1573/Je_1573_LN0981_401.xml" xml:id="Je_1573_LN0981_relation_78270cbf"/>
+                    <relation label="HAleluia. Dextera Dei fecit virtutem dextera Domini exaltauit me" rel="hasPart" target="Je_1573/Je_1573_LN0981_401.xml" xml:id="Je_1573_LN0981_relation_78270cbf"/>
                     <relation label="OMnia quæ fecisti nobis Domine" rel="hasPart" target="Je_1573/Je_1573_LN0981_403.xml" xml:id="Je_1573_LN0981_relation_cbd8b580"/>
                     <relation label="HAleluia. Qui confidunt in Domino" rel="hasPart" target="Je_1573/Je_1573_LN0981_406.xml" xml:id="Je_1573_LN0981_relation_42c59bc7"/>
                     <relation label="TJmete Dominum omnes sancti eius" rel="hasPart" target="Je_1573/Je_1573_LN0981_407.xml" xml:id="Je_1573_LN0981_relation_366ddd21"/>
@@ -6826,7 +6826,7 @@
                     <relation label="IN voluntate tua Domine vniuersa sunt posita" rel="hasPart" target="Je_1573/Je_1573_LN0981_413.xml" xml:id="Je_1573_LN0981_relation_1ee8a396"/>
                     <relation label="HAleluia. De profundis clamaui ad te Domine" rel="hasPart" target="Je_1573/Je_1573_LN0981_416.xml" xml:id="Je_1573_LN0981_relation_49e4a394"/>
                     <relation label="SAa taler den wuise mund" rel="hasPart" target="Je_1573/Je_1573_LN0981_417.xml" xml:id="Je_1573_LN0981_relation_5e874585"/>
-                    <relation label="SJ iniquitates obserua ueris Domine" rel="hasPart" target="Je_1573/Je_1573_LN0981_419.xml" xml:id="Je_1573_LN0981_relation_2aaf6f44"/>
+                    <relation label="SJ iniquitates obseruaueris Domine" rel="hasPart" target="Je_1573/Je_1573_LN0981_419.xml" xml:id="Je_1573_LN0981_relation_2aaf6f44"/>
                     <relation label="HAleluia. Lauda anima mea Dominum" rel="hasPart" target="Je_1573/Je_1573_LN0981_421.xml" xml:id="Je_1573_LN0981_relation_4becd7bb"/>
                     <relation label="Dicit Dominus" rel="hasPart" target="Je_1573/Je_1573_LN0981_422.xml" xml:id="Je_1573_LN0981_relation_148642b4"/>
                     <relation label="HAleluia. Qui sanat contritos corde" rel="hasPart" target="Je_1573/Je_1573_LN0981_424.xml" xml:id="Je_1573_LN0981_relation_08ca4b97"/>
