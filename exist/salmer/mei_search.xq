@@ -172,7 +172,7 @@ declare function local:verovio_match($doc as node(), $fileId as xs:string, $high
         else
             ""
     let $output1 :=
-        <div id="{$fileId}" class="mei"><p class="loading"><img src="style/img/loading.gif" width="128" height="128" alt="{$lang_lib/*[name()='retrieving_score']/text()}" title="{$lang_lib/*[name()='retrieving_score']/text()}"/></p></div>
+        <div id="{$fileId}" class="mei"><p class="loading" title="{$lang_lib/*[name()='retrieving_score']/text()}">&#160;</p></div>
     let $output2 :=
         <div id="{$fileId}_options" class="mei_options">
             <!--MEI options menu will be inserted here-->
@@ -622,6 +622,7 @@ let $result :=
                             let $rec_type := if($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]) then
                                 string-join($file/m:mei/m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/string()," ")
                                 else "music_document"
+order by $rec_type ascending                                
         	                return
         	                    <div xmlns="http://www.w3.org/1999/xhtml" class="item search-result">
                                     <div>
@@ -690,7 +691,7 @@ let $result :=
                                                         </div>
                                                     return $score_preview    
                                                 else 
-                                                    <div>{$lang_lib/*[name()=$rec_type]/string()}</div>
+                                                    <div class="search_result_record_type">{$lang_lib/*[name()=$rec_type]/string()}</div>
                                                 
                                             return $preview
                                         }
