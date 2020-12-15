@@ -28,10 +28,20 @@ let $index-doc :=
     {
 (:  Kun småbøgerne: :)    
 (:    for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"Je_" ) or contains(util:document-name(.),"Th_"))][count(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"]/text())=0]  :)
+
 (:  Kun metaposter :)
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(contains(util:document-name(.),"_15" ))]  :)
-(:  Alle  :)    
+
+(: En enkelt post efter fx filnavn eller titel :)
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[util:document-name(.) = 'Je_1573_LN0981_036.xml'] :)
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[contains(m:meiHead/m:workList/m:work/m:title,'obseruaueris')]  :)
+
+(:  Alle i bøgerne :)    
 (:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]  :)
+
+(:  Alle inkl. metaposter :)    
+(:     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei  :)
+
     for $doc in collection(concat($db,'/data/',$collection,'/'))/m:mei[not(m:meiHead/m:workList/m:work/m:classification/m:termList/m:term[@type="itemClass"])]
         let $doc-name  := util:document-name($doc)
         let $coll-name := util:collection-name($doc)
