@@ -51,13 +51,12 @@
             <identifier label="Jespersen 1573">s. 119</identifier>
             <identifier label="Glahn 2000" xml:id="jerusalem_du_hellige_stad_identifier_7ef100e4">C IIa: 2</identifier>
             <title type="alternative" xml:id="jerusalem_du_hellige_stad_title_c26fd9b1" xml:lang="la">Lauda Ierusalem Dominum</title>
-            <title type="alternative" xml:id="jerusalem_du_hellige_stad_title_1a931029" xml:lang="en">Prayse thou the lorde Hierusalem</title>
             <title type="uniform" xml:id="jerusalem_du_hellige_stad_title_4a2a7d1c" xml:lang="da">Jerusalem, du hellige stad</title>
             <history xml:id="jerusalem_du_hellige_stad_history_44436885">
                <p>Salmen kendes fra Joachim Slüters nedertyske salmebøger. Den ældste kendte kilde til melodien er Miles Coverdales engelske sangbog <rend fontstyle="italic">Goostly psalmes and spirituall songes</rend> (London: John Rastell, 1535). Formodentlig bygger den dog også på nedertysk forlæg (<abbr>Glahn 1963</abbr>: 80).</p>
                <p>Tekstkilder:
-                   <lb/><abbr>Pedersen 1533</abbr>, fol. 58r <ptr target="https://salmer.dsl.dk/malmoe-salmebog.xml/3/76" type="text_edition" label="Digital udgave"/>
-                   <lb/><abbr>Vingaard 1553</abbr>, fol. 58r <ptr target="#evangelium" type="text_edition" label="Digital udgave"/>
+                  <lb/><abbr>Pedersen 1533</abbr>, fol. 58r <ptr target="#jerusalem-du-hellige-stad-malmoe" type="text_edition" label="Digital udgave"/>
+                  <lb/><abbr>Vingaard 1553</abbr>, fol. 58r <ptr target="#jerusalem-du-hellige-stad" type="text_edition" label="Digital udgave"/>
                    <lb/><abbr>Thomissøn 1569</abbr>, fol. 301r <ptr target="#section-19-hymn-14" type="edition" label="Digital udgave"/>
                    <lb/><abbr>Jespersen 1573</abbr>, s. 119 <ptr target="#section-16-1" type="edition" label="Digital udgave"/>
                </p>

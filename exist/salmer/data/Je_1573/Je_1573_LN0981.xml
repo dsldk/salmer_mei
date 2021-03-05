@@ -542,7 +542,7 @@
                     <contentItem label="75" type="music_document">
                         <title xml:lang="la">HAleluia. Angelus Domini nuntiauit Mariæ</title>
                         <locus>s. 160</locus>
-                        <ptr target="#section-24-1" type="edition"/>
+                        <ptr target="#haleluia-angelus-domini-nuntiauit-mariae" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_160.xml"/>
                     </contentItem>
                     <contentItem label="76" type="music_document">
@@ -664,154 +664,154 @@
                         <title xml:lang="da">Erens Konning/ O Christe/ Haleluia</title>
                         <title xml:lang="da" type="uniform">Ærens konning, o Kriste</title>
                         <locus>s. 210</locus>
-                        <ptr target="#praefatio" type="edition"/>
+                        <ptr target="#aerens-konning-o-christe" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_210.xml"/>
                     </contentItem>
                     <contentItem label="95" type="music_document">
                         <title xml:lang="da">Kyrie Gud Fader forbarme dig offuer oss</title>
                         <title xml:lang="da" type="uniform">Kyrie Gud Fader forbarme dig over os</title>
                         <locus>s. 215</locus>
-                        <ptr target="#anden-og-tredje-paaskedag" type="edition"/>
+                        <ptr target="#kyrie-gud-fader-forbarme-dig-over-os-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_215.xml"/>
                     </contentItem>
                     <contentItem label="96" type="music_document">
                         <title xml:lang="da">CHristus Jesus for oss offrit</title>
                         <title xml:lang="da" type="uniform">Kristus Jesus for os ofret</title>
                         <locus>s. 217</locus>
-                        <ptr target="#anden-og-tredje-paaskedag" type="edition"/>
+                        <ptr target="kristus-jesus-for-os-ofret-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_217.xml"/>
                     </contentItem>
                     <contentItem label="97" type="music_document">
                         <title xml:lang="la">QVasi modo geniti infantes</title>
                         <locus>s. 220</locus>
-                        <ptr target="#foerste-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#quasi-modo" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_220.xml"/>
                     </contentItem>
                     <contentItem label="98" type="music_document">
                         <title xml:lang="la">HAleluia. Angelus Domini descendit de coelo</title>
                         <locus>s. 222</locus>
-                        <ptr target="#foerste-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#haleluia-angelus-domini" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_222.xml"/>
                     </contentItem>
                     <contentItem label="99" type="music_document">
                         <title xml:lang="la">MJsericordia Domini plena est terra</title>
                         <locus>s. 224</locus>
-                        <ptr target="#anden-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#misericordia-domini" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_224.xml"/>
                     </contentItem>
                     <contentItem label="100" type="music_document">
                         <title xml:lang="la">HAleluia. Surrexit Pastor bonus</title>
                         <locus>s. 226</locus>
-                        <ptr target="#anden-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#haleluia-surrexit-pastor-bonus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_226.xml"/>
                     </contentItem>
                     <contentItem label="101" type="music_document">
                         <title xml:lang="la">Iubilate Deo omnis terra</title>
                         <locus>s. 227</locus>
-                        <ptr target="#tredje-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#iubilate-deo-omnis-terra" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_227.xml"/>
                     </contentItem>
                     <contentItem label="102" type="music_document">
                         <title xml:lang="la">HAleluia. Surgens Jesus Dominus noster</title>
                         <locus>s. 230</locus>
-                        <ptr target="#tredje-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#haleluia-surgens-jesus-dominus-noster" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_230.xml"/>
                     </contentItem>
                     <contentItem label="103" type="music_document">
                         <title xml:lang="la">CAntate Domino canticum nouum</title>
                         <locus>s. 231</locus>
-                        <ptr target="#fjerde-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#cantate-domino" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_231.xml"/>
                     </contentItem>
                     <contentItem label="104" type="music_document">
                         <title xml:lang="la">VOcem iucunditatis annunciate</title>
                         <locus>s. 233</locus>
-                        <ptr target="#femte-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#vocem-iucunditatis" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_233.xml"/>
                     </contentItem>
                     <contentItem label="105" type="music_document">
                         <title xml:lang="la">HAleluia. Surrexit Christus</title>
                         <locus>s. 236</locus>
-                        <ptr target="#femte-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#haleluia-surrexit-christus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_236.xml"/>
                     </contentItem>
                     <contentItem label="106" type="music_document">
                         <title xml:lang="la">VJri Galilæi</title>
                         <locus>s. 237</locus>
-                        <ptr target="#kristi-himmelfartsdag" type="edition"/>
+                        <ptr target="#viri-galilaei" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_237.xml"/>
                     </contentItem>
                     <contentItem label="107" type="music_document">
                         <title xml:lang="la">HAleluia. Ascendit Deus in iubilatione</title>
                         <locus>s. 239</locus>
-                        <ptr target="#kristi-himmelfartsdag" type="edition"/>
+                        <ptr target="#haleluia-ascendit-deus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_239.xml"/>
                     </contentItem>
                     <contentItem label="108" type="music_document">
                         <title xml:lang="la">EXaudi Domine vocem meam</title>
                         <locus>s. 240</locus>
-                        <ptr target="#sjette-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#exaudi-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_240.xml"/>
                     </contentItem>
                     <contentItem label="109" type="music_document">
                         <title xml:lang="la">HAleluia. Ascendens Christus in altum</title>
                         <locus>s. 243</locus>
-                        <ptr target="#sjette-soendag-efter-paaske" type="edition"/>
+                        <ptr target="#haleluia-ascendens-christus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_243.xml"/>
                     </contentItem>
                     <contentItem label="110" type="music_document">
                         <title xml:lang="la">VEni sancte Spiritus</title>
                         <locus>s. 244</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#veni-sancte-spiritus-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_244.xml"/>
                     </contentItem>
                     <contentItem label="111" type="music_document">
                         <title xml:lang="la">SPiritus Domini repleuit orbem terrarum</title>
                         <locus>s. 245</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#spiritus-domini" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_245.xml"/>
                     </contentItem>
                     <contentItem label="112" type="music_document">
                         <title xml:lang="la">Kyrie, fons bonitatis Pater ingenite</title>
                         <locus>s. 248</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#kyrie-fons-bonitatis" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_248.xml"/>
                     </contentItem>
                     <contentItem label="113" type="music_document">
                         <title xml:lang="la">GLoria in excelsis Deo</title>
                         <locus>s. 249</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#gloria-in-excelsis-deo-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_249.xml"/>
                     </contentItem>
                     <contentItem label="114" type="music_document">
                         <title xml:lang="la">HAleluia. Veni sancte Spiritus</title>
                         <locus>s. 253</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#haleluia-veni-sancte-spiritus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_253.xml"/>
                     </contentItem>
                     <contentItem label="115" type="music_document">
                         <title xml:lang="la">VEni sancte Spiritus</title>
                         <locus>s. 254</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#veni-sancte-spiritus-et-emitte" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_254.xml"/>
                     </contentItem>
                     <contentItem label="116" type="music_document">
                         <title xml:lang="la">SAncti spiritus adsit nobis gratia</title>
                         <locus>s. 257</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#sancti-spiritus-adsit-nobis-gratia" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_257.xml"/>
                     </contentItem>
                     <contentItem label="117" type="music_document">
                         <title xml:lang="da">KOm hellig Aand O Herre Gud</title>
                         <title xml:lang="da" type="uniform">Kom Helligånd, o Herre Gud</title>
                         <locus>s. 263</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#kom-helligaand-o-herre-gud-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_263.xml"/>
                     </contentItem>
                     <contentItem label="118" type="music_document">
                         <title xml:lang="la">AEterne Deus</title>
                         <locus>s. 265</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#dominus-vobiscum-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_265.xml"/>
                         
                     </contentItem>
@@ -819,494 +819,494 @@
                         <title xml:lang="da">KOm Gud skaber O hellig Aand</title>
                         <title xml:lang="da" type="uniform">Kom, Gud skaber, o Helligånd</title>
                         <locus>s. 267</locus>
-                        <ptr target="#pinsedag" type="edition"/>
+                        <ptr target="#kom-gud-skaber-helligaand-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_267.xml"/>
                     </contentItem>
                     <contentItem label="120" type="music_document">
                         <title xml:lang="da">KOm O Herre hellig Aand</title>
                         <title xml:lang="da" type="uniform">Kom, o Herre Helligånd</title>
                         <locus>s. 269</locus>
-                        <ptr target="#anden-og-tredje-pinsedag" type="edition"/>
+                        <ptr target="kom-o-herre-hellig-aand" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_269.xml"/>
                     </contentItem>
                     <contentItem label="121" type="music_document">
                         <title xml:lang="da">KYrie/ Gud Fader allsom høyeste trøst</title>
                         <title xml:lang="da" type="uniform">Kyrie, Gud Fader alsomhøjeste trøst</title>
                         <locus>s. 270</locus>
-                        <ptr target="#anden-og-tredje-pinsedag" type="edition"/>
+                        <ptr target="kyrie-gud-fader-alsom" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_270.xml"/>
                     </contentItem>
                     <contentItem label="122" type="music_document">
                         <title xml:lang="da">GVd Fader bliff du nu met oss</title>
                         <title xml:lang="da" type="uniform">Gud Fader, bliv du nu med os</title>
                         <locus>s. 273</locus>
-                        <ptr target="#trinitatis-jespersen-1573" type="edition"/>
+                        <ptr target="#gud-fader-bliv-du-nu-med-os-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_273.xml"/>
                     </contentItem>
                     <contentItem label="123" type="music_document">
                         <title xml:lang="la">BEnedicta sit sancta Trinitas</title>
                         <locus>s. 274</locus>
-                        <ptr target="#trinitatis-jespersen-1573" type="edition"/>
+                        <ptr target="#benedicta-sit-sancta-trinitas-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_274.xml"/>
                     </contentItem>
                     <contentItem label="124" type="music_document">
                         <title xml:lang="la">HAleluia. Benedictus es Domine Deus Patrum nostrorum</title>
                         <locus>s. 276</locus>
-                        <ptr target="#trinitatis-jespersen-1573" type="edition"/>
+                        <ptr target="#haleluia-benedictus-es-domine-deus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_276.xml"/>
                     </contentItem>
                     <contentItem label="125" type="music_document">
                         <title xml:lang="la">BEnedicta semper sancta sit trinitas</title>
                         <locus>s. 277</locus>
-                        <ptr target="#trinitatis-jespersen-1573" type="edition"/>
+                        <ptr target="#benedicta-semper" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_277.xml"/>
                     </contentItem>
                     <contentItem label="126" type="music_document">
                         <title xml:lang="la">AEterne Deus</title>
                         <locus>s. 282</locus>
-                        <ptr target="#trinitatis-jespersen-1573" type="edition"/>
+                        <ptr target="#credo" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_282.xml"/>
                     </contentItem>
                     <contentItem label="127" type="music_document">
                         <title xml:lang="la">DOmine in tua misericordia speraui</title>
                         <locus>s. 286</locus>
-                        <ptr target="#foerste-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#domine-in-tua" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_286.xml"/>
                     </contentItem>
                     <contentItem label="128" type="music_document">
                         <title xml:lang="la">HAleluia. Domine Deus meus</title>
                         <locus>s. 288</locus>
-                        <ptr target="#foerste-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-domine-deus-meus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_288.xml"/>
                     </contentItem>
                     <contentItem label="129" type="music_document">
                         <title xml:lang="da">Gud Fader vdi Himmerig</title>
                         <title xml:lang="da" type="uniform">Gud Fader udi Himmerig</title>
                         <locus>s. 290</locus>
-                        <ptr target="#foerste-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#gud-fader-udi-himmerig-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_290.xml"/>
                     </contentItem>
                     <contentItem label="130" type="music_document">
                         <title xml:lang="la">FActus est Dominus protector meus</title>
                         <locus>s. 293</locus>
-                        <ptr target="#anden-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#factus-est-dominus-protector-meus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_293.xml"/>
                     </contentItem>
                     <contentItem label="131" type="music_document">
                         <title xml:lang="la">HAleluia. Deus iudex iustus</title>
                         <locus>s. 295</locus>
-                        <ptr target="#anden-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-deus-iudex-iustus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_295.xml"/>
                     </contentItem>
                     <contentItem label="132" type="music_document">
                         <title xml:lang="la">REspice in me et miserere mei Domine</title>
                         <locus>s. 296</locus>
-                        <ptr target="#tredje-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#respice-in-me" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_296.xml"/>
                     </contentItem>
                     <contentItem label="133" type="music_document">
                         <title xml:lang="la">HAleluia. Diligam te Domine virtus mea</title>
                         <locus>s. 298</locus>
-                        <ptr target="#tredje-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-diligam-te-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_298.xml"/>
                     </contentItem>
                     <contentItem label="134" type="music_document">
                         <title xml:lang="la">DOminus illuminatio mea</title>
                         <locus>s. 300</locus>
-                        <ptr target="#fjerde-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#dominus-illuminatio-mea" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_300.xml"/>
                     </contentItem>
                     <contentItem label="135" type="music_document">
                         <title xml:lang="la">HAleluia. Domine in virtute tua lætabitur rex</title>
                         <locus>s. 302</locus>
-                        <ptr target="#fjerde-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-domine-in-virtute" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_302.xml"/>
                     </contentItem>
                     <contentItem label="136" type="music_document">
                         <title xml:lang="da">O Gud af Himmelen see her til</title>
                         <title xml:lang="da" type="uniform">O Gud, af himmelen se her til</title>
                         <locus>s. 304</locus>
-                        <ptr target="#hans-baptiste-dag" type="edition"/>
+                        <ptr target="#o-gud-af-himlen-se-hertil" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_304.xml"/>
                     </contentItem>
                     <contentItem label="137" type="music_document">
                         <title xml:lang="la">DE ventre matris meæ vocauit me Dominus nomine meo</title>
                         <locus>s. 306</locus>
-                        <ptr target="#hans-baptiste-dag" type="edition"/>
+                        <ptr target="#de-ventre-matris" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_306.xml"/>
                     </contentItem>
                     <contentItem label="138" type="music_document">
                         <title xml:lang="la">HAleluia. Jnter natos mulierum non surrexit maior Johanne Baptista</title>
                         <locus>s. 308</locus>
-                        <ptr target="#hans-baptiste-dag" type="edition"/>
+                        <ptr target="#haleluia-inter-natos" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_308.xml"/>
                     </contentItem>
                     <contentItem label="139" type="music_document">
                         <title xml:lang="da">LOffuer Gud i fromme Christne</title>
                         <title xml:lang="da" type="uniform">Lover Gud, I fromme kristne</title>
                         <locus>s. 309</locus>
-                        <ptr target="#hans-baptiste-dag" type="edition"/>
+                        <ptr target="#lover-gud-i-fromme-kristne-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_309.xml"/>
                     </contentItem>
                     <contentItem label="140" type="music_document">
                         <title xml:lang="da">ALle Christne fryde sig nu</title>
                         <title xml:lang="da" type="uniform">Alle kristne fryde sig nu</title>
                         <locus>s. 313</locus>
-                        <ptr target="#marie-besoegelsesdag" type="edition"/>
+                        <ptr target="#alle-kristne-fryde-sig-nu-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_313.xml"/>
                     </contentItem>
                     <contentItem label="141" type="music_document">
                         <title xml:lang="la">GAudeamus omnes in Domino</title>
                         <locus>s. 315</locus>
-                        <ptr target="#marie-besoegelsesdag" type="edition"/>
+                        <ptr target="#gaudeamus-omnes-in-domino" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_315.xml"/>
                     </contentItem>
                     <contentItem label="142" type="music_document">
                         <title xml:lang="la">EXaudi Domine vocem meam</title>
                         <locus>s. 318</locus>
-                        <ptr target="#femte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#exaudi-domine-vocem-meam" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_318.xml"/>
                     </contentItem>
                     <contentItem label="143" type="music_document">
                         <title xml:lang="la">HAleluia. Jn te Domine speraui</title>
                         <locus>s. 320</locus>
-                        <ptr target="#femte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-in-te-domine-speraui" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_320.xml"/>
                     </contentItem>
                     <contentItem label="144" type="music_document">
                         <title xml:lang="la">DOminus fortitudo plebis suæ</title>
                         <locus>s. 321</locus>
-                        <ptr target="#sjette-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#dominus-fortitudo" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_321.xml"/>
                     </contentItem>
                     <contentItem label="145" type="music_document">
                         <title xml:lang="la">HAleluia. Omnes gentes plaudite manibus</title>
                         <locus>s. 324</locus>
-                        <ptr target="#sjette-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-omnes-gentes-plaudite" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_324.xml"/>
                     </contentItem>
                     <contentItem label="146" type="music_document">
                         <title xml:lang="la">OMnes gentes plaudite manibus</title>
                         <locus>s. 325</locus>
-                        <ptr target="#syvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#omnes-gentes-plaudite-manibus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_325.xml"/>
                     </contentItem>
                     <contentItem label="147" type="music_document">
                         <title xml:lang="la">HAleluia. Eripe me de inimicis meis Deus meus</title>
                         <locus>s. 327</locus>
-                        <ptr target="#syvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-eripe-me" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_327.xml"/>
                     </contentItem>
                     <contentItem label="148" type="music_document">
                         <title xml:lang="la">SVscepimus Deus misericordiam tuam</title>
                         <locus>s. 328</locus>
-                        <ptr target="#ottende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#suscepimus-deus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_328.xml"/>
                     </contentItem>
                     <contentItem label="149" type="music_document">
                         <title xml:lang="la">HAleluia. Te decet hymnus Deus in Syon</title>
                         <locus>s. 331</locus>
-                        <ptr target="#ottende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-te-decet-hymnus-deus-in-syon" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_331.xml"/>
                     </contentItem>
                     <contentItem label="150" type="music_document">
                         <title xml:lang="da">NV er oss Gud miskundelig</title>
                         <title xml:lang="da" type="uniform">Nu er os Gud miskundelig</title>
                         <locus>s. 332</locus>
-                        <ptr target="#niende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#nu-er-os-gud-miskundelig-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_332.xml"/>
                     </contentItem>
                     <contentItem label="151" type="music_document">
                         <title xml:lang="la">ECce Deus adiuuat me</title>
                         <locus>s. 334</locus>
-                        <ptr target="#niende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#ecce-deus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_334.xml"/>
                     </contentItem>
                     <contentItem label="152" type="music_document">
                         <title xml:lang="la">HAleluia. Attendite popule meus in legem meam</title>
                         <locus>s. 336</locus>
-                        <ptr target="#niende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-attendite-popule-meus-in-legem-meam" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_336.xml"/>
                     </contentItem>
                     <contentItem label="153" type="music_document">
                         <title xml:lang="da">VDen Herren opholder vort Huss oc gaard</title>
                         <title xml:lang="da" type="uniform">Uden Herren opholder vort hus og gård</title>
                         <locus>s. 337</locus>
-                        <ptr target="#niende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#uden-herren-opholder-vort-hus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_337.xml"/>
                     </contentItem>
                     <contentItem label="154" type="music_document">
                         <title xml:lang="la">DVm clamarem ad Dominum</title>
                         <locus>s. 339</locus>
-                        <ptr target="#tiende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#dum-clamarem-ad-dominum" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_339.xml"/>
                     </contentItem>
                     <contentItem label="155" type="music_document">
                         <title xml:lang="la">HAleluia. Exultate Deo adiutori nostro</title>
                         <locus>s. 342</locus>
-                        <ptr target="#tiende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-exultate-deo" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_342.xml"/>
                     </contentItem>
                     <contentItem label="156" type="music_document">
                         <title xml:lang="la">DEus in loco sancto suo</title>
                         <locus>s. 343</locus>
-                        <ptr target="#ellevte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#deus-in-loco-sancto" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_343.xml"/>
                     </contentItem>
                     <contentItem label="157" type="music_document">
                         <title xml:lang="la">HAleluia. Domine Deus salutis meæ</title>
                         <locus>s. 345</locus>
-                        <ptr target="#ellevte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-domine-deus-salutis-meae" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_345.xml"/>
                     </contentItem>
                     <contentItem label="158" type="music_document">
                         <title xml:lang="la">DEus in adiutorium meum intende</title>
                         <locus>s. [346]</locus>
-                        <ptr target="#tolvte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#deus-in-adiutorium-meum" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_346.xml"/>
                     </contentItem>
                     <contentItem label="159" type="music_document">
                         <title xml:lang="la">HAleluia. Domine refugium factus es nobis</title>
                         <locus>s. 348</locus>
-                        <ptr target="#tolvte-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-domine-refugium" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_348.xml"/>
                     </contentItem>
                     <contentItem label="160" type="music_document">
                         <title xml:lang="da">VAare Gud icke met oss denne tid</title>
                         <title xml:lang="da" type="uniform">Var Gud ikke med os denne tid</title>
                         <locus>s. 350</locus>
-                        <ptr target="#trettende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#var-gud-ikke-med-os-denne-tid" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_350.xml"/>
                     </contentItem>
                     <contentItem label="161" type="music_document">
                         <title xml:lang="la">REspice Domine in testamentum tuam</title>
                         <locus>s. 351</locus>
-                        <ptr target="#trettende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#respice-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_351.xml"/>
                     </contentItem>
                     <contentItem label="162" type="music_document">
                         <title xml:lang="la">HAleluia. Venite exultemus Domino</title>
                         <locus>s. 354</locus>
-                        <ptr target="#trettende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-venite-exultemus-domino" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_354.xml"/>
                     </contentItem>
                     <contentItem label="163" type="music_document">
                         <title xml:lang="da">BEklage aff all min sinde</title>
                         <title xml:lang="da" type="uniform">Beklage af al min sinde</title>
                         <locus>s. 355</locus>
-                        <ptr target="#trettende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#beklage-af-al-min-sinde-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_355.xml"/>
                     </contentItem>
                     <contentItem label="164" type="music_document">
                         <title xml:lang="la">PRotector noster aspice Deus</title>
                         <locus>s. 357</locus>
-                        <ptr target="#fjortende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#protector-noster" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_357.xml"/>
                     </contentItem>
                     <contentItem label="165" type="music_document">
                         <title xml:lang="la">HAleluia. Quoniam Deus magnus Dominus</title>
                         <locus>s. 359</locus>
-                        <ptr target="#fjortende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-quoniam-deus-magnus-dominus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_359.xml"/>
                     </contentItem>
                     <contentItem label="166" type="music_document">
                         <title xml:lang="la">INclina Domine aurem tuam ad me</title>
                         <locus>s. 360</locus>
-                        <ptr target="#femtende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#inclina-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_360.xml"/>
                     </contentItem>
                     <contentItem label="167" type="music_document">
                         <title xml:lang="la">HAleluia. Paratum Cor meum Deus</title>
                         <locus>s. 363</locus>
-                        <ptr target="#femtende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-paratum-cor-meum-deus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_363.xml"/>
                     </contentItem>
                     <contentItem label="168" type="music_document">
                         <title xml:lang="la">MJserere mihi Domine</title>
                         <locus>s. 364</locus>
-                        <ptr target="#sekstende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#miserere-mihi-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_364.xml"/>
                     </contentItem>
                     <contentItem label="169" type="music_document">
                         <title xml:lang="la">HAleluia. Jn exitu Jsrael ex Egypto</title>
                         <locus>s. 366</locus>
-                        <ptr target="#sekstende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-in-exitu-israel-ex-egypto" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_366.xml"/>
                     </contentItem>
                     <contentItem label="170" type="music_document">
                         <title xml:lang="da">Esaias den Prophet monne det saa gaa</title>
                         <title xml:lang="da" type="uniform">Esajas den profet monne det så gå</title>
                         <locus>s. 367</locus>
-                        <ptr target="#skt-michels-dag-jespersen-1573" type="edition"/>
+                        <ptr target="#esaias-den-prophet" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_367.xml"/>
                     </contentItem>
                     <contentItem label="171" type="music_document">
                         <title xml:lang="la">BEnedicite Domino omnes Angeli eius</title>
                         <locus>s. 370</locus>
-                        <ptr target="#skt-michels-dag-jespersen-1573" type="edition"/>
+                        <ptr target="#benedicite-domino" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_370.xml"/>
                     </contentItem>
                     <contentItem label="172" type="music_document">
                         <title xml:lang="la">HAleluia. Concussum est mare</title>
                         <locus>s. 372</locus>
-                        <ptr target="#skt-michels-dag-jespersen-1573" type="edition"/>
+                        <ptr target="#haleluia-concussum-est-mare" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_372.xml"/>
                     </contentItem>
                     <contentItem label="173" type="music_document">
                         <title xml:lang="la">TE Deum laudamus</title>
                         <locus>s. 373</locus>
-                        <ptr target="#skt-michels-dag-jespersen-1573" type="edition"/>
+                        <ptr target="#te-deum-laudamus-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_373.xml"/>
                     </contentItem>
                     <contentItem label="174" type="music_document">
                         <title xml:lang="da">O Gud wi loffue dig</title>
                         <title xml:lang="da" type="uniform">O Gud, vi love dig</title>
                         <locus>s. 380</locus>
-                        <ptr target="#skt-michels-dag-jespersen-1573" type="edition"/>
+                        <ptr target="#o-gud-vi-love-dig-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_380.xml"/>
                     </contentItem>
                     <contentItem label="175" type="music_document">
                         <title xml:lang="da">VOr Gud hand er saa fast en borg</title>
                         <title xml:lang="da" type="uniform">Vor Gud han er så fast en borg</title>
                         <locus>s. 388</locus>
-                        <ptr target="#syttende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#vor-gud-han-er-saa-fast" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_388.xml"/>
                     </contentItem>
                     <contentItem label="176" type="music_document">
                         <title xml:lang="la">IVstus es Domine</title>
                         <locus>s. 390</locus>
-                        <ptr target="#syttende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#iustus-es-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_390.xml"/>
                     </contentItem>
                     <contentItem label="177" type="music_document">
                         <title xml:lang="la">HAleluia. Dilexi, quoniam exaudiuit Dominus vocem meam</title>
                         <locus>s. 392</locus>
-                        <ptr target="#syttende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-dilexi" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_392.xml"/>
                     </contentItem>
                     <contentItem label="178" type="music_document">
                         <title xml:lang="da">FRa Mennisken haffuer ieg vend min hu</title>
                         <title xml:lang="da" type="uniform">Fra mennesken haver jeg vendt min hu</title>
                         <locus>s. 393</locus>
-                        <ptr target="#syttende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#fra-mennesket-haver-jeg-vendt-min-hu" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_393.xml"/>
                     </contentItem>
                     <contentItem label="179" type="music_document">
                         <title xml:lang="la">DA pacem Domine sustinentibus te</title>
                         <locus>s. 396</locus>
-                        <ptr target="#attende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#da-pacem-domine-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_396.xml"/>
                     </contentItem>
                     <contentItem label="180" type="music_document">
                         <title xml:lang="la">HAleluia. Laudate Dominum omnes gentes</title>
                         <locus>s. 398</locus>
-                        <ptr target="#attende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="haleluia-laudate-dominum-omnes-gentes" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_398.xml"/>
                     </contentItem>
                     <contentItem label="181" type="music_document">
                         <title xml:lang="la">SAlus populi ego sum</title>
                         <locus>s. 399</locus>
-                        <ptr target="#nittende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#salus-populi-ego-sum" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_399.xml"/>
                     </contentItem>
                     <contentItem label="182" type="music_document">
                         <title xml:lang="la">HAleluia. Dextera Dei fecit virtutem dextera Domini exaltauit me</title>
                         <locus>s. 401</locus>
-                        <ptr target="#nittende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-dextera-dei" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_401.xml"/>
                     </contentItem>
                     <contentItem label="183" type="music_document">
                         <title xml:lang="la">OMnia quæ fecisti nobis Domine</title>
                         <locus>s. 403</locus>
-                        <ptr target="#tyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#omnia-quae-fecisti" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_403.xml"/>
                     </contentItem>
                     <contentItem label="184" type="music_document">
                         <title xml:lang="la">HAleluia. Qui confidunt in Domino</title>
                         <locus>s. 406</locus>
-                        <ptr target="#tyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-qui-confidunt-in-domino" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_406.xml"/>
                     </contentItem>
                     <contentItem label="185" type="music_document">
                         <title xml:lang="la">TJmete Dominum omnes sancti eius</title>
                         <locus>s. 407</locus>
-                        <ptr target="#allehelgensdag-jespersen-1573" type="edition"/>
+                        <ptr target="#allehelgensdag-introitus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_407.xml"/>
                     </contentItem>
                     <contentItem label="186" type="music_document">
                         <title xml:lang="la">HAleluia. Judicabunt Sancti nationes</title>
                         <locus>s. 409</locus>
-                        <ptr target="#allehelgensdag-jespersen-1573" type="edition"/>
+                        <ptr target="#allehelgensdag-haleluja" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_409.xml"/>
                     </contentItem>
                     <contentItem label="187" type="music_document">
                         <title xml:lang="da">HVi storme oc fnyse de Hedninge saa</title>
                         <title xml:lang="da" type="uniform">Hvi storme og fnyse de hedninger så</title>
                         <locus>s. 411</locus>
-                        <ptr target="#enogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#hvi-storme-og-fnyse" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_411.xml"/>
                     </contentItem>
                     <contentItem label="188" type="music_document">
                         <title xml:lang="la">IN voluntate tua Domine vniuersa sunt posita</title>
                         <locus>s. 413</locus>
-                        <ptr target="#enogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#in-voluntate-tua-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_413.xml"/>
                     </contentItem>
                     <contentItem label="189" type="music_document">
                         <title xml:lang="la">HAleluia. De profundis clamaui ad te Domine</title>
                         <locus>s. 416</locus>
-                        <ptr target="#enogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-de-profundis-clamaui-ad-te-domine" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_416.xml"/>
                     </contentItem>
                     <contentItem label="190" type="music_document">
                         <title xml:lang="da">SAa taler den wuise mund</title>
                         <title xml:lang="da" type="uniform">Så taler den uvise mund</title>
                         <locus>s. 417</locus>
-                        <ptr target="#enogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#saa-taler-den-uvise-mund-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_417.xml"/>
                     </contentItem>
                     <contentItem label="191" type="music_document">
                         <title xml:lang="la">SJ iniquitates obseruaueris Domine</title>
                         <locus>s. 419</locus>
-                        <ptr target="#toogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#si-iniquitates" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_419.xml"/>
                     </contentItem>
                     <contentItem label="192" type="music_document">
                         <title xml:lang="la">HAleluia. Lauda anima mea Dominum</title>
                         <locus>s. 421</locus>
-                        <ptr target="#toogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-lauda-anima" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_421.xml"/>
                     </contentItem>
                     <contentItem label="193" type="music_document">
                         <title xml:lang="la">Dicit Dominus</title>
                         <locus>s. 422</locus>
-                        <ptr target="#treogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#dicit-dominus" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_422.xml"/>
                     </contentItem>
                     <contentItem label="194" type="music_document">
                         <title xml:lang="la">HAleluia. Qui sanat contritos corde</title>
                         <locus>s. 424</locus>
-                        <ptr target="#treogtyvende-soendag-efter-trinitatis" type="edition"/>
+                        <ptr target="#haleluia-qui-sanat-contritos-corde" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_424.xml"/>
                     </contentItem>
                     <contentItem label="195" type="music_document">
                         <title xml:lang="da">O Herre Gud benaade mig</title>
                         <title xml:lang="da" type="uniform">O Herre Gud benåde mig</title>
                         <locus>s. 427</locus>
-                        <ptr target="#onsdagsbededage" type="edition"/>
+                        <ptr target="#o-herre-gud-benaade-mig-jespersen-1573" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_427.xml"/>
                     </contentItem>
                     <contentItem label="196" type="music_document">
                         <title xml:lang="la">KYrie eleison</title>
                         <locus>s. 429</locus>
-                        <ptr target="#onsdagsbededage" type="edition"/>
+                        <ptr target="#kyrieleison" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_429.xml"/>
                     </contentItem>
                     <contentItem label="197" type="music_document">
                         <title xml:lang="da">FAder vor vdi Himmerig</title>
                         <title xml:lang="da" type="uniform">Fader vor udi Himmerig</title>
                         <locus>s. 430</locus>
-                        <ptr target="#onsdagsbededage" type="edition"/>
+                        <ptr target="#fader-vor-udi-himmerig" type="edition"/>
                         <ptr type="db" target="Je_1573/Je_1573_LN0981_430.xml"/>
                     </contentItem>
                     <contentItem label="198" type="music_document">

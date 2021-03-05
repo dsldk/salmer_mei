@@ -59,7 +59,7 @@
             <history xml:id="uden_herren_opholder_vort_hus_og_gaard_history_44436885">
                <p>Melodiens tidligste kilde er Burkard Waldis' <rend fontstyle="italic">Der Psalter In Newe Gesangs weise vnd künstliche Reimen gebracht</rend> (Frankfurt am Main: Chr. Egenolff, 1553) (<ref target="http://daten.digitale-sammlungen.de/bsb00086159/image_480">faksimile</ref>). Teksten kendes på tysk fra 1527 (Riga) og 1531 (Rostock) og formodes at være blevet optaget i dansk salmesang herigennem (<abbr>Widding 1933</abbr>: II,233).</p>
                <p>Tekstkilder:
-                   <lb/><abbr>Vingaard 1553</abbr>, fol. 143r <ptr target="#kong-salomons-boen" type="text_edition" label="Digital udgave"/>
+                  <lb/><abbr>Vingaard 1553</abbr>, fol. 143r <ptr target="#uden-herren-opholder-vort-hus-og-gaard" type="text_edition" label="Digital udgave"/>
                    <lb/><abbr>Thomissøn 1569</abbr>, fol. 203v <ptr target="#section-16-hymn-1" type="edition" label="Digital udgave"/>
                    <lb/><abbr>Jespersen 1573</abbr>, s. 337 <ptr target="#uden-herren-opholder-vort-hus" type="edition" label="Digital udgave"/>
                </p>
@@ -80,7 +80,7 @@
                <relation label="Den danske Psalmebog" rel="isPartOf" target="Th_1569/Th_1569_LN1426.xml" xml:id="uden_herren_opholder_vort_hus_og_gaard_relation_4d893f59"/>
                <relation label="GRADVAL. En Almindelig Sangbog" rel="isPartOf" target="Je_1573/Je_1573_LN0981.xml"/>
                <relation label="Den danske Psalmebog (1569), fol. 203v" rel="hasEmbodiment" target="Th_1569/Th_1569_LN1426_203v.xml" xml:id="uden_herren_opholder_vort_hus_og_gaard_relation_d1e180"/>
-               <relation label="GRADVAL. En Almindelig Sangbog (1573), s. 373" rel="hasEmbodiment" target="Je_1573/Je_1573_LN0981_337.xml"/>
+               <relation label="GRADVAL. En Almindelig Sangbog (1573), s. 337" rel="hasEmbodiment" target="Je_1573/Je_1573_LN0981_337.xml"/>
             </relationList>
          </work>
       </workList>
