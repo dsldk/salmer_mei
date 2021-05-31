@@ -314,7 +314,7 @@
                      <dir type="sb" tstamp="16.75" place="above" label="Linjeskift" xml:id="Je_1573_LN0981_010_m-160">⁞</dir>
                   </measure>
                   <sb xml:id="Je_1573_LN0981_010_m-174" label="editorial"/>
-                  <measure xml:id="Je_1573_LN0981_010_m-173" right="invis">
+                  <measure xml:id="Je_1573_LN0981_010_m-173" right="end">
                      <staff xml:id="Je_1573_LN0981_010_m-175" n="1">
                         <layer xml:id="Je_1573_LN0981_010_m-176" n="1">
                            <note xml:id="Je_1573_LN0981_010_m-177" dur="1" dur.ppq="1024" oct="3" pname="e" pnum="52">
@@ -347,13 +347,6 @@
                                  <syl xml:id="Je_1573_LN0981_010_m-194" wordpos="t">de/</syl>
                               </verse>
                            </note>
-                        </layer>
-                     </staff>
-                  </measure>
-                  <sb xml:id="Je_1573_LN0981_010_m-197" label="editorial"/>
-                  <measure xml:id="Je_1573_LN0981_010_m-196" right="end">
-                     <staff xml:id="Je_1573_LN0981_010_m-198" n="1">
-                        <layer xml:id="Je_1573_LN0981_010_m-199" n="1">
                            <note xml:id="Je_1573_LN0981_010_m-200" dur="2" dur.ppq="512" oct="3" pname="e" pnum="52">
                               <verse xml:id="Je_1573_LN0981_010_m-205" n="1">
                                  <syl xml:id="Je_1573_LN0981_010_m-206" con="d" wordpos="i">Ky</syl>
