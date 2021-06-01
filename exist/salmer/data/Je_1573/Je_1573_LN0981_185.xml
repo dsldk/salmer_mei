@@ -50,7 +50,7 @@
             <identifier label="RefSal" xml:id="Je_1573_LN0981_185_identifier_036d65f5">Je 185</identifier>
             <identifier xml:id="Je_1573_LN0981_185_identifier_d1e100" label="Jespersen 1573">s. 185</identifier>
             <title xml:id="Je_1573_LN0981_185_title_da962e98" xml:lang="da">DEt hellige Kaarss vor Herre selff bar</title>
-            <title type="uniform" xml:id="Je_1573_LN0981_185_title_3780aba9" xml:lang="da">Det hellige kors vor Herre selv bar</title>
+            <title type="uniform" xml:id="Je_1573_LN0981_185_title_3780aba9" xml:lang="da">Det hellige kors, vor Herre selv bar</title>
             <contributor xml:id="Je_1573_LN0981_185_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="41412249" role="collector" xml:id="Je_1573_LN0981_185_persName_5eb47039">Niels Jespersen</persName>
             </contributor>
@@ -71,7 +71,7 @@
             </classification>
             <relationList xml:id="Je_1573_LN0981_185_relationList_82890f7b">
                <relation label="GRADVAL. En Almindelig Sangbog" rel="isPartOf" target="Je_1573/Je_1573_LN0981.xml" xml:id="Je_1573_LN0981_185_relation_4c78148e"/>
-               <relation rel="isEmbodimentOf" label="Det hellige kors vor Herre selv bar" target="det_hellige_kors_vor_herre_selv_bar.xml"/>
+               <relation rel="isEmbodimentOf" label="Det hellige kors, vor Herre selv bar" target="det_hellige_kors_vor_herre_selv_bar.xml"/>
             </relationList>
          </work>
       </workList>

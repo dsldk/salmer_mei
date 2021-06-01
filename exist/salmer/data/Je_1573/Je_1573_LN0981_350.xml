@@ -50,7 +50,7 @@
             <identifier label="RefSal" xml:id="Je_1573_LN0981_350_identifier_036d65f5">Je 350</identifier>
             <identifier xml:id="Je_1573_LN0981_350_identifier_d1e100" label="Jespersen 1573">s. 350</identifier>
             <title xml:id="Je_1573_LN0981_350_title_da962e98" xml:lang="da">VAare Gud icke met oss denne tid</title>
-            <title type="uniform" xml:id="Je_1573_LN0981_350_title_50b510cf" xml:lang="da">Var Gud ikke med os denne tid</title>
+            <title type="uniform" xml:id="Je_1573_LN0981_350_title_50b510cf" xml:lang="da">Vare Gud ikke med os denne tid</title>
             <contributor xml:id="Je_1573_LN0981_350_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="41412249" role="collector" xml:id="Je_1573_LN0981_350_persName_5eb47039">Niels Jespersen</persName>
             </contributor>
@@ -71,7 +71,7 @@
             </classification>
             <relationList xml:id="Je_1573_LN0981_350_relationList_82890f7b">
                <relation label="GRADVAL. En Almindelig Sangbog" rel="isPartOf" target="Je_1573/Je_1573_LN0981.xml" xml:id="Je_1573_LN0981_350_relation_4c78148e"/>
-               <relation rel="isEmbodimentOf" label="Var Gud ikke med os denne tid" target="var_gud_ikke_med_os_denne_tid.xml"/>
+               <relation rel="isEmbodimentOf" label="Vare Gud ikke med os denne tid" target="var_gud_ikke_med_os_denne_tid.xml"/>
             </relationList>
          </work>
       </workList>
