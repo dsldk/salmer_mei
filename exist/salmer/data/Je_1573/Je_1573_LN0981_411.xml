@@ -50,7 +50,7 @@
             <identifier label="RefSal" xml:id="Je_1573_LN0981_411_identifier_036d65f5">Je 411</identifier>
             <identifier xml:id="Je_1573_LN0981_411_identifier_d1e100" label="Jespersen 1573">s. 411</identifier>
             <title xml:id="Je_1573_LN0981_411_title_da962e98" xml:lang="da">HVi storme oc fnyse de Hedninge saa</title>
-            <title type="uniform" xml:id="Je_1573_LN0981_411_title_ed1ac0e9" xml:lang="da">Hvi storme og fnyse de hedninger så</title>
+            <title type="uniform" xml:id="Je_1573_LN0981_411_title_ed1ac0e9" xml:lang="da">Hvi storme og fnyse de hedninge så</title>
             <contributor xml:id="Je_1573_LN0981_411_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="41412249" role="collector" xml:id="Je_1573_LN0981_411_persName_5eb47039">Niels Jespersen</persName>
             </contributor>
@@ -71,7 +71,7 @@
             </classification>
             <relationList xml:id="Je_1573_LN0981_411_relationList_82890f7b">
                <relation label="GRADVAL. En Almindelig Sangbog" rel="isPartOf" target="Je_1573/Je_1573_LN0981.xml" xml:id="Je_1573_LN0981_411_relation_4c78148e"/>
-               <relation rel="isEmbodimentOf" label="Hvi storme og fnyse de hedninger så" target="hvi_storme_og_fnyse_de_hedninger_saa.xml"/>
+               <relation rel="isEmbodimentOf" label="Hvi storme og fnyse de hedninge så" target="hvi_storme_og_fnyse_de_hedninger_saa.xml"/>
             </relationList>
          </work>
       </workList>

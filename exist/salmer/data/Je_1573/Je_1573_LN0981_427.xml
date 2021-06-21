@@ -50,7 +50,7 @@
             <identifier label="RefSal" xml:id="Je_1573_LN0981_427_identifier_036d65f5">Je 427</identifier>
             <identifier xml:id="Je_1573_LN0981_427_identifier_d1e100" label="Jespersen 1573">s. 427</identifier>
             <title xml:id="Je_1573_LN0981_427_title_da962e98" xml:lang="da">O Herre Gud benaade mig</title>
-            <title type="uniform" xml:id="Je_1573_LN0981_427_title_aa81d0e2" xml:lang="da">O Herre Gud benåde mig</title>
+            <title type="uniform" xml:id="Je_1573_LN0981_427_title_aa81d0e2" xml:lang="da">O Herre Gud, benåde mig</title>
             <contributor xml:id="Je_1573_LN0981_427_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="41412249" role="collector" xml:id="Je_1573_LN0981_427_persName_5eb47039">Niels Jespersen</persName>
             </contributor>
@@ -71,7 +71,7 @@
             </classification>
             <relationList xml:id="Je_1573_LN0981_427_relationList_82890f7b">
                <relation label="GRADVAL. En Almindelig Sangbog" rel="isPartOf" target="Je_1573/Je_1573_LN0981.xml" xml:id="Je_1573_LN0981_427_relation_4c78148e"/>
-               <relation rel="isEmbodimentOf" label="O Herre Gud benåde mig" target="o_herre_gud_benaade_mig.xml"/>
+               <relation rel="isEmbodimentOf" label="O Herre Gud, benåde mig" target="o_herre_gud_benaade_mig.xml"/>
             </relationList>
          </work>
       </workList>

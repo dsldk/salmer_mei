@@ -51,7 +51,7 @@
             <identifier xml:id="Th_1569_LN1426_030v_identifier_d1e100" label="Thomissøn 1569">fol. 30v</identifier>
             <title xml:id="Th_1569_LN1426_030v_title_da962e98" xml:lang="da">Hui storme oc fnyse de Hedninge saa</title>
             <title type="alternative" xml:id="Th_1569_LN1426_030v_title_9009cdc8" xml:lang="la">Quare fremuerunt gentes</title>
-            <title type="uniform" xml:id="Th_1569_LN1426_030v_title_b41d615b" xml:lang="da">Hvi storme og fnyse de hedninger så</title>
+            <title type="uniform" xml:id="Th_1569_LN1426_030v_title_b41d615b" xml:lang="da">Hvi storme og fnyse de hedninge så</title>
             <contributor xml:id="Th_1569_LN1426_030v_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="59249628" role="collector" xml:id="Th_1569_LN1426_030v_persName_5eb47039">Hans Thomissøn</persName>
             </contributor>
@@ -75,7 +75,7 @@
             </classification>
             <relationList xml:id="Th_1569_LN1426_030v_relationList_1c110507">
                <relation label="Den danske Psalmebog" rel="isPartOf" target="Th_1569/Th_1569_LN1426.xml" xml:id="Th_1569_LN1426_030v_relation_4d893f59"/>
-               <relation rel="isEmbodimentOf" label="Hvi storme og fnyse de hedninger så" target="hvi_storme_og_fnyse_de_hedninger_saa.xml"/>
+               <relation rel="isEmbodimentOf" label="Hvi storme og fnyse de hedninge så" target="hvi_storme_og_fnyse_de_hedninger_saa.xml"/>
             </relationList>
          </work>
       </workList>

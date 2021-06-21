@@ -51,7 +51,7 @@
             <identifier xml:id="Th_1569_LN1426_174v_identifier_d1e100" label="Thomissøn 1569">fol. 174v</identifier>
             <title xml:id="Th_1569_LN1426_174v_title_da962e98" xml:lang="da">O Herre Gud benaade mig</title>
             <title type="alternative" xml:id="Th_1569_LN1426_174v_title_5ddc958c" xml:lang="la">Miserere mei Deus</title>
-            <title type="uniform" xml:id="Th_1569_LN1426_174v_title_558c0b14" xml:lang="da">O Herre Gud benåde mig</title>
+            <title type="uniform" xml:id="Th_1569_LN1426_174v_title_558c0b14" xml:lang="da">O Herre Gud, benåde mig</title>
             <contributor xml:id="Th_1569_LN1426_174v_respStmt_5577b899">
                <persName auth.uri="http://www.viaf.org" auth="VIAF" codedval="59249628" role="collector" xml:id="Th_1569_LN1426_174v_persName_5eb47039">Hans Thomissøn</persName>
             </contributor>
@@ -75,7 +75,7 @@
             </classification>
             <relationList xml:id="Th_1569_LN1426_174v_relationList_1c110507">
                <relation label="Den danske Psalmebog" rel="isPartOf" target="Th_1569/Th_1569_LN1426.xml" xml:id="Th_1569_LN1426_174v_relation_4d893f59"/>
-               <relation rel="isEmbodimentOf" label="O Herre Gud benåde mig" target="o_herre_gud_benaade_mig.xml"/>
+               <relation rel="isEmbodimentOf" label="O Herre Gud, benåde mig" target="o_herre_gud_benaade_mig.xml"/>
             </relationList>
          </work>
       </workList>
