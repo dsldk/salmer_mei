@@ -56,7 +56,8 @@ let $text_data := if($tei_doc)
     then
 (: Ulriksen 1535 does not use @type='psalm' :)    
 (:        $tei_doc//tei:div[@type='psalm' and .//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  :)  
-        $tei_doc//tei:div[.//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]  
+        $tei_doc//tei:div[tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename]][1]    
+(:        $tei_doc//tei:notatedMusic/tei:ptr[@target=$filename or substring-before(@target,'#')=$filename][1]/ancestor::tei:div[1] :)  
     else
         ()
 
