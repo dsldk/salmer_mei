@@ -13,7 +13,7 @@ declare variable $url := request:get-parameter("url", "");
 declare variable $origin := request:get-header("origin");
 declare variable $requestedDomain := replace($url,"^(http[s]?://[a-z\.]*).*$","$1");
 
-declare variable $workingDir := "/tmp";
+declare variable $workingDir := "/opt";
 declare variable $shellScript := "/opt/url_to_pdf.sh";
 
 (: Generate a PDF file from URL :)
