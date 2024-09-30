@@ -18,7 +18,7 @@
     
     <xsl:template match="/">
         <mei xmlns="http://www.music-encoding.org/ns/mei">
-            <xsl:apply-templates select="@* | .//m:annot"/>
+            <xsl:apply-templates select=".//m:annot"/>
         </mei>
     </xsl:template>
     

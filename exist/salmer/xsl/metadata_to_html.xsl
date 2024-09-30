@@ -649,7 +649,7 @@
     </xsl:template>
 
     <xsl:template match="m:annot[@type='church_year']/m:table/m:tr/m:td/m:title[not(@corresp)]">
-        <xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>
+        <!--<xsl:variable name="contents" select="/m:mei/m:meiHead/m:workList/m:work/m:contents"/>-->
             <div class="relation relation_inactive"><xsl:apply-templates/></div>
     </xsl:template>
     
@@ -703,7 +703,7 @@
     <!-- Use of hymns during the year -->
     <xsl:template match="m:contents" mode="church_year_by_hymns">
         <h2><a name="hymns_use"><xsl:value-of select="$l/hymns_use"/></a></h2>
-        <xsl:variable name="table_id" select="concat('toc_use_',generate-id())"/>
+        <!--<xsl:variable name="table_id" select="concat('toc_use_',generate-id())"/>-->
         <xsl:apply-templates select="m:contentItem[@label = /m:mei/m:meiHead/m:workList/m:work/m:notesStmt/m:annot[@type='church_year']/m:table/m:tr/m:td/m:title/@corresp]" mode="church_year_by_hymns">
             <xsl:sort select="m:title[not(@type)]"/>
         </xsl:apply-templates>
@@ -1004,10 +1004,8 @@
                                 <xsl:variable name="ext_id" select="substring-after(@target,'#')"/>
                                 <xsl:variable name="doc_name" select="concat($base_file_uri,'/',substring-before(@target,'#'))"/>
                                 <!-- Genindsæt følgende, når filerne på plads -->
-                                <!--<xsl:variable name="doc" select="document($doc_name)"/>
-                                    <xsl:copy-of
-                                    select="$doc/m:mei/m:meiHead/m:manifestationList/m:manifestation[@xml:id=$ext_id]"
-                                    />-->
+                                <xsl:variable name="doc" select="document($doc_name)"/>
+                                <xsl:copy-of select="$doc/m:mei/m:meiHead/m:manifestationList/m:manifestation[@xml:id=$ext_id]"/>
                             </xsl:when>
                             <xsl:when test="*//text()">
                                 <xsl:copy-of select="."/>
@@ -1678,10 +1676,8 @@
                         <xsl:variable name="ext_id" select="substring-after(@target,'#')"/>
                         <xsl:variable name="doc_name" select="concat($base_file_uri,'/',substring-before(@target,'#'))"/>
                         <!-- Genindsæt følgende, når filerne er på plads: -->
-                        <!--<xsl:variable name="doc" select="document($doc_name)"/>
-                            <xsl:copy-of
-                            select="$doc/m:mei/m:meiHead/m:manifestationList/m:manifestation[@xml:id=$ext_id]"
-                            />-->
+                        <xsl:variable name="doc" select="document($doc_name)"/>
+                        <xsl:copy-of select="$doc/m:mei/m:meiHead/m:manifestationList/m:manifestation[@xml:id=$ext_id]"/>
                     </xsl:when>
                     <xsl:when test="*//text()">
                         <xsl:copy-of select="."/>
